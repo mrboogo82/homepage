@@ -1076,6 +1076,21 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   .past-grid .adv { grid-template-columns: 2.75rem minmax(0, 1fr); gap: 0.6rem; padding-bottom: 0.35rem; }
   .past-grid .adv-body .org { font-size: var(--step--2); }
 }
+
+/* ---------- 휴대전화의 '무엇을 찾으시나요?' 강조 (2026. 10. 17., Version 107) ----------
+   정보가 많아 보이는 작은 화면에서는 길잡이가 길 안내 역할을 하도록: 제목을 크게, 항목은 한 줄씩 넓은 행(번호 · 제목 · 먹색 알약)으로, 행 전체가 눌린다. */
+@media (max-width: 640px) {
+  .finder { gap: 0.8rem; padding-block: 1.4rem 1.6rem; }
+  .finder .cap { font-family: var(--serif); font-size: var(--step-1); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .finder-list { grid-template-columns: minmax(0, 1fr); gap: 0.55rem; }
+  .finder-list a { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 0.75rem; row-gap: 0.45rem; align-items: center; padding: 0.85rem 0.95rem 0.9rem; border-color: var(--ink-soft); }
+  .finder-list .no { grid-row: 1; grid-column: 1; align-self: center; font-size: var(--step--1); }
+  .finder-list b { grid-row: 1; grid-column: 2; font-size: var(--step-0); line-height: 1.35; }
+  .finder-list .w { display: none; }
+  .finder-list .go { grid-row: 2; grid-column: 2; justify-self: start; margin: 0; padding: 0.3rem 0.8rem; font-size: var(--step--2); font-weight: 600; color: var(--paper); background: var(--ink); border-radius: 999px; white-space: nowrap; }
+  .finder-list a:active { border-color: var(--seal); }
+  .finder-list a:active .go { background: var(--seal); }
+}
 </style>
 </head>
 <body>
@@ -1139,7 +1154,6 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           <a href="tel:+82-2-588-8685" aria-label="사무실 전화 02-588-8685로 전화">전화 02-588-8685</a>
           <a href="mailto:boo@keumseonglaw.com">boo@keumseonglaw.com</a>
         </p>
-        <div class="sns icons" id="sns-hero" aria-label="온라인 계정"></div>
         <div class="hero-stats" aria-label="핵심 숫자">
           <div><span class="n">소송·자문 약 3,300건</span><span class="l">정부법무공단 6년 약 1,500건 (2015 ~ 2021) · 개업 후 소송·신청·행정심판 약 540건, 법률자문 약 1,300건</span></div>
           <div><span class="n">국가로펌 출신 변호사</span><span class="l">정부법무공단 변호사 · 국가·지방자치단체·공공기관의 행정·국가·헌법소송과 자문 · 법무부장관 표창 (국가소송 유공)</span></div>
@@ -1149,7 +1163,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       </div>
 
       <figure class="portrait">
-        <img src="photo-hero.webp" alt="변호사 부효준" width="720" height="960" fetchpriority="high">
+        <img src="photo-hero.webp" alt="변호사 부효준" width="720" height="830" fetchpriority="high">
       </figure>
     </section>
 
@@ -1157,8 +1171,8 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       <p class="cap" id="finder-cap">무엇을 찾으시나요?</p>
       <ol class="finder-list">
         <li><a href="#faq"><span class="no">01</span><b>처분서를 받았습니다</b><span class="w">언제까지 무엇을 해야 하는지 — 이의신청·행정심판·소송의 기한과 집행정지</span><span class="go">자주 묻는 질문 →</span></a></li>
-        <li><a href="#rnd"><span class="no">02</span><b>국가연구개발 제재처분을 받았습니다</b><span class="w">사전통지 20일, 재검토, 처분 뒤 불복 90일 — 절차와 기한, 자주 다투는 쟁점</span><span class="go">국가연구개발 제재처분 →</span></a></li>
-        <li><a href="#fields"><span class="no">03</span><b>어느 분야의 사건인지</b><span class="w">제재부가금·환수, 공무원·교원 인사처분, 인허가·면허, 손실보상, 그 밖의 행정처분, 형사, 국가배상, 법률자문</span><span class="go">다루는 사건 →</span></a></li>
+        <li><a href="#fields"><span class="no">02</span><b>어느 분야의 사건인지</b><span class="w">제재부가금·환수, 공무원·교원 인사처분, 인허가·면허, 손실보상, 그 밖의 행정처분, 형사, 국가배상, 법률자문</span><span class="go">다루는 사건 →</span></a></li>
+        <li><a href="#rnd"><span class="no">03</span><b>국가연구개발 제재처분을 받았습니다</b><span class="w">사전통지 20일, 재검토, 처분 뒤 불복 90일 — 절차와 기한, 자주 다투는 쟁점</span><span class="go">국가연구개발 제재처분 →</span></a></li>
         <li><a href="#record"><span class="no">04</span><b>비슷한 사건의 판결</b><span class="w">분야를 고르거나 낱말로 찾아보는 주요 수행 사례와 판결문</span><span class="go">주요 수행 사례 →</span></a></li>
         <li><a href="#career"><span class="no">05</span><b>변호사가 어떤 사람인지</b><span class="w">경력과 학력, 법률고문 위촉, 위원회·강의</span><span class="go">경력 →</span></a></li>
       </ol>
