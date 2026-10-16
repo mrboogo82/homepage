@@ -1099,6 +1099,11 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   .finder-list a:active { border-color: var(--seal); }
   .finder-list a:active .go { background: var(--seal); }
 }
+
+/* 학력·수상 글씨체를 경력과 같게(명조 굵게), 크기는 작게; 경력의 몇 문구(.lite)도 같은 크기로 (2026. 10. 17., Version 109) */
+.rows.short dd { font-family: var(--serif); font-size: 0.9375rem; font-weight: 600; line-height: 1.5; }
+.rows.short dd .sub { font-family: var(--sans); font-weight: 400; }
+.timeline dd .lite { font-size: 0.9375rem; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -1204,10 +1209,10 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           <dl class="rows dates timeline">
             <div><dt>2009. 10.</dt><dd>제51회 사법시험 합격</dd></div>
             <div><dt>2012. 02.</dt><dd>사법연수원 제41기 수료</dd></div>
-            <div><dt>2012. 04. ~ 2015. 03.</dt><dd>법무부 법무실 국가송무과 · 대한법률구조공단 법무관 <span class="sub">국가송무(행정·헌법·국가소송), 민사·형사 송무 · 2014년 법무부장관 표창(국가소송 유공)</span></dd></div>
+            <div><dt>2012. 04. ~ 2015. 03.</dt><dd>법무부 법무실 국가송무과 <span class="lite">· 대한법률구조공단 법무관</span> <span class="sub">국가송무(행정·헌법·국가소송), 민사·형사 송무 · 2014년 법무부장관 표창(국가소송 유공)</span></dd></div>
             <div><dt>2015. 04. ~ 2021. 06.</dt><dd>정부법무공단 변호사 <span class="sub">국가·지방자치단체·공공기관의 행정·국가·헌법·민사소송과 법률자문 약 1,500건</span></dd></div>
-            <div><dt>2021. 06. ~ 2024. 09.</dt><dd>법률사무소 비앤케이 대표변호사 <span class="sub">행정쟁송 · 헌법소송 · 국가연구개발 제재처분 · 중앙행정기관·지방자치단체·공공기관 고문</span></dd></div>
-            <div class="now"><dt>2024. 10. ~ 현재</dt><dd>법무법인(유한) 금성 구성원변호사 <span class="sub">행정쟁송 · 헌법소송 · 국가연구개발 제재처분 · 중앙행정기관·지방자치단체·공공기관 고문</span></dd></div>
+            <div><dt>2021. 06. ~ 2024. 09.</dt><dd><span class="lite">법률사무소 비앤케이 대표변호사</span> <span class="sub">행정쟁송 · 헌법소송 · 국가연구개발 제재처분 · 중앙행정기관·지방자치단체·공공기관 고문</span></dd></div>
+            <div class="now"><dt>2024. 10. ~ 현재</dt><dd><span class="lite">법무법인(유한) 금성 구성원변호사</span> <span class="sub">행정쟁송 · 헌법소송 · 국가연구개발 제재처분 · 중앙행정기관·지방자치단체·공공기관 고문</span></dd></div>
           </dl>
         </div>
         <div class="block pair" id="education">
