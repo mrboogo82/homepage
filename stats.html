@@ -209,7 +209,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 (function () {
   'use strict';
   // ---- 설정 -------------------------------------------------------------
-  var ENDPOINT = '';            // Apps Script 웹 앱 주소(…/exec). 비어 있으면 견본 숫자.
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbyXQFwMLRsQn2qn4P1egf-aeEG3tBsym7QESB1i02lfVEyqsuUB6XYGPBPbUR2Akc2F/exec';   // Apps Script 웹 앱 주소(…/exec). 비어 있으면 견본 숫자.
   var SITE_OPEN = '2026-10-16'; // 홈페이지 개설일(개설 후 전체 기간의 시작)
   var DEMO = !ENDPOINT || /[?&]demo=1/.test(location.search);
   var KEY_STORE = 'stats-key', IGNORE_STORE = 'ga-ignore';
@@ -352,11 +352,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
     if (!ev) { $('events-grid').hidden = true; $('events-empty').hidden = false; $('events-empty').textContent = j.events_note || 'GA 관리 화면에서 맞춤 측정기준(section·case_title·filter·method)을 등록하면 이 항목이 보입니다. 등록한 날부터 쌓입니다.'; }
     else {
       $('events-grid').hidden = false; $('events-empty').hidden = true;
-      var evb = function (id, rows) { bars(id, (rows || []).map(function (r) { return { label: r.key, n: r.count }; }), 0, { empty: '아직 없습니다' }); };
+      var evb = function (id, rows) { bars(id, (rows || []).map(function (r) { return { label: r.key, n: r.count }; }), 0, { empty: rows ? '아직 없습니다' : 'GA에 맞춤 측정기준을 등록하면 보입니다' }); };
       evb('ev-section', ev.section); evb('ev-case', ev.case); evb('ev-filter', ev.filter); evb('ev-search', ev.search); evb('ev-contact', ev.contact);
     }
     var sc = j.sc;
-    if (!sc || !sc.queries) { $('sc-table').hidden = true; $('sc-empty').hidden = false; $('sc-empty').textContent = j.sc_note || 'Apps Script에 Search Console 서비스를 추가하면 구글 검색어가 보입니다.'; }
+    if (!sc || !sc.queries) { $('sc-table').hidden = true; $('sc-empty').hidden = false; $('sc-empty').textContent = j.sc_note || '구글 검색어는 Search Console 화면에서 볼 수 있습니다.'; }
     else {
       $('sc-empty').hidden = true; var tb = $('sc-table').querySelector('tbody'); tb.textContent = '';
       if (!sc.queries.length) { $('sc-table').hidden = true; $('sc-empty').hidden = false; $('sc-empty').textContent = '아직 구글 검색으로 들어온 기록이 없습니다(2~3일 늦게 반영).'; }
