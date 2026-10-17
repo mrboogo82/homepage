@@ -957,6 +957,20 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 
 /* ---------- 사례마다 담당변호사 표기 (2026. 10. 17., Version 111) ---------- */
 .who { white-space: nowrap; }
+
+/* ---------- 휴대전화의 사례 카드: 한 줄 두 장 (2026. 10. 17., Version 113) ----------
+   한 줄 한 장이면 카드 한 장이 화면 하나를 거의 다 차지해 열두 장이 너무 길어지므로, 작은 화면에서는 두 장씩 작게. 한 줄 목록 보기(.case-list.list)는 그대로. */
+@media (max-width: 640px) {
+  .case-list:not(.list) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1rem; }
+  .case-list:not(.list) .case-fig .count { right: 0.4rem; bottom: 0.4rem; padding: 0 0.45rem; font-size: 0.6875rem; }
+  .case-list:not(.list) .case-body { gap: 0.3rem; padding: 0.6rem 0.65rem 0.75rem; }
+  .case-list:not(.list) .case-meta { gap: 0.15rem 0.5rem; font-size: 0.6875rem; }
+  .case-list:not(.list) .case-meta .tag { flex-basis: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; letter-spacing: 0.02em; }
+  .case-list:not(.list) .case-meta .badge { padding: 0 0.45rem; font-size: 0.6875rem; line-height: 1.5; }
+  .case-list:not(.list) .case-title { font-size: 0.9375rem; line-height: 1.4; }
+  .case-list:not(.list) .case-sub { font-size: 0.6875rem; line-height: 1.5; }
+  .case-list:not(.list) .case-summary, .case-list:not(.list) .more-btn { display: none; }
+}
 </style>
 </head>
 <body>
