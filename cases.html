@@ -12,8 +12,11 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  try { if (localStorage.getItem('ga-ignore') === '1') window['ga-disable-G-STLB5BC2G2'] = true; } catch (e) {}   // 통계 페이지에서 '내 방문 빼기'를 켠 기기
   gtag('js', new Date());
   gtag('config', 'G-STLB5BC2G2');
+  // 홈페이지 안의 행동을 GA 이벤트로 보낸다(Version 116). gtag가 막힌 환경(아티팩트 뷰어 등)에서는 조용히 넘어간다.
+  function track(name, params) { try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {} }
 </script>
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
@@ -7106,7 +7109,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       var b = el('button', 'chip', k === 'all' ? '전체' : CATS[k]);
       b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(state.filter === k));
       b.appendChild(el('span', 'n', String(k === 'all' ? total : (counts[k] || 0))));
-      b.addEventListener('click', function () { state.filter = k; setHash(); render(); });
+      b.addEventListener('click', function () { state.filter = k; track('case_filter', { filter: k === 'all' ? '전체' : (CATS[k] || k) }); setHash(); render(); });
       chipsEl.appendChild(b);
     });
   }
@@ -7121,7 +7124,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       fig.setAttribute('aria-label', c.title + ' 판결문 ' + imgs.length + '장 크게 보기');
       var pic = el('img'); pic.src = imgs[0].thumb || imgs[0].src; pic.alt = imgs[0].alt || (c.title + ' 판결문'); pic.loading = 'lazy'; pic.decoding = 'async';
       fig.appendChild(pic); fig.appendChild(el('span', 'count', '판결문 ' + imgs.length + '장'));
-      fig.addEventListener('click', function () { LB.open(lbItems, 0); });
+      fig.addEventListener('click', function () { track('case_open', { case_title: c.title, case_id: c.id }); LB.open(lbItems, 0); });
       return fig;
     }
     var ph = el('div', 'case-fig none'); ph.setAttribute('aria-hidden', 'true');
@@ -7210,11 +7213,14 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
     if (!q) return;
     q.value = state.q;
     var timer = null;
+    var logTimer = null, logged = '';
+    function logSearch(v) { clearTimeout(logTimer); if (!v) return; logTimer = setTimeout(function () { if (v !== logged) { logged = v; track('search', { search_term: v }); } }, 1500); }
     function apply() {
       var v = q.value.trim();
       if (v !== state.q) state.filter = 'all';   // 낱말이 바뀌면 언제나 전체 사례에서 찾는다(Version 75)
-      state.q = v; setHash(); render();
+      state.q = v; setHash(); render(); logSearch(v);
     }
+    logSearch(state.q);   // 홈에서 #q=… 로 넘어온 낱말
     q.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(apply, 180); });
     q.addEventListener('search', apply);
     q.form && q.form.addEventListener('submit', function (e) { e.preventDefault(); clearTimeout(timer); apply(); });
@@ -7268,6 +7274,17 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
     window.addEventListener('resize', onScroll);
     update();
   })();
+
+  // ---------- 연락 단추 집계 (Version 116) ----------
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null; if (!a) return;
+    var h = a.getAttribute('href') || '', method = '';
+    if (/^tel:/i.test(h)) method = h.indexOf('588') >= 0 ? '사무실 전화' : '휴대전화';
+    else if (/^mailto:/i.test(h)) method = '이메일';
+    else if (a.closest('.sns')) { var lbl = a.querySelector('span:not(.ico)'); method = (lbl && lbl.firstChild ? lbl.firstChild.textContent : a.textContent).trim(); }
+    if (method) track('contact_click', { method: method });
+  }, true);
+
 </script>
 </body>
 </html>

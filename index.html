@@ -14,8 +14,11 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  try { if (localStorage.getItem('ga-ignore') === '1') window['ga-disable-G-STLB5BC2G2'] = true; } catch (e) {}   // 통계 페이지에서 '내 방문 빼기'를 켠 기기
   gtag('js', new Date());
   gtag('config', 'G-STLB5BC2G2');
+  // 홈페이지 안의 행동을 GA 이벤트로 보낸다(Version 116). gtag가 막힌 환경(아티팩트 뷰어 등)에서는 조용히 넘어간다.
+  function track(name, params) { try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {} }
 </script>
 <meta name="keywords" content="부효준, 변호사, 행정소송 변호사, 행정쟁송, 행정심판, 집행정지, 국가연구개발혁신법, 국가연구개발 제재처분, 참여제한 취소소송, 환경기술개발사업, 문화기술 연구개발, 보건의료기술 연구개발, 학술연구 지원사업, 제재부가금, 연구개발비 환수, 인허가, 영업정지, 과징금, 징계, 소청, 보조금 환수, 공공재정환수법, 부정이익 환수, 공공재정 부정청구, 부정당업자 제재, 입찰참가자격제한, 국가배상, 손실보상, 행정처분 취소소송, 출국금지, 정보공개, 변상금, 보조금법 위반, 보조금 부정수급, 연구개발비 횡령, 출연금 사기, 형사 변호, 불송치, 불기소, 고문변호사, 법무법인(유한) 금성">
 <meta name="author" content="부효준">
@@ -7677,6 +7680,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       }
       var file = F('q-file').files && F('q-file').files[0];
       if (file && file.size > 10 * 1024 * 1024) { ev.preventDefault(); status.textContent = '첨부파일은 10MB 이내여야 합니다.'; return; }
+      track('contact_click', { method: '상담 신청' });
       if (!window.fetch || !window.FormData) return;   // 구형 브라우저는 일반 전송(FormSubmit 확인 페이지를 거쳐 돌아옵니다)
       ev.preventDefault();
       btn.disabled = true; status.textContent = '보내는 중…';
@@ -7742,7 +7746,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         b.id = 'chip-' + k;
         b.setAttribute('role', 'tab');
         b.setAttribute('aria-selected', String(state.filter === k));
-        b.addEventListener('click', function () { state.filter = k; render(); });
+        b.addEventListener('click', function () { state.filter = k; track('case_filter', { filter: k === 'main' ? '주요 분야' : k === 'all' ? '전체' : (CATS[k] || k) }); render(); });
         chipsEl.appendChild(b);
       });
     }
@@ -7768,7 +7772,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         fig.setAttribute('aria-label', c.title + ' 판결문 ' + imgs.length + '장 크게 보기');
         var pic = el('img'); pic.src = imgs[0].thumb || imgs[0].src; pic.alt = imgs[0].alt || (c.title + ' 판결문'); pic.loading = 'lazy'; pic.decoding = 'async';
         fig.appendChild(pic); fig.appendChild(el('span', 'count', '판결문 ' + imgs.length + '장'));
-        fig.addEventListener('click', function () { LB.open(lbItems, 0); });
+        fig.addEventListener('click', function () { track('case_open', { case_title: c.title, case_id: c.id }); LB.open(lbItems, 0); });
         return fig;
       }
       var ph = el('div', 'case-fig none'); ph.setAttribute('aria-hidden', 'true');
@@ -7865,6 +7869,28 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       b.addEventListener('click', function () { location.href = 'cases.html#q=' + encodeURIComponent(b.getAttribute('data-q')); });
     });
   })();
+
+  // ---------- 연락 단추 집계 (Version 116) ----------
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null; if (!a) return;
+    var h = a.getAttribute('href') || '', method = '';
+    if (/^tel:/i.test(h)) method = h.indexOf('588') >= 0 ? '사무실 전화' : '휴대전화';
+    else if (/^mailto:/i.test(h)) method = '이메일';
+    else if (a.closest('.sns')) { var lbl = a.querySelector('span:not(.ico)'); method = (lbl && lbl.firstChild ? lbl.firstChild.textContent : a.textContent).trim(); }
+    if (method) track('contact_click', { method: method });
+  }, true);
+
+  // ---------- 홈에서 본 부분 집계 (Version 116) ----------
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var names = { record: '주요 수행 사례', career: '경력', fields: '다루는 사건', rnd: '국가연구개발 제재처분', faq: '자주 묻는 질문', contact: '상담 문의' };
+    var seen = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting && !seen[en.target.id]) { seen[en.target.id] = 1; track('section_view', { section: names[en.target.id] }); } });
+    }, { threshold: 0, rootMargin: '-40% 0px -40% 0px' });
+    Object.keys(names).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+  })();
+
 </script>
 </body>
 </html>
