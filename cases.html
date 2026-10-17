@@ -7201,7 +7201,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   function render() {
     renderChips(); renderList();
     var n = listEl.children.length;
-    countEl.textContent = state.q ? ('‘' + state.q + '’ 검색 결과 ' + n + '건' + (state.filter === 'all' ? '' : ' (' + CATS[state.filter] + ')') + ' — 제목·요지·법원·당사자·결과에서 찾았습니다. 분야 칩의 숫자는 찾은 사례의 수입니다.') : '전문성은 말보다 판결문으로 보여 드립니다. 판결·결정·재결을 받은 사건의 사례를 최근 결정일 순으로 싣으며, 모두 변호사 부효준이 담당변호사로 직접 수행한 사건입니다(판결문의 담당변호사란에 이름이 있는 사건만 싣습니다). 분야를 고르거나 낱말로 찾아보십시오.';
+    countEl.textContent = state.q ? ('‘' + state.q + '’ 검색 결과 ' + n + '건' + (state.filter === 'all' ? '' : ' (' + CATS[state.filter] + ')') + ' — 제목·요지·법원·처분내용·결과에서 찾았습니다. 분야 칩의 숫자는 찾은 사례의 수입니다.') : '전문성은 말보다 판결문으로 보여 드립니다. 판결·결정·재결을 받은 사건의 사례를 최근 결정일 순으로 싣으며, 모두 변호사 부효준이 담당변호사로 직접 수행한 사건입니다(판결문의 담당변호사란에 이름이 있는 사건만 싣습니다). 분야를 고르거나 낱말로 찾아보십시오.';
     var clr = document.getElementById('find-clear'); if (clr) clr.hidden = !state.q;
     loadingEl.hidden = true;
   }
