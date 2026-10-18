@@ -16,6 +16,8 @@
   5. 전체 URL이 든 sitemap.xml 을 만든다.
 
   6. llms.txt / llms-full.txt 가 있으면 사례별 페이지 주소를 덧붙인다.
+  7. 주제별 모아 보기 페이지 topics/*.html (참여제한·환수·제재부가금·집행정지·당사자소송)을 만들고
+     메인의 국가연구개발 절과 cases.html 목록 위에 그 링크를 넣는다. 메인 <title>·설명·키워드도 TOPICS/NEW_* 상수대로 맞춘다.
 
 같은 폴더에 다시 돌려도 안전하다(이미 고친 곳은 건너뜀). 사례 데이터(index.html의 cases-data)를
 고친 뒤 이 스크립트를 다시 돌리면 모든 페이지·사이트맵·링크가 다시 만들어진다.
@@ -49,8 +51,91 @@ CATS = {
 PRIORITY = {"rnd": "0.8", "penalty": "0.8", "criminal": "0.7", "personnel": "0.6", "license": "0.6",
             "admin": "0.6", "comp": "0.5", "state": "0.5", "civil": "0.4"}
 
-NEW_TITLE = "변호사 부효준 — 행정쟁송 · 국가연구개발 제재처분 변호사 | 법무법인(유한) 금성"
+# 메인 페이지 제목·설명: 사람들이 실제로 찾는 말(참여제한·연구비 환수·제재부가금)을 앞세운다 (2026. 10. 19.)
+NEW_TITLE = "국가연구개발사업 참여제한·연구비 환수·제재부가금 취소소송 — 변호사 부효준 | 행정쟁송 · 법무법인(유한) 금성"
+NEW_OG_TITLE = "변호사 부효준 — 국가연구개발사업 참여제한·연구비 환수·제재부가금 · 행정쟁송"
+NEW_DESCRIPTION = ("국가연구개발사업 참여제한·연구비(연구개발비) 환수·제재부가금 처분의 취소소송·집행정지와 행정쟁송 전반을 맡는 부효준 변호사(법무법인(유한) 금성). "
+                   "국가연구개발 제재처분을 심의하는 위원회의 위원이자 정부·지방자치단체·공공기관 약 20곳의 고문변호사로서, 처분을 받은 연구자·기업·공무원을 대리하고, "
+                   "정부출연금·보조금의 부정집행을 이유로 한 사기·보조금법 위반 등 형사사건도 제재처분과 함께 변호합니다. 주요 수행 사례를 판결문과 함께 공개합니다.")
+NEW_EYEBROW = "행정쟁송 · 국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 변호사 부효준"
+EXTRA_KEYWORDS = ["국가연구개발사업 참여제한 변호사", "참여제한 변호사", "연구비 환수 변호사", "국가연구개발혁신법 변호사", "참여제한 처분 취소소송",
+                  "국가 R&D 제재처분", "연구비 제재부가금 취소", "참여제한 집행정지", "연구개발비 회수금 당사자소송", "부효준 변호사"]
 NEW_CASES_TITLE = "주요 수행 사례 277건 — 행정소송 · 국가연구개발 제재처분 판결문 · 변호사 부효준"
+
+# 주제별 모아 보기 페이지 (검색 의도별: 참여제한 / 환수 / 제재부가금 / 집행정지 / 당사자소송)
+TOPICS = [
+    {
+        "slug": "rnd-participation-restriction",
+        "name": "참여제한처분 취소소송",
+        "title": "국가연구개발사업 참여제한처분 취소소송 사례 — 변호사 부효준",
+        "h1": "국가연구개발사업 참여제한처분 취소소송 사례",
+        "lead": "국가연구개발사업 참여제한처분을 다툰 취소소송·무효확인소송과 집행정지 사례입니다.",
+        "intro": [
+            "참여제한은 「국가연구개발혁신법」 제32조 제1항에 따라 연구개발기관·연구책임자·연구자 등에게 10년 이내의 범위에서 국가연구개발활동 참여를 제한하는 처분입니다. "
+            "처분사유가 실제로 있는지, 기관과 개인 가운데 누구에게 얼마의 기간을 정한 것이 법령의 기준에 맞는지(재량권 일탈·남용), 사전통지와 재검토 등 절차를 지켰는지가 주로 다투어집니다.",
+            "처분이 있음을 안 날부터 90일 이내에 취소소송을 제기해야 하고(「행정소송법」 제20조 제1항), 진행 중인 과제가 중단될 상황이면 집행정지를 함께 신청합니다(같은 법 제23조). "
+            "사전통지 단계라면 통지를 받은 날부터 20일 이내에 재검토 요청 의견을 낼 수 있습니다(「국가연구개발혁신법」 제33조 제3항).",
+        ],
+        "cats": ("rnd", "penalty"),
+        "pattern": r"참여제한",
+    },
+    {
+        "slug": "rnd-recovery",
+        "name": "연구개발비·출연금 환수처분",
+        "title": "연구비(연구개발비)·정부출연금 환수처분 취소소송 사례 — 변호사 부효준",
+        "h1": "연구비(연구개발비)·정부출연금 환수처분 취소소송 사례",
+        "lead": "연구개발비·정부출연금 환수처분과 환수금·회수금 채무를 다툰 사례입니다.",
+        "intro": [
+            "「국가연구개발혁신법」 제32조 제3항의 연구개발비 환수는 제재사유와 관련된 정부 연구개발비를 돌려받는 처분이고, 같은 법 제13조 제7항의 정산 회수금은 성격이 다릅니다. "
+            "환수처분은 취소소송으로 다투지만, 정산에 따른 반환채무는 공법상 당사자소송(채무부존재확인)으로 다투어야 하는 경우가 있어 문서의 성격부터 가려야 합니다.",
+            "환수 범위가 제재사유와 관련된 금액으로 한정되는지, 위반금액 가운데 정부지원연구개발비의 비율만큼만 환수되는지(같은 법 시행령 제59조 제3항), 처분사유의 존부와 재량권 일탈·남용이 주로 다투어집니다.",
+        ],
+        "cats": ("rnd", "penalty"),
+        "pattern": r"환수|회수",
+    },
+    {
+        "slug": "rnd-penalty-surcharge",
+        "name": "제재부가금 부과처분",
+        "title": "제재부가금 부과처분 취소소송·집행정지 사례 — 변호사 부효준",
+        "h1": "제재부가금 부과처분 취소소송·집행정지 사례",
+        "lead": "국가연구개발혁신법·보조금법·공공재정환수법에 따른 제재부가금 부과처분을 다툰 사례입니다.",
+        "intro": [
+            "「국가연구개발혁신법」 제32조 제1항은 이미 지급한 정부 연구개발비의 5배 범위에서 제재부가금을 부과할 수 있게 하고, 참여제한과 병과할 수 있습니다(같은 조 제2항). "
+            "「보조금 관리에 관한 법률」 제33조의2와 「공공재정 부정청구 금지 및 부정이익 환수 등에 관한 법률」 제9조도 각각 제재부가금을 두고 있어 어느 법이 적용되는지부터 살핍니다.",
+            "산정의 기준이 되는 금액, 배수와 감경 사유, 처분을 한 기관이 법이 정한 행정청인지, 상대방이 법인인지 대표자 개인인지가 자주 쟁점이 되고, 금액이 크면 집행정지의 필요성도 함께 다툽니다.",
+        ],
+        "cats": ("rnd", "penalty"),
+        "pattern": r"제재부가금",
+    },
+    {
+        "slug": "rnd-stay-of-execution",
+        "name": "집행정지",
+        "title": "참여제한·제재부가금·환수처분 집행정지 사례 — 변호사 부효준",
+        "h1": "참여제한·제재부가금·환수처분 집행정지 사례",
+        "lead": "본안 판결까지 처분의 효력을 멈추는 집행정지·효력정지 사례입니다.",
+        "intro": [
+            "취소소송을 제기해도 처분의 효력은 그대로 유지되므로, 법원이 집행정지를 받아들여야 판결 때까지 효력이 멈춥니다(「행정소송법」 제23조). "
+            "참여제한처럼 기간이 지나면 돌이킬 수 없는 처분, 진행 중인 과제가 중단되는 상황에서는 소송 제기와 함께 집행정지를 서둘러 신청해야 합니다.",
+            "회복하기 어려운 손해와 긴급한 필요가 소명되는지, 본안 청구가 이유 없음이 명백하지 않은지, 통보가 집행정지의 대상이 되는 처분인지가 다투어집니다.",
+        ],
+        "cats": ("rnd", "penalty"),
+        "pattern": r"집행정지|효력정지|가처분",
+    },
+    {
+        "slug": "rnd-party-litigation",
+        "name": "회수금·정산금 당사자소송",
+        "title": "연구개발비 회수금·정산금 반환채무 당사자소송 사례 — 변호사 부효준",
+        "h1": "연구개발비 회수금·정산금 반환채무 당사자소송 사례",
+        "lead": "정산 회수금·사업비 반환채무의 존부를 다툰 공법상 당사자소송과 관련 사례입니다.",
+        "intro": [
+            "국가연구개발사업 협약은 공법상 계약이어서, 전문기관의 정산 회수 통보에 따른 반환의무의 존부와 범위는 민사소송이 아니라 공법상 당사자소송으로 다툽니다. "
+            "통보서에 '환수'라고 적혀 있어도 그 실질이 제재처분인지 정산 회수인지에 따라 취소소송과 당사자소송으로 길이 갈립니다.",
+            "누구를 상대로 소를 내야 하는지(전문기관인지 국가인지), 협약상 반환 요건이 충족되었는지, 과제 중단·특별평가 판정이 적법한지가 주로 쟁점이 됩니다.",
+        ],
+        "cats": ("rnd", "penalty"),
+        "pattern": r"당사자소송|채무부존재|부존재확인|정산금|회수금|부당이득금 징수",
+    },
+]
 
 
 def esc(s):
@@ -92,6 +177,24 @@ def page_href(c):            # 홈·목록 페이지에서 쓰는 상대 경로
 
 def page_url(c):
     return "%s/%s" % (SITE, page_href(c))
+
+
+def topics_of(c):
+    return [t for t in TOPICS if c["cat"] in t["cats"] and re.search(t["pattern"], c["title"])]
+
+
+def topic_href(t):             # 홈·목록 페이지에서 쓰는 상대 경로
+    return "topics/%s.html" % t["slug"]
+
+
+def topic_url(t):
+    return "%s/%s" % (SITE, topic_href(t))
+
+
+def first_sentence(text):
+    text = (text or "").strip()
+    k = text.find("다.")
+    return text[: k + 2] if 0 < k < 200 else (text[:160] + "…" if len(text) > 160 else text)
 
 
 def badge_class(r):
@@ -164,6 +267,25 @@ EXTRA_CSS = """
 .case-cta .btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .case-cta .btns .btn { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 .case-cta .btns .btn.ghost { color: var(--ink); background: none; }
+.topic-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 1rem 0 0; font-size: var(--step--1); }
+.topic-line .label { margin-right: 0.3rem; }
+.topic-line .btn.ghost.small, .topic-links .btn.ghost.small { padding: 0.25rem 0.85rem; font-size: var(--step--2); }
+.topic-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.topic-links .label { margin-right: 0.3rem; }
+.topic-page { display: grid; gap: 2rem; max-width: 56rem; padding-block: 1rem 2rem; }
+.topic-page .intro { display: grid; gap: 0.8rem; }
+.topic-page .intro p { margin: 0; line-height: 1.85; }
+.topic-page .lead-sub { font-size: var(--step-0); color: var(--ink-soft); }
+.topic-cases { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.topic-cases li { display: grid; gap: 0.3rem; padding: 1rem 0; border-top: 1px solid var(--rule); }
+.topic-cases li:last-child { border-bottom: 1px solid var(--rule); }
+.topic-cases h3 { font-size: var(--step-0); }
+.topic-cases h3 a { text-decoration: none; }
+.topic-cases h3 a:hover { text-decoration: underline; }
+.topic-cases .meta { font-size: var(--step--2); color: var(--ink-soft); }
+.topic-cases .meta .badge { margin-left: 0.4rem; }
+.topic-cases .gist { margin: 0; font-size: var(--step--1); line-height: 1.7; }
+.topic-nav { display: grid; gap: 0.75rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 @media (prefers-color-scheme: dark) {
   .case-cta .btns .btn { color: var(--paper); background: var(--ink); border-color: var(--ink); }
@@ -255,6 +377,11 @@ def build_case_page(c, by_cat, cat_counts):
     ext_link = ""
     if c.get("link") and re.match(r"^https?://", c["link"], re.I):
         ext_link = '<a class="case-link ext" href="%s" rel="noopener">자세히 보기 (법무법인 금성 성공사례)</a>' % esc(c["link"])
+    tps = topics_of(c)
+    topic_line = ""
+    if tps:
+        topic_line = '<p class="topic-line"><span class="label">주제별 사례</span>%s</p>' % "".join(
+            '<a class="btn ghost small" href="../topics/%s.html">%s</a>' % (esc(t["slug"]), esc(t["name"])) for t in tps)
 
     if c["cat"] == "rnd":
         cta_text = ("국가연구개발 제재처분은 사전통지를 받은 날부터 20일 이내에 재검토 요청 의견을 내고, "
@@ -323,7 +450,7 @@ def build_case_page(c, by_cat, cat_counts):
       <section class="case-text" aria-labelledby="gist-h">
         <h2 id="gist-h" class="visually-hidden">사건의 요지</h2>
         <p>{esc(c.get('summary') or '')}</p>
-        {ext_link}
+        {ext_link}{topic_line}
       </section>
       <section class="case-docs" aria-labelledby="docs-h">
         <h2 id="docs-h">판결문 {len(ims)}장</h2>
@@ -356,6 +483,145 @@ def build_case_page(c, by_cat, cat_counts):
 </body>
 </html>
 """
+
+
+def build_topic_page(t, matched, cat_counts):
+    url = topic_url(t)
+    desc = t["lead"] + " " + first_sentence(t["intro"][0])
+    if len(desc) > 165:
+        desc = desc[:160].rstrip(" ,·") + "…"
+    ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "CollectionPage",
+                "@id": url,
+                "url": url,
+                "name": t["h1"],
+                "description": desc,
+                "inLanguage": "ko",
+                "dateModified": TODAY,
+                "isPartOf": {"@type": "WebSite", "name": "변호사 부효준", "url": SITE + "/"},
+                "author": {"@type": "Person", "@id": SITE + "/#person", "name": "부효준", "jobTitle": "변호사", "url": SITE + "/"},
+                "hasPart": [{"@type": "Article", "@id": page_url(c) + "#article", "headline": c["title"], "url": page_url(c)} for c in matched],
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "홈", "item": SITE + "/"},
+                    {"@type": "ListItem", "position": 2, "name": "주요 수행 사례", "item": SITE + "/cases.html"},
+                    {"@type": "ListItem", "position": 3, "name": t["name"]},
+                ],
+            },
+        ],
+    }
+    items = []
+    for c in matched:
+        items.append(
+            '<li><h3><a href="../%s">%s</a></h3><p class="meta">%s%s%s%s</p><p class="gist">%s</p></li>'
+            % (
+                esc(page_href(c)), esc(c["title"]),
+                esc(CATS.get(c["cat"], c["cat"])),
+                (" · " + esc(c["court"])) if c.get("court") else "",
+                (" · " + esc(c["date"])) if c.get("date") else "",
+                ('<span class="badge %s">%s</span>' % (badge_class(c.get("result")), esc(c["result"]))) if c.get("result") else "",
+                esc(first_sentence(c.get("summary"))),
+            )
+        )
+    others = "".join('<a class="btn ghost small" href="%s.html">%s</a>' % (esc(o["slug"]), esc(o["name"])) for o in TOPICS if o["slug"] != t["slug"])
+    intro_html = "".join("<p>%s</p>" % esc(p) for p in t["intro"])
+    return f"""<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{esc(t["title"])}</title>
+<meta name="description" content="{esc(desc)}">
+<meta name="author" content="부효준">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="{esc(url)}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="변호사 부효준">
+<meta property="og:url" content="{esc(url)}">
+<meta property="og:title" content="{esc(t["title"])}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:image" content="{SITE}/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{esc(t["title"])}">
+<meta name="twitter:description" content="{esc(desc)}">
+<meta name="twitter:image" content="{SITE}/og-image.jpg">
+{ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../case.css">
+<script type="application/ld+json">
+{json.dumps(ld, ensure_ascii=False, indent=1)}
+</script>
+</head>
+<body>
+<div class="page" id="top">
+  <header class="top">
+    <a class="brand" href="../index.html">변호사 부효준</a>
+    <nav aria-label="페이지 이동">
+      <a href="../cases.html">주요 수행 사례</a>
+      <a href="../index.html#rnd">국가연구개발 제재처분</a>
+      <a class="btn small" href="../index.html#contact">상담 문의</a>
+    </nav>
+  </header>
+  <main>
+    <nav class="crumbs" aria-label="현재 위치">
+      <ol>
+        <li><a href="../index.html">홈</a></li>
+        <li><a href="../cases.html">주요 수행 사례</a></li>
+        <li>{esc(t["name"])}</li>
+      </ol>
+    </nav>
+    <article class="topic-page">
+      <header class="case-head">
+        <p class="eyebrow">주제별 사례 · 국가연구개발 제재처분</p>
+        <h1 class="case-h1">{esc(t["h1"])}</h1>
+        <p class="lead-sub">{esc(t["lead"])} 모두 변호사 부효준이 담당변호사로 직접 수행한 사건이며, 사례를 누르면 판결문 이미지가 있는 페이지로 이어집니다.</p>
+      </header>
+      <section class="intro" aria-labelledby="intro-h">
+        <h2 id="intro-h" class="visually-hidden">무엇이 다투어지는가</h2>
+        {intro_html}
+      </section>
+      <section aria-labelledby="list-h">
+        <h2 id="list-h">수행 사례 {len(matched)}건 <small class="meta">(최근 순)</small></h2>
+        <ol class="topic-cases">
+          {"".join(items)}
+        </ol>
+      </section>
+      <section class="topic-nav" aria-labelledby="nav-h">
+        <h2 id="nav-h">다른 주제</h2>
+        <p class="topic-links">{others}<a class="btn ghost small" href="../cases.html#cat=rnd">국가연구개발 사례 {cat_counts.get("rnd", 0)}건 전체</a></p>
+      </section>
+      <section class="case-cta" aria-labelledby="cta-h">
+        <h2 id="cta-h">처분서나 사전통지서를 받으셨다면</h2>
+        <p>처분이 있음을 안 날부터 90일 이내에 취소소송을, 국가연구개발 제재처분의 사전통지라면 통지를 받은 날부터 20일 이내에 재검토 요청 의견을 내야 합니다. 받은 날짜와 처분청부터 확인해 드립니다.</p>
+        <div class="btns"><a class="btn" href="../index.html#contact">상담 문의</a><a class="btn ghost" href="tel:+82-2-588-8685">전화 02-588-8685</a><a class="btn ghost" href="mailto:boo@keumseonglaw.com">boo@keumseonglaw.com</a></div>
+      </section>
+    </article>
+  </main>
+  <footer class="sign">
+    <div class="fine">
+      <nav class="foot-nav" aria-label="페이지 차례">
+        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../index.html#career">경력</a> <a href="../index.html#fields">다루는 사건</a> <a href="../index.html#rnd">국가연구개발 제재처분</a> <a href="../index.html#faq">자주 묻는 질문</a> <a href="../index.html#advisory">법률고문 위촉</a> <a href="../index.html#contact">상담 문의</a>
+      </nav>
+      <p>광고책임변호사 부효준</p>
+      <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
+"""
+
+
+def topic_links_html(prefix=""):
+    return '<p class="laws-line topic-links"><span class="label">주제별 사례</span>%s</p>' % "".join(
+        '<a class="btn ghost small" href="%s%s">%s</a>' % (prefix, topic_href(t), esc(t["name"])) for t in TOPICS)
 
 
 # ---------- index.html / cases.html 손보기 ----------
@@ -431,9 +697,31 @@ def clean_url(u):
     return urlunsplit((s.scheme, s.netloc, s.path, "", ""))
 
 
+def replace_meta(doc, name_attr, name, content):
+    """<meta name|property="..." content="..."> 의 content를 바꾼다(없으면 그대로)."""
+    pat = re.compile(r'(<meta %s="%s" content=")([^"]*)(")' % (name_attr, re.escape(name)))
+    return pat.sub(lambda m: m.group(1) + esc(content) + m.group(3), doc, count=1)
+
+
 def patch_index(doc, links):
     doc = patch_html_lang(doc)
-    doc = doc.replace("<title>변호사 부효준</title>", "<title>%s</title>" % NEW_TITLE, 1)
+    doc = re.sub(r"<title>.*?</title>", "<title>%s</title>" % NEW_TITLE, doc, count=1, flags=re.S)
+    doc = replace_meta(doc, "name", "description", NEW_DESCRIPTION)
+    doc = replace_meta(doc, "property", "og:title", NEW_OG_TITLE)
+    doc = replace_meta(doc, "name", "twitter:title", NEW_OG_TITLE)
+    mk = re.search(r'<meta name="keywords" content="([^"]*)"', doc)
+    if mk:
+        kws = [k.strip() for k in html.unescape(mk.group(1)).split(",") if k.strip()]
+        kws = [k for k in kws if k not in EXTRA_KEYWORDS]
+        kws[1:1] = EXTRA_KEYWORDS   # 이름 바로 뒤에, 정해진 순서로
+        doc = replace_meta(doc, "name", "keywords", ", ".join(kws))
+    doc = doc.replace('<p class="eyebrow">행정쟁송 · 국가연구개발 제재처분 · 변호사 부효준</p>', '<p class="eyebrow">%s</p>' % NEW_EYEBROW, 1)
+    # 국가연구개발 제재처분 절의 '관련 법령' 줄 아래에 주제별 사례 링크
+    if 'class="laws-line topic-links"' not in doc:
+        k = doc.find('<p class="laws-line"><span class="label">관련 법령</span>')
+        if k >= 0:
+            e = doc.find("</p>", k) + 4
+            doc = doc[:e] + "\n          " + topic_links_html() + doc[e:]
     m = re.search(r'<script type="application/ld\+json">\s*(\{.*?\})\s*</script>', doc, re.S)
     if m:
         ld = json.loads(m.group(1))
@@ -443,6 +731,17 @@ def patch_index(doc, links):
         if isinstance(ld.get("worksFor"), dict):
             ld["worksFor"].setdefault("url", "https://www.keumseong.com")
         ld.setdefault("knowsLanguage", "ko")
+        alt = ld.get("alternateName")
+        alt = [alt] if isinstance(alt, str) else list(alt or [])
+        for a in ["부효준 변호사", "Boo Hyo-jun"]:
+            if a not in alt:
+                alt.append(a)
+        ld["alternateName"] = alt
+        ka = list(ld.get("knowsAbout") or [])
+        for k in ["국가연구개발사업 참여제한처분 취소소송·집행정지", "연구비(연구개발비)·정부출연금 환수처분 취소소송", "제재부가금 부과처분 취소소송", "연구개발비 회수금·정산금 반환채무 당사자소송"]:
+            if k not in ka:
+                ka.append(k)
+        ld["knowsAbout"] = ka
         # 순서: @context, @type, @id 가 앞에 오도록
         ordered = {k: ld[k] for k in ["@context", "@type", "@id"] if k in ld}
         ordered.update({k: v for k, v in ld.items() if k not in ordered})
@@ -461,6 +760,11 @@ def patch_cases(doc):
                       '<meta name="twitter:title" content="%s">' % NEW_CASES_TITLE, 1)
     doc = link_static_cards(doc)
     doc = patch_js(doc)
+    # 사례 목록 위에 주제별 사례 링크
+    if 'class="laws-line topic-links"' not in doc:
+        k = doc.find('<ol class="case-list" id="case-list">')
+        if k >= 0:
+            doc = doc[:k] + topic_links_html() + "\n      " + doc[k:]
     return doc
 
 
@@ -469,6 +773,8 @@ def build_sitemap(cases):
         (SITE + "/", TODAY, "weekly", "1.0"),
         (SITE + "/cases.html", TODAY, "weekly", "0.9"),
     ]
+    for t in TOPICS:
+        rows.append((topic_url(t), TODAY, "weekly", "0.9"))
     for c in cases:
         rows.append((page_url(c), TODAY, "monthly", PRIORITY.get(c["cat"], "0.5")))
     body = "".join(
@@ -484,13 +790,22 @@ def patch_llms(site, cases):
     if os.path.exists(p):
         doc = read(p)
         line = "- 사례별 개별 페이지: 사례마다 https://lawyermrboo82.com/cases/<판결문 이미지 이름>.html 주소의 페이지가 있습니다(제목·요지·판결문 이미지·같은 분야 사례). 전체 목록은 https://lawyermrboo82.com/sitemap.xml 에 있습니다."
+        changed = False
         if "사례별 개별 페이지" not in doc:
             anchor = "- [수행 사례 전체 텍스트](https://lawyermrboo82.com/llms-full.txt)"
             k = doc.find(anchor)
             if k >= 0:
                 e = doc.find("\n", k)
                 doc = doc[: e + 1] + line + "\n" + doc[e + 1:]
-                write(p, doc)
+                changed = True
+        if "## 주제별 사례" not in doc:
+            block = "## 주제별 사례 (국가연구개발 제재처분)\n" + "".join("- [%s](%s): %s\n" % (t["h1"], topic_url(t), t["lead"]) for t in TOPICS) + "\n"
+            k = doc.find("## 경력")
+            if k >= 0:
+                doc = doc[:k] + block + doc[k:]
+                changed = True
+        if changed:
+            write(p, doc)
     p = os.path.join(site, "llms-full.txt")
     if os.path.exists(p):
         doc = read(p)
@@ -549,11 +864,17 @@ def main():
     for c in cases:
         write(os.path.join(site, page_href(c)), build_case_page(c, by_cat, cat_counts))
 
+    # 주제별 모아 보기 페이지
+    recent = sorted(cases, key=lambda x: x.get("sort") or "", reverse=True)
+    for t in TOPICS:
+        matched = [c for c in recent if t in topics_of(c)]
+        write(os.path.join(site, topic_href(t)), build_topic_page(t, matched, cat_counts))
+
     write(index_path, patch_index(index_doc, links))
     write(cases_path, patch_cases(cases_doc))
     write(os.path.join(site, "sitemap.xml"), build_sitemap(cases))
     patch_llms(site, cases)
-    print("사례 페이지 %d건, sitemap %d URL, case.css, index.html, cases.html 갱신 → %s" % (len(cases), len(cases) + 2, site))
+    print("사례 페이지 %d건, 주제 페이지 %d건, sitemap %d URL, case.css, index.html, cases.html 갱신 → %s" % (len(cases), len(TOPICS), len(cases) + len(TOPICS) + 2, site))
 
 
 if __name__ == "__main__":

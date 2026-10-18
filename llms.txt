@@ -10,6 +10,13 @@
 - [수행 사례 전체 텍스트](https://lawyermrboo82.com/llms-full.txt): 277건의 제목·분야·날짜·결과·법원·사건번호·요지를 한 파일에 정리
 - 사례별 개별 페이지: 사례마다 https://lawyermrboo82.com/cases/<판결문 이미지 이름>.html 주소의 페이지가 있습니다(제목·요지·판결문 이미지·같은 분야 사례). 전체 목록은 https://lawyermrboo82.com/sitemap.xml 에 있습니다.
 
+## 주제별 사례 (국가연구개발 제재처분)
+- [국가연구개발사업 참여제한처분 취소소송 사례](https://lawyermrboo82.com/topics/rnd-participation-restriction.html): 국가연구개발사업 참여제한처분을 다툰 취소소송·무효확인소송과 집행정지 사례입니다.
+- [연구비(연구개발비)·정부출연금 환수처분 취소소송 사례](https://lawyermrboo82.com/topics/rnd-recovery.html): 연구개발비·정부출연금 환수처분과 환수금·회수금 채무를 다툰 사례입니다.
+- [제재부가금 부과처분 취소소송·집행정지 사례](https://lawyermrboo82.com/topics/rnd-penalty-surcharge.html): 국가연구개발혁신법·보조금법·공공재정환수법에 따른 제재부가금 부과처분을 다툰 사례입니다.
+- [참여제한·제재부가금·환수처분 집행정지 사례](https://lawyermrboo82.com/topics/rnd-stay-of-execution.html): 본안 판결까지 처분의 효력을 멈추는 집행정지·효력정지 사례입니다.
+- [연구개발비 회수금·정산금 반환채무 당사자소송 사례](https://lawyermrboo82.com/topics/rnd-party-litigation.html): 정산 회수금·사업비 반환채무의 존부를 다툰 공법상 당사자소송과 관련 사례입니다.
+
 ## 경력
 - 제51회 사법시험 합격(2009), 사법연수원 제41기 수료(2012)
 - 법무부 법무실 국가송무과 · 대한법률구조공단 법무관(2012~2015)
