@@ -24,6 +24,14 @@
 - 사례를 더하거나 고칠 때는 index.html의 <script id="cases-data"> JSON과 cases.html의 같은 블록,
   두 페이지의 사례 목록(<ol id="case-list">)과 건수 문구를 함께 바꿉니다. 새 판결문은 cases/ 폴더에
   1240px 폭 JPG로 넣습니다. Claude에게 판결문 PDF를 보내면 같은 기준으로 가려서 만들어 줍니다.
+- 그 다음 반드시 저장소 최상위에서  python3 work/build_cases.py .  을 돌립니다(2026. 10. 19. 추가).
+  사례마다 cases/<판결문 이미지 이름>.html 개별 페이지를 다시 만들고, 두 페이지의 카드에 개별 페이지 링크를 넣고,
+  sitemap.xml(전체 URL)과 case.css, llms.txt·llms-full.txt의 페이지 주소를 갱신합니다. 같은 폴더에 여러 번 돌려도 안전합니다.
+  (이 스크립트를 돌리지 않고 index.html·cases.html을 아티팩트에서 내려받아 그대로 올리면 카드의 개별 페이지 링크가 사라집니다.)
+
+개별 사례 페이지(cases/*.html, 2026. 10. 19.)
+- 사례 277건마다 제목·요지·판결문 이미지 전체·같은 분야 사례·상담 안내가 있는 페이지. 검색엔진과 AI가 사례 하나하나를 따로 찾을 수 있게 한 것입니다.
+- 주소는 판결문 첫 이미지 이름과 같습니다(예: cases/rnd-2025guhap200493.jpg → cases/rnd-2025guhap200493.html). 스타일은 case.css 하나를 함께 씁니다.
 
 온라인 상담 신청(상담 문의 아래 신청서)
 - 신청서는 FormSubmit(formsubmit.co, 무료 폼 전송 서비스)을 거쳐 boo@keumseonglaw.com으로 전달됩니다. 서버나 회원가입이 필요 없습니다.
