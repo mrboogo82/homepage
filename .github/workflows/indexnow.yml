@@ -83,13 +83,21 @@ jobs:
               "keyLocation": f"https://lawyermrboo82.com/{key}.txt",
               "urlList": urls[:10000],
           }, ensure_ascii=False).encode("utf-8")
+          ok = []
           for ep in ("https://searchadvisor.naver.com/indexnow", "https://api.indexnow.org/indexnow"):
               req = urllib.request.Request(ep, data=body, headers={"Content-Type": "application/json; charset=utf-8"})
               try:
                   with urllib.request.urlopen(req, timeout=60) as r:
                       print(ep, "->", r.status, len(urls), "URL(s)")
+                      ok.append(ep)
               except urllib.error.HTTPError as e:
                   print(ep, "->", e.code, e.read()[:300])
               except Exception as e:
                   print(ep, "-> error", e)
+          # 실행 결과를 요약 탭에도 남김 (로그를 못 볼 때를 위해)
+          import os
+          with open(os.environ.get("GITHUB_STEP_SUMMARY", "/dev/null"), "a", encoding="utf-8") as fh:
+              fh.write(f"IndexNow: {len(urls)} URL(s) → accepted by {ok or 'none'}\n")
+          if not ok:
+              raise SystemExit("IndexNow 제출 실패: 어느 엔드포인트도 200/202를 돌려주지 않았습니다")
           EOF
