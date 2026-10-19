@@ -1,0 +1,95 @@
+name: IndexNow 색인 요청
+
+# 홈페이지가 바뀌어 main에 올라오면, 바뀐 페이지 주소를 IndexNow(네이버 서치어드바이저·Bing 등이 쓰는 즉시 색인 요청 규약)로 보냅니다.
+# 수동 실행(workflow_dispatch)에서 scope=all 을 고르면 sitemap.xml의 모든 주소를 보냅니다.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "changed = 이번 변경분만, all = sitemap.xml 전체"
+        required: true
+        default: "all"
+        type: choice
+        options: [changed, all]
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 바뀐 페이지 주소 모으기
+        id: urls
+        env:
+          SCOPE: ${{ github.event.inputs.scope || 'changed' }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          python3 - <<'EOF'
+          import os, re, subprocess
+          site = "https://lawyermrboo82.com"
+          scope = os.environ.get("SCOPE", "changed")
+          urls = []
+          if scope == "all":
+              xml = open("sitemap.xml", encoding="utf-8").read()
+              urls = re.findall(r"<loc>(.*?)</loc>", xml)
+          else:
+              before, after = os.environ.get("BEFORE", ""), os.environ.get("AFTER", "HEAD")
+              rng = f"{before}..{after}" if before and not before.startswith("0000000") else "HEAD~1..HEAD"
+              try:
+                  files = subprocess.check_output(["git", "diff", "--name-only", rng], text=True).split()
+              except subprocess.CalledProcessError:
+                  files = subprocess.check_output(["git", "diff", "--name-only", "HEAD~1..HEAD"], text=True).split()
+              seen = set()
+              for f in files:
+                  if not f.endswith(".html") or f == "404.html" or f.startswith("work/"):
+                      continue
+                  u = site + "/" if f == "index.html" else f"{site}/{f}"
+                  if u not in seen:
+                      seen.add(u); urls.append(u)
+              if any(f.startswith(("cases/", "topics/")) or f in ("index.html", "cases.html") for f in files):
+                  for u in (site + "/", site + "/cases.html"):
+                      if u not in seen:
+                          seen.add(u); urls.append(u)
+          with open("urls.txt", "w", encoding="utf-8") as fh:
+              fh.write("\n".join(urls))
+          print(f"{len(urls)} URL(s)")
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write(f"count={len(urls)}\n")
+          EOF
+
+      - name: 배포가 끝날 때까지 잠시 대기
+        if: steps.urls.outputs.count != '0' && github.event_name == 'push'
+        run: sleep 120
+
+      - name: IndexNow로 보내기
+        if: steps.urls.outputs.count != '0'
+        run: |
+          python3 - <<'EOF'
+          import json, urllib.request, urllib.error
+          key = "e853749efb6103763ecfc33529bf8f2c"
+          urls = [u for u in open("urls.txt", encoding="utf-8").read().split("\n") if u.strip()]
+          body = json.dumps({
+              "host": "lawyermrboo82.com",
+              "key": key,
+              "keyLocation": f"https://lawyermrboo82.com/{key}.txt",
+              "urlList": urls[:10000],
+          }, ensure_ascii=False).encode("utf-8")
+          for ep in ("https://searchadvisor.naver.com/indexnow", "https://api.indexnow.org/indexnow"):
+              req = urllib.request.Request(ep, data=body, headers={"Content-Type": "application/json; charset=utf-8"})
+              try:
+                  with urllib.request.urlopen(req, timeout=60) as r:
+                      print(ep, "->", r.status, len(urls), "URL(s)")
+              except urllib.error.HTTPError as e:
+                  print(ep, "->", e.code, e.read()[:300])
+              except Exception as e:
+                  print(ep, "-> error", e)
+          EOF
