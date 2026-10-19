@@ -60,7 +60,7 @@ NEW_DESCRIPTION = ("국가연구개발사업 참여제한·연구비(연구개�
 NEW_EYEBROW = "행정쟁송 · 국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 변호사 부효준"
 EXTRA_KEYWORDS = ["국가연구개발사업 참여제한 변호사", "참여제한 변호사", "연구비 환수 변호사", "국가연구개발혁신법 변호사", "참여제한 처분 취소소송",
                   "국가 R&D 제재처분", "연구비 제재부가금 취소", "참여제한 집행정지", "연구개발비 회수금 당사자소송", "부효준 변호사"]
-NEW_CASES_TITLE = "주요 수행 사례 277건 — 행정소송 · 국가연구개발 제재처분 판결문 · 변호사 부효준"
+NEW_CASES_TITLE = "주요 수행 사례 %d건 — 행정소송 · 국가연구개발 제재처분 판결문 · 변호사 부효준"   # %d에 사례 수가 들어간다
 
 # 주제별 모아 보기 페이지 (검색 의도별: 참여제한 / 환수 / 제재부가금 / 집행정지 / 당사자소송)
 TOPICS = [
@@ -751,13 +751,17 @@ def patch_index(doc, links):
     return doc
 
 
-def patch_cases(doc):
+def patch_cases(doc, n_cases=None):
     doc = patch_html_lang(doc)
-    doc = doc.replace("<title>주요 수행 사례 전체 · 변호사 부효준</title>", "<title>%s</title>" % NEW_CASES_TITLE, 1)
+    title = NEW_CASES_TITLE % n_cases if n_cases else NEW_CASES_TITLE
+    doc = doc.replace("<title>주요 수행 사례 전체 · 변호사 부효준</title>", "<title>%s</title>" % title, 1)
     doc = doc.replace('<meta property="og:title" content="주요 수행 사례 전체 · 변호사 부효준">',
-                      '<meta property="og:title" content="%s">' % NEW_CASES_TITLE, 1)
+                      '<meta property="og:title" content="%s">' % title, 1)
     doc = doc.replace('<meta name="twitter:title" content="주요 수행 사례 전체 · 변호사 부효준">',
-                      '<meta name="twitter:title" content="%s">' % NEW_CASES_TITLE, 1)
+                      '<meta name="twitter:title" content="%s">' % title, 1)
+    # 사례 수가 바뀌면 제목의 건수도 맞춘다 (ssr_cases.py 도 같은 일을 하지만 여기서도 보장)
+    if n_cases:
+        doc = re.sub(r"주요 수행 사례 \d+건 — ", "주요 수행 사례 %d건 — " % n_cases, doc)
     doc = link_static_cards(doc)
     doc = patch_js(doc)
     # 사례 목록 위에 주제별 사례 링크
@@ -871,7 +875,7 @@ def main():
         write(os.path.join(site, topic_href(t)), build_topic_page(t, matched, cat_counts))
 
     write(index_path, patch_index(index_doc, links))
-    write(cases_path, patch_cases(cases_doc))
+    write(cases_path, patch_cases(cases_doc, len(cases)))
     write(os.path.join(site, "sitemap.xml"), build_sitemap(cases))
     patch_llms(site, cases)
     print("사례 페이지 %d건, 주제 페이지 %d건, sitemap %d URL, case.css, index.html, cases.html 갱신 → %s" % (len(cases), len(TOPICS), len(cases) + len(TOPICS) + 2, site))

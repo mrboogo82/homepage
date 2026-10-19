@@ -1,0 +1,239 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+사례 데이터(index.html의 #cases-data)로부터 두 페이지의 정적 사례 목록, cases.html의 데이터 블록,
+llms.txt·llms-full.txt, 건수 문구를 다시 만든다. build_cases.py 보다 먼저 돌린다.
+
+사용법 (저장소 최상위에서):
+    python3 work/ssr_cases.py .          # 갱신
+    python3 work/ssr_cases.py . --check  # 지금 파일이 데이터와 일치하는지 검사만
+
+규칙(페이지의 JS card() 와 같은 마크업):
+  - 홈(index.html): 주요 분야(rnd·penalty·criminal)의 최근 12건, sort 내림차순(같으면 데이터 순).
+  - 전체(cases.html): 전체를 sort 내림차순(같으면 데이터 순)으로.
+  - 제목·'판결문과 사례 자세히' 링크는 cases/<첫 이미지 이름>.html (build_cases.py의 page_href 와 같음).
+"""
+import html
+import json
+import os
+import re
+import sys
+
+CATS = {
+    "rnd": "국가연구개발",
+    "personnel": "인사·징계·소청",
+    "license": "인허가·면허·자격",
+    "penalty": "제재부가금·환수·부정당업자 제재",
+    "comp": "손실보상",
+    "admin": "그 밖의 행정처분",
+    "state": "국가배상",
+    "civil": "민사·연금·계약",
+    "criminal": "형사",
+}
+MAIN = ("rnd", "penalty", "criminal")
+RECENT = 12
+WHO = "담당변호사 부효준"
+SITE = "https://lawyermrboo82.com"
+
+
+def esc(s):
+    # 페이지의 기존 마크업과 같게: &, <, >, ", ' 를 이스케이프 (작은따옴표는 &#x27;)
+    return html.escape(s or "", quote=True)
+
+
+def read(p):
+    with open(p, encoding="utf-8") as f:
+        return f.read()
+
+
+def write(p, s):
+    with open(p, "w", encoding="utf-8") as f:
+        f.write(s)
+
+
+def load_json_block(doc, block_id):
+    m = re.search(r'<script type="application/json" id="%s">(.*?)</script>' % re.escape(block_id), doc, re.S)
+    if not m:
+        raise SystemExit("데이터 블록을 찾지 못했습니다: #" + block_id)
+    return json.loads(m.group(1)), m
+
+
+def images_of(c):
+    return [im for im in (c.get("images") or []) if im and im.get("src")]
+
+
+def stem_of(c):
+    ims = images_of(c)
+    if ims:
+        return re.sub(r"\.[A-Za-z0-9]+$", "", ims[0]["src"].rsplit("/", 1)[-1])
+    return c["id"]
+
+
+def page_href(c):
+    return "cases/%s.html" % stem_of(c)
+
+
+def badge_class(r):
+    r = r or ""
+    return "part" if r.startswith("일부승소") else "win" if r.startswith("승소") else "other"
+
+
+def render_li(c):
+    ims = images_of(c)
+    n = len(ims)
+    href = page_href(c)
+    out = ['<li class="case" data-cat="%s" id="case-%s">' % (esc(c["cat"]), esc(c["id"]))]
+    if ims:
+        im = ims[0]
+        out.append('<button type="button" class="case-fig" aria-label="%s 판결문 %d장 크게 보기">' % (esc(c["title"]), n))
+        out.append('<img src="%s" alt="%s" loading="lazy" decoding="async">' % (esc(im.get("thumb") or im["src"]), esc(im.get("alt") or (c["title"] + " 판결문"))))
+        out.append('<span class="count">판결문 %d장</span></button>' % n)
+    else:
+        out.append('<div class="case-fig none" aria-hidden="true"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"></path><path d="M19 3v6h6"></path><path d="M12 15h8M12 19h8M12 23h5"></path></svg><span>%s</span></div>' % esc(CATS.get(c["cat"], c["cat"])))
+    out.append('<div class="case-body"><div class="case-meta"><span class="tag">%s</span>' % esc(CATS.get(c["cat"], c["cat"])))
+    if c.get("date"):
+        out.append('<span class="date">%s</span>' % esc(c["date"]))
+    if c.get("result"):
+        out.append('<span class="badge %s">%s</span>' % (badge_class(c["result"]), esc(c["result"])))
+    out.append("</div>")
+    out.append('<h3 class="case-title"><a href="%s">%s</a></h3>' % (href, esc(c["title"])))
+    parts = [p for p in [c.get("court"), c.get("party")] if p]
+    out.append('<p class="case-sub">%s<span class="who">%s</span></p>' % (esc(" · ".join(parts) + " · ") if parts else "", WHO))
+    if c.get("summary"):
+        out.append('<p class="case-summary">%s</p>' % esc(c["summary"]))
+    out.append('<a class="case-link" href="%s">판결문과 사례 자세히 →</a>' % href)
+    # 외부 '자세히 보기' 링크(c.link)는 종전과 같이 정적 목록에는 넣지 않는다(JS가 그릴 때만).
+    out.append("</div></li>")
+    return "".join(out)
+
+
+def ordered(cases, cats=None):
+    idx = [(c, i) for i, c in enumerate(cases) if cats is None or c["cat"] in cats]
+    idx.sort(key=lambda t: ((t[0].get("sort") or ""), -t[1]), reverse=True)
+    return [c for c, _ in idx]
+
+
+def render_list(cases, cats=None, limit=None):
+    lst = ordered(cases, cats)
+    if limit:
+        lst = lst[:limit]
+    return "\n".join(render_li(c) for c in lst)
+
+
+LIST_RE = re.compile(r'(<ol class="case-list" id="case-list">)\n?(.*?)(\n?\s*</ol>)', re.S)
+
+
+def replace_list(doc, body):
+    m = LIST_RE.search(doc)
+    if not m:
+        raise SystemExit("정적 사례 목록(<ol id=\"case-list\">)을 찾지 못했습니다")
+    return doc[: m.start()] + m.group(1) + "\n" + body + "\n      </ol>" + doc[m.end():]
+
+
+def current_list(doc):
+    m = LIST_RE.search(doc)
+    return m.group(2).strip() if m else None
+
+
+def replace_json_block(doc, block_id, data):
+    _, m = load_json_block(doc, block_id)
+    txt = json.dumps(data, ensure_ascii=False, indent=2)
+    return doc[: m.start(1)] + "\n" + txt + "\n" + doc[m.end(1):]
+
+
+def count_text(doc, n):
+    doc = re.sub(r"판결문 \d+건에서 단어로 찾기", "판결문 %d건에서 단어로 찾기" % n, doc)
+    doc = re.sub(r"판결문 \d+건에", "판결문 %d건에" % n, doc)
+    doc = re.sub(r"주요 수행 사례 \d+건 — ", "주요 수행 사례 %d건 — " % n, doc)
+    return doc
+
+
+# ---------- llms ----------
+
+def llms_full(cases, intro_from=None):
+    n = len(cases)
+    cat_counts = {}
+    for c in cases:
+        cat_counts[c["cat"]] = cat_counts.get(c["cat"], 0) + 1
+    head = intro_from or ""
+    head = re.sub(r"주요 수행 사례 \d+건을", "주요 수행 사례 %d건을" % n, head)
+    head = re.sub(r"수행 사례 \d+건을 글로", "수행 사례 %d건을 글로" % n, head)
+    lines = [head.rstrip("\n"), "", "## 분야별 건수"]
+    for k, name in CATS.items():
+        lines.append("- %s: %d건" % (name, cat_counts.get(k, 0)))
+    lines += ["", "## 수행 사례 (%d건, 최근 순)" % n, ""]
+    for c in ordered(cases):
+        ims = images_of(c)
+        lines.append("### " + c["title"])
+        meta = [CATS.get(c["cat"], c["cat"])]
+        if c.get("date"):
+            meta.append("결정 " + c["date"])
+        if c.get("result"):
+            meta.append("결과: " + c["result"])
+        lines.append("- " + " · ".join(meta))
+        parts = [p for p in [c.get("court"), c.get("party")] if p]
+        if parts:
+            lines.append("- " + " · ".join(parts))
+        lines.append("- %s · 판결문 %d장 공개" % (WHO, len(ims)) if ims else "- " + WHO)
+        if c.get("summary"):
+            lines.append("- 요지: " + c["summary"])
+        lines.append("- 페이지: %s/%s" % (SITE, page_href(c)))
+        lines.append("")
+    return "\n".join(lines).rstrip("\n") + "\n"
+
+
+def llms_head(doc):
+    k = doc.find("## 분야별 건수")
+    return doc[:k] if k >= 0 else doc
+
+
+def main():
+    args = sys.argv[1:]
+    check = "--check" in args
+    args = [a for a in args if not a.startswith("--")]
+    site = args[0] if args else "."
+    ip, cp = os.path.join(site, "index.html"), os.path.join(site, "cases.html")
+    idoc, cdoc = read(ip), read(cp)
+    cases, _ = load_json_block(idoc, "cases-data")
+    n = len(cases)
+
+    home = render_list(cases, MAIN, RECENT)
+    full = render_list(cases)
+    new_idoc = count_text(replace_list(idoc, home), n)
+    new_cdoc = count_text(replace_json_block(replace_list(cdoc, full), "cases-data", cases), n)
+
+    lp, fp = os.path.join(site, "llms.txt"), os.path.join(site, "llms-full.txt")
+    new_llms = None
+    if os.path.exists(lp):
+        d = read(lp)
+        d = re.sub(r"주요 수행 사례 \d+건을", "주요 수행 사례 %d건을" % n, d)
+        d = re.sub(r"사건 \d+건, 최근 결정일 순", "사건 %d건, 최근 결정일 순" % n, d)
+        d = re.sub(r"\d+건의 제목·분야", "%d건의 제목·분야" % n, d)
+        new_llms = d
+    new_full = llms_full(cases, llms_head(read(fp))) if os.path.exists(fp) else None
+
+    if check:
+        ok = True
+        if current_list(idoc) != home:
+            print("index.html 정적 목록이 데이터와 다릅니다"); ok = False
+        if current_list(cdoc) != full:
+            print("cases.html 정적 목록이 데이터와 다릅니다"); ok = False
+        cj, _ = load_json_block(cdoc, "cases-data")
+        if cj != cases:
+            print("cases.html 데이터 블록이 index.html과 다릅니다"); ok = False
+        if new_full is not None and read(fp) != new_full:
+            print("llms-full.txt가 데이터와 다릅니다"); ok = False
+        print("일치" if ok else "불일치")
+        sys.exit(0 if ok else 1)
+
+    write(ip, new_idoc)
+    write(cp, new_cdoc)
+    if new_llms is not None:
+        write(lp, new_llms)
+    if new_full is not None:
+        write(fp, new_full)
+    print("사례 %d건: index.html(홈 %d건)·cases.html·llms.txt·llms-full.txt 갱신" % (n, min(RECENT, len(ordered(cases, MAIN)))))
+
+
+if __name__ == "__main__":
+    main()
