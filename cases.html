@@ -1632,6 +1632,20 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         "thumb": "",
         "alt": "서울행정법원 2024아14267 결정 제1면"
       }
+    ],
+    "kw": [
+      "참여제한",
+      "제재부가금",
+      "무효확인",
+      "연구자권익보호위원회",
+      "재검토",
+      "처분사유 변경",
+      "사전통지",
+      "절차적 하자",
+      "특별평가",
+      "불성실 수행",
+      "회생절차",
+      "국가연구개발혁신법 제32조"
     ]
   },
   {
@@ -7058,6 +7072,19 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         "thumb": "",
         "alt": "대전지방법원 2019구합102207 판결 제1면"
       }
+    ],
+    "kw": [
+      "사업비 정산",
+      "정산금 납부 통보",
+      "처분성",
+      "출연금 환수",
+      "사업비 불인정",
+      "비목 전용",
+      "시금형",
+      "현물 인건비",
+      "배우자 인건비",
+      "기술개발사업",
+      "중소기업기술혁신 촉진법"
     ]
   },
   {
@@ -7139,7 +7166,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   function terms() { return state.q.toLowerCase().split(/\s+/).filter(Boolean).map(function (t) { return t.split(/[·\/|]/).filter(Boolean); }).filter(function (alts) { return alts.length; }); }
   function matches(c) {
     var ts = terms(); if (!ts.length) return true;
-    var hay = [c.title, c.summary, c.court, c.party, c.result, c.date, CATS[c.cat]].join(' ').toLowerCase();
+    var hay = [c.title, c.summary, c.court, c.party, c.result, c.date, CATS[c.cat], (c.kw || []).join(' ')].join(' ').toLowerCase();
     return ts.every(function (alts) { return alts.some(function (t) { return hay.indexOf(t) >= 0; }); });   // 띄어쓰기 = 모두, '·' = 어느 하나
   }
   var listEl = document.getElementById('case-list'), chipsEl = document.getElementById('chips'), emptyEl = document.getElementById('case-empty'), loadingEl = document.getElementById('loading'), countEl = document.getElementById('all-count');

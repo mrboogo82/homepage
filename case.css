@@ -968,6 +968,21 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .case-cta .btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .case-cta .btns .btn { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 .case-cta .btns .btn.ghost { color: var(--ink); background: none; }
+.case-detail { display: grid; gap: 1.6rem; padding-top: 1.75rem; border-top: 1px solid var(--rule); }
+.case-detail h2 { font-size: var(--step-1); margin: 0; }
+.case-detail .part { display: grid; gap: 0.7rem; }
+.case-detail p { margin: 0; font-size: var(--step-0); line-height: 1.85; }
+.case-detail ol, .case-detail ul { margin: 0; padding-left: 1.4rem; display: grid; gap: 0.45rem; font-size: var(--step-0); line-height: 1.8; }
+.case-detail .quotes { display: grid; gap: 0.9rem; }
+.case-detail blockquote { margin: 0; padding: 0.9rem 1.2rem; border-left: 3px solid var(--seal); background: var(--wash); font-family: var(--serif); font-size: var(--step--1); line-height: 1.85; }
+.case-detail blockquote p { font-size: inherit; line-height: inherit; }
+.case-detail blockquote p + p { margin-top: 0.5rem; }
+.case-detail blockquote cite { display: block; margin-top: 0.5rem; font-style: normal; font-family: var(--sans); font-size: var(--step--2); color: var(--ink-soft); }
+.case-detail .laws-line, .case-detail .kw-line { margin: 0; font-size: var(--step--1); line-height: 1.9; }
+.case-detail .laws-line .label, .case-detail .kw-line .label { margin-right: 0.5rem; }
+.case-detail .kw-line a, .case-detail .kw-line span.kw { display: inline-block; margin: 0.15rem 0.35rem 0.15rem 0; padding: 0.1rem 0.6rem; border: 1px solid var(--rule); border-radius: 999px; font-size: var(--step--2); text-decoration: none; color: var(--ink); }
+.case-detail .kw-line a:hover { border-color: var(--seal); color: var(--seal); }
+.case-detail .source-line { margin: 0; font-size: var(--step--2); color: var(--ink-soft); line-height: 1.7; }
 .topic-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 1rem 0 0; font-size: var(--step--1); }
 .topic-line .label { margin-right: 0.3rem; }
 .topic-line .btn.ghost.small, .topic-links .btn.ghost.small { padding: 0.25rem 0.85rem; font-size: var(--step--2); }

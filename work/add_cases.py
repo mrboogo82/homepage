@@ -39,6 +39,8 @@ def main():
             if not os.path.exists(os.path.join(site, im["src"])):
                 raise SystemExit("판결문 이미지가 없습니다: %s" % im["src"])
         entry = {k: c[k] for k in ["id", "cat", "sort", "date", "title", "court", "party", "result", "summary", "link", "images"]}
+        if c.get("kw"):
+            entry["kw"] = c["kw"]   # 검색어(선택; 보통은 cases-detail.json의 keywords에서 ssr_cases.py가 채운다)
         if c["id"] in by_id:
             cases[by_id[c["id"]]] = entry
             replaced += 1

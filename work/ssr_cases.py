@@ -62,6 +62,35 @@ def images_of(c):
     return [im for im in (c.get("images") or []) if im and im.get("src")]
 
 
+DETAILS_FILE = "cases-detail.json"
+
+
+def load_details(site):
+    """사례별 상세 소개(cases-detail.json: {사례 id: {...}}). 없으면 빈 dict.
+    항목: overview(문단 목록) · issues(쟁점 목록) · holding(법원의 판단, 문단 목록) · quotes([{text, from}]) ·
+          meaning(문단 목록) · laws(관련 법령 목록) · keywords(검색어 목록) · instagram(게시물 주소)"""
+    p = os.path.join(site, DETAILS_FILE)
+    if not os.path.exists(p):
+        return {}
+    with open(p, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def with_keywords(cases, details):
+    """cases.html 데이터 블록용: 상세 소개의 검색어(keywords)를 각 항목의 kw 에 넣은 사본."""
+    out = []
+    for c in cases:
+        d = details.get(c["id"]) or {}
+        c2 = dict(c)
+        kw = [k for k in (d.get("keywords") or []) if k]
+        if kw:
+            c2["kw"] = kw
+        else:
+            c2.pop("kw", None)
+        out.append(c2)
+    return out
+
+
 def stem_of(c):
     ims = images_of(c)
     if ims:
@@ -150,7 +179,8 @@ def count_text(doc, n):
 
 # ---------- llms ----------
 
-def llms_full(cases, intro_from=None):
+def llms_full(cases, intro_from=None, details=None):
+    details = details or {}
     n = len(cases)
     cat_counts = {}
     for c in cases:
@@ -177,6 +207,24 @@ def llms_full(cases, intro_from=None):
         lines.append("- %s · 판결문 %d장 공개" % (WHO, len(ims)) if ims else "- " + WHO)
         if c.get("summary"):
             lines.append("- 요지: " + c["summary"])
+        d = details.get(c["id"]) or {}
+        if d.get("overview"):
+            lines.append("- 사건 개요: " + " ".join(d["overview"]))
+        if d.get("issues"):
+            lines.append("- 쟁점: " + " / ".join(d["issues"]))
+        if d.get("holding"):
+            lines.append("- 법원의 판단: " + " ".join(d["holding"]))
+        for q in d.get("quotes") or []:
+            if q.get("text"):
+                lines.append("- 판결 이유 가운데: \"%s\"%s" % (q["text"], (" (%s)" % q["from"]) if q.get("from") else ""))
+        if d.get("meaning"):
+            lines.append("- 이 사건의 의미: " + " ".join(d["meaning"]))
+        if d.get("laws"):
+            lines.append("- 관련 법령: " + " · ".join(d["laws"]))
+        if d.get("keywords"):
+            lines.append("- 검색어: " + ", ".join(d["keywords"]))
+        if d.get("instagram"):
+            lines.append("- 인스타그램 소개 글: " + d["instagram"])
         lines.append("- 페이지: %s/%s" % (SITE, page_href(c)))
         lines.append("")
     return "\n".join(lines).rstrip("\n") + "\n"
@@ -196,11 +244,13 @@ def main():
     idoc, cdoc = read(ip), read(cp)
     cases, _ = load_json_block(idoc, "cases-data")
     n = len(cases)
+    details = load_details(site)
+    cases_kw = with_keywords(cases, details)   # 두 페이지의 데이터 블록에 검색어(kw)를 더한다(단어로 찾기에 쓰임)
 
     home = render_list(cases, MAIN, RECENT)
     full = render_list(cases)
-    new_idoc = count_text(replace_list(idoc, home), n)
-    new_cdoc = count_text(replace_json_block(replace_list(cdoc, full), "cases-data", cases), n)
+    new_idoc = count_text(replace_json_block(replace_list(idoc, home), "cases-data", cases_kw), n)
+    new_cdoc = count_text(replace_json_block(replace_list(cdoc, full), "cases-data", cases_kw), n)
 
     lp, fp = os.path.join(site, "llms.txt"), os.path.join(site, "llms-full.txt")
     new_llms = None
@@ -210,7 +260,7 @@ def main():
         d = re.sub(r"사건 \d+건, 최근 결정일 순", "사건 %d건, 최근 결정일 순" % n, d)
         d = re.sub(r"\d+건의 제목·분야", "%d건의 제목·분야" % n, d)
         new_llms = d
-    new_full = llms_full(cases, llms_head(read(fp))) if os.path.exists(fp) else None
+    new_full = llms_full(cases, llms_head(read(fp)), details) if os.path.exists(fp) else None
 
     if check:
         ok = True
@@ -219,8 +269,10 @@ def main():
         if current_list(cdoc) != full:
             print("cases.html 정적 목록이 데이터와 다릅니다"); ok = False
         cj, _ = load_json_block(cdoc, "cases-data")
-        if cj != cases:
+        if cj != cases_kw:
             print("cases.html 데이터 블록이 index.html과 다릅니다"); ok = False
+        if cases != cases_kw:
+            print("index.html 데이터 블록의 검색어(kw)가 cases-detail.json과 다릅니다"); ok = False
         if new_full is not None and read(fp) != new_full:
             print("llms-full.txt가 데이터와 다릅니다"); ok = False
         print("일치" if ok else "불일치")

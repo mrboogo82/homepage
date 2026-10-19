@@ -31,6 +31,9 @@ import sys
 from datetime import date
 from urllib.parse import urlsplit, urlunsplit
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ssr_cases import load_details  # noqa: E402  (cases-detail.json: 사례별 상세 소개)
+
 SITE = "https://lawyermrboo82.com"
 TODAY = date.today().isoformat()
 WHO = "담당변호사 부효준"
@@ -267,6 +270,21 @@ EXTRA_CSS = """
 .case-cta .btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .case-cta .btns .btn { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 .case-cta .btns .btn.ghost { color: var(--ink); background: none; }
+.case-detail { display: grid; gap: 1.6rem; padding-top: 1.75rem; border-top: 1px solid var(--rule); }
+.case-detail h2 { font-size: var(--step-1); margin: 0; }
+.case-detail .part { display: grid; gap: 0.7rem; }
+.case-detail p { margin: 0; font-size: var(--step-0); line-height: 1.85; }
+.case-detail ol, .case-detail ul { margin: 0; padding-left: 1.4rem; display: grid; gap: 0.45rem; font-size: var(--step-0); line-height: 1.8; }
+.case-detail .quotes { display: grid; gap: 0.9rem; }
+.case-detail blockquote { margin: 0; padding: 0.9rem 1.2rem; border-left: 3px solid var(--seal); background: var(--wash); font-family: var(--serif); font-size: var(--step--1); line-height: 1.85; }
+.case-detail blockquote p { font-size: inherit; line-height: inherit; }
+.case-detail blockquote p + p { margin-top: 0.5rem; }
+.case-detail blockquote cite { display: block; margin-top: 0.5rem; font-style: normal; font-family: var(--sans); font-size: var(--step--2); color: var(--ink-soft); }
+.case-detail .laws-line, .case-detail .kw-line { margin: 0; font-size: var(--step--1); line-height: 1.9; }
+.case-detail .laws-line .label, .case-detail .kw-line .label { margin-right: 0.5rem; }
+.case-detail .kw-line a, .case-detail .kw-line span.kw { display: inline-block; margin: 0.15rem 0.35rem 0.15rem 0; padding: 0.1rem 0.6rem; border: 1px solid var(--rule); border-radius: 999px; font-size: var(--step--2); text-decoration: none; color: var(--ink); }
+.case-detail .kw-line a:hover { border-color: var(--seal); color: var(--seal); }
+.case-detail .source-line { margin: 0; font-size: var(--step--2); color: var(--ink-soft); line-height: 1.7; }
 .topic-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 1rem 0 0; font-size: var(--step--1); }
 .topic-line .label { margin-right: 0.3rem; }
 .topic-line .btn.ghost.small, .topic-links .btn.ghost.small { padding: 0.25rem 0.85rem; font-size: var(--step--2); }
@@ -311,7 +329,49 @@ def related_cases(c, by_cat):
     return out[:6]
 
 
-def build_case_page(c, by_cat, cat_counts):
+def paras(lst):
+    return "".join("<p>%s</p>" % esc(x) for x in (lst or []) if x)
+
+
+def detail_html(c, d):
+    """cases-detail.json 의 상세 소개를 개별 페이지의 본문으로. 없으면 빈 문자열."""
+    if not d:
+        return ""
+    parts = []
+    if d.get("overview"):
+        parts.append('<div class="part"><h2>사건의 개요</h2>%s</div>' % paras(d["overview"]))
+    if d.get("issues"):
+        parts.append('<div class="part"><h2>쟁점</h2><ol>%s</ol></div>' % "".join("<li>%s</li>" % esc(x) for x in d["issues"] if x))
+    if d.get("argument"):
+        parts.append('<div class="part"><h2>변호인의 주장</h2>%s</div>' % paras(d["argument"]))
+    if d.get("holding") or d.get("quotes"):
+        q = ""
+        quotes = [x for x in (d.get("quotes") or []) if x and x.get("text")]
+        if quotes:
+            items = []
+            for x in quotes:
+                body = "".join("<p>%s</p>" % esc(t) for t in str(x["text"]).split("\n") if t.strip())
+                items.append("<blockquote>%s%s</blockquote>" % (body, ('<cite>%s</cite>' % esc(x["from"])) if x.get("from") else ""))
+            q = '<div class="quotes">%s</div>' % "".join(items)
+            q += '<p class="source-line">※ 판결 이유 가운데 이 사건의 판단 기준이 된 부분을 그대로 옮긴 것으로, 당사자 이름 등은 가렸습니다.</p>'
+        parts.append('<div class="part"><h2>법원의 판단</h2>%s%s</div>' % (paras(d.get("holding")), q))
+    if d.get("meaning"):
+        parts.append('<div class="part"><h2>이 사건이 보여 주는 것</h2>%s</div>' % paras(d["meaning"]))
+    tail = []
+    if d.get("laws"):
+        tail.append('<p class="laws-line"><span class="label">관련 법령</span>%s</p>' % esc(" · ".join(d["laws"])))
+    if d.get("keywords"):
+        tail.append('<p class="kw-line"><span class="label">관련 단어</span>%s</p>' % "".join(
+            '<a href="../cases.html#q=%s">%s</a>' % (esc(k), esc(k)) for k in d["keywords"] if k))
+    if d.get("instagram"):
+        tail.append('<p class="source-line">이 사건의 소개 글은 <a href="%s" rel="noopener" target="_blank">인스타그램(@lawyer.boo)</a>에도 있습니다.</p>' % esc(d["instagram"]))
+    if tail:
+        parts.append('<div class="part">%s</div>' % "".join(tail))
+    return '<section class="case-detail" aria-label="사례 상세 소개">%s</section>\n      ' % "".join(parts)
+
+
+def build_case_page(c, by_cat, cat_counts, details=None):
+    d = (details or {}).get(c["id"]) or {}
     cat = CATS.get(c["cat"], c["cat"])
     url = page_url(c)
     ims = images_of(c)
@@ -331,6 +391,8 @@ def build_case_page(c, by_cat, cat_counts):
                 "description": desc,
                 "image": ["%s/cases/%s" % (SITE, im["src"].rsplit("/", 1)[-1]) for im in ims] or [SITE + "/og-image.jpg"],
                 "articleSection": cat,
+                "keywords": ", ".join(d.get("keywords") or []) if d.get("keywords") else None,
+                "articleBody": " ".join([c.get("summary") or ""] + list(d.get("overview") or []) + list(d.get("holding") or []) + list(d.get("meaning") or [])).strip() or None,
                 "inLanguage": "ko",
                 "datePublished": TODAY,
                 "dateModified": TODAY,
@@ -350,6 +412,9 @@ def build_case_page(c, by_cat, cat_counts):
         ],
     }
 
+    for k in ("keywords", "articleBody"):
+        if ld["@graph"][0].get(k) is None:
+            del ld["@graph"][0][k]
     figs = []
     for k, im in enumerate(ims):
         fname = im["src"].rsplit("/", 1)[-1]
@@ -399,7 +464,7 @@ def build_case_page(c, by_cat, cat_counts):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{esc(title)} · {esc(cat)} 수행 사례 · 변호사 부효준</title>
-<meta name="description" content="{esc(desc)}">
+<meta name="description" content="{esc(desc)}">{('\n<meta name="keywords" content="%s">' % esc(", ".join(d["keywords"]))) if d.get("keywords") else ""}
 <meta name="author" content="부효준">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{esc(url)}">
@@ -452,7 +517,7 @@ def build_case_page(c, by_cat, cat_counts):
         <p>{esc(c.get('summary') or '')}</p>
         {ext_link}{topic_line}
       </section>
-      <section class="case-docs" aria-labelledby="docs-h">
+      {detail_html(c, d)}<section class="case-docs" aria-labelledby="docs-h">
         <h2 id="docs-h">판결문 {len(ims)}장</h2>
         {''.join(figs)}
       </section>
@@ -652,6 +717,15 @@ JS_PAGEHREF = (
 )
 
 
+HAY_OLD = "var hay = [c.title, c.summary, c.court, c.party, c.result, c.date, CATS[c.cat]].join(' ').toLowerCase();"
+HAY_NEW = "var hay = [c.title, c.summary, c.court, c.party, c.result, c.date, CATS[c.cat], (c.kw || []).join(' ')].join(' ').toLowerCase();"
+
+
+def patch_search(doc):
+    """단어로 찾기: 상세 소개의 검색어(kw)도 찾는 범위에 넣는다."""
+    return doc.replace(HAY_OLD, HAY_NEW, 1) if HAY_OLD in doc else doc
+
+
 def patch_js(doc):
     n = doc.count("body.appendChild(el('h3', 'case-title', c.title));")
     if n == 0 and "pageHref(c)" in doc:
@@ -764,6 +838,7 @@ def patch_cases(doc, n_cases=None):
         doc = re.sub(r"주요 수행 사례 \d+건 — ", "주요 수행 사례 %d건 — " % n_cases, doc)
     doc = link_static_cards(doc)
     doc = patch_js(doc)
+    doc = patch_search(doc)
     # 사례 목록 위에 주제별 사례 링크
     if 'class="laws-line topic-links"' not in doc:
         k = doc.find('<ol class="case-list" id="case-list">')
@@ -842,6 +917,7 @@ def main():
     index_doc, cases_doc = read(index_path), read(cases_path)
     cases = load_json_block(index_doc, "cases-data")
     links = load_json_block(index_doc, "links-data")
+    details = load_details(site)
 
     stems = [stem_of(c) for c in cases]
     dup = {s for s in stems if stems.count(s) > 1}
@@ -866,7 +942,7 @@ def main():
         if old not in keep:
             os.remove(old)
     for c in cases:
-        write(os.path.join(site, page_href(c)), build_case_page(c, by_cat, cat_counts))
+        write(os.path.join(site, page_href(c)), build_case_page(c, by_cat, cat_counts, details))
 
     # 주제별 모아 보기 페이지
     recent = sorted(cases, key=lambda x: x.get("sort") or "", reverse=True)
@@ -878,7 +954,8 @@ def main():
     write(cases_path, patch_cases(cases_doc, len(cases)))
     write(os.path.join(site, "sitemap.xml"), build_sitemap(cases))
     patch_llms(site, cases)
-    print("사례 페이지 %d건, 주제 페이지 %d건, sitemap %d URL, case.css, index.html, cases.html 갱신 → %s" % (len(cases), len(TOPICS), len(cases) + len(TOPICS) + 2, site))
+    n_detail = sum(1 for c in cases if details.get(c["id"]))
+    print("사례 페이지 %d건(상세 소개 %d건), 주제 페이지 %d건, sitemap %d URL, case.css, index.html, cases.html 갱신 → %s" % (len(cases), n_detail, len(TOPICS), len(cases) + len(TOPICS) + 2, site))
 
 
 if __name__ == "__main__":
