@@ -46,3 +46,7 @@
   "formsubmit.co/boo@keumseonglaw.com"과 "formsubmit.co/ajax/boo@keumseonglaw.com"의 주소 부분을 그 문자열로 바꾸어도 됩니다(스팸봇에 주소 노출 방지).
 - 첨부파일은 10MB까지이며, 전송이 막히면 신청서 아래에 '이메일 앱으로 보내기' 링크가 나타납니다.
 - 자바스크립트가 꺼진 환경에서는 FormSubmit의 확인 화면(reCAPTCHA)을 거쳐 https://lawyermrboo82.com/?sent=1#contact 로 돌아옵니다.
+
+■ IndexNow 키 파일
+- 루트의 e853749efb6103763ecfc33529bf8f2c.txt 는 IndexNow(네이버 서치어드바이저·Bing이 쓰는 즉시 색인 요청 규약)용 키 파일입니다. 지우지 마십시오.
+- 새 페이지를 올린 뒤 https://api.indexnow.org/indexnow?url=<페이지 주소>&key=e853749efb6103763ecfc33529bf8f2c 를 한 번 열면 네이버·Bing에 색인 요청이 들어갑니다 (여러 주소는 POST JSON으로).
