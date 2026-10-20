@@ -540,7 +540,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <meta name="twitter:image" content="{esc(og_image)}">
 {ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Hahmlet:wght@700&display=swap">
 <link rel="stylesheet" href="../case.css">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
@@ -549,7 +549,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <body>
 <div class="page" id="top">
   <header class="top">
-    <a class="brand" href="../index.html">변호사 부효준</a>
+    <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><img class="brand-seal" src="../seal.png" alt="" width="234" height="231" decoding="async"><span class="brand-text"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span></span></a>
     <nav aria-label="페이지 이동">
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../index.html#rnd">국가연구개발 제재처분</a>
@@ -676,7 +676,7 @@ def build_topic_page(t, matched, cat_counts):
 <meta name="twitter:image" content="{SITE}/og-image.jpg">
 {ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Hahmlet:wght@700&display=swap">
 <link rel="stylesheet" href="../case.css">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
@@ -685,7 +685,7 @@ def build_topic_page(t, matched, cat_counts):
 <body>
 <div class="page" id="top">
   <header class="top">
-    <a class="brand" href="../index.html">변호사 부효준</a>
+    <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><img class="brand-seal" src="../seal.png" alt="" width="234" height="231" decoding="async"><span class="brand-text"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span></span></a>
     <nav aria-label="페이지 이동">
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../index.html#rnd">국가연구개발 제재처분</a>

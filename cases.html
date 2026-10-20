@@ -35,7 +35,7 @@
 <meta name="twitter:image" content="https://lawyermrboo82.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Hahmlet:wght@700&display=swap">
 <style>
 /* Layout: a client-first brief for people and companies facing an administrative disposition.
    A dark opening screen carries the three statutory deadlines; the body reads like a signed legal document
@@ -58,6 +58,8 @@
 
   --serif: "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
   --sans: "Noto Sans KR", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  /* 2026. 10. 21.: '부효준' 이름만 쓰는 글씨체(함렛) — 머리글·바닥글 서명에서 제목 글씨체와 구별되게 */
+  --name: "Hahmlet", "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
 
   --step--2: 0.8125rem;
   --step--1: 0.875rem;
@@ -221,7 +223,21 @@ img { max-width: 100%; }
   .top nav { gap: 0.1rem 1.25rem; font-size: 1rem; }
 }
 
-.brand { font-family: var(--serif); font-weight: 700; text-decoration: none; }
+/* 2026. 10. 21.: 머리글의 이름을 차림표보다 한눈에 띄게 — '변호사'는 작은 고딕, '부효준'은 함렛 굵은 글씨로 크게,
+   인장을 작게 붙여 바닥글 서명과 같은 표식을 쓴다. */
+.brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--ink); text-decoration: none; line-height: 1; }
+.brand-seal { flex: none; width: 2.4rem; height: auto; transform: rotate(-5deg); mix-blend-mode: var(--seal-blend); filter: var(--seal-filter); }
+.brand-text { display: grid; gap: 0.2rem; }
+.brand-role { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; color: var(--ink-soft); }
+.brand-name { font-family: var(--name); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.06em; }
+.brand-name .brand-hanja { margin-left: 0.5rem; font-family: var(--serif); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.12em; color: var(--ink-soft); }
+.brand:hover .brand-name { color: var(--seal); }
+.top { gap: 0.5rem 1.25rem; }
+.top nav { gap: 0.25rem 1.5rem; }
+@media (max-width: 760px) {
+  .brand-seal { width: 2.2rem; }
+  .brand-name { font-size: 1.375rem; }
+}
 
 /* ---------- opening screen ---------- */
 .hero {
@@ -796,9 +812,9 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .fine { display: grid; gap: 0.2rem; font-size: var(--step--1); color: var(--ink-soft); }
 .sign-block { display: grid; gap: 0.3rem; justify-items: end; text-align: right; font-family: var(--serif); }
 .sign-date { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.sign-name { display: flex; align-items: center; gap: 0.2rem; font-size: var(--step-2); font-weight: 700; white-space: nowrap; }
-.sign-name small { font-size: var(--step-0); font-weight: 500; color: var(--ink-soft); margin-right: 0.35rem; }
-.spaced { letter-spacing: 0.4em; }
+.sign-name { display: flex; align-items: center; gap: 0.2rem; font-family: var(--name); font-size: 2rem; font-weight: 700; white-space: nowrap; } /* 2026. 10. 21.: 이름 글씨체(함렛), 조금 크게 */
+.sign-name small { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); margin-right: 0.5rem; }
+.spaced { letter-spacing: 0.3em; }
 .seal { flex: none; width: 2.75rem; height: auto; margin-left: 0.15rem; transform: rotate(-5deg); mix-blend-mode: var(--seal-blend); filter: var(--seal-filter); }
 
 /* ---------- narrow screens ---------- */
@@ -968,7 +984,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 <body>
 <div class="page" id="top">
   <header class="top">
-    <a class="brand" href="index.html">변호사 부효준</a>
+    <a class="brand" href="index.html" aria-label="변호사 부효준 — 처음으로"><img class="brand-seal" src="seal.png" alt="" width="234" height="231" decoding="async"><span class="brand-text"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span></span></a>
     <nav aria-label="페이지 이동">
       <a href="index.html#record">홈으로</a>
       <a href="index.html#rnd">국가연구개발 제재처분</a>

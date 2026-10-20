@@ -99,7 +99,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Hahmlet:wght@700&display=swap">
 <style>
 /* Layout: a client-first brief for people and companies facing an administrative disposition.
    A dark opening screen carries the three statutory deadlines; the body reads like a signed legal document
@@ -124,6 +124,8 @@
 
   --serif: "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
   --sans: "Noto Sans KR", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  /* 2026. 10. 21.: '부효준' 이름만 쓰는 글씨체(함렛) — 머리글·첫 화면·바닥글 서명에서 제목 글씨체와 구별되게 */
+  --name: "Hahmlet", "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
 
   --step--2: 0.8125rem;
   --step--1: 0.875rem;
@@ -278,7 +280,21 @@ img { max-width: 100%; }
   .top nav { gap: 0.1rem 1.25rem; font-size: 1rem; }
 }
 
-.brand { font-family: var(--serif); font-weight: 700; text-decoration: none; }
+/* 2026. 10. 21.: 머리글의 이름을 차림표보다 한눈에 띄게 — '변호사'는 작은 고딕, '부효준'은 함렛 굵은 글씨로 크게,
+   인장을 작게 붙여 바닥글 서명과 같은 표식을 쓴다. */
+.brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--ink); text-decoration: none; line-height: 1; }
+.brand-seal { flex: none; width: 2.4rem; height: auto; transform: rotate(-5deg); mix-blend-mode: var(--seal-blend); filter: var(--seal-filter); }
+.brand-text { display: grid; gap: 0.2rem; }
+.brand-role { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; color: var(--ink-soft); }
+.brand-name { font-family: var(--name); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.06em; }
+.brand-name .brand-hanja { margin-left: 0.5rem; font-family: var(--serif); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.12em; color: var(--ink-soft); }
+.brand:hover .brand-name { color: var(--seal); }
+.top { gap: 0.5rem 1.25rem; }
+.top nav { gap: 0.25rem 1.5rem; }
+@media (max-width: 760px) {
+  .brand-seal { width: 2.2rem; }
+  .brand-name { font-size: 1.375rem; }
+}
 
 /* ---------- opening screen ---------- */
 .hero {
@@ -297,6 +313,14 @@ img { max-width: 100%; }
   border-radius: 3px;
 }
 .hero .eyebrow { color: var(--hero-soft); }
+/* 2026. 10. 21.: 첫 화면 맨 위에 이름을 따로 크게 — 짧은 크림슨 줄 아래 '변호사'(작은 고딕) + '부효준'(함렛, 큰 글씨 + 자간).
+   한자는 .hero-hanja 칸에 넣으면 이름 옆에 작게 붙는다. 그 아래 분야 줄(.eyebrow)이 따라온다. */
+.hero-id { display: grid; gap: 0.7rem; }
+.hero-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; margin: 0; font-family: var(--name); line-height: 1; }
+.hero-name::before { content: ""; flex: 0 0 100%; width: 2.5rem; max-width: 2.5rem; height: 2px; margin-bottom: 1.1rem; background: var(--hero-seal); }
+.hero-name .role { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.16em; color: var(--hero-soft); }
+.hero-name strong { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; letter-spacing: 0.07em; color: var(--hero-fg); } /* 제목(2.5rem)과 같은 크기 — 글씨체·굵기·자간으로 구별 */
+.hero-name .hero-hanja { font-family: var(--serif); font-size: clamp(1rem, 1.5vw, 1.3rem); font-weight: 500; letter-spacing: 0.16em; color: var(--hero-soft); }
 .hero-copy { display: grid; gap: 1.5rem; align-content: center; min-width: 0; padding-bottom: clamp(3rem, 6vw, 4.5rem); }
 .portrait { margin: 0; align-self: end; justify-self: center; width: min(100%, 23rem); }
 .portrait img { display: block; width: 100%; height: auto; }
@@ -907,9 +931,9 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .fine { display: grid; gap: 0.2rem; font-size: var(--step--1); color: var(--ink-soft); }
 .sign-block { display: grid; gap: 0.3rem; justify-items: end; text-align: right; font-family: var(--serif); }
 .sign-date { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.sign-name { display: flex; align-items: center; gap: 0.2rem; font-size: var(--step-2); font-weight: 700; white-space: nowrap; }
-.sign-name small { font-size: var(--step-0); font-weight: 500; color: var(--ink-soft); margin-right: 0.35rem; }
-.spaced { letter-spacing: 0.4em; }
+.sign-name { display: flex; align-items: center; gap: 0.2rem; font-family: var(--name); font-size: 2rem; font-weight: 700; white-space: nowrap; } /* 2026. 10. 21.: 이름 글씨체(함렛), 조금 크게 */
+.sign-name small { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); margin-right: 0.5rem; }
+.spaced { letter-spacing: 0.3em; }
 .seal { flex: none; width: 4.25rem; height: auto; margin-left: 0.15rem; transform: rotate(-5deg); mix-blend-mode: var(--seal-blend); filter: var(--seal-filter); }
 
 /* ---------- narrow screens ---------- */
@@ -1295,7 +1319,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 </svg>
 
   <header class="top">
-    <a class="brand" href="#top">변호사 부효준</a>
+    <a class="brand" href="#top" aria-label="변호사 부효준 — 처음으로"><img class="brand-seal" src="seal.png" alt="" width="234" height="231" decoding="async"><span class="brand-text"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span></span></a>
     <a class="tel tel-m" href="tel:+82-10-8506-8685" aria-label="휴대전화 010-8506-8685로 전화"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg><span>010-8506-8685</span></a>
     <nav aria-label="페이지 안 이동">
       <a href="#record">주요 수행 사례</a>
@@ -1311,7 +1335,10 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   <main>
     <section class="hero" aria-labelledby="hero-h">
       <div class="hero-copy">
-        <p class="eyebrow">행정쟁송 · 국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 변호사 부효준</p>
+        <div class="hero-id">
+          <p class="hero-name"><span class="role">변호사</span> <strong>부효준</strong></p>
+          <p class="eyebrow">행정쟁송 · 국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금</p>
+        </div>
         <h1 id="hero-h"><span class="kicker">국가로펌 출신 · 소송·자문 약 3,300건</span>처분의 기준을<br>아는 변호사는<br><em class="l3">다투는 방법부터 다릅니다.</em></h1>
         <p class="lead">국가로펌인 정부법무공단을 거쳐 개업한 뒤까지 행정쟁송 한 분야를 걸어온 변호사입니다. 지금은 중앙행정기관·지방자치단체·공공기관의 고문변호사이자 제재처분·소청·행정처분을 심의하는 위원회의 위원입니다. 그 자리에서 익힌 기준으로 <b>처분을 받은 개인과 기업</b>을 대리합니다. 인사처분, 인허가·영업정지·과징금, 제재부가금·환수, 국가배상·손실보상, 국가연구개발 제재처분과 그에 뒤따르는 형사 고발 사건까지 한 흐름으로 맡습니다.</p>
         <div class="cta">
