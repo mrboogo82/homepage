@@ -418,111 +418,9 @@ img { max-width: 100%; }
 .situation .cols { display: grid; gap: 0.8rem; }
 .situation.wide .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem 2rem; }
 
-/* procedure timeline */
+/* 경력 연표(dl.timeline)가 쓰는 바탕 규칙. 2026. 10. 21. '가장 많이 다루는 처분' 절(국가연구개발혁신법 제재처분 — 기한 타일·절차 단계·심의/소송/자문 표)을
+   없애면서 그 절만 쓰던 .focus·.due-tile·.angles·.step·.statute·.laws-line 규칙은 지웠다. 기한과 주제별 사례는 '다루는 사건'의 국가연구개발 카드로 옮김(.due-list). */
 .timeline { list-style: none; display: grid; }
-.step {
-  position: relative;
-  display: grid;
-  grid-template-columns: 3rem minmax(0, 14rem) minmax(0, 1fr);
-  gap: 0.5rem 1.5rem;
-  padding-block: 1.4rem;
-}
-.step::before {
-  content: "";
-  position: absolute;
-  left: 1.05rem;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--rule);
-}
-.step:first-child::before { top: 1.6rem; }
-.step:last-child::before { bottom: auto; height: 1.6rem; }
-.step .no {
-  position: relative;
-  z-index: 1;
-  width: 2.2rem;
-  height: 2.2rem;
-  display: grid;
-  place-items: center;
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: var(--step--1);
-  color: var(--paper);
-  background: var(--ink);
-  border-radius: 50%;
-  border: 3px solid var(--paper);
-}
-.step.due .no { background: var(--seal); }
-.step h3 { font-size: var(--step-1); line-height: 1.4; }
-.step .who { display: block; margin-top: 0.2rem; font-family: var(--sans); font-size: var(--step--2); font-weight: 400; color: var(--ink-soft); }
-.step .body { display: grid; gap: 0.6rem; min-width: 0; font-size: 1rem; line-height: 1.75; }
-.step .due-tag {
-  justify-self: start;
-  padding: 0.05rem 0.7rem;
-  font-size: var(--step--2);
-  font-weight: 500;
-  color: var(--seal);
-  border: 1px solid var(--seal);
-  border-radius: 999px;
-}
-.statute {
-  margin: 0.25rem 0 0;
-  padding-left: 1rem;
-  border-left: 2px solid var(--rule);
-  font-family: var(--serif);
-  font-size: 1rem;
-  line-height: 1.75;
-}
-.statute cite {
-  display: block;
-  margin-top: 0.4rem;
-  font-family: var(--sans);
-  font-size: var(--step--2);
-  font-style: normal;
-  color: var(--ink-soft);
-}
-
-/* R&D band: deadline tiles */
-.due-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
-.due-tile { display: grid; gap: 0.15rem; padding: 0.9rem 1rem; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper); min-width: 0; }
-.due-tile .d { font-family: var(--serif); font-size: var(--step-2); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--seal); font-variant-numeric: tabular-nums; }
-.due-tile .d small { font-size: 0.5em; font-weight: 500; margin-left: 0.1em; }
-.due-tile .w { font-size: var(--step--1); line-height: 1.5; }
-.due-tile .r { font-size: var(--step--2); color: var(--ink-soft); }
-.focus .timeline { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
-.focus .step .no { border-color: var(--wash); }
-
-/* ---------- emphasized band: why this field ---------- */
-.focus {
-  margin-inline: calc(-1 * var(--gutter));
-  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter);
-  background: var(--wash);
-  border-radius: 3px;
-}
-.focus-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 2.5rem clamp(2.5rem, 6vw, 5.5rem);
-}
-.focus-head { display: grid; gap: 1.25rem; align-content: start; min-width: 0; }
-.focus-head h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.25; letter-spacing: -0.02em; } /* 2026. 10. 21. var(--step-3)(최대 3rem)에서 한 단계 줄이고, 그 대신 둘째 줄 '제재처분'을 크림슨 밑줄로 강조 */
-.focus-head h2 em { font-style: normal; text-decoration: underline; text-decoration-color: var(--seal); text-decoration-thickness: 3px; text-underline-offset: 0.2em; text-decoration-skip-ink: none; }
-.lead-sub { font-size: var(--step--1); line-height: 1.75; color: var(--ink-soft); }
-.angles { min-width: 0; }
-.angles > div {
-  display: grid;
-  grid-template-columns: 3.25rem minmax(0, 1fr);
-  gap: 1rem;
-  padding-block: 1rem;
-  border-top: 1px solid var(--rule);
-}
-.angles > div:last-child { border-bottom: 1px solid var(--rule); }
-.angles dt { padding-top: 0.15em; font-size: var(--step--1); font-weight: 500; letter-spacing: 0.06em; color: var(--ink-soft); }
-.angles dd { min-width: 0; font-size: 1rem; line-height: 1.75; }
-.angles dd .sub { display: block; margin-top: 0.3rem; font-size: var(--step--1); color: var(--ink-soft); }
-.laws-line { margin-top: 1.1rem; font-size: var(--step--1); line-height: 1.75; }
-.laws-line .label { margin-right: 0.6em; }
 .numbers {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -584,20 +482,24 @@ button.case-fig:hover img { opacity: 0.92; }
 .case-link { justify-self: start; font-size: var(--step--1); }
 .empty { padding-block: 1.5rem; font-size: var(--step--1); color: var(--ink-soft); border-block: 1px solid var(--rule); }
 
-/* faq */
+/* 홈 주요 수행 사례의 장수 (2026. 10. 21.): 세 장씩 놓이는 넓은 화면은 아홉 장, 두 장씩 놓이는 화면(1000px 이하, 휴대전화 포함)은 여덟 장 —
+   줄이 비는 자리가 없게. JS는 아홉 장을 그리고, 두 장씩 놓이는 화면에서는 아홉째 장을 감춘다. */
+@media (max-width: 1000px) { .case-list > .case:nth-child(n+9) { display: none; } }
+
+/* faq — 2026. 10. 21. 글자(질문 1.3125→1.0625rem, 답 1→0.9375rem)와 줄 간격(1.8→1.6), 항목 사이(1.4→0.95rem)를 줄여 간결하게 */
 .faq { display: grid; }
 .faq > div {
   display: grid;
   grid-template-columns: 2rem minmax(0, 1fr);
-  gap: 0.4rem 1rem;
-  padding-block: 1.4rem;
+  gap: 0.3rem 1rem;
+  padding-block: 0.95rem;
   border-top: 1px solid var(--rule);
 }
 .faq > div:last-child { border-bottom: 1px solid var(--rule); }
-.faq dt { grid-column: 1 / -1; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 600; line-height: 1.4; }
+.faq dt { grid-column: 1 / -1; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 600; line-height: 1.35; }
 .faq dt::before { content: "Q"; font-family: var(--serif); color: var(--seal); }
-.faq dd { grid-column: 2; max-width: 44rem; font-size: 1rem; line-height: 1.8; }
-.faq dd .ref { display: block; margin-top: 0.3rem; font-size: var(--step--2); color: var(--ink-soft); }
+.faq dd { grid-column: 2; max-width: 44rem; font-size: 0.9375rem; line-height: 1.6; }
+.faq dd .ref { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
 
 /* practice areas */
 .areas {
@@ -930,6 +832,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .areas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .situations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .situation.half { grid-column: span 2; }   /* 두 칸 격자에서는 반 폭 카드도 다른 카드와 같은 폭(2026. 10. 21.) */
   .case-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .wall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .advisors { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -944,10 +847,6 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   .situations { grid-template-columns: minmax(0, 1fr); }
   .situation, .situation.wide, .situation.half { grid-column: auto; }
   .situation.wide .cols { grid-template-columns: minmax(0, 1fr); }
-  .focus-inner { grid-template-columns: minmax(0, 1fr); }
-  .due-tiles { grid-template-columns: minmax(0, 1fr); }
-  .step { grid-template-columns: 3rem minmax(0, 1fr); }
-  .step .body { grid-column: 2; }
 }
 @media (max-width: 760px) {
   .section { grid-template-columns: minmax(0, 1fr); }
@@ -1211,7 +1110,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 @media (min-width: 761px) { .sign { padding-bottom: 3.25rem; } }
 
 /* ---------- 휴대전화의 사례 카드: 한 줄 두 장 (2026. 10. 17., Version 113) ----------
-   한 줄 한 장이면 카드 한 장이 화면 하나를 거의 다 차지해 열두 장이 너무 길어지므로, 작은 화면에서는 두 장씩 작게. 한 줄 목록 보기(.case-list.list)는 그대로. */
+   한 줄 한 장이면 카드 한 장이 화면 하나를 거의 다 차지해 여덟 장(2026. 10. 21.까지는 열두 장)이 너무 길어지므로, 작은 화면에서는 두 장씩 작게. 한 줄 목록 보기(.case-list.list)는 그대로. */
 @media (max-width: 640px) {
   .case-list:not(.list) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1rem; }
   .case-list:not(.list) .case-body { gap: 0.3rem; padding: 0.6rem 0.65rem 0.75rem; }
@@ -1292,6 +1191,31 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   .lec-logo { height: 1.45rem; margin-right: 0.45rem; }
   .lec-logo img { height: 0.95rem; }
 }
+
+/* ---------- 국가연구개발 카드의 세 기한과 주제별 사례 (2026. 10. 21.) ----------
+   '가장 많이 다루는 처분' 절을 없애면서, 그 절의 기한 타일(20일·30일·90일)은 카드 안의 작은 표(.due-list)로, 주제별 사례 단추는 글 링크 한 줄(.topics)로 옮겼다.
+   내용이 늘어난 국가연구개발 카드는 대표 분야답게 한 줄을 다 쓰는 카드(.lead)로 두고 안을 세 칸(설명 | 세 기한 | 다룬 사건·주제별 사례·법령)으로 나눈다.
+   그러면 나머지 여덟 장이 3·3·2로 놓이므로 마지막 두 장(국가배상·법률자문)은 반 폭(.half)으로 하여 줄이 비지 않게 한다. */
+.situation.lead { grid-column: 1 / -1; }
+.situation.lead .cols.three { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 0.8rem 2rem; }
+.situation.lead .cols.three > div { display: grid; gap: 0.8rem; align-content: start; min-width: 0; }
+.situation.lead .cols.three .ref { margin-top: 0; padding-top: 0; }
+@media (max-width: 1000px) {
+  .situation.lead .cols.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .situation.lead .cols.three > div:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .situation.lead .cols.three { grid-template-columns: minmax(0, 1fr); }
+  .situation.lead .cols.three > div:last-child { grid-column: auto; }
+}
+.situation .due-list { display: grid; margin: 0; border-top: 1px solid var(--rule); }
+.situation .due-list > div { display: grid; grid-template-columns: 3.1rem minmax(0, 1fr); gap: 0.6rem; align-items: baseline; padding-block: 0.4rem; border-bottom: 1px solid var(--rule); }
+.situation .due-list dt { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--seal); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.situation .due-list dt small { font-size: 0.6em; font-weight: 500; margin-left: 0.05em; }
+.situation .due-list dd { margin: 0; min-width: 0; font-size: var(--step--2); line-height: 1.55; }
+.situation .due-list dd .r { display: block; color: var(--ink-soft); }
+.situation .topics a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 0.15em; }
+.situation .topics a:hover { color: var(--seal); text-decoration-color: var(--seal); }
 </style>
 </head>
 <body>
@@ -1336,7 +1260,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       <a href="#record">주요 수행 사례</a>
       <a href="#career">경력</a>
       <a href="#fields">다루는 사건</a>
-      <a href="#rnd">국가연구개발 제재처분</a>
+      <a href="#area-rnd">국가연구개발 제재처분</a>
       <a href="#faq">자주 묻는 질문</a>
       <a class="tel tel-d" href="tel:+82-10-8506-8685" aria-label="휴대전화 010-8506-8685로 전화"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg><span>010-8506-8685</span></a>
       <a class="btn small" href="#contact">상담 문의</a>
@@ -1380,7 +1304,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       <ol class="finder-list">
         <li><a href="#faq"><span class="no">01</span><b>처분서를 받았습니다</b><span class="w">언제까지 무엇을 해야 하는지 — 이의신청·행정심판·소송의 기한과 집행정지</span><span class="go">자주 묻는 질문 →</span></a></li>
         <li><a href="#fields"><span class="no">02</span><b>어느 분야의 사건인지</b><span class="w">제재부가금·환수, 공무원·교원 인사처분, 인허가·면허, 손실보상, 그 밖의 행정처분, 형사, 국가배상, 법률자문</span><span class="go">다루는 사건 →</span></a></li>
-        <li><a href="#rnd"><span class="no">03</span><b>국가연구개발 제재처분을 받았습니다</b><span class="w">사전통지 20일, 재검토, 처분 뒤 불복 90일 — 절차와 기한, 자주 다투는 쟁점</span><span class="go">국가연구개발 제재처분 →</span></a></li>
+        <li><a href="#area-rnd"><span class="no">03</span><b>국가연구개발 제재처분을 받았습니다</b><span class="w">사전통지 20일, 납부 30일, 처분 뒤 불복 90일 — 세 기한과 주제별 사례</span><span class="go">국가연구개발 제재처분 →</span></a></li>
         <li><a href="#find-form"><span class="no">04</span><b>단어로 판결문 찾기</b><span class="w">참여제한·환수·징계처럼 처분이나 법령 이름 한 단어로 판결문 258건에서 찾습니다</span><span class="go">단어로 찾기 →</span></a></li>
         <li><a href="#career"><span class="no">05</span><b>변호사가 어떤 사람인지</b><span class="w">경력과 학력, 법률고문 위촉, 위원회·강의</span><span class="go">경력 →</span></a></li>
       </ol>
@@ -1418,9 +1342,6 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 <li class="case" data-cat="criminal" id="case-n-crim-rnd-fraud"><button type="button" class="case-fig" aria-label="국가연구개발사업 관련 사기 혐의 사건 변호 (경찰 불송치) 판결문 크게 보기"><img src="cases/crim-2026-chungnam-rnd-1.jpg" alt="충청남도경찰청 불송치 결정서 제1면 (피의자 1, 사건번호 가림)" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">형사</span><span class="date">2026. 4.</span><span class="badge other">불송치 (혐의없음)</span></div><h3 class="case-title"><a href="cases/crim-2026-chungnam-rnd-1.html">국가연구개발사업 관련 사기 혐의 사건 변호 (경찰 불송치)</a></h3><p class="case-sub">충청남도경찰청 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">국가연구개발사업과 관련하여 사기 혐의로 입건된 피의자들을 수사 단계에서 변호하여, 증거불충분 혐의없음 불송치 결정을 받은 사건입니다.</p><a class="case-link" href="cases/crim-2026-chungnam-rnd-1.html">자세히 →</a></div></li>
 <li class="case" data-cat="penalty" id="case-c-pen-1"><button type="button" class="case-fig" aria-label="보조금법 위반 제재부가금 부과처분 집행정지 사건 판결문 크게 보기"><img src="cases/pen-2026a10960.jpg" alt="서울행정법원 2026아10960 결정 제1면" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">제재부가금·환수·부정당업자 제재</span><span class="date">2026. 4.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/pen-2026a10960.html">보조금법 위반 제재부가금 부과처분 집행정지 사건</a></h3><p class="case-sub">서울행정법원 2026아10960 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">보조사업 과정의 허위 증빙으로 약식명령이 확정된 뒤 내려진 제재부가금 부과처분에서, 집행정지의 요건인 회복하기 어려운 손해와 긴급한 필요가 다투어진 사건입니다.</p><a class="case-link" href="cases/pen-2026a10960.html">자세히 →</a></div></li>
 <li class="case" data-cat="penalty" id="case-c-lic-2b"><button type="button" class="case-fig" aria-label="보조금법상 제재부가금 부과처분(감액처분) 취소소송 판결문 크게 보기"><img src="cases/lic-2025guhap54176.jpg" alt="서울행정법원 2025구합54176 판결 제1면" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">제재부가금·환수·부정당업자 제재</span><span class="date">2026. 4.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/lic-2025guhap54176.html">보조금법상 제재부가금 부과처분(감액처분) 취소소송</a></h3><p class="case-sub">서울행정법원 2025구합54176 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">간접보조사업자에 대한 제재부가금 부과처분을 일부 감액하여 다시 한 처분의 취소소송에서, 감액처분이 독립한 항고소송의 대상이 되는지와 제소기간을 당초 처분과 감액처분 중 어느 것을 기준으로 따질지가 쟁점이 된 사건입니다.</p><a class="case-link" href="cases/lic-2025guhap54176.html">자세히 →</a></div></li>
-<li class="case" data-cat="rnd" id="case-n-rnd-widebrain"><button type="button" class="case-fig" aria-label="국가연구개발사업 참여제한·환수처분 취소소송 (1·2심) 판결문 크게 보기"><img src="cases/rnd-2024guhap75192.jpg" alt="서울행정법원 2024구합75192 판결 제1면" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">국가연구개발</span><span class="date">2025. 6. ~ 2026. 4.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/rnd-2024guhap75192.html">국가연구개발사업 참여제한·환수처분 취소소송 (1·2심)</a></h3><p class="case-sub">서울행정법원 2024구합75192 · 서울고등법원 2025누7177 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">최종평가에서 &#x27;완료&#x27; 판정을 받은 과제에 관하여 공익제보를 계기로 특별평가가 이루어져, 참여연구원의 실제 참여 여부와 인건비가 회사 이사의 계좌로 입금된 사정을 이유로 기업과 과제책임자에게 내려진 3년 참여제한처분과 환수처분의 처분사유 존부 및 재량권 일탈·남용 여부가 다투어진 사건입니다. 1심은 청구를 모두 받아들이지 않았고, 항소심도 같은 결론을 유지하였습니다.</p><a class="case-link" href="cases/rnd-2024guhap75192.html">자세히 →</a></div></li>
-<li class="case" data-cat="rnd" id="case-n-rnd-kangrim"><button type="button" class="case-fig" aria-label="국가연구개발사업 참여제한·제재부가금 부과처분 취소소송 및 집행정지 판결문 크게 보기"><img src="cases/rnd-2025guhap53853.jpg" alt="서울행정법원 2025구합53853 판결 제1면·제2면(주문·이유)" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">국가연구개발</span><span class="date">2025. 6. ~ 2026. 4.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/rnd-2025guhap53853.html">국가연구개발사업 참여제한·제재부가금 부과처분 취소소송 및 집행정지</a></h3><p class="case-sub">서울행정법원 2025구합53853 · 2025아11570 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">중소기업기술개발지원사업 과제의 연구개발비 사용을 둘러싼 2년 참여제한처분과 제재부가금 부과처분이 다투어진 사건입니다. 집행정지 단계에서는 참여제한처분의 효력만 정지되었고, 본안에서는 청구가 모두 받아들여지지 않았습니다.</p><a class="case-link" href="cases/rnd-2025guhap53853.html">자세히 →</a></div></li>
-<li class="case" data-cat="rnd" id="case-n-rnd-food"><button type="button" class="case-fig" aria-label="국가연구개발사업 참여제한·제재부가금 부과처분 무효확인·취소소송 판결문 크게 보기"><img src="cases/rnd-2025guhap52962.jpg" alt="서울행정법원 2025구합52962 판결 제1면" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">국가연구개발</span><span class="date">2026. 3.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/rnd-2025guhap52962.html">국가연구개발사업 참여제한·제재부가금 부과처분 무효확인·취소소송</a></h3><p class="case-sub">서울행정법원 2025구합52962 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">국가연구개발혁신법 시행 전에 종료되어 &#x27;실패&#x27; 판정을 받은 과제가 시행 후 &#x27;불성실수행&#x27;으로 평가되어 내려진 2년 참여제한처분과 제재부가금 부과처분에 관하여, 혁신법 부칙 제5조에 따라 종전 법령이 적용되어야 하는지, 연구노트·공인기관 시험성적서 미제출 등을 이유로 한 &#x27;극히 불량&#x27; 판정이 적법한지가 다투어진 사건입니다. 무효확인(주위적)과 취소(예비적) 청구가 모두 받아들여지지 않았습니다.</p><a class="case-link" href="cases/rnd-2025guhap52962.html">자세히 →</a></div></li>
       </ol>
           <p class="empty" id="case-empty" hidden>등록된 사례가 없습니다.</p>
           <p class="more"><a class="btn ghost" id="all-cases" href="cases.html">주요 수행 사례 전체 보기 (최근 순)</a></p>
@@ -1569,13 +1490,27 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         </nav>
       </header>
       <div class="situations">
-        <article class="situation" id="area-rnd">
+        <article class="situation lead" id="area-rnd">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M11 15h10M11 19h10M11 23h6"/><circle cx="23" cy="24" r="4"/></svg>
           <h3>국가연구개발 제재처분</h3>
-          <p>참여제한·연구개발비 환수·제재부가금 처분을 사전통지 단계의 재검토 요청부터 취소소송·집행정지까지 다툽니다. 과학기술정보통신부·중소벤처기업부뿐 아니라 문화체육관광부·보건복지부·교육부·기후에너지환경부 등 여러 부처의 사업을 다루며, 이 처분을 심의하는 여러 위원회의 위원이자 부처·연구관리 전문기관·출연연구기관의 고문변호사로서 처분의 기준을 안에서 보아 왔습니다.</p>
-          <p class="eg"><b>다룬 사건</b> 참여제한·정부출연금 환수처분 취소소송, 연구개발비 반환채무 당사자소송, 제재부가금 집행정지 등</p>
-          <a class="more" href="#rnd">절차와 기한 자세히 보기 ↓</a>
-          <p class="ref">「국가연구개발혁신법」 제32조·제33조</p>
+          <div class="cols three">
+            <div>
+              <p>참여제한·연구개발비 환수·제재부가금 처분을 사전통지 단계의 재검토 요청부터 취소소송·집행정지까지 다툽니다. 국가연구개발사업과 그 제재처분은 「국가연구개발혁신법」에 따르며, 과학기술정보통신부·중소벤처기업부뿐 아니라 문화체육관광부·보건복지부·교육부·기후에너지환경부 등 여러 부처가 저마다의 연구관리 전문기관을 통해 처분합니다. 이 처분을 심의하는 과학기술정보통신부 연구자권익보호위원회와 중소벤처기업부 제재처분 재검토위원회의 위원이자 부처·전문기관·출연연구기관의 고문변호사로서 처분의 기준을 안에서 보아 왔고, 서울지방변호사회에서 이 법을 강의했습니다.</p>
+            </div>
+            <div>
+              <p class="eg"><b>세 기한</b></p>
+              <dl class="due-list" aria-label="국가연구개발 제재처분의 세 기한">
+                <div><dt>20<small>일</small></dt><dd>사전통지를 받은 날부터 재검토 요청 의견 제출 — 연구자권익보호위원회가 검토합니다<span class="r">「국가연구개발혁신법」 제33조 제3항</span></dd></div>
+                <div><dt>30<small>일</small></dt><dd>처분 통보를 받은 날부터 제재부가금·환수금 납부<span class="r">같은 법 시행령 제63조 제1항</span></dd></div>
+                <div><dt>90<small>일</small></dt><dd>처분이 있음을 안 날부터 취소소송 제기 — 과제가 중단될 상황이면 집행정지도 함께<span class="r">「행정소송법」 제20조·제23조</span></dd></div>
+              </dl>
+            </div>
+            <div>
+              <p class="eg"><b>다룬 사건</b> 참여제한·정부출연금 환수처분 취소소송, 연구개발비 반환채무 당사자소송, 제재부가금 집행정지, 연구개발비 부정집행을 이유로 한 고발 사건의 변호 등</p>
+              <p class="eg topics"><b>주제별 사례</b> <a href="topics/rnd-participation-restriction.html">참여제한처분 취소소송</a> · <a href="topics/rnd-recovery.html">연구개발비·출연금 환수처분</a> · <a href="topics/rnd-penalty-surcharge.html">제재부가금 부과처분</a> · <a href="topics/rnd-stay-of-execution.html">집행정지</a> · <a href="topics/rnd-party-litigation.html">회수금·정산금 당사자소송</a></p>
+              <p class="ref">「국가연구개발혁신법」 제32조·제33조, 같은 법 시행령 제63조, 「행정소송법」 제20조·제23조</p>
+            </div>
+          </div>
           <a class="cases-link" href="cases.html#cat=rnd" data-cat="rnd"><span class="lbl">수행 사례 <b class="n">56건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a>
         </article>
         <article class="situation" id="area-penalty">
@@ -1626,7 +1561,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           <p class="ref">「보조금 관리에 관한 법률」 제40조·제41조, 「형법」 제347조·제356조, 「국가연구개발혁신법」 제31조</p>
           <a class="cases-link" href="cases.html#cat=criminal" data-cat="criminal"><span class="lbl">수행 사례 <b class="n">15건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a>
         </article>
-        <article class="situation" id="area-state">
+        <article class="situation half" id="area-state">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4v24"/><path d="M6 10h20"/><path d="M6 10l-3 8h6zM26 10l-3 8h6z"/><path d="M11 28h10"/></svg>
           <h3>국가배상</h3>
           <p>공무원의 직무상 불법행위와 도로·하천 같은 영조물의 설치·관리 하자로 인한 국가배상청구를 수행합니다. 법무부 국가송무과와 정부법무공단에서 과거사·수사기관·군사시설 관련 국가배상 사건을 다루었고, 위법성과 인과관계, 소멸시효가 주된 쟁점입니다.</p>
@@ -1634,7 +1569,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           <p class="ref">「국가배상법」 제2조·제5조</p>
           <a class="cases-link" href="cases.html#cat=state" data-cat="state"><span class="lbl">수행 사례 <b class="n">17건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a>
         </article>
-        <article class="situation" id="area-advice">
+        <article class="situation half" id="area-advice">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5h14l6 6v16H6z"/><path d="M20 5v6h6"/><path d="M10 16h12M10 20h12M10 24h8"/></svg>
           <h3>법률자문 · 법령 해석</h3>
           <p>중앙행정기관, 지방자치단체, 공공기관 약 20곳의 고문변호사로서 인사·노무 자문 약 150건, 법령 해석·입법 자문 약 180건, 계약서·협약서 검토 약 160건을 포함해 법률자문 약 1,300건을 처리했습니다. 처분을 만드는 쪽의 기준을 알기에 다투는 쪽의 쟁점도 빨리 찾습니다.</p>
@@ -1642,90 +1577,6 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           <p class="ref">「국가공무원법」, 「공직자의 이해충돌 방지법」, 「공공기관의 정보공개에 관한 법률」</p>
         </article>
       </div>
-    </section>
-
-    <section class="focus" id="rnd" aria-labelledby="rnd-h">
-      <div class="focus-inner">
-        <header class="focus-head">
-          <p class="eyebrow">가장 많이 다루는 처분</p>
-          <h2 id="rnd-h">국가연구개발혁신법<br><em>제재처분</em></h2>
-          <p class="lead-sub">국가연구개발사업은 「국가연구개발혁신법」에 따라 운영되고, 참여제한·제재부가금·연구개발비 환수 같은 제재처분도 이 법에 따라 이루어집니다. 과학기술정보통신부·중소벤처기업부뿐 아니라 여러 부처가 저마다의 연구관리 전문기관을 통해 사업을 운영하고, 제재처분도 부처마다 이루어집니다. 이 처분을 심의하는 위원회의 위원이자 이들 부처·전문기관·출연연구기관의 고문변호사로서 심의하고, 자문하고, 소송하고, 가르치는 네 자리를 모두 맡아 왔고, 그 경험으로 처분을 받은 연구자와 기업의 쟁점을 찾습니다.</p>
-        </header>
-
-        <div>
-          <div class="due-tiles" aria-label="국가연구개발 제재처분의 세 기한">
-            <div class="due-tile"><span class="d">20<small>일</small></span><span class="w">사전통지를 받은 날부터 재검토 요청 의견 제출</span><span class="r">「국가연구개발혁신법」 제33조 제3항</span></div>
-            <div class="due-tile"><span class="d">30<small>일</small></span><span class="w">처분 통보를 받은 날부터 제재부가금·환수금 납부</span><span class="r">같은 법 시행령 제63조 제1항</span></div>
-            <div class="due-tile"><span class="d">90<small>일</small></span><span class="w">처분이 있음을 안 날부터 취소소송 제기</span><span class="r">「행정소송법」 제20조 제1항</span></div>
-          </div>
-          <dl class="angles" style="margin-top: 1.5rem;">
-            <div>
-              <dt>심의</dt>
-              <dd>과학기술정보통신부 연구자권익보호위원회 위원, 중소벤처기업부 국가연구개발혁신법 제재처분 재검토위원회 위원</dd>
-            </div>
-            <div>
-              <dt>소송</dt>
-              <dd>「국가연구개발혁신법」 시행(2021. 1. 1.) 전후의 제재처분을 모두 다룹니다 — 참여제한·정부출연금 환수처분 취소소송, 연구개발비 반환채무 당사자소송, 제재부가금 집행정지 등. 판결문은 <a href="cases.html#cat=rnd">주요 수행 사례</a>에서 볼 수 있습니다.</dd>
-            </div>
-            <div>
-              <dt>자문</dt>
-              <dd><b>부처</b> 중소벤처기업부·기후에너지환경부·보건복지부·문화체육관광부·교육부·기상청·농림축산식품부 고문·자문변호사, 전 과학기술정보통신부 고문변호사 <b>전문기관·연구기관</b> 중소기업기술정보진흥원(TIPA)·한국환경산업기술원(KEITI) 고문변호사, 국가과학기술연구회(NST) 출연(연) 통합 법무고문</dd>
-            </div>
-            <div>
-              <dt>강의</dt>
-              <dd>서울지방변호사회 의무연수 「국가연구개발혁신법」 강의(2024. 08.)</dd>
-            </div>
-            <div>
-              <dt>수사·형사</dt>
-              <dd>연구개발비 부정집행을 이유로 한 사기·보조금법 위반·업무상 횡령 고발 사건에서 연구개발기관과 연구자를 변호합니다. 정부출연금과 보조금의 법적 성격 같은 행정법 쟁점을 수사 단계에서부터 다루며, 수사 단계에서 불송치·불기소로 마무리된 사례가 여럿 있습니다.</dd>
-            </div>
-          </dl>
-          <p class="laws-line"><span class="label">관련 법령</span>「국가연구개발혁신법」 · 「국가연구개발혁신법 시행령」 · 「과학기술기본법」 · 「중소기업 기술혁신 촉진법」 · 「행정절차법」 · 「행정소송법」 · 「보조금 관리에 관한 법률」 · 「형법」</p>
-          <p class="laws-line topic-links"><span class="label">주제별 사례</span><a class="btn ghost small" href="topics/rnd-participation-restriction.html">참여제한처분 취소소송</a><a class="btn ghost small" href="topics/rnd-recovery.html">연구개발비·출연금 환수처분</a><a class="btn ghost small" href="topics/rnd-penalty-surcharge.html">제재부가금 부과처분</a><a class="btn ghost small" href="topics/rnd-stay-of-execution.html">집행정지</a><a class="btn ghost small" href="topics/rnd-party-litigation.html">회수금·정산금 당사자소송</a></p>
-        </div>
-      </div>
-
-      <ol class="timeline" aria-label="국가연구개발혁신법 제재처분 절차">
-        <li class="step">
-          <span class="no">1</span>
-          <h3>점검·평가<span class="who">연구개발기관 · 전문기관</span></h3>
-          <div class="body"><p>특별평가·정밀정산·부정행위 검증에서 제재 사유가 확인됩니다. 이때 낸 소명 자료가 이후 모든 단계의 기초가 되므로 이 단계부터 자료를 함께 정리합니다.</p></div>
-        </li>
-        <li class="step">
-          <span class="no">2</span>
-          <h3>제재처분평가단 검토<span class="who">소관 중앙행정기관</span></h3>
-          <div class="body"><p>제재대상자와 이해관계가 없는 사람으로 구성된 평가단이 제재의 필요성과 종류·수준을 검토합니다(제33조 제1항).</p></div>
-        </li>
-        <li class="step due">
-          <span class="no">3</span>
-          <h3>사전통지 → 20일<span class="who">제재대상자 · 소속 기관의 장</span></h3>
-          <div class="body">
-            <span class="due-tag">통지를 받은 날부터 20일</span>
-            <p>이의가 있으면 20일 이내에 사유를 갖추어 재검토 요청 의견을 제출합니다(제33조 제3항). 처분 전에 사실관계를 바로잡을 수 있는 마지막 단계입니다.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="no">4</span>
-          <h3>재검토<span class="who">연구자권익보호위원회</span></h3>
-          <div class="body"><p>부처는 연구자권익보호위원회의 검토를 거쳐 의견을 받은 날부터 30일 이내에 처분의 종류와 수준을 결정합니다(제33조 제4항·제5항).</p></div>
-        </li>
-        <li class="step due">
-          <span class="no">5</span>
-          <h3>제재처분·공개 → 30일<span class="who">소관 중앙행정기관</span></h3>
-          <div class="body">
-            <span class="due-tag">통보를 받은 날부터 30일 이내 납부</span>
-            <p>처분이 통보되고 통합정보시스템에 공개됩니다. 제재부가금·환수금은 30일 이내에 납부해야 합니다(제33조 제6항·제7항, 시행령 제63조 제1항).</p>
-          </div>
-        </li>
-        <li class="step due">
-          <span class="no">6</span>
-          <h3>불복 → 90일<span class="who">행정심판위원회 · 행정법원</span></h3>
-          <div class="body">
-            <span class="due-tag">처분이 있음을 안 날부터 90일</span>
-            <p>90일 이내에 취소소송을 제기하고, 진행 중인 과제가 중단될 상황이면 집행정지를 함께 신청합니다(「행정소송법」 제20조·제23조).</p>
-          </div>
-        </li>
-      </ol>
     </section>
 
     <section class="section" id="faq" aria-labelledby="faq-h">
@@ -1868,7 +1719,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="#record">주요 수행 사례</a> <a href="cases.html">주요 수행 사례 전체</a> <a href="#career">경력</a> <a href="#advisory">법률고문 위촉</a> <a href="#committees">위원회·강의</a> <a href="#fields">다루는 사건</a> <a href="#rnd">국가연구개발 제재처분</a> <a href="#faq">자주 묻는 질문</a> <a href="#contact">상담 문의</a>
+        <a href="#record">주요 수행 사례</a> <a href="cases.html">주요 수행 사례 전체</a> <a href="#career">경력</a> <a href="#advisory">법률고문 위촉</a> <a href="#committees">위원회·강의</a> <a href="#fields">다루는 사건</a> <a href="#area-rnd">국가연구개발 제재처분</a> <a href="#faq">자주 묻는 질문</a> <a href="#contact">상담 문의</a>
       </nav>
       <div class="sns icons" id="sns-footer" aria-label="온라인 계정"></div>
       <p>광고책임변호사 부효준</p>
@@ -10867,7 +10718,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   (function () {
     var DATA_ID = 'cases-data';
     var CATS = { rnd: '국가연구개발', personnel: '인사·징계·소청', license: '인허가·면허·자격', penalty: '제재부가금·환수·부정당업자 제재', comp: '손실보상', admin: '그 밖의 행정처분', state: '국가배상', civil: '민사·연금·계약', criminal: '형사' };
-    var RECENT = 12;
+    var RECENT = 9;   // 홈 화면의 사례 수(2026. 10. 21.): 세 장씩 놓이는 넓은 화면은 9건, 두 장씩 놓이는 화면(1000px 이하)은 CSS가 아홉째 장을 감춰 8건
     var MAIN = ['rnd', 'penalty', 'criminal']; // 홈 화면이 먼저 보이는 세 분야 (Version 90)
     var WHO = '담당변호사 부효준'; // 모든 사례에 적는 담당변호사 (Version 111)
     function bySortDesc(a, b) { return (b.sort || '') < (a.sort || '') ? -1 : (b.sort || '') > (a.sort || '') ? 1 : 0; }
@@ -10966,7 +10817,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
     function renderList() {
       listEl.textContent = '';
       var shown = cases.filter(function (c) { return state.filter === 'all' || (state.filter === 'main' ? MAIN.indexOf(c.cat) >= 0 : c.cat === state.filter); });
-      // 최근 결정일 순으로 정렬하고, 홈 화면에는 최근 12건만 보입니다(전체는 cases.html, 최근 순).
+      // 최근 결정일 순으로 정렬하고, 홈 화면에는 최근 9건(두 장씩 놓이는 화면에서는 8건)만 보입니다(전체는 cases.html, 최근 순).
       shown = shown.map(function (c, i) { return [c, i]; })
         .sort(function (a, b) { return bySortDesc(a[0], b[0]) || a[1] - b[1]; })
         .map(function (t) { return t[0]; });
@@ -11039,7 +10890,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   // ---------- 홈에서 본 부분 집계 (Version 116) ----------
   (function () {
     if (!('IntersectionObserver' in window)) return;
-    var names = { record: '주요 수행 사례', career: '경력', fields: '다루는 사건', rnd: '국가연구개발 제재처분', faq: '자주 묻는 질문', contact: '상담 문의' };
+    var names = { record: '주요 수행 사례', career: '경력', fields: '다루는 사건', faq: '자주 묻는 질문', contact: '상담 문의' };   // 2026. 10. 21. '국가연구개발 제재처분' 절(rnd)은 없앰
     var seen = {};
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting && !seen[en.target.id]) { seen[en.target.id] = 1; track('section_view', { section: names[en.target.id] }); } });

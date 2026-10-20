@@ -9,7 +9,8 @@ llms.txt·llms-full.txt, 건수 문구를 다시 만든다. build_cases.py 보�
     python3 work/ssr_cases.py . --check  # 지금 파일이 데이터와 일치하는지 검사만
 
 규칙(페이지의 JS card() 와 같은 마크업):
-  - 홈(index.html): 주요 분야(rnd·penalty·criminal)의 최근 12건, sort 내림차순(같으면 데이터 순).
+  - 홈(index.html): 주요 분야(rnd·penalty·criminal)의 최근 9건, sort 내림차순(같으면 데이터 순).
+    (2026. 10. 21. 12건→9건: 세 장씩 놓이는 화면은 9건, 두 장씩 놓이는 화면은 페이지 CSS가 아홉째 장을 감춰 8건)
   - 전체(cases.html): 전체를 sort 내림차순(같으면 데이터 순)으로.
   - 제목·'자세히 →' 링크는 cases/<첫 이미지 이름>.html (build_cases.py의 page_href 와 같음).
   - 2026. 10. 21. 본인 지시: 카드에는 '판결문 N장' 수를 적지 않고, 요지는 두 줄로 접되 '더 보기' 단추 없이
@@ -33,7 +34,7 @@ CATS = {
     "criminal": "형사",
 }
 MAIN = ("rnd", "penalty", "criminal")
-RECENT = 12
+RECENT = 9
 WHO = "담당변호사 부효준"
 SITE = "https://lawyermrboo82.com"
 LINK_TEXT = "자세히 →"   # 상세 소개(det) 유무와 상관없이 하나(2026. 10. 21.)
