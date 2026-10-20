@@ -375,7 +375,9 @@ def detail_html(c, d):
                 body = "".join("<p>%s</p>" % esc(t) for t in str(x["text"]).split("\n") if t.strip())
                 items.append("<blockquote>%s%s</blockquote>" % (body, ('<cite>%s</cite>' % esc(x["from"])) if x.get("from") else ""))
             q = '<div class="quotes">%s</div>' % "".join(items)
-            q += '<p class="source-line">※ 판결 이유 가운데 이 사건의 판단 기준이 된 부분을 그대로 옮긴 것으로, 당사자 이름 등은 가렸습니다.</p>'
+            label = holding_label_of(c)
+            src = "결정 이유" if label.endswith("결정") else "판결 이유"   # 경찰·검찰·위원회 결정문은 '결정 이유'
+            q += '<p class="source-line">※ %s 가운데 이 사건의 판단 기준이 된 부분을 그대로 옮긴 것으로, 당사자 이름 등은 가렸습니다.</p>' % src
         parts.append('<div class="part"><h2>%s</h2>%s%s</div>' % (esc(d.get("holding_label") or holding_label_of(c)), paras(d.get("holding")), q))
     if d.get("meaning"):
         parts.append('<div class="part"><h2>이 사건이 보여 주는 것</h2>%s</div>' % paras(d["meaning"]))
