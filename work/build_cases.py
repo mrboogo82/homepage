@@ -341,6 +341,18 @@ def items_or_paras(lst):
     return paras(lst)
 
 
+def holding_label_of(c):
+    """판단 주체에 맞는 소제목: 법원 / 경찰 / 검찰 / 위원회."""
+    court = c.get("court") or ""
+    if "경찰" in court:
+        return "경찰의 결정"
+    if "검찰" in court:
+        return "검찰의 결정"
+    if "법원" not in court and ("위원회" in court or "심판" in court):
+        return "위원회의 결정"
+    return "법원의 판단"
+
+
 def detail_html(c, d):
     """cases-detail.json 의 상세 소개를 개별 페이지의 본문으로. 없으면 빈 문자열."""
     if not d:
@@ -364,7 +376,7 @@ def detail_html(c, d):
                 items.append("<blockquote>%s%s</blockquote>" % (body, ('<cite>%s</cite>' % esc(x["from"])) if x.get("from") else ""))
             q = '<div class="quotes">%s</div>' % "".join(items)
             q += '<p class="source-line">※ 판결 이유 가운데 이 사건의 판단 기준이 된 부분을 그대로 옮긴 것으로, 당사자 이름 등은 가렸습니다.</p>'
-        parts.append('<div class="part"><h2>법원의 판단</h2>%s%s</div>' % (paras(d.get("holding")), q))
+        parts.append('<div class="part"><h2>%s</h2>%s%s</div>' % (esc(d.get("holding_label") or holding_label_of(c)), paras(d.get("holding")), q))
     if d.get("meaning"):
         parts.append('<div class="part"><h2>이 사건이 보여 주는 것</h2>%s</div>' % paras(d["meaning"]))
     tail = []

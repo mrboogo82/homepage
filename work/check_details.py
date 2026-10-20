@@ -69,7 +69,7 @@ def check(path):
             if k != "quotes" and len(t) > 420 and k in ("overview", "holding", "meaning"):
                 problems.append((cid, "%s: 문단이 긺(%d자) — 나눌 것" % (k, len(t))))
         for k in d:
-            if k not in SECTIONS + ["claims_label", "argument_label", "instagram", "blog", "summary_new"]:
+            if k not in SECTIONS + ["claims_label", "argument_label", "holding_label", "instagram", "blog", "summary_new"]:
                 problems.append((cid, "알 수 없는 항목 %s" % k))
     return data, problems
 

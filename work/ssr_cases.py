@@ -223,7 +223,7 @@ def llms_full(cases, intro_from=None, details=None):
         if d.get("argument"):
             lines.append("- %s: " % (d.get("argument_label") or "부효준 변호사의 주장") + " / ".join(d["argument"]))
         if d.get("holding"):
-            lines.append("- 법원의 판단: " + " ".join(d["holding"]))
+            lines.append("- %s: " % (d.get("holding_label") or "법원의 판단") + " ".join(d["holding"]))
         for q in d.get("quotes") or []:
             if q.get("text"):
                 lines.append("- 판결 이유 가운데: \"%s\"%s" % (q["text"], (" (%s)" % q["from"]) if q.get("from") else ""))
