@@ -11,7 +11,9 @@ llms.txt·llms-full.txt, 건수 문구를 다시 만든다. build_cases.py 보�
 규칙(페이지의 JS card() 와 같은 마크업):
   - 홈(index.html): 주요 분야(rnd·penalty·criminal)의 최근 12건, sort 내림차순(같으면 데이터 순).
   - 전체(cases.html): 전체를 sort 내림차순(같으면 데이터 순)으로.
-  - 제목·'판결문과 사례 자세히' 링크는 cases/<첫 이미지 이름>.html (build_cases.py의 page_href 와 같음).
+  - 제목·'자세히 →' 링크는 cases/<첫 이미지 이름>.html (build_cases.py의 page_href 와 같음).
+  - 2026. 10. 21. 본인 지시: 카드에는 '판결문 N장' 수를 적지 않고, 요지는 두 줄로 접되 '더 보기' 단추 없이
+    '자세히 →' 링크 하나만 둔다(자세히 보려는 사람은 한 번만 누르면 개별 페이지로).
 """
 import html
 import json
@@ -34,8 +36,7 @@ MAIN = ("rnd", "penalty", "criminal")
 RECENT = 12
 WHO = "담당변호사 부효준"
 SITE = "https://lawyermrboo82.com"
-LINK_PLAIN = "판결문과 사례 자세히 →"
-LINK_DETAIL = "사건 내용·판결 이유 자세히 →"   # 상세 소개(det)가 있는 사례
+LINK_TEXT = "자세히 →"   # 상세 소개(det) 유무와 상관없이 하나(2026. 10. 21.)
 
 
 def esc(s):
@@ -120,9 +121,9 @@ def render_li(c):
     out = ['<li class="case" data-cat="%s" id="case-%s">' % (esc(c["cat"]), esc(c["id"]))]
     if ims:
         im = ims[0]
-        out.append('<button type="button" class="case-fig" aria-label="%s 판결문 %d장 크게 보기">' % (esc(c["title"]), n))
+        out.append('<button type="button" class="case-fig" aria-label="%s 판결문 크게 보기">' % esc(c["title"]))
         out.append('<img src="%s" alt="%s" loading="lazy" decoding="async">' % (esc(im.get("thumb") or im["src"]), esc(im.get("alt") or (c["title"] + " 판결문"))))
-        out.append('<span class="count">판결문 %d장</span></button>' % n)
+        out.append('</button>')
     else:
         out.append('<div class="case-fig none" aria-hidden="true"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"></path><path d="M19 3v6h6"></path><path d="M12 15h8M12 19h8M12 23h5"></path></svg><span>%s</span></div>' % esc(CATS.get(c["cat"], c["cat"])))
     out.append('<div class="case-body"><div class="case-meta"><span class="tag">%s</span>' % esc(CATS.get(c["cat"], c["cat"])))
@@ -135,9 +136,9 @@ def render_li(c):
     parts = [p for p in [c.get("court"), c.get("party")] if p]
     out.append('<p class="case-sub">%s<span class="who">%s</span></p>' % (esc(" · ".join(parts) + " · ") if parts else "", WHO))
     if c.get("summary"):
-        out.append('<p class="case-summary">%s</p>' % esc(c["summary"]))
-    out.append('<a class="case-link" href="%s">%s</a>' % (href, LINK_DETAIL if c.get("det") else LINK_PLAIN))
-    # 외부 '자세히 보기' 링크(c.link)는 종전과 같이 정적 목록에는 넣지 않는다(JS가 그릴 때만).
+        out.append('<p class="case-summary clamp">%s</p>' % esc(c["summary"]))
+    out.append('<a class="case-link" href="%s">%s</a>' % (href, LINK_TEXT))
+    # 외부 '자세히 보기' 링크(c.link)는 카드에 넣지 않는다(개별 페이지에만).
     out.append("</div></li>")
     return "".join(out)
 
@@ -211,7 +212,7 @@ def llms_full(cases, intro_from=None, details=None):
         parts = [p for p in [c.get("court"), c.get("party")] if p]
         if parts:
             lines.append("- " + " · ".join(parts))
-        lines.append("- %s · 판결문 %d장 공개" % (WHO, len(ims)) if ims else "- " + WHO)
+        lines.append("- %s · 판결문 공개" % WHO if ims else "- " + WHO)
         if c.get("summary"):
             lines.append("- 요지: " + c["summary"])
         d = details.get(c["id"]) or {}

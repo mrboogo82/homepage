@@ -242,7 +242,9 @@ EXTRA_CSS = """
 .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 0.2rem 0.5rem; margin: 0; padding: 0; }
 .crumbs li + li::before { content: "›"; margin-right: 0.5rem; color: var(--rule); }
 .crumbs a { color: inherit; }
-.case-page { display: grid; gap: 2.25rem; max-width: 56rem; padding-block: 1rem 2rem; }
+.case-page { display: grid; gap: 2.25rem; padding-block: 1rem 2rem; }
+/* 글은 종전처럼 56rem 폭의 왼쪽 단에, 판결문 그림(.case-docs)만 페이지 전체 폭을 써서 한가운데 (2026. 10. 21.) */
+.case-page > :not(.case-docs) { max-width: 56rem; }
 .case-head { display: grid; gap: 0.7rem; }
 .case-head .case-meta { font-size: var(--step--1); }
 .case-head .badge { margin-left: 0; }
@@ -251,12 +253,13 @@ EXTRA_CSS = """
 .case-head .case-sub .who { display: inline; margin-top: 0; }
 .case-text p { margin: 0; font-size: var(--step-0); line-height: 1.85; }
 .case-text .case-link { display: inline-block; margin-top: 0.75rem; }
-.case-docs { display: grid; gap: 1.25rem; }
+/* 판결문 그림: 제목 바로 아래에, 본문 폭(56rem)보다 조금 작게(42rem) 페이지 한가운데 (2026. 10. 21. 본인 지시) */
+.case-docs { display: grid; gap: 1.25rem; justify-items: center; width: 100%; }
 .case-docs h2, .related h2, .case-cta h2 { font-size: var(--step-1); }
-.case-docs figure { margin: 0; display: grid; gap: 0.45rem; }
-.case-docs figure a { display: block; border: 1px solid var(--rule); background: var(--wash); }
+.case-docs figure { margin: 0; display: grid; gap: 0.45rem; width: min(100%, 42rem); justify-items: center; }
+.case-docs figure a { display: block; width: 100%; border: 1px solid var(--rule); background: var(--wash); }
 .case-docs figure img { display: block; width: 100%; height: auto; }
-.case-docs figcaption { font-size: var(--step--2); color: var(--ink-soft); }
+.case-docs figcaption { font-size: var(--step--2); color: var(--ink-soft); text-align: center; }
 .related { display: grid; gap: 0.9rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
 .related ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
 .related li { display: grid; gap: 0.15rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
@@ -567,16 +570,16 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
         <h1 class="case-h1">{esc(title)}</h1>
         <p class="case-sub">{esc(' · '.join(parts) + (' · ' if parts else ''))}<span class="who">{WHO}</span></p>
       </header>
+      <section class="case-docs" aria-labelledby="docs-h">
+        <h2 id="docs-h" class="visually-hidden">판결문</h2>
+        {''.join(figs)}
+      </section>
       <section class="case-text" aria-labelledby="gist-h">
         <h2 id="gist-h" class="visually-hidden">사건의 요지</h2>
         <p>{esc(c.get('summary') or '')}</p>
         {ext_link}{topic_line}
       </section>
-      {detail_html(c, d)}<section class="case-docs" aria-labelledby="docs-h">
-        <h2 id="docs-h">판결문 {len(ims)}장</h2>
-        {''.join(figs)}
-      </section>
-      <section class="related" aria-labelledby="rel-h">
+      {detail_html(c, d)}<section class="related" aria-labelledby="rel-h">
         <h2 id="rel-h">같은 분야의 다른 사례</h2>
         <ul>
           {''.join(rel_items)}
@@ -761,7 +764,7 @@ def link_static_cards(doc):
         href = "cases/%s.html" % im.group(1)
         li = re.sub(r'<h3 class="case-title">(.*?)</h3>',
                     lambda t: '<h3 class="case-title"><a href="%s">%s</a></h3>' % (href, t.group(1)), li, count=1, flags=re.S)
-        li = li.replace('</div></li>', '<a class="case-link" href="%s">판결문과 사례 자세히 →</a></div></li>' % href, 1)
+        li = li.replace('</div></li>', '<a class="case-link" href="%s">자세히 →</a></div></li>' % href, 1)
         return li
     return LI_RE.sub(fix, doc)
 
@@ -772,13 +775,18 @@ JS_PAGEHREF = (
 )
 
 
-LINK_JS_OLD = "el('a', 'case-link', '판결문과 사례 자세히 →')"
-LINK_JS_NEW = "el('a', 'case-link', c.det ? '사건 내용·판결 이유 자세히 →' : '판결문과 사례 자세히 →')"
+LINK_JS_OLDS = (
+    "el('a', 'case-link', c.det ? '사건 내용·판결 이유 자세히 →' : '판결문과 사례 자세히 →')",
+    "el('a', 'case-link', '판결문과 사례 자세히 →')",
+)
+LINK_JS_NEW = "el('a', 'case-link', '자세히 →')"   # 2026. 10. 21.: 상세 소개 유무와 상관없이 '자세히 →' 하나
 
 
 def patch_link_text(doc):
-    """카드·목록의 '자세히' 링크 글: 상세 소개가 있는 사례(det)는 '사건 내용·판결 이유 자세히'."""
-    return doc.replace(LINK_JS_OLD, LINK_JS_NEW)
+    """카드·목록의 '자세히' 링크 글을 '자세히 →' 하나로(옛 두 가지 글을 모두 바꾼다)."""
+    for old in LINK_JS_OLDS:
+        doc = doc.replace(old, LINK_JS_NEW)
+    return doc
 
 
 HAY_OLD = "var hay = [c.title, c.summary, c.court, c.party, c.result, c.date, CATS[c.cat]].join(' ').toLowerCase();"
@@ -804,14 +812,14 @@ def patch_js(doc):
     doc = doc.replace(
         "if (c.summary) { var p = el('p', 'case-summary', c.summary); body.appendChild(p); clampSummary(p, body); }",
         "if (c.summary) { var p = el('p', 'case-summary', c.summary); body.appendChild(p); clampSummary(p, body); }\n"
-        "      var pa = el('a', 'case-link', '판결문과 사례 자세히 →'); pa.href = pageHref(c); body.appendChild(pa);",
+        "      var pa = el('a', 'case-link', '자세히 →'); pa.href = pageHref(c); body.appendChild(pa);",
         1,
     )
     # 목록(row) 보기: 펼친 본문에도 링크
     doc = doc.replace(
         "if (c.summary) txt.appendChild(el('p', 'case-summary', c.summary));",
         "if (c.summary) txt.appendChild(el('p', 'case-summary', c.summary));\n"
-        "        var pa2 = el('a', 'case-link', '판결문과 사례 자세히 →'); pa2.href = pageHref(c); txt.appendChild(pa2);",
+        "        var pa2 = el('a', 'case-link', '자세히 →'); pa2.href = pageHref(c); txt.appendChild(pa2);",
         1,
     )
     # pageHref 정의를 card()와 같은 범위(scope)에: card() 바로 앞에 있는 el() 선언 줄 앞에 넣는다
