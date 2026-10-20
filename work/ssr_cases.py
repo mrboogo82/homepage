@@ -22,17 +22,17 @@ import os
 import re
 import sys
 
-CATS = {
-    "rnd": "국가연구개발",
-    "personnel": "인사·징계·소청",
-    "license": "인허가·면허·자격",
+CATS = {   # 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤(형사는 출연금·보조금 외 사건도 있어 '형사', 민사는 카드가 없어 맨 뒤)
+    "rnd": "국가연구개발 제재처분",
     "penalty": "제재부가금·환수",
+    "personnel": "공무원·교원 인사처분",
+    "license": "인허가·면허·자격 처분",
     "comp": "손실보상",
     "admin": "그 밖의 행정처분",
+    "criminal": "형사",
     "contract": "국가계약법·지방계약법",
     "state": "국가배상",
     "civil": "민사·연금·계약",
-    "criminal": "형사",
 }
 MAIN = ("rnd", "penalty", "criminal")
 RECENT = 9
