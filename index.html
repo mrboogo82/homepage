@@ -107,7 +107,7 @@
    The case board (주요 수행 사례) renders from the JSON block #cases-data (the ten most recent on the home page; cases.html lists all). */
 :root {
   --paper: #fbfbf9;
-  --ink: #1a1d21;
+  --ink: #2d3239; /* 먹색: 첫 화면 바탕과 같은 연한 먹색(2026. 10. 20., 종전 #1a1d21) */
   --ink-soft: #5c6167;
   --rule: #dcdddb;
   --wash: #f0f1ee;
@@ -137,31 +137,31 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #141517;
+    --paper: #1b1e22;
     --ink: #e9e8e4;
     --ink-soft: #a0a3a8;
-    --rule: #2d2f33;
-    --wash: #1c1e21;
+    --rule: #363940;
+    --wash: #24272c;
     --seal: #ec4b63;
     --seal-blend: normal;
     --seal-filter: brightness(1.5) saturate(0.85); /* 어두운 바탕에서 인장이 묻히지 않도록 */
-    --hero-bg: #1f242a;
-    --hero-line: #383e46;
+    --hero-bg: #272c33;
+    --hero-line: #434a53;
     --tile-edge: #44464a;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #141517;
+  --paper: #1b1e22;
   --ink: #e9e8e4;
   --ink-soft: #a0a3a8;
-  --rule: #2d2f33;
-  --wash: #1c1e21;
+  --rule: #363940;
+  --wash: #24272c;
   --seal: #ec4b63;
   --seal-blend: normal;
   --seal-filter: brightness(1.5) saturate(0.85); /* 어두운 바탕에서 인장이 묻히지 않도록 */
-  --hero-bg: #1f242a;
-  --hero-line: #383e46;
+  --hero-bg: #272c33;
+  --hero-line: #434a53;
   --tile-edge: #44464a;
   color-scheme: dark;
 }
