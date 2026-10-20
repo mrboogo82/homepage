@@ -14,6 +14,7 @@
                    이때 함께 보이는 청구취지·판결 이유에서는 사람 이름·회사 이름·주소·지번·계좌·차량번호·과제 이름·상대방 변호사 이름을 진회색으로,
                    전자소송 머리글·바코드 띠·열람용 워터마크·대법관 서명란은 흰색으로 지웠습니다(국가·행정청·공공기관 이름과 법령·금액·날짜는 그대로).
 - certs/           위촉장·표창장 이미지
+- logos/           법률고문 위촉 기관 22곳의 공식 로고(2026. 10. 20. 추가; 로고 벽과 위촉 타일에 씀). 출처·가공 기록은 work/logos-src/README.md
 - og-image.jpg, photo-head.jpg, photo-hero.webp, seal.png
 - robots.txt, sitemap.xml, 404.html, CNAME(lawyermrboo82.com)
 
@@ -26,6 +27,8 @@
    https://lawyermrboo82.com/sitemap.xml 을 제출합니다.
 
 고칠 때
+- 법률고문 위촉 기관이 바뀌면 위촉 타일(<ul class="advisory">)과 함께 로고 벽(<div class="logo-wall">)의 <li>도 같은 순서로 고칩니다(2026. 10. 20. 추가).
+  새 로고는 logos/ 폴더에(SVG 권장, PNG는 투명 배경), 위촉장이 있으면 data-certs에 certs/ 파일 이름을 적습니다. 자세한 것은 work/logos-src/README.md.
 - 사례를 더하거나 고칠 때는 index.html의 <script id="cases-data"> JSON과 cases.html의 같은 블록,
   두 페이지의 사례 목록(<ol id="case-list">)과 건수 문구를 함께 바꿉니다. 새 판결문은 cases/ 폴더에
   1240px 폭 JPG로 넣습니다. Claude에게 판결문 PDF를 보내면 같은 기준으로 가려서 만들어 줍니다.
