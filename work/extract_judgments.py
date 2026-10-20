@@ -131,10 +131,8 @@ def main():
             print("읽기 실패:", f, e)
             continue
         head = text[:3000]
-        no = CASENO.search(head)
-        if not no:
-            # 파일 이름에서라도 찾는다(두 자리 연도도 받는다)
-            no = fname_no
+        # 파일 이름의 사건번호를 우선한다(OCR 본문은 번호가 깨져 다른 번호가 먼저 잡히기도 함)
+        no = fname_no or CASENO.search(head)
         if not no:
             print("사건번호를 찾지 못함:", f)
             continue

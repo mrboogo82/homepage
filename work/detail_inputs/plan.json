@@ -12,18 +12,6 @@
   "title": "지방공무원 승진임용제외처분 무효확인 등 소송 (항소심)"
  },
  {
-  "id": "n-pen-public-fund",
-  "cat": "penalty",
-  "kind": "local",
-  "local": [
-   "수원지방법원-2025구합61864.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "공공재정환수법상 부정이익 환수·제재부가금 부과처분 취소소송"
- },
- {
   "id": "n-adm-welfare",
   "cat": "admin",
   "kind": "lbox",
@@ -38,21 +26,6 @@
   "title": "사회복지법인 정관변경인가신청 반려처분 · 외부추천이사 선임 결과보고 명령 취소소송 (1·2·3심, 집행정지)"
  },
  {
-  "id": "n-pen-giant-suit",
-  "cat": "penalty",
-  "kind": "local",
-  "local": [
-   "대법원-2026두31417.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2024구합89856",
-   "https://lbox.kr/case/서울고등법원/2025누7538"
-  ],
-  "title": "제재부가금 부과·보조금 지급제한 처분 취소청구 행정심판 및 취소소송 (1·2·3심)"
- },
- {
   "id": "n-civ-attach",
   "cat": "civil",
   "kind": "none",
@@ -61,30 +34,6 @@
   "insta_q": [],
   "lbox": [],
   "title": "부동산 매매잔대금 채권 보전을 위한 부동산가압류 신청"
- },
- {
-  "id": "n-rnd-recovery",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2025구합200493.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "연구개발비 회수금 미납을 이유로 한 참여제한처분 취소소송"
- },
- {
-  "id": "n-rnd-ed",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2024구합206998.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "제재부가금(7억 1,100만 원)·연구개발비 환수처분 취소소송"
  },
  {
   "id": "n-pers-indirect",
@@ -163,32 +112,6 @@
   "title": "국가연구개발사업 관련 사기 혐의 사건 변호 (경찰 불송치)"
  },
  {
-  "id": "c-pen-1",
-  "cat": "penalty",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2026아10960.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "보조금법 위반 제재부가금 부과처분 집행정지 사건"
- },
- {
-  "id": "c-lic-2b",
-  "cat": "penalty",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2025구합54176.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2025구합54176"
-  ],
-  "title": "보조금법상 제재부가금 부과처분(감액처분) 취소소송"
- },
- {
   "id": "c-lic-2a",
   "cat": "license",
   "kind": "insta",
@@ -241,22 +164,6 @@
   "title": "사무실 임대차 제소전화해"
  },
  {
-  "id": "n-rnd-3llabs",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2025구합52110.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DaANueLE-g9"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2025구합52110"
-  ],
-  "title": "기술개발사업 사업비 환수채권 부존재확인 소송"
- },
- {
   "id": "n-state-art",
   "cat": "state",
   "kind": "lbox",
@@ -269,23 +176,6 @@
   "title": "미술품 전시를 둘러싼 손해배상 청구소송"
  },
  {
-  "id": "n-rnd-snl",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2025구합50923.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "Dce57s9E1ts",
-   "Db-RHrPk7Zl"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2025구합50923"
-  ],
-  "title": "참여제한(2년)·제재부가금 부과처분 취소소송"
- },
- {
   "id": "n-adm-school",
   "cat": "admin",
   "kind": "none",
@@ -294,22 +184,6 @@
   "insta_q": [],
   "lbox": [],
   "title": "학교폭력대책심의위원회 조치결정 (피해학생 측)"
- },
- {
-  "id": "n-rnd-deepai",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2024누62785.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DZuJA6Yk-dV"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울고등법원/2024누62785"
-  ],
-  "title": "기술개발사업 사업비 정산금 반환채무 부존재확인 소송 (항소심)"
  },
  {
   "id": "c-lic-3b",
@@ -326,8 +200,10 @@
  {
   "id": "n-civ-cartel",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울동부지방법원-2021가합110279.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -335,18 +211,6 @@
    "https://lbox.kr/case/서울고등법원/2024나2056697"
   ],
   "title": "입찰담합 손해배상 청구소송 (1·2심)"
- },
- {
-  "id": "n-rnd-dongil",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2025아12878.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "참여제한(1년)·제재부가금(합계 11억 원) 부과처분 집행정지"
  },
  {
   "id": "n-state-grave",
@@ -363,8 +227,10 @@
  {
   "id": "n-civ-buyback-1",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "의정부지방법원고양지원-2023가단64535.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -372,23 +238,6 @@
    "https://lbox.kr/case/의정부지방법원/2024나213431"
   ],
   "title": "환매권 통지의무 위반을 이유로 한 손해배상 청구소송 (1·2심)"
- },
- {
-  "id": "n-rnd-skybio",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2024구합79941.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "Dce57s9E1ts",
-   "Db-RHrPk7Zl"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2024구합79941"
-  ],
-  "title": "참여제한(2년)·제재부가금 부과처분 취소소송"
  },
  {
   "id": "n-civ-chem",
@@ -415,26 +264,12 @@
   "title": "승진임용제외처분 무효확인·취소소송"
  },
  {
-  "id": "n-rnd-dongnam",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전고등법원-2023누13188.txt",
-   "대전지방법원-2022구합100041.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2022구합100041",
-   "https://lbox.kr/case/대전고등법원/2023누13188"
-  ],
-  "title": "참여제한(5년)·출연금 환수처분 취소소송 (1·2심)"
- },
- {
   "id": "n-adm-river",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2023구합86935.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -444,72 +279,13 @@
   "title": "하천구역 점용물 철거명령·대집행 계고처분 무효확인·취소소송 (1·2심, 집행정지)"
  },
  {
-  "id": "n-rnd-wjs",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2024구합58425.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2024구합58425"
-  ],
-  "title": "참여제한·제재부가금·연구비 환수처분 취소소송"
- },
- {
-  "id": "n-rnd-infoworks",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2024누54661.txt",
-   "서울행정법원-2023구합84519.txt",
-   "서울행정법원-2023아13307.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2023구합84519",
-   "https://lbox.kr/case/서울고등법원/2024누54661"
-  ],
-  "title": "중소기업기술개발 지원사업 참여제한·환수처분 취소소송 (항소심에서 1심 취소)"
- },
- {
-  "id": "n-rnd-lake",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2024구합200112.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2024구합200112"
-  ],
-  "title": "참여제한(3년)·출연금 환수처분 취소소송"
- },
- {
-  "id": "c-rnd-1",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2024누45865.txt",
-   "서울행정법원-2023구합60308.txt",
-   "서울행정법원-2023아10972.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2023구합60308",
-   "https://lbox.kr/case/서울고등법원/2024누45865"
-  ],
-  "title": "참여제한 및 정부출연금 환수처분 취소소송"
- },
- {
   "id": "n-lic-academy",
   "cat": "license",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "춘천지방법원-2024구합31336.txt",
+   "춘천지방법원-2024아3085.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -521,8 +297,10 @@
  {
   "id": "n-civ-rental",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울동부지방법원-2024가단160339.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -556,8 +334,10 @@
  {
   "id": "n-civ-buyback-2",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "의정부지방법원고양지원-2023가단57551.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -591,8 +371,10 @@
  {
   "id": "n-crim-assault",
   "cat": "criminal",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2024고단2382.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -603,8 +385,10 @@
  {
   "id": "c-pers-3",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2023구합191.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -615,8 +399,10 @@
  {
   "id": "n-adm-officer",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2024아12477.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -625,30 +411,12 @@
   "title": "사회복지법인 임원 직무집행정지 처분 집행정지"
  },
  {
-  "id": "n-rnd-bk",
-  "cat": "penalty",
-  "kind": "local",
-  "local": [
-   "대전고등법원-2024누10728.txt",
-   "대전지방법원-2022구합106087.txt",
-   "대전지방법원-2022카합50288.txt",
-   "서울고등법원-2022루1190.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2022구합106087",
-   "https://lbox.kr/case/대전고등법원/2024누10728",
-   "https://lbox.kr/case/서울행정법원/2022아10600",
-   "https://lbox.kr/case/대전지방법원/2022카합50288"
-  ],
-  "title": "스마트공장 지원사업 참여제한 통보·환수조치 효력 부존재확인 소송 (1·2심, 집행정지·가처분)"
- },
- {
   "id": "c-lic-1",
   "cat": "license",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2023구합74260.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -671,8 +439,10 @@
  {
   "id": "n-civ-sr",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "광주지방법원-2023가단563980.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -681,43 +451,18 @@
   "title": "직원 숙소 임차보증금 반환 청구소송"
  },
  {
-  "id": "n-pen-baram",
-  "cat": "penalty",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2024아11366.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "제재부가금 부과·보조금 지급제한 처분 집행정지"
- },
- {
   "id": "n-lic-market",
   "cat": "license",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2023구합76419.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
    "https://lbox.kr/case/서울행정법원/2023구합76419"
   ],
   "title": "농수산물도매시장 도매시장법인 업무정지(3개월) 처분 취소소송"
- },
- {
-  "id": "n-rnd-cleanbio",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2023구합60070.txt",
-   "서울행정법원-2023아10894.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2023구합60070"
-  ],
-  "title": "출연금 환수·참여제한(3년) 처분 취소소송 및 집행정지"
  },
  {
   "id": "n-state-road",
@@ -734,8 +479,10 @@
  {
   "id": "c-lic-3a",
   "cat": "license",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2022구합80589.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -744,24 +491,12 @@
   "title": "ICT 규제샌드박스 실증특례 지정처분 취소소송 (일반의약품 화상 판매기)"
  },
  {
-  "id": "n-rnd-lucent",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "인천지방법원-2022가단271271.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/인천지방법원/2022가단271271"
-  ],
-  "title": "기술개발 과제 평가를 둘러싼 손해배상 청구소송"
- },
- {
   "id": "n-adm-grade",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "인천지방법원-2023구합53113.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -787,24 +522,13 @@
   "title": "사립유치원 감사결과 처분요구(중징계 요구·교비 보전요구) 취소소송 (1·2·3심)"
  },
  {
-  "id": "n-rnd-groo",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2022구합100188.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2022구합100188"
-  ],
-  "title": "참여제한(5년)·환수금 처분 취소소송"
- },
- {
   "id": "n-civ-office-4",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대전지방법원-2021가소142712.txt",
+   "대전지방법원-2022나112463.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -812,24 +536,6 @@
    "https://lbox.kr/case/대전지방법원/2022나112463"
   ],
   "title": "공유오피스 서비스이용계약 사용료·위약벌 청구소송 (1·2심)"
- },
- {
-  "id": "c-pen-2",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대법원-2023두37551.txt",
-   "서울고등법원-2022누47621.txt",
-   "서울행정법원-2022아10595.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2021구합85389",
-   "https://lbox.kr/case/서울고등법원/2022누47621",
-   "https://lbox.kr/case/대법원/2023두37551"
-  ],
-  "title": "환수결정처분 취소소송"
  },
  {
   "id": "n-rnd-osteon",
@@ -848,8 +554,10 @@
  {
   "id": "c-pers-4",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "인천지방법원-2022구합54805.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -862,7 +570,8 @@
   "cat": "rnd",
   "kind": "local",
   "local": [
-   "서울고등법원-2022나2020311.txt"
+   "서울고등법원-2022나2020311.txt",
+   "서울중앙지방법원-2021가합568394.txt"
   ],
   "insta": [],
   "insta_q": [],
@@ -875,35 +584,22 @@
  {
   "id": "n-civ-office-3",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대전지방법원-2021가소142972.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
   "title": "공유오피스 서비스이용계약 사용료·위약벌 청구소송"
  },
  {
-  "id": "n-pen-bid",
-  "cat": "penalty",
-  "kind": "insta",
-  "local": [],
-  "insta": [
-   "Cbj9hFShoiY",
-   "CY1O8MthoVG",
-   "CYqPvsBBClP"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2018구합87606",
-   "https://lbox.kr/case/서울고등법원/2021누43417"
-  ],
-  "title": "입찰참가자격제한처분 취소소송 (항소심) 및 집행정지"
- },
- {
   "id": "n-civ-office-2",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2021가소1572256.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -986,8 +682,10 @@
  {
   "id": "n-civ-office-1",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2021가소1501919.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -1683,8 +1381,12 @@
  {
   "id": "d-2017gahap5744",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2017다285208.txt",
+   "서울고등법원-2017나2034972.txt",
+   "수원지방법원안산지원-2017가합5744.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1735,8 +1437,10 @@
  {
   "id": "c-pers-6b",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2017구합51501.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DXv1Xl2k33k",
@@ -1842,8 +1546,11 @@
  {
   "id": "c-pers-6a",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2018누30466.txt",
+   "서울행정법원-2017구합51181.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DXv1Xl2k33k",
@@ -1858,8 +1565,11 @@
  {
   "id": "d-2016guhap11976",
   "cat": "admin",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대전고등법원-2017누3428.txt",
+   "청주지방법원-2016구합11976.txt"
+  ],
   "insta": [
    "DaM2cPrk-hM"
   ],
@@ -1947,8 +1657,10 @@
  {
   "id": "d-2016guhap2343",
   "cat": "license",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2017누72623.txt"
+  ],
   "insta": [
    "DXq11s-k-3U"
   ],
@@ -1962,8 +1674,10 @@
  {
   "id": "d-2017guhap72",
   "cat": "license",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "의정부지방법원-2017구합72.txt"
+  ],
   "insta": [
    "DXEE4QNE-oi",
    "CTPdlsXBtJ3"
@@ -1991,8 +1705,10 @@
  {
   "id": "d-2016gahap507968",
   "cat": "comp",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2016가합507968.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -2015,8 +1731,10 @@
  {
   "id": "d-2017na2005615",
   "cat": "civil",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2017나2005615.txt"
+  ],
   "insta": [
    "Daen_XaE7gP"
   ],
@@ -2075,8 +1793,11 @@
  {
   "id": "n-lic-driver",
   "cat": "license",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2016누50176.txt",
+   "서울행정법원-2016구합53753.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -2101,8 +1822,10 @@
  {
   "id": "d-2016gahap441",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "부산지방법원-2016가합441.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -2139,8 +1862,10 @@
  {
   "id": "d-2016guhap58192",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2016구합58192.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -2175,8 +1900,10 @@
  {
   "id": "d-2013guhap15171",
   "cat": "comp",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "수원지방법원-2013구합15171.txt"
+  ],
   "insta": [
    "DcSyTfgExqi"
   ],
@@ -2216,8 +1943,12 @@
  {
   "id": "d-2015guhap65798",
   "cat": "license",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2016두49327.txt",
+   "서울고등법원-2016누32765.txt",
+   "수원지방법원-2015구합65798.txt"
+  ],
   "insta": [
    "DejH0zkk8B0"
   ],
@@ -2244,8 +1975,12 @@
  {
   "id": "d-2015guhap5399",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2016두42142.txt",
+   "서울고등법원-2015누59510.txt",
+   "서울행정법원-2015구합5399.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -2271,8 +2006,10 @@
  {
   "id": "d-2014guhap52160",
   "cat": "license",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "수원지방법원-2014구합52160.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DUpnP2eE1co",
@@ -2286,8 +2023,11 @@
  {
   "id": "d-2015nu48183",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2015두58546.txt",
+   "서울고등법원-2015누48183.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -2299,8 +2039,10 @@
  {
   "id": "c-pers-7b",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2013구합22475.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DawuPrAk5FU",
@@ -2514,7 +2256,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "물품대금반환 청구 소액사건"
+  "title": "물품대금반환 청구소송"
  },
  {
   "id": "d-2013gojeong10",
@@ -2564,7 +2306,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "약정금 청구 소액사건"
+  "title": "약정금 청구소송"
  },
  {
   "id": "d-2012gadan4202",
@@ -2644,7 +2386,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "임대차보증금반환 청구 소액사건"
+  "title": "임대차보증금반환 청구소송"
  },
  {
   "id": "d-2012gaso8932",
@@ -2694,7 +2436,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "부당이득금 반환 청구 소액사건"
+  "title": "부당이득금 반환 청구소송"
  },
  {
   "id": "d-2012gaso4367",
@@ -2714,7 +2456,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "대여금 청구 소액사건"
+  "title": "대여금 청구소송"
  },
  {
   "id": "d-2012gaso6233",
@@ -2724,7 +2466,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "대여금 청구 소액사건"
+  "title": "대여금 청구소송"
  },
  {
   "id": "d-2012gaso2989",
@@ -2734,7 +2476,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "부당이득금반환 청구 소액사건"
+  "title": "부당이득금반환 청구소송"
  },
  {
   "id": "d-2012gadan31037",
@@ -2824,7 +2566,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "대여금 청구 소액사건"
+  "title": "대여금 청구소송"
  },
  {
   "id": "d-2012gaso4046",
@@ -2834,7 +2576,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "대여금 청구 소액사건"
+  "title": "대여금 청구소송"
  },
  {
   "id": "d-2012gaso563",
@@ -2864,7 +2606,7 @@
   "insta": [],
   "insta_q": [],
   "lbox": [],
-  "title": "해약환급금반환 청구 소액사건"
+  "title": "해약환급금반환 청구소송"
  },
  {
   "id": "l-2018guhap106080",
