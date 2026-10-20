@@ -333,17 +333,27 @@ def paras(lst):
     return "".join("<p>%s</p>" % esc(x) for x in (lst or []) if x)
 
 
+def items_or_paras(lst):
+    """항목이 둘 이상이면 번호 목록(블로그 글의 '1. 2. 3.' 꼴), 하나면 문단."""
+    lst = [x for x in (lst or []) if x]
+    if len(lst) >= 2:
+        return "<ol>%s</ol>" % "".join("<li>%s</li>" % esc(x) for x in lst)
+    return paras(lst)
+
+
 def detail_html(c, d):
     """cases-detail.json 의 상세 소개를 개별 페이지의 본문으로. 없으면 빈 문자열."""
     if not d:
         return ""
     parts = []
     if d.get("overview"):
-        parts.append('<div class="part"><h2>사건의 개요</h2>%s</div>' % paras(d["overview"]))
+        parts.append('<div class="part"><h2>사건의 주요 내용</h2>%s</div>' % paras(d["overview"]))
     if d.get("issues"):
         parts.append('<div class="part"><h2>쟁점</h2><ol>%s</ol></div>' % "".join("<li>%s</li>" % esc(x) for x in d["issues"] if x))
+    if d.get("claims"):
+        parts.append('<div class="part"><h2>%s</h2>%s</div>' % (esc(d.get("claims_label") or "상대방의 주장"), items_or_paras(d["claims"])))
     if d.get("argument"):
-        parts.append('<div class="part"><h2>변호인의 주장</h2>%s</div>' % paras(d["argument"]))
+        parts.append('<div class="part"><h2>%s</h2>%s</div>' % (esc(d.get("argument_label") or "부효준 변호사의 주장"), items_or_paras(d["argument"])))
     if d.get("holding") or d.get("quotes"):
         q = ""
         quotes = [x for x in (d.get("quotes") or []) if x and x.get("text")]
@@ -363,14 +373,45 @@ def detail_html(c, d):
     if d.get("keywords"):
         tail.append('<p class="kw-line"><span class="label">관련 단어</span>%s</p>' % "".join(
             '<a href="../cases.html#q=%s">%s</a>' % (esc(k), esc(k)) for k in d["keywords"] if k))
+    links = []
+    if d.get("blog"):
+        links.append('<a href="%s" rel="noopener" target="_blank">네이버 블로그</a>' % esc(d["blog"]))
     if d.get("instagram"):
-        tail.append('<p class="source-line">이 사건의 소개 글은 <a href="%s" rel="noopener" target="_blank">인스타그램(@lawyer.boo)</a>에도 있습니다.</p>' % esc(d["instagram"]))
+        links.append('<a href="%s" rel="noopener" target="_blank">인스타그램(@lawyer.boo)</a>' % esc(d["instagram"]))
+    if links:
+        tail.append('<p class="source-line">이 사건의 소개 글은 %s에도 있습니다.</p>' % "·".join(links))
     if tail:
         parts.append('<div class="part">%s</div>' % "".join(tail))
     return '<section class="case-detail" aria-label="사례 상세 소개">%s</section>\n      ' % "".join(parts)
 
 
-def build_case_page(c, by_cat, cat_counts, details=None):
+def dates_of(path):
+    """이미 만들어진 페이지가 있으면 그 datePublished·dateModified를 읽는다(게시일이 빌드 때마다 바뀌지 않게)."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            head = f.read(20000)
+        p = re.search(r'"datePublished":\s*"(\d{4}-\d{2}-\d{2})"', head)
+        m = re.search(r'"dateModified":\s*"(\d{4}-\d{2}-\d{2})"', head)
+        return (p.group(1) if p else TODAY), (m.group(1) if m else TODAY)
+    except OSError:
+        return TODAY, TODAY
+
+
+def build_case_page(c, by_cat, cat_counts, details=None, site="."):
+    """내용이 바뀐 페이지만 dateModified를 오늘로 한다."""
+    path = os.path.join(site, page_href(c))
+    published, modified = dates_of(path)
+    html_old = render_case_page(c, by_cat, cat_counts, details, published, modified)
+    try:
+        with open(path, encoding="utf-8") as f:
+            if f.read() == html_old:
+                return html_old
+    except OSError:
+        pass
+    return render_case_page(c, by_cat, cat_counts, details, published, TODAY)
+
+
+def render_case_page(c, by_cat, cat_counts, details, published, modified):
     d = (details or {}).get(c["id"]) or {}
     cat = CATS.get(c["cat"], c["cat"])
     url = page_url(c)
@@ -392,10 +433,10 @@ def build_case_page(c, by_cat, cat_counts, details=None):
                 "image": ["%s/cases/%s" % (SITE, im["src"].rsplit("/", 1)[-1]) for im in ims] or [SITE + "/og-image.jpg"],
                 "articleSection": cat,
                 "keywords": ", ".join(d.get("keywords") or []) if d.get("keywords") else None,
-                "articleBody": " ".join([c.get("summary") or ""] + list(d.get("overview") or []) + list(d.get("holding") or []) + list(d.get("meaning") or [])).strip() or None,
+                "articleBody": " ".join([c.get("summary") or ""] + list(d.get("overview") or []) + list(d.get("claims") or []) + list(d.get("argument") or []) + list(d.get("holding") or []) + list(d.get("meaning") or [])).strip() or None,
                 "inLanguage": "ko",
-                "datePublished": TODAY,
-                "dateModified": TODAY,
+                "datePublished": published,
+                "dateModified": modified,
                 "author": {"@type": "Person", "@id": SITE + "/#person", "name": "부효준", "jobTitle": "변호사", "url": SITE + "/"},
                 "publisher": {"@type": "Person", "@id": SITE + "/#person", "name": "부효준"},
                 "isPartOf": {"@type": "WebSite", "name": "변호사 부효준", "url": SITE + "/"},
@@ -717,6 +758,15 @@ JS_PAGEHREF = (
 )
 
 
+LINK_JS_OLD = "el('a', 'case-link', '판결문과 사례 자세히 →')"
+LINK_JS_NEW = "el('a', 'case-link', c.det ? '사건 내용·판결 이유 자세히 →' : '판결문과 사례 자세히 →')"
+
+
+def patch_link_text(doc):
+    """카드·목록의 '자세히' 링크 글: 상세 소개가 있는 사례(det)는 '사건 내용·판결 이유 자세히'."""
+    return doc.replace(LINK_JS_OLD, LINK_JS_NEW)
+
+
 HAY_OLD = "var hay = [c.title, c.summary, c.court, c.party, c.result, c.date, CATS[c.cat]].join(' ').toLowerCase();"
 HAY_NEW = "var hay = [c.title, c.summary, c.court, c.party, c.result, c.date, CATS[c.cat], (c.kw || []).join(' ')].join(' ').toLowerCase();"
 
@@ -822,6 +872,7 @@ def patch_index(doc, links):
         doc = doc[: m.start(1)] + json.dumps(ordered, ensure_ascii=False, indent=1) + doc[m.end(1):]
     doc = link_static_cards(doc)
     doc = patch_js(doc)
+    doc = patch_link_text(doc)
     return doc
 
 
@@ -838,6 +889,7 @@ def patch_cases(doc, n_cases=None):
         doc = re.sub(r"주요 수행 사례 \d+건 — ", "주요 수행 사례 %d건 — " % n_cases, doc)
     doc = link_static_cards(doc)
     doc = patch_js(doc)
+    doc = patch_link_text(doc)
     doc = patch_search(doc)
     # 사례 목록 위에 주제별 사례 링크
     if 'class="laws-line topic-links"' not in doc:
@@ -942,7 +994,7 @@ def main():
         if old not in keep:
             os.remove(old)
     for c in cases:
-        write(os.path.join(site, page_href(c)), build_case_page(c, by_cat, cat_counts, details))
+        write(os.path.join(site, page_href(c)), build_case_page(c, by_cat, cat_counts, details, site))
 
     # 주제별 모아 보기 페이지
     recent = sorted(cases, key=lambda x: x.get("sort") or "", reverse=True)

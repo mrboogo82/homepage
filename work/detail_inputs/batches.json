@@ -1,0 +1,481 @@
+[
+ {
+  "cat": "rnd",
+  "ids": [
+   "n-rnd-recovery",
+   "n-rnd-ed",
+   "n-rnd-abstop",
+   "n-rnd-widebrain",
+   "n-rnd-kangrim",
+   "n-rnd-food",
+   "n-rnd-directional",
+   "n-rnd-dynamics"
+  ]
+ },
+ {
+  "cat": "rnd",
+  "ids": [
+   "n-rnd-3llabs",
+   "n-rnd-snl",
+   "n-rnd-deepai",
+   "n-rnd-dongil",
+   "n-rnd-skybio",
+   "n-rnd-dongnam",
+   "n-rnd-wjs",
+   "n-rnd-infoworks"
+  ]
+ },
+ {
+  "cat": "rnd",
+  "ids": [
+   "n-rnd-lake",
+   "c-rnd-1",
+   "n-rnd-cleanbio",
+   "n-rnd-lucent",
+   "n-rnd-groo",
+   "c-pen-2",
+   "n-rnd-osteon",
+   "n-rnd-logitech"
+  ]
+ },
+ {
+  "cat": "rnd",
+  "ids": [
+   "d-2020nu61661",
+   "d-2020guhap101361",
+   "d-2019guhap103873",
+   "d-2020guhap101132",
+   "d-2020guhap101750",
+   "d-2020guhap100313",
+   "d-2019guhap83304",
+   "d-2019guhap80411"
+  ]
+ },
+ {
+  "cat": "rnd",
+  "ids": [
+   "d-2019guhap69513",
+   "n-rnd-2019guhap745",
+   "d-2018guhap69080",
+   "d-2018guhap101344",
+   "n-rnd-2018guhap105438",
+   "d-2018guhap104442",
+   "n-rnd-2018guhap82342",
+   "d-2019guhap81780"
+  ]
+ },
+ {
+  "cat": "rnd",
+  "ids": [
+   "d-2018guhap104770",
+   "d-2018guhap69073",
+   "d-2018guhap104626",
+   "d-2018guhap67091",
+   "n-rnd-2018guhap100006",
+   "n-rnd-2018guhap105162",
+   "d-2018guhap102439",
+   "d-2017guhap105769"
+  ]
+ },
+ {
+  "cat": "rnd",
+  "ids": [
+   "d-2018guhap71274",
+   "n-rnd-2018guhap73522",
+   "n-rnd-2018guhap101740",
+   "n-rnd-2017guhap101736",
+   "l-2018guhap106080",
+   "l-2019guhap100461",
+   "l-2018guhap105537"
+  ]
+ },
+ {
+  "cat": "penalty",
+  "ids": [
+   "n-pen-public-fund",
+   "n-pen-giant-suit",
+   "c-pen-1",
+   "c-lic-2b",
+   "n-rnd-bk",
+   "n-pen-baram",
+   "n-pen-bid",
+   "d-2021a10554"
+  ]
+ },
+ {
+  "cat": "penalty",
+  "ids": [
+   "d-2020guhap70588"
+  ]
+ },
+ {
+  "cat": "criminal",
+  "ids": [
+   "n-crim-rnd-fraud",
+   "n-crim-assault",
+   "n-crim-airact",
+   "n-crim-subsidy-smart",
+   "n-crim-assault-nonpros",
+   "n-crim-subsidy-misuse",
+   "n-crim-hygiene",
+   "n-crim-sex-nonpros"
+  ]
+ },
+ {
+  "cat": "criminal",
+  "ids": [
+   "d-2013gojeong10",
+   "d-2012gojeong549",
+   "d-2012gojeong577",
+   "d-2012gojeong249",
+   "d-2011gojeong732",
+   "d-2012gojeong22",
+   "d-2011gojeong939"
+  ]
+ },
+ {
+  "cat": "personnel",
+  "ids": [
+   "n-pers-promo-void",
+   "n-pers-indirect",
+   "c-pers-1",
+   "n-pers-sfc",
+   "n-pers-promo",
+   "n-pers-teacher-dismissal",
+   "c-pers-3",
+   "c-pers-4"
+  ]
+ },
+ {
+  "cat": "personnel",
+  "ids": [
+   "c-pers-5b",
+   "c-pers-5a",
+   "d-2013guhap51343",
+   "d-2019guhap59226",
+   "d-2015du47836",
+   "c-pers-6b",
+   "c-pers-6a",
+   "d-2016guhap50495"
+  ]
+ },
+ {
+  "cat": "personnel",
+  "ids": [
+   "d-2016guhap58192",
+   "d-2015guhap67663",
+   "d-2015guhap5399",
+   "d-2014guhap66762",
+   "d-2015nu48183",
+   "c-pers-7b",
+   "d-2013guhap19134",
+   "d-2014guhap5453"
+  ]
+ },
+ {
+  "cat": "personnel",
+  "ids": [
+   "d-2013guhap59088",
+   "c-pers-7a"
+  ]
+ },
+ {
+  "cat": "license",
+  "ids": [
+   "c-lic-2a",
+   "n-pen-elevator",
+   "c-lic-3b",
+   "n-lic-academy",
+   "c-lic-1",
+   "n-lic-market",
+   "c-lic-3a",
+   "d-2019guhap12895"
+  ]
+ },
+ {
+  "cat": "license",
+  "ids": [
+   "d-2019du53389",
+   "d-2018guhap2884",
+   "d-2017guhap53736",
+   "d-2016guhap2343",
+   "d-2017guhap72",
+   "c-lic-4",
+   "n-lic-driver",
+   "n-lic-jongno"
+  ]
+ },
+ {
+  "cat": "license",
+  "ids": [
+   "d-2015guhap65798",
+   "d-2014guhap52160"
+  ]
+ },
+ {
+  "cat": "admin",
+  "ids": [
+   "n-adm-welfare",
+   "n-adm-school",
+   "n-adm-river",
+   "n-adm-officer",
+   "n-adm-grade",
+   "n-pen-audit",
+   "d-2020guhap30741",
+   "n-adm-tax-trust"
+  ]
+ },
+ {
+  "cat": "admin",
+  "ids": [
+   "d-2019nu43483",
+   "d-2018nu55861",
+   "d-2017guhap938",
+   "d-2017guhap11881",
+   "d-2017guhap84471",
+   "d-2016guhap11976",
+   "d-2015du52296",
+   "d-2016nu50725"
+  ]
+ },
+ {
+  "cat": "admin",
+  "ids": [
+   "d-2015guhap2209",
+   "d-2015gudan5637",
+   "d-2015gudan4658",
+   "d-2015gudan9974",
+   "d-2013guhap54908",
+   "d-2013guhap56201",
+   "d-2014guhap2768",
+   "d-2013guhap28701"
+  ]
+ },
+ {
+  "cat": "admin",
+  "ids": [
+   "d-2013guhap12775",
+   "d-2013guhap16517",
+   "d-2013guhap17138"
+  ]
+ },
+ {
+  "cat": "comp",
+  "ids": [
+   "d-2019na42626",
+   "d-2017na2057852",
+   "d-2018guhap2118",
+   "d-2017guhap13832",
+   "d-2016guhap7274",
+   "d-2017guhap14675",
+   "d-2017guhap51877",
+   "d-2016gahap507968"
+  ]
+ },
+ {
+  "cat": "comp",
+  "ids": [
+   "d-2015na2043903",
+   "d-2013guhap15171",
+   "d-2015gadan241481"
+  ]
+ },
+ {
+  "cat": "state",
+  "ids": [
+   "n-state-construct",
+   "n-state-art",
+   "n-state-grave",
+   "n-state-road",
+   "c-state-1",
+   "d-2019na79404",
+   "d-2019na61259",
+   "d-2019na5986"
+  ]
+ },
+ {
+  "cat": "state",
+  "ids": [
+   "d-2017gahap5744",
+   "d-2018na31209",
+   "d-2015na2067589",
+   "d-2017na2032440",
+   "d-2017na2032044",
+   "d-2016gadan5026849",
+   "d-2015na54430",
+   "d-2015gahap20091"
+  ]
+ },
+ {
+  "cat": "state",
+  "ids": [
+   "d-2015na2029747"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "n-civ-attach",
+   "n-civ-settle-2",
+   "n-civ-traffic",
+   "n-civ-construct",
+   "n-civ-settle",
+   "n-civ-cartel",
+   "n-civ-buyback-1",
+   "n-civ-chem"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "n-civ-rental",
+   "n-civ-deposit",
+   "n-civ-hug",
+   "n-civ-buyback-2",
+   "n-civ-mediation",
+   "n-civ-parking",
+   "n-civ-sr",
+   "n-civ-office-4"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "n-civ-office-3",
+   "n-civ-office-2",
+   "n-civ-landret",
+   "n-civ-office-1",
+   "n-civ-insurance",
+   "d-2017gahap522315",
+   "d-2019gahap60252",
+   "c-civ-1b"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "c-civ-1a",
+   "d-2018gahap30795",
+   "d-2016na109923",
+   "d-2015gadan5370822",
+   "d-2015gadan124805",
+   "c-civ-1c",
+   "d-2017gahap528429",
+   "d-2017gadan112539"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2016gadan122872",
+   "d-2016gadan80813",
+   "d-2017na2005615",
+   "d-2016da267043",
+   "d-2016gahap441",
+   "d-2012gaso10317",
+   "d-2012gaso13781",
+   "d-2012gaso13927"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2012gaso14081",
+   "d-2012gaso14142",
+   "d-2012gaso12924",
+   "d-2012gaso13620",
+   "d-2012gaso12047",
+   "d-2012gaso13286",
+   "d-2012gaso13651",
+   "d-2012gaso14555"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2012gaso14975",
+   "d-2012gaso16094",
+   "d-2012gaso6437",
+   "d-2012gaso6598",
+   "d-2012gaso11150",
+   "d-2012gadan4202",
+   "d-2012gaso13385",
+   "d-2012gaso12023"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2012gaso9805",
+   "d-2012gaso10157",
+   "d-2012gaso11754",
+   "d-2012gaso11402",
+   "d-2012gaso1641",
+   "d-2012gadan11903",
+   "d-2012gadan9832",
+   "d-2012gaso7243"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2012gaso7489",
+   "d-2012gaso10164",
+   "d-2012gaso8932",
+   "d-2012gaso9133",
+   "d-2012gaso8772",
+   "d-2012gaso6929",
+   "d-2011gadan17775",
+   "d-2012gaso5407"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2012gaso6264",
+   "d-2012gaso4084",
+   "d-2012gaso4350",
+   "d-2012gaso4367",
+   "d-2012gaso4664",
+   "d-2012gaso4671",
+   "d-2012gaso6233",
+   "d-2012gaso2989"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2012gaso4138",
+   "d-2012gadan31037",
+   "d-2011gadan11777",
+   "d-2012gaso3067",
+   "d-2012gaso3579",
+   "d-2012gaso4022",
+   "d-2012gaso4039",
+   "d-2012gaso4077"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2012gaso2774",
+   "d-2012gaso4565",
+   "d-2012gaso982",
+   "d-2012gaso3586",
+   "d-2012gaso4046",
+   "d-2012gaso600",
+   "d-2012gaso730",
+   "d-2012gaso563"
+  ]
+ },
+ {
+  "cat": "civil",
+  "ids": [
+   "d-2012gaso594",
+   "d-2011gaso25497",
+   "d-2011gaso25602",
+   "d-2011gaso19409",
+   "d-2011gaso25473"
+  ]
+ }
+]

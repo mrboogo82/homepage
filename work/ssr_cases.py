@@ -34,6 +34,8 @@ MAIN = ("rnd", "penalty", "criminal")
 RECENT = 12
 WHO = "담당변호사 부효준"
 SITE = "https://lawyermrboo82.com"
+LINK_PLAIN = "판결문과 사례 자세히 →"
+LINK_DETAIL = "사건 내용·판결 이유 자세히 →"   # 상세 소개(det)가 있는 사례
 
 
 def esc(s):
@@ -87,6 +89,10 @@ def with_keywords(cases, details):
             c2["kw"] = kw
         else:
             c2.pop("kw", None)
+        if d.get("overview") or d.get("holding"):
+            c2["det"] = 1          # 상세 소개가 있는 사례(카드의 링크 글이 달라진다)
+        else:
+            c2.pop("det", None)
         out.append(c2)
     return out
 
@@ -130,7 +136,7 @@ def render_li(c):
     out.append('<p class="case-sub">%s<span class="who">%s</span></p>' % (esc(" · ".join(parts) + " · ") if parts else "", WHO))
     if c.get("summary"):
         out.append('<p class="case-summary">%s</p>' % esc(c["summary"]))
-    out.append('<a class="case-link" href="%s">판결문과 사례 자세히 →</a>' % href)
+    out.append('<a class="case-link" href="%s">%s</a>' % (href, LINK_DETAIL if c.get("det") else LINK_PLAIN))
     # 외부 '자세히 보기' 링크(c.link)는 종전과 같이 정적 목록에는 넣지 않는다(JS가 그릴 때만).
     out.append("</div></li>")
     return "".join(out)
@@ -212,6 +218,10 @@ def llms_full(cases, intro_from=None, details=None):
             lines.append("- 사건 개요: " + " ".join(d["overview"]))
         if d.get("issues"):
             lines.append("- 쟁점: " + " / ".join(d["issues"]))
+        if d.get("claims"):
+            lines.append("- %s: " % (d.get("claims_label") or "상대방의 주장") + " / ".join(d["claims"]))
+        if d.get("argument"):
+            lines.append("- %s: " % (d.get("argument_label") or "부효준 변호사의 주장") + " / ".join(d["argument"]))
         if d.get("holding"):
             lines.append("- 법원의 판단: " + " ".join(d["holding"]))
         for q in d.get("quotes") or []:
@@ -223,6 +233,8 @@ def llms_full(cases, intro_from=None, details=None):
             lines.append("- 관련 법령: " + " · ".join(d["laws"]))
         if d.get("keywords"):
             lines.append("- 검색어: " + ", ".join(d["keywords"]))
+        if d.get("blog"):
+            lines.append("- 네이버 블로그 소개 글: " + d["blog"])
         if d.get("instagram"):
             lines.append("- 인스타그램 소개 글: " + d["instagram"])
         lines.append("- 페이지: %s/%s" % (SITE, page_href(c)))
@@ -247,8 +259,8 @@ def main():
     details = load_details(site)
     cases_kw = with_keywords(cases, details)   # 두 페이지의 데이터 블록에 검색어(kw)를 더한다(단어로 찾기에 쓰임)
 
-    home = render_list(cases, MAIN, RECENT)
-    full = render_list(cases)
+    home = render_list(cases_kw, MAIN, RECENT)
+    full = render_list(cases_kw)
     new_idoc = count_text(replace_json_block(replace_list(idoc, home), "cases-data", cases_kw), n)
     new_cdoc = count_text(replace_json_block(replace_list(cdoc, full), "cases-data", cases_kw), n)
 
