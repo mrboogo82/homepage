@@ -19,8 +19,8 @@
 
   --serif: "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
   --sans: "Noto Sans KR", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  /* 2026. 10. 21.: '부효준' 이름만 쓰는 글씨체(함렛) — 머리글·바닥글 서명에서 제목 글씨체와 구별되게 */
-  --name: "Hahmlet", "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
+  /* 2026. 10. 21.: '부효준' 이름은 제목과 같은 노토 명조를 가장 굵은 900으로(머리글·첫 화면·바닥글 서명) — 글씨체 변수는 바꾸기 쉽게 따로 둠 */
+  --name: "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
 
   --step--2: 0.8125rem;
   --step--1: 0.875rem;
@@ -184,21 +184,14 @@ img { max-width: 100%; }
   .top nav { gap: 0.1rem 1.25rem; font-size: 1rem; }
 }
 
-/* 2026. 10. 21.: 머리글의 이름을 차림표보다 한눈에 띄게 — '변호사'는 작은 고딕, '부효준'은 함렛 굵은 글씨로 크게,
-   인장을 작게 붙여 바닥글 서명과 같은 표식을 쓴다. */
-.brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--ink); text-decoration: none; line-height: 1; }
-.brand-seal { flex: none; width: 2.4rem; height: auto; transform: rotate(-5deg); mix-blend-mode: var(--seal-blend); filter: var(--seal-filter); }
-.brand-text { display: grid; gap: 0.2rem; }
-.brand-role { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; color: var(--ink-soft); }
-.brand-name { font-family: var(--name); font-size: 1.5rem; font-weight: 700; letter-spacing: 0.06em; }
-.brand-name .brand-hanja { margin-left: 0.5rem; font-family: var(--serif); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.12em; color: var(--ink-soft); }
+/* 2026. 10. 21.: 머리글의 이름을 차림표보다 한눈에 띄게 — '변호사'는 작은 고딕, '부효준'은 노토 명조 900으로 크게(1.5rem, 자간 띄움). */
+.brand { display: inline-flex; align-items: baseline; gap: 0.5rem; color: var(--ink); text-decoration: none; line-height: 1; }
+.brand-role { font-family: var(--sans); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); }
+.brand-name { font-family: var(--name); font-size: 1.5rem; font-weight: 900; letter-spacing: 0.06em; }
 .brand:hover .brand-name { color: var(--seal); }
 .top { gap: 0.5rem 1.25rem; }
 .top nav { gap: 0.25rem 1.5rem; }
-@media (max-width: 760px) {
-  .brand-seal { width: 2.2rem; }
-  .brand-name { font-size: 1.375rem; }
-}
+@media (max-width: 760px) { .brand-name { font-size: 1.375rem; } }
 
 /* ---------- opening screen ---------- */
 .hero {
@@ -773,7 +766,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .fine { display: grid; gap: 0.2rem; font-size: var(--step--1); color: var(--ink-soft); }
 .sign-block { display: grid; gap: 0.3rem; justify-items: end; text-align: right; font-family: var(--serif); }
 .sign-date { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.sign-name { display: flex; align-items: center; gap: 0.2rem; font-family: var(--name); font-size: 2rem; font-weight: 700; white-space: nowrap; } /* 2026. 10. 21.: 이름 글씨체(함렛), 조금 크게 */
+.sign-name { display: flex; align-items: center; gap: 0.2rem; font-family: var(--name); font-size: 2rem; font-weight: 900; white-space: nowrap; } /* 2026. 10. 21.: 이름은 노토 명조 900, 조금 크게 */
 .sign-name small { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); margin-right: 0.5rem; }
 .spaced { letter-spacing: 0.3em; }
 .seal { flex: none; width: 2.75rem; height: auto; margin-left: 0.15rem; transform: rotate(-5deg); mix-blend-mode: var(--seal-blend); filter: var(--seal-filter); }
