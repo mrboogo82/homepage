@@ -13,16 +13,16 @@
 /* 방문 통계 — 본인만 보는 페이지. 홈페이지(index.html)와 같은 종이·먹·인주 색을 쓴다.
    숫자는 Google Analytics에서 Apps Script 창구(ENDPOINT)를 거쳐 받아오고, 창구가 비어 있으면 견본 숫자를 보여 준다. */
 :root {
-  --paper: #fbfbf9; --ink: #1a1d21; --ink-soft: #5c6167; --rule: #dcdddb; --wash: #f0f1ee; --seal: #862633; /* 고려대학교 크림슨(PANTONE 202C) */
+  --paper: #fbfbf9; --ink: #1a1d21; --ink-soft: #5c6167; --rule: #dcdddb; --wash: #f0f1ee; --seal: #a21a2d; /* 고려대학교 크림슨(PANTONE 202C)을 화면용으로 채도를 높인 값 */
   --bar: #2f3640; --bar-soft: #c9ccd1;
   --serif: "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
   --sans: "Noto Sans KR", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --gutter: clamp(1rem, 4vw, 3rem);
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --paper: #141517; --ink: #e9e8e4; --ink-soft: #a0a3a8; --rule: #2d2f33; --wash: #1c1e21; --seal: #d55869; --bar: #d6d8dc; --bar-soft: #44474d; color-scheme: dark; }
+  :root:not([data-theme="light"]) { --paper: #141517; --ink: #e9e8e4; --ink-soft: #a0a3a8; --rule: #2d2f33; --wash: #1c1e21; --seal: #ec4b63; --bar: #d6d8dc; --bar-soft: #44474d; color-scheme: dark; }
 }
-:root[data-theme="dark"] { --paper: #141517; --ink: #e9e8e4; --ink-soft: #a0a3a8; --rule: #2d2f33; --wash: #1c1e21; --seal: #d55869; --bar: #d6d8dc; --bar-soft: #44474d; color-scheme: dark; }
+:root[data-theme="dark"] { --paper: #141517; --ink: #e9e8e4; --ink-soft: #a0a3a8; --rule: #2d2f33; --wash: #1c1e21; --seal: #ec4b63; --bar: #d6d8dc; --bar-soft: #44474d; color-scheme: dark; }
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.6; word-break: keep-all; overflow-wrap: anywhere; -webkit-font-smoothing: antialiased; }
 .page { max-width: 64rem; margin-inline: auto; padding: 1.2rem var(--gutter) 4rem; }
