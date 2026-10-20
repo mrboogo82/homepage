@@ -36,7 +36,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="변호사 부효준 — 국가연구개발사업 참여제한·연구비 환수·제재부가금 · 행정쟁송">
-<meta name="twitter:description" content="처분이 만들어지는 기준을 아는 변호사가 그 처분을 제대로 다툽니다. 국가로펌 출신 · 소송·자문 약 3,300건.">
+<meta name="twitter:description" content="처분의 기준을 아는 변호사는 다투는 방법부터 다릅니다. 국가로펌 출신 · 소송·자문 약 3,300건.">
 <meta name="twitter:image" content="https://lawyermrboo82.com/og-image.jpg">
 <meta property="og:title" content="변호사 부효준 — 국가연구개발사업 참여제한·연구비 환수·제재부가금 · 행정쟁송">
 <meta property="og:description" content="제재처분을 심의하는 위원회의 위원이자 정부·공공기관 약 20곳의 고문변호사. 행정쟁송 한 분야에 쌓은 전문성으로 처분을 받은 연구자·기업·공무원을 대리하고, 출연금·보조금 관련 형사사건도 함께 변호합니다. 주요 수행 사례와 판결문 공개.">
@@ -1102,9 +1102,12 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 /* 첫 화면 제목의 사실 줄 (2026. 10. 16., Version 91): 큰 제목 위에 근거(국가로펌 6년 · 소송·자문 약 3,300건)를 한 줄로 */
 .hero h1 .kicker { display: block; margin-bottom: 0.55rem; font-size: clamp(1.0625rem, 1.6vw, 1.3125rem); font-weight: 600; line-height: 1.4; letter-spacing: 0; color: var(--hero-fg); }
 
-/* 셋째 줄("그 처분을 제대로 다툽니다.")이 두 단 배치의 글 칸(약 570px)에 한 줄로 들어가도록 제목 글자 크기를 3rem에서 멈춤 */
+/* 셋째 줄("다투는 방법부터 다릅니다.")이 두 단 배치의 글 칸(약 570px)에 한 줄로 들어가도록 제목 글자 크기를 3rem에서 멈춤
+   (2026. 10. 21. 제목을 "처분의 기준을 / 아는 변호사는 / 다투는 방법부터 다릅니다."로 바꿈 — 종전 "처분이 만들어지는 / 기준을 아는 변호사가 / 그 처분을 제대로 다툽니다.") */
 .hero h1 { font-size: min(var(--display), 3rem); }
 @media (min-width: 901px) { .hero h1 .l3 { white-space: nowrap; } }
+/* 좁은 휴대전화(360~400px)에서는 셋째 줄이 한 줄에 들어가도록 제목 글자를 한 단계 작게 (2026. 10. 21.) */
+@media (max-width: 400px) { .hero h1 { font-size: 1.75rem; } }
 
 /* ---------- '경력' 큰 묶음 (2026. 10. 16., Version 93): 경력 · 학력·수상 · 법률고문 위촉 · 위원회·강의를 한 절에 ---------- */
 .career-body { gap: 0; }
@@ -1307,7 +1310,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
     <section class="hero" aria-labelledby="hero-h">
       <div class="hero-copy">
         <p class="eyebrow">행정쟁송 · 국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 변호사 부효준</p>
-        <h1 id="hero-h"><span class="kicker">국가로펌 출신 · 소송·자문 약 3,300건</span>처분이 만들어지는<br>기준을 아는 변호사가<br><em class="l3">그 처분을 제대로 다툽니다.</em></h1>
+        <h1 id="hero-h"><span class="kicker">국가로펌 출신 · 소송·자문 약 3,300건</span>처분의 기준을<br>아는 변호사는<br><em class="l3">다투는 방법부터 다릅니다.</em></h1>
         <p class="lead">국가로펌인 정부법무공단을 거쳐 개업한 뒤까지 행정쟁송 한 분야를 걸어온 변호사입니다. 지금은 중앙행정기관·지방자치단체·공공기관의 고문변호사이자 제재처분·소청·행정처분을 심의하는 위원회의 위원입니다. 그 자리에서 익힌 기준으로 <b>처분을 받은 개인과 기업</b>을 대리합니다. 인사처분, 인허가·영업정지·과징금, 제재부가금·환수, 국가배상·손실보상, 국가연구개발 제재처분과 그에 뒤따르는 형사 고발 사건까지 한 흐름으로 맡습니다.</p>
         <div class="cta">
           <a class="btn" href="#contact">상담 문의</a>
