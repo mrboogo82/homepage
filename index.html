@@ -103,7 +103,7 @@
 <style>
 /* Layout: a client-first brief for people and companies facing an administrative disposition.
    A dark opening screen carries the three statutory deadlines; the body reads like a signed legal document
-   (left-margin section titles, paper and ink, seal red for emphasis) and closes with a signature block.
+   (left-margin section titles, paper and ink, crimson (고려대학교 크림슨) for emphasis) and closes with a signature block.
    The case board (주요 수행 사례) renders from the JSON block #cases-data (the ten most recent on the home page; cases.html lists all). */
 :root {
   --paper: #fbfbf9;
@@ -111,7 +111,7 @@
   --ink-soft: #5c6167;
   --rule: #dcdddb;
   --wash: #f0f1ee;
-  --seal: #c5382c;
+  --seal: #862633; /* 고려대학교 크림슨(PANTONE 202C) */
   --seal-blend: multiply;
   --hero-bg: #171c23;
   --hero-fg: #f3f1ec;
@@ -140,7 +140,7 @@
     --ink-soft: #a0a3a8;
     --rule: #2d2f33;
     --wash: #1c1e21;
-    --seal: #e0584a;
+    --seal: #d55869;
     --seal-blend: normal;
     --hero-bg: #0e1116;
     --hero-line: #262b33;
@@ -154,7 +154,7 @@
   --ink-soft: #a0a3a8;
   --rule: #2d2f33;
   --wash: #1c1e21;
-  --seal: #e0584a;
+  --seal: #d55869;
   --seal-blend: normal;
   --hero-bg: #0e1116;
   --hero-line: #262b33;
@@ -230,7 +230,7 @@ img { max-width: 100%; }
 
 /* ---------- header ----------
    2026. 10. 16. (Version 69): 차림표를 더 눈에 띄게 — 글자를 키우고(--step-0) 먹색으로, 가리키거나 지금 보고 있는 절의 링크에는
-   인주색 글자와 2px 밑줄. 넓은 화면에서는 머리글이 위에 붙어 따라오므로(sticky) 어디서든 바로 다른 절로 갈 수 있다. */
+   크림슨색 글자와 2px 밑줄. 넓은 화면에서는 머리글이 위에 붙어 따라오므로(sticky) 어디서든 바로 다른 절로 갈 수 있다. */
 .top {
   position: sticky;
   top: 0;
@@ -940,7 +940,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 
 
 /* ---------- 길잡이 (2026. 10. 16., Version 71) ---------- */
-/* 분야 칩: 누르는 것임이 보이도록 글자를 키우고 먹색으로, 가리키면 인주색 */
+/* 분야 칩: 누르는 것임이 보이도록 글자를 키우고 먹색으로, 가리키면 크림슨색 */
 .chip { padding: 0.35rem 1rem; font-size: 1rem; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; }
 .chip:hover { color: var(--seal); border-color: var(--seal); }
 .chip[aria-selected="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
@@ -993,7 +993,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .find-head .hint { font-size: var(--step--1); color: var(--ink-soft); }
 .findbox .find { max-width: none; margin-top: 0; }
 .findbox .find input { padding: 0.55rem 1.1rem; font-size: var(--step-0); border-color: var(--ink-soft); }
-.findbox .find input:focus { border-color: var(--seal); box-shadow: 0 0 0 3px rgba(197, 56, 44, 0.14); }
+.findbox .find input:focus { border-color: var(--seal); box-shadow: 0 0 0 3px rgba(134, 38, 51, 0.14); }
 .findbox .find .btn { flex: none; }
 .findbox.compact { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; }
 @media (max-width: 640px) { .findbox.compact { grid-template-columns: minmax(0, 1fr); gap: 0.4rem; } }
@@ -1039,7 +1039,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 }
 
 /* ---------- 분야 카드의 '주요 수행 사례 보기' 단추 (2026. 10. 16., Version 87) ----------
-   글자 링크로는 눈에 띄지 않아 카드 맨 아래 먹색 단추로. 그 분야의 사례 건수를 함께 적고, 가리키면 인주색. */
+   글자 링크로는 눈에 띄지 않아 카드 맨 아래 먹색 단추로. 그 분야의 사례 건수를 함께 적고, 가리키면 크림슨색. */
 /* 카드를 세로 flex로 바꿔 근거 법령(.ref의 margin-top:auto)과 단추가 카드 바닥에 나란히 오도록 — 한 줄의 단추 높이가 맞춰진다 */
 .situation { display: flex; flex-direction: column; }
 .situation .cases-link {
@@ -1063,7 +1063,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 }
 
 /* ---------- 다루는 사건 '바로 가기' 강조 (2026. 10. 16., Version 88) ----------
-   글자 링크 아홉 줄은 눈에 띄지 않아 테두리 알약 단추로. 가리키면 인주색. 넓은 화면에서는 세로로, 좁은 화면에서는 줄바꿈 가로로. */
+   글자 링크 아홉 줄은 눈에 띄지 않아 테두리 알약 단추로. 가리키면 크림슨색. 넓은 화면에서는 세로로, 좁은 화면에서는 줄바꿈 가로로. */
 .section-head .jump { gap: 0.45rem 0.5rem; margin-top: 0.9rem; }
 .section-head .jump .cap { margin-bottom: 0.15rem; }
 .section-head .jump a { display: inline-block; padding: 0.32rem 0.9rem; font-size: var(--step--1); font-weight: 500; line-height: 1.5; color: var(--ink); background: var(--paper); border: 1px solid var(--ink); border-radius: 999px; transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
@@ -1189,7 +1189,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .past-wrap .rows.dates dd .sub { margin-top: 0.15rem; font-family: var(--sans); font-weight: 400; line-height: 1.6; }
 
 /* ---------- 분야 카드 전체가 눌리는 단추처럼 (2026. 10. 18., Version 120) ----------
-   사례 단추가 눈에 띄지 않는다는 지적에: 글자에 '보기'를 넣고 화살표를 원 안에, 카드에 손을 올리면 테두리와 단추가 인주색, 카드 아무 곳을 눌러도 그 분야 사례로. */
+   사례 단추가 눈에 띄지 않는다는 지적에: 글자에 '보기'를 넣고 화살표를 원 안에, 카드에 손을 올리면 테두리와 단추가 크림슨색, 카드 아무 곳을 눌러도 그 분야 사례로. */
 .situation.linked { cursor: pointer; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
 .situation.linked:hover { border-color: var(--seal); box-shadow: 0 1px 0 var(--seal); }
 .situation.linked:hover .cases-link { background: var(--seal); border-color: var(--seal); color: #fff; }
