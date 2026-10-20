@@ -180,6 +180,7 @@ def count_text(doc, n):
     doc = re.sub(r"판결문 \d+건에서 단어로 찾기", "판결문 %d건에서 단어로 찾기" % n, doc)
     doc = re.sub(r"판결문 \d+건에", "판결문 %d건에" % n, doc)
     doc = re.sub(r"주요 수행 사례 \d+건 — ", "주요 수행 사례 %d건 — " % n, doc)
+    doc = re.sub(r'(<span id="find-count">)\d+(</span>)', r"\g<1>%d\g<2>" % n, doc)   # 홈 찾기 상자의 건수(JS가 다시 쓰지만 정적 값도 맞춘다)
     return doc
 
 
