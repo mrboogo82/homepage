@@ -68,7 +68,11 @@
    "addressCountry": "KR"
   },
   "telephone": "+82-2-588-8685",
-  "url": "https://www.keumseong.com"
+  "url": "https://www.keumseong.com",
+  "hasMap": [
+   "https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EB%B0%98%ED%8F%AC%EB%8C%80%EB%A1%9C30%EA%B8%B8%2012-6",
+   "https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EB%B0%98%ED%8F%AC%EB%8C%80%EB%A1%9C30%EA%B8%B8%2012-6"
+  ]
  },
  "email": "boo@keumseonglaw.com",
  "telephone": "+82-10-8506-8685",
@@ -1167,14 +1171,22 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
    김·장 법률사무소 홈페이지를 참고: 본문이 끝나는 자리에 사무소 위치와 전화번호를 큰 그림과 함께 한 줄로 두어,
    끝까지 읽은 방문자가 바로 길을 찾거나 전화를 걸 수 있게 한다. 바닥글에는 법적 고지(접어 둠)와 저작권 표시를 더한다. */
 .quick { display: flex; justify-content: center; align-items: stretch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.quick a { flex: 1 1 0; display: inline-flex; justify-content: center; align-items: center; gap: 0.65rem; min-width: 0; padding: 1.35rem 1rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; font-variant-numeric: tabular-nums; }
-.quick a + a { border-left: 1px solid var(--rule); }
-.quick a svg { flex: none; width: 1.6rem; height: 1.6rem; color: var(--seal); }
-.quick a:hover { color: var(--seal); }
+.quick > a, .quick > .maps { flex: 1 1 0; display: inline-flex; justify-content: center; align-items: center; gap: 0.65rem; min-width: 0; padding: 1.35rem 1rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; font-variant-numeric: tabular-nums; }
+.quick > * + * { border-left: 1px solid var(--rule); }
+.quick svg { flex: none; width: 1.6rem; height: 1.6rem; color: var(--seal); }
+.quick > a:hover { color: var(--seal); }
 .quick + .sign { border-top: 0; }
+/* 2026. 10. 21.: '사무소 위치'는 한 곳으로 바로 보내지 않고 네이버 지도·구글 지도 가운데 고르게 한다(이용자마다 쓰는 지도 앱이 다르므로).
+   글자 옆의 두 알약 단추가 각 지도로 가고, 좁은 화면에서는 단추가 글자 아래 줄로 내려간다. */
+.quick .maps { flex-wrap: wrap; row-gap: 0.45rem; }
+.quick .maps .pick { display: inline-flex; gap: 0.35rem; margin-left: 0.15rem; }
+.quick .maps .pick a { display: inline-block; padding: 0.22rem 0.8rem; font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0; line-height: 1.5; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 999px; text-decoration: none; white-space: nowrap; }
+.quick .maps .pick a:hover { color: var(--seal); border-color: var(--seal); }
 @media (max-width: 520px) {
-  .quick a { gap: 0.5rem; padding: 1.1rem 0.5rem; font-size: var(--step-0); }
-  .quick a svg { width: 1.35rem; height: 1.35rem; }
+  .quick > a, .quick > .maps { gap: 0.5rem; padding: 1.1rem 0.5rem; font-size: var(--step-0); }
+  .quick svg { width: 1.35rem; height: 1.35rem; }
+  .quick .maps .pick { flex-basis: 100%; justify-content: center; margin-left: 0; }
+  .quick .maps .pick a { padding: 0.2rem 0.7rem; font-size: var(--step--2); }
 }
 .fine .notice { margin-top: 0.7rem; }
 .fine .notice summary { cursor: pointer; font-weight: 500; color: var(--ink); }
@@ -1653,7 +1665,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
           </div>
           <div>
             <dt>주소</dt>
-            <dd>(06647) 서울 서초구 반포대로30길 12-6, 4층 <span class="sub">서초동, 지방공기업평가원빌딩 · <a class="ext" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EB%B0%98%ED%8F%AC%EB%8C%80%EB%A1%9C30%EA%B8%B8%2012-6" rel="noopener">지도 보기</a></span></dd>
+            <dd>(06647) 서울 서초구 반포대로30길 12-6, 4층 <span class="sub">서초동, 지방공기업평가원빌딩 · <a class="ext" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EB%B0%98%ED%8F%AC%EB%8C%80%EB%A1%9C30%EA%B8%B8%2012-6" rel="noopener" target="_blank">네이버 지도</a> · <a class="ext" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EB%B0%98%ED%8F%AC%EB%8C%80%EB%A1%9C30%EA%B8%B8%2012-6" rel="noopener" target="_blank">구글 지도</a></span></dd>
           </div>
           <div>
             <dt>전화</dt>
@@ -1736,7 +1748,13 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   </main>
 
   <nav class="quick" aria-label="사무소 위치와 연락처">
-    <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EB%B0%98%ED%8F%AC%EB%8C%80%EB%A1%9C30%EA%B8%B8%2012-6" rel="noopener" target="_blank" aria-label="사무소 위치 — 네이버 지도에서 보기 (새 창)"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg><span>사무소 위치</span></a>
+    <div class="maps" role="group" aria-label="사무소 위치 — 지도 선택">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg><span>사무소 위치</span>
+      <span class="pick">
+        <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EB%B0%98%ED%8F%AC%EB%8C%80%EB%A1%9C30%EA%B8%B8%2012-6" rel="noopener" target="_blank" aria-label="네이버 지도에서 사무소 위치 보기 (새 창)">네이버 지도</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EB%B0%98%ED%8F%AC%EB%8C%80%EB%A1%9C30%EA%B8%B8%2012-6" rel="noopener" target="_blank" aria-label="구글 지도에서 사무소 위치 보기 (새 창)">구글 지도</a>
+      </span>
+    </div>
     <a href="tel:+82-10-8506-8685" aria-label="휴대전화 010-8506-8685로 전화"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg><span>010-8506-8685</span></a>
   </nav>
 
@@ -10907,6 +10925,8 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
     var h = a.getAttribute('href') || '', method = '';
     if (/^tel:/i.test(h)) method = h.indexOf('588') >= 0 ? '사무실 전화' : '휴대전화';
     else if (/^mailto:/i.test(h)) method = '이메일';
+    else if (/map\.naver\.com/i.test(h)) method = '네이버 지도';
+    else if (/google\.com\/maps/i.test(h)) method = '구글 지도';
     else if (a.closest('.sns')) { var lbl = a.querySelector('span:not(.ico)'); method = (lbl && lbl.firstChild ? lbl.firstChild.textContent : a.textContent).trim(); }
     if (method) track('contact_click', { method: method });
   }, true);
