@@ -906,7 +906,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 /* 무엇을 찾으시나요? */
 .finder { display: grid; gap: 0.9rem; padding-block: clamp(1.5rem, 4vw, 2.25rem); border-bottom: 1px solid var(--rule); }
 .finder .cap { font-size: var(--step--1); font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); }
-.finder-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }
+.finder-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }   /* 2026. 10. 21. 다섯 칸 → 네 칸(03 '국가연구개발 제재처분을 받았습니다' 삭제, 그 내용은 02로) */
 .finder-list li { min-width: 0; }
 .finder-list a { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; box-sizing: border-box; padding: 1rem 1.1rem 1.05rem; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper); color: inherit; text-decoration: none; transition: border-color 0.15s ease; }
 .finder-list .no { font-size: var(--step--2); font-weight: 500; letter-spacing: 0.08em; color: var(--seal); font-variant-numeric: tabular-nums; }
@@ -915,7 +915,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .finder-list .go { margin-top: auto; padding-top: 0.3rem; font-size: var(--step--1); font-weight: 500; color: var(--ink); }
 .finder-list a:hover { border-color: var(--ink); }
 .finder-list a:hover b, .finder-list a:hover .go { color: var(--seal); }
-@media (max-width: 1000px) { .finder-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 1000px) { .finder-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .finder-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .finder-list .w { display: none; } .finder-list a { padding: 0.8rem 0.9rem; gap: 0.2rem; } }
 @media (max-width: 420px) { .finder-list { grid-template-columns: minmax(0, 1fr); } }
 /* 다루는 사건 바로 가기 */
@@ -1324,10 +1324,9 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
       <p class="cap" id="finder-cap">무엇을 찾으시나요?</p>
       <ol class="finder-list">
         <li><a href="#faq"><span class="no">01</span><b>처분서를 받았습니다</b><span class="w">언제까지 무엇을 해야 하는지 — 이의신청·행정심판·소송의 기한과 집행정지</span><span class="go">자주 묻는 질문 →</span></a></li>
-        <li><a href="#fields"><span class="no">02</span><b>어느 분야의 사건인지</b><span class="w">제재부가금·환수, 공무원·교원 인사처분, 인허가·면허, 손실보상, 그 밖의 행정처분, 형사, 국가배상, 법률자문</span><span class="go">다루는 사건 →</span></a></li>
-        <li><a href="#area-rnd"><span class="no">03</span><b>국가연구개발 제재처분을 받았습니다</b><span class="w">사전통지 20일, 납부 30일, 처분 뒤 불복 90일 — 세 기한과 주제별 사례</span><span class="go">국가연구개발 제재처분 →</span></a></li>
-        <li><a href="#find-form"><span class="no">04</span><b>단어로 판결문 찾기</b><span class="w">참여제한·환수·징계처럼 처분이나 법령 이름 한 단어로 판결문 258건에서 찾습니다</span><span class="go">단어로 찾기 →</span></a></li>
-        <li><a href="#career"><span class="no">05</span><b>변호사가 어떤 사람인지</b><span class="w">경력과 학력, 법률고문 위촉, 위원회·강의</span><span class="go">경력 →</span></a></li>
+        <li><a href="#fields"><span class="no">02</span><b>어느 분야의 사건인지</b><span class="w">국가연구개발 제재처분(참여제한·환수·제재부가금 — 사전통지 20일·납부 30일·불복 90일의 세 기한과 주제별 사례), 제재부가금·환수, 공무원·교원 인사처분, 인허가·면허·자격, 손실보상, 그 밖의 행정처분, 정부출연금·보조금 형사사건, 국가배상, 법률자문</span><span class="go">다루는 사건 →</span></a></li>
+        <li><a href="#find-form"><span class="no">03</span><b>단어로 판결문 찾기</b><span class="w">참여제한·환수·징계처럼 처분이나 법령 이름 한 단어로 판결문 258건에서 찾습니다</span><span class="go">단어로 찾기 →</span></a></li>
+        <li><a href="#career"><span class="no">04</span><b>변호사가 어떤 사람인지</b><span class="w">경력과 학력, 법률고문 위촉, 위원회·강의</span><span class="go">경력 →</span></a></li>
       </ol>
     </nav>
 
