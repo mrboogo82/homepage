@@ -531,7 +531,7 @@
  },
  {
   "id": "n-civ-construct",
-  "cat": "civil",
+  "cat": "contract",
   "sort": "2026-02-11",
   "date": "2026. 2.",
   "title": "공사기간 연장에 따른 추가 공사대금 청구소송",
@@ -745,7 +745,7 @@
  },
  {
   "id": "n-civ-cartel",
-  "cat": "civil",
+  "cat": "contract",
   "sort": "2025-10-24",
   "date": "2024. 10. ~ 2025. 10.",
   "title": "입찰담합 손해배상 청구소송 (1·2심)",
@@ -1802,7 +1802,7 @@
  },
  {
   "id": "n-pen-bid",
-  "cat": "penalty",
+  "cat": "contract",
   "sort": "2022-01-13",
   "date": "2022. 1.",
   "title": "입찰참가자격제한처분 취소소송 (항소심) 및 집행정지",
