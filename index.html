@@ -692,6 +692,38 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .adv-body .org { font-family: var(--serif); font-weight: 600; font-size: 1.0625rem; line-height: 1.4; overflow-wrap: anywhere; }
 .adv-body .role, .adv-body .term { font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
 .adv-body .term { font-variant-numeric: tabular-nums; }
+/* 법률고문 위촉 기관 로고 벽 (2026. 10. 20.): 기관의 공식 로고를 흰 바탕 칸에 하나씩. 누르면 그 기관의 위촉장이 열린다.
+   어두운 화면에서도 칸은 흰색으로 두어 로고의 지정색을 그대로 보인다. */
+.logo-wall { margin: 0 0 1.75rem; }
+.logo-wall .wall-h { max-width: 46rem; margin: 0 0 1.1rem; font-family: var(--serif); font-weight: 600; font-size: var(--step-1); line-height: 1.5; }
+.logo-wall .wall-h b { color: var(--seal); font-weight: 600; }
+.logos { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.7rem; margin: 0; padding: 0; }
+.logos li { min-width: 0; }
+.logo-card {
+  display: flex; align-items: center; justify-content: center;
+  box-sizing: border-box; width: 100%; height: 6rem; padding: 0.6rem 0.7rem;
+  color: #1a1d21; background: #fff; border: 1px solid var(--tile-edge); border-radius: 3px;
+  font: inherit; cursor: zoom-in; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.logo-card:hover { border-color: var(--ink-soft); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); }
+.logo-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.logo-card.still { cursor: default; }
+.logo-card.still:hover { border-color: var(--tile-edge); box-shadow: none; }
+.logo-card img { display: block; width: 88%; height: 3.2rem; object-fit: contain; }   /* 칸 안의 상자(너비 84%·높이 3.1rem)에 비율대로 맞춤 */
+.logo-card.tall img { height: 3.7rem; }     /* 세로로 짜인 로고(서울시설공단)는 상자를 조금 더 높게 */
+.logo-card.mid img { width: 70%; height: 3.4rem; }   /* 가로폭이 좁은 로고(SR·TIPA) */
+.logo-card.wide img { width: 94%; }         /* 아주 길쭉한 로고(병원·SH·KEITI·HUG 등) */
+.logo-wall .wall-note { margin: 0.8rem 0 0; font-size: var(--step--2); color: var(--ink-soft); }
+.adv-fig.logo-fig { background: #fff; }
+.adv-fig.logo-fig img { width: 86%; height: auto; max-height: 60%; object-fit: contain; }
+@media (max-width: 1000px) { .logos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+  .logo-card { height: 4.6rem; padding: 0.5rem 0.7rem; }
+  .logo-card img { height: 2.5rem; }
+  .logo-card.tall img { height: 3rem; }
+  .logo-card.mid img { height: 2.8rem; }
+}
 .past-wrap { display: grid; gap: 1rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
 .past-wrap h3 { font-size: var(--step-1); }
 .past-wrap .past { margin-top: 0.25rem; }
@@ -1413,7 +1445,33 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         </div>
         <div class="block" id="advisory">
           <h3 class="block-h">법률고문 위촉</h3>
-          <p class="block-lead">중앙행정기관과 지방자치단체, 공공기관·공기업 약 20곳이 고문변호사로 위촉한 변호사입니다. 처분을 만드는 기관들이 법률 판단을 맡기는 변호사라는 뜻입니다. 위촉장을 누르면 크게 볼 수 있습니다. 처분청이 이 가운데 하나인 사건은 맡지 않습니다.</p>
+          <div class="logo-wall">
+            <p class="wall-h">중앙행정기관과 지방자치단체, 공공기관·공기업 <b>약 20곳</b>이 부효준 변호사를 법률고문으로 선택했습니다.</p>
+            <ul class="logos" aria-label="법률고문으로 위촉한 기관">
+            <li><button type="button" class="logo-card" data-certs="moe-2026" data-org="교육부" data-term="2026. 7. ~ 현재 · 위촉장 2026. 7. 1. ~ 2028. 6. 30." aria-label="교육부 고문변호사 위촉장 크게 보기"><img src="logos/moe.svg" alt="교육부" width="1646" height="609" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card" data-certs="kma-2026" data-org="기상청" data-term="2026. 3. ~ 현재 · 위촉장 2026. 3. 27. ~ 2028. 3. 26." aria-label="기상청 고문변호사 위촉장 크게 보기"><img src="logos/kma.svg" alt="기상청" width="1644" height="613" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card" data-certs="mois-2025" data-org="행정안전부" data-term="2025. 2. ~ 현재 · 위촉장 2025. 2. 6. ~ 2027. 2. 5." aria-label="행정안전부 고문변호사 위촉장 크게 보기"><img src="logos/mois.svg" alt="행정안전부" width="1739" height="482" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card wide" data-certs="mcst-2026,mcst-2024" data-org="문화체육관광부" data-term="2024. 6. ~ 현재 · 위촉장 2026. 6. 17. ~ 2028. 6. 16." aria-label="문화체육관광부 고문변호사 위촉장 2장 크게 보기"><img src="logos/mcst.svg" alt="문화체육관광부" width="1804" height="393" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card" data-certs="seoul-2025" data-org="서울특별시" data-term="2023. 10. ~ 현재 · 재위촉 2025. 10. 1. ~ 2027. 9. 30." aria-label="서울특별시 법률고문 위촉장 크게 보기"><img src="logos/seoul.png" alt="서울특별시" width="772" height="198" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card wide" data-certs="mss-2026" data-org="중소벤처기업부" data-term="2023. 7. ~ 현재 · 위촉장 2026. 7. 1. ~ 2028. 6. 30." aria-label="중소벤처기업부 고문변호사 위촉장 크게 보기"><img src="logos/mss.svg" alt="중소벤처기업부" width="1804" height="393" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card wide" data-certs="me-2025,me-2023" data-org="기후에너지환경부" data-term="2023. 1. ~ 현재 · 위촉장 2025. 1. 1. ~ 2026. 12. 31." aria-label="기후에너지환경부 고문변호사 위촉장 2장 크게 보기"><img src="logos/mcee.svg" alt="기후에너지환경부" width="1828" height="359" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card" data-certs="mohw-2025,mohw-2023" data-org="보건복지부" data-term="2023. 1. ~ 현재 · 위촉장 2025. 1. 1. ~ 2026. 12. 31." aria-label="보건복지부 고문변호사 위촉장 2장 크게 보기"><img src="logos/mohw.svg" alt="보건복지부" width="1739" height="482" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card wide" data-certs="mafra-2025" data-org="농림축산식품부" data-term="2022. 8. ~ 현재 · 위촉장 2025. 8. 11. ~ 2027. 8. 10." aria-label="농림축산식품부 자문변호사 위촉장 크게 보기"><img src="logos/mafra.svg" alt="농림축산식품부" width="1804" height="393" loading="lazy"></button></li>
+            <li><div class="logo-card wide still" title="충남대학교병원 · 법률고문 · 2026. 5. ~ 현재"><img src="logos/cnuh.png" alt="충남대학교병원" width="900" height="129" loading="lazy"></div></li>
+            <li><button type="button" class="logo-card" data-certs="keco-2026" data-org="한국환경공단" data-term="2026. 2. ~ 현재 · 위촉장 2026. 2. 1. ~ 2027. 1. 31." aria-label="한국환경공단 법률고문 위촉장 크게 보기"><img src="logos/keco.png" alt="한국환경공단" width="436" height="112" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card" data-certs="ksoc-2025" data-org="대한체육회" data-term="2025. 6. ~ 현재 · 위촉장 2025. 6. 5. ~" aria-label="대한체육회 고문변호사 위촉장 크게 보기"><img src="logos/ksoc.svg" alt="대한체육회" width="199" height="60" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card wide" data-certs="sh-2024" data-org="서울주택도시개발공사" data-term="2024. 6. ~ 현재 · 위촉장 2024. 6. 1. ~ 2026. 12. 31." aria-label="서울주택도시개발공사 법률고문 위촉장 크게 보기"><img src="logos/sh.svg" alt="서울주택도시개발공사" width="407" height="56" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card tall" data-certs="sfc-2026" data-org="서울시설공단" data-term="2024. 1. ~ 현재 · 위촉장 2026. 1. 1. ~ 2027. 12. 31." aria-label="서울시설공단 법률고문 위촉장 크게 보기"><img src="logos/sisul.png" alt="서울시설공단" width="500" height="260" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card" data-certs="nst-2025,nst-2023" data-org="국가과학기술연구회" data-term="2023. 8. ~ 현재 · 위촉장 2025. 8. 16. ~ 2027. 8. 15." aria-label="국가과학기술연구회 출연(연) 통합 법무고문 위촉장 2장 크게 보기"><img src="logos/nst.svg" alt="국가과학기술연구회" width="1641" height="375" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card mid" data-certs="sr-2025,sr-2023" data-org="주식회사 에스알" data-term="2023. 7. ~ 현재 · 위촉장 2025. 7. 1. ~ 2027. 6. 30." aria-label="주식회사 에스알 법률고문 위촉장 2장 크게 보기"><img src="logos/sr.svg" alt="주식회사 에스알" width="396" height="218" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card wide" data-certs="ekape-2025,ekape-2023" data-org="축산물품질평가원" data-term="2023. 6. ~ 현재 · 위촉장 2025. 6. 1. ~ 2027. 5. 31." aria-label="축산물품질평가원 자문변호사 위촉장 2장 크게 보기"><img src="logos/ekape.png" alt="축산물품질평가원" width="340" height="58" loading="lazy"></button></li>
+            <li><button type="button" class="logo-card wide" data-certs="keiti-2025,keiti-2023" data-org="한국환경산업기술원" data-term="2021. 8. ~ 현재 · 위촉장 2025. 8. 1. ~ 2027. 7. 31." aria-label="한국환경산업기술원 고문변호사 위촉장 2장 크게 보기"><img src="logos/keiti.svg" alt="한국환경산업기술원" width="905" height="150" loading="lazy"></button></li>
+            <li><div class="logo-card wide still" title="주택도시보증공사 · 법률고문 · 2021. 7. ~ 현재"><img src="logos/hug.svg" alt="주택도시보증공사" width="1324" height="200" loading="lazy"></div></li>
+            <li><div class="logo-card still" title="중소기업기술정보진흥원 · 법률고문 · 2021. 6. ~ 현재"><img src="logos/tipa.png" alt="중소기업기술정보진흥원" width="624" height="192" loading="lazy"></div></li>
+            </ul>
+            <p class="wall-note">로고를 누르면 그 기관의 위촉장을 볼 수 있습니다.</p>
+          </div>
+          <p class="block-lead">처분을 만드는 기관들이 법률 판단을 맡기는 변호사라는 뜻입니다. 위촉장을 누르면 크게 볼 수 있습니다. 처분청이 이 가운데 하나인 사건은 맡지 않습니다.</p>
           <h4 class="sub-h">중앙행정기관 · 지방자치단체</h4>
           <ul class="advisors">
             <li class="adv"><button type="button" class="adv-fig" data-certs="moe-2026" aria-label="교육부 위촉장 크게 보기"><img src="certs/moe-2026-thumb.jpg" alt="교육부 고문변호사 위촉장" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">교육부</b><span class="role">고문변호사</span><span class="term">2026. 7. ~ 현재 · 위촉장 2026. 7. 1. ~ 2028. 6. 30.</span></div></li>
@@ -1428,7 +1486,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           </ul>
           <h4 class="sub-h gap-top">공공기관 · 공기업 · 단체</h4>
           <ul class="advisors">
-            <li class="adv"><div class="adv-fig none" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 27V9l11-5 11 5v18"/><path d="M5 27h22"/><path d="M12 27v-8h8v8"/><path d="M16 12v3"/></svg><span>CNUH</span></div><div class="adv-body"><b class="org">충남대학교병원</b><span class="role">CNUH · 법률고문</span><span class="term">2026. 5. ~ 현재</span></div></li>
+            <li class="adv"><div class="adv-fig logo-fig" aria-hidden="true"><img src="logos/cnuh.png" alt="" width="900" height="129" loading="lazy"></div><div class="adv-body"><b class="org">충남대학교병원</b><span class="role">CNUH · 법률고문</span><span class="term">2026. 5. ~ 현재</span></div></li>
             <li class="adv"><button type="button" class="adv-fig" data-certs="keco-2026" aria-label="한국환경공단 위촉장 크게 보기"><img src="certs/keco-2026-thumb.jpg" alt="한국환경공단 법률고문 위촉장" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">한국환경공단</b><span class="role">법률고문</span><span class="term">2026. 2. ~ 현재 · 위촉장 2026. 2. 1. ~ 2027. 1. 31.</span></div></li>
             <li class="adv"><button type="button" class="adv-fig" data-certs="ksoc-2025" aria-label="대한체육회 위촉장 크게 보기"><img src="certs/ksoc-2025-thumb.jpg" alt="대한체육회 고문변호사 위촉장" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">대한체육회</b><span class="role">고문변호사</span><span class="term">2025. 6. ~ 현재 · 위촉장 2025. 6. 5. ~</span></div></li>
             <li class="adv"><button type="button" class="adv-fig" data-certs="sh-2024" aria-label="서울주택도시개발공사 위촉장 크게 보기"><img src="certs/sh-2024-thumb.jpg" alt="서울주택도시공사 법률고문 위촉장" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">서울주택도시개발공사</b><span class="role">SH · 법률고문</span><span class="term">2024. 6. ~ 현재 · 위촉장 2024. 6. 1. ~ 2026. 12. 31.</span></div></li>
@@ -1437,8 +1495,8 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
             <li class="adv"><button type="button" class="adv-fig" data-certs="sr-2025,sr-2023" aria-label="주식회사 에스알 위촉장 2장 크게 보기"><img src="certs/sr-2025-thumb.jpg" alt="주식회사 에스알 법률고문 위촉장 (2025)" loading="lazy" width="297" height="420"><span class="count">2장</span></button><div class="adv-body"><b class="org">주식회사 에스알</b><span class="role">SR · 법률고문</span><span class="term">2023. 7. ~ 현재 · 위촉장 2025. 7. 1. ~ 2027. 6. 30.</span></div></li>
             <li class="adv"><button type="button" class="adv-fig" data-certs="ekape-2025,ekape-2023" aria-label="축산물품질평가원 위촉장 2장 크게 보기"><img src="certs/ekape-2025-thumb.jpg" alt="축산물품질평가원 자문변호사 위촉장 (2025)" loading="lazy" width="297" height="420"><span class="count">2장</span></button><div class="adv-body"><b class="org">축산물품질평가원</b><span class="role">자문변호사</span><span class="term">2023. 6. ~ 현재 · 위촉장 2025. 6. 1. ~ 2027. 5. 31.</span></div></li>
             <li class="adv"><button type="button" class="adv-fig" data-certs="keiti-2025,keiti-2023" aria-label="한국환경산업기술원 위촉장 2장 크게 보기"><img src="certs/keiti-2025-thumb.jpg" alt="한국환경산업기술원 고문변호사 위촉장 (2025)" loading="lazy" width="297" height="420"><span class="count">2장</span></button><div class="adv-body"><b class="org">한국환경산업기술원</b><span class="role">KEITI · 고문변호사</span><span class="term">2021. 8. ~ 현재 · 위촉장 2025. 8. 1. ~ 2027. 7. 31.</span></div></li>
-            <li class="adv"><div class="adv-fig none" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 27V9l11-5 11 5v18"/><path d="M5 27h22"/><path d="M12 27v-8h8v8"/><path d="M16 12v3"/></svg><span>HUG</span></div><div class="adv-body"><b class="org">주택도시보증공사</b><span class="role">HUG · 법률고문</span><span class="term">2021. 7. ~ 현재</span></div></li>
-            <li class="adv"><div class="adv-fig none" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 27V9l11-5 11 5v18"/><path d="M5 27h22"/><path d="M12 27v-8h8v8"/><path d="M16 12v3"/></svg><span>TIPA</span></div><div class="adv-body"><b class="org">중소기업기술정보진흥원</b><span class="role">TIPA · 법률고문</span><span class="term">2021. 6. ~ 현재</span></div></li>
+            <li class="adv"><div class="adv-fig logo-fig" aria-hidden="true"><img src="logos/hug.svg" alt="" width="1324" height="200" loading="lazy"></div><div class="adv-body"><b class="org">주택도시보증공사</b><span class="role">HUG · 법률고문</span><span class="term">2021. 7. ~ 현재</span></div></li>
+            <li class="adv"><div class="adv-fig logo-fig" aria-hidden="true"><img src="logos/tipa.png" alt="" width="624" height="192" loading="lazy"></div><div class="adv-body"><b class="org">중소기업기술정보진흥원</b><span class="role">TIPA · 법률고문</span><span class="term">2021. 6. ~ 현재</span></div></li>
           </ul>
 
           <div class="past-wrap ended">
@@ -1457,7 +1515,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           <h4 class="sub-h">현재 활동 중인 위원회</h4>
           <ul class="advisors">
             <li class="adv"><button type="button" class="adv-fig" data-certs="msit-rpc-2025" aria-label="과학기술정보통신부 연구자권익보호위원회 위원 위촉장 크게 보기"><img src="certs/msit-rpc-2025-thumb.jpg" alt="과학기술정보통신부 연구자권익보호위원회 위원 위촉장" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">과학기술정보통신부 연구자권익보호위원회</b><span class="role">위원 · 제재처분 재검토회의 안건 사전검토·심의</span><span class="term">2025. 4. ~ 현재 · 위촉장 2025. 4. 18. ~ 2027. 4. 17.</span></div></li>
-            <li class="adv"><div class="adv-fig none" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 27V9l11-5 11 5v18"/><path d="M5 27h22"/><path d="M12 27v-8h8v8"/><path d="M16 12v3"/></svg><span>MSS</span></div><div class="adv-body"><b class="org">중소벤처기업부 국가연구개발혁신법 제재처분 재검토위원회</b><span class="role">위원 · 참여제한·제재부가금·환수 처분의 재검토 심의</span><span class="term">2022. 2. ~ 현재</span></div></li>
+            <li class="adv"><div class="adv-fig logo-fig" aria-hidden="true"><img src="logos/mss.svg" alt="" width="1804" height="393" loading="lazy"></div><div class="adv-body"><b class="org">중소벤처기업부 국가연구개발혁신법 제재처분 재검토위원회</b><span class="role">위원 · 참여제한·제재부가금·환수 처분의 재검토 심의</span><span class="term">2022. 2. ~ 현재</span></div></li>
             <li class="adv"><button type="button" class="adv-fig" data-certs="keiti-foi-2025" aria-label="한국환경산업기술원 정보공개심의회 위원 위촉장 크게 보기"><img src="certs/keiti-foi-2025-thumb.jpg" alt="한국환경산업기술원 정보공개심의회 위원 위촉장" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">한국환경산업기술원 정보공개심의회</b><span class="role">위원 · 정보공개 청구의 공개·비공개 결정 심의</span><span class="term">2025. 8. ~ 현재 · 위촉장 2025. 8. 28. ~ 2027. 8. 27.</span></div></li>
             <li class="adv"><button type="button" class="adv-fig" data-certs="ice-appeal-2026" aria-label="인천광역시교육소청심사위원회 위원 위촉장 크게 보기"><img src="certs/ice-appeal-2026-thumb.jpg" alt="인천광역시교육소청심사위원회 위원 위촉장" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">인천광역시교육소청심사위원회</b><span class="role">위원 · 교원의 징계·불이익처분에 대한 소청 심사</span><span class="term">2026. 1. ~ 현재 · 위촉장 2026. 1. 1. ~ 2028. 12. 31.</span></div></li>
             <li class="adv"><button type="button" class="adv-fig" data-certs="mfds-2026" aria-label="식품의약품안전처 행정처분심의위원회 위원 위촉장 크게 보기"><img src="certs/mfds-2026-thumb.jpg" alt="식품의약품안전처 행정처분심의위원회 위원 위촉장" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">식품의약품안전처 행정처분심의위원회</b><span class="role">위원 · 영업정지·과징금 등 행정처분의 적정성 심의</span><span class="term">2026. 5. ~ 현재 · 위촉장 2026. 5. 7. ~ 2028. 5. 6.</span></div></li>
@@ -10145,15 +10203,16 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   (function () {
     document.querySelectorAll('button[data-certs]').forEach(function (b) {
       var tile = b.closest('.adv');
-      var org = tile && tile.querySelector('.org') ? tile.querySelector('.org').textContent : '';
-      var term = tile && tile.querySelector('.term') ? tile.querySelector('.term').textContent : '';
-      var first = b.querySelector('img');
+      // 로고 벽의 단추(.logo-card)는 기관명·기간을 data-org·data-term으로 가진다(2026. 10. 20.)
+      var org = b.getAttribute('data-org') || (tile && tile.querySelector('.org') ? tile.querySelector('.org').textContent : '');
+      var term = b.getAttribute('data-term') || (tile && tile.querySelector('.term') ? tile.querySelector('.term').textContent : '');
+      var first = tile ? b.querySelector('img') : null;
       var keys = b.getAttribute('data-certs').split(',').map(function (k) { return k.trim(); }).filter(Boolean);
       var items = keys.map(function (k, i) {
         var alt = i === 0 && first ? first.getAttribute('alt') : org + ' 위촉장 (' + k.slice(-4) + ')';
         return { key: k, src: 'certs/' + k + '.jpg', alt: alt, title: org, sub: i === 0 ? term : alt };
       });
-      b.addEventListener('click', function () { LB.open(items, 0); });
+      b.addEventListener('click', function () { if (!tile) track('logo_click', { org: org }); LB.open(items, 0); });
     });
   })();
 
