@@ -502,8 +502,10 @@
  {
   "id": "c-pers-5b",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2020구합73716.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -588,24 +590,12 @@
   "title": "농약 품목등록 신청 반려처분 취소소송 (상고심)"
  },
  {
-  "id": "d-2019gahap60252",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "광주지방법원-2019가합60252.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/광주지방법원/2019가합60252"
-  ],
-  "title": "분할연금 선청구 승인결정 무효확인 소송"
- },
- {
   "id": "c-pers-5a",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2020구합61331.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -732,38 +722,6 @@
   "title": "국가배상청구 소송"
  },
  {
-  "id": "d-2019na79404",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "수원지방법원-2019나79404.txt",
-   "수원지방법원평택지원-2018가단58019.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/수원지방법원평택지원/2018가단58019",
-   "https://lbox.kr/case/수원지방법원/2019나79404"
-  ],
-  "title": "주한미군 담장 설치로 인한 침수 피해 국가배상 청구소송 (항소심)"
- },
- {
-  "id": "c-civ-1b",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2019나106437.txt",
-   "대전지방법원공주지원-2018가단21592.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원공주지원/2018가단21592",
-   "https://lbox.kr/case/대전지방법원/2019나106437"
-  ],
-  "title": "사립학교 교원 유족보상금(직무상 재해보상) 청구소송 (1·2심)"
- },
- {
   "id": "d-2018guhap104442",
   "cat": "rnd",
   "kind": "lbox",
@@ -840,8 +798,10 @@
  {
   "id": "d-2019na42626",
   "cat": "comp",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2017가단5215103.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -902,8 +862,10 @@
  {
   "id": "d-2019guhap59226",
   "cat": "personnel",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2019구합59226.txt"
+  ],
   "insta": [
    "DZ6qy1fk-MA"
   ],
@@ -916,8 +878,10 @@
  {
   "id": "d-2018guhap2884",
   "cat": "license",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "의정부지방법원-2018구합2884.txt"
+  ],
   "insta": [
    "DXaqXlzkyuz",
    "CTToOqihQka"
@@ -927,24 +891,6 @@
    "https://lbox.kr/case/의정부지방법원/2018구합2884"
   ],
   "title": "장례시설 건축허가 불허가처분 취소소송"
- },
- {
-  "id": "d-2019na5986",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "대법원-2019다265499.txt",
-   "서울중앙지방법원-2016가소5944347.txt",
-   "서울중앙지방법원-2019나5986.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2016가소5944347",
-   "https://lbox.kr/case/서울중앙지방법원/2019나5986",
-   "https://lbox.kr/case/대법원/2019다265499"
-  ],
-  "title": "수사기관 통신자료 제공 관련 국가배상 청구소송 (1·2·3심)"
  },
  {
   "id": "d-2015du47836",
@@ -982,21 +928,6 @@
    "https://lbox.kr/case/대전지방법원/2018구합105162"
   ],
   "title": "참여제한·환수처분 및 이의결정 무효확인 등 소송"
- },
- {
-  "id": "c-civ-1a",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2019나16504.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2018가단5132670",
-   "https://lbox.kr/case/서울중앙지방법원/2019나16504"
-  ],
-  "title": "사립학교 교직원 퇴직급여 청구소송 (1·2심)"
  },
  {
   "id": "d-2018guhap102439",
@@ -1038,24 +969,14 @@
   "title": "고속도로 수용토지 손실보상금 증액 청구소송"
  },
  {
-  "id": "d-2018guhap71274",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2018구합71274.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2018구합71274"
-  ],
-  "title": "참여제한 및 출연금 환수처분 취소소송"
- },
- {
   "id": "d-2017guhap53736",
   "cat": "license",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2017누79853.txt",
+   "서울행정법원-2017구합53736.txt",
+   "서울행정법원-2017아10718.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1065,36 +986,6 @@
    "https://lbox.kr/case/서울행정법원/2017아10718"
   ],
   "title": "대규모점포관리자 변경신고 수리처분 취소소송 (1·2·3심·집행정지)"
- },
- {
-  "id": "d-2018gahap30795",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "서울서부지방법원-2018가합30795.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울서부지방법원/2018가합30795"
-  ],
-  "title": "공공기관 계약직 근로자 갱신거절 무효확인 소송"
- },
- {
-  "id": "d-2016na109923",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2016나109923.txt"
-  ],
-  "insta": [
-   "DWnswipElFQ"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2016나109923"
-  ],
-  "title": "국립대학 교수의 인턴비 편취 관련 손해배상 청구소송 (항소심)"
  },
  {
   "id": "d-2018nu55861",
@@ -1112,8 +1003,10 @@
  {
   "id": "d-2015gadan5370822",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2015가단5370822.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1137,8 +1030,12 @@
  {
   "id": "d-2015gadan124805",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2018다273387.txt",
+   "서울동부지방법원-2015가단124805.txt",
+   "서울동부지방법원-2017나27633.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1158,20 +1055,6 @@
    "https://lbox.kr/case/대전지방법원/2018구합101740"
   ],
   "title": "불성실 수행 판정에 따른 참여제한·환수처분 취소소송"
- },
- {
-  "id": "c-civ-1c",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "수원지방법원안산지원-2017가단60737.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/수원지방법원안산지원/2017가단60737"
-  ],
-  "title": "형 확정에 따른 퇴직급여 감액 관련 퇴직급여 청구소송"
  },
  {
   "id": "d-2017guhap13832",
@@ -1200,41 +1083,6 @@
   "title": "특별개간허가처분 무효확인 소송"
  },
  {
-  "id": "c-pers-6b",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2017구합51501.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DXv1Xl2k33k",
-   "CS_BwgXBOZb"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2017구합51501",
-   "https://lbox.kr/case/서울고등법원/2018누31070",
-   "https://lbox.kr/case/대법원/2018두52006"
-  ],
-  "title": "국립대학교 총장 임용처분 취소소송 (1·2·3심)"
- },
- {
-  "id": "d-2018na31209",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2016가소200820.txt",
-   "서울중앙지방법원-2018나31209.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2016가소200820",
-   "https://lbox.kr/case/서울중앙지방법원/2018나31209"
-  ],
-  "title": "탈북민 투자사기 피해 관련 국가배상 청구소송 (1·2심)"
- },
- {
   "id": "d-2016guhap7274",
   "cat": "comp",
   "kind": "insta",
@@ -1249,21 +1097,6 @@
   "title": "고속도로 사업 영업손실보상금 증액 청구소송"
  },
  {
-  "id": "d-2017gahap528429",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2017가합528429.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2017가합528429",
-   "https://lbox.kr/case/서울고등법원/2018나2024422"
-  ],
-  "title": "공무원에 대한 구상금 청구소송 (1·2심)"
- },
- {
   "id": "d-2017guhap14675",
   "cat": "comp",
   "kind": "lbox",
@@ -1276,40 +1109,12 @@
   "title": "잔여지 손실보상금 증액 청구소송"
  },
  {
-  "id": "d-2017guhap11881",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "의정부지방법원-2017구합11881.txt"
-  ],
-  "insta": [
-   "DVQVQ55Ey5b"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/의정부지방법원/2017구합11881"
-  ],
-  "title": "폐수종말처리시설 운영부담금 부과처분 무효확인 등 소송"
- },
- {
-  "id": "d-2017guhap84471",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2017구합84471.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2017구합84471"
-  ],
-  "title": "형집행지휘처분 무효확인 소송"
- },
- {
   "id": "d-2017gadan112539",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "의정부지방법원-2017가단112539.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1329,50 +1134,6 @@
    "https://lbox.kr/case/서울고등법원/2017누55536"
   ],
   "title": "광업권 관련 손실보상금 청구소송 (1·2심)"
- },
- {
-  "id": "n-rnd-2017guhap101736",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2017구합101736.txt"
-  ],
-  "insta": [
-   "DVft8LNE_Io"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2017구합101736"
-  ],
-  "title": "과제 중복수행을 이유로 한 참여제한·출연금 환수처분 취소소송"
- },
- {
-  "id": "d-2015na2067589",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2015나2067589.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울고등법원/2015나2067589"
-  ],
-  "title": "긴급조치 위반 수사·기소 관련 국가배상 청구소송 (항소심)"
- },
- {
-  "id": "d-2017na2032440",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2017나2032440.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울고등법원/2017나2032440"
-  ],
-  "title": "위조 서류에 의한 등기 관련 손해배상 청구소송 (항소심)"
  },
  {
   "id": "d-2017na2032044",
@@ -1418,36 +1179,6 @@
   "title": "인근 주민의 건축허가 등 취소소송 (1·2심)"
  },
  {
-  "id": "d-2016gadan122872",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "수원지방법원안양지원-2016가단122872.txt"
-  ],
-  "insta": [
-   "DVzc2pHE-Im"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/수원지방법원안양지원/2016가단122872"
-  ],
-  "title": "국립과학관 사용허가 종료에 따른 건물인도 청구소송"
- },
- {
-  "id": "d-2016gadan80813",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "광주지방법원순천지원-2016가단80813.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/광주지방법원순천지원/2016가단80813"
-  ],
-  "title": "귀속재산 관련 진정명의회복 소유권이전등기 청구소송"
- },
- {
   "id": "c-lic-4",
   "cat": "license",
   "kind": "none",
@@ -1460,8 +1191,11 @@
  {
   "id": "d-2015na2043903",
   "cat": "comp",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2017다205882.txt",
+   "서울고등법원-2015나2043903.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1480,20 +1214,6 @@
    "https://lbox.kr/case/서울고등법원/2016누50725"
   ],
   "title": "도로법상 변상금 부과처분 취소소송 (항소심)"
- },
- {
-  "id": "d-2016da267043",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "대법원-2016다267043.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대법원/2016다267043"
-  ],
-  "title": "도시개발사업 역사 설치비용 부당이득반환 청구소송 (상고심)"
  },
  {
   "id": "n-lic-driver",
@@ -1527,8 +1247,10 @@
  {
   "id": "d-2016gadan5026849",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2016가단5026849.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1539,8 +1261,10 @@
  {
   "id": "d-2016guhap50495",
   "cat": "personnel",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2016구합50495.txt"
+  ],
   "insta": [
    "Dd3MVSbk6ln"
   ],
@@ -1563,24 +1287,13 @@
   "title": "지방자치단체 정보공개 거부처분 취소소송"
  },
  {
-  "id": "d-2015na54430",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2015나54430.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2015나54430"
-  ],
-  "title": "변호인 접견권 침해 관련 국가배상 청구소송 (항소심)"
- },
- {
   "id": "d-2015guhap67663",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2016누45259.txt",
+   "서울행정법원-2015구합67663.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DWV7WQ2EzZ5"
@@ -1592,26 +1305,12 @@
   "title": "대학교수 재임용거부처분 취소결정 관련 소송 (1·2심)"
  },
  {
-  "id": "d-2015gahap20091",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "대법원-2016다251079.txt",
-   "대전고등법원-2015나11510.txt",
-   "청주지방법원-2015가합20091.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/청주지방법원/2015가합20091"
-  ],
-  "title": "과거 수사기관 관련 손해배상 청구소송 (1·2·3심)"
- },
- {
   "id": "d-2015gadan241481",
   "cat": "comp",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울서부지방법원-2015가단241481.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1622,8 +1321,11 @@
  {
   "id": "d-2014guhap66762",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2015누44457.txt",
+   "서울행정법원-2014구합66762.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1635,8 +1337,10 @@
  {
   "id": "d-2015gudan5637",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2015구단5637.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DdTD7CUEwKc",
@@ -1648,24 +1352,12 @@
   "title": "난민불인정결정 취소소송"
  },
  {
-  "id": "d-2015na2029747",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2015나2029747.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울고등법원/2015나2029747"
-  ],
-  "title": "긴급조치 위반 수사·기소 관련 국가배상 청구소송 (항소심)"
- },
- {
   "id": "d-2015gudan4658",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2015구단4658.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DdTD7CUEwKc",
@@ -1679,8 +1371,10 @@
  {
   "id": "d-2015gudan9974",
   "cat": "admin",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2015구단9974.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DdTD7CUEwKc",
@@ -1690,352 +1384,11 @@
   "title": "난민불인정결정 취소소송"
  },
  {
-  "id": "d-2013guhap19134",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "대법원-2015두36249.txt",
-   "서울고등법원-2013누48042.txt",
-   "서울고등법원-2014누48872.txt",
-   "서울행정법원-2013구합19134.txt",
-   "서울행정법원-2013구합21670.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DUFbKcEE02C"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울고등법원/2013누48042",
-   "https://lbox.kr/case/서울행정법원/2013구합21670",
-   "https://lbox.kr/case/서울고등법원/2014누48872"
-  ],
-  "title": "검찰 공무원 직위해제·정직처분 취소소송 (1·2·3심)"
- },
- {
-  "id": "d-2014guhap5453",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2014구합5453.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DUXm5Kik_Ck"
-  ],
-  "lbox": [],
-  "title": "보호관찰 공무원 감봉처분 취소소송"
- },
- {
-  "id": "d-2013guhap54908",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2014누40786.txt",
-   "서울행정법원-2013구합54908.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DT1VUSPkwfq"
-  ],
-  "lbox": [],
-  "title": "고액 체납자 출국금지 연장처분 취소소송 (1·2심)"
- },
- {
-  "id": "d-2013guhap56201",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2013누53204.txt",
-   "서울행정법원-2013구합56201.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DT1VUSPkwfq"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2013구합56201",
-   "https://lbox.kr/case/서울고등법원/2013누53204"
-  ],
-  "title": "고액 체납자 출국금지 기간연장처분 취소소송 (1·2심)"
- },
- {
-  "id": "d-2014guhap2768",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2014구합2768.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "수형자 이송청원 기각처분 취소소송"
- },
- {
-  "id": "d-2013guhap59088",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2013구합59088.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "보호직 공무원 해임처분 취소소송"
- },
- {
-  "id": "d-2013guhap28701",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2013구합28701.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DT1VUSPkwfq"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2013구합28701"
-  ],
-  "title": "양도소득세 체납자 출국금지 기간연장처분 취소소송"
- },
- {
-  "id": "d-2013guhap12775",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2013구합12775.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "외국 국적 동포에 대한 입국금지처분 취소소송"
- },
- {
-  "id": "d-2013guhap16517",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2013구합16517.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DT1VUSPkwfq"
-  ],
-  "lbox": [],
-  "title": "출국금지 기간연장처분 취소소송"
- },
- {
-  "id": "d-2013guhap17138",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2013구합17138.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DT1VUSPkwfq"
-  ],
-  "lbox": [],
-  "title": "출국금지 기간연장처분 취소소송"
- },
- {
-  "id": "d-2012gaso13927",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소13927.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "물품대금반환 청구소송"
- },
- {
-  "id": "d-2013gojeong10",
-  "cat": "criminal",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2013고정10.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "절도 형사사건 (국선변호)"
- },
- {
-  "id": "d-2012gojeong577",
-  "cat": "criminal",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012고정577.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "상해 형사사건 (국선변호)"
- },
- {
-  "id": "d-2012gaso12047",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소12047.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso13286",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소13286.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso16094",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소16094.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "약정금 청구소송"
- },
- {
-  "id": "d-2012gadan4202",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가단4202.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
   "id": "d-2012gaso9805",
   "cat": "civil",
   "kind": "local",
   "local": [
    "창원지방법원진주지원-2012가소9805.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso11754",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소11754.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso1641",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소1641.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gadan11903",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가단11903.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "상속재산 범위 내 대여금 청구소송"
- },
- {
-  "id": "d-2012gadan9832",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가단9832.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "명의신탁 해지에 따른 자동차 이전등록 인수 청구소송"
- },
- {
-  "id": "d-2012gaso7243",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소7243.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso7489",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소7489.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "임대차보증금반환 청구소송"
- },
- {
-  "id": "d-2012gaso8932",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소8932.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "대여금 청구에 대한 방어 소송"
- },
- {
-  "id": "d-2012gaso6929",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소6929.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2011gadan17775",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2011가단17775.txt"
   ],
   "insta": [],
   "insta_q": [],
@@ -2079,174 +1432,6 @@
   "title": "손해배상 청구소송"
  },
  {
-  "id": "d-2012gaso4664",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소4664.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "대여금 청구소송"
- },
- {
-  "id": "d-2012gaso6233",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소6233.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "대여금 청구소송"
- },
- {
-  "id": "d-2012gaso2989",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소2989.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "부당이득금반환 청구소송"
- },
- {
-  "id": "d-2012gadan31037",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "부산지방법원-2012가단31037.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "승계집행문 부여에 대한 이의 소송"
- },
- {
-  "id": "d-2011gadan11777",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2011가단11777.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "명의신탁 해지에 따른 자동차 이전등록 인수 청구소송"
- },
- {
-  "id": "d-2012gaso3067",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소3067.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso4022",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소4022.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso4039",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소4039.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso4077",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소4077.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2012gaso2774",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소2774.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
-  "id": "d-2011gojeong732",
-  "cat": "criminal",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2011고정732.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "정보통신망이용촉진및정보보호등에관한법률위반 형사사건 (국선변호)"
- },
- {
-  "id": "d-2012gaso3586",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소3586.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "대여금 청구소송"
- },
- {
-  "id": "d-2012gaso4046",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소4046.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "대여금 청구소송"
- },
- {
-  "id": "d-2012gaso563",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2012가소563.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "손해배상 청구소송"
- },
- {
   "id": "d-2011gojeong939",
   "cat": "criminal",
   "kind": "local",
@@ -2257,18 +1442,6 @@
   "insta_q": [],
   "lbox": [],
   "title": "업무방해 형사사건 (국선변호)"
- },
- {
-  "id": "d-2011gaso19409",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "창원지방법원진주지원-2011가소19409.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "해약환급금반환 청구소송"
  },
  {
   "id": "l-2018guhap106080",
