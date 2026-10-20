@@ -37,42 +37,66 @@ def pdf_text(path):
     return "\n\f".join(pages), "ocr"
 
 
+LABEL_RX = re.compile(r"^(?:\d+\.\s*)?(" + "|".join(r"\s*".join(lab) for lab in LABELS) + r")\s*[:：]?\s*(.*)$")
+COMPANY_RX = re.compile(r"((?:주식회사|유한회사|유한책임회사|농업회사법인|사회복지법인|학교법인|재단법인|사단법인|의료법인|협동조합)\s*[가-힣A-Za-z0-9&·\.\-]+|[가-힣A-Za-z][가-힣A-Za-z0-9&·\.\-]*\s*(?:주식회사|유한회사|\(주\)|㈜|산학협력단|협동조합|새마을금고|학교|대학교|병원))")
+
+
 def header_names(text):
     """당사자란(사건 ~ 변론종결/판결선고/주문 사이)에서 이름·회사명을 모은다."""
-    head = text[:4000]
-    m = re.search(r"(변\s*론\s*종\s*결|판\s*결\s*선\s*고|주\s*문)", head)
+    head = text[:6000]
+    m = re.search(r"(변\s*론\s*종\s*결|판\s*결\s*선\s*고|주\s*문|신\s*청\s*취\s*지|결\s*정\s*일)", head)
     block = head[: m.start()] if m else head
     names = set()
     for line in block.splitlines():
-        s = line.strip()
-        if not s:
+        s2 = re.sub(r"\s+", " ", line.strip())
+        if not s2 or s2.startswith("개인정보유출주의"):
             continue
-        s2 = re.sub(r"\s+", " ", s)
-        # 라벨 뒤의 값
-        for lab in LABELS:
-            if s2.startswith(lab):
-                val = s2[len(lab):].strip(" :.").strip()
-                if val and not CASENO.search(val):
-                    names.add(val.split("(")[0].strip())
-        for key in ["대표자", "대표이사", "소송수행자", "담당변호사", "소송대리인", "법률상 대표자", "이사장", "원장", "총장", "학교장"]:
-            if key in s2:
-                after = s2.split(key, 1)[1].strip(" :")
+        s2 = re.sub(r"^\d+\.\s*", "", s2)
+        val = None
+        lm = LABEL_RX.match(s2)
+        if lm and not CASENO.search(s2) and "법원" not in s2 and "사 건" not in s2:
+            val = lm.group(2).strip()
+        else:
+            val = s2
+        val = re.sub(r"^\d+\.\s*", "", val)
+        for cm in COMPANY_RX.finditer(val):
+            names.add(cm.group(1).strip())
+        for key in ["대표자", "대표이사", "소송수행자", "담당변호사", "소송대리인", "법률상 대표자", "이사장", "원장", "총장", "학교장", "지배인", "청산인", "관리인"]:
+            if key in val:
+                after = val.split(key, 1)[1].strip(" :")
                 for tok in re.split(r"[,·\s]", after):
                     tok = tok.strip()
-                    if re.fullmatch(r"[가-힣]{2,4}", tok) and tok not in ("부효준", "변호사", "법무법인", "정부법무공단", "담당변호사"):
+                    if re.fullmatch(r"[가-힣]{2,4}", tok) and tok not in ("부효준", "변호사", "법무법인", "정부법무공단", "담당변호사", "유한", "금성"):
                         names.add(tok)
+        if lm:
+            v = re.sub(r"\(.*?\)", "", lm.group(2)).strip()
+            for tok in re.split(r"[,·\s]+", v):
+                if re.fullmatch(r"[가-힣]{2,4}", tok) and tok not in ("부효준", "대한민국", "변호사", "법무법인", "정부법무공단", "외"):
+                    names.add(tok)
+        # 당사자란에 홀로 적힌 사람 이름
+        if re.fullmatch(r"[가-힣]{2,4}", s2) and s2 not in ("부효준", "대한민국", "변호사", "법무법인", "주문", "판결", "결정", "이유", "사건", "원고", "피고"):
+            names.add(s2)
     names = {n for n in names if n and len(n) >= 2 and n not in ("부효준", "대한민국")}
-    # 기관 이름은 남긴다(홈페이지 방침과 별개로, 이름 가림은 사람·회사 우선)
     return sorted(names, key=len, reverse=True)
 
 
 def anonymize(text, names):
+    text = "\n".join(l for l in text.splitlines() if not l.strip().startswith("개인정보유출주의"))
     for i, n in enumerate(names):
         if re.fullmatch(r"[가-힣]{2,4}", n):
             text = text.replace(n, "○○○")
         else:
             text = text.replace(n, "[당사자%d]" % (i + 1))
     return text
+
+
+KNOWN = {}
+try:
+    import json
+    for _cid, _court, _no in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "insta", "case_numbers.json"), encoding="utf-8")):
+        KNOWN.setdefault(_no, _court)
+except Exception:
+    pass
 
 
 def main():
@@ -88,11 +112,18 @@ def main():
         text, how = pdf_text(f)
         head = text[:3000]
         no = CASENO.search(head)
-        court = COURT.search(head)
+        if not no:
+            # 파일 이름에서라도 찾는다
+            no = CASENO.search(os.path.basename(f).replace(" ", ""))
         if not no:
             print("사건번호를 찾지 못함:", f)
             continue
-        key = ((court.group(1).replace(" ", "") if court else "법원") + "-" + no.group(1))
+        number = no.group(1)
+        court = KNOWN.get(number)
+        if not court:
+            m = COURT.search(re.sub(r"[ \t]+", "", head[:600]))
+            court = m.group(1) if m else "법원"
+        key = court + "-" + number
         names = header_names(text)
         out = os.path.join(OUT, key + ".txt")
         with open(out, "w", encoding="utf-8") as w:

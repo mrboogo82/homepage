@@ -1,1 +1,5 @@
 __pycache__/
+# 판결문 전문·원본 파일 이름 목록(개인정보 포함) — 저장소에 올리지 않음
+work/judgments/
+work/insta/direct_files.json
+work/insta/direct_match.json
