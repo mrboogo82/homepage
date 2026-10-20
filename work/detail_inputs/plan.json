@@ -193,20 +193,6 @@
   "title": "사무실 임대차 제소전화해"
  },
  {
-  "id": "n-state-art",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2024가단5233130.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2024가단5233130"
-  ],
-  "title": "미술품 전시를 둘러싼 손해배상 청구소송"
- },
- {
   "id": "n-adm-school",
   "cat": "admin",
   "kind": "none",
@@ -245,20 +231,6 @@
    "https://lbox.kr/case/서울고등법원/2024나2056697"
   ],
   "title": "입찰담합 손해배상 청구소송 (1·2심)"
- },
- {
-  "id": "n-state-grave",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "서울서부지방법원-2023가단261671.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울서부지방법원/2023가단261671"
-  ],
-  "title": "공원 내 분묘 관련 손해배상·부당이득반환 청구소송"
  },
  {
   "id": "n-civ-buyback-1",
@@ -389,20 +361,6 @@
   "title": "공영주차장 침수 피해 구상금 청구소송"
  },
  {
-  "id": "n-state-road",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "서울동부지방법원-2023나28934.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울동부지방법원/2023나28934"
-  ],
-  "title": "도로공사로 인한 손해배상 청구소송 (항소심)"
- },
- {
   "id": "n-civ-landret",
   "cat": "civil",
   "kind": "local",
@@ -417,8 +375,10 @@
  {
   "id": "d-2020guhap30741",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "춘천지방법원강릉지원-2020구합30741.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -427,24 +387,13 @@
   "title": "하수도원인자부담금 부과처분 무효확인 소송"
  },
  {
-  "id": "d-2020nu61661",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2020누61661.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울고등법원/2020누61661"
-  ],
-  "title": "국가연구개발사업 참여제한처분 취소소송 (항소심)"
- },
- {
   "id": "d-2019guhap12895",
   "cat": "license",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2020누53288.txt",
+   "의정부지방법원-2019구합12895.txt"
+  ],
   "insta": [
    "CTPeFsWBkp1"
   ],
@@ -456,24 +405,13 @@
   "title": "폐기물처리 사업계획서 부적합 통보처분 취소소송 (1·2심)"
  },
  {
-  "id": "d-2020guhap101361",
+  "id": "d-2019guhap103873",
   "cat": "rnd",
   "kind": "local",
   "local": [
-   "대전지방법원-2020구합101361.txt"
+   "대전고등법원-2020누12733.txt",
+   "대전지방법원-2019구합103873.txt"
   ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2020구합101361"
-  ],
-  "title": "정부출연금 환수 및 국가연구개발사업 참여제한처분 취소소송"
- },
- {
-  "id": "d-2019guhap103873",
-  "cat": "rnd",
-  "kind": "lbox",
-  "local": [],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -509,8 +447,10 @@
  {
   "id": "d-2019du53389",
   "cat": "license",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2019두53389.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -519,28 +459,12 @@
   "title": "농약 품목등록 신청 반려처분 취소소송 (상고심)"
  },
  {
-  "id": "d-2019guhap83304",
+  "id": "d-2019guhap80411",
   "cat": "rnd",
   "kind": "local",
   "local": [
-   "서울고등법원-2020누43472.txt",
-   "서울행정법원-2019구합83304.txt"
+   "서울행정법원-2019구합80411.txt"
   ],
-  "insta": [],
-  "insta_q": [
-   "DaANueLE-g9"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2019구합83304",
-   "https://lbox.kr/case/서울고등법원/2020누43472"
-  ],
-  "title": "국가연구개발사업 부당이득금 징수처분 취소소송 (1·2심)"
- },
- {
-  "id": "d-2019guhap80411",
-  "cat": "rnd",
-  "kind": "lbox",
-  "local": [],
   "insta": [],
   "insta_q": [
    "DaANueLE-g9"
@@ -553,29 +477,16 @@
  {
   "id": "d-2013guhap51343",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2013구합51343.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
    "https://lbox.kr/case/서울행정법원/2013구합51343"
   ],
   "title": "경찰공무원 초과근무수당 청구소송"
- },
- {
-  "id": "d-2019guhap69513",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2019구합69513.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2019구합69513",
-   "https://lbox.kr/case/서울고등법원/2020누35235"
-  ],
-  "title": "국가연구개발사업 정부출연금 환수 및 참여제한처분 취소소송 (1·2심)"
  },
  {
   "id": "n-rnd-2019guhap745",
@@ -654,8 +565,11 @@
  {
   "id": "d-2018guhap104442",
   "cat": "rnd",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대전고등법원-2019누13068.txt",
+   "대전지방법원-2018구합104442.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -669,6 +583,7 @@
   "cat": "rnd",
   "kind": "local",
   "local": [
+   "대법원-2020두35059.txt",
    "서울고등법원-2019누41319.txt",
    "서울행정법원-2018구합82342.txt"
   ],
@@ -695,24 +610,12 @@
   "title": "국가연구개발사업 참여제한처분 취소소송"
  },
  {
-  "id": "d-2018guhap104770",
+  "id": "d-2018guhap69073",
   "cat": "rnd",
   "kind": "local",
   "local": [
-   "대전지방법원-2018구합104770.txt"
+   "서울행정법원-2018구합69073.txt"
   ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2018구합104770"
-  ],
-  "title": "국가연구개발사업 정부출연금 환수 및 참여제한처분 취소소송"
- },
- {
-  "id": "d-2018guhap69073",
-  "cat": "rnd",
-  "kind": "lbox",
-  "local": [],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -721,24 +624,12 @@
   "title": "국가연구개발사업 참여제한처분 취소소송"
  },
  {
-  "id": "d-2018guhap104626",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2018구합104626.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2018구합104626"
-  ],
-  "title": "국가연구개발사업 참여제한 및 정부출연금 환수처분 취소소송"
- },
- {
   "id": "d-2015du47836",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2015두47836.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -747,39 +638,12 @@
   "title": "국립대학 기간제 근로자 관련 부당해고 구제재심판정 취소소송 (상고심)"
  },
  {
-  "id": "n-rnd-2018guhap100006",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2018구합100006.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2018구합100006",
-   "https://lbox.kr/case/대전고등법원/2019누10748"
-  ],
-  "title": "국가연구개발사업 정부출연금 환수 및 참여제한처분 취소소송 (1·2심)"
- },
- {
-  "id": "n-rnd-2018guhap73522",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2018구합73522.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2018구합73522"
-  ],
-  "title": "국가연구개발사업 참여제한 및 출연금 환수처분 취소소송"
- },
- {
   "id": "n-rnd-2018guhap101740",
   "cat": "rnd",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대전지방법원-2018구합101740.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -790,8 +654,10 @@
  {
   "id": "d-2017guhap938",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원-2017구합938.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -802,8 +668,10 @@
  {
   "id": "d-2015du52296",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2015두52296.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
