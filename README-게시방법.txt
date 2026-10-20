@@ -29,6 +29,11 @@
   데이터대로 다시 만들어집니다( --check 를 붙이면 일치 여부만 검사). 엘박스(lbox.kr)에 공개된 판결 글로 1면 이미지를 조판하는 도구는 work/render_judgment.py.
 - 사례를 지울 때는  python3 work/remove_cases.py . <사례 id ...>  또는  --title 임금  처럼 제목의 말로 지웁니다(2026. 10. 20. 추가; --dry-run 으로 미리 보기).
   데이터 블록에서 빼고, 그 사례만 쓰던 판결문 이미지와 작업용 목록(work/detail_inputs, work/insta)의 항목도 함께 치웁니다. 그 뒤 ssr_cases.py → build_cases.py 를 돌립니다.
+- 결과 표시와 '기각' 표현 규칙(2026. 10. 20. 추가): 결과는 '승소'·'일부승소'로만 적고 괄호 설명((인용)·(청구 일부 기각) 등)은 붙이지 않습니다
+  (괄호는 화해권고결정·화해·조정·형사 결과처럼 승소/일부승소가 아닌 결과에만). 국가·행정청·지방자치단체·공공기관을 대리한 사건(party가 비어 있는 사례)의
+  제목·요지·상세 소개·검색어에는 '기각'이라는 말을 쓰지 않습니다('청구를 받아들이지 않았습니다', '항소심도 같은 결론을 유지하였습니다', '처분 적법' 등으로).
+  새 사례를 더하거나 상세 소개를 합친 뒤  python3 work/no_gigak.py .  을 돌리면 index.html 데이터 블록·cases-detail.json·work/details·work/detail_inputs/cases.json에
+  이 규칙이 한꺼번에 적용됩니다( --dry-run 으로 미리 보기, --check 로 남은 곳 확인; 판결문 원문 인용(quotes)은 손대지 않음). 그 뒤 ssr_cases.py → build_cases.py.
 - 그 다음 반드시 저장소 최상위에서  python3 work/build_cases.py .  을 돌립니다(2026. 10. 19. 추가).
   사례마다 cases/<판결문 이미지 이름>.html 개별 페이지를 다시 만들고, 두 페이지의 카드에 개별 페이지 링크를 넣고,
   sitemap.xml(전체 URL)과 case.css, llms.txt·llms-full.txt의 페이지 주소를 갱신합니다. 같은 폴더에 여러 번 돌려도 안전합니다.
