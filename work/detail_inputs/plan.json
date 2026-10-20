@@ -279,22 +279,6 @@
   "title": "하천구역 점용물 철거명령·대집행 계고처분 무효확인·취소소송 (1·2심, 집행정지)"
  },
  {
-  "id": "n-lic-academy",
-  "cat": "license",
-  "kind": "local",
-  "local": [
-   "춘천지방법원-2024구합31336.txt",
-   "춘천지방법원-2024아3085.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/춘천지방법원/2024구합31336",
-   "https://lbox.kr/case/춘천지방법원/2024아3085"
-  ],
-  "title": "학원 교습정지처분 취소소송 및 집행정지"
- },
- {
   "id": "n-civ-rental",
   "cat": "civil",
   "kind": "local",
@@ -369,48 +353,6 @@
   "title": "교원 파면처분 취소소송 (항소심에서 1심 취소)"
  },
  {
-  "id": "n-crim-assault",
-  "cat": "criminal",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2024고단2382.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2024고단2382"
-  ],
-  "title": "강제추행 사건 변호"
- },
- {
-  "id": "c-pers-3",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2023구합191.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2023구합191"
-  ],
-  "title": "부당해고구제 재심판정 취소소송"
- },
- {
-  "id": "n-adm-officer",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2024아12477.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2024아12477"
-  ],
-  "title": "사회복지법인 임원 직무집행정지 처분 집행정지"
- },
- {
   "id": "c-lic-1",
   "cat": "license",
   "kind": "local",
@@ -451,20 +393,6 @@
   "title": "직원 숙소 임차보증금 반환 청구소송"
  },
  {
-  "id": "n-lic-market",
-  "cat": "license",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2023구합76419.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2023구합76419"
-  ],
-  "title": "농수산물도매시장 도매시장법인 업무정지(3개월) 처분 취소소송"
- },
- {
   "id": "n-state-road",
   "cat": "state",
   "kind": "lbox",
@@ -475,51 +403,6 @@
    "https://lbox.kr/case/서울동부지방법원/2023나28934"
   ],
   "title": "도로공사로 인한 손해배상 청구소송 (항소심)"
- },
- {
-  "id": "c-lic-3a",
-  "cat": "license",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2022구합80589.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2022구합80589"
-  ],
-  "title": "ICT 규제샌드박스 실증특례 지정처분 취소소송 (일반의약품 화상 판매기)"
- },
- {
-  "id": "n-adm-grade",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "인천지방법원-2023구합53113.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/인천지방법원/2023구합53113"
-  ],
-  "title": "중학교 중간고사 성적 결정 처분 취소소송"
- },
- {
-  "id": "n-pen-audit",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "대법원-2023두41154.txt",
-   "서울고등법원-2022누58348.txt",
-   "인천지방법원-2021구합56972.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/인천지방법원/2021구합56972",
-   "https://lbox.kr/case/서울고등법원/2022누58348"
-  ],
-  "title": "사립유치원 감사결과 처분요구(중징계 요구·교비 보전요구) 취소소송 (1·2·3심)"
  },
  {
   "id": "n-civ-office-4",
@@ -536,50 +419,6 @@
    "https://lbox.kr/case/대전지방법원/2022나112463"
   ],
   "title": "공유오피스 서비스이용계약 사용료·위약벌 청구소송 (1·2심)"
- },
- {
-  "id": "n-rnd-osteon",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2021구합830.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2021구합830"
-  ],
-  "title": "참여제한(2년)·정산금 환수처분 취소소송"
- },
- {
-  "id": "c-pers-4",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "인천지방법원-2022구합54805.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/인천지방법원/2022구합54805"
-  ],
-  "title": "교원 파면처분 취소소송"
- },
- {
-  "id": "n-rnd-logitech",
-  "cat": "rnd",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2022나2020311.txt",
-   "서울중앙지방법원-2021가합568394.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2021가합568394",
-   "https://lbox.kr/case/서울고등법원/2022나2020311"
-  ],
-  "title": "연구개발과제 선정 탈락을 이유로 한 손해배상 청구소송 (1·2심)"
  },
  {
   "id": "n-civ-office-3",
@@ -829,8 +668,10 @@
  {
   "id": "d-2019gahap60252",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "광주지방법원-2019가합60252.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -971,8 +812,11 @@
  {
   "id": "d-2019na79404",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "수원지방법원-2019나79404.txt",
+   "수원지방법원평택지원-2018가단58019.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -984,8 +828,11 @@
  {
   "id": "c-civ-1b",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대전지방법원-2019나106437.txt",
+   "대전지방법원공주지원-2018가단21592.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1162,8 +1009,12 @@
  {
   "id": "d-2019na5986",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2019다265499.txt",
+   "서울중앙지방법원-2016가소5944347.txt",
+   "서울중앙지방법원-2019나5986.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1213,8 +1064,10 @@
  {
   "id": "c-civ-1a",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2019나16504.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1265,8 +1118,10 @@
  {
   "id": "d-2018guhap71274",
   "cat": "rnd",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2018구합71274.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1292,8 +1147,10 @@
  {
   "id": "d-2018gahap30795",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울서부지방법원-2018가합30795.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1304,8 +1161,10 @@
  {
   "id": "d-2016na109923",
   "cat": "civil",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대전지방법원-2016나109923.txt"
+  ],
   "insta": [
    "DWnswipElFQ"
   ],
@@ -1379,28 +1238,12 @@
   "title": "불성실 수행 판정에 따른 참여제한·환수처분 취소소송"
  },
  {
-  "id": "d-2017gahap5744",
-  "cat": "state",
-  "kind": "local",
-  "local": [
-   "대법원-2017다285208.txt",
-   "서울고등법원-2017나2034972.txt",
-   "수원지방법원안산지원-2017가합5744.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/수원지방법원안산지원/2017가합5744",
-   "https://lbox.kr/case/서울고등법원/2017나2034972",
-   "https://lbox.kr/case/대법원/2017다285208"
-  ],
-  "title": "양돈장 행정지도 관련 지방자치단체 손해배상 청구소송 (1·2·3심)"
- },
- {
   "id": "c-civ-1c",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "수원지방법원안산지원-2017가단60737.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1456,8 +1299,11 @@
  {
   "id": "d-2018na31209",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2016가소200820.txt",
+   "서울중앙지방법원-2018나31209.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1483,8 +1329,10 @@
  {
   "id": "d-2017gahap528429",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2017가합528429.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1508,8 +1356,10 @@
  {
   "id": "d-2017guhap11881",
   "cat": "admin",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "의정부지방법원-2017구합11881.txt"
+  ],
   "insta": [
    "DVQVQ55Ey5b"
   ],
@@ -1522,8 +1372,10 @@
  {
   "id": "d-2017guhap84471",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2017구합84471.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1544,42 +1396,6 @@
   "title": "조상 땅 찾기 관련 소유권 확인 청구소송"
  },
  {
-  "id": "c-pers-6a",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2018누30466.txt",
-   "서울행정법원-2017구합51181.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DXv1Xl2k33k",
-   "CS_BwgXBOZb"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2017구합51181",
-   "https://lbox.kr/case/서울고등법원/2018누30466"
-  ],
-  "title": "국립대학교 총장 임용처분 취소소송 (1·2심)"
- },
- {
-  "id": "d-2016guhap11976",
-  "cat": "admin",
-  "kind": "local",
-  "local": [
-   "대전고등법원-2017누3428.txt",
-   "청주지방법원-2016구합11976.txt"
-  ],
-  "insta": [
-   "DaM2cPrk-hM"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/청주지방법원/2016구합11976"
-  ],
-  "title": "국유지 변상금 부과처분 취소소송 (1·2심)"
- },
- {
   "id": "d-2017guhap51877",
   "cat": "comp",
   "kind": "lbox",
@@ -1595,8 +1411,10 @@
  {
   "id": "n-rnd-2017guhap101736",
   "cat": "rnd",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대전지방법원-2017구합101736.txt"
+  ],
   "insta": [
    "DVft8LNE_Io"
   ],
@@ -1609,8 +1427,10 @@
  {
   "id": "d-2015na2067589",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2015나2067589.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1621,8 +1441,10 @@
  {
   "id": "d-2017na2032440",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2017나2032440.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1672,27 +1494,12 @@
   "title": "인근 주민의 건축허가 등 취소소송 (1·2심)"
  },
  {
-  "id": "d-2017guhap72",
-  "cat": "license",
-  "kind": "local",
-  "local": [
-   "의정부지방법원-2017구합72.txt"
-  ],
-  "insta": [
-   "DXEE4QNE-oi",
-   "CTPdlsXBtJ3"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/의정부지방법원/2017구합72"
-  ],
-  "title": "사용중지명령처분 취소소송"
- },
- {
   "id": "d-2016gadan122872",
   "cat": "civil",
-  "kind": "insta",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "수원지방법원안양지원-2016가단122872.txt"
+  ],
   "insta": [
    "DVzc2pHE-Im"
   ],
@@ -1703,24 +1510,12 @@
   "title": "국립과학관 사용허가 종료에 따른 건물인도 청구소송"
  },
  {
-  "id": "d-2016gahap507968",
-  "cat": "comp",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2016가합507968.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울중앙지방법원/2016가합507968"
-  ],
-  "title": "뉴타운 이주대책 관련 부당이득반환 청구소송"
- },
- {
   "id": "d-2016gadan80813",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "광주지방법원순천지원-2016가단80813.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1781,8 +1576,10 @@
  {
   "id": "d-2016da267043",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2016다267043.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1860,20 +1657,6 @@
   "title": "교원 파면처분 취소결정에 대한 취소소송"
  },
  {
-  "id": "d-2016guhap58192",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2016구합58192.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2016구합58192"
-  ],
-  "title": "운전직 공무원 해임처분 취소소송"
- },
- {
   "id": "d-2015guhap2209",
   "cat": "admin",
   "kind": "lbox",
@@ -1888,30 +1671,16 @@
  {
   "id": "d-2015na54430",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2015나54430.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
    "https://lbox.kr/case/서울중앙지방법원/2015나54430"
   ],
   "title": "변호인 접견권 침해 관련 국가배상 청구소송 (항소심)"
- },
- {
-  "id": "d-2013guhap15171",
-  "cat": "comp",
-  "kind": "local",
-  "local": [
-   "수원지방법원-2013구합15171.txt"
-  ],
-  "insta": [
-   "DcSyTfgExqi"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/수원지방법원/2013구합15171"
-  ],
-  "title": "하천구역 편입토지 손실보상금 청구소송"
  },
  {
   "id": "d-2015guhap67663",
@@ -1931,34 +1700,18 @@
  {
   "id": "d-2015gahap20091",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2016다251079.txt",
+   "대전고등법원-2015나11510.txt",
+   "청주지방법원-2015가합20091.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
    "https://lbox.kr/case/청주지방법원/2015가합20091"
   ],
   "title": "과거 수사기관 관련 손해배상 청구소송 (1·2·3심)"
- },
- {
-  "id": "d-2015guhap65798",
-  "cat": "license",
-  "kind": "local",
-  "local": [
-   "대법원-2016두49327.txt",
-   "서울고등법원-2016누32765.txt",
-   "수원지방법원-2015구합65798.txt"
-  ],
-  "insta": [
-   "DejH0zkk8B0"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/수원지방법원/2015구합65798",
-   "https://lbox.kr/case/서울고등법원/2016누32765",
-   "https://lbox.kr/case/대법원/2016두49327"
-  ],
-  "title": "주택건설사업계획 승인 취소처분 취소소송 (1·2·3심)"
  },
  {
   "id": "d-2015gadan241481",
@@ -1973,24 +1726,6 @@
   "title": "뉴타운 이주대책 관련 부당이득반환 청구소송"
  },
  {
-  "id": "d-2015guhap5399",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "대법원-2016두42142.txt",
-   "서울고등법원-2015누59510.txt",
-   "서울행정법원-2015구합5399.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2015구합5399",
-   "https://lbox.kr/case/서울고등법원/2015누59510",
-   "https://lbox.kr/case/대법원/2016두42142"
-  ],
-  "title": "공기업 근로자 부당해고 구제재심판정 취소소송 (1·2·3심)"
- },
- {
   "id": "d-2014guhap66762",
   "cat": "personnel",
   "kind": "lbox",
@@ -2002,56 +1737,6 @@
    "https://lbox.kr/case/서울고등법원/2015누44457"
   ],
   "title": "대학병원 교수 전보처분 관련 교원소청 결정 취소소송 (1·2심)"
- },
- {
-  "id": "d-2014guhap52160",
-  "cat": "license",
-  "kind": "local",
-  "local": [
-   "수원지방법원-2014구합52160.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DUpnP2eE1co",
-   "CSsqoaVBEXG"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/수원지방법원/2014구합52160"
-  ],
-  "title": "개발행위허가 취소처분 취소소송"
- },
- {
-  "id": "d-2015nu48183",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "대법원-2015두58546.txt",
-   "서울고등법원-2015누48183.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울고등법원/2015누48183",
-   "https://lbox.kr/case/대법원/2015두58546"
-  ],
-  "title": "학과 통폐합에 따른 교원 소속변경 관련 소청 결정 취소소송 (2·3심)"
- },
- {
-  "id": "c-pers-7b",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2013구합22475.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DawuPrAk5FU",
-   "DTwQkfiE7z2"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2013구합22475"
-  ],
-  "title": "검사 면직처분 취소소송"
  },
  {
   "id": "d-2015gudan5637",
@@ -2071,8 +1756,10 @@
  {
   "id": "d-2015na2029747",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2015나2029747.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -2111,8 +1798,14 @@
  {
   "id": "d-2013guhap19134",
   "cat": "personnel",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "대법원-2015두36249.txt",
+   "서울고등법원-2013누48042.txt",
+   "서울고등법원-2014누48872.txt",
+   "서울행정법원-2013구합19134.txt",
+   "서울행정법원-2013구합21670.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DUFbKcEE02C"
@@ -2127,8 +1820,10 @@
  {
   "id": "d-2014guhap5453",
   "cat": "personnel",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2014구합5453.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DUXm5Kik_Ck"
@@ -2139,8 +1834,11 @@
  {
   "id": "d-2013guhap54908",
   "cat": "admin",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2014누40786.txt",
+   "서울행정법원-2013구합54908.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DT1VUSPkwfq"
@@ -2151,8 +1849,11 @@
  {
   "id": "d-2013guhap56201",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2013누53204.txt",
+   "서울행정법원-2013구합56201.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DT1VUSPkwfq"
@@ -2166,8 +1867,10 @@
  {
   "id": "d-2014guhap2768",
   "cat": "admin",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2014구합2768.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2176,8 +1879,10 @@
  {
   "id": "d-2013guhap59088",
   "cat": "personnel",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2013구합59088.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2186,8 +1891,10 @@
  {
   "id": "d-2013guhap28701",
   "cat": "admin",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2013구합28701.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DT1VUSPkwfq"
@@ -2198,27 +1905,12 @@
   "title": "양도소득세 체납자 출국금지 기간연장처분 취소소송"
  },
  {
-  "id": "c-pers-7a",
-  "cat": "personnel",
-  "kind": "local",
-  "local": [
-   "서울행정법원-2013구합21434.txt"
-  ],
-  "insta": [],
-  "insta_q": [
-   "DawuPrAk5FU",
-   "DTwQkfiE7z2"
-  ],
-  "lbox": [
-   "https://lbox.kr/case/서울행정법원/2013구합21434"
-  ],
-  "title": "검사 면직처분 취소소송"
- },
- {
   "id": "d-2013guhap12775",
   "cat": "admin",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2013구합12775.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2227,8 +1919,10 @@
  {
   "id": "d-2013guhap16517",
   "cat": "admin",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2013구합16517.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DT1VUSPkwfq"
@@ -2239,8 +1933,10 @@
  {
   "id": "d-2013guhap17138",
   "cat": "admin",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울행정법원-2013구합17138.txt"
+  ],
   "insta": [],
   "insta_q": [
    "DT1VUSPkwfq"
@@ -2251,8 +1947,10 @@
  {
   "id": "d-2012gaso13927",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소13927.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2261,8 +1959,10 @@
  {
   "id": "d-2013gojeong10",
   "cat": "criminal",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2013고정10.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2271,8 +1971,10 @@
  {
   "id": "d-2012gojeong577",
   "cat": "criminal",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012고정577.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2281,8 +1983,10 @@
  {
   "id": "d-2012gaso12047",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소12047.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2291,8 +1995,10 @@
  {
   "id": "d-2012gaso13286",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소13286.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2301,8 +2007,10 @@
  {
   "id": "d-2012gaso16094",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소16094.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2311,8 +2019,10 @@
  {
   "id": "d-2012gadan4202",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가단4202.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2321,8 +2031,10 @@
  {
   "id": "d-2012gaso9805",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소9805.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2331,8 +2043,10 @@
  {
   "id": "d-2012gaso11754",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소11754.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2341,8 +2055,10 @@
  {
   "id": "d-2012gaso1641",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소1641.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2351,8 +2067,10 @@
  {
   "id": "d-2012gadan11903",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가단11903.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2361,8 +2079,10 @@
  {
   "id": "d-2012gadan9832",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가단9832.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2371,8 +2091,10 @@
  {
   "id": "d-2012gaso7243",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소7243.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2381,8 +2103,10 @@
  {
   "id": "d-2012gaso7489",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소7489.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2391,8 +2115,10 @@
  {
   "id": "d-2012gaso8932",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소8932.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2401,8 +2127,10 @@
  {
   "id": "d-2012gaso6929",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소6929.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2411,8 +2139,10 @@
  {
   "id": "d-2011gadan17775",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2011가단17775.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2421,8 +2151,10 @@
  {
   "id": "d-2012gaso5407",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소5407.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2431,8 +2163,10 @@
  {
   "id": "d-2012gaso6264",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소6264.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2441,8 +2175,10 @@
  {
   "id": "d-2012gaso4367",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소4367.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2451,8 +2187,10 @@
  {
   "id": "d-2012gaso4664",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소4664.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2461,8 +2199,10 @@
  {
   "id": "d-2012gaso6233",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소6233.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2471,8 +2211,10 @@
  {
   "id": "d-2012gaso2989",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소2989.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2481,8 +2223,10 @@
  {
   "id": "d-2012gadan31037",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "부산지방법원-2012가단31037.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2491,8 +2235,10 @@
  {
   "id": "d-2011gadan11777",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2011가단11777.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2501,8 +2247,10 @@
  {
   "id": "d-2012gaso3067",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소3067.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2511,8 +2259,10 @@
  {
   "id": "d-2012gaso4022",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소4022.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2521,8 +2271,10 @@
  {
   "id": "d-2012gaso4039",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소4039.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2531,8 +2283,10 @@
  {
   "id": "d-2012gaso4077",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소4077.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2541,8 +2295,10 @@
  {
   "id": "d-2012gaso2774",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소2774.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2551,8 +2307,10 @@
  {
   "id": "d-2011gojeong732",
   "cat": "criminal",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2011고정732.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2561,8 +2319,10 @@
  {
   "id": "d-2012gaso3586",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소3586.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2571,8 +2331,10 @@
  {
   "id": "d-2012gaso4046",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소4046.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2581,8 +2343,10 @@
  {
   "id": "d-2012gaso563",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2012가소563.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2591,8 +2355,10 @@
  {
   "id": "d-2011gojeong939",
   "cat": "criminal",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2011고정939.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],
@@ -2601,8 +2367,10 @@
  {
   "id": "d-2011gaso19409",
   "cat": "civil",
-  "kind": "none",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "창원지방법원진주지원-2011가소19409.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [],

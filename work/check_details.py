@@ -58,7 +58,11 @@ def check(path):
                 if a in t:
                     problems.append((cid, "%s: 기관명 '%s'" % (k, a)))
             for w in BAD_WORDS:
-                if w in t:
+                if w == "최고":
+                    # 催告(최고함·최고하·최고서·최고를·최고한)는 법률 용어이므로 넘어간다
+                    if re.search(r"최고(?![함하서를한])", t):
+                        problems.append((cid, "%s: 광고 표현 '%s'" % (k, w)))
+                elif w in t:
                     problems.append((cid, "%s: 광고 표현 '%s'" % (k, w)))
             m = PLACEHOLDER.search(t)
             if m:
