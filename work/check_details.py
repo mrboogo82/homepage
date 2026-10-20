@@ -40,6 +40,12 @@ def check(path):
     for cid, d in data.items():
         if not isinstance(d, dict):
             problems.append((cid, "항목이 객체가 아님")); continue
+        if set(d.keys()) <= {"summary_new"}:
+            # 요지만 바꾸는 항목: 본문 길이·검색어 검사는 건너뛰고 금지어만 본다
+            for a in AGENCIES:
+                if a in d.get("summary_new", ""):
+                    problems.append((cid, "summary_new: 기관명 '%s'" % a))
+            continue
         n_over = sum(len(x) for x in d.get("overview") or [])
         n_hold = sum(len(x) for x in d.get("holding") or [])
         if n_over < 150:

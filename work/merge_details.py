@@ -42,6 +42,8 @@ def main():
                 by_id[cid]["summary"] = d["summary_new"]
                 n_sum += 1
             entry = {k: d[k] for k in KEEP if d.get(k)}
+            if not (entry.get("overview") or entry.get("holding")):
+                continue  # 요지만 바꾼 사례
             details[cid] = entry
             n_new += 1
     # 사례 순서대로 정렬해 저장

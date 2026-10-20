@@ -316,20 +316,6 @@
   "title": "전세자금대출 보증 보험금 청구소송"
  },
  {
-  "id": "n-civ-buyback-2",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "의정부지방법원고양지원-2023가단57551.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/의정부지방법원고양지원/2023가단57551"
-  ],
-  "title": "환매권 통지의무 위반을 이유로 한 손해배상 청구소송"
- },
- {
   "id": "n-civ-mediation",
   "cat": "civil",
   "kind": "none",
@@ -379,20 +365,6 @@
   "title": "공영주차장 침수 피해 구상금 청구소송"
  },
  {
-  "id": "n-civ-sr",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "광주지방법원-2023가단563980.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/광주지방법원/2023가단563980"
-  ],
-  "title": "직원 숙소 임차보증금 반환 청구소송"
- },
- {
   "id": "n-state-road",
   "cat": "state",
   "kind": "lbox",
@@ -403,46 +375,6 @@
    "https://lbox.kr/case/서울동부지방법원/2023나28934"
   ],
   "title": "도로공사로 인한 손해배상 청구소송 (항소심)"
- },
- {
-  "id": "n-civ-office-4",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2021가소142712.txt",
-   "대전지방법원-2022나112463.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/대전지방법원/2021가소142712",
-   "https://lbox.kr/case/대전지방법원/2022나112463"
-  ],
-  "title": "공유오피스 서비스이용계약 사용료·위약벌 청구소송 (1·2심)"
- },
- {
-  "id": "n-civ-office-3",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "대전지방법원-2021가소142972.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "공유오피스 서비스이용계약 사용료·위약벌 청구소송"
- },
- {
-  "id": "n-civ-office-2",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2021가소1572256.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "공유오피스 서비스이용계약 사용료·위약벌 청구소송"
  },
  {
   "id": "n-civ-landret",
@@ -517,18 +449,6 @@
    "https://lbox.kr/case/대전고등법원/2020누12733"
   ],
   "title": "대학 산학협력단에 대한 출연금 환수·참여제한처분 취소소송 (1·2심)"
- },
- {
-  "id": "n-civ-office-1",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "서울중앙지방법원-2021가소1501919.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [],
-  "title": "공유오피스 서비스이용계약 사용료·위약벌 청구소송"
  },
  {
   "id": "n-civ-insurance",
@@ -606,8 +526,10 @@
  {
   "id": "d-2017gahap522315",
   "cat": "civil",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울중앙지방법원-2017가합522315.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1455,8 +1377,10 @@
  {
   "id": "d-2017na2032044",
   "cat": "state",
-  "kind": "lbox",
-  "local": [],
+  "kind": "local",
+  "local": [
+   "서울고등법원-2017나2032044.txt"
+  ],
   "insta": [],
   "insta_q": [],
   "lbox": [
@@ -1522,22 +1446,6 @@
    "https://lbox.kr/case/광주지방법원순천지원/2016가단80813"
   ],
   "title": "귀속재산 관련 진정명의회복 소유권이전등기 청구소송"
- },
- {
-  "id": "d-2017na2005615",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "서울고등법원-2017나2005615.txt"
-  ],
-  "insta": [
-   "Daen_XaE7gP"
-  ],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/서울고등법원/2017나2005615"
-  ],
-  "title": "주민 통행로 부지 부당이득반환 청구소송 (항소심)"
  },
  {
   "id": "c-lic-4",
@@ -1615,20 +1523,6 @@
    "https://lbox.kr/case/서울행정법원/2016구합68335"
   ],
   "title": "전기공사 일괄하도급을 이유로 한 영업정지처분 취소소송"
- },
- {
-  "id": "d-2016gahap441",
-  "cat": "civil",
-  "kind": "local",
-  "local": [
-   "부산지방법원-2016가합441.txt"
-  ],
-  "insta": [],
-  "insta_q": [],
-  "lbox": [
-   "https://lbox.kr/case/부산지방법원/2016가합441"
-  ],
-  "title": "폐기물 재활용 선별비 청구소송"
  },
  {
   "id": "d-2016gadan5026849",
