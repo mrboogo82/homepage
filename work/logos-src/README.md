@@ -1,6 +1,6 @@
 # 기관 로고 — 출처와 가공 기록 (2026. 10. 20.~21.)
 
-홈페이지 '법률고문 위촉'·'위원회 · 강의' 절의 타일마다 붙는 **작은 로고 띠**와 강의 목록의 로고에 쓰는 `logos/` 폴더 33개 파일의
+홈페이지 '법률고문 위촉'·'위원회 · 강의' 절의 타일마다 붙는 **작은 로고 띠**와 강의 목록·경력·학력·수상 줄의 로고에 쓰는 `logos/` 폴더 40개 파일의
 출처·가공 방법이다. `raw/`에는 받은 원본을 그대로 두었다(다시 만들 때 쓰려고).
 
 기준(변호사님 지시):
@@ -18,6 +18,9 @@
   임기를 마친 타일(`.past-grid`)은 띠 1.7rem·로고 1rem. 위촉장이 없는 타일(충남대학교병원·HUG·TIPA·중기부 재검토위원회)은 그림 자리에 건물 그림과 약칭.
 - 좁은 화면(≤640px, 한 줄 목록)에서는 띠가 위촉장 그림 옆·기관명 위의 작은 칸으로 간다(`grid-template-areas: "fig logo" "fig body"`).
 - 강의 목록(`dl.rows.dates`)의 각 줄 앞에 `a.lec-logo`(띠 1.6rem·로고 1.05rem).
+- 2026. 10. 21. 저녁(변호사님 지시): **경력·학력·수상 줄에도** 기관·학교 로고 띠를 붙이고 누리집으로 링크한다. 경력 연표(`dl.timeline`)는 띠 1.75rem·로고 1.15rem(`.tall` 1.45rem: 정부법무공단·비앤케이·금성처럼 글자가 작은 로고),
+  법무부 국가송무과·대한법률구조공단 줄은 띠 둘. 학력(`dl.rows.short.edu`)은 칸이 좁아 띠(1.45rem·로고 0.95rem)를 글 위에 한 줄로 두고 글은 `span.t`로 한 덩이. 수상 줄은 띠+글, 표창장 타일에는 위촉 타일처럼 `a.adv-logo`.
+  법률사무소 비앤케이는 누리집이 없어져 링크 없는 `span.lec-logo`(변호사님이 보낸 옛 로고 그림). 같은 날 홈페이지의 '정부법무공단'은 모두 '정부법무공단(KGLS)'로 바꿈(사례 상세 소개 7건 포함).
 - 임기를 마친 글줄(`p.past`)의 기관 이름은 누리집 링크(GKL·새만금개발공사·한국남동발전·스마트제조혁신추진단·종로구·법무부).
 - GA 이벤트 `logo_click`(org) — 로고 띠를 눌러 누리집으로 갈 때.
 - 적용 도구: `python3 work/logos-src/apply_tiles.py index.html` (로고 벽이 있는 index.html에 한 번 적용; 아티팩트 미리보기 사본에도 같게 씀).
@@ -31,7 +34,9 @@
 과학기술정보통신부 msit.go.kr · 인천광역시교육청 ice.go.kr · 서천군 seocheon.go.kr · 식품의약품안전처 mfds.go.kr · 한국전력공사 home.kepco.co.kr ·
 한국장애인개발원 koddi.or.kr · 인천광역시 incheon.go.kr · 한국산업단지공단 kicox.or.kr · 과천시 gccity.go.kr · 법무부 moj.go.kr · 법무연수원 ioj.moj.go.kr ·
 대한법률구조공단 klac.or.kr · 인천광역시교육청교육연수원 ieti.or.kr · 서울지방변호사회 seoulbar.or.kr · GKL gkl.co.kr · 새만금개발공사 sdco.or.kr ·
-한국남동발전 koenergy.kr · 스마트제조혁신추진단 smart-factory.kr · 종로구 jongno.go.kr (2026. 10. 21. 브라우저로 접속 확인; gkl·ioj는 접속 확인 못 함)
+한국남동발전 koenergy.kr · 스마트제조혁신추진단 smart-factory.kr · 종로구 jongno.go.kr (2026. 10. 21. 브라우저로 접속 확인; gkl·ioj는 접속 확인 못 함) ·
+경력·학력(2026. 10. 21. 저녁, 접속 확인): 사법연수원 jrti.scourt.go.kr · 정부법무공단 www.kgls.or.kr · 법무법인(유한) 금성 www.keumseong.com · 언주중학교 eonju.sen.ms.kr · 영동고등학교 yd.sen.hs.kr ·
+고려대학교 www.korea.ac.kr · 고려대학교 일반대학원 graduate.korea.ac.kr (석사과정 줄) · 사법시험·법무부장관 표창은 법무부 moj.go.kr
 
 ## 파일별 출처
 
@@ -74,6 +79,13 @@ SVG는 `tighten_svg.py`로 viewBox를 내용 범위(+1% 여백)로 좁히고 루
 | keiti.svg | 한국환경산업기술원 | 나무위키 수록 SVG(`keiti-namu.svg`); 누리집 머리글 PNG(`keiti.png`)는 흰색 로고, 서명 그림(`keiti-sig.png`)은 안내선 포함 | 그대로 |
 | hug.svg | 주택도시보증공사 | 나무위키 수록 SVG(`hug-namu.svg`) | 그대로 |
 | tipa.png | 중소기업기술정보진흥원 | 진흥원 CI 자료 GIF(`tipa-c2.gif` 등); 누리집 머리글 SVG는 흰색 로고 | 아이보리 바탕을 투명하게(알파 ≤14 → 0) → 624×192 |
+| kgls.svg | 정부법무공단 | 공단 누리집 CI 내려받기 `kgls.or.kr/down/logo.zip` 안의 `logo.ai`(`kgls-logo.ai`, Illustrator CS3 PDF 호환; 머리글용 `logo.jpg`는 `kgls-logo.jpg` 813×340) | `pdftocairo -svg`로 SVG화 뒤 viewBox 좁힘. 경력 줄 |
+| jrti.svg | 사법연수원 | 나무위키 수록 SVG(`jrti-namu.svg`, 심벌+사법연수원) | viewBox 좁힘. 경력 줄 |
+| ku.svg | 고려대학교 | 고려대 누리집 UI 자료 `basic_ui_file.zip` 안의 `globalsymbol_korea2.ai`(`ku-globalsymbol_korea2.ai`; 엠블럼+'고려대학교' 가로형. `ku-logo_kor.gif`는 글자만) | `pdftocairo -svg` 뒤 viewBox 좁힘. 학력 줄 두 곳(학부·대학원) |
+| keumseong.png | 법무법인(유한) 금성 | 누리집 머리글 `logo@2x.png`(`keumseong-logo@2x.png`, 300×213; `common/logo_primary.png`도 같은 파일) | 여백 자름 → 280×193. 세로형이라 `.tall` |
+| eonju.png | 서울 언주중학교 | 누리집 머리글 로고 JPG(`eonju-head.jpg`, 220×42; 학교상징 페이지의 교표 그림 `eonju-symbol.jpg`는 476px 합성 그림이라 안 씀) | 흰 바탕을 투명하게(흰 매트 제거) → 177×36. 작아서 학력 줄(0.95rem)에만 |
+| yd.png | 서울 영동고등학교 | 누리집 머리글 로고 PNG(`yd-head.png`, 220×42, 투명; 교훈/교가/상징 페이지의 교표 `yd-symbol.gif`는 심벌만) | 여백 자름 → 206×42. 학력 줄 |
+| bnk.png | 법률사무소 비앤케이 | 변호사님이 2026. 10. 21. 보낸 옛 로고 그림 6장 중 한 줄 가로형(`bnk-1line.png`, 540×141; 두 줄형 `bnk-2line.png`·세로형 `bnk-stacked.png`도 보관) — 누리집은 없어짐 | 보라색(69,46,131) 글자·심벌만 남기고 흰 바탕을 투명하게(원 안의 흰 B&K는 불투명 유지) → 505×136. 링크 없는 띠 |
 
 ## 다시 만들 때
 
@@ -81,6 +93,7 @@ SVG는 `tighten_svg.py`로 viewBox를 내용 범위(+1% 여백)로 좁히고 루
   base64·SHA-256과 함께 넘겨 받고 해시를 대조해 저장했다(SVG는 창에서 직접 열어 받음; 인천시 zip은 브라우저의 DecompressionStream으로 풀었음).
 - 대조표: `python3 work/logos-src/sheet.py logos 대조표.png` (playwright 필요) — 로고를 흰 칸에 늘어놓은 그림을 만든다.
 - SVG 정리: `python3 work/logos-src/tighten_svg.py 출력폴더 원본.svg:이름 …` (viewBox 좁히기·width/height 제거).
+- AI(Illustrator) 파일은 PDF 호환이라 `pdftocairo -svg 파일.ai 출력.svg`(또는 `-png -r 300 -transp`)로 바로 바꿀 수 있다(정부법무공단·고려대).
 - 새 기관을 더할 때: 로고를 `logos/`에 넣고(SVG가 가장 좋고, PNG는 투명 배경·짧은 변 100px 이상), 그 타일 맨 앞에
   `<a class="adv-logo" href="누리집" target="_blank" rel="noopener" data-org="기관" aria-label="기관 누리집 (새 창)"><img src="logos/파일" alt="" width=… height=… loading="lazy"></a>`를 붙인다.
   로고가 유난히 높으면 `.tall`, 짧고 높으면 `.mid`.

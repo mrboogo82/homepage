@@ -17,7 +17,7 @@
                    (당사자·대리인·판사·출석 부분과 끝의 청구의 표시·신청취지·신청원인·서명란은 뺌), 화해조항 안의 금액(보증금·차임·관리비·위약금 등 '…원')은
                    모두 진회색으로 가립니다(날짜·면적·비율은 그대로). alt는 "화해조서 화해조항(금액 가림)". 작업 도구는 work/jumun/hwa_clauses.py.
 - certs/           위촉장·표창장 이미지
-- logos/           위촉·위원회·강의 기관 33곳의 공식 로고(2026. 10. 20.~21. 추가; 타일마다 위촉장 그림 위의 작은 로고 띠에 씀, 누르면 기관 누리집). 출처·가공 기록은 work/logos-src/README.md
+- logos/           위촉·위원회·강의 기관 33곳 + 경력·학력 기관·학교 7곳의 공식 로고(2026. 10. 20.~21. 추가; 타일마다 위촉장 그림 위의 작은 로고 띠와 경력·학력·수상 줄 앞의 띠에 씀, 누르면 기관 누리집). 출처·가공 기록은 work/logos-src/README.md
 - og-image.jpg, photo-head.jpg, photo-hero.webp, seal.png
 - robots.txt, sitemap.xml, 404.html, CNAME(lawyermrboo82.com)
 
@@ -31,7 +31,7 @@
 
 고칠 때
 - 위촉·위원회 타일(<li class="adv">)은 '로고 띠(<a class="adv-logo">, 기관 누리집 새 창) → 위촉장 그림(<button class="adv-fig">, 누르면 크게) → 글'의 차례입니다(2026. 10. 21.; 로고 벽은 없앴음).
-  기관을 더하면 logos/ 폴더에 로고를 넣고(SVG 권장, PNG는 투명 배경) 그 타일에 로고 띠 한 줄을 붙입니다. 강의 목록은 <a class="lec-logo">. 자세한 것은 work/logos-src/README.md.
+  기관을 더하면 logos/ 폴더에 로고를 넣고(SVG 권장, PNG는 투명 배경) 그 타일에 로고 띠 한 줄을 붙입니다. 강의 목록·경력·학력·수상 줄은 <a class="lec-logo">(2026. 10. 21. 경력·학력·수상에도). 자세한 것은 work/logos-src/README.md.
 - 사례를 더하거나 고칠 때는 index.html의 <script id="cases-data"> JSON과 cases.html의 같은 블록,
   두 페이지의 사례 목록(<ol id="case-list">)과 건수 문구를 함께 바꿉니다. 새 판결문은 cases/ 폴더에
   1240px 폭 JPG로 넣습니다. Claude에게 판결문 PDF를 보내면 같은 기준으로 가려서 만들어 줍니다.

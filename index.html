@@ -84,7 +84,7 @@
   "제재부가금 부과처분 취소소송",
   "연구개발비 회수금·정산금 반환채무 당사자소송"
  ],
- "description": "행정쟁송 한 분야에 전문성을 쌓은 법무법인(유한) 금성 변호사. 정부법무공단 변호사(2015~2021, 소송·자문 약 1,500건)를 거쳐 중앙행정기관·지방자치단체·공공기관 약 20곳의 고문변호사로 활동하며, 과학기술정보통신부 연구자권익보호위원회·중소벤처기업부 국가연구개발혁신법 제재처분 재검토위원회 등 제재처분·소청·행정처분을 심의하는 위원회의 위원. 국가연구개발 제재처분(참여제한·제재부가금·연구개발비 환수) 취소소송과 행정소송·행정심판·집행정지를 수행하며, 정부출연금·보조금의 부정집행을 이유로 한 형사사건(사기·보조금법 위반)도 변호. 주요 수행 사례와 판결문을 공개.",
+ "description": "행정쟁송 한 분야에 전문성을 쌓은 법무법인(유한) 금성 변호사. 정부법무공단(KGLS) 변호사(2015~2021, 소송·자문 약 1,500건)를 거쳐 중앙행정기관·지방자치단체·공공기관 약 20곳의 고문변호사로 활동하며, 과학기술정보통신부 연구자권익보호위원회·중소벤처기업부 국가연구개발혁신법 제재처분 재검토위원회 등 제재처분·소청·행정처분을 심의하는 위원회의 위원. 국가연구개발 제재처분(참여제한·제재부가금·연구개발비 환수) 취소소송과 행정소송·행정심판·집행정지를 수행하며, 정부출연금·보조금의 부정집행을 이유로 한 형사사건(사기·보조금법 위반)도 변호. 주요 수행 사례와 판결문을 공개.",
  "sameAs": [
   "https://lfind.kr/lawyers/%EB%B6%80%ED%9A%A8%EC%A4%80-22452",
   "https://www.instagram.com/lawyer.boo/",
@@ -624,10 +624,15 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .past-grid .adv-logo img { height: 1rem; max-width: 88%; }
 .past-grid .adv-logo.tall img { height: 1.3rem; }
 .past-grid .adv-logo.mid img { height: 1.15rem; }
-/* 강의 목록: 글줄 앞의 작은 로고 */
+/* 강의 목록·경력·학력·수상: 글줄 앞의 작은 로고 띠(2026. 10. 21. 경력·학력·수상에도 — 기관·학교 누리집 링크. 누리집이 없는 법률사무소 비앤케이는 span 띠) */
 .lec-logo { display: inline-flex; align-items: center; vertical-align: -0.35em; box-sizing: border-box; height: 1.6rem; margin-right: 0.55rem; padding: 0.15rem 0.45rem; background: #fff; border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; }
 .lec-logo img { display: block; width: auto; max-width: 8rem; height: 1.05rem; object-fit: contain; }
-.lec-logo:hover { border-color: var(--ink-soft); }
+.lec-logo.tall img { height: 1.3rem; }   /* 글자가 작은 로고(정부법무공단·비앤케이·법무법인 금성)는 띠 안에서 조금 크게 */
+a.lec-logo:hover { border-color: var(--ink-soft); }
+.lec-logo + .lec-logo { margin-left: -0.2rem; }   /* 한 줄에 로고가 둘(법무부·법률구조공단)이면 조금 붙여 */
+.timeline .lec-logo { height: 1.75rem; margin-right: 0.6rem; padding: 0.15rem 0.5rem; vertical-align: -0.4em; }
+.timeline .lec-logo img { height: 1.15rem; }
+.timeline .lec-logo.tall img { height: 1.45rem; }
 .past-wrap { display: grid; gap: 1rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
 .past-wrap h3 { font-size: var(--step-1); }
 .past-wrap .past { margin-top: 0.25rem; }
@@ -956,7 +961,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .timeline dd { font-family: var(--serif); font-size: 1.0625rem; font-weight: 600; line-height: 1.45; }
 .timeline dd .sub { margin-top: 0.15rem; font-family: var(--sans); font-weight: 400; line-height: 1.6; }
 .timeline .now dt { color: var(--seal); font-weight: 500; }
-.rows.short > div { grid-template-columns: 6rem minmax(0, 1fr); gap: 0.75rem; }
+.rows.short > div { grid-template-columns: 4.75rem minmax(0, 1fr); gap: 0.75rem; }   /* 2026. 10. 21. 6rem→4.75rem: 학력 줄에 로고 띠가 들어가 글 칸을 넓힘 */
 #advisory .sub-h { margin-bottom: 0.9rem; }
 #advisory .sub-h.gap-top { margin-top: 2.25rem; }
 @media (max-width: 760px) {
@@ -1101,6 +1106,10 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 /* 학력·수상 글씨체를 경력과 같게(명조 굵게), 크기는 작게; 경력의 몇 문구(.lite)도 같은 크기로 (2026. 10. 17., Version 109) */
 .rows.short dd { font-family: var(--serif); font-size: 0.9375rem; font-weight: 600; line-height: 1.5; }
 .rows.short dd .sub { font-family: var(--sans); font-weight: 400; }
+.rows.short dd .t { display: inline-block; max-width: 100%; }   /* 로고 띠 옆의 글 덩이(2026. 10. 21.): 띠 옆에 다 들어가지 않으면 통째로 다음 줄로 */
+.rows.short .lec-logo { height: 1.45rem; margin-right: 0.45rem; padding: 0.1rem 0.35rem; }   /* 학력·수상 줄의 띠는 조금 작게(학교 머리글 로고가 가로로 길어서) */
+.rows.short .lec-logo img { height: 0.95rem; }
+.rows.short.edu .lec-logo { display: flex; width: max-content; max-width: 100%; margin: 0 0 0.35rem; }   /* 학력 줄: 칸이 좁아 띠를 글 위에 한 줄로(화면 폭에 따라 들쭉날쭉하지 않게) */
 .timeline dd .lite { font-size: 0.9375rem; font-weight: 600; }
 
 /* ---------- 사례마다 담당변호사 표기 (2026. 10. 17., Version 111) ---------- */
@@ -1190,6 +1199,10 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   .past-grid .adv-logo.mid img { height: 0.9rem; }
   .lec-logo { height: 1.45rem; margin-right: 0.45rem; }
   .lec-logo img { height: 0.95rem; }
+  .lec-logo.tall img { height: 1.15rem; }
+  .timeline .lec-logo { height: 1.55rem; margin-right: 0.5rem; padding: 0.15rem 0.4rem; }
+  .timeline .lec-logo img { height: 1rem; }
+  .timeline .lec-logo.tall img { height: 1.25rem; }
 }
 
 /* ---------- 국가연구개발 카드의 세 기한과 주제별 사례 (2026. 10. 21.) ----------
@@ -1283,7 +1296,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           <p class="eyebrow">행정쟁송 · 국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금</p>
         </div>
         <h1 id="hero-h"><span class="kicker">국가로펌 출신 · 소송·자문 약 3,300건</span>처분의 기준을<br>아는 변호사는<br><em class="l3">다투는 방법부터 다릅니다.</em></h1>
-        <p class="lead">국가로펌인 정부법무공단을 거쳐 개업한 뒤까지 행정쟁송 한 분야를 걸어온 변호사입니다. 지금은 중앙행정기관·지방자치단체·공공기관의 고문변호사이자 제재처분·소청·행정처분을 심의하는 위원회의 위원입니다. 그 자리에서 익힌 기준으로 <b>처분을 받은 개인과 기업</b>을 대리합니다. 인사처분, 인허가·영업정지·과징금, 제재부가금·환수, 국가배상·손실보상, 국가연구개발 제재처분과 그에 뒤따르는 형사 고발 사건까지 한 흐름으로 맡습니다.</p>
+        <p class="lead">국가로펌인 정부법무공단(KGLS)을 거쳐 개업한 뒤까지 행정쟁송 한 분야를 걸어온 변호사입니다. 지금은 중앙행정기관·지방자치단체·공공기관의 고문변호사이자 제재처분·소청·행정처분을 심의하는 위원회의 위원입니다. 그 자리에서 익힌 기준으로 <b>처분을 받은 개인과 기업</b>을 대리합니다. 인사처분, 인허가·영업정지·과징금, 제재부가금·환수, 국가배상·손실보상, 국가연구개발 제재처분과 그에 뒤따르는 형사 고발 사건까지 한 흐름으로 맡습니다.</p>
         <div class="cta">
           <a class="btn" href="#contact">상담 문의</a>
           <a class="btn ghost" href="#fields">다루는 사건 보기</a>
@@ -1295,8 +1308,8 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
           <a href="mailto:boo@keumseonglaw.com">boo@keumseonglaw.com</a>
         </p>
         <div class="hero-stats" aria-label="핵심 숫자">
-          <div><span class="n">소송·자문 약 3,300건</span><span class="l">정부법무공단 6년 약 1,500건 (2015 ~ 2021) · 개업 후 소송·신청·행정심판 약 540건, 법률자문 약 1,300건</span></div>
-          <div><span class="n">국가로펌 출신 변호사</span><span class="l">정부법무공단 변호사 · 국가·지방자치단체·공공기관의 행정·국가·헌법소송과 자문 · 법무부장관 표창 (국가소송 유공)</span></div>
+          <div><span class="n">소송·자문 약 3,300건</span><span class="l">정부법무공단(KGLS) 6년 약 1,500건 (2015 ~ 2021) · 개업 후 소송·신청·행정심판 약 540건, 법률자문 약 1,300건</span></div>
+          <div><span class="n">국가로펌 출신 변호사</span><span class="l">정부법무공단(KGLS) 변호사 · 국가·지방자치단체·공공기관의 행정·국가·헌법소송과 자문 · 법무부장관 표창 (국가소송 유공)</span></div>
           <div><span class="n">약 20개 기관 고문</span><span class="l">중앙행정기관 · 지방자치단체 · 공공기관</span></div>
           <div><span class="n">다수 위원회</span><span class="l">제재처분 · 소청 · 행정처분 심의 위원</span></div>
         </div>
@@ -1373,31 +1386,31 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         <div class="block" id="career-history">
           <h3 class="block-h">경력</h3>
           <dl class="rows dates timeline">
-            <div><dt>2009. 10.</dt><dd>제51회 사법시험 합격</dd></div>
-            <div><dt>2012. 02.</dt><dd>사법연수원 제41기 수료</dd></div>
-            <div><dt>2012. 04. ~ 2015. 03.</dt><dd>법무부 법무실 국가송무과 <span class="lite">· 대한법률구조공단 법무관</span> <span class="sub">국가송무(행정·헌법·국가소송), 민사·형사 송무 · 2014년 법무부장관 표창(국가소송 유공)</span></dd></div>
-            <div><dt>2015. 04. ~ 2021. 06.</dt><dd>정부법무공단 변호사 <span class="sub">국가·지방자치단체·공공기관의 행정·국가·헌법·민사소송과 법률자문 약 1,500건</span></dd></div>
-            <div><dt>2021. 06. ~ 2024. 09.</dt><dd><span class="lite">법률사무소 비앤케이 대표변호사</span> <span class="sub">행정쟁송 · 헌법소송 · 국가연구개발 제재처분 · 중앙행정기관·지방자치단체·공공기관 고문</span></dd></div>
-            <div class="now"><dt>2024. 10. ~ 현재</dt><dd><span class="lite">법무법인(유한) 금성 구성원변호사</span> <span class="sub">행정쟁송 · 헌법소송 · 국가연구개발 제재처분 · 중앙행정기관·지방자치단체·공공기관 고문</span></dd></div>
+            <div><dt>2009. 10.</dt><dd><a class="lec-logo" href="https://www.moj.go.kr/" target="_blank" rel="noopener" data-org="법무부" aria-label="법무부 누리집 (새 창)"><img src="logos/moj.svg" alt="" width="1647" height="629" loading="lazy"></a>제51회 사법시험 합격</dd></div>
+            <div><dt>2012. 02.</dt><dd><a class="lec-logo" href="https://jrti.scourt.go.kr/" target="_blank" rel="noopener" data-org="사법연수원" aria-label="사법연수원 누리집 (새 창)"><img src="logos/jrti.svg" alt="" width="742" height="241" loading="lazy"></a>사법연수원 제41기 수료</dd></div>
+            <div><dt>2012. 04. ~ 2015. 03.</dt><dd><a class="lec-logo" href="https://www.moj.go.kr/" target="_blank" rel="noopener" data-org="법무부" aria-label="법무부 누리집 (새 창)"><img src="logos/moj.svg" alt="" width="1647" height="629" loading="lazy"></a><a class="lec-logo" href="https://www.klac.or.kr/" target="_blank" rel="noopener" data-org="대한법률구조공단" aria-label="대한법률구조공단 누리집 (새 창)"><img src="logos/klac.svg" alt="" width="1382" height="327" loading="lazy"></a>법무부 법무실 국가송무과 <span class="lite">· 대한법률구조공단 법무관</span> <span class="sub">국가송무(행정·헌법·국가소송), 민사·형사 송무 · 2014년 법무부장관 표창(국가소송 유공)</span></dd></div>
+            <div><dt>2015. 04. ~ 2021. 06.</dt><dd><a class="lec-logo tall" href="https://www.kgls.or.kr/" target="_blank" rel="noopener" data-org="정부법무공단(KGLS)" aria-label="정부법무공단(KGLS) 누리집 (새 창)"><img src="logos/kgls.svg" alt="" width="650" height="174" loading="lazy"></a>정부법무공단(KGLS) 변호사 <span class="sub">국가·지방자치단체·공공기관의 행정·국가·헌법·민사소송과 법률자문 약 1,500건</span></dd></div>
+            <div><dt>2021. 06. ~ 2024. 09.</dt><dd><span class="lec-logo tall" data-org="법률사무소 비앤케이" title="법률사무소 비앤케이 (지금은 누리집이 없음)"><img src="logos/bnk.png" alt="" width="505" height="136" loading="lazy"></span><span class="lite">법률사무소 비앤케이 대표변호사</span> <span class="sub">행정쟁송 · 헌법소송 · 국가연구개발 제재처분 · 중앙행정기관·지방자치단체·공공기관 고문</span></dd></div>
+            <div class="now"><dt>2024. 10. ~ 현재</dt><dd><a class="lec-logo tall" href="https://www.keumseong.com/" target="_blank" rel="noopener" data-org="법무법인(유한) 금성" aria-label="법무법인(유한) 금성 누리집 (새 창)"><img src="logos/keumseong.png" alt="" width="280" height="193" loading="lazy"></a><span class="lite">법무법인(유한) 금성 구성원변호사</span> <span class="sub">행정쟁송 · 헌법소송 · 국가연구개발 제재처분 · 중앙행정기관·지방자치단체·공공기관 고문</span></dd></div>
           </dl>
         </div>
         <div class="block pair" id="education">
         <div>
           <h3>학력</h3>
-          <dl class="rows dates short">
-            <div><dt>1998.</dt><dd>서울 언주중학교 졸업</dd></div>
-            <div><dt>2001.</dt><dd>서울 영동고등학교 졸업</dd></div>
-            <div><dt>2009.</dt><dd>고려대학교 법학과 졸업</dd></div>
-            <div><dt>2012.</dt><dd>고려대학교 대학원 법학과 석사과정 (행정법)</dd></div>
+          <dl class="rows dates short edu">
+            <div><dt>1998.</dt><dd><a class="lec-logo" href="https://eonju.sen.ms.kr/" target="_blank" rel="noopener" data-org="서울 언주중학교" aria-label="서울 언주중학교 누리집 (새 창)"><img src="logos/eonju.png" alt="" width="177" height="36" loading="lazy"></a><span class="t">서울 언주중학교 졸업</span></dd></div>
+            <div><dt>2001.</dt><dd><a class="lec-logo" href="https://yd.sen.hs.kr/" target="_blank" rel="noopener" data-org="서울 영동고등학교" aria-label="서울 영동고등학교 누리집 (새 창)"><img src="logos/yd.png" alt="" width="206" height="42" loading="lazy"></a><span class="t">서울 영동고등학교 졸업</span></dd></div>
+            <div><dt>2009.</dt><dd><a class="lec-logo" href="https://www.korea.ac.kr/" target="_blank" rel="noopener" data-org="고려대학교" aria-label="고려대학교 누리집 (새 창)"><img src="logos/ku.svg" alt="" width="295" height="77" loading="lazy"></a><span class="t">고려대학교 법학과 졸업</span></dd></div>
+            <div><dt>2012.</dt><dd><a class="lec-logo" href="https://graduate.korea.ac.kr/" target="_blank" rel="noopener" data-org="고려대학교 대학원" aria-label="고려대학교 대학원 누리집 (새 창)"><img src="logos/ku.svg" alt="" width="295" height="77" loading="lazy"></a><span class="t">고려대학교 대학원 법학과 석사과정 (행정법)</span></dd></div>
           </dl>
         </div>
         <div>
           <h3>수상</h3>
           <dl class="rows dates short">
-            <div><dt>2014. 06.</dt><dd>법무부장관 표창 <span class="sub">국가소송 업무 수행 유공</span></dd></div>
+            <div><dt>2014. 06.</dt><dd><a class="lec-logo" href="https://www.moj.go.kr/" target="_blank" rel="noopener" data-org="법무부" aria-label="법무부 누리집 (새 창)"><img src="logos/moj.svg" alt="" width="1647" height="629" loading="lazy"></a><span class="t">법무부장관 표창</span> <span class="sub">국가소송 업무 수행 유공</span></dd></div>
           </dl>
           <ul class="advisors award-grid">
-            <li class="adv"><button type="button" class="adv-fig" data-certs="moj-award-2014" aria-label="법무부장관 표창장 크게 보기"><img src="certs/moj-award-2014-thumb.jpg" alt="법무부장관 표창장 (2014. 6. 30.)" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">법무부장관 표창</b><span class="role">국가소송 업무 수행 유공 · 제49537호</span><span class="term">2014. 6. 30.</span></div></li>
+            <li class="adv"><a class="adv-logo" href="https://www.moj.go.kr/" target="_blank" rel="noopener" data-org="법무부" aria-label="법무부 누리집 (새 창)"><img src="logos/moj.svg" alt="" width="1647" height="629" loading="lazy"></a><button type="button" class="adv-fig" data-certs="moj-award-2014" aria-label="법무부장관 표창장 크게 보기"><img src="certs/moj-award-2014-thumb.jpg" alt="법무부장관 표창장 (2014. 6. 30.)" loading="lazy" width="297" height="420"></button><div class="adv-body"><b class="org">법무부장관 표창</b><span class="role">국가소송 업무 수행 유공 · 제49537호</span><span class="term">2014. 6. 30.</span></div></li>
           </ul>
         </div>
         </div>
@@ -1556,7 +1569,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         <article class="situation" id="area-admin">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5h20v22H6z"/><path d="M11 11h10M11 16h10M11 21h6"/><circle cx="22" cy="22" r="3.5"/></svg>
           <h3>그 밖의 행정처분</h3>
-          <p>앞의 영역에 들지 않는 처분도 다툽니다. 출국금지·난민 인정, 정보공개 거부, 취득세·변상금·부담금 부과, 철거명령·대집행 계고, 사회복지법인·사립유치원 인가·감사, 학교폭력 조치까지 종류는 달라도 다투는 틀은 같습니다 — 처분사유, 법률의 근거와 절차, 재량권의 한계, 제소기간과 집행정지. 정부법무공단 6년과 개업 뒤 처분의 종류를 가리지 않고 다루어 온 터라 처음 보는 처분도 같은 틀로 쟁점을 찾습니다.</p>
+          <p>앞의 영역에 들지 않는 처분도 다툽니다. 출국금지·난민 인정, 정보공개 거부, 취득세·변상금·부담금 부과, 철거명령·대집행 계고, 사회복지법인·사립유치원 인가·감사, 학교폭력 조치까지 종류는 달라도 다투는 틀은 같습니다 — 처분사유, 법률의 근거와 절차, 재량권의 한계, 제소기간과 집행정지. 정부법무공단(KGLS) 6년과 개업 뒤 처분의 종류를 가리지 않고 다루어 온 터라 처음 보는 처분도 같은 틀로 쟁점을 찾습니다.</p>
           <p class="eg"><b>다룬 사건</b> 출국금지 기간연장·입국금지처분, 난민불인정결정, 정보공개 거부처분, 취득세·변상금 부과처분, 철거명령·대집행 계고처분, 사회복지법인 정관변경인가 반려처분 취소소송 등</p>
           <p class="ref">「행정소송법」 제19조·제27조, 「행정절차법」 제21조~제23조, 「행정기본법」 제36조</p>
           <a class="cases-link" href="cases.html#cat=admin" data-cat="admin"><span class="lbl">수행 사례 <b class="n">27건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a>
@@ -1572,7 +1585,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         <article class="situation half" id="area-state">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4v24"/><path d="M6 10h20"/><path d="M6 10l-3 8h6zM26 10l-3 8h6z"/><path d="M11 28h10"/></svg>
           <h3>국가배상</h3>
-          <p>공무원의 직무상 불법행위와 도로·하천 같은 영조물의 설치·관리 하자로 인한 국가배상청구를 수행합니다. 법무부 국가송무과와 정부법무공단에서 과거사·수사기관·군사시설 관련 국가배상 사건을 다루었고, 위법성과 인과관계, 소멸시효가 주된 쟁점입니다.</p>
+          <p>공무원의 직무상 불법행위와 도로·하천 같은 영조물의 설치·관리 하자로 인한 국가배상청구를 수행합니다. 법무부 국가송무과와 정부법무공단(KGLS)에서 과거사·수사기관·군사시설 관련 국가배상 사건을 다루었고, 위법성과 인과관계, 소멸시효가 주된 쟁점입니다.</p>
           <p class="eg"><b>다룬 사건</b> 긴급조치 수사·기소 관련 국가배상, 수사기관 통신자료 제공 관련 국가배상, 군사시설 담장으로 인한 침수 피해 국가배상, 공공시설 공사 진동·소음 피해 손해배상 청구소송 등</p>
           <p class="ref">「국가배상법」 제2조·제5조</p>
           <a class="cases-link" href="cases.html#cat=state" data-cat="state"><span class="lbl">수행 사례 <b class="n">17건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a>
