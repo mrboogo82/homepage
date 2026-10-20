@@ -35,12 +35,16 @@ def para_text(payload):
         ch = struct.unpack_from("<H", u, j)[0]
         j += 2
         if ch < 32:
-            # 인라인/확장 컨트롤(8글자 = 16바이트)은 건너뛴다
+            # 확장 컨트롤(1,2,3,11,12,14~18,21~23)과 인라인 컨트롤(4~9,19,20)은 8글자(16바이트)를 차지한다
             if ch in (1, 2, 3, 11, 12, 14, 15, 16, 17, 18, 21, 22, 23):
                 j += 14
-            elif ch == 13:
+            elif ch in (4, 5, 6, 7, 8, 9, 19, 20):
+                j += 14
+                if ch == 9:
+                    out.append(" ")
+            elif ch in (10, 13):
                 out.append("\n")
-            elif ch in (9, 10):
+            elif ch in (30, 31):
                 out.append(" ")
             # 그 밖의 제어문자는 무시
         else:

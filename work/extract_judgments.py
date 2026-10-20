@@ -20,6 +20,10 @@ LABELS = ["원고", "피고", "신청인", "피신청인", "채권자", "채무�
 
 
 def pdf_text(path):
+    if path.lower().endswith(".hwp"):
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from hwp_text import hwp_text
+        return hwp_text(path), "hwp"
     try:
         t = subprocess.run(["pdftotext", "-layout", "-enc", "UTF-8", path, "-"], capture_output=True, text=True, timeout=120).stdout
     except Exception:
@@ -29,11 +33,16 @@ def pdf_text(path):
     # 스캔본: OCR
     import pypdfium2 as pdfium
     import pytesseract
+    import gc
     pdf = pdfium.PdfDocument(path)
     pages = []
     for i in range(len(pdf)):
-        img = pdf[i].render(scale=200 / 72).to_pil()
+        page = pdf[i]
+        img = page.render(scale=170 / 72).to_pil().convert("L")
         pages.append(pytesseract.image_to_string(img, lang="kor+eng", config="--psm 4"))
+        del img, page
+        gc.collect()
+    pdf.close()
     return "\n\f".join(pages), "ocr"
 
 
@@ -82,6 +91,8 @@ def header_names(text):
 
 def anonymize(text, names):
     text = "\n".join(l for l in text.splitlines() if not l.strip().startswith("개인정보유출주의"))
+    text = re.sub(r"\d{6}\s?-\s?[1-4]\d{6}", "(주민등록번호 가림)", text)
+    text = re.sub(r"\d{6}\s?-\s?\d{7}", "(등록번호 가림)", text)
     for i, n in enumerate(names):
         if re.fullmatch(r"[가-힣]{2,4}", n):
             text = text.replace(n, "○○○")
@@ -105,16 +116,25 @@ def main():
     for a in sys.argv[1:]:
         if os.path.isdir(a):
             for root, _, fs in os.walk(a):
-                files += [os.path.join(root, f) for f in fs if f.lower().endswith(".pdf")]
-        elif a.lower().endswith(".pdf"):
+                files += [os.path.join(root, f) for f in fs if f.lower().endswith((".pdf", ".hwp"))]
+        elif a.lower().endswith((".pdf", ".hwp")):
             files.append(a)
-    for f in files:
-        text, how = pdf_text(f)
+    skip_existing = os.environ.get("SKIP_EXISTING") == "1"
+    for f in sorted(files):
+        # 파일 이름의 사건번호로 이미 뽑은 것은 건너뛴다(선택)
+        fname_no = CASENO.search(re.sub(r"(?<!\d)(\d{2})(구합|구단|누|두|가합|가단|가소|나|다|고합|고단|고정|노|도|아|루|무|카단|카합|자)(\d+)", r"20\1\2\3", os.path.basename(f).replace(" ", "")))
+        if skip_existing and fname_no and any(x.endswith("-" + fname_no.group(1) + ".txt") for x in os.listdir(OUT)):
+            continue
+        try:
+            text, how = pdf_text(f)
+        except Exception as e:
+            print("읽기 실패:", f, e)
+            continue
         head = text[:3000]
         no = CASENO.search(head)
         if not no:
-            # 파일 이름에서라도 찾는다
-            no = CASENO.search(os.path.basename(f).replace(" ", ""))
+            # 파일 이름에서라도 찾는다(두 자리 연도도 받는다)
+            no = fname_no
         if not no:
             print("사건번호를 찾지 못함:", f)
             continue
@@ -126,6 +146,12 @@ def main():
         key = court + "-" + number
         names = header_names(text)
         out = os.path.join(OUT, key + ".txt")
+        if os.path.exists(out):
+            # 같은 사건번호의 다른 문서(결정문 등): 더 긴 글만 남긴다
+            old = open(out, encoding="utf-8").read()
+            if len(old) >= len(text) + 200:
+                print(key, how, "이미 더 긴 글이 있음 — 건너뜀")
+                continue
         with open(out, "w", encoding="utf-8") as w:
             w.write("# %s (%s) — 원본 파일 이름은 적지 않음\n" % (key, how))
             w.write(anonymize(text, names))
