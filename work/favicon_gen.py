@@ -36,16 +36,18 @@ FONT_INDEX = 1  # Noto Serif CJK KR Black
 CRIMSON = "#a21a2d"   # 홈페이지 --seal 값(고려대 크림슨을 화면용으로 올린 값)
 PAPER = "#ffffff"
 
-ROWS = ["辯護士", "夫孝準"]  # 원본 인장과 같은 배열: 윗줄 변호사, 아랫줄 부효준(왼쪽→오른쪽). 준은 '기준 준(準)' — 2026. 10. 21. 본인 정정
+# 원본 인장과 같은 배열: 윗줄 변호사, 아랫줄 부효준(왼쪽→오른쪽). 준은 '기준 준(準)' — 2026. 10. 21. 본인 정정
+# (글자, 한 칸(em) 크기, 가로 간격, 원 중심 기준 세로 위치) — viewBox 0 0 100 100
+# 2026. 10. 21. '변호사'를 작게, 이름을 크게(본인 요청): 윗줄 22, 아랫줄 29. 夫·準의 바깥 획이 테두리 안쪽에 살짝 닿는다(인장처럼).
+ROW_SPECS = [
+    ("辯護士", 22.0, 21.0, -20.0),
+    ("夫孝準", 29.0, 27.6, 11.5),
+]
 
 # ---- 모양 조절값 (viewBox 0 0 100 100 기준) ----
 VIEW = 100.0
 RING_R = 47.0        # 테두리 원의 중심선 반지름
 RING_W = 5.0         # 테두리 두께
-CELL = 29.0          # 글자 한 칸(em) 크기
-COL_PITCH = 27.6     # 가로 글자 간격(칸보다 조금 좁게 → 인장처럼 빽빽하게)
-ROW_PITCH = 27.6     # 세로 줄 간격
-SHIFT_Y = 0.0        # 전체 글자 블록 상하 이동(양수 = 아래)
 
 
 def load_font():
@@ -68,18 +70,16 @@ def build_svg(font):
     cmap = font.getBestCmap()
     upm = font["head"].unitsPerEm
     asc, desc = 880, -120  # 한중일 글꼴의 표의문자 em 상자
-    scale = CELL / upm
 
     paths = []
-    n_rows = len(ROWS)
-    for ri, row in enumerate(ROWS):
+    for row, cell, col_pitch, dy in ROW_SPECS:
+        scale = cell / upm
         n = len(row)
-        # 줄의 세로 중심: 전체 블록을 원 중심에 맞춤
-        row_center_y = VIEW / 2 + (ri - (n_rows - 1) / 2) * ROW_PITCH + SHIFT_Y
+        row_center_y = VIEW / 2 + dy
         for ci, ch in enumerate(row):
             d, bounds, adv = glyph_path(font, ch, glyph_set, cmap)
             # 칸의 가로 중심
-            cell_center_x = VIEW / 2 + (ci - (n - 1) / 2) * COL_PITCH
+            cell_center_x = VIEW / 2 + (ci - (n - 1) / 2) * col_pitch
             # em 상자의 중심(글꼴 단위) → 화면 좌표
             em_cx = adv / 2
             em_cy = (asc + desc) / 2
