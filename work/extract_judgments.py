@@ -114,13 +114,16 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     files = []
     for a in sys.argv[1:]:
+        # 인자 순서대로, 인자 안에서는 경로 순으로 처리한다
         if os.path.isdir(a):
+            found = []
             for root, _, fs in os.walk(a):
-                files += [os.path.join(root, f) for f in fs if f.lower().endswith((".pdf", ".hwp"))]
+                found += [os.path.join(root, f) for f in fs if f.lower().endswith((".pdf", ".hwp"))]
+            files += sorted(found)
         elif a.lower().endswith((".pdf", ".hwp")):
             files.append(a)
     skip_existing = os.environ.get("SKIP_EXISTING") == "1"
-    for f in sorted(files):
+    for f in files:
         # 파일 이름의 사건번호로 이미 뽑은 것은 건너뛴다(선택)
         fname_no = CASENO.search(re.sub(r"(?<!\d)(\d{2})(구합|구단|누|두|가합|가단|가소|나|다|고합|고단|고정|노|도|아|루|무|카단|카합|자)(\d+)", r"20\1\2\3", os.path.basename(f).replace(" ", "")))
         if skip_existing and fname_no and any(x.endswith("-" + fname_no.group(1) + ".txt") for x in os.listdir(OUT)):
