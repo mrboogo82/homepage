@@ -11,6 +11,8 @@
   2. cases.html의 <style>을 공용 case.css 로 뽑고, 개별 페이지용 규칙을 덧붙인다.
   3. 사례마다 cases/<판결문 이미지 이름>.html 페이지를 만든다
      (제목·메타·OG·JSON-LD·판결문 이미지·같은 분야 사례·상담 안내).
+     첫 이미지가 바뀌어 페이지 주소가 달라진 사례는 work/redirects.json 에 {"옛 이름": "새 이름"}으로 적어 두면
+     옛 주소에 새 주소로 넘기는 작은 페이지(noindex·canonical)를 남긴다.
   4. index.html / cases.html 의 카드(정적 목록 + JS 렌더링)에 개별 페이지 링크를 넣고,
      메인 <title>·JSON-LD(@id, sameAs)를 보강하고, <html lang="ko">를 넣는다.
   5. 전체 URL이 든 sitemap.xml 을 만든다.
@@ -1017,13 +1019,25 @@ def main():
     css = re.search(r"<style[^>]*>(.*?)</style>", cases_doc, re.S).group(1)
     write(os.path.join(site, "case.css"), css.strip() + "\n" + EXTRA_CSS)
 
-    # 지워진 사례의 옛 페이지는 치운다
+    # 지워진 사례의 옛 페이지는 치운다 (work/redirects.json 에 적힌 옛 주소는 새 주소로 넘기는 작은 페이지를 둔다)
+    redirects = {}
+    rp = os.path.join(site, "work", "redirects.json")
+    if os.path.exists(rp):
+        redirects = json.load(open(rp, encoding="utf-8"))
     keep = {os.path.join(site, page_href(c)) for c in cases}
+    keep |= {os.path.join(site, "cases", "%s.html" % old_stem) for old_stem in redirects}
     for old in glob.glob(os.path.join(site, "cases", "*.html")):
         if old not in keep:
             os.remove(old)
     for c in cases:
         write(os.path.join(site, page_href(c)), build_case_page(c, by_cat, cat_counts, details, site))
+    for old_stem, new_stem in redirects.items():
+        target = "%s/cases/%s.html" % (SITE, new_stem)
+        write(os.path.join(site, "cases", "%s.html" % old_stem),
+              "<!doctype html>\n<html lang=\"ko\"><head><meta charset=\"utf-8\">\n"
+              "<meta http-equiv=\"refresh\" content=\"0; url=%s\">\n<link rel=\"canonical\" href=\"%s\">\n"
+              "<meta name=\"robots\" content=\"noindex\">\n<title>주소가 바뀌었습니다</title></head>\n"
+              "<body><p>이 사례의 주소가 바뀌었습니다. <a href=\"%s\">새 주소로 이동</a></p></body></html>\n" % (target, target, target))
 
     # 주제별 모아 보기 페이지
     recent = sorted(cases, key=lambda x: x.get("sort") or "", reverse=True)
