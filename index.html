@@ -107,6 +107,7 @@
 }
 </script>
 <link rel="preload" as="image" href="photo-desk.webp" media="(max-width: 900px)"><!-- 휴대전화 첫 화면 배경 사진(2026. 10. 21.) — 좁은 화면에서만 미리 받음 -->
+<link rel="preload" as="image" href="photo-desk-tall.webp" media="(min-width: 901px)"><!-- 넓은 화면 첫 화면 오른쪽 사진 — 넓은 화면에서만 미리 받음 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
@@ -324,8 +325,7 @@ img { max-width: 100%; }
 .hero-name .role { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.16em; color: var(--hero-soft); }
 .hero-name strong { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: 0.07em; color: var(--hero-fg); } /* 제목(2.5rem)과 같은 크기 — 굵기·자간으로 구별 */
 .hero-copy { display: grid; gap: 1.5rem; align-content: center; min-width: 0; padding-bottom: clamp(3rem, 6vw, 4.5rem); }
-.portrait { margin: 0; align-self: end; justify-self: center; width: min(100%, 23rem); }
-.portrait img { display: block; width: 100%; height: auto; }
+/* .portrait(오른쪽 누끼 인물 사진) 규칙은 2026. 10. 21. 낮에 사진을 없애면서 지움 — 오른쪽 사진은 아래 '첫 화면 배경 사진' 블록의 .hero::before */
 .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem 1.5rem; margin-top: 0.25rem; padding-top: 1.25rem; border-top: 1px solid var(--hero-line); }
 .hero-stats div { min-width: 0; }
 .hero-stats .n { display: block; font-family: var(--serif); font-size: var(--step-1); font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; font-variant-numeric: tabular-nums; }
@@ -856,8 +856,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 }
 @media (max-width: 900px) {
   .hero { grid-template-columns: minmax(0, 1fr); }
-  .hero-copy { padding-bottom: 0; }
-  .portrait { width: min(100%, 17rem); margin-top: 0.5rem; }
+  .hero-copy { padding-bottom: 2.5rem; }   /* 2026. 10. 21. 낮: 아래의 누끼 인물 사진을 없애 숫자 타일이 바닥에 붙지 않도록 0 → 2.5rem */
   .deadlines { align-self: start; }
   .situations { grid-template-columns: minmax(0, 1fr); }
   .situation, .situation.wide, .situation.half { grid-column: auto; }
@@ -1062,6 +1061,33 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
       url("photo-desk.webp");
     background-size: cover;
     background-position: 50% 40%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .hero > * { position: relative; }
+}
+/* 넓은 화면(두 단 배치, 901px 이상)도 같은 사진으로 (2026. 10. 21. 낮): 오른쪽 누끼 인물 사진(photo-hero.webp)을 없애고 그 자리에
+   세로로 긴 크롭(photo-desk-tall.webp — 서가·모니터·읽는 모습·책상 위의 판례집, 원본 y 0~2000)을 첫 화면 오른쪽 48%에 위아래로 꽉 차게 깔고
+   왼쪽 가장자리는 바탕색으로 녹아들게 한다. 글 칸(7/12)은 그대로이며 글 칸의 오른쪽 끝이 걸리는 자리는 거의 불투명하다.
+   background-position 66%: 어느 너비에서든 얼굴이 판의 오른쪽 절반에 오도록. */
+@media (min-width: 901px) {
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 48%;
+    background-image:
+      linear-gradient(to right, rgba(45, 50, 57, 1) 0%, rgba(45, 50, 57, 0.85) 14%, rgba(45, 50, 57, 0.35) 30%, rgba(45, 50, 57, 0) 46%),
+      url("photo-desk-tall.webp");
+    background-image:
+      linear-gradient(to right,
+        var(--hero-bg) 0%,
+        color-mix(in srgb, var(--hero-bg) 85%, transparent) 14%,
+        color-mix(in srgb, var(--hero-bg) 35%, transparent) 30%,
+        color-mix(in srgb, var(--hero-bg) 0%, transparent) 46%),
+      url("photo-desk-tall.webp");
+    background-size: cover;
+    background-position: 66% 20%;
     background-repeat: no-repeat;
     pointer-events: none;
   }
@@ -1365,9 +1391,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
         </div>
       </div>
 
-      <figure class="portrait">
-        <img src="photo-hero.webp" alt="변호사 부효준" width="720" height="830" fetchpriority="high">
-      </figure>
+      <!-- 2026. 10. 21. 낮: 오른쪽 누끼 인물 사진(photo-hero.webp) 삭제 — 그 자리에는 CSS(.hero::before)로 사무실 사진(photo-desk-tall.webp)을 깐다. photo-hero.webp는 공유 이미지(work/og_image.py)에서 계속 쓴다. -->
     </section>
 
     <nav class="finder" aria-labelledby="finder-cap">
