@@ -106,8 +106,8 @@
  "knowsLanguage": "ko"
 }
 </script>
-<link rel="preload" as="image" href="photo-desk.webp" media="(max-width: 900px)"><!-- 휴대전화 첫 화면 배경 사진(2026. 10. 21.) — 좁은 화면에서만 미리 받음 -->
-<link rel="preload" as="image" href="photo-desk-tall.webp" media="(min-width: 901px)"><!-- 넓은 화면 첫 화면 오른쪽 사진 — 넓은 화면에서만 미리 받음 -->
+<link rel="preload" as="image" href="photo-desk.webp" media="(max-width: 760px)"><!-- 휴대전화 첫 화면 배경 사진(2026. 10. 21.) — 좁은 화면에서만 미리 받음 -->
+<link rel="preload" as="image" href="photo-desk-tall.webp" media="(min-width: 761px)"><!-- 넓은 화면 첫 화면 오른쪽 사진 — 넓은 화면에서만 미리 받음 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
@@ -855,14 +855,16 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 900px) {
-  .hero { grid-template-columns: minmax(0, 1fr); }
-  .hero-copy { padding-bottom: 2.5rem; }   /* 2026. 10. 21. 낮: 아래의 누끼 인물 사진을 없애 숫자 타일이 바닥에 붙지 않도록 0 → 2.5rem */
   .deadlines { align-self: start; }
   .situations { grid-template-columns: minmax(0, 1fr); }
   .situation, .situation.wide, .situation.half { grid-column: auto; }
   .situation.wide .cols { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 760px) {
+  /* 첫 화면이 한 단으로 쌓이는 경계를 900px → 760px로 (2026. 10. 21. 13시 30분): 펼친 폴드·태블릿·좁게 띄운 PC 창(760~900px)은
+     사진 띠가 상한까지 커져 높아 보이므로 넓은 화면처럼 두 단(글 + 오른쪽 사진 판)으로 둔다. 그 너비에서도 제목 마지막 줄(약 360px)이 글 칸(약 380px 이상)에 들어간다. */
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .hero-copy { padding-bottom: 2.5rem; }   /* 2026. 10. 21. 낮: 아래의 누끼 인물 사진을 없애 숫자 타일이 바닥에 붙지 않도록 0 → 2.5rem */
   .section { grid-template-columns: minmax(0, 1fr); }
   .sign { grid-template-columns: minmax(0, 1fr); }
   .sign-block { order: -1; }
@@ -1033,45 +1035,47 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
    마지막 줄(.l3)을 회색이 아닌 본문색으로 두고 크림슨 밑줄로 강조. 마지막 줄은 넓은 화면에서 줄바꿈하지 않음(2.5rem이면 두 단 배치의 글 칸 약 570px에 넉넉히 들어감). */
 .hero h1 { font-size: min(var(--display), 2.5rem); }
 .hero h1 em { color: var(--hero-fg); text-decoration: underline; text-decoration-color: var(--hero-seal); text-decoration-thickness: 3px; text-underline-offset: 0.2em; text-decoration-skip-ink: none; }
-@media (min-width: 901px) { .hero h1 .l3 { white-space: nowrap; } }
+@media (min-width: 761px) { .hero h1 .l3 { white-space: nowrap; } }   /* 2026. 10. 21. 13시 30분: 두 단 배치 경계를 따라 901px → 761px */
 @media (max-width: 760px) { .hero h1 { font-size: 1.75rem; } }
 
-/* 첫 화면 윗부분 배경 사진 (2026. 10. 21.): 휴대전화에서는 첫 화면이 글씨 위주라, 한 단으로 쌓이는 화면(900px 이하)에서만
+/* 첫 화면 윗부분 배경 사진 (2026. 10. 21.): 휴대전화에서는 첫 화면이 글씨 위주라, 한 단으로 쌓이는 화면(760px 이하)에서만
    먹색 바탕 윗부분에 밝은 사무실 사진(photo-desk.webp — 창가에서 판례집을 읽는 모습, 본인 사진에서 천장과 맨 위 서가 한 줄을 뺀 윗부분을 잘라 냄)을 깔고
    아래로 갈수록 첫 화면 바탕색(--hero-bg)으로 녹아들게 한다. 이름 줄은 사진이 거의 어두워진 자리에서 시작해 글씨가 묻히지 않는다.
-   띠 높이는 사진 비율(1.434:1)에 맞춘 70vw(최대 25rem) — 휴대전화에서는 사진이 잘리지 않고, 태블릿에서는 얼굴이 보이는 중간 부분을 보인다.
-   (처음 84vw·1.195:1이었으나 띠가 조금 높다고 하여 같은 날 13시 사진 윗부분을 더 잘라 낮춤 — 얼굴(띠의 20~69%)은 그대로 페이드 바깥.)
-   넓은 화면(두 단 배치)은 아래 블록. color-mix를 모르는 옛 브라우저는 그 앞의 rgba 선언으로 같은 효과를 낸다. */
-@media (max-width: 900px) {
-  .hero { --band: min(70vw, 25rem); padding-top: calc(var(--band) - 2.75rem); }
+   띠 높이는 사진 비율(1.515:1)에 맞춘 66vw — 휴대전화에서는 사진이 잘리지 않는다. 상한 24rem(작은 태블릿·좁은 PC 창, 약 580px부터)과 50vh(가로로 눕힌 휴대전화)로
+   어느 화면에서도 띠가 첫 화면의 절반을 넘지 않게 한다. 얼굴(띠의 21~73%)은 페이드 바깥이고 턱 아래 목·옷깃에서 어두워진다.
+   (처음 84vw·1.195:1 → 13시 70vw·1.434:1 → 13시 30분 66vw·1.515:1, 띠가 높다는 지적에 따라 두 번 낮춤. 760~900px는 아래 두 단 블록.)
+   color-mix를 모르는 옛 브라우저는 그 앞의 rgba 선언으로 같은 효과를 낸다. */
+@media (max-width: 760px) {
+  .hero { --band: min(66vw, 24rem, 50vh); padding-top: calc(var(--band) - 2.75rem); }
   .hero::before {
     content: "";
     position: absolute;
     left: 0; right: 0; top: 0;
     height: var(--band);
     background-image:
-      linear-gradient(to bottom, rgba(45, 50, 57, 0) 0%, rgba(45, 50, 57, 0.08) 50%, rgba(45, 50, 57, 0.58) 76%, rgba(45, 50, 57, 0.93) 92%, #2d3239 100%),
+      linear-gradient(to bottom, rgba(45, 50, 57, 0) 0%, rgba(45, 50, 57, 0.04) 58%, rgba(45, 50, 57, 0.18) 72%, rgba(45, 50, 57, 0.86) 84%, rgba(45, 50, 57, 0.97) 93%, #2d3239 100%),
       url("photo-desk.webp");
     background-image:
       linear-gradient(to bottom,
         color-mix(in srgb, var(--hero-bg) 0%, transparent) 0%,
-        color-mix(in srgb, var(--hero-bg) 8%, transparent) 50%,
-        color-mix(in srgb, var(--hero-bg) 58%, transparent) 76%,
-        color-mix(in srgb, var(--hero-bg) 93%, transparent) 92%,
+        color-mix(in srgb, var(--hero-bg) 4%, transparent) 58%,
+        color-mix(in srgb, var(--hero-bg) 18%, transparent) 72%,
+        color-mix(in srgb, var(--hero-bg) 86%, transparent) 84%,
+        color-mix(in srgb, var(--hero-bg) 97%, transparent) 93%,
         var(--hero-bg) 100%),
       url("photo-desk.webp");
     background-size: cover;
-    background-position: 50% 40%;
+    background-position: 50% 60%;   /* 상한(24rem)에 걸려 세로로 잘리는 너비(약 580~760px)에서는 아래쪽(얼굴·책상)을 보이고 위쪽(서가)을 잘라 턱이 페이드에 덜 걸리게 */
     background-repeat: no-repeat;
     pointer-events: none;
   }
   .hero > * { position: relative; }
 }
-/* 넓은 화면(두 단 배치, 901px 이상)도 같은 사진으로 (2026. 10. 21. 낮): 오른쪽 누끼 인물 사진(photo-hero.webp)을 없애고 그 자리에
+/* 두 단 배치(761px 이상 — 2026. 10. 21. 13시 30분부터; 그 전에는 901px 이상)도 같은 사진으로 (2026. 10. 21. 낮): 오른쪽 누끼 인물 사진(photo-hero.webp)을 없애고 그 자리에
    세로로 긴 크롭(photo-desk-tall.webp — 서가·모니터·읽는 모습·책상 위의 판례집, 원본 y 0~2000)을 첫 화면 오른쪽 48%에 위아래로 꽉 차게 깔고
    왼쪽 가장자리는 바탕색으로 녹아들게 한다. 글 칸(7/12)은 그대로이며 글 칸의 오른쪽 끝이 걸리는 자리는 거의 불투명하다.
-   background-position 66%: 어느 너비에서든 얼굴이 판의 오른쪽 절반에 오도록. */
-@media (min-width: 901px) {
+   background-position 66%: 어느 너비에서든 얼굴이 판의 오른쪽 절반에 오도록(760~900px처럼 판이 세로로 길면 얼굴을 가운데 둔 세로 조각이 보인다). */
+@media (min-width: 761px) {
   .hero::before {
     content: "";
     position: absolute;
