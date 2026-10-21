@@ -3,20 +3,29 @@
 <head>
 <meta charset="utf-8">
 <!-- 링크 공유용 이미지(og-image.jpg, 1200×630)의 본. work/og_image.py가 이 파일을 크로미움으로 찍어 저장한다.
-     바탕은 첫 화면과 같은 연한 먹색(--hero-bg #2d3239), 글자는 첫 화면의 밝은 색, 밑줄은 어두운 바탕용 크림슨(#ec4b63). -->
+     바탕은 첫 화면과 같은 연한 먹색(--hero-bg #2d3239), 글자는 첫 화면의 밝은 색, 밑줄은 어두운 바탕용 크림슨(#ec4b63).
+     2026. 10. 21. 13시 45분: 오른쪽 누끼 인물 사진(photo-hero.webp) 대신 첫 화면과 같은 사무실 사진(photo-desk-tall.webp — 서가·모니터·판례집을 읽는 모습)을
+     오른쪽 46%에 위아래로 꽉 차게 깔고 왼쪽 가장자리를 바탕색으로 녹인다(첫 화면 두 단 배치의 오른쪽 판과 같은 방식). 글꼴은 Google Fonts가 막힌 환경에서는
+     설치된 Noto Serif/Sans CJK KR로 찍힌다(같은 글꼴). -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
 <style>
   html, body { margin: 0; }
   body { width: 1200px; height: 630px; overflow: hidden; background: #2d3239; color: #f3f1ec; font-family: "Noto Sans KR", "Noto Sans CJK KR", "Malgun Gothic", sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
   .card { position: relative; width: 1200px; height: 630px; }
-  .copy { position: absolute; left: 72px; top: 128px; width: 760px; }
+  .copy { position: absolute; left: 72px; top: 128px; width: 760px; z-index: 1; }   /* 오른쪽 사진 판 위에 */
   .eyebrow { margin: 0; font-size: 34px; font-weight: 500; letter-spacing: 0.04em; color: #b3b8c0; }
   .name { margin: 18px 0 0; font-family: "Noto Serif KR", "Noto Serif CJK KR", "Batang", serif; font-size: 104px; font-weight: 900; line-height: 1.05; letter-spacing: 0.06em; color: #f3f1ec; } /* 2026. 10. 21.: 홈페이지 이름(노토 명조 900, 자간)과 맞춤 */
   .fields { margin: 26px 0 0; font-size: 33px; font-weight: 500; line-height: 1.45; color: #f3f1ec; }
   .rule { width: 340px; height: 3px; margin: 26px 0 0; background: #ec4b63; }
   .firm { margin: 26px 0 0; font-size: 28px; font-weight: 400; line-height: 1.5; color: #d5d8dc; }
   .domain { margin: 0; font-size: 28px; font-weight: 400; line-height: 1.5; color: #d5d8dc; }
-  .portrait { position: absolute; right: -12px; bottom: 0; height: 580px; width: auto; }
+  .photo {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 46%;
+    background-image:
+      linear-gradient(to right, rgba(45, 50, 57, 1) 0%, rgba(45, 50, 57, 0.92) 18%, rgba(45, 50, 57, 0.4) 38%, rgba(45, 50, 57, 0) 56%),
+      url("../photo-desk-tall.webp");
+    background-size: cover; background-position: 66% 20%; background-repeat: no-repeat;
+  }
 </style>
 </head>
 <body>
@@ -29,7 +38,7 @@
     <p class="firm">법무법인(유한) 금성 · 정부·공공기관 고문변호사</p>
     <p class="domain">lawyermrboo82.com</p>
   </div>
-  <img class="portrait" src="../photo-hero.webp" alt="">
+  <div class="photo"></div>
 </div>
 </body>
 </html>

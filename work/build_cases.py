@@ -436,7 +436,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     ims = images_of(c)
     title = c["title"]
     desc = description_of(c)
-    og_image = "%s/cases/%s" % (SITE, ims[0]["src"].rsplit("/", 1)[-1]) if ims else SITE + "/og-image.jpg"
+    og_image = "%s/cases/%s" % (SITE, ims[0]["src"].rsplit("/", 1)[-1]) if ims else SITE + "/og-image.jpg?v=2"
     parts = [p for p in [c.get("court"), c.get("party")] if p]
 
     ld = {
@@ -448,7 +448,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
                 "mainEntityOfPage": url,
                 "headline": title,
                 "description": desc,
-                "image": ["%s/cases/%s" % (SITE, im["src"].rsplit("/", 1)[-1]) for im in ims] or [SITE + "/og-image.jpg"],
+                "image": ["%s/cases/%s" % (SITE, im["src"].rsplit("/", 1)[-1]) for im in ims] or [SITE + "/og-image.jpg?v=2"],
                 "articleSection": cat,
                 "keywords": ", ".join(d.get("keywords") or []) if d.get("keywords") else None,
                 "articleBody": " ".join([c.get("summary") or ""] + list(d.get("overview") or []) + list(d.get("claims") or []) + list(d.get("argument") or []) + list(d.get("holding") or []) + list(d.get("meaning") or [])).strip() or None,
@@ -677,11 +677,11 @@ def build_topic_page(t, matched, cat_counts):
 <meta property="og:url" content="{esc(url)}">
 <meta property="og:title" content="{esc(t["title"])}">
 <meta property="og:description" content="{esc(desc)}">
-<meta property="og:image" content="{SITE}/og-image.jpg">
+<meta property="og:image" content="{SITE}/og-image.jpg?v=2">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(t["title"])}">
 <meta name="twitter:description" content="{esc(desc)}">
-<meta name="twitter:image" content="{SITE}/og-image.jpg">
+<meta name="twitter:image" content="{SITE}/og-image.jpg?v=2">
 {ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
