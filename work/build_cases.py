@@ -49,7 +49,7 @@ CATS = {   # 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤
     "criminal": "형사",
     "contract": "국가계약법·지방계약법",
     "state": "국가배상",
-    "civil": "민사·연금·계약",
+    "civil": "민사",
 }
 # 사이트맵 우선순위: 주력 분야를 앞세운다
 PRIORITY = {"rnd": "0.8", "penalty": "0.8", "criminal": "0.7", "personnel": "0.6", "license": "0.6",

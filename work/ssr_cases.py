@@ -32,7 +32,7 @@ CATS = {   # 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤
     "criminal": "형사",
     "contract": "국가계약법·지방계약법",
     "state": "국가배상",
-    "civil": "민사·연금·계약",
+    "civil": "민사",
 }
 MAIN = ("rnd", "penalty", "criminal")
 RECENT = 9
