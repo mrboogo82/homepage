@@ -106,6 +106,7 @@
  "knowsLanguage": "ko"
 }
 </script>
+<link rel="preload" as="image" href="photo-desk.webp" media="(max-width: 900px)"><!-- 휴대전화 첫 화면 배경 사진(2026. 10. 21.) — 좁은 화면에서만 미리 받음 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
@@ -1035,6 +1036,37 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .hero h1 em { color: var(--hero-fg); text-decoration: underline; text-decoration-color: var(--hero-seal); text-decoration-thickness: 3px; text-underline-offset: 0.2em; text-decoration-skip-ink: none; }
 @media (min-width: 901px) { .hero h1 .l3 { white-space: nowrap; } }
 @media (max-width: 760px) { .hero h1 { font-size: 1.75rem; } }
+
+/* 첫 화면 윗부분 배경 사진 (2026. 10. 21.): 휴대전화에서는 첫 화면이 글씨 위주라, 한 단으로 쌓이는 화면(900px 이하)에서만
+   먹색 바탕 윗부분에 밝은 사무실 사진(photo-desk.webp — 창가에서 판례집을 읽는 모습, 본인 사진에서 위쪽을 잘라 냄)을 깔고
+   아래로 갈수록 첫 화면 바탕색(--hero-bg)으로 녹아들게 한다. 이름 줄은 사진이 거의 어두워진 자리에서 시작해 글씨가 묻히지 않는다.
+   띠 높이는 사진 비율(1.195:1)에 맞춘 84vw(최대 30rem) — 휴대전화에서는 사진이 잘리지 않고, 태블릿에서는 얼굴이 보이는 중간 부분을 보인다.
+   넓은 화면(두 단 배치)은 그대로 둔다. color-mix를 모르는 옛 브라우저는 그 앞의 rgba 선언으로 같은 효과를 낸다. */
+@media (max-width: 900px) {
+  .hero { --band: min(84vw, 30rem); padding-top: calc(var(--band) - 2.75rem); }
+  .hero::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: var(--band);
+    background-image:
+      linear-gradient(to bottom, rgba(45, 50, 57, 0) 0%, rgba(45, 50, 57, 0.08) 50%, rgba(45, 50, 57, 0.58) 76%, rgba(45, 50, 57, 0.93) 92%, #2d3239 100%),
+      url("photo-desk.webp");
+    background-image:
+      linear-gradient(to bottom,
+        color-mix(in srgb, var(--hero-bg) 0%, transparent) 0%,
+        color-mix(in srgb, var(--hero-bg) 8%, transparent) 50%,
+        color-mix(in srgb, var(--hero-bg) 58%, transparent) 76%,
+        color-mix(in srgb, var(--hero-bg) 93%, transparent) 92%,
+        var(--hero-bg) 100%),
+      url("photo-desk.webp");
+    background-size: cover;
+    background-position: 50% 40%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .hero > * { position: relative; }
+}
 
 /* ---------- '경력' 큰 묶음 (2026. 10. 16., Version 93): 경력 · 학력·수상 · 법률고문 위촉 · 위원회·강의를 한 절에 ---------- */
 .career-body { gap: 0; }
