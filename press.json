@@ -8,7 +8,9 @@
       "title": "재판장, \"검사가 집무실에 골프 연습장비를 둔 것은…\"",
       "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=83445",
       "kind": "case",
-      "cases": ["c-pers-7a"],
+      "cases": [
+        "c-pers-7a"
+      ],
       "home": true,
       "note": "서울행정법원 2013구합21434 검사 면직처분 취소소송 판결 보도"
     },
@@ -19,7 +21,9 @@
       "title": "[판결] 사건 관계인에 접대 받아 면직 된 검사 \"억울하다\" 소송냈지만",
       "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=96053",
       "kind": "case",
-      "cases": ["c-pers-7b"],
+      "cases": [
+        "c-pers-7b"
+      ],
       "home": true,
       "note": "서울행정법원 2013구합22475 검사 면직처분 취소소송 판결 보도"
     },
@@ -30,7 +34,10 @@
       "title": "경북대 '2순위 총장임용 취소소송' 기각·각하",
       "url": "https://www.pn.or.kr/news/articleView.html?idxno=15816",
       "kind": "case",
-      "cases": ["c-pers-6a", "c-pers-6b"],
+      "cases": [
+        "c-pers-6a",
+        "c-pers-6b"
+      ],
       "home": true,
       "note": "국립대학교 총장 임용처분 취소소송 두 건(1순위 후보자·대학 구성원)의 1심 판결 보도"
     },
@@ -41,7 +48,9 @@
       "title": "`경북대 총장 부적격 논란` 김사열 교수, 박근혜 상대 취소소송 항소심도 패소",
       "url": "https://www.mk.co.kr/news/society/8309008",
       "kind": "case",
-      "cases": ["c-pers-6a"],
+      "cases": [
+        "c-pers-6a"
+      ],
       "home": true,
       "note": "국립대학교 총장 임용처분 취소소송(1순위 후보자) 항소심 판결 보도"
     },
@@ -52,7 +61,9 @@
       "title": "이명박근혜 정권이 키운 탈북사기꾼 '한성무역 한필수' 커넥션",
       "url": "https://www.amn.kr/24876",
       "kind": "case",
-      "cases": ["d-2018na31209"],
+      "cases": [
+        "d-2018na31209"
+      ],
       "home": true,
       "note": "탈북민 투자사기 피해자들의 국가배상(각 1원) 청구소송 제기 보도"
     },
@@ -63,7 +74,9 @@
       "title": "헌재, 朴정부 2016년 개성공단 폐쇄는 합헌…\"재산권 침해 아냐\"",
       "url": "https://www.donga.com/news/article/all/20220127/111479530/1",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": true,
       "note": "헌법재판소 2016헌마364 개성공단 전면중단 조치 위헌확인 헌법소원 결정 보도"
     },
@@ -74,7 +87,9 @@
       "title": "\"2016년 박근혜정부 개성공단 폐쇄 조치는 합헌\"",
       "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=176109",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": true,
       "note": "헌법재판소 2016헌마364 결정 보도 — 재판관 전원일치"
     },
@@ -85,7 +100,9 @@
       "title": "개성공단 투자기업, 개성공단 전면중단조치 심판청구",
       "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=177434",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 결정 해설 기사"
     },
@@ -96,7 +113,9 @@
       "title": "6.15남측위, 헌재 개성공단 폐쇄 합헌결정은 반헌법",
       "url": "https://www.tongilnews.com/news/articleView.html?idxno=204198",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 결정에 대한 반응 보도"
     },
@@ -107,7 +126,9 @@
       "title": "개성공단기업들 \"헌재 결정은 사형 선고..특별법으로 보상하라\"",
       "url": "https://v.daum.net/v/20220127170705728",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 결정 뒤 청구인 측 반응 보도"
     },
@@ -118,7 +139,9 @@
       "title": "개성공단기업協 \"헌재 기각 결정, 남북경협에 대한 사형선고\"",
       "url": "https://v.daum.net/v/20220127164156711",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 결정 뒤 청구인 측 반응 보도"
     },
@@ -129,7 +152,9 @@
       "title": "개성공단기업인, '폐쇄합헌'에 분노 \"헌재 존재의미 상실\"",
       "url": "https://v.daum.net/v/20220127153052215",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 결정 뒤 청구인 측 반응 보도"
     },
@@ -140,7 +165,9 @@
       "title": "헌재, '박근혜 개성공단 중단' 합헌..개성공단 기업들 \"남북경협 사형선고\"",
       "url": "https://v.daum.net/v/20220127163538432",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 결정 보도"
     },
@@ -151,7 +178,9 @@
       "title": "개성공단기업協, '개성공단 전면중단' 위헌심판 조속 처리 요구",
       "url": "https://v.daum.net/v/20211201113114279",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 심리 중 청구인 측 요구 보도"
     },
@@ -162,7 +191,9 @@
       "title": "“지연된 정의, 개성기업인들 두 번 죽인다”",
       "url": "https://www.junggi.co.kr/news/articleView.html?idxno=25101",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 심리 중 청구인 측 요구 보도"
     },
@@ -173,7 +204,9 @@
       "title": "개성공단기업 비대위 \"헌재, 신속 재판진행\" 호소",
       "url": "https://v.daum.net/v/20200511104113448",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 심리 중 청구인 측 요구 보도"
     },
@@ -184,7 +217,9 @@
       "title": "\"개성공단 폐쇄는 불법\"..\"헌재, 박근혜 정부 위법 행위 판단해달라\"",
       "url": "https://v.daum.net/v/20191001140201623",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 판단 촉구 기자회견 보도"
     },
@@ -195,7 +230,9 @@
       "title": "개성공단기업협회 \"공단 중단 조치, 위헌확인 조속히 심판해달라\"",
       "url": "https://v.daum.net/v/20191001143605362",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 판단 촉구 기자회견 보도"
     },
@@ -206,7 +243,9 @@
       "title": "개성공단 전면중단 조치에 관한 위헌소원 사건, 선고 결과는?",
       "url": "https://www.youtube.com/watch?v=uo1q31vQEEc",
       "kind": "case",
-      "cases": ["n-adm-kaesong"],
+      "cases": [
+        "n-adm-kaesong"
+      ],
       "home": false,
       "note": "2016헌마364 선고 해설 영상"
     },
@@ -217,7 +256,9 @@
       "title": "“OMR 마킹 안 했는데”…‘0점’ 처리에 화난 학부모 소송 [잇슈 키워드]",
       "url": "https://www.youtube.com/watch?v=02uQ00vKYxM",
       "kind": "case",
-      "cases": ["n-adm-grade"],
+      "cases": [
+        "n-adm-grade"
+      ],
       "home": true,
       "note": "인천지방법원 2023구합53113 중학교 중간고사 성적 결정 처분 취소소송 판결 보도(영상)"
     },
@@ -228,7 +269,9 @@
       "title": "한약사약국 화상투약기…법원, 집행정지서 규제특례 취소까지 '각하'",
       "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=247487",
       "kind": "case",
-      "cases": ["c-lic-3a"],
+      "cases": [
+        "c-lic-3a"
+      ],
       "home": true,
       "note": "서울행정법원 2022구합80589 ICT 규제샌드박스 실증특례 지정처분(일반의약품 화상 판매기) 취소소송 판결 보도"
     },
@@ -239,7 +282,9 @@
       "title": "[단독] 안경업계, '콘택트렌즈 온라인 판매 추진' 정부 상대 집단소송",
       "url": "https://www.hankyung.com/article/202406093792i",
       "kind": "case",
-      "cases": ["c-lic-3b"],
+      "cases": [
+        "c-lic-3b"
+      ],
       "home": true,
       "note": "서울행정법원 2024구합69371 ICT 규제샌드박스 실증특례 지정처분(콘택트렌즈 온라인 판매 중개 플랫폼) 취소소송 제기 보도"
     },
@@ -250,7 +295,9 @@
       "title": "[행정] '콘택트렌즈 온라인 판매 중개 플랫폼' 규제샌드박스 지정 적법",
       "url": "https://www.legaltimes.co.kr/news/articleView.html?idxno=91340",
       "kind": "case",
-      "cases": ["c-lic-3b"],
+      "cases": [
+        "c-lic-3b"
+      ],
       "home": true,
       "note": "서울행정법원 2024구합69371 판결 보도 — \"피고는 법무법인 금성이 대리했다.\""
     },
@@ -261,7 +308,9 @@
       "title": "[행정] \"새만금 방조제 1호 관할은 부안군, 2호는 김제시 적법\"",
       "url": "https://www.legaltimes.co.kr/news/articleView.html?idxno=57909",
       "kind": "case",
-      "cases": ["n-adm-saemangeum"],
+      "cases": [
+        "n-adm-saemangeum"
+      ],
       "home": true,
       "note": "대법원 2015추573 새만금 방조제 구간 매립지 귀속 지방자치단체 결정 취소소송 판결 보도"
     },
@@ -272,7 +321,9 @@
       "title": "인천 송도11-1공구 매립구간 연수구 관할 최종 판결",
       "url": "https://v.daum.net/v/20210118084137876",
       "kind": "case",
-      "cases": ["n-adm-songdo"],
+      "cases": [
+        "n-adm-songdo"
+      ],
       "home": true,
       "note": "대법원 2016추5094 송도국제도시 매립지 귀속 지방자치단체 결정 취소소송 판결 보도"
     },
@@ -283,7 +334,9 @@
       "title": "인천 연수구 송도 11-1공구 관할권 분쟁 승소",
       "url": "https://v.daum.net/v/20210117130149541",
       "kind": "case",
-      "cases": ["n-adm-songdo"],
+      "cases": [
+        "n-adm-songdo"
+      ],
       "home": false,
       "note": "대법원 2016추5094 판결 보도"
     },
@@ -294,7 +347,9 @@
       "title": "인천 연수구 송도 10공구 일원 관할권 다툼 최종 승소",
       "url": "https://v.daum.net/v/20201227161646749",
       "kind": "case",
-      "cases": ["n-adm-songdo"],
+      "cases": [
+        "n-adm-songdo"
+      ],
       "home": false,
       "note": "같은 유형의 앞선 판결 보도 — 대법원 2016추5094 사건이 계류 중임을 언급"
     },
@@ -305,7 +360,9 @@
       "title": "조세포탈 관여자의 국가에 대한 손해배상책임",
       "url": "https://v.daum.net/v/20220716060015475",
       "kind": "case",
-      "cases": ["n-civ-diesel"],
+      "cases": [
+        "n-civ-diesel"
+      ],
       "home": false,
       "note": "대법원 2021. 10. 28. 선고 2019다293814 판결을 해설한 법률 칼럼(정종화 변호사)"
     },
@@ -392,44 +449,212 @@
       "note": "공익법무관 배치 인사 — 대한법률구조공단 창원지부 진주출장소"
     },
     {
-      "id": "mt-2009-1124",
-      "date": "2009-11-24",
-      "outlet": "머니투데이",
-      "title": "51회 사시 합격자 997명 명단",
-      "url": "https://v.daum.net/v/20091124140904600",
-      "kind": "mention",
+      "id": "yna-2021-0114",
+      "date": "2021-01-14",
+      "outlet": "연합뉴스",
+      "title": "\"새만금 방조제 관할권 1호 부안·2호 김제\"..10년 다툼 일단락",
+      "url": "https://v.daum.net/v/20210114162626234",
+      "kind": "case",
+      "cases": [
+        "n-adm-saemangeum"
+      ],
       "home": true,
-      "note": "제51회 사법시험 최종 합격자 명단"
+      "note": "대법원 2015추573 판결 보도"
     },
     {
-      "id": "newsis-2009-1020",
-      "date": "2009-10-20",
+      "id": "kmib-2021-0114",
+      "date": "2021-01-14",
+      "outlet": "국민일보",
+      "title": "새만금 1·2호 방조제 관할권, 부안군·김제시가 그대로 유지",
+      "url": "https://v.daum.net/v/20210114131850547",
+      "kind": "case",
+      "cases": [
+        "n-adm-saemangeum"
+      ],
+      "home": false,
+      "note": "대법원 2015추573 판결 보도"
+    },
+    {
+      "id": "chosun-2021-0115",
+      "date": "2021-01-15",
+      "outlet": "조선일보",
+      "title": "새만금 방조제 1·2호 관할권, 5년 다툼끝에 부안·김제 웃어",
+      "url": "https://v.daum.net/v/20210115030130628",
+      "kind": "case",
+      "cases": [
+        "n-adm-saemangeum"
+      ],
+      "home": false,
+      "note": "대법원 2015추573 판결 보도"
+    },
+    {
+      "id": "news1-2021-0114",
+      "date": "2021-01-14",
+      "outlet": "뉴스1",
+      "title": "부안군 \"새만금 2호 방조제 김제 관할권 아쉽지만 대법 판결 따를 것\"",
+      "url": "https://v.daum.net/v/20210114142414824",
+      "kind": "case",
+      "cases": [
+        "n-adm-saemangeum"
+      ],
+      "home": false,
+      "note": "대법원 2015추573 판결 뒤 반응 보도"
+    },
+    {
+      "id": "chosun-2023-0929",
+      "date": "2023-09-29",
+      "outlet": "조선일보",
+      "title": "문제 다 풀고 OMR 작성 못해 ‘0점’…학교에 소송 건 중학생 학부모 패소",
+      "url": "https://v.daum.net/v/20230929195423384",
+      "kind": "case",
+      "cases": [
+        "n-adm-grade"
+      ],
+      "home": false,
+      "note": "인천지방법원 2023구합53113 판결 보도"
+    },
+    {
+      "id": "donga-2023-0929",
+      "date": "2023-09-29",
+      "outlet": "동아일보",
+      "title": "OMR 마킹 못 한 중학생 ‘0점’…학교에 소송 건 학부모 패소",
+      "url": "https://v.daum.net/v/20230929165552442",
+      "kind": "case",
+      "cases": [
+        "n-adm-grade"
+      ],
+      "home": false,
+      "note": "인천지방법원 2023구합53113 판결 보도"
+    },
+    {
+      "id": "segye-2023-0930",
+      "date": "2023-09-30",
+      "outlet": "세계일보",
+      "title": "“어머님, 규정이 그래요”…답지 못 적어 0점 받은 중학생 母 소송 패소",
+      "url": "https://v.daum.net/v/20230930082148691",
+      "kind": "case",
+      "cases": [
+        "n-adm-grade"
+      ],
+      "home": false,
+      "note": "인천지방법원 2023구합53113 판결 보도"
+    },
+    {
+      "id": "edaily-2023-0929",
+      "date": "2023-09-29",
+      "outlet": "이데일리",
+      "title": "OMR 못 적어 ‘0점’인데 학부모는 법적대응...법원 “기각”",
+      "url": "https://v.daum.net/v/20230929221307166",
+      "kind": "case",
+      "cases": [
+        "n-adm-grade"
+      ],
+      "home": false,
+      "note": "인천지방법원 2023구합53113 판결 보도"
+    },
+    {
+      "id": "khan-2016-0611",
+      "date": "2016-06-11",
+      "outlet": "경향신문",
+      "title": "\"사기꾼은 잡혔지만..\" 2년째 눈물 짓는 탈북자들",
+      "url": "https://v.daum.net/v/20160611163109208",
+      "kind": "case",
+      "cases": [
+        "d-2018na31209"
+      ],
+      "home": true,
+      "note": "탈북민 투자사기 피해자들의 국가배상(각 1원) 청구소송 제기 보도"
+    },
+    {
+      "id": "wkhan-2016-0615",
+      "date": "2016-06-15",
+      "outlet": "주간경향",
+      "title": "탈북자 등쳐먹은 탈북 기업인",
+      "url": "https://v.daum.net/v/20160615100036116",
+      "kind": "case",
+      "cases": [
+        "d-2018na31209"
+      ],
+      "home": false,
+      "note": "국가배상(각 1원) 청구소송 제기 경위 보도"
+    },
+    {
+      "id": "yna-2021-1102",
+      "date": "2021-11-02",
+      "outlet": "연합뉴스",
+      "title": "울산시, '주행세 39억원 포탈 손해배상' 소송 승소",
+      "url": "https://v.daum.net/v/20211102161414639",
+      "kind": "case",
+      "cases": [
+        "n-civ-diesel"
+      ],
+      "home": true,
+      "note": "대법원 2019다293814 판결(원심 파기) 보도"
+    },
+    {
+      "id": "newsis-2021-1102",
+      "date": "2021-11-02",
       "outlet": "뉴시스",
-      "title": "<표>2009년 제51회 사법시험 2차 합격자 명단",
-      "url": "https://v.daum.net/v/20091020141708861",
-      "kind": "mention",
-      "home": true,
-      "note": "제51회 사법시험 2차 합격자 명단"
+      "title": "울산시, 39억 원 주행세 포탈 배상 소송 승소",
+      "url": "https://v.daum.net/v/20211102071434237",
+      "kind": "case",
+      "cases": [
+        "n-civ-diesel"
+      ],
+      "home": false,
+      "note": "대법원 2019다293814 판결 보도"
     },
     {
-      "id": "mt-2009-1020",
-      "date": "2009-10-20",
-      "outlet": "머니투데이",
-      "title": "2009사시 2차 합격자 명단",
-      "url": "https://v.daum.net/v/20091020135605419",
-      "kind": "mention",
-      "home": true,
-      "note": "제51회 사법시험 2차 합격자 명단"
+      "id": "news1-2021-1102",
+      "date": "2021-11-02",
+      "outlet": "뉴스1",
+      "title": "울산시 '39억원 주행세 포탈 배상 소송' 대법원서 승소",
+      "url": "https://v.daum.net/v/20211102044002521",
+      "kind": "case",
+      "cases": [
+        "n-civ-diesel"
+      ],
+      "home": false,
+      "note": "대법원 2019다293814 판결 보도"
     },
     {
-      "id": "asiae-2009-0407",
-      "date": "2009-04-07",
-      "outlet": "아시아경제",
-      "title": "51회 司試 1차 합격자 2309명(명단 포함)",
-      "url": "https://v.daum.net/v/20090407145537381",
-      "kind": "mention",
-      "home": true,
-      "note": "제51회 사법시험 1차 합격자 명단"
+      "id": "sedaily-2021-1102",
+      "date": "2021-11-02",
+      "outlet": "서울경제",
+      "title": "대법원, '39억 주행세 포탈' 소송서 울산시 승소 판결",
+      "url": "https://v.daum.net/v/20211102161123553",
+      "kind": "case",
+      "cases": [
+        "n-civ-diesel"
+      ],
+      "home": false,
+      "note": "대법원 2019다293814 판결 보도"
+    },
+    {
+      "id": "ytn-2021-1102",
+      "date": "2021-11-02",
+      "outlet": "YTN",
+      "title": "대법원, '39억 주행세 포탈' 소송에서 울산시 승소 판결",
+      "url": "https://v.daum.net/v/20211102183900242",
+      "kind": "case",
+      "cases": [
+        "n-civ-diesel"
+      ],
+      "home": false,
+      "note": "대법원 2019다293814 판결 보도"
+    },
+    {
+      "id": "hankyung-2024-0609b",
+      "date": "2024-06-09",
+      "outlet": "한국경제",
+      "title": "\"콘택트렌즈 온라인 판매 반대\"…안경사들 집단소송 제기",
+      "url": "https://v.daum.net/v/20240609182902422",
+      "kind": "case",
+      "cases": [
+        "c-lic-3b"
+      ],
+      "home": false,
+      "note": "서울행정법원 2024구합69371 소송 제기 보도"
     }
   ]
 }

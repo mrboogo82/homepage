@@ -558,20 +558,27 @@ button.case-fig:hover img { opacity: 0.92; }
 .rows dd .sub { display: block; font-size: var(--step--1); color: var(--ink-soft); }
 
 /* 언론보도 절(press.json → work/build_press.py, 2026. 10. 22.): 강의 목록과 같은 날짜 줄(dl.rows.dates)에 언론사·기사 제목(새 창)·한 줄 설명·관련 사례 링크, 활동 기사는 본인 발언을 크림슨 왼줄 인용으로 */
-.press-body { gap: 2.25rem; }
+.press-body { gap: 2rem; }
+/* 2026. 10. 22. 본인 지시: 언론보도는 가급적 작은 글씨로 — 날짜·언론사·기사 제목은 본문보다 한 단계 작게(--step--1), 설명·관련 사례·인용은 두 단계 작게(--step--2) */
+#press .section-head p { font-size: var(--step--2); }
+#press .block-h { font-size: var(--step-0); }
+.press-list.rows.dates > div { grid-template-columns: 7.5rem minmax(0, 1fr); padding-block: 0.55rem; }
+.press-list dt { font-size: var(--step--2); padding-top: 0.15em; }
+.press-list dd { font-size: var(--step--1); line-height: 1.6; }
+.press-list dd .sub { font-size: var(--step--2); line-height: 1.6; }
 .press-list dd { display: grid; gap: 0.2rem; }
-.press-list .outlet { font-weight: 700; color: var(--ink); margin-right: 0.45rem; }
+.press-list .outlet { font-weight: 700; color: var(--ink); margin-right: 0.45rem; font-size: var(--step--2); }
 .press-list .press-title { font-family: var(--serif); font-weight: 600; color: var(--ink); text-decoration: none; }
 .press-list .press-title:hover { text-decoration: underline; text-underline-offset: 0.15em; }
 .press-list .sub a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 0.15em; }
 .press-list .sub a:hover { color: var(--seal); }
-.press-list q { display: block; margin-top: 0.3rem; padding-left: 0.8rem; border-left: 2px solid var(--seal); font-size: var(--step--1); line-height: 1.7; color: var(--ink-soft); quotes: "“" "”"; }
+.press-list q { display: block; margin-top: 0.3rem; padding-left: 0.8rem; border-left: 2px solid var(--seal); font-size: var(--step--2); line-height: 1.65; color: var(--ink-soft); quotes: "“" "”"; }
 .press-note { margin-top: 0.75rem; font-size: var(--step--2); color: var(--ink-soft); }
 .press-more { margin-top: -0.5rem; }
-.press-more summary { cursor: pointer; font-family: var(--serif); font-size: var(--step-0); font-weight: 600; color: var(--ink-soft); }
+.press-more summary { cursor: pointer; font-family: var(--serif); font-size: var(--step--1); font-weight: 600; color: var(--ink-soft); }
 .press-more summary:hover { color: var(--seal); }
 .press-more[open] summary { margin-bottom: 0.75rem; }
-.press-more .press-list dt, .press-more .press-list dd { font-size: var(--step--1); }
+.press-more .press-list dd { font-size: var(--step--2); }
 @media (max-width: 640px) { .press-list.rows.dates > div { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; } .press-list dt { padding-top: 0; } }
 
 /* advisory wall */
@@ -1617,15 +1624,18 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
             <div><dt>2023. 10. 4.</dt><dd><span class="head"><span class="outlet">KBS 뉴스</span><a class="press-title" href="https://www.youtube.com/watch?v=02uQ00vKYxM" target="_blank" rel="noopener">“OMR 마킹 안 했는데”…‘0점’ 처리에 화난 학부모 소송 [잇슈 키워드]</a></span><span class="sub">인천지방법원 2023구합53113 중학교 중간고사 성적 결정 처분 취소소송 판결 보도(영상) — 관련 사례: <a href="cases/adm-2023guhap53113.html">중학교 중간고사 성적 결정 처분 취소소송</a></span></dd></div>
             <div><dt>2022. 1. 27.</dt><dd><span class="head"><span class="outlet">동아일보</span><a class="press-title" href="https://www.donga.com/news/article/all/20220127/111479530/1" target="_blank" rel="noopener">헌재, 朴정부 2016년 개성공단 폐쇄는 합헌…&quot;재산권 침해 아냐&quot;</a></span><span class="sub">헌법재판소 2016헌마364 개성공단 전면중단 조치 위헌확인 헌법소원 결정 보도 — 관련 사례: <a href="cases/adm-2016heonma364.html">개성공단 전면중단 조치 위헌확인 헌법소원</a></span></dd></div>
             <div><dt>2022. 1. 27.</dt><dd><span class="head"><span class="outlet">법률신문</span><a class="press-title" href="https://www.lawtimes.co.kr/news/articleView.html?idxno=176109" target="_blank" rel="noopener">&quot;2016년 박근혜정부 개성공단 폐쇄 조치는 합헌&quot;</a></span><span class="sub">헌법재판소 2016헌마364 결정 보도 — 재판관 전원일치 — 관련 사례: <a href="cases/adm-2016heonma364.html">개성공단 전면중단 조치 위헌확인 헌법소원</a></span></dd></div>
+            <div><dt>2021. 11. 2.</dt><dd><span class="head"><span class="outlet">연합뉴스</span><a class="press-title" href="https://v.daum.net/v/20211102161414639" target="_blank" rel="noopener">울산시, &#x27;주행세 39억원 포탈 손해배상&#x27; 소송 승소</a></span><span class="sub">대법원 2019다293814 판결(원심 파기) 보도 — 관련 사례: <a href="cases/civ-2019da293814.html">경유 수입 주행세 포탈 범행으로 인한 손해배상 청구소송 (상고심에서 원심 파기)</a></span></dd></div>
             <div><dt>2021. 1. 18.</dt><dd><span class="head"><span class="outlet">헤럴드경제</span><a class="press-title" href="https://v.daum.net/v/20210118084137876" target="_blank" rel="noopener">인천 송도11-1공구 매립구간 연수구 관할 최종 판결</a></span><span class="sub">대법원 2016추5094 송도국제도시 매립지 귀속 지방자치단체 결정 취소소송 판결 보도 — 관련 사례: <a href="cases/adm-2016chu5094.html">송도국제도시 매립지 귀속 지방자치단체 결정 취소소송</a></span></dd></div>
             <div><dt>2021. 1. 14.</dt><dd><span class="head"><span class="outlet">리걸타임즈</span><a class="press-title" href="https://www.legaltimes.co.kr/news/articleView.html?idxno=57909" target="_blank" rel="noopener">[행정] &quot;새만금 방조제 1호 관할은 부안군, 2호는 김제시 적법&quot;</a></span><span class="sub">대법원 2015추573 새만금 방조제 구간 매립지 귀속 지방자치단체 결정 취소소송 판결 보도 — 관련 사례: <a href="cases/adm-2015chu573.html">새만금 방조제 구간 매립지 귀속 지방자치단체 결정 취소소송</a></span></dd></div>
+            <div><dt>2021. 1. 14.</dt><dd><span class="head"><span class="outlet">연합뉴스</span><a class="press-title" href="https://v.daum.net/v/20210114162626234" target="_blank" rel="noopener">&quot;새만금 방조제 관할권 1호 부안·2호 김제&quot;..10년 다툼 일단락</a></span><span class="sub">대법원 2015추573 판결 보도 — 관련 사례: <a href="cases/adm-2015chu573.html">새만금 방조제 구간 매립지 귀속 지방자치단체 결정 취소소송</a></span></dd></div>
             <div><dt>2018. 5. 11.</dt><dd><span class="head"><span class="outlet">매일경제</span><a class="press-title" href="https://www.mk.co.kr/news/society/8309008" target="_blank" rel="noopener">`경북대 총장 부적격 논란` 김사열 교수, 박근혜 상대 취소소송 항소심도 패소</a></span><span class="sub">국립대학교 총장 임용처분 취소소송(1순위 후보자) 항소심 판결 보도 — 관련 사례: <a href="cases/pers-2017guhap51181.html">국립대학교 총장 임용처분 취소소송 (1·2심)</a></span></dd></div>
             <div><dt>2017. 12. 15.</dt><dd><span class="head"><span class="outlet">평화뉴스</span><a class="press-title" href="https://www.pn.or.kr/news/articleView.html?idxno=15816" target="_blank" rel="noopener">경북대 &#x27;2순위 총장임용 취소소송&#x27; 기각·각하</a></span><span class="sub">국립대학교 총장 임용처분 취소소송 두 건(1순위 후보자·대학 구성원)의 1심 판결 보도 — 관련 사례: <a href="cases/pers-2017guhap51181.html">국립대학교 총장 임용처분 취소소송 (1·2심)</a> · <a href="cases/pers-2017guhap51501.html">국립대학교 총장 임용처분 취소소송 (1·2·3심)</a></span></dd></div>
             <div><dt>2016. 6. 14.</dt><dd><span class="head"><span class="outlet">서울의 소리</span><a class="press-title" href="https://www.amn.kr/24876" target="_blank" rel="noopener">이명박근혜 정권이 키운 탈북사기꾼 &#x27;한성무역 한필수&#x27; 커넥션</a></span><span class="sub">탈북민 투자사기 피해자들의 국가배상(각 1원) 청구소송 제기 보도 — 관련 사례: <a href="cases/state-2016gaso200820.html">탈북민 투자사기 피해 관련 국가배상 청구소송 (1·2심)</a></span></dd></div>
+            <div><dt>2016. 6. 11.</dt><dd><span class="head"><span class="outlet">경향신문</span><a class="press-title" href="https://v.daum.net/v/20160611163109208" target="_blank" rel="noopener">&quot;사기꾼은 잡혔지만..&quot; 2년째 눈물 짓는 탈북자들</a></span><span class="sub">탈북민 투자사기 피해자들의 국가배상(각 1원) 청구소송 제기 보도 — 관련 사례: <a href="cases/state-2016gaso200820.html">탈북민 투자사기 피해 관련 국가배상 청구소송 (1·2심)</a></span></dd></div>
             <div><dt>2015. 10. 15.</dt><dd><span class="head"><span class="outlet">법률신문</span><a class="press-title" href="https://www.lawtimes.co.kr/news/articleView.html?idxno=96053" target="_blank" rel="noopener">[판결] 사건 관계인에 접대 받아 면직 된 검사 &quot;억울하다&quot; 소송냈지만</a></span><span class="sub">서울행정법원 2013구합22475 검사 면직처분 취소소송 판결 보도 — 관련 사례: <a href="cases/pers-2013guhap22475.html">검사 면직처분 취소소송</a></span></dd></div>
             <div><dt>2014. 3. 27.</dt><dd><span class="head"><span class="outlet">법률신문</span><a class="press-title" href="https://www.lawtimes.co.kr/news/articleView.html?idxno=83445" target="_blank" rel="noopener">재판장, &quot;검사가 집무실에 골프 연습장비를 둔 것은…&quot;</a></span><span class="sub">서울행정법원 2013구합21434 검사 면직처분 취소소송 판결 보도 — 관련 사례: <a href="cases/pers-2013guhap21434.html">검사 면직처분 취소소송</a></span></dd></div>
           </dl>
-          <p class="press-note">사건별 기사 28건 가운데 대표 기사 13건입니다. 나머지는 각 사례 페이지에 있습니다.</p>
+          <p class="press-note">사건별 기사 44건 가운데 대표 기사 16건입니다. 나머지는 각 사례 페이지에 있습니다.</p>
         </div>
         <div class="block" id="press-activity">
           <h3 class="block-h">토론회 · 위원회 · 강의</h3>
@@ -1638,14 +1648,10 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
           </dl>
         </div>
         <details class="press-more" id="press-mention">
-          <summary>그 밖에 이름이 실린 기사 (인사 · 합격자 명단) 6건</summary>
+          <summary>그 밖에 이름이 실린 기사 (인사) 2건</summary>
           <dl class="rows dates press-list">
             <div><dt>2012. 3. 22.</dt><dd><span class="head"><span class="outlet">이데일리</span><a class="press-title" href="https://v.daum.net/v/20120322162116194" target="_blank" rel="noopener">오늘의 인사 종합(법무부)</a></span><span class="sub">공익법무관 배치 인사 — 대한법률구조공단 창원지부 진주출장소</span></dd></div>
             <div><dt>2012. 3. 22.</dt><dd><span class="head"><span class="outlet">머니투데이</span><a class="press-title" href="https://v.daum.net/v/20120322144507618" target="_blank" rel="noopener">[인사] 법무부</a></span><span class="sub">공익법무관 배치 인사 — 대한법률구조공단 창원지부 진주출장소</span></dd></div>
-            <div><dt>2009. 11. 24.</dt><dd><span class="head"><span class="outlet">머니투데이</span><a class="press-title" href="https://v.daum.net/v/20091124140904600" target="_blank" rel="noopener">51회 사시 합격자 997명 명단</a></span><span class="sub">제51회 사법시험 최종 합격자 명단</span></dd></div>
-            <div><dt>2009. 10. 20.</dt><dd><span class="head"><span class="outlet">뉴시스</span><a class="press-title" href="https://v.daum.net/v/20091020141708861" target="_blank" rel="noopener">&lt;표&gt;2009년 제51회 사법시험 2차 합격자 명단</a></span><span class="sub">제51회 사법시험 2차 합격자 명단</span></dd></div>
-            <div><dt>2009. 10. 20.</dt><dd><span class="head"><span class="outlet">머니투데이</span><a class="press-title" href="https://v.daum.net/v/20091020135605419" target="_blank" rel="noopener">2009사시 2차 합격자 명단</a></span><span class="sub">제51회 사법시험 2차 합격자 명단</span></dd></div>
-            <div><dt>2009. 4. 7.</dt><dd><span class="head"><span class="outlet">아시아경제</span><a class="press-title" href="https://v.daum.net/v/20090407145537381" target="_blank" rel="noopener">51회 司試 1차 합격자 2309명(명단 포함)</a></span><span class="sub">제51회 사법시험 1차 합격자 명단</span></dd></div>
           </dl>
         </details>
       </div>
@@ -3106,7 +3112,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
       "처분 적법"
     ],
     "det": 1,
-    "pr": 2
+    "pr": 3
   },
   {
     "id": "n-civ-cartel",
@@ -4350,7 +4356,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
       "처분 적법"
     ],
     "det": 1,
-    "pr": 1
+    "pr": 5
   },
   {
     "id": "n-pen-audit",
@@ -7244,7 +7250,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
       "항소심 유지"
     ],
     "det": 1,
-    "pr": 1
+    "pr": 3
   },
   {
     "id": "d-2016guhap7274",
@@ -10917,7 +10923,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
       "불법행위"
     ],
     "det": 1,
-    "pr": 1
+    "pr": 6
   },
   {
     "id": "n-civ-korail",
@@ -11018,7 +11024,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
       "지방자치단체 중앙분쟁조정위원회"
     ],
     "det": 1,
-    "pr": 1
+    "pr": 5
   },
   {
     "id": "n-pen-disabled",

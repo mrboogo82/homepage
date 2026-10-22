@@ -9,7 +9,7 @@
 
 press.json(items)의 기사 가운데 home 이 true 인 것을 세 묶음으로 보인다:
   수행 사건 보도(kind=case, 관련 사례로 링크) · 토론회·위원회·강의(kind=activity, 본인 발언 quote 포함) ·
-  그 밖에 이름이 실린 기사(kind=mention, 접힌 <details>).
+  그 밖에 이름이 실린 기사(kind=mention — 인사 기사만, 사법시험 합격자 명단은 2026. 10. 22. 본인 지시로 뺌; 접힌 <details>).
 index.html 에서는 <!-- press:start --> … <!-- press:end --> 사이를 바꾸고(없으면 경력 절 다음에 절 전체를 넣는다),
 llms.txt 에서는 '## 언론보도' 절을 바꾼다(없으면 '## 경력' 앞에 넣는다). 그 뒤 ssr_cases.py → build_cases.py 를 돌린다.
 """
@@ -107,7 +107,7 @@ def section_inner(items, cases_by_id):
         out.append('        </div>')
     if groups["mention"]:
         out.append('        <details class="press-more" id="press-mention">')
-        out.append('          <summary>%s (인사 · 합격자 명단) %d건</summary>' % (esc(KIND_NAMES["mention"]), len(groups["mention"])))
+        out.append('          <summary>%s (인사) %d건</summary>' % (esc(KIND_NAMES["mention"]), len(groups["mention"])))
         out.append('          <dl class="rows dates press-list">')
         out += ["            " + row(p, cases_by_id) for p in groups["mention"]]
         out.append('          </dl>')
