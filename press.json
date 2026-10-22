@@ -655,6 +655,45 @@
       ],
       "home": false,
       "note": "서울행정법원 2024구합69371 소송 제기 보도"
+    },
+    {
+      "id": "lawtimes-2016-0317",
+      "date": "2016-03-17",
+      "outlet": "법률신문",
+      "title": "[이 법 어떻게 생각하십니까] 뺑소니 사고 운전면허 일률적 4년 제한 적절한가",
+      "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=99245",
+      "kind": "case",
+      "cases": [
+        "n-lic-driver"
+      ],
+      "home": true,
+      "note": "서울행정법원 2016구합53753 운전면허시험 응시원서접수 거부처분 취소소송과 도로교통법 제82조 제2항 제4호 위헌법률심판제청신청 보도"
+    },
+    {
+      "id": "lawtimes-2022-0207",
+      "date": "2022-02-07",
+      "outlet": "법률신문",
+      "title": "과세관청이 조세포탈 범행을 설계한 당사자들을 상대로 한 손해배상청구의 요건",
+      "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=176065",
+      "kind": "case",
+      "cases": [
+        "n-civ-diesel"
+      ],
+      "home": false,
+      "note": "대법원 2021. 10. 28. 선고 2019다293814 판결 해설(판례해설)"
+    },
+    {
+      "id": "lawtimes-2024-1012",
+      "date": "2024-10-12",
+      "outlet": "법률신문",
+      "title": "(7) 부동산 명의신탁과 세금",
+      "url": "https://www.lawtimes.co.kr/news/articleView.html?idxno=201941",
+      "kind": "case",
+      "cases": [
+        "d-2015du52296"
+      ],
+      "home": false,
+      "note": "대법원 2017. 12. 13. 선고 2015두52296 판결을 인용한 법률 칼럼(명의수탁자의 취득세 납세의무)"
     }
   ]
 }
