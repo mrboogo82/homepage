@@ -55,6 +55,14 @@
   sitemap.xml(전체 URL)과 case.css, llms.txt·llms-full.txt의 페이지 주소를 갱신합니다. 같은 폴더에 여러 번 돌려도 안전합니다.
   (이 스크립트를 돌리지 않고 index.html·cases.html을 아티팩트에서 내려받아 그대로 올리면 카드의 개별 페이지 링크가 사라집니다.)
 
+언론보도(press.json, 2026. 10. 22.)
+- 수행 사건의 판결·결정이 보도된 기사와 토론회·위원회·강의 활동이 실린 기사를 press.json 의 items 에 적습니다
+  (id·date(YYYY-MM-DD)·outlet·title(기사 제목 그대로)·url·kind(case/activity/mention)·cases(관련 사례 id)·home(홈 절에 보일지)·note(한 줄 설명)·quote(본인 발언)).
+- python3 work/build_press.py .  → 홈의 '언론보도' 절(<!-- press:start --> … <!-- press:end --> 사이)과 llms.txt 의 '## 언론보도' 절을 다시 만들고,
+  머리글 차림표·바닥글 차례에 '언론보도' 링크가 없으면 넣습니다( --check 는 일치 여부만).
+- 그 뒤 ssr_cases.py(카드의 '언론보도' 표시 pr, llms-full.txt 의 '- 언론보도:' 줄) → build_cases.py(사례 페이지의 '이 사건의 언론보도' 칸, JSON-LD citation) 순서로 돌립니다.
+- 홈 절에는 home 이 true 인 기사만(사건마다 대표 기사), 사례 페이지·llms-full.txt 에는 그 사건의 기사 전부가 실립니다. kind 가 mention(인사·합격자 명단)인 기사는 홈 절 끝의 접힌 목록에 둡니다.
+
 주제별 모아 보기 페이지(topics/*.html, 2026. 10. 19.)
 - 참여제한 취소소송 / 연구개발비·출연금 환수 / 제재부가금 / 집행정지 / 회수금·정산금 당사자소송 — 사람들이 실제로 찾는 말마다 한 페이지.
   소개 글(work/build_cases.py의 TOPICS)과 해당 사례 목록(제목의 낱말로 자동 분류)으로 이루어지며, 메인의 국가연구개발 절과 cases.html 목록 위에 링크가 있습니다.

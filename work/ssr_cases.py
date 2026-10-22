@@ -22,6 +22,9 @@ import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from press_lib import load_press, press_by_case, kdate  # noqa: E402  (press.json: 언론보도, 2026. 10. 22.)
+
 CATS = {   # 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤(형사는 출연금·보조금 외 사건도 있어 '형사', 민사는 카드가 없어 맨 뒤)
     "rnd": "국가연구개발 제재처분",
     "penalty": "제재부가금·환수",
@@ -81,8 +84,10 @@ def load_details(site):
         return json.load(f)
 
 
-def with_keywords(cases, details):
-    """cases.html 데이터 블록용: 상세 소개의 검색어(keywords)를 각 항목의 kw 에 넣은 사본."""
+def with_keywords(cases, details, press=None):
+    """cases.html 데이터 블록용: 상세 소개의 검색어(keywords)를 각 항목의 kw 에 넣고,
+    언론보도(press.json)가 있는 사례에는 그 건수를 pr 에 넣은 사본(카드에 '언론보도' 표시, 2026. 10. 22.)."""
+    by_case = press_by_case(press or [])
     out = []
     for c in cases:
         d = details.get(c["id"]) or {}
@@ -96,6 +101,11 @@ def with_keywords(cases, details):
             c2["det"] = 1          # 상세 소개가 있는 사례(카드의 링크 글이 달라진다)
         else:
             c2.pop("det", None)
+        n_pr = len(by_case.get(c["id"]) or [])
+        if n_pr:
+            c2["pr"] = n_pr
+        else:
+            c2.pop("pr", None)
         out.append(c2)
     return out
 
@@ -133,6 +143,8 @@ def render_li(c):
         out.append('<span class="date">%s</span>' % esc(c["date"]))
     if c.get("result"):
         out.append('<span class="badge %s">%s</span>' % (badge_class(c["result"]), esc(c["result"])))
+    if c.get("pr"):
+        out.append('<span class="pressmark" title="이 사건이 보도된 기사 %d건 — 자세히에서 볼 수 있습니다">언론보도</span>' % int(c["pr"]))   # press.json (2026. 10. 22.)
     out.append("</div>")
     out.append('<h3 class="case-title"><a href="%s">%s</a></h3>' % (href, esc(c["title"])))
     parts = [p for p in [c.get("court"), c.get("party")] if p]
@@ -189,8 +201,9 @@ def count_text(doc, n):
 
 # ---------- llms ----------
 
-def llms_full(cases, intro_from=None, details=None):
+def llms_full(cases, intro_from=None, details=None, press=None):
     details = details or {}
+    by_press = press_by_case(press or [])
     n = len(cases)
     cat_counts = {}
     for c in cases:
@@ -241,6 +254,9 @@ def llms_full(cases, intro_from=None, details=None):
             lines.append("- 네이버 블로그 소개 글: " + d["blog"])
         if d.get("instagram"):
             lines.append("- 인스타그램 소개 글: " + d["instagram"])
+        for p in by_press.get(c["id"]) or []:   # 언론보도(press.json, 2026. 10. 22.)
+            lines.append("- 언론보도: %s %s 「%s」%s %s" % (p.get("outlet") or "", kdate(p.get("date") or ""), p["title"],
+                                                     (" — " + p["note"]) if p.get("note") else "", p["url"]))
         lines.append("- 페이지: %s/%s" % (SITE, page_href(c)))
         lines.append("")
     return "\n".join(lines).rstrip("\n") + "\n"
@@ -261,7 +277,8 @@ def main():
     cases, _ = load_json_block(idoc, "cases-data")
     n = len(cases)
     details = load_details(site)
-    cases_kw = with_keywords(cases, details)   # 두 페이지의 데이터 블록에 검색어(kw)를 더한다(단어로 찾기에 쓰임)
+    press = load_press(site)                   # 언론보도(press.json): 카드의 '언론보도' 표시(pr)와 llms-full.txt 줄에 쓰임
+    cases_kw = with_keywords(cases, details, press)   # 두 페이지의 데이터 블록에 검색어(kw)·언론보도 건수(pr)를 더한다(단어로 찾기에 쓰임)
 
     home = render_list(cases_kw, MAIN, RECENT)
     full = render_list(cases_kw)
@@ -276,7 +293,7 @@ def main():
         d = re.sub(r"사건 \d+건, 최근 결정일 순", "사건 %d건, 최근 결정일 순" % n, d)
         d = re.sub(r"\d+건의 제목·분야", "%d건의 제목·분야" % n, d)
         new_llms = d
-    new_full = llms_full(cases, llms_head(read(fp)), details) if os.path.exists(fp) else None
+    new_full = llms_full(cases, llms_head(read(fp)), details, press) if os.path.exists(fp) else None
 
     if check:
         ok = True
@@ -288,7 +305,7 @@ def main():
         if cj != cases_kw:
             print("cases.html 데이터 블록이 index.html과 다릅니다"); ok = False
         if cases != cases_kw:
-            print("index.html 데이터 블록의 검색어(kw)가 cases-detail.json과 다릅니다"); ok = False
+            print("index.html 데이터 블록의 검색어(kw)·언론보도 건수(pr)가 cases-detail.json·press.json과 다릅니다"); ok = False
         if new_full is not None and read(fp) != new_full:
             print("llms-full.txt가 데이터와 다릅니다"); ok = False
         print("일치" if ok else "불일치")

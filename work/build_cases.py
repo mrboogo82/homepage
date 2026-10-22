@@ -35,6 +35,9 @@ from urllib.parse import urlsplit, urlunsplit
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ssr_cases import load_details  # noqa: E402  (cases-detail.json: 사례별 상세 소개)
+from press_lib import load_press, press_by_case, kdate, check_press  # noqa: E402  (press.json: 언론보도, 2026. 10. 22.)
+
+PRESS_BY_CASE = {}   # main() 에서 채움: {사례 id: [기사, ...]}
 
 SITE = "https://lawyermrboo82.com"
 TODAY = date.today().isoformat()
@@ -271,6 +274,16 @@ EXTRA_CSS = """
 .related .meta { font-size: var(--step--2); color: var(--ink-soft); }
 .related .meta .badge { margin-left: 0.4rem; }
 .related .more { margin-top: 0.25rem; }
+/* 언론보도(press.json, 2026. 10. 22.): 요지 아래에 이 사건이 보도된 기사 목록 */
+.case-press { display: grid; gap: 0.7rem; padding: 1.1rem 1.3rem; border: 1px solid var(--rule); border-left: 3px solid var(--seal); border-radius: 3px; }
+.case-press h2 { font-size: var(--step-0); margin: 0; }
+.case-press ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.case-press li { display: grid; gap: 0.1rem; font-size: var(--step--1); line-height: 1.7; }
+.case-press .date { font-variant-numeric: tabular-nums; color: var(--ink-soft); margin-right: 0.45rem; }
+.case-press .outlet { font-weight: 700; margin-right: 0.45rem; }
+.case-press .head a { font-family: var(--serif); font-weight: 600; }
+.case-press .note { font-size: var(--step--2); color: var(--ink-soft); }
+.case-press .source-line { margin: 0; font-size: var(--step--2); color: var(--ink-soft); }
 .case-cta { display: grid; gap: 0.75rem; padding: 1.4rem 1.5rem; border: 1px solid var(--rule); border-radius: 3px; background: var(--wash); }
 .case-cta p { margin: 0; font-size: var(--step--1); line-height: 1.75; }
 .case-cta .btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
@@ -405,6 +418,33 @@ def detail_html(c, d):
     return '<section class="case-detail" aria-label="사례 상세 소개">%s</section>\n      ' % "".join(parts)
 
 
+def press_html(c):
+    """이 사건이 보도된 기사 목록(press.json). 없으면 빈 문자열."""
+    items = PRESS_BY_CASE.get(c["id"]) or []
+    if not items:
+        return ""
+    lis = []
+    for p in items:
+        lis.append('<li><span class="head"><span class="date">%s</span><span class="outlet">%s</span><a href="%s" target="_blank" rel="noopener">%s</a></span>%s</li>' % (
+            esc(kdate(p.get("date") or "")), esc(p.get("outlet") or ""), esc(p["url"]), esc(p["title"]),
+            ('<span class="note">%s</span>' % esc(p["note"])) if p.get("note") else ""))
+    return ('<section class="case-press" aria-labelledby="cpress-h">\n        <h2 id="cpress-h">이 사건의 언론보도 (%d건)</h2>\n        <ul>%s</ul>\n'
+            '        <p class="source-line">기사 제목을 누르면 해당 언론사의 기사가 새 창으로 열립니다. 기사 내용은 언론사의 것입니다.</p>\n      </section>\n      ' % (len(items), "".join(lis)))
+
+
+def press_ld(c):
+    """JSON-LD Article.citation — 이 사건을 보도한 기사(NewsArticle)."""
+    out = []
+    for p in PRESS_BY_CASE.get(c["id"]) or []:
+        na = {"@type": "NewsArticle", "headline": p["title"], "url": p["url"]}
+        if p.get("date"):
+            na["datePublished"] = p["date"]
+        if p.get("outlet"):
+            na["publisher"] = {"@type": "Organization", "name": p["outlet"]}
+        out.append(na)
+    return out
+
+
 def dates_of(path):
     """이미 만들어진 페이지가 있으면 그 datePublished·dateModified를 읽는다(게시일이 빌드 때마다 바뀌지 않게)."""
     try:
@@ -476,6 +516,9 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     for k in ("keywords", "articleBody"):
         if ld["@graph"][0].get(k) is None:
             del ld["@graph"][0][k]
+    cites = press_ld(c)
+    if cites:
+        ld["@graph"][0]["citation"] = cites   # 이 사건을 보도한 기사(press.json)
     figs = []
     for k, im in enumerate(ims):
         fname = im["src"].rsplit("/", 1)[-1]
@@ -585,7 +628,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
         <p>{esc(c.get('summary') or '')}</p>
         {ext_link}{topic_line}
       </section>
-      {detail_html(c, d)}<section class="related" aria-labelledby="rel-h">
+      {press_html(c)}{detail_html(c, d)}<section class="related" aria-labelledby="rel-h">
         <h2 id="rel-h">같은 분야의 다른 사례</h2>
         <ul>
           {''.join(rel_items)}
@@ -1001,6 +1044,10 @@ def main():
     cases = load_json_block(index_doc, "cases-data")
     links = load_json_block(index_doc, "links-data")
     details = load_details(site)
+    press = load_press(site)   # 언론보도(press.json): 사례 페이지의 '이 사건의 언론보도' 칸과 JSON-LD citation
+    check_press(press, {c["id"] for c in cases})
+    PRESS_BY_CASE.clear()
+    PRESS_BY_CASE.update(press_by_case(press))
 
     stems = [stem_of(c) for c in cases]
     dup = {s for s in stems if stems.count(s) > 1}
