@@ -1,5 +1,5 @@
 {
-  "_comment": "언론보도 데이터(2026. 10. 22. 신설). 홈 '언론보도' 절(work/build_press.py), 사례별 개별 페이지의 '언론보도' 칸과 카드의 '언론보도' 표시(work/ssr_cases.py·build_cases.py), llms-full.txt에 쓰인다. date는 ISO(YYYY-MM-DD), kind는 case(수행 사건 보도)·activity(토론회·위원회·강의 등 활동 보도)·mention(인사·합격자 명단 등 이름만 실린 기사), cases는 index.html #cases-data의 사례 id. home이 true인 것만 홈 절에 보이고(사례 페이지·llms-full.txt에는 모두), quote는 기사에 실린 본인 발언, note는 한 줄 설명. 새 기사를 더한 뒤 python3 work/build_press.py . → work/ssr_cases.py . → work/build_cases.py . 순서로 돌린다.",
+  "_comment": "언론보도 데이터(2026. 10. 22. 신설). 홈 '언론보도' 절(work/build_press.py), 사례별 개별 페이지의 '언론보도' 칸과 카드의 '언론보도' 표시(work/ssr_cases.py·build_cases.py), llms-full.txt에 쓰인다. date는 ISO(YYYY-MM-DD), kind는 case(수행 사건 보도)·activity(토론회·위원회·강의 등 활동 보도)·mention(이름만 실린 기사 — 2026. 10. 23. 본인 지시로 인사·합격자 명단 기사는 싣지 않음), cases는 index.html #cases-data의 사례 id. home이 true인 것만 홈 절에 보이고(사례 페이지·llms-full.txt에는 모두), quote는 기사에 실린 본인 발언, note는 한 줄 설명. 새 기사를 더한 뒤 python3 work/build_press.py . → work/ssr_cases.py . → work/build_cases.py . 순서로 돌린다.",
   "items": [
     {
       "id": "lawtimes-2014-0327",
@@ -427,26 +427,6 @@
       "kind": "activity",
       "home": true,
       "note": "제4대 과천시체육회장 선거운영위원회 위원으로 당선증 교부식 참석"
-    },
-    {
-      "id": "edaily-2012-0322",
-      "date": "2012-03-22",
-      "outlet": "이데일리",
-      "title": "오늘의 인사 종합(법무부)",
-      "url": "https://v.daum.net/v/20120322162116194",
-      "kind": "mention",
-      "home": true,
-      "note": "공익법무관 배치 인사 — 대한법률구조공단 창원지부 진주출장소"
-    },
-    {
-      "id": "mt-2012-0322",
-      "date": "2012-03-22",
-      "outlet": "머니투데이",
-      "title": "[인사] 법무부",
-      "url": "https://v.daum.net/v/20120322144507618",
-      "kind": "mention",
-      "home": true,
-      "note": "공익법무관 배치 인사 — 대한법률구조공단 창원지부 진주출장소"
     },
     {
       "id": "yna-2021-0114",

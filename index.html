@@ -559,27 +559,27 @@ button.case-fig:hover img { opacity: 0.92; }
 
 /* 언론보도 절(press.json → work/build_press.py, 2026. 10. 22.): 강의 목록과 같은 날짜 줄(dl.rows.dates)에 언론사·기사 제목(새 창)·한 줄 설명·관련 사례 링크, 활동 기사는 본인 발언을 크림슨 왼줄 인용으로 */
 .press-body { gap: 2rem; }
-/* 2026. 10. 22. 본인 지시: 언론보도는 가급적 작은 글씨로 — 날짜·언론사·기사 제목은 본문보다 한 단계 작게(--step--1), 설명·관련 사례·인용은 두 단계 작게(--step--2) */
-#press .section-head p { font-size: var(--step--2); }
-#press .block-h { font-size: var(--step-0); }
-.press-list.rows.dates > div { grid-template-columns: 7.5rem minmax(0, 1fr); padding-block: 0.55rem; }
-.press-list dt { font-size: var(--step--2); padding-top: 0.15em; }
-.press-list dd { font-size: var(--step--1); line-height: 1.6; }
-.press-list dd .sub { font-size: var(--step--2); line-height: 1.6; }
-.press-list dd { display: grid; gap: 0.2rem; }
-.press-list .outlet { font-weight: 700; color: var(--ink); margin-right: 0.45rem; font-size: var(--step--2); }
+/* 2026. 10. 22. 본인 지시: 언론보도는 가급적 작은 글씨로 → 2026. 10. 23. 본인 지시(홈페이지 간이화): 지금보다 절반으로 —
+   본문(17px)의 절반 수준인 기사 제목 11px(0.6875rem)·날짜·언론사·설명·인용 10px(0.625rem), 줄 간격·행 간격도 좁힘. 절 머리말 11px, 소제목 13px. */
+#press .section-head p { font-size: 0.6875rem; line-height: 1.6; }
+#press .block-h { font-size: 0.8125rem; margin-bottom: 0.4rem; }
+.press-body { gap: 1.25rem; }
+.press-list.rows.dates > div { grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.1rem 0.6rem; padding-block: 0.3rem; }
+.press-list dt { font-size: 0.625rem; padding-top: 0.1em; line-height: 1.5; }
+.press-list dd { display: grid; gap: 0.1rem; font-size: 0.6875rem; line-height: 1.5; }
+.press-list dd .sub { display: block; font-size: 0.625rem; line-height: 1.5; color: var(--ink-soft); }
+.press-list .outlet { font-weight: 700; color: var(--ink); margin-right: 0.35rem; font-size: 0.625rem; }
 .press-list .press-title { font-family: var(--serif); font-weight: 600; color: var(--ink); text-decoration: none; }
 .press-list .press-title:hover { text-decoration: underline; text-underline-offset: 0.15em; }
 .press-list .sub a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 0.15em; }
 .press-list .sub a:hover { color: var(--seal); }
-.press-list q { display: block; margin-top: 0.3rem; padding-left: 0.8rem; border-left: 2px solid var(--seal); font-size: var(--step--2); line-height: 1.65; color: var(--ink-soft); quotes: "“" "”"; }
-.press-note { margin-top: 0.75rem; font-size: var(--step--2); color: var(--ink-soft); }
-.press-more { margin-top: -0.5rem; }
-.press-more summary { cursor: pointer; font-family: var(--serif); font-size: var(--step--1); font-weight: 600; color: var(--ink-soft); }
+.press-list q { display: block; margin-top: 0.15rem; padding-left: 0.6rem; border-left: 2px solid var(--seal); font-size: 0.625rem; line-height: 1.5; color: var(--ink-soft); quotes: "“" "”"; }
+.press-note { margin-top: 0.45rem; font-size: 0.625rem; color: var(--ink-soft); }
+.press-more { margin-top: -0.4rem; }
+.press-more summary { cursor: pointer; font-family: var(--serif); font-size: 0.6875rem; font-weight: 600; color: var(--ink-soft); }
 .press-more summary:hover { color: var(--seal); }
-.press-more[open] summary { margin-bottom: 0.75rem; }
-.press-more .press-list dd { font-size: var(--step--2); }
-@media (max-width: 640px) { .press-list.rows.dates > div { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; } .press-list dt { padding-top: 0; } }
+.press-more[open] summary { margin-bottom: 0.5rem; }
+@media (max-width: 640px) { .press-list.rows.dates > div { grid-template-columns: minmax(0, 1fr); gap: 0.05rem; } .press-list dt { padding-top: 0; } }
 
 /* advisory wall */
 .wall {
@@ -1648,13 +1648,6 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
             <div><dt>2012. 9. 20.</dt><dd><span class="head"><span class="outlet">뉴시스</span><a class="press-title" href="https://n.news.naver.com/mnews/article/003/0004725810?sid=102" target="_blank" rel="noopener">사천 축동초 &#x27;학교 폭력 이제 그만&#x27;</a></span><span class="sub">법무부와 함께하는 학교폭력 예방교육 강의(사천 축동초등학교, 대한법률구조공단 법무관)</span></dd></div>
           </dl>
         </div>
-        <details class="press-more" id="press-mention">
-          <summary>그 밖에 이름이 실린 기사 (인사) 2건</summary>
-          <dl class="rows dates press-list">
-            <div><dt>2012. 3. 22.</dt><dd><span class="head"><span class="outlet">이데일리</span><a class="press-title" href="https://v.daum.net/v/20120322162116194" target="_blank" rel="noopener">오늘의 인사 종합(법무부)</a></span><span class="sub">공익법무관 배치 인사 — 대한법률구조공단 창원지부 진주출장소</span></dd></div>
-            <div><dt>2012. 3. 22.</dt><dd><span class="head"><span class="outlet">머니투데이</span><a class="press-title" href="https://v.daum.net/v/20120322144507618" target="_blank" rel="noopener">[인사] 법무부</a></span><span class="sub">공익법무관 배치 인사 — 대한법률구조공단 창원지부 진주출장소</span></dd></div>
-          </dl>
-        </details>
       </div>
       <!-- press:end -->
     </section>
