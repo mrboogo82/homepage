@@ -111,7 +111,8 @@
 - 배경: 검색엔진·AI는 HTML 앞부분부터 일정량만 읽습니다. 종전 index.html 은 60만 바이트(앞 7만 자가 CSS, 끝에 22만 자 사례 JSON)여서 AI 읽기 도구가 사례를 놓쳤고,
   llms-full.txt 2.2MB 는 어느 도구의 한도도 넘었습니다. 구글은 홈·cases.html 2쪽만 색인하고(10. 22. 확인) 사례 페이지는 아직 색인 전이었습니다.
 - 바꾼 것: CSS 를 home.css·cases.css 로, 사례 데이터를 cases-data.js 로 빼 index.html 약 24만 바이트·cases.html 약 38만 바이트로 줄였고,
-  홈 주요 수행 사례 절 끝에 접힌 전체 목록(<details class="all-list">, 271건 제목·분야·법원·날짜·결과·링크)을 넣어 홈만 읽어도 전체 사례가 보이게 했습니다.
+  홈 본문 맨 끝(상담 문의 다음, </main> 앞)의 부록 절 '주요 수행 사례 전체 목록'(<section class="section appendix"> 안의 접힌 <details class="all-list">, 271건 제목·분야·법원·날짜·결과·링크)을 넣어
+  홈만 읽어도 전체 사례가 보이게 했습니다. 맨 끝에 둔 까닭: AI 읽기 도구는 앞부분부터 일정량만 읽으므로 긴 목록이 경력·다루는 사건·상담 문의보다 앞에 오면 그 절들이 잘립니다.
   llms-full.txt 는 한 줄 목록 + 분야별 파일(llms-full-<분야>-<번호>.txt, 각 300KB 이하) 안내로 바꾸었습니다.
   sitemap.xml 의 lastmod 는 매 빌드 오늘 날짜가 아니라 페이지마다 실제로 바뀐 날로, 바닥글 서명 날짜는 고정값('2026. 10. 14.')이 아니라 최종 수정일로 자동 갱신됩니다.
 - IndexNow(.github/workflows/indexnow.yml): push 때는 그 push 에서 새로 생긴 페이지만 바로 보내고, 매일 11:10(KST) 지난 하루 변경분을 한 번에 보냅니다

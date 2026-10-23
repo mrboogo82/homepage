@@ -267,7 +267,6 @@ def count_text(doc, n):
 # ---------- 홈의 접힌 전체 목록 (2026. 10. 23.) ----------
 
 ALL_LIST_RE = re.compile(r"<!-- all-list:start -->.*?<!-- all-list:end -->", re.S)
-MORE_P_RE = re.compile(r'<p class="more"><a class="btn ghost" id="all-cases" href="cases.html">[^<]*</a></p>')
 
 
 def line_meta(c):
@@ -280,30 +279,41 @@ def line_meta(c):
 
 
 def render_all_list(cases):
+    """본문 맨 끝(상담 문의 다음, </main> 앞)의 부록 절: 접힌 전체 목록.
+    맨 끝에 두는 까닭 — 검색 로봇·AI 읽기 도구는 글 앞부분부터 일정량만 읽으므로, 긴 목록이 경력·다루는 사건·상담 문의보다 앞에 오면 그 절들이 잘린다."""
     lst = ordered(cases)
     n = len(lst)
     out = [
         "<!-- all-list:start -->",
+        '<section class="section appendix" id="all-list-sec" aria-labelledby="all-list-h">',
+        '  <header class="section-head">',
+        '    <h2 id="all-list-h">주요 수행 사례 전체 목록</h2>',
+        '    <p>%d건 · 최근 결정일 순</p>' % n,
+        '  </header>',
+        '  <div class="section-body">',
         '<details class="all-list" id="all-list">',
-        '  <summary><span class="when-closed">주요 수행 사례 전체 목록 %d건 펼쳐 보기 — 제목만 한 줄씩</span><span class="when-open">전체 목록 접기</span></summary>' % n,
-        '  <p class="all-list-note">최근 결정일 순입니다. 제목을 누르면 판결문과 사건 소개가 있는 개별 페이지가 열립니다. '
-        '분야별로 보거나 단어로 찾으려면 <a href="cases.html">주요 수행 사례 전체 보기</a>를 이용해 주십시오.</p>',
+        '  <summary><span class="when-closed">전체 목록 %d건 펼쳐 보기 — 제목만 한 줄씩</span><span class="when-open">전체 목록 접기</span></summary>' % n,
+        '  <p class="all-list-note">제목을 누르면 판결문과 사건 소개가 있는 개별 페이지가 열립니다. '
+        '분야별로 보거나 단어로 찾으려면 <a href="cases.html">주요 수행 사례 전체 보기</a>를 이용해 주십시오. 모두 부효준 변호사가 담당변호사로 직접 수행한 사건입니다.</p>',
         '  <ol class="all-list-body">',
     ]
     for c in lst:
         out.append('    <li><a href="%s">%s</a> <span class="m">%s</span></li>' % (page_href(c), esc(c["title"]), esc(line_meta(c))))
-    out += ["  </ol>", "</details>", "<!-- all-list:end -->"]
+    out += ["  </ol>", "</details>", "  </div>", "</section>", "<!-- all-list:end -->"]
     return "\n".join(out)
 
 
 def replace_all_list(doc, body):
-    """홈의 전체 목록을 바꾼다. 표시가 없으면 '주요 수행 사례 전체 보기' 단추 줄 다음에 새로 넣는다."""
-    if ALL_LIST_RE.search(doc):
-        return ALL_LIST_RE.sub(lambda m: body, doc, count=1)
-    m = MORE_P_RE.search(doc)
-    if not m:
-        raise SystemExit("홈의 '주요 수행 사례 전체 보기' 단추 줄을 찾지 못했습니다(전체 목록을 넣을 자리)")
-    return doc[: m.end()] + "\n" + body + doc[m.end():]   # 정적 사례 목록(<li>)처럼 들여쓰기 없이(다시 만들 때와 같은 꼴)
+    """홈의 전체 목록(부록 절)을 데이터대로 바꾼다. 어디에 있든 옛 블록은 걷어 내고 </main> 바로 앞에 둔다."""
+    m = ALL_LIST_RE.search(doc)
+    if m:
+        end = m.end() + (1 if doc[m.end(): m.end() + 1] == "\n" else 0)   # 블록과 그 뒤 줄바꿈까지 걷어 내면 넣기 전 모습으로 돌아간다
+        doc = doc[: m.start()] + doc[end:]
+    k = doc.find("</main>")
+    if k < 0:
+        raise SystemExit("홈의 </main> 을 찾지 못했습니다(전체 목록을 넣을 자리)")
+    line_start = doc.rfind("\n", 0, k) + 1
+    return doc[:line_start] + body + "\n" + doc[line_start:]
 
 
 def current_all_list(doc):

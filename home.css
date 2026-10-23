@@ -1552,3 +1552,7 @@ ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margi
 .consult textarea { min-height: 6.5rem; }
 .before { gap: 0.6rem; padding: clamp(1rem, 2.5vw, 1.4rem); }
 .before p { font-size: 0.9375rem; line-height: 1.65; }
+/* 2026. 10. 23. 낮: 전체 목록은 본문 맨 끝의 부록 절(.section.appendix)로 — 긴 목록이 경력·다루는 사건·상담 문의보다 앞에 오면 AI 읽기 도구가 그 절들을 놓치므로 */
+.section.appendix { padding-block: clamp(1.75rem, 3.5vw, 2.5rem); }
+.section.appendix .section-head h2 { font-size: var(--step-0); }
+.section.appendix .all-list { margin-top: 0; padding-top: 0; border-top: 0; }
