@@ -82,7 +82,8 @@ SVG는 `tighten_svg.py`로 viewBox를 내용 범위(+1% 여백)로 좁히고 루
 | kgls.svg | 정부법무공단 | 공단 누리집 CI 내려받기 `kgls.or.kr/down/logo.zip` 안의 `logo.ai`(`kgls-logo.ai`, Illustrator CS3 PDF 호환; 머리글용 `logo.jpg`는 `kgls-logo.jpg` 813×340) | `pdftocairo -svg`로 SVG화 뒤 viewBox 좁힘. 경력 줄 |
 | jrti.svg | 사법연수원 | 나무위키 수록 SVG(`jrti-namu.svg`, 심벌+사법연수원) | viewBox 좁힘. 경력 줄 |
 | ku.svg | 고려대학교 | 고려대 누리집 UI 자료 `basic_ui_file.zip` 안의 `globalsymbol_korea2.ai`(`ku-globalsymbol_korea2.ai`; 엠블럼+'고려대학교' 가로형. `ku-logo_kor.gif`는 글자만) | `pdftocairo -svg` 뒤 viewBox 좁힘. 학력 줄 두 곳(학부·대학원) |
-| keumseong.png | 법무법인(유한) 금성 | 누리집 머리글 `logo@2x.png`(`keumseong-logo@2x.png`, 300×213; `common/logo_primary.png`도 같은 파일) | 여백 자름 → 280×193. 세로형이라 `.tall` |
+| keumseong.png | 법무법인(유한) 금성 | 2026. 10. 23. 법인 홈페이지 로고를 새로 만든 가로형(엠블럼 + 세리프 워드마크 '법무법인(유한) 금성' + KEUMSEONG LAW FIRM; 홈페이지 머리글·첫 화면·바닥글에 올린 것과 같은 파일)으로 바꿈. 원본은 `keumseong_lockup_c.html`(글꼴 Noto Serif KR 500·700, Montserrat 600 — npm @fontsource)을 `render_keumseong.py`로 4배 촬영한 것. 종전 세로형 로고(`keumseong-logo@2x.png`, 300×213 → 280×193)는 raw/ 에 그대로 | 828×168. 글자가 작아 `.tall` 유지 |
+| keumseong-emblem.png | 법무법인(유한) 금성(엠블럼) | 종전 로고 `keumseong-logo@2x.png` 에서 금색 날개·별 화소만 추려 냄(알파>0, R−B>35, R≥G, G≥B−5) | 134×166. 온라인 계정 타일 `#i-keumseong`(흰 타일 위 72%, `<image>`)과 가로형 로고의 엠블럼 |
 | eonju.png | 서울 언주중학교 | 누리집 머리글 로고 JPG(`eonju-head.jpg`, 220×42; 학교상징 페이지의 교표 그림 `eonju-symbol.jpg`는 476px 합성 그림이라 안 씀) | 흰 바탕을 투명하게(흰 매트 제거) → 177×36. 작아서 학력 줄(0.95rem)에만 |
 | yd.png | 서울 영동고등학교 | 누리집 머리글 로고 PNG(`yd-head.png`, 220×42, 투명; 교훈/교가/상징 페이지의 교표 `yd-symbol.gif`는 심벌만) | 여백 자름 → 206×42. 학력 줄 |
 | bnk.png | 법률사무소 비앤케이 | 변호사님이 2026. 10. 21. 보낸 옛 로고 그림 6장 중 한 줄 가로형(`bnk-1line.png`, 540×141; 두 줄형 `bnk-2line.png`·세로형 `bnk-stacked.png`도 보관) — 누리집은 없어짐 | 보라색(69,46,131) 글자·심벌만 남기고 흰 바탕을 투명하게(원 안의 흰 B&K는 불투명 유지) → 505×136. 링크 없는 띠 |
@@ -99,5 +100,6 @@ SVG는 `tighten_svg.py`로 viewBox를 내용 범위(+1% 여백)로 좁히고 루
 - 새 기관을 더할 때: 로고를 `logos/`에 넣고(SVG가 가장 좋고, PNG는 투명 배경·짧은 변 100px 이상), 그 타일 맨 앞에
   `<a class="adv-logo" href="누리집" target="_blank" rel="noopener" data-org="기관" aria-label="기관 누리집 (새 창)"><img src="logos/파일" alt="" width=… height=… loading="lazy"></a>`를 붙인다.
   로고가 유난히 높으면 `.tall`, 짧고 높으면 `.mid`.
+- 금성 가로형 로고를 다시 만들 때: `render_keumseong.py` 머리 설명대로(npm 글꼴 패키지 + playwright). 글귀·크기를 바꾸려면 `keumseong_lockup_c.html` 의 스타일(.s 15px·.b 27px·.e 8.5px, 엠블럼 40px)을 고친다.
 - 주식회사 에스알: 공정위가 2026. 8. 3. 코레일의 SR 고속철도 영업양수를 승인했고 정부는 2026. 9. 통합 완료를 예정했다(srail.or.kr은 이미 korail.com으로 넘어감).
   법률고문 위촉이 그대로 이어지는지에 따라 위촉 타일을 '임기를 마친 위촉'으로 옮길지 변호사님 확인이 필요하다(로고 링크는 코레일로 해 둠).

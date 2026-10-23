@@ -28,6 +28,7 @@
                    (Noto Sans CJK, Playwright 화면 갈무리 1240px) 회사·사람 이름·주소·과제번호를 진회색 상자로 가린 JPG로 만듭니다(조판 스크립트는 이름이 들어 있어 저장소에 넣지 않음).
 - certs/           위촉장·표창장 이미지
 - logos/           위촉·위원회·강의 기관 33곳 + 경력·학력 기관·학교 7곳의 공식 로고(2026. 10. 20.~21. 추가; 타일마다 위촉장 그림 위의 작은 로고 띠와 경력·학력·수상 줄 앞의 띠에 씀, 누르면 기관 누리집). 출처·가공 기록은 work/logos-src/README.md
+                   (2026. 10. 23. 법무법인(유한) 금성 로고는 법인 홈페이지 keumseong.com 에 새로 올린 가로형 로고로 교체 — 경력 연표의 띠 logos/keumseong.png 828×168, 온라인 계정 타일 #i-keumseong 은 그 로고의 엠블럼 logos/keumseong-emblem.png; 다시 만드는 법은 work/logos-src/render_keumseong.py)
 - og-image.jpg, photo-head.jpg, photo-hero.webp, seal.png
 - robots.txt, sitemap.xml, 404.html, CNAME(lawyermrboo82.com)
 
