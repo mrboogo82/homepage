@@ -6,6 +6,7 @@
    (left-margin section titles, paper and ink, crimson (고려대학교 크림슨) for emphasis) and closes with a signature block.
    The case board (수행 사례) renders from the JSON block #cases-data; the owner edits it from the page. */
 :root {
+  color-scheme: only light;   /* 2026. 10. 23. 17시: 기본은 늘 밝은 화면 — 브라우저·웹뷰의 '강제 어둡게'(auto dark)도 끈다. 어두운 화면은 아래 @media(PC·마우스·1024px 이상)에서만 color-scheme: dark로 바꾼다 */
   --paper: #fbfbf9;
   --ink: #2d3239; /* 먹색: 첫 화면 바탕과 같은 연한 먹색(2026. 10. 20., 종전 #1a1d21) */
   --ink-soft: #5c6167;
@@ -35,9 +36,11 @@
 
   --gutter: clamp(1rem, 4vw, 3rem);
 }
-/* 어두운 화면(다크 모드)은 마우스를 쓰는 PC에서만(2026. 10. 23. 오후 본인 지시: "모바일에서는 어떤 모드로 보던지 하얀 배경으로") —
-   손가락으로 다루는 기기(휴대전화·태블릿, hover: none / pointer: coarse)는 기기 설정과 상관없이 늘 밝은 종이색 바탕. 아래 dark 규칙들의 @media 조건이 모두 같다. */
-@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
+/* 어두운 화면(다크 모드)은 마우스를 쓰는 넓은 PC 화면에서만(2026. 10. 23. 오후 본인 지시: "모바일에서는 어떤 모드로 보던지 하얀 배경으로";
+   17시 "회사 홈페이지처럼 모바일에서도 밝게") — 손가락으로 다루는 기기(휴대전화·태블릿, hover: none / pointer: coarse)와 1024px보다 좁은 화면(펼친 폴드7 약 900px 포함)은
+   기기 설정과 상관없이 늘 밝은 종이색 바탕. 15시 33분의 hover/pointer 조건만으로는 본인 휴대전화에서 어둡게 보인다고 하여 17시에 min-width 1024px과 :root의
+   color-scheme: only light를 더함(기기가 포인터를 어떻게 보고하든 폭으로 한 번 더 거른다). 아래 dark 규칙들의 @media 조건이 모두 같다. */
+@media (prefers-color-scheme: dark) and (min-width: 1024px) and (hover: hover) and (pointer: fine) {
   :root:not([data-theme="light"]) {
     --paper: #1b1e22;
     --ink: #e9e8e4;
@@ -961,7 +964,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
    ⑤ 판결문·위촉장 크게 보기 창(dialog)은 살짝 커지며 열리고, 접힌 글(details)·목록 보기의 펼친 칸은 짧게 떠오르며 펼쳐진다.
    움직임 줄이기(prefers-reduced-motion: reduce)를 켠 기기와 인쇄에서는 모두 끈다. 색은 모두 변수를 써서 어두운 화면에서도 맞는다. */
 :root { --shadow-c: rgba(45, 50, 57, 0.28); --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1); }
-@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) { :root:not([data-theme="light"]) { --shadow-c: rgba(0, 0, 0, 0.6); } }
+@media (prefers-color-scheme: dark) and (min-width: 1024px) and (hover: hover) and (pointer: fine) { :root:not([data-theme="light"]) { --shadow-c: rgba(0, 0, 0, 0.6); } }
 :root[data-theme="dark"] { --shadow-c: rgba(0, 0, 0, 0.6); }
 @keyframes fx-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
