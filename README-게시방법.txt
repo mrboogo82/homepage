@@ -2,7 +2,10 @@
 ※ 묶음이 커져 두 파일로 나누었습니다: 1of2(페이지·certs 등 전부, cases/ 제외)와 2of2-cases(cases/ 폴더). 두 파일을 같은 폴더에 풀면 아래 구성이 됩니다.
 
 구성
-- index.html       첫 화면(소개·경력·위촉·위원회·다루는 사건·주요 수행 사례 최근 8~9건 + 접힌 전체 목록·상담). 스타일은 home.css
+- index.html       홈(2026. 10. 23. 저녁부터 '짧은 홈 + 항목별 페이지' 구조, 창천 lawcc.co.kr 참고 — 본인 지시 "첫 화면, 주요 수행 사례 검색은 전면에"): 첫 화면 → 길잡이 → 단어로 판결문 찾기 + 주요 수행 사례 최근 8~9건
+                   → 경력 요약(연표 + 위촉·위원회 기관 띠) → 최근 언론보도 3건 → 다루는 사건 열 영역 요약 → 자주 묻는 질문 2문답 → 상담 문의(연락처·신청서) → 접힌 전체 목록. 스타일은 home.css, 스크립트는 site.js
+- career.html / fields.html / faq.html / press.html / contact.html   경력(학력·수상·위촉장·위원회·강의 전체) / 다루는 사건(열 영역 전체 설명) / 자주 묻는 질문(일곱 문답) / 언론보도(기사 전체) / 상담 문의(연락처·신청서·처음 연락하실 때·오시는 길).
+                   같은 home.css·site.js. 머리글·바닥글·그림 심벌·크게 보기 창·계정 목록은 index.html 이 기준이고 work/build_pages.py 가 다섯 페이지에 복사한다(<!-- chrome:이름:start/end --> 표식 사이).
 - cases-data.js    사례 데이터 원본("window.CASES_DATA = [...];", 2026. 10. 23. index.html·cases.html 안의 22만 자 JSON 블록에서 분리) — 두 페이지가 <script src="cases-data.js?v=해시">로 읽음
 - home.css / cases.css / case.css   홈 · 전체 사례 페이지 · 사례·주제 페이지(case.css = cases.css + build_cases.py 의 EXTRA_CSS, 자동 생성)의 스타일(2026. 10. 23. 인라인 <style>에서 분리)
 - llms.txt, llms-full.txt, llms-full-<분야>-<번호>.txt   AI·검색 로봇용 텍스트(llms-full.txt 는 사례 한 줄 목록 + 분야별 전체 텍스트 파일 안내, 2026. 10. 23. 분할)
@@ -60,6 +63,13 @@
 - 스마트공장 사업 이름 규칙(2026. 10. 21. 추가): 스마트공장 관련 사업은 제목·요지·상세 소개·검색어·규정 이름·위원회 이름 모두 '스마트공장 구축, 확산 사업'으로만 적습니다
   (보급·확산사업·구축사업·지원사업 같은 다른 표기는 쓰지 않음; 판결문 원문 인용(quotes)만 그대로). 새 사례를 더한 뒤  python3 work/smart_factory_term.py .  을 돌리면
   같은 파일들에 한꺼번에 적용됩니다( --dry-run · --check 는 no_gigak.py 와 같음). 분야 'civil'의 이름은 2026. 10. 21. '민사·연금·계약'에서 '민사'로 바꾸었습니다.
+- 항목별 페이지(2026. 10. 23. 저녁): 머리글 차림표·바닥글 차례·SNS 계정(#links-data)·전화번호·스크립트 태그를 고칠 때는 index.html 만 고치고  python3 work/build_pages.py .  을 돌리면
+  career·fields·faq·press·contact 다섯 페이지에 같은 부품이 복사되고(그 페이지의 차림표 항목에 class="current"), site.js 의 해시(?v=)도 여섯 페이지에 들어갑니다( --check 는 일치 여부만).
+  홈 경력 요약의 기관 띠(법률고문 위촉·위원회)는 career.html 의 현행 타일(<li class="adv">)에서 같은 스크립트가 다시 만듭니다 — 위촉·위원회를 더하거나 뺄 때는 career.html 만 고치면 됩니다.
+  홈 '다루는 사건' 요약(열 영역의 한 줄)은 index.html 에 직접 있고 분야 건수는 site.js 가 cases-data.js 로 채웁니다; 분야를 더하면 fields.html 과 홈 요약을 함께 고칩니다.
+  홈 자주 묻는 질문 요약은 faq.html 의 첫 두 문답과 같은 글이어야 합니다(둘 다 고침). 언론보도는 build_press.py 가 홈(최근 3건)과 press.html(전체)을 함께 만듭니다.
+  cases.html 과 사례·주제 페이지의 머리글·바닥글은 따로입니다(cases.html 은 직접, 사례·주제 페이지는 build_cases.py 템플릿).
+  돌리는 차례: build_press.py → ssr_cases.py → build_pages.py → build_cases.py.
 - 그 다음 반드시 저장소 최상위에서  python3 work/build_cases.py .  을 돌립니다(2026. 10. 19. 추가).
   사례마다 cases/<판결문 이미지 이름>.html 개별 페이지를 다시 만들고, 두 페이지의 카드에 개별 페이지 링크를 넣고,
   sitemap.xml(전체 URL; lastmod 는 페이지마다 실제로 바뀐 날 — 홈·전체 사례는 git 변경일, 사례·주제 페이지는 그 페이지의 dateModified)과 case.css 를 갱신하고,
@@ -69,13 +79,13 @@
 언론보도(press.json, 2026. 10. 22.)
 - 수행 사건의 판결·결정이 보도된 기사와 토론회·위원회·강의 활동이 실린 기사를 press.json 의 items 에 적습니다
   (id·date(YYYY-MM-DD)·outlet·title(기사 제목 그대로)·url·kind(case/activity/mention)·cases(관련 사례 id)·home(홈 절에 보일지)·note(한 줄 설명)·quote(본인 발언)).
-- python3 work/build_press.py .  → 홈의 '언론보도' 절(<!-- press:start --> … <!-- press:end --> 사이)과 llms.txt 의 '## 언론보도' 절을 다시 만들고,
-  머리글 차림표·바닥글 차례에 '언론보도' 링크가 없으면 넣습니다( --check 는 일치 여부만).
+- python3 work/build_press.py .  → 홈의 '언론보도' 요약(<!-- press:start --> … <!-- press:end --> 사이, 수행 사건 보도 최근 HOME_RECENT건 + 언론보도 페이지 링크)과
+  press.html 의 전체 목록(같은 표식 사이, 접지 않음 — 사례 페이지에만 싣던 기사까지 모두), llms.txt 의 '## 언론보도' 절을 다시 만듭니다( --check 는 일치 여부만). 머리글·바닥글 링크는 build_pages.py 몫.
 - 그 뒤 ssr_cases.py(카드의 '언론보도' 표시 pr, llms-full.txt 의 '- 언론보도:' 줄) → build_cases.py(사례 페이지의 '이 사건의 언론보도' 칸, JSON-LD citation) 순서로 돌립니다.
 - 홈 절에는 home 이 true 인 기사만(사건마다 대표 기사), 사례 페이지·llms-full.txt 에는 그 사건의 기사 전부가 실립니다. 사법시험 합격자 명단·공익법무관 인사 배치처럼 이름만 실린 기사는 싣지 않습니다(2026. 10. 23. 본인 지시; kind=mention 은 홈 절 끝의 접힌 목록에 가지만 지금은 비어 있음).
 - 글씨는 본인 지시(홈페이지 간이화)로 본문의 절반 수준(기사 제목 11px, 날짜·언론사·설명·인용 10px; index.html의 '#press' CSS).
-- 홈 절에서 펼쳐 보이는 것은 수행 사건 보도 최근 3건뿐(work/build_press.py 의 HOME_RECENT). 그보다 오래된 사건 보도와 토론회·위원회·강의 기사는
-  그 아래 '더 보기 — …' 접힌 목록(<details class="press-more">, 펼치면 '접기')에 들어갑니다(2026. 10. 23. 본인 지시). 보이는 건수를 바꾸려면 HOME_RECENT 를 고치고 다시 돌립니다.
+- 홈 절에 보이는 것은 수행 사건 보도 최근 3건뿐(work/build_press.py 의 HOME_RECENT; 2026. 10. 23. 낮 본인 지시). 그보다 오래된 사건 보도와 토론회·위원회·강의 기사는
+  2026. 10. 23. 저녁부터 접힌 목록 대신 언론보도 페이지(press.html)에 전부 들어갑니다. 보이는 건수를 바꾸려면 HOME_RECENT 를 고치고 다시 돌립니다.
 
 주제별 모아 보기 페이지(topics/*.html, 2026. 10. 19.)
 - 참여제한 취소소송 / 연구개발비·출연금 환수 / 제재부가금 / 집행정지 / 회수금·정산금 당사자소송 — 사람들이 실제로 찾는 말마다 한 페이지.

@@ -1556,3 +1556,67 @@ ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margi
 .section.appendix { padding-block: clamp(1.75rem, 3.5vw, 2.5rem); }
 .section.appendix .section-head h2 { font-size: var(--step-0); }
 .section.appendix .all-list { margin-top: 0; padding-top: 0; border-top: 0; }
+
+/* ---------- 짧은 홈 + 항목별 페이지 (2026. 10. 23. 저녁) ----------
+   본인 지시(창천 lawcc.co.kr 참고): "각 항목마다 별도 페이지로 … 첫 화면, 주요 수행 사례 검색은 전면에 나오게". 경력·다루는 사건·자주 묻는 질문·언론보도·상담 문의의 전체는
+   career.html·fields.html·faq.html·press.html·contact.html 로 옮기고(같은 home.css, 공용 부품은 work/build_pages.py 가 index.html 에서 맞춤), 홈에는 같은 id 의 요약 절만 둔다.
+   ① 항목별 페이지의 제목 머리(.page-head: 현재 위치 › 제목 › 한 줄 설명) ② 홈 경력 요약의 기관 띠(.org-chips — 로고+이름, 누르면 기관 누리집; 흰 바탕이라 어두운 화면에서도 로고 색이 그대로)
+   ③ 홈 다루는 사건 요약(.field-list — 열 영역의 제목·한 줄·단추; 국가연구개발 카드는 한 줄 폭에 세 기한 띠) ④ 요약 절 머리의 '자세히' 알약과 '… 전체 보기 →' 단추(.more) */
+.page-head { display: grid; gap: 0.5rem; padding-block: clamp(1.75rem, 4vw, 2.75rem) 1.25rem; animation: fx-up 0.6s var(--ease-out) both; }
+.page-head .crumbs { font-size: var(--step--1); color: var(--ink-soft); }
+.page-head .crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 0.2rem 0.5rem; margin: 0; padding: 0; }
+.page-head .crumbs li + li::before { content: "›"; margin-right: 0.5rem; color: var(--rule); }
+.page-head .crumbs a { color: inherit; text-decoration: none; }
+.page-head .crumbs a:hover { color: var(--seal); }
+.page-head h1 { font-size: var(--step-2); }
+.page-head .lead { max-width: 48rem; font-size: var(--step--1); line-height: 1.7; color: var(--ink-soft); }
+@media (prefers-reduced-motion: reduce) { .page-head { animation: none; } }
+
+.count-note { margin-left: 0.5rem; font-family: var(--sans); font-size: var(--step--2); font-weight: 400; letter-spacing: 0; color: var(--ink-soft); }
+.org-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.9rem; padding: 0; }
+.org-chip { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2rem; padding: 0.2rem 0.7rem 0.2rem 0.45rem; font-size: var(--step--1); line-height: 1.3; color: #2d3239; background: #fff; border: 1px solid var(--tile-edge); border-radius: 999px; text-decoration: none; }
+.org-chip img { display: block; width: auto; height: 1rem; max-width: 5.5rem; object-fit: contain; }
+.org-chip img.tall { height: 1.3rem; }
+.org-chip img.mid { height: 1.15rem; }
+a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: var(--seal); }
+@media (max-width: 640px) {
+  .org-chips { gap: 0.3rem; }
+  .org-chip { gap: 0.35rem; min-height: 1.75rem; padding: 0.15rem 0.6rem 0.15rem 0.4rem; font-size: var(--step--2); }
+  .org-chip img { height: 0.85rem; max-width: 4.5rem; }
+  .org-chip img.tall { height: 1.1rem; }
+  .org-chip img.mid { height: 1rem; }
+}
+
+.field-list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; margin: 0; padding: 0; }
+.field { display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 3px; }
+.field.lead { grid-column: 1 / -1; }
+.field svg { width: 1.6rem; height: 1.6rem; color: var(--seal); }
+.field h3 { font-size: var(--step-0); line-height: 1.35; }
+.field h3 a { text-decoration: none; }
+.field h3 a:hover { color: var(--seal); text-decoration: underline; text-underline-offset: 0.2em; }
+.field p { font-size: var(--step--1); line-height: 1.6; }
+.field .links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin-top: auto; padding-top: 0.35rem; font-size: var(--step--1); }
+.field .links a { color: var(--ink-soft); text-decoration: none; }
+.field .links a:hover { color: var(--seal); text-decoration: underline; text-underline-offset: 0.2em; }
+.field .cases-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.22rem 0.8rem; font-weight: 600; color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 999px; transition: background-color 0.15s ease, border-color 0.15s ease; }
+.field .cases-link .n { font-variant-numeric: tabular-nums; }
+.field .cases-link .arr { font-weight: 500; }
+.field .links a.cases-link:hover { color: #fff; background: var(--seal); border-color: var(--seal); text-decoration: none; }
+.field.lead .due-line { display: flex; flex-wrap: wrap; gap: 0.3rem 1.6rem; margin-top: 0.1rem; padding: 0.55rem 0.85rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink); background: var(--wash); border-radius: 3px; }
+.field.lead .due-line span { display: inline-flex; align-items: baseline; gap: 0.35rem; }
+.field.lead .due-line b { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--seal); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.field.lead .due-line b small { font-size: 0.6em; font-weight: 500; margin-left: 0.05em; }
+@media (max-width: 1000px) { .field-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .field-list { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+  .field { gap: 0.35rem; padding: 0.85rem 0.95rem; }
+  .field svg { width: 1.4rem; height: 1.4rem; }
+  .field.lead .due-line { gap: 0.25rem 1rem; }
+}
+#faq .faq + .more, #record .more { margin-top: 1rem; }
+/* 상담 문의 페이지(contact.html)의 '오시는 길' 칸 */
+.directions { grid-column: 1 / -1; display: grid; gap: 0.45rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
+.directions h3 { font-size: var(--step-1); }
+.directions p { font-size: 1rem; line-height: 1.7; }
+.directions .sub { font-size: var(--step--1); color: var(--ink-soft); }
+.directions .map-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.3rem; }

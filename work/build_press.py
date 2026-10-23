@@ -11,7 +11,8 @@ press.json(items)의 기사 가운데 home 이 true 인 것을 세 묶음으로 
   수행 사건 보도(kind=case, 관련 사례로 링크) · 토론회·위원회·강의(kind=activity, 본인 발언 quote 포함) ·
   그 밖에 이름이 실린 기사(kind=mention — 2026. 10. 23. 본인 지시로 사법시험 합격자 명단·공익법무관 인사 배치 기사는 모두 뺐으므로 지금은 비어 있음).
 2026. 10. 23. 낮 본인 지시("수행사건 보도 최근 3개 정도만 나오게 하고 나머지는 '접기'로"): 펼친 채 보이는 것은 수행 사건 보도
-  최근 HOME_RECENT(3)건뿐이고, 그보다 오래된 사건 보도·토론회·위원회·강의·그 밖의 기사는 모두 그 아래 접힌 <details class="press-more">
+  최근 HOME_RECENT(3)건과 언론보도 페이지(press.html) 링크뿐이고(2026. 10. 23. 저녁: 접힌 목록 대신 페이지로), 전체는 press.html 의 같은 표식 사이에 접지 않고 넣는다(사례 페이지에만 싣던 기사까지 모두).
+  (종전 접힌 <details class="press-more">
   ('더 보기 …' / 펼치면 '접기') 안에 들어간다.
 index.html 에서는 <!-- press:start --> … <!-- press:end --> 사이를 바꾸고(없으면 경력 절 다음에 절 전체를 넣는다),
 llms.txt 에서는 '## 언론보도' 절을 바꾼다(없으면 '## 경력' 앞에 넣는다). 그 뒤 ssr_cases.py → build_cases.py 를 돌린다.
@@ -73,8 +74,37 @@ def row(p, cases_by_id):
     return '<div><dt>%s</dt><dd>%s</dd></div>' % (esc(kdate(p.get("date") or "")), "".join(body))
 
 
+def section_full(items, cases_by_id):
+    """press.html(언론보도 페이지, 2026. 10. 23. 저녁): 접지 않고 전부 — 사건 보도는 사례 페이지에만 싣던 기사까지 모두, 그다음 토론회·위원회·강의."""
+    groups = {"case": [], "activity": [], "mention": []}
+    for p in items:
+        groups.setdefault(p.get("kind") or "case", []).append(p)
+    for k in groups:
+        groups[k].sort(key=lambda x: x.get("date") or "", reverse=True)
+    out = []
+    out.append('<header class="section-head">')
+    out.append('        <h2 id="press-h">언론보도</h2>')
+    out.append('        <p>기사 %d건 — 수행 사건 보도 %d건, %s %d건%s. 사건별 기사는 각 사례 페이지의 \'이 사건의 언론보도\'에도 있습니다.</p>'
+               % (len(items), len(groups["case"]), KIND_NAMES["activity"].replace(" · ", "·"), len(groups["activity"]),
+                  (", %s %d건" % (KIND_NAMES["mention"], len(groups["mention"]))) if groups["mention"] else ""))
+    out.append('      </header>')
+    out.append('      <div class="section-body press-body">')
+    for k in ("case", "activity", "mention"):
+        if not groups[k]:
+            continue
+        out.append('        <div class="block" id="press-%s">' % ("cases" if k == "case" else k))
+        out.append('          <h3 class="block-h">%s</h3>' % esc(KIND_NAMES[k]))
+        out.append('          <dl class="rows dates press-list">')
+        out += ["            " + row(p, cases_by_id) for p in groups[k]]
+        out.append('          </dl>')
+        out.append('        </div>')
+    out.append('      </div>')
+    return "\n".join(out)
+
+
 def section_inner(items, cases_by_id):
-    n_case = sum(1 for p in items if (p.get("kind") or "case") == "case")   # 사례 페이지까지 합친 전체 건수(홈에 안 보이는 것 포함)
+    """홈(index.html)의 언론보도 요약: 수행 사건 보도 최근 HOME_RECENT 건 + 언론보도 페이지(press.html) 링크 (2026. 10. 23. 저녁 — 접힌 목록 대신 페이지로)."""
+    n_all = len(items)
     items = [p for p in items if p.get("home")]
     groups = {"case": [], "activity": [], "mention": []}
     for p in items:
@@ -84,10 +114,12 @@ def section_inner(items, cases_by_id):
     out = []
     out.append('<header class="section-head">')
     out.append('        <h2 id="press-h">언론보도</h2>')
-    out.append('        <p>수행한 사건의 판결·결정이 보도된 기사와 토론회·위원회·강의 활동이 실린 기사입니다. 기사 제목을 누르면 해당 언론사의 기사가 새 창으로 열리고, 사례 제목을 누르면 그 사건의 판결문과 소개로 갑니다. 사건별 기사 전체는 각 사례 페이지의 \'이 사건의 언론보도\'에 있습니다.</p>')
+    out.append('        <p>수행한 사건의 판결·결정이 보도된 최근 기사입니다. 지난 사건 보도와 토론회·위원회·강의 기사 등 %d건 전체는 언론보도 페이지에 있습니다.</p>' % n_all)
+    out.append('        <nav class="jump" aria-label="언론보도 페이지로"><span class="cap">자세히</span><a href="press.html">언론보도 전체</a></nav>')
     out.append('      </header>')
     out.append('      <div class="section-body press-body">')
-    recent, older = groups["case"][:HOME_RECENT], groups["case"][HOME_RECENT:]
+    recent, older = groups["case"][:HOME_RECENT], []
+    n_case = 0
     note = ('<p class="press-note">사건별 기사 %d건 가운데 대표 기사 %d건입니다. 나머지는 각 사례 페이지에 있습니다.</p>'
             % (n_case, len(groups["case"]))) if n_case > len(groups["case"]) else ""
     if recent:
@@ -98,33 +130,9 @@ def section_inner(items, cases_by_id):
         out.append('          </dl>')
         if not older and note:
             out.append('          ' + note)
+        out.append('          <p class="more"><a class="btn ghost" href="press.html">언론보도 전체 보기 (%d건) →</a></p>' % n_all)
         out.append('        </div>')
-    # 나머지(오래된 사건 보도·활동 기사·그 밖의 기사)는 하나의 접힌 목록으로
-    folded = [("older", older), ("activity", groups["activity"]), ("mention", groups["mention"])]
-    folded = [(k, v) for k, v in folded if v]
-    if folded:
-        parts = []
-        if older:
-            parts.append("지난 사건 보도 %d건" % len(older))
-        if groups["activity"]:
-            parts.append("%s %d건" % (KIND_NAMES["activity"].replace(" · ", "·"), len(groups["activity"])))
-        if groups["mention"]:
-            parts.append("%s %d건" % (KIND_NAMES["mention"], len(groups["mention"])))
-        out.append('        <details class="press-more" id="press-rest">')
-        out.append('          <summary><span class="when-closed">더 보기 — %s</span><span class="when-open">접기</span></summary>' % esc(", ".join(parts)))
-        for k, v in folded:
-            out.append('          <div class="block" id="press-%s">' % k)
-            if k == "older":
-                out.append('            <h3 class="block-h">%s</h3>' % ("지난 사건 보도" if recent else esc(KIND_NAMES["case"])))
-            else:
-                out.append('            <h3 class="block-h">%s</h3>' % esc(KIND_NAMES[k]))
-            out.append('            <dl class="rows dates press-list">')
-            out += ["              " + row(p, cases_by_id) for p in v]
-            out.append('            </dl>')
-            if k == "older" and note:
-                out.append('            ' + note)
-            out.append('          </div>')
-        out.append('        </details>')
+    # 토론회·위원회·강의 기사와 지난 사건 보도는 홈에 두지 않고 언론보도 페이지(press.html)에만 (2026. 10. 23. 저녁)
     out.append('      </div>')
     return "\n".join(out)
 
@@ -151,13 +159,16 @@ def patch_index(idoc, inner):
             raise SystemExit("index.html 에서 '다루는 사건' 절을 찾지 못해 언론보도 절을 넣을 자리를 모릅니다")
         new = idoc[:k] + block + idoc[k:]
     # 머리글 차림표·바닥글 차례에 '언론보도' 링크(한 번만)
-    if '<a href="#press">' not in new.split("<main>")[0]:
-        new = new.replace('      <a href="#career">경력</a>\n      <a href="#fields">다루는 사건</a>',
-                          '      <a href="#career">경력</a>\n      <a href="#press">언론보도</a>\n      <a href="#fields">다루는 사건</a>', 1)
-    foot = '<a href="#committees">위원회·강의</a> <a href="#fields">다루는 사건</a>'
-    if foot in new and '<a href="#press">언론보도</a> <a href="#fields">' not in new:
-        new = new.replace(foot, '<a href="#committees">위원회·강의</a> <a href="#press">언론보도</a> <a href="#fields">다루는 사건</a>', 1)
+    # 2026. 10. 23. 저녁부터 머리글·바닥글의 '언론보도' 링크는 press.html 로(공용 부품은 work/build_pages.py 가 맞춤) — 여기서는 손대지 않는다
     return new
+
+
+def patch_page(pdoc, inner):
+    """press.html 의 <!-- press:start --> … <!-- press:end --> 사이를 전체 목록으로."""
+    if START not in pdoc or END not in pdoc:
+        raise SystemExit("press.html 에 press:start/end 표식이 없습니다")
+    a, b = pdoc.index(START), pdoc.index(END) + len(END)
+    return pdoc[:a] + START + "\n      " + inner + "\n      " + END + pdoc[b:]
 
 
 def llms_block(items, cases_by_id):
@@ -192,16 +203,21 @@ def main():
     check_press(press, set(cases_by_id))
     inner = section_inner(press, cases_by_id)
     new_idoc = patch_index(idoc, inner)
+    pp = os.path.join(site, "press.html")
+    pdoc = read(pp) if os.path.exists(pp) else None
+    new_pdoc = patch_page(pdoc, section_full(press, cases_by_id)) if pdoc is not None else None
     new_llms = patch_llms(read(lp), llms_block(press, cases_by_id)) if os.path.exists(lp) else None
     if check:
-        ok = new_idoc == idoc and (new_llms is None or new_llms == read(lp))
+        ok = new_idoc == idoc and (new_pdoc is None or new_pdoc == pdoc) and (new_llms is None or new_llms == read(lp))
         print("일치" if ok else "불일치")
         sys.exit(0 if ok else 1)
     write(ip, new_idoc)
+    if new_pdoc is not None:
+        write(pp, new_pdoc)
     if new_llms is not None:
         write(lp, new_llms)
     n_home = sum(1 for p in press if p.get("home"))
-    print("언론보도 %d건(홈에 %d건): index.html 언론보도 절·llms.txt 갱신" % (len(press), n_home))
+    print("언론보도 %d건(홈에 최근 %d건): index.html 언론보도 요약·press.html 전체 목록·llms.txt 갱신" % (len(press), min(HOME_RECENT, n_home)))
 
 
 if __name__ == "__main__":

@@ -611,7 +611,10 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span></a>
     <nav aria-label="페이지 이동">
       <a href="../cases.html">주요 수행 사례</a>
-      <a class="btn small" href="../index.html#contact">상담 문의</a>
+      <a href="../career.html">경력</a>
+      <a href="../fields.html">다루는 사건</a>
+      <a href="../faq.html">자주 묻는 질문</a>
+      <a class="btn small" href="../contact.html">상담 문의</a>
     </nav>
   </header>
   <main>
@@ -647,14 +650,14 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
       <section class="case-cta" aria-labelledby="cta-h">
         <h2 id="cta-h">비슷한 처분을 받으셨다면</h2>
         <p>{esc(cta_text)}</p>
-        <div class="btns"><a class="btn" href="../index.html#contact">상담 문의</a><a class="btn ghost" href="tel:+82-2-588-8685">전화 02-588-8685</a><a class="btn ghost" href="mailto:boo@keumseonglaw.com">boo@keumseonglaw.com</a></div>
+        <div class="btns"><a class="btn" href="../contact.html">상담 문의</a><a class="btn ghost" href="tel:+82-2-588-8685">전화 02-588-8685</a><a class="btn ghost" href="mailto:boo@keumseonglaw.com">boo@keumseonglaw.com</a></div>
       </section>
     </article>
   </main>
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../index.html#career">경력</a> <a href="../index.html#fields">다루는 사건</a> <a href="../index.html#faq">자주 묻는 질문</a> <a href="../index.html#advisory">법률고문 위촉</a> <a href="../index.html#contact">상담 문의</a>
+        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../press.html">언론보도</a> <a href="../fields.html">다루는 사건</a> <a href="../faq.html">자주 묻는 질문</a> <a href="../contact.html">상담 문의</a>
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
@@ -765,7 +768,10 @@ def render_topic_page(t, matched, cat_counts, modified):
     <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span></a>
     <nav aria-label="페이지 이동">
       <a href="../cases.html">주요 수행 사례</a>
-      <a class="btn small" href="../index.html#contact">상담 문의</a>
+      <a href="../career.html">경력</a>
+      <a href="../fields.html">다루는 사건</a>
+      <a href="../faq.html">자주 묻는 질문</a>
+      <a class="btn small" href="../contact.html">상담 문의</a>
     </nav>
   </header>
   <main>
@@ -799,14 +805,14 @@ def render_topic_page(t, matched, cat_counts, modified):
       <section class="case-cta" aria-labelledby="cta-h">
         <h2 id="cta-h">처분서나 사전통지서를 받으셨다면</h2>
         <p>처분이 있음을 안 날부터 90일 이내에 취소소송을, 국가연구개발 제재처분의 사전통지라면 통지를 받은 날부터 20일 이내에 재검토 요청 의견을 내야 합니다. 받은 날짜와 처분청부터 확인해 드립니다.</p>
-        <div class="btns"><a class="btn" href="../index.html#contact">상담 문의</a><a class="btn ghost" href="tel:+82-2-588-8685">전화 02-588-8685</a><a class="btn ghost" href="mailto:boo@keumseonglaw.com">boo@keumseonglaw.com</a></div>
+        <div class="btns"><a class="btn" href="../contact.html">상담 문의</a><a class="btn ghost" href="tel:+82-2-588-8685">전화 02-588-8685</a><a class="btn ghost" href="mailto:boo@keumseonglaw.com">boo@keumseonglaw.com</a></div>
       </section>
     </article>
   </main>
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../index.html#career">경력</a> <a href="../index.html#fields">다루는 사건</a> <a href="../index.html#faq">자주 묻는 질문</a> <a href="../index.html#advisory">법률고문 위촉</a> <a href="../index.html#contact">상담 문의</a>
+        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../press.html">언론보도</a> <a href="../fields.html">다루는 사건</a> <a href="../faq.html">자주 묻는 질문</a> <a href="../contact.html">상담 문의</a>
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
@@ -876,7 +882,7 @@ def patch_search(doc):
 
 def patch_js(doc):
     n = doc.count("body.appendChild(el('h3', 'case-title', c.title));")
-    if n == 0 and "pageHref(c)" in doc:
+    if n == 0:   # 이미 고쳐졌거나(pageHref), 홈 스크립트가 site.js 로 나간 뒤(2026. 10. 23. 저녁)
         return doc
     if n != 1:
         raise SystemExit("card() 제목 줄을 %d군데 찾았습니다(1이어야 함)" % n)
@@ -1041,6 +1047,9 @@ def build_sitemap(cases, site="."):
         (SITE + "/", git_lastmod(site, "index.html"), "weekly", "1.0"),
         (SITE + "/cases.html", git_lastmod(site, "cases.html"), "weekly", "0.9"),
     ]
+    for page, pr in (("fields.html", "0.9"), ("career.html", "0.8"), ("faq.html", "0.8"), ("press.html", "0.7"), ("contact.html", "0.7")):   # 항목별 페이지(2026. 10. 23. 저녁)
+        if os.path.exists(os.path.join(site, page)):
+            rows.append((SITE + "/" + page, git_lastmod(site, page), "weekly", pr))
     for t in TOPICS:
         rows.append((topic_url(t), page_modified(os.path.join(site, topic_href(t))), "weekly", "0.9"))
     for c in cases:
