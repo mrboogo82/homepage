@@ -9,7 +9,10 @@
 
 press.json(items)의 기사 가운데 home 이 true 인 것을 세 묶음으로 보인다:
   수행 사건 보도(kind=case, 관련 사례로 링크) · 토론회·위원회·강의(kind=activity, 본인 발언 quote 포함) ·
-  그 밖에 이름이 실린 기사(kind=mention, 접힌 <details> — 2026. 10. 23. 본인 지시로 사법시험 합격자 명단·공익법무관 인사 배치 기사는 모두 뺐으므로 지금은 비어 있음).
+  그 밖에 이름이 실린 기사(kind=mention — 2026. 10. 23. 본인 지시로 사법시험 합격자 명단·공익법무관 인사 배치 기사는 모두 뺐으므로 지금은 비어 있음).
+2026. 10. 23. 낮 본인 지시("수행사건 보도 최근 3개 정도만 나오게 하고 나머지는 '접기'로"): 펼친 채 보이는 것은 수행 사건 보도
+  최근 HOME_RECENT(3)건뿐이고, 그보다 오래된 사건 보도·토론회·위원회·강의·그 밖의 기사는 모두 그 아래 접힌 <details class="press-more">
+  ('더 보기 …' / 펼치면 '접기') 안에 들어간다.
 index.html 에서는 <!-- press:start --> … <!-- press:end --> 사이를 바꾸고(없으면 경력 절 다음에 절 전체를 넣는다),
 llms.txt 에서는 '## 언론보도' 절을 바꾼다(없으면 '## 경력' 앞에 넣는다). 그 뒤 ssr_cases.py → build_cases.py 를 돌린다.
 """
@@ -24,6 +27,7 @@ from press_lib import load_press, kdate, check_press, KIND_NAMES  # noqa: E402
 
 SITE = "https://lawyermrboo82.com"
 START, END = "<!-- press:start -->", "<!-- press:end -->"
+HOME_RECENT = 3   # 접지 않고 보이는 수행 사건 보도 건수(최근순). 나머지는 접힌 목록으로(2026. 10. 23. 본인 지시)
 
 
 def esc(s):
@@ -89,28 +93,43 @@ def section_inner(items, cases_by_id):
     out.append('        <p>수행한 사건의 판결·결정이 보도된 기사와 토론회·위원회·강의 활동이 실린 기사입니다. 기사 제목을 누르면 해당 언론사의 기사가 새 창으로 열리고, 사례 제목을 누르면 그 사건의 판결문과 소개로 갑니다. 사건별 기사 전체는 각 사례 페이지의 \'이 사건의 언론보도\'에 있습니다.</p>')
     out.append('      </header>')
     out.append('      <div class="section-body press-body">')
-    if groups["case"]:
+    recent, older = groups["case"][:HOME_RECENT], groups["case"][HOME_RECENT:]
+    note = ('<p class="press-note">사건별 기사 %d건 가운데 대표 기사 %d건입니다. 나머지는 각 사례 페이지에 있습니다.</p>'
+            % (n_case, len(groups["case"]))) if n_case > len(groups["case"]) else ""
+    if recent:
         out.append('        <div class="block" id="press-cases">')
         out.append('          <h3 class="block-h">%s</h3>' % esc(KIND_NAMES["case"]))
         out.append('          <dl class="rows dates press-list">')
-        out += ["            " + row(p, cases_by_id) for p in groups["case"]]
+        out += ["            " + row(p, cases_by_id) for p in recent]
         out.append('          </dl>')
-        if n_case > len(groups["case"]):
-            out.append('          <p class="press-note">사건별 기사 %d건 가운데 대표 기사 %d건입니다. 나머지는 각 사례 페이지에 있습니다.</p>' % (n_case, len(groups["case"])))
+        if not older and note:
+            out.append('          ' + note)
         out.append('        </div>')
-    if groups["activity"]:
-        out.append('        <div class="block" id="press-activity">')
-        out.append('          <h3 class="block-h">%s</h3>' % esc(KIND_NAMES["activity"]))
-        out.append('          <dl class="rows dates press-list">')
-        out += ["            " + row(p, cases_by_id) for p in groups["activity"]]
-        out.append('          </dl>')
-        out.append('        </div>')
-    if groups["mention"]:
-        out.append('        <details class="press-more" id="press-mention">')
-        out.append('          <summary>%s (인사) %d건</summary>' % (esc(KIND_NAMES["mention"]), len(groups["mention"])))
-        out.append('          <dl class="rows dates press-list">')
-        out += ["            " + row(p, cases_by_id) for p in groups["mention"]]
-        out.append('          </dl>')
+    # 나머지(오래된 사건 보도·활동 기사·그 밖의 기사)는 하나의 접힌 목록으로
+    folded = [("older", older), ("activity", groups["activity"]), ("mention", groups["mention"])]
+    folded = [(k, v) for k, v in folded if v]
+    if folded:
+        parts = []
+        if older:
+            parts.append("지난 사건 보도 %d건" % len(older))
+        if groups["activity"]:
+            parts.append("%s %d건" % (KIND_NAMES["activity"].replace(" · ", "·"), len(groups["activity"])))
+        if groups["mention"]:
+            parts.append("%s %d건" % (KIND_NAMES["mention"], len(groups["mention"])))
+        out.append('        <details class="press-more" id="press-rest">')
+        out.append('          <summary><span class="when-closed">더 보기 — %s</span><span class="when-open">접기</span></summary>' % esc(", ".join(parts)))
+        for k, v in folded:
+            out.append('          <div class="block" id="press-%s">' % k)
+            if k == "older":
+                out.append('            <h3 class="block-h">%s</h3>' % ("지난 사건 보도" if recent else esc(KIND_NAMES["case"])))
+            else:
+                out.append('            <h3 class="block-h">%s</h3>' % esc(KIND_NAMES[k]))
+            out.append('            <dl class="rows dates press-list">')
+            out += ["              " + row(p, cases_by_id) for p in v]
+            out.append('            </dl>')
+            if k == "older" and note:
+                out.append('            ' + note)
+            out.append('          </div>')
         out.append('        </details>')
     out.append('      </div>')
     return "\n".join(out)
