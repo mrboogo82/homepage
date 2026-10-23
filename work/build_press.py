@@ -24,6 +24,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from press_lib import load_press, kdate, check_press, KIND_NAMES  # noqa: E402
+from ssr_cases import load_cases  # noqa: E402  (사례 데이터 파일 cases-data.js, 2026. 10. 23.)
 
 SITE = "https://lawyermrboo82.com"
 START, END = "<!-- press:start -->", "<!-- press:end -->"
@@ -42,13 +43,6 @@ def read(p):
 def write(p, s):
     with open(p, "w", encoding="utf-8") as f:
         f.write(s)
-
-
-def load_cases(idoc):
-    m = re.search(r'<script type="application/json" id="cases-data">(.*?)</script>', idoc, re.S)
-    if not m:
-        raise SystemExit("index.html 의 #cases-data 를 찾지 못했습니다")
-    return json.loads(m.group(1))
 
 
 def stem_of(c):
@@ -192,7 +186,7 @@ def main():
     site = args[0] if args else "."
     ip, lp = os.path.join(site, "index.html"), os.path.join(site, "llms.txt")
     idoc = read(ip)
-    cases = load_cases(idoc)
+    cases = load_cases(site)
     cases_by_id = {c["id"]: c for c in cases}
     press = load_press(site)
     check_press(press, set(cases_by_id))

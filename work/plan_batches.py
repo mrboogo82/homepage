@@ -15,8 +15,7 @@ sys.path.insert(0, os.path.join(site, "work"))
 import ssr_cases as S  # noqa: E402
 
 cases_in = json.load(open(os.path.join(site, "work", "detail_inputs", "cases.json"), encoding="utf-8"))
-doc = S.read(os.path.join(site, "index.html"))
-live, _ = S.load_json_block(doc, "cases-data")
+live = S.load_cases(site)
 live_ids = {c["id"] for c in live}
 dp = os.path.join(site, "cases-detail.json")
 done = set(json.load(open(dp, encoding="utf-8")).keys()) if os.path.exists(dp) else set()

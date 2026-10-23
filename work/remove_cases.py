@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-사례를 index.html의 #cases-data JSON에서 지운다. 그 사례만 쓰던 판결문 이미지(cases/*.jpg)와
+사례를 사례 데이터 파일 cases-data.js(2026. 10. 23. index.html의 #cases-data 블록에서 분리)에서 지운다. 그 사례만 쓰던 판결문 이미지(cases/*.jpg)와
 작업용 목록(work/detail_inputs/cases.json·batches.json, work/insta/case_numbers.json)의 항목도 함께 치운다.
 그 뒤 반드시
     python3 work/ssr_cases.py .  →  python3 work/build_cases.py .
@@ -51,9 +51,7 @@ def main():
     if site is None or (not ids and not titles):
         raise SystemExit(__doc__)
 
-    ip = os.path.join(site, "index.html")
-    doc = S.read(ip)
-    cases, _ = S.load_json_block(doc, "cases-data")
+    cases = S.load_cases(site)
     want = set(ids)
     gone = [c for c in cases if c["id"] in want or any(t in c["title"] for t in titles)]
     missing = want - {c["id"] for c in gone}
@@ -74,7 +72,7 @@ def main():
     if dry:
         return
 
-    S.write(ip, S.replace_json_block(doc, "cases-data", keep))
+    S.save_cases(site, keep)
     if not keep_images:
         for src in orphan:
             p = os.path.join(site, src)
@@ -102,7 +100,7 @@ def main():
         d = load(p)
         if any(k in d for k in gone_ids):
             save(p, {k: v for k, v in d.items() if k not in gone_ids})
-    print("index.html 데이터 블록·작업용 목록 갱신%s (ssr_cases.py와 build_cases.py를 이어서 돌릴 것)" % ("" if keep_images else ", 이미지 %d장 삭제" % len(orphan)))
+    print("cases-data.js·작업용 목록 갱신%s (ssr_cases.py와 build_cases.py를 이어서 돌릴 것)" % ("" if keep_images else ", 이미지 %d장 삭제" % len(orphan)))
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@
   1. '스마트공장 보급·확산사업', '보급·확산 사업', '보급·확산 지원사업', '보급사업', '구축사업', '구축 사업',
      '구축 지원사업', '지원사업', '사업' 등 사업 이름의 여러 표기를 모두 '스마트공장 구축, 확산 사업'(TERM)으로 바꾼다.
      옛 이름의 머리·꼬리('ICT 융합 …(추경)', '업종별 특화 …', '…(고도화 과제)')는 괄호 설명으로만 남긴다.
-  2. 사례 데이터(index.html #cases-data·work/detail_inputs/cases.json)의 title·summary·court·images[].alt·kw 와
+  2. 사례 데이터(cases-data.js(사례 데이터 파일; 2026. 10. 23. index.html #cases-data 블록에서 분리)·work/detail_inputs/cases.json)의 title·summary·court·images[].alt·kw 와
      상세 소개(cases-detail.json·work/details/*.json)의 본문·laws·keywords·quotes[].from 에 적용한다.
      quotes[].text(판결문·결정문 원문 인용)는 원문이므로 손대지 않는다. 바뀐 뒤 같은 검색어가 겹치면 하나만 남긴다.
   3. '스마트공장 구축 협약', '스마트공장 시스템', '스마트공장 고도화'(과제 유형)처럼 사업 이름이 아닌 말은 그대로 둔다.
@@ -146,9 +146,7 @@ def main():
     site = sys.argv[1] if len(sys.argv) > 1 else "."
     dry = "--dry-run" in sys.argv
     check = "--check" in sys.argv
-    ip = os.path.join(site, "index.html")
-    idoc = S.read(ip)
-    cases, _ = S.load_json_block(idoc, "cases-data")
+    cases = S.load_cases(site)
     dp = os.path.join(site, "cases-detail.json")
     details = json.load(open(dp, encoding="utf-8")) if os.path.exists(dp) else {}
 
@@ -182,7 +180,7 @@ def main():
     if dry:
         print("(--dry-run: 파일은 바꾸지 않았습니다)")
         return
-    S.write(ip, S.replace_json_block(idoc, "cases-data", cases))
+    S.save_cases(site, cases)
     json.dump(details, open(dp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     rem = remaining(cases, details)
     print("남은 다른 표기(원문 인용 제외): %d곳" % len(rem))

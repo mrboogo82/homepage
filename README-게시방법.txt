@@ -2,7 +2,10 @@
 ※ 묶음이 커져 두 파일로 나누었습니다: 1of2(페이지·certs 등 전부, cases/ 제외)와 2of2-cases(cases/ 폴더). 두 파일을 같은 폴더에 풀면 아래 구성이 됩니다.
 
 구성
-- index.html       첫 화면(소개·경력·위촉·위원회·다루는 사건·주요 수행 사례 최근 8~9건·상담)
+- index.html       첫 화면(소개·경력·위촉·위원회·다루는 사건·주요 수행 사례 최근 8~9건 + 접힌 전체 목록·상담). 스타일은 home.css
+- cases-data.js    사례 데이터 원본("window.CASES_DATA = [...];", 2026. 10. 23. index.html·cases.html 안의 22만 자 JSON 블록에서 분리) — 두 페이지가 <script src="cases-data.js?v=해시">로 읽음
+- home.css / cases.css / case.css   홈 · 전체 사례 페이지 · 사례·주제 페이지(case.css = cases.css + build_cases.py 의 EXTRA_CSS, 자동 생성)의 스타일(2026. 10. 23. 인라인 <style>에서 분리)
+- llms.txt, llms-full.txt, llms-full-<분야>-<번호>.txt   AI·검색 로봇용 텍스트(llms-full.txt 는 사례 한 줄 목록 + 분야별 전체 텍스트 파일 안내, 2026. 10. 23. 분할)
 - cases.html       주요 수행 사례 전체(목록 보기가 기본, 누르면 펼쳐짐; 카드 보기로 전환 가능; 분류별 보기; cases.html#cat=rnd 처럼 분류를 지정해 열 수 있음 — 분류키(2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤): rnd 국가연구개발 제재처분, penalty 제재부가금·환수,
                    personnel 공무원·교원 인사처분, license 인허가·면허·자격 처분, comp 손실보상, admin 그 밖의 행정처분, criminal 형사, contract 국가계약법·지방계약법(2026. 10. 21. 추가 — 간접비·입찰참가자격제한·입찰담합 사례), state 국가배상, civil 민사)
 - cases/           판결문·결정문 이미지(개인·회사 당사자 정보는 가리고, 본인이 대리한 국가·행정청·공공기관 이름은 보임;
@@ -34,12 +37,12 @@
 고칠 때
 - 위촉·위원회 타일(<li class="adv">)은 '로고 띠(<a class="adv-logo">, 기관 누리집 새 창) → 위촉장 그림(<button class="adv-fig">, 누르면 크게) → 글'의 차례입니다(2026. 10. 21.; 로고 벽은 없앴음).
   기관을 더하면 logos/ 폴더에 로고를 넣고(SVG 권장, PNG는 투명 배경) 그 타일에 로고 띠 한 줄을 붙입니다. 강의 목록·경력·학력·수상 줄은 <a class="lec-logo">(2026. 10. 21. 경력·학력·수상에도). 자세한 것은 work/logos-src/README.md.
-- 사례를 더하거나 고칠 때는 index.html의 <script id="cases-data"> JSON과 cases.html의 같은 블록,
-  두 페이지의 사례 목록(<ol id="case-list">)과 건수 문구를 함께 바꿉니다. 새 판결문은 cases/ 폴더에
+- 사례를 더하거나 고칠 때는 cases-data.js(사례 데이터 원본; 2026. 10. 23.까지는 index.html·cases.html 안의 <script id="cases-data"> JSON 블록이었음)를 고치고
+  아래 스크립트로 두 페이지의 사례 목록(<ol id="case-list">)·홈의 접힌 전체 목록·건수 문구를 다시 만듭니다. 새 판결문은 cases/ 폴더에
   1240px 폭 JPG로 넣습니다. Claude에게 판결문 PDF를 보내면 같은 기준으로 가려서 만들어 줍니다.
-- 2026. 10. 19.부터는 손으로 고치지 않아도 됩니다: 새 사례를 JSON 파일(항목 목록)로 적어  python3 work/add_cases.py . 새사례.json  으로 index.html의
-  데이터 블록에 더한 뒤,  python3 work/ssr_cases.py .  을 돌리면 두 페이지의 정적 사례 목록·cases.html 데이터 블록·건수 문구·llms.txt·llms-full.txt가
-  데이터대로 다시 만들어집니다( --check 를 붙이면 일치 여부만 검사). 엘박스(lbox.kr)에 공개된 판결 글로 1면 이미지를 조판하는 도구는 work/render_judgment.py.
+- 2026. 10. 19.부터는 손으로 고치지 않아도 됩니다: 새 사례를 JSON 파일(항목 목록)로 적어  python3 work/add_cases.py . 새사례.json  으로 cases-data.js 에
+  더한 뒤,  python3 work/ssr_cases.py .  을 돌리면 cases-data.js(검색어·언론보도 표시 포함)·두 페이지의 정적 사례 목록·홈의 접힌 전체 목록·데이터 파일 태그(v=해시)·건수 문구·
+  llms.txt·llms-full.txt·분야별 llms-full-*.txt 가 데이터대로 다시 만들어집니다( --check 를 붙이면 일치 여부만 검사). 엘박스(lbox.kr)에 공개된 판결 글로 1면 이미지를 조판하는 도구는 work/render_judgment.py.
 - 사례를 지울 때는  python3 work/remove_cases.py . <사례 id ...>  또는  --title 임금  처럼 제목의 말로 지웁니다(2026. 10. 20. 추가; --dry-run 으로 미리 보기).
   데이터 블록에서 빼고, 그 사례만 쓰던 판결문 이미지와 작업용 목록(work/detail_inputs, work/insta)의 항목도 함께 치웁니다. 그 뒤 ssr_cases.py → build_cases.py 를 돌립니다.
 - 결과 표시와 '기각' 표현 규칙(2026. 10. 20. 추가): 결과는 '승소'·'일부승소'로만 적고 괄호 설명((인용)·(청구 일부 기각) 등)은 붙이지 않습니다
@@ -52,7 +55,8 @@
   같은 파일들에 한꺼번에 적용됩니다( --dry-run · --check 는 no_gigak.py 와 같음). 분야 'civil'의 이름은 2026. 10. 21. '민사·연금·계약'에서 '민사'로 바꾸었습니다.
 - 그 다음 반드시 저장소 최상위에서  python3 work/build_cases.py .  을 돌립니다(2026. 10. 19. 추가).
   사례마다 cases/<판결문 이미지 이름>.html 개별 페이지를 다시 만들고, 두 페이지의 카드에 개별 페이지 링크를 넣고,
-  sitemap.xml(전체 URL)과 case.css, llms.txt·llms-full.txt의 페이지 주소를 갱신합니다. 같은 폴더에 여러 번 돌려도 안전합니다.
+  sitemap.xml(전체 URL; lastmod 는 페이지마다 실제로 바뀐 날 — 홈·전체 사례는 git 변경일, 사례·주제 페이지는 그 페이지의 dateModified)과 case.css 를 갱신하고,
+  바닥글 서명 날짜(<time id="sign-date">)를 빌드한 날로 맞춥니다(페이지 JS가 서버의 Last-Modified 로 다시 맞춤). 같은 폴더에 여러 번 돌려도 안전합니다.
   (이 스크립트를 돌리지 않고 index.html·cases.html을 아티팩트에서 내려받아 그대로 올리면 카드의 개별 페이지 링크가 사라집니다.)
 
 언론보도(press.json, 2026. 10. 22.)
@@ -95,3 +99,15 @@
   spec/<이미지 이름>.json(가릴 글자 목록·흰색 처리 범위)을 적은 뒤  python3 work/jumun/apply.py <이미지 이름>  을 돌리면
   가린 면을 기존 이미지 아래에 이어 붙인 out/cases/<이미지 이름>.jpg 가 나옵니다(작업 폴더는 /home/claude/jumun2 기준; 원본·spec은 저장소에 넣지 않음).
   글자층이 없는 스캔본은 tesseract(kor)로 글자 상자를 얻으므로 결과를 반드시 눈으로 검수합니다.
+
+가볍게 한 구조와 색인 요청(2026. 10. 23.)
+- 배경: 검색엔진·AI는 HTML 앞부분부터 일정량만 읽습니다. 종전 index.html 은 60만 바이트(앞 7만 자가 CSS, 끝에 22만 자 사례 JSON)여서 AI 읽기 도구가 사례를 놓쳤고,
+  llms-full.txt 2.2MB 는 어느 도구의 한도도 넘었습니다. 구글은 홈·cases.html 2쪽만 색인하고(10. 22. 확인) 사례 페이지는 아직 색인 전이었습니다.
+- 바꾼 것: CSS 를 home.css·cases.css 로, 사례 데이터를 cases-data.js 로 빼 index.html 약 24만 바이트·cases.html 약 38만 바이트로 줄였고,
+  홈 주요 수행 사례 절 끝에 접힌 전체 목록(<details class="all-list">, 271건 제목·분야·법원·날짜·결과·링크)을 넣어 홈만 읽어도 전체 사례가 보이게 했습니다.
+  llms-full.txt 는 한 줄 목록 + 분야별 파일(llms-full-<분야>-<번호>.txt, 각 300KB 이하) 안내로 바꾸었습니다.
+  sitemap.xml 의 lastmod 는 매 빌드 오늘 날짜가 아니라 페이지마다 실제로 바뀐 날로, 바닥글 서명 날짜는 고정값('2026. 10. 14.')이 아니라 최종 수정일로 자동 갱신됩니다.
+- IndexNow(.github/workflows/indexnow.yml): push 때는 그 push 에서 새로 생긴 페이지만 바로 보내고, 매일 11:10(KST) 지난 하루 변경분을 한 번에 보냅니다
+  (종전처럼 push 마다 홈·전체 사례를 다시 보내지 않음). Actions 탭에서 수동 실행(scope=all)하면 sitemap 전체를 보냅니다.
+- 그 밖에 색인을 앞당기는 일은 손으로: 구글 서치콘솔 URL 검사 → 색인 생성 요청(하루 10건 안팎), 네이버 서치어드바이저 요청 → 웹 페이지 수집(하루 50건),
+  빙 웹마스터 URL 제출. 외부 링크(금성 홈페이지 구성원 소개·네이버 블로그·인스타·스레드·링크드인·엘파인드·나의변호사)와 네이버 인물정보 등록도 함께.

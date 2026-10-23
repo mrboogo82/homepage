@@ -7,22 +7,22 @@
     python3 work/build_cases.py .
 
 하는 일:
-  1. index.html 안의 <script id="cases-data"> JSON(사례 데이터, 원본)을 읽는다.
-  2. cases.html의 <style>을 공용 case.css 로 뽑고, 개별 페이지용 규칙을 덧붙인다.
+  1. 사례 데이터 원본 cases-data.js(2026. 10. 23. index.html 의 <script id="cases-data"> 블록에서 분리)를 읽는다.
+  2. cases.html 이 쓰는 cases.css(같은 날 인라인 <style>에서 분리)에 개별 페이지용 규칙을 덧붙여 공용 case.css 를 만든다.
   3. 사례마다 cases/<판결문 이미지 이름>.html 페이지를 만든다
      (제목·메타·OG·JSON-LD·판결문 이미지·같은 분야 사례·상담 안내).
      첫 이미지가 바뀌어 페이지 주소가 달라진 사례는 work/redirects.json 에 {"옛 이름": "새 이름"}으로 적어 두면
      옛 주소에 새 주소로 넘기는 작은 페이지(noindex·canonical)를 남긴다.
   4. index.html / cases.html 의 카드(정적 목록 + JS 렌더링)에 개별 페이지 링크를 넣고,
      메인 <title>·JSON-LD(@id, sameAs)를 보강하고, <html lang="ko">를 넣는다.
-  5. 전체 URL이 든 sitemap.xml 을 만든다.
+  5. 전체 URL이 든 sitemap.xml 을 만든다(lastmod 는 페이지마다 실제로 바뀐 날, 2026. 10. 23.).
 
   6. llms.txt / llms-full.txt 가 있으면 사례별 페이지 주소를 덧붙인다.
   7. 주제별 모아 보기 페이지 topics/*.html (참여제한·환수·제재부가금·집행정지·당사자소송)을 만들고
      메인의 국가연구개발 절과 cases.html 목록 위에 그 링크를 넣는다. 메인 <title>·설명·키워드도 TOPICS/NEW_* 상수대로 맞춘다.
 
-같은 폴더에 다시 돌려도 안전하다(이미 고친 곳은 건너뜀). 사례 데이터(index.html의 cases-data)를
-고친 뒤 이 스크립트를 다시 돌리면 모든 페이지·사이트맵·링크가 다시 만들어진다.
+같은 폴더에 다시 돌려도 안전하다(이미 고친 곳은 건너뜀). 사례 데이터(cases-data.js)를
+고친 뒤 ssr_cases.py → 이 스크립트를 다시 돌리면 모든 페이지·사이트맵·링크가 다시 만들어진다. 바닥글 서명 날짜도 빌드한 날로 맞춘다.
 """
 import glob
 import html
@@ -34,7 +34,7 @@ from datetime import date
 from urllib.parse import urlsplit, urlunsplit
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ssr_cases import load_details  # noqa: E402  (cases-detail.json: 사례별 상세 소개)
+from ssr_cases import load_details, load_cases  # noqa: E402  (cases-detail.json: 사례별 상세 소개 · cases-data.js: 사례 데이터, 2026. 10. 23.)
 from press_lib import load_press, press_by_case, kdate, check_press  # noqa: E402  (press.json: 언론보도, 2026. 10. 22.)
 
 PRESS_BY_CASE = {}   # main() 에서 채움: {사례 id: [기사, ...]}
@@ -666,7 +666,21 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 """
 
 
-def build_topic_page(t, matched, cat_counts):
+def build_topic_page(t, matched, cat_counts, site="."):
+    """내용이 바뀐 주제 페이지만 dateModified를 오늘로 한다(사례 페이지와 같은 방식, 2026. 10. 23.)."""
+    path = os.path.join(site, topic_href(t))
+    _, modified = dates_of(path)
+    html_old = render_topic_page(t, matched, cat_counts, modified)
+    try:
+        with open(path, encoding="utf-8") as f:
+            if f.read() == html_old:
+                return html_old
+    except OSError:
+        pass
+    return render_topic_page(t, matched, cat_counts, TODAY)
+
+
+def render_topic_page(t, matched, cat_counts, modified):
     url = topic_url(t)
     desc = t["lead"] + " " + first_sentence(t["intro"][0])
     if len(desc) > 165:
@@ -681,7 +695,7 @@ def build_topic_page(t, matched, cat_counts):
                 "name": t["h1"],
                 "description": desc,
                 "inLanguage": "ko",
-                "dateModified": TODAY,
+                "dateModified": modified,
                 "isPartOf": {"@type": "WebSite", "name": "변호사 부효준", "url": SITE + "/"},
                 "author": {"@type": "Person", "@id": SITE + "/#person", "name": "부효준", "jobTitle": "변호사", "url": SITE + "/"},
                 "hasPart": [{"@type": "Article", "@id": page_url(c) + "#article", "headline": c["title"], "url": page_url(c)} for c in matched],
@@ -957,7 +971,22 @@ def patch_index(doc, links):
     doc = link_static_cards(doc)
     doc = patch_js(doc)
     doc = patch_link_text(doc)
+    doc = stamp_sign_date(doc)
     return doc
+
+
+SIGN_DATE_RE = re.compile(r'(<time class="sign-date-time" id="sign-date" datetime=")\d{4}-\d{2}-\d{2}(" title="[^"]*">)\d{4}\. \d{1,2}\. \d{1,2}\.(</time>)')
+
+
+def kdate_dots(iso):
+    y, m, d = iso.split("-")
+    return "%s. %d. %d." % (y, int(m), int(d))
+
+
+def stamp_sign_date(doc):
+    """바닥글 서명 날짜(<time id="sign-date">)를 빌드한 날로 맞춘다(2026. 10. 23.). 페이지 JS가 서버의 Last-Modified 로 다시 맞추지만 정적 값도 최신으로.
+    (종전에는 '2026. 10. 14.'이 고정되어 구글이 페이지 날짜로 읽어 '8일 전'처럼 보였다.)"""
+    return SIGN_DATE_RE.sub(lambda m: m.group(1) + TODAY + m.group(2) + kdate_dots(TODAY) + m.group(3), doc, count=1)
 
 
 def patch_cases(doc, n_cases=None):
@@ -983,15 +1012,39 @@ def patch_cases(doc, n_cases=None):
     return doc
 
 
-def build_sitemap(cases):
+def git_lastmod(site, rel):
+    """파일의 마지막 변경일(YYYY-MM-DD): 작업 사본에 커밋되지 않은 변경이 있으면 오늘, 아니면 마지막 커밋 날짜. git을 못 쓰면 오늘."""
+    import subprocess
+    try:
+        st = subprocess.run(["git", "-C", site, "status", "--porcelain", "--", rel], capture_output=True, text=True, timeout=30)
+        if st.returncode != 0:
+            return TODAY
+        if st.stdout.strip():
+            return TODAY
+        lg = subprocess.run(["git", "-C", site, "log", "-1", "--format=%cs", "--", rel], capture_output=True, text=True, timeout=30)
+        d = lg.stdout.strip()
+        return d if re.match(r"^\d{4}-\d{2}-\d{2}$", d) else TODAY
+    except Exception:
+        return TODAY
+
+
+def page_modified(path):
+    """만들어진 페이지의 JSON-LD dateModified(내용이 바뀐 날만 갱신됨) — 사이트맵 lastmod 에 쓴다."""
+    _, m = dates_of(path)
+    return m
+
+
+def build_sitemap(cases, site="."):
+    """lastmod 는 페이지마다 실제로 바뀐 날(2026. 10. 23.): 홈·전체 사례 페이지는 git 의 마지막 변경일, 사례·주제 페이지는 그 페이지의 dateModified.
+    (종전처럼 매 빌드마다 모든 URL을 오늘 날짜로 적으면 검색엔진이 lastmod 를 믿지 않게 된다.)"""
     rows = [
-        (SITE + "/", TODAY, "weekly", "1.0"),
-        (SITE + "/cases.html", TODAY, "weekly", "0.9"),
+        (SITE + "/", git_lastmod(site, "index.html"), "weekly", "1.0"),
+        (SITE + "/cases.html", git_lastmod(site, "cases.html"), "weekly", "0.9"),
     ]
     for t in TOPICS:
-        rows.append((topic_url(t), TODAY, "weekly", "0.9"))
+        rows.append((topic_url(t), page_modified(os.path.join(site, topic_href(t))), "weekly", "0.9"))
     for c in cases:
-        rows.append((page_url(c), TODAY, "monthly", PRIORITY.get(c["cat"], "0.5")))
+        rows.append((page_url(c), page_modified(os.path.join(site, page_href(c))), "monthly", PRIORITY.get(c["cat"], "0.5")))
     body = "".join(
         "  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>\n" % (esc(u), lm, cf, pr)
         for u, lm, cf, pr in rows
@@ -1007,7 +1060,7 @@ def patch_llms(site, cases):
         line = "- 사례별 개별 페이지: 사례마다 https://lawyermrboo82.com/cases/<판결문 이미지 이름>.html 주소의 페이지가 있습니다(제목·요지·판결문 이미지·같은 분야 사례). 전체 목록은 https://lawyermrboo82.com/sitemap.xml 에 있습니다."
         changed = False
         if "사례별 개별 페이지" not in doc:
-            anchor = "- [수행 사례 전체 텍스트](https://lawyermrboo82.com/llms-full.txt)"
+            anchor = "](https://lawyermrboo82.com/llms-full.txt)"
             k = doc.find(anchor)
             if k >= 0:
                 e = doc.find("\n", k)
@@ -1024,8 +1077,8 @@ def patch_llms(site, cases):
     p = os.path.join(site, "llms-full.txt")
     if os.path.exists(p):
         doc = read(p)
-        if "- 페이지: https://lawyermrboo82.com/cases/" in doc:
-            return
+        if "- 페이지: https://lawyermrboo82.com/cases/" in doc or "## 분야별 전체 텍스트 파일" in doc:
+            return   # ssr_cases.py 가 이미 페이지 주소를 넣었거나(2026. 10. 23.부터 llms-full.txt 는 한 줄 목록 + 분야별 파일 안내) 할 일이 없다
         ordered = sorted(enumerate(cases), key=lambda t: ((t[1].get("sort") or ""), -t[0]), reverse=True)
         ordered = [c for _, c in ordered]
         blocks = re.split(r"(?m)^(?=### )", doc)
@@ -1051,7 +1104,7 @@ def main():
     site = sys.argv[1]
     index_path, cases_path = os.path.join(site, "index.html"), os.path.join(site, "cases.html")
     index_doc, cases_doc = read(index_path), read(cases_path)
-    cases = load_json_block(index_doc, "cases-data")
+    cases = load_cases(site)                   # cases-data.js (2026. 10. 23. index.html 의 #cases-data 블록에서 분리; ssr_cases.py 가 먼저 옮겨 둔다)
     links = load_json_block(index_doc, "links-data")
     details = load_details(site)
     press = load_press(site)   # 언론보도(press.json): 사례 페이지의 '이 사건의 언론보도' 칸과 JSON-LD citation
@@ -1073,7 +1126,12 @@ def main():
         by_cat.setdefault(c["cat"], []).append(c)
     cat_counts = {k: len(v) for k, v in by_cat.items()}
 
-    css = re.search(r"<style[^>]*>(.*?)</style>", cases_doc, re.S).group(1)
+    # 공용 CSS: cases.html 이 쓰는 cases.css(2026. 10. 23. 인라인 <style>에서 분리) + 개별 페이지용 규칙 → case.css
+    css_path = os.path.join(site, "cases.css")
+    if os.path.exists(css_path):
+        css = read(css_path)
+    else:
+        css = re.search(r"<style[^>]*>(.*?)</style>", cases_doc, re.S).group(1)
     write(os.path.join(site, "case.css"), css.strip() + "\n" + EXTRA_CSS)
 
     # 지워진 사례의 옛 페이지는 치운다 (work/redirects.json 에 적힌 옛 주소는 새 주소로 넘기는 작은 페이지를 둔다)
@@ -1100,11 +1158,11 @@ def main():
     recent = sorted(cases, key=lambda x: x.get("sort") or "", reverse=True)
     for t in TOPICS:
         matched = [c for c in recent if t in topics_of(c)]
-        write(os.path.join(site, topic_href(t)), build_topic_page(t, matched, cat_counts))
+        write(os.path.join(site, topic_href(t)), build_topic_page(t, matched, cat_counts, site))
 
     write(index_path, patch_index(index_doc, links))
     write(cases_path, patch_cases(cases_doc, len(cases)))
-    write(os.path.join(site, "sitemap.xml"), build_sitemap(cases))
+    write(os.path.join(site, "sitemap.xml"), build_sitemap(cases, site))
     patch_llms(site, cases)
     n_detail = sum(1 for c in cases if details.get(c["id"]))
     print("사례 페이지 %d건(상세 소개 %d건), 주제 페이지 %d건, sitemap %d URL, case.css, index.html, cases.html 갱신 → %s" % (len(cases), n_detail, len(TOPICS), len(cases) + len(TOPICS) + 2, site))

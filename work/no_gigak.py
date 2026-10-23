@@ -266,9 +266,7 @@ def main():
     site = sys.argv[1] if len(sys.argv) > 1 else "."
     dry = "--dry-run" in sys.argv
     check = "--check" in sys.argv
-    ip = os.path.join(site, "index.html")
-    idoc = S.read(ip)
-    cases, _ = S.load_json_block(idoc, "cases-data")
+    cases = S.load_cases(site)
     cat_of = {c["id"]: c["cat"] for c in cases}
     title_of = {c["id"]: c["title"] for c in cases}
     agency = {c["id"] for c in cases if is_agency(c)}
@@ -313,7 +311,7 @@ def main():
     if dry:
         print("(--dry-run: 파일은 바꾸지 않았습니다)")
         return
-    S.write(ip, S.replace_json_block(idoc, "cases-data", cases))
+    S.save_cases(site, cases)
     json.dump(details, open(dp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     rem = remaining(cases, details)
     print("남은 '기각'(원문 인용 제외): %d곳" % len(rem))

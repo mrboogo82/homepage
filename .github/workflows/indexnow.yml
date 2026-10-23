@@ -1,15 +1,22 @@
 name: IndexNow 색인 요청
 
-# 홈페이지가 바뀌어 main에 올라오면, 바뀐 페이지 주소를 IndexNow(네이버 서치어드바이저·Bing 등이 쓰는 즉시 색인 요청 규약)로 보냅니다.
-# 수동 실행(workflow_dispatch)에서 scope=all 을 고르면 sitemap.xml의 모든 주소를 보냅니다.
+# 바뀐 페이지 주소를 IndexNow(네이버 서치어드바이저·Bing 등이 쓰는 즉시 색인 요청 규약)로 보냅니다.
+#
+# 2026. 10. 23. 제출 주기 조정: 종전에는 main 에 push 할 때마다 홈·전체 사례 페이지를 다시 보내 하루에 수십 번 같은 주소를
+# 제출했습니다(IndexNow 는 같은 주소의 잦은 반복 제출을 권하지 않음). 지금은
+#   - push 때: 그 push 에서 새로 생긴 페이지(새 사례·주제 페이지)만 바로 보냅니다(새 주소는 빨리 알리는 것이 이득).
+#   - 매일 1회(02:10 UTC = 11:10 KST): 지난 하루 동안 바뀐 페이지(홈·전체 사례·사례·주제 페이지)를 한 번에 보냅니다.
+#   - 수동 실행(workflow_dispatch): scope=all 은 sitemap.xml 전체, scope=changed 는 지난 하루 변경분.
 
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "10 2 * * *"
   workflow_dispatch:
     inputs:
       scope:
-        description: "changed = 이번 변경분만, all = sitemap.xml 전체"
+        description: "changed = 지난 하루 변경분, all = sitemap.xml 전체"
         required: true
         default: "all"
         type: choice
@@ -17,6 +24,10 @@ on:
 
 permissions:
   contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
 
 jobs:
   submit:
@@ -26,9 +37,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 바뀐 페이지 주소 모으기
+      - name: 보낼 페이지 주소 모으기
         id: urls
         env:
+          EVENT: ${{ github.event_name }}
           SCOPE: ${{ github.event.inputs.scope || 'changed' }}
           BEFORE: ${{ github.event.before }}
           AFTER: ${{ github.sha }}
@@ -36,32 +48,59 @@ jobs:
           python3 - <<'EOF'
           import os, re, subprocess
           site = "https://lawyermrboo82.com"
+          event = os.environ.get("EVENT", "")
           scope = os.environ.get("SCOPE", "changed")
+
+          def to_url(f):
+              return site + "/" if f == "index.html" else f"{site}/{f}"
+
+          def page_files(files):
+              # 색인 대상 페이지만(404·통계·작업 폴더 제외; 주소 이동용 작은 페이지(noindex)도 제외)
+              out = []
+              for f in files:
+                  if not f.endswith(".html") or f in ("404.html", "stats.html") or f.startswith("work/"):
+                      continue
+                  if f.startswith("cases/") and os.path.exists(f):
+                      try:
+                          with open(f, encoding="utf-8") as fh:
+                              if 'name="robots" content="noindex"' in fh.read(2000):
+                                  continue
+                      except OSError:
+                          pass
+                  out.append(f)
+              return out
+
+          def git_files(args):
+              try:
+                  return subprocess.check_output(["git"] + args, text=True).split()
+              except subprocess.CalledProcessError:
+                  return []
+
           urls = []
-          if scope == "all":
+          if event == "workflow_dispatch" and scope == "all":
               xml = open("sitemap.xml", encoding="utf-8").read()
               urls = re.findall(r"<loc>(.*?)</loc>", xml)
-          else:
+          elif event == "push":
+              # 이 push 에서 새로 생긴 페이지만
               before, after = os.environ.get("BEFORE", ""), os.environ.get("AFTER", "HEAD")
               rng = f"{before}..{after}" if before and not before.startswith("0000000") else "HEAD~1..HEAD"
-              try:
-                  files = subprocess.check_output(["git", "diff", "--name-only", rng], text=True).split()
-              except subprocess.CalledProcessError:
-                  files = subprocess.check_output(["git", "diff", "--name-only", "HEAD~1..HEAD"], text=True).split()
-              seen = set()
-              for f in files:
-                  if not f.endswith(".html") or f == "404.html" or f.startswith("work/"):
-                      continue
-                  u = site + "/" if f == "index.html" else f"{site}/{f}"
-                  if u not in seen:
-                      seen.add(u); urls.append(u)
-              if any(f.startswith(("cases/", "topics/")) or f in ("index.html", "cases.html") for f in files):
-                  for u in (site + "/", site + "/cases.html"):
-                      if u not in seen:
-                          seen.add(u); urls.append(u)
+              files = git_files(["diff", "--name-only", "--diff-filter=A", rng]) or git_files(["diff", "--name-only", "--diff-filter=A", "HEAD~1..HEAD"])
+              urls = [to_url(f) for f in page_files(files)]
+          else:
+              # 매일 1회: 지난 25시간 동안 바뀐(새로 생기거나 고쳐진) 페이지
+              files = git_files(["log", "--since=25 hours ago", "--name-only", "--diff-filter=AM", "--format="])
+              seen = []
+              for f in page_files(files):
+                  if f not in seen and os.path.exists(f):
+                      seen.append(f)
+              urls = [to_url(f) for f in seen]
+          seen = set()
+          urls = [u for u in urls if not (u in seen or seen.add(u))]
           with open("urls.txt", "w", encoding="utf-8") as fh:
               fh.write("\n".join(urls))
-          print(f"{len(urls)} URL(s)")
+          print(f"{event}/{scope}: {len(urls)} URL(s)")
+          for u in urls[:20]:
+              print("  ", u)
           with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
               fh.write(f"count={len(urls)}\n")
           EOF
@@ -74,7 +113,7 @@ jobs:
         if: steps.urls.outputs.count != '0'
         run: |
           python3 - <<'EOF'
-          import json, urllib.request, urllib.error
+          import json, os, urllib.request, urllib.error
           key = "e853749efb6103763ecfc33529bf8f2c"
           urls = [u for u in open("urls.txt", encoding="utf-8").read().split("\n") if u.strip()]
           body = json.dumps({
@@ -95,9 +134,12 @@ jobs:
               except Exception as e:
                   print(ep, "-> error", e)
           # 실행 결과를 요약 탭에도 남김 (로그를 못 볼 때를 위해)
-          import os
           with open(os.environ.get("GITHUB_STEP_SUMMARY", "/dev/null"), "a", encoding="utf-8") as fh:
               fh.write(f"IndexNow: {len(urls)} URL(s) → accepted by {ok or 'none'}\n")
           if not ok:
               raise SystemExit("IndexNow 제출 실패: 어느 엔드포인트도 200/202를 돌려주지 않았습니다")
           EOF
+
+      - name: 보낼 주소가 없음
+        if: steps.urls.outputs.count == '0'
+        run: echo "이번에는 보낼 페이지가 없습니다(새 페이지 없음 / 지난 하루 변경 없음)." >> "$GITHUB_STEP_SUMMARY"

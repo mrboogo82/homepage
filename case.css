@@ -1,3 +1,6 @@
+/* 변호사 부효준 홈페이지 — 주요 수행 사례 전체(cases.html) 스타일.
+   2026. 10. 23. cases.html 의 인라인 <style>(약 5만 자)을 이 파일로 옮김. build_cases.py 가 이 파일에 개별 페이지용 규칙(EXTRA_CSS)을 덧붙여 case.css 를 만든다
+   (사례·주제 페이지가 씀). 홈(index.html)은 home.css. */
 /* Layout: a client-first brief for people and companies facing an administrative disposition.
    A dark opening screen carries the three statutory deadlines; the body reads like a signed legal document
    (left-margin section titles, paper and ink, crimson (고려대학교 크림슨) for emphasis) and closes with a signature block.

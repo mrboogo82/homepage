@@ -6,7 +6,7 @@
 press.json 의 items 항목:
   id · date(YYYY-MM-DD) · outlet(언론사) · title(기사 제목 그대로) · url ·
   kind: case(수행 사건 보도) / activity(토론회·위원회·강의 등 활동 보도) / mention(인사·합격자 명단 등 이름만 실린 기사) ·
-  cases: 관련 사례 id 목록(index.html #cases-data) · home: 홈 '언론보도' 절에 보일지 · note: 한 줄 설명 · quote: 기사에 실린 본인 발언
+  cases: 관련 사례 id 목록(cases-data.js) · home: 홈 '언론보도' 절에 보일지 · note: 한 줄 설명 · quote: 기사에 실린 본인 발언
 
 ssr_cases.py(카드 표시·llms-full.txt), build_cases.py(사례 페이지의 '언론보도' 칸), build_press.py(홈 절)가 함께 쓴다.
 """

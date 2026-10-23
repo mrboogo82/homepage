@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-사례 데이터(index.html의 #cases-data)로부터 두 페이지의 정적 사례 목록, cases.html의 데이터 블록,
-llms.txt·llms-full.txt, 건수 문구를 다시 만든다. build_cases.py 보다 먼저 돌린다.
+사례 데이터(cases-data.js — 2026. 10. 23. index.html의 #cases-data 블록에서 분리)로부터 두 페이지의 정적 사례 목록,
+홈의 접힌 전체 목록, llms.txt·llms-full.txt(와 분야별 파일), 건수 문구를 다시 만든다. build_cases.py 보다 먼저 돌린다.
 
 사용법 (저장소 최상위에서):
     python3 work/ssr_cases.py .          # 갱신
@@ -15,7 +15,18 @@ llms.txt·llms-full.txt, 건수 문구를 다시 만든다. build_cases.py 보�
   - 제목·'자세히 →' 링크는 cases/<첫 이미지 이름>.html (build_cases.py의 page_href 와 같음).
   - 2026. 10. 21. 본인 지시: 카드에는 '판결문 N장' 수를 적지 않고, 요지는 두 줄로 접되 '더 보기' 단추 없이
     '자세히 →' 링크 하나만 둔다(자세히 보려는 사람은 한 번만 누르면 개별 페이지로).
+
+데이터 파일(2026. 10. 23.): 사례 데이터 원본은 저장소 최상위의 cases-data.js 한 파일이다
+  ("window.CASES_DATA = [...];" — 두 페이지가 <script src="cases-data.js?v=해시"> 로 읽고, 파이썬은 load_cases()/save_cases() 로 읽고 쓴다).
+  종전처럼 index.html·cases.html 안에 22만 자 JSON을 두면 검색 로봇·AI 읽기 도구가 받는 HTML이 너무 커지므로 밖으로 뺐다.
+  옛 인라인 블록이 남아 있으면 이 스크립트가 한 번 읽어 파일로 옮기고 블록을 지운다.
+홈의 접힌 전체 목록(2026. 10. 23.): 주요 수행 사례 절 끝의 <details class="all-list">(<!-- all-list:start --> … <!-- all-list:end -->)에
+  전체 사례의 제목·분야·법원·날짜·결과·개별 페이지 링크를 한 줄씩 넣는다. 사람에게는 접혀 보이고, 홈만 읽는 검색 로봇·AI는 전체 사례를 알 수 있다.
+llms(2026. 10. 23.): llms-full.txt 한 파일(2.2MB)은 AI 읽기 도구의 한도를 넘으므로, llms-full.txt 는 '분야별 파일 안내 + 사례 한 줄 목록'으로,
+  사례마다의 전체 텍스트는 분야별 llms-full-<분야>-<번호>.txt (각 LLMS_PART_MAX 바이트 이하)로 나눈다.
 """
+import glob
+import hashlib
 import html
 import json
 import os
@@ -64,6 +75,60 @@ def load_json_block(doc, block_id):
     if not m:
         raise SystemExit("데이터 블록을 찾지 못했습니다: #" + block_id)
     return json.loads(m.group(1)), m
+
+
+# ---------- 사례 데이터 파일 (cases-data.js, 2026. 10. 23.) ----------
+
+DATA_FILE = "cases-data.js"
+DATA_PREFIX = "window.CASES_DATA = "
+DATA_TAG_RE = re.compile(r'<script src="cases-data\.js(?:\?v=[0-9a-f]+)?"></script>')
+INLINE_DATA_RE = re.compile(r'[ \t]*<script type="application/json" id="cases-data">.*?</script>[ \t]*\n?', re.S)
+
+
+def dumps_cases(cases):
+    return json.dumps(cases, ensure_ascii=False, indent=1)
+
+
+def data_version(cases):
+    """데이터가 바뀌면 바뀌는 짧은 해시 — 두 페이지의 <script src="cases-data.js?v=…"> 에 붙여 캐시를 새로 받게 한다."""
+    return hashlib.sha1(dumps_cases(cases).encode("utf-8")).hexdigest()[:8]
+
+
+def data_tag(cases):
+    return '<script src="%s?v=%s"></script>' % (DATA_FILE, data_version(cases))
+
+
+def load_cases(site):
+    """사례 데이터 원본을 읽는다: cases-data.js. (이행 전 파일이 없으면 index.html 의 옛 #cases-data 블록을 읽는다.)"""
+    p = os.path.join(site, DATA_FILE)
+    if os.path.exists(p):
+        txt = read(p)
+        k = txt.find(DATA_PREFIX)
+        if k < 0:
+            raise SystemExit("%s 에 '%s' 가 없습니다" % (DATA_FILE, DATA_PREFIX.strip()))
+        body = txt[k + len(DATA_PREFIX):].strip()
+        if body.endswith(";"):
+            body = body[:-1].rstrip()
+        return json.loads(body)
+    doc = read(os.path.join(site, "index.html"))
+    cases, _ = load_json_block(doc, "cases-data")
+    return cases
+
+
+def save_cases(site, cases):
+    write(os.path.join(site, DATA_FILE), DATA_PREFIX + dumps_cases(cases) + ";\n")
+
+
+def set_data_tag(doc, cases):
+    """페이지에서 옛 인라인 데이터 블록을 없애고(있으면 그 자리에), 외부 데이터 파일 태그의 버전(v=)을 지금 데이터에 맞춘다."""
+    tag = data_tag(cases)
+    m = INLINE_DATA_RE.search(doc)
+    if m:
+        indent = re.match(r"[ \t]*", m.group(0)).group(0)
+        doc = doc[: m.start()] + indent + tag + "\n" + doc[m.end():]
+    if not DATA_TAG_RE.search(doc):
+        raise SystemExit("데이터 파일 태그(<script src=\"cases-data.js\">)를 찾지 못했습니다")
+    return DATA_TAG_RE.sub(tag, doc, count=1)
 
 
 def images_of(c):
@@ -199,11 +264,145 @@ def count_text(doc, n):
     return doc
 
 
+# ---------- 홈의 접힌 전체 목록 (2026. 10. 23.) ----------
+
+ALL_LIST_RE = re.compile(r"<!-- all-list:start -->.*?<!-- all-list:end -->", re.S)
+MORE_P_RE = re.compile(r'<p class="more"><a class="btn ghost" id="all-cases" href="cases.html">[^<]*</a></p>')
+
+
+def line_meta(c):
+    """한 줄 목록의 설명: 분야 · 법원·사건번호 · 결정 시기 · 결과."""
+    meta = [CATS.get(c["cat"], c["cat"])]
+    for key in ("court", "date", "result"):
+        if c.get(key):
+            meta.append(c[key])
+    return " · ".join(meta)
+
+
+def render_all_list(cases):
+    lst = ordered(cases)
+    n = len(lst)
+    out = [
+        "<!-- all-list:start -->",
+        '<details class="all-list" id="all-list">',
+        '  <summary><span class="when-closed">주요 수행 사례 전체 목록 %d건 펼쳐 보기 — 제목만 한 줄씩</span><span class="when-open">전체 목록 접기</span></summary>' % n,
+        '  <p class="all-list-note">최근 결정일 순입니다. 제목을 누르면 판결문과 사건 소개가 있는 개별 페이지가 열립니다. '
+        '분야별로 보거나 단어로 찾으려면 <a href="cases.html">주요 수행 사례 전체 보기</a>를 이용해 주십시오.</p>',
+        '  <ol class="all-list-body">',
+    ]
+    for c in lst:
+        out.append('    <li><a href="%s">%s</a> <span class="m">%s</span></li>' % (page_href(c), esc(c["title"]), esc(line_meta(c))))
+    out += ["  </ol>", "</details>", "<!-- all-list:end -->"]
+    return "\n".join(out)
+
+
+def replace_all_list(doc, body):
+    """홈의 전체 목록을 바꾼다. 표시가 없으면 '주요 수행 사례 전체 보기' 단추 줄 다음에 새로 넣는다."""
+    if ALL_LIST_RE.search(doc):
+        return ALL_LIST_RE.sub(lambda m: body, doc, count=1)
+    m = MORE_P_RE.search(doc)
+    if not m:
+        raise SystemExit("홈의 '주요 수행 사례 전체 보기' 단추 줄을 찾지 못했습니다(전체 목록을 넣을 자리)")
+    return doc[: m.end()] + "\n" + body + doc[m.end():]   # 정적 사례 목록(<li>)처럼 들여쓰기 없이(다시 만들 때와 같은 꼴)
+
+
+def current_all_list(doc):
+    m = ALL_LIST_RE.search(doc)
+    return m.group(0) if m else None
+
+
 # ---------- llms ----------
 
-def llms_full(cases, intro_from=None, details=None, press=None):
+LLMS_PART_MAX = 300_000   # 분야별 전체 텍스트 파일 한 개의 최대 크기(바이트) — AI 읽기 도구가 한 번에 읽을 수 있는 정도로
+
+
+def llms_entry(c, details, by_press):
+    """사례 하나의 전체 텍스트 블록('### 제목' 부터 빈 줄까지)."""
+    ims = images_of(c)
+    lines = ["### " + c["title"]]
+    meta = [CATS.get(c["cat"], c["cat"])]
+    if c.get("date"):
+        meta.append("결정 " + c["date"])
+    if c.get("result"):
+        meta.append("결과: " + c["result"])
+    lines.append("- " + " · ".join(meta))
+    parts = [p for p in [c.get("court"), c.get("party")] if p]
+    if parts:
+        lines.append("- " + " · ".join(parts))
+    lines.append("- %s · 판결문 공개" % WHO if ims else "- " + WHO)
+    if c.get("summary"):
+        lines.append("- 요지: " + c["summary"])
+    d = details.get(c["id"]) or {}
+    if d.get("overview"):
+        lines.append("- 사건 개요: " + " ".join(d["overview"]))
+    if d.get("issues"):
+        lines.append("- 쟁점: " + " / ".join(d["issues"]))
+    if d.get("claims"):
+        lines.append("- %s: " % (d.get("claims_label") or "상대방의 주장") + " / ".join(d["claims"]))
+    if d.get("argument"):
+        lines.append("- %s: " % (d.get("argument_label") or "부효준 변호사의 주장") + " / ".join(d["argument"]))
+    if d.get("holding"):
+        lines.append("- %s: " % (d.get("holding_label") or "법원의 판단") + " ".join(d["holding"]))
+    for q in d.get("quotes") or []:
+        if q.get("text"):
+            lines.append("- 판결 이유 가운데: \"%s\"%s" % (q["text"], (" (%s)" % q["from"]) if q.get("from") else ""))
+    if d.get("meaning"):
+        lines.append("- 이 사건의 의미: " + " ".join(d["meaning"]))
+    if d.get("laws"):
+        lines.append("- 관련 법령: " + " · ".join(d["laws"]))
+    if d.get("keywords"):
+        lines.append("- 검색어: " + ", ".join(d["keywords"]))
+    if d.get("blog"):
+        lines.append("- 네이버 블로그 소개 글: " + d["blog"])
+    if d.get("instagram"):
+        lines.append("- 인스타그램 소개 글: " + d["instagram"])
+    for p in by_press.get(c["id"]) or []:   # 언론보도(press.json, 2026. 10. 22.)
+        lines.append("- 언론보도: %s %s 「%s」%s %s" % (p.get("outlet") or "", kdate(p.get("date") or ""), p["title"],
+                                                 (" — " + p["note"]) if p.get("note") else "", p["url"]))
+    lines.append("- 페이지: %s/%s" % (SITE, page_href(c)))
+    lines.append("")
+    return "\n".join(lines) + "\n"
+
+
+def llms_part_name(cat, k):
+    return "llms-full-%s-%d.txt" % (cat, k)
+
+
+def llms_parts(cases, details=None, press=None):
+    """분야별 전체 텍스트 파일 {파일 이름: 내용}. 한 분야가 LLMS_PART_MAX 를 넘으면 -1, -2… 로 나눈다(최근 순)."""
     details = details or {}
     by_press = press_by_case(press or [])
+    files = {}
+    for cat, name in CATS.items():
+        entries = [llms_entry(c, details, by_press) for c in ordered(cases, (cat,))]
+        if not entries:
+            continue
+        chunks, cur, size = [], [], 0
+        for e in entries:
+            b = len(e.encode("utf-8"))
+            if cur and size + b > LLMS_PART_MAX:
+                chunks.append(cur)
+                cur, size = [], 0
+            cur.append(e)
+            size += b
+        if cur:
+            chunks.append(cur)
+        for k, chunk in enumerate(chunks, 1):
+            head = [
+                "# 변호사 부효준 — 주요 수행 사례 전체 텍스트: %s (%d/%d)" % (name, k, len(chunks)),
+                "",
+                "> 변호사 부효준(법무법인(유한) 금성, https://lawyermrboo82.com/)이 담당변호사로 직접 수행한 '%s' 분야 사례 %d건의 전체 텍스트%s입니다. "
+                "사례마다 요지·사건 개요·쟁점·주장·법원의 판단·관련 법령과 개별 페이지 주소가 있습니다. "
+                "전체 사례의 한 줄 목록과 다른 분야의 파일은 https://lawyermrboo82.com/llms-full.txt 에, 홈페이지 안내는 https://lawyermrboo82.com/llms.txt 에 있습니다."
+                % (name, len(entries), " 가운데 %d번째 묶음(%d건)" % (k, len(chunk)) if len(chunks) > 1 else ""),
+                "",
+            ]
+            files[llms_part_name(cat, k)] = "\n".join(head) + "".join(chunk).rstrip("\n") + "\n"
+    return files
+
+
+def llms_index(cases, intro_from, parts):
+    """llms-full.txt: 머리말 + 분야별 건수 + 분야별 전체 텍스트 파일 안내 + 사례 한 줄 목록(최근 순)."""
     n = len(cases)
     cat_counts = {}
     for c in cases:
@@ -214,51 +413,18 @@ def llms_full(cases, intro_from=None, details=None, press=None):
     lines = [head.rstrip("\n"), "", "## 분야별 건수"]
     for k, name in CATS.items():
         lines.append("- %s: %d건" % (name, cat_counts.get(k, 0)))
-    lines += ["", "## 수행 사례 (%d건, 최근 순)" % n, ""]
+    lines += ["", "## 분야별 전체 텍스트 파일",
+              "사례마다 요지·사건 개요·쟁점·주장·법원의 판단·관련 법령·검색어까지 담은 전체 텍스트는 분야별 파일(각 %dKB 이하)에 있습니다. "
+              "한 사례만 보려면 아래 한 줄 목록의 개별 페이지 주소를 여는 것이 가장 빠릅니다." % (LLMS_PART_MAX // 1000)]
+    for cat, name in CATS.items():
+        names = sorted(f for f in parts if f.startswith("llms-full-%s-" % cat))
+        if not names:
+            continue
+        lines.append("- %s (%d건): %s" % (name, cat_counts.get(cat, 0), " · ".join("%s/%s" % (SITE, f) for f in names)))
+    lines += ["", "## 수행 사례 한 줄 목록 (%d건, 최근 순)" % n,
+              "형식: [제목](개별 페이지 주소) — 분야 · 법원·사건번호 · 결정 시기 · 결과. 모두 %s가 담당변호사로 직접 수행한 사건입니다." % WHO.replace("담당변호사 ", "변호사 "), ""]
     for c in ordered(cases):
-        ims = images_of(c)
-        lines.append("### " + c["title"])
-        meta = [CATS.get(c["cat"], c["cat"])]
-        if c.get("date"):
-            meta.append("결정 " + c["date"])
-        if c.get("result"):
-            meta.append("결과: " + c["result"])
-        lines.append("- " + " · ".join(meta))
-        parts = [p for p in [c.get("court"), c.get("party")] if p]
-        if parts:
-            lines.append("- " + " · ".join(parts))
-        lines.append("- %s · 판결문 공개" % WHO if ims else "- " + WHO)
-        if c.get("summary"):
-            lines.append("- 요지: " + c["summary"])
-        d = details.get(c["id"]) or {}
-        if d.get("overview"):
-            lines.append("- 사건 개요: " + " ".join(d["overview"]))
-        if d.get("issues"):
-            lines.append("- 쟁점: " + " / ".join(d["issues"]))
-        if d.get("claims"):
-            lines.append("- %s: " % (d.get("claims_label") or "상대방의 주장") + " / ".join(d["claims"]))
-        if d.get("argument"):
-            lines.append("- %s: " % (d.get("argument_label") or "부효준 변호사의 주장") + " / ".join(d["argument"]))
-        if d.get("holding"):
-            lines.append("- %s: " % (d.get("holding_label") or "법원의 판단") + " ".join(d["holding"]))
-        for q in d.get("quotes") or []:
-            if q.get("text"):
-                lines.append("- 판결 이유 가운데: \"%s\"%s" % (q["text"], (" (%s)" % q["from"]) if q.get("from") else ""))
-        if d.get("meaning"):
-            lines.append("- 이 사건의 의미: " + " ".join(d["meaning"]))
-        if d.get("laws"):
-            lines.append("- 관련 법령: " + " · ".join(d["laws"]))
-        if d.get("keywords"):
-            lines.append("- 검색어: " + ", ".join(d["keywords"]))
-        if d.get("blog"):
-            lines.append("- 네이버 블로그 소개 글: " + d["blog"])
-        if d.get("instagram"):
-            lines.append("- 인스타그램 소개 글: " + d["instagram"])
-        for p in by_press.get(c["id"]) or []:   # 언론보도(press.json, 2026. 10. 22.)
-            lines.append("- 언론보도: %s %s 「%s」%s %s" % (p.get("outlet") or "", kdate(p.get("date") or ""), p["title"],
-                                                     (" — " + p["note"]) if p.get("note") else "", p["url"]))
-        lines.append("- 페이지: %s/%s" % (SITE, page_href(c)))
-        lines.append("")
+        lines.append("- [%s](%s/%s) — %s" % (c["title"], SITE, page_href(c), line_meta(c)))
     return "\n".join(lines).rstrip("\n") + "\n"
 
 
@@ -274,16 +440,17 @@ def main():
     site = args[0] if args else "."
     ip, cp = os.path.join(site, "index.html"), os.path.join(site, "cases.html")
     idoc, cdoc = read(ip), read(cp)
-    cases, _ = load_json_block(idoc, "cases-data")
+    cases = load_cases(site)                   # cases-data.js (없으면 index.html 의 옛 블록에서 읽어 아래에서 파일로 옮긴다)
     n = len(cases)
     details = load_details(site)
-    press = load_press(site)                   # 언론보도(press.json): 카드의 '언론보도' 표시(pr)와 llms-full.txt 줄에 쓰임
-    cases_kw = with_keywords(cases, details, press)   # 두 페이지의 데이터 블록에 검색어(kw)·언론보도 건수(pr)를 더한다(단어로 찾기에 쓰임)
+    press = load_press(site)                   # 언론보도(press.json): 카드의 '언론보도' 표시(pr)와 llms 줄에 쓰임
+    cases_kw = with_keywords(cases, details, press)   # 데이터 파일에 검색어(kw)·언론보도 건수(pr)를 더한다(단어로 찾기에 쓰임)
 
     home = render_list(cases_kw, MAIN, RECENT)
     full = render_list(cases_kw)
-    new_idoc = count_text(replace_json_block(replace_list(idoc, home), "cases-data", cases_kw), n)
-    new_cdoc = count_text(replace_json_block(replace_list(cdoc, full), "cases-data", cases_kw), n)
+    all_list = render_all_list(cases_kw)
+    new_idoc = count_text(replace_all_list(set_data_tag(replace_list(idoc, home), cases_kw), all_list), n)
+    new_cdoc = count_text(set_data_tag(replace_list(cdoc, full), cases_kw), n)
 
     lp, fp = os.path.join(site, "llms.txt"), os.path.join(site, "llms-full.txt")
     new_llms = None
@@ -293,7 +460,9 @@ def main():
         d = re.sub(r"사건 \d+건, 최근 결정일 순", "사건 %d건, 최근 결정일 순" % n, d)
         d = re.sub(r"\d+건의 제목·분야", "%d건의 제목·분야" % n, d)
         new_llms = d
-    new_full = llms_full(cases, llms_head(read(fp)), details, press) if os.path.exists(fp) else None
+    parts = llms_parts(cases, details, press) if os.path.exists(fp) else {}
+    new_full = llms_index(cases, llms_head(read(fp)), parts) if os.path.exists(fp) else None
+    stale_parts = [p for p in glob.glob(os.path.join(site, "llms-full-*.txt")) if os.path.basename(p) not in parts]
 
     if check:
         ok = True
@@ -301,23 +470,41 @@ def main():
             print("index.html 정적 목록이 데이터와 다릅니다"); ok = False
         if current_list(cdoc) != full:
             print("cases.html 정적 목록이 데이터와 다릅니다"); ok = False
-        cj, _ = load_json_block(cdoc, "cases-data")
-        if cj != cases_kw:
-            print("cases.html 데이터 블록이 index.html과 다릅니다"); ok = False
+        if current_all_list(idoc) != all_list:
+            print("index.html 접힌 전체 목록이 데이터와 다릅니다"); ok = False
         if cases != cases_kw:
-            print("index.html 데이터 블록의 검색어(kw)·언론보도 건수(pr)가 cases-detail.json·press.json과 다릅니다"); ok = False
+            print("cases-data.js 의 검색어(kw)·언론보도 건수(pr)가 cases-detail.json·press.json과 다릅니다"); ok = False
+        if not os.path.exists(os.path.join(site, DATA_FILE)):
+            print("데이터 파일 %s 가 없습니다(옛 인라인 블록 상태)" % DATA_FILE); ok = False
+        for p, d in ((ip, idoc), (cp, cdoc)):
+            if INLINE_DATA_RE.search(d):
+                print("%s 에 옛 인라인 데이터 블록이 남아 있습니다" % os.path.basename(p)); ok = False
+            if not DATA_TAG_RE.search(d) or data_tag(cases_kw) not in d:
+                print("%s 의 데이터 파일 태그(버전)가 데이터와 다릅니다" % os.path.basename(p)); ok = False
         if new_full is not None and read(fp) != new_full:
             print("llms-full.txt가 데이터와 다릅니다"); ok = False
+        for name, text in parts.items():
+            p = os.path.join(site, name)
+            if not os.path.exists(p) or read(p) != text:
+                print("%s 가 데이터와 다릅니다(또는 없음)" % name); ok = False
+        if stale_parts:
+            print("데이터에 없는 분야별 파일이 남아 있습니다: %s" % ", ".join(os.path.basename(p) for p in stale_parts)); ok = False
         print("일치" if ok else "불일치")
         sys.exit(0 if ok else 1)
 
+    save_cases(site, cases_kw)
     write(ip, new_idoc)
     write(cp, new_cdoc)
     if new_llms is not None:
         write(lp, new_llms)
     if new_full is not None:
         write(fp, new_full)
-    print("사례 %d건: index.html(홈 %d건)·cases.html·llms.txt·llms-full.txt 갱신" % (n, min(RECENT, len(ordered(cases, MAIN)))))
+        for name, text in parts.items():
+            write(os.path.join(site, name), text)
+        for p in stale_parts:
+            os.remove(p)
+    print("사례 %d건: cases-data.js·index.html(홈 %d건 + 접힌 전체 목록)·cases.html·llms.txt·llms-full.txt(분야별 파일 %d개) 갱신"
+          % (n, min(RECENT, len(ordered(cases, MAIN))), len(parts)))
 
 
 if __name__ == "__main__":

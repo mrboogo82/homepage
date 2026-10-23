@@ -1,0 +1,1370 @@
+/* 변호사 부효준 홈페이지 — 홈(index.html) 전용 스타일.
+   2026. 10. 23. index.html 의 인라인 <style>(약 7.8만 자)을 이 파일로 옮김: HTML 이 가벼워져 검색 로봇·AI 읽기 도구가 본문을 바로 읽는다.
+   cases.html 은 cases.css, 사례·주제 페이지는 case.css(= cases.css + build_cases.py 의 EXTRA_CSS)를 쓴다. */
+/* Layout: a client-first brief for people and companies facing an administrative disposition.
+   A dark opening screen carries the three statutory deadlines; the body reads like a signed legal document
+   (left-margin section titles, paper and ink, crimson (고려대학교 크림슨) for emphasis) and closes with a signature block.
+   The case board (주요 수행 사례) renders from the JSON block #cases-data (the ten most recent on the home page; cases.html lists all). */
+:root {
+  --paper: #fbfbf9;
+  --ink: #2d3239; /* 먹색: 첫 화면 바탕과 같은 연한 먹색(2026. 10. 20., 종전 #1a1d21) */
+  --ink-soft: #5c6167;
+  --rule: #dcdddb;
+  --wash: #f0f1ee;
+  --seal: #a21a2d; /* 고려대학교 크림슨(PANTONE 202C)을 화면용으로 채도를 높인 값 */
+  --seal-blend: multiply;
+  --seal-filter: none;
+  --hero-bg: #2d3239; /* 첫 화면 바탕: 너무 검다는 지적에 먹색을 연하게(2026. 10. 20., 종전 #171c23) */
+  --hero-fg: #f3f1ec;
+  --hero-soft: #b3b8c0;
+  --hero-line: #474d56;
+  --hero-dot: rgba(243, 241, 236, 0.09);
+  --hero-seal: #ec4b63; /* 어두운 바탕 위의 크림슨(전화 그림 등) */
+  --tile-edge: #dcdddb;
+
+  --serif: "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
+  --sans: "Noto Sans KR", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  /* 2026. 10. 21.: '부효준' 이름은 제목과 같은 노토 명조를 가장 굵은 900으로(머리글·첫 화면·바닥글 서명) — 글씨체 변수는 바꾸기 쉽게 따로 둠 */
+  --name: "Noto Serif KR", "Noto Serif CJK KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
+
+  --step--2: 0.8125rem;
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3125rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(2rem, 3.6vw, 3rem);
+  --display: clamp(1.9rem, 3.9vw, 3.4rem);
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1b1e22;
+    --ink: #e9e8e4;
+    --ink-soft: #a0a3a8;
+    --rule: #363940;
+    --wash: #24272c;
+    --seal: #ec4b63;
+    --seal-blend: normal;
+    --seal-filter: brightness(1.5) saturate(0.85); /* 어두운 바탕에서 인장이 묻히지 않도록 */
+    --hero-bg: #272c33;
+    --hero-line: #434a53;
+    --tile-edge: #44464a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #1b1e22;
+  --ink: #e9e8e4;
+  --ink-soft: #a0a3a8;
+  --rule: #363940;
+  --wash: #24272c;
+  --seal: #ec4b63;
+  --seal-blend: normal;
+  --seal-filter: brightness(1.5) saturate(0.85); /* 어두운 바탕에서 인장이 묻히지 않도록 */
+  --hero-bg: #272c33;
+  --hero-line: #434a53;
+  --tile-edge: #44464a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--step-0);
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 0.3em; }
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+p { margin: 0; text-wrap: pretty; }
+ul, ol, dl { margin: 0; padding: 0; }
+button { font: inherit; }
+img { max-width: 100%; }
+
+.page {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  padding-block: 0 2.5rem;
+}
+.nw { white-space: nowrap; }
+.eyebrow, .label {
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.ext::after { content: " ↗"; font-size: 0.85em; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--paper);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.ghost { color: var(--ink); background: none; }
+.btn.danger { color: var(--seal); background: none; border-color: var(--seal); }
+.btn.small { padding: 0.25rem 0.9rem; }
+
+/* ---------- header ----------
+   2026. 10. 16. (Version 69): 차림표를 더 눈에 띄게 — 글자를 키우고(--step-0) 먹색으로, 가리키거나 지금 보고 있는 절의 링크에는
+   크림슨색 글자와 2px 밑줄. 넓은 화면에서는 머리글이 위에 붙어 따라오므로(sticky) 어디서든 바로 다른 절로 갈 수 있다. */
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-inline: calc(-1 * var(--gutter));
+  padding: 0.9rem var(--gutter);
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.top.stuck { border-bottom-color: var(--rule); }
+
+.top nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.75rem; font-size: var(--step-0); font-weight: 500; }
+
+.top nav a { color: var(--ink); text-decoration: none; }
+
+.top nav a:not(.btn) { position: relative; padding: 0.3rem 0; }
+
+.top nav a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--seal); transform: scaleX(0); transform-origin: left; transition: transform 0.18s ease; }
+
+.top nav a:not(.btn):hover, .top nav a:not(.btn).current { color: var(--seal); }
+
+.top nav a:not(.btn):hover::after, .top nav a:not(.btn).current::after { transform: scaleX(1); }
+
+.top nav .btn { color: var(--paper); }
+
+.top nav .btn:hover { color: var(--paper); }
+
+@media (min-width: 761px) {
+  html { scroll-padding-top: 5rem; }
+}
+
+@media (max-width: 760px) {
+  .top { position: static; margin-inline: 0; padding: 1rem 0 0.4rem; border-bottom: 0; }
+  .top nav { gap: 0.1rem 1.25rem; font-size: 1rem; }
+}
+
+/* 2026. 10. 21.: 머리글의 이름을 차림표보다 한눈에 띄게 — '변호사'는 작은 고딕, '부효준'은 노토 명조 900으로 크게(1.5rem, 자간 띄움). */
+.brand { display: inline-flex; align-items: baseline; gap: 0.5rem; color: var(--ink); text-decoration: none; line-height: 1; }
+.brand-role { font-family: var(--sans); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); }
+.brand-name { font-family: var(--name); font-size: 1.5rem; font-weight: 900; letter-spacing: 0.06em; }
+.brand:hover .brand-name { color: var(--seal); }
+.top { gap: 0.5rem 1.25rem; }
+.top nav { gap: 0.25rem 1.5rem; }
+@media (max-width: 760px) { .brand-name { font-size: 1.375rem; } }
+
+/* ---------- opening screen ---------- */
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: end;
+  gap: 2rem clamp(2.5rem, 6vw, 5rem);
+  margin-inline: calc(-1 * var(--gutter));
+  padding: clamp(3rem, 7vw, 5.5rem) var(--gutter) 0;
+  overflow: hidden;
+  color: var(--hero-fg);
+  background-color: var(--hero-bg);
+  background-image: radial-gradient(var(--hero-dot) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  border-radius: 3px;
+}
+.hero .eyebrow { color: var(--hero-soft); }
+/* 2026. 10. 21.: 첫 화면 맨 위에 이름을 따로 크게 — 짧은 크림슨 줄 아래 '변호사'(작은 고딕) + '부효준'(노토 명조 900, 제목과 같은 크기 + 자간).
+   그 아래 분야 줄(.eyebrow)이 따라온다. (한자는 쓰지 않기로 함) */
+.hero-id { display: grid; gap: 0.7rem; }
+.hero-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; margin: 0; font-family: var(--name); line-height: 1; }
+.hero-name::before { content: ""; flex: 0 0 100%; width: 2.5rem; max-width: 2.5rem; height: 2px; margin-bottom: 1.1rem; background: var(--hero-seal); }
+.hero-name .role { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.16em; color: var(--hero-soft); }
+.hero-name strong { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: 0.07em; color: var(--hero-fg); } /* 제목(2.5rem)과 같은 크기 — 굵기·자간으로 구별 */
+.hero-copy { display: grid; gap: 1.5rem; align-content: center; min-width: 0; padding-bottom: clamp(3rem, 6vw, 4.5rem); }
+/* .portrait(오른쪽 누끼 인물 사진) 규칙은 2026. 10. 21. 낮에 사진을 없애면서 지움 — 오른쪽 사진은 아래 '첫 화면 배경 사진' 블록의 .hero::before */
+.hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem 1.5rem; margin-top: 0.25rem; padding-top: 1.25rem; border-top: 1px solid var(--hero-line); }
+.hero-stats div { min-width: 0; }
+.hero-stats .n { display: block; font-family: var(--serif); font-size: var(--step-1); font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.hero-stats .l { display: block; margin-top: 0.1rem; font-size: var(--step--2); line-height: 1.5; color: var(--hero-soft); }
+.headshot { display: block; width: 7.5rem; height: 7.5rem; margin-top: 0.75rem; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
+.hero h1 {
+  font-size: var(--display);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+.hero h1 em { font-style: normal; color: var(--hero-soft); }
+.hero .lead { max-width: 36rem; font-size: var(--step-0); color: var(--hero-fg); }
+.hero .lead b { font-weight: 500; }
+.cta { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.cta .btn { color: var(--hero-bg); background: var(--hero-fg); border-color: var(--hero-fg); padding: 0.6rem 1.4rem; }
+.cta .btn.ghost { color: var(--hero-fg); background: none; border-color: var(--hero-soft); }
+
+.deadlines {
+  align-self: center;
+  display: grid;
+  min-width: 0;
+  border-top: 1px solid var(--hero-line);
+}
+.deadlines dl { display: grid; }
+.deadlines-cap { padding-block: 0.7rem 0; font-size: var(--step--1); letter-spacing: 0.08em; color: var(--hero-soft); }
+.deadline {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 0.25rem 1.25rem;
+  align-items: baseline;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--hero-line);
+}
+.deadline .days {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.deadline .days small { font-size: 0.42em; font-weight: 500; margin-left: 0.15em; letter-spacing: 0; }
+.deadline .days.word { font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.2; }
+.deadline .what { font-size: var(--step-0); line-height: 1.55; }
+.deadline .what b { display: block; font-weight: 500; }
+.deadline .ref { grid-column: 2; font-size: var(--step--2); color: var(--hero-soft); }
+
+/* stats strip under the opening screen */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  padding-block: clamp(1.75rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--rule);
+}
+.stats div { min-width: 0; }
+.stats .n { display: block; font-family: var(--serif); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stats .l { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
+
+/* ---------- sections ---------- */
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  gap: 1.5rem clamp(2rem, 5vw, 4.5rem);
+  padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--rule);
+}
+.section.first { border-top: 0; }
+.section-head { display: grid; gap: 0.5rem; align-content: start; }
+.section-head h2 { font-size: var(--step-2); }
+.section-head p { font-size: var(--step--1); color: var(--ink-soft); }
+.section-body { display: grid; gap: 2.75rem; min-width: 0; }
+
+/* situations */
+.situations {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1rem;
+}
+.situation {
+  grid-column: span 2;
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  min-width: 0;
+}
+.situation svg { width: 2rem; height: 2rem; color: var(--seal); }
+.situation h3 { font-size: var(--step-1); }
+.situation p { font-size: 1rem; line-height: 1.75; }
+.situation .ref { margin-top: auto; padding-top: 0.5rem; font-size: var(--step--2); color: var(--ink-soft); }
+.situation .eg { font-size: var(--step--1); line-height: 1.65; color: var(--ink-soft); }
+.situation .eg b { font-weight: 500; color: var(--ink); }
+.situation a.more { font-size: var(--step--1); }
+.situation.wide { grid-column: span 4; }
+.situation.half { grid-column: span 3; }
+.situation .cols { display: grid; gap: 0.8rem; }
+.situation.wide .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem 2rem; }
+
+/* 경력 연표(dl.timeline)가 쓰는 바탕 규칙. 2026. 10. 21. '가장 많이 다루는 처분' 절(국가연구개발혁신법 제재처분 — 기한 타일·절차 단계·심의/소송/자문 표)을
+   없애면서 그 절만 쓰던 .focus·.due-tile·.angles·.step·.statute·.laws-line 규칙은 지웠다. 기한과 주제별 사례는 '다루는 사건'의 국가연구개발 카드로 옮김(.due-list). */
+.timeline { list-style: none; display: grid; }
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.numbers div { min-width: 0; }
+.numbers .n { display: block; font-family: var(--serif); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.numbers .l { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
+
+/* case board: image-first cards, like the certificate gallery */
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+  padding: 0.15rem 0.85rem;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.chip:hover { color: var(--ink); border-color: var(--ink-soft); }
+.chip[aria-selected="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.chip .n { margin-left: 0.4em; font-variant-numeric: tabular-nums; opacity: 0.75; }
+#record .chips { margin-bottom: 1.25rem; }
+.case-list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem 1rem; margin-top: 1.25rem; }
+.case { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; min-width: 0; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+.case-fig {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  padding: 0;
+  color: var(--ink-soft);
+  background: var(--wash);
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+}
+button.case-fig { cursor: zoom-in; }
+button.case-fig:hover img { opacity: 0.92; }
+.case-fig img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; object-position: 50% 0; }
+.case-fig.none { align-content: center; gap: 0.5rem; }
+.case-fig.none svg { width: 2.4rem; height: 2.4rem; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.7; }
+.case-fig.none span { font-family: var(--serif); font-size: var(--step--1); letter-spacing: 0.04em; }
+.case-body { display: grid; gap: 0.5rem; padding: 1rem 1.1rem 1.2rem; }
+.case-meta { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; align-items: baseline; font-size: var(--step--2); color: var(--ink-soft); }
+.case-meta .tag { letter-spacing: 0.06em; }
+.case-meta .date { font-variant-numeric: tabular-nums; }
+.case-title { font-size: 1.125rem; line-height: 1.45; }
+.case-sub { font-size: var(--step--2); line-height: 1.6; color: var(--ink-soft); }
+.case-sub b { font-weight: 700; color: var(--ink); }
+.case-summary { font-size: var(--step--1); line-height: 1.7; }
+.case-link { justify-self: start; font-size: var(--step--1); }
+.empty { padding-block: 1.5rem; font-size: var(--step--1); color: var(--ink-soft); border-block: 1px solid var(--rule); }
+
+/* 홈 주요 수행 사례의 장수 (2026. 10. 21.): 세 장씩 놓이는 넓은 화면은 아홉 장, 두 장씩 놓이는 화면(1000px 이하, 휴대전화 포함)은 여덟 장 —
+   줄이 비는 자리가 없게. JS는 아홉 장을 그리고, 두 장씩 놓이는 화면에서는 아홉째 장을 감춘다. */
+@media (max-width: 1000px) { .case-list > .case:nth-child(n+9) { display: none; } }
+
+/* faq — 2026. 10. 21. 글자(질문 1.3125→1.0625rem, 답 1→0.9375rem)와 줄 간격(1.8→1.6), 항목 사이(1.4→0.95rem)를 줄여 간결하게 */
+.faq { display: grid; }
+.faq > div {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.3rem 1rem;
+  padding-block: 0.95rem;
+  border-top: 1px solid var(--rule);
+}
+.faq > div:last-child { border-bottom: 1px solid var(--rule); }
+.faq dt { grid-column: 1 / -1; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 600; line-height: 1.35; }
+.faq dt::before { content: "Q"; font-family: var(--serif); color: var(--seal); }
+.faq dd { grid-column: 2; max-width: 44rem; font-size: 0.9375rem; line-height: 1.6; }
+.faq dd .ref { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
+
+/* practice areas */
+.areas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem clamp(1.5rem, 3vw, 2.5rem);
+}
+.area { display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.area h3 { font-size: var(--step-1); }
+.area p { font-size: 1rem; line-height: 1.75; }
+.laws { display: grid; gap: 0.2rem; margin-top: auto; padding-top: 0.5rem; font-size: var(--step--2); line-height: 1.6; }
+.laws ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.1rem 0.8rem; }
+
+/* letter */
+.letter-body {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 36rem;
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.95;
+}
+.letter-sign { padding-top: 0.5rem; text-align: right; font-weight: 700; }
+
+/* label / value rows */
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem clamp(2rem, 4vw, 3.5rem);
+}
+.pair > div { min-width: 0; }
+.pair h3 { font-size: var(--step-1); margin-bottom: 0.9rem; }
+.pair .gap-top { margin-top: 2.5rem; }
+.rows > div {
+  display: grid;
+  grid-template-columns: 7.25rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.8rem;
+  border-top: 1px solid var(--rule);
+}
+.rows > div:last-child { border-bottom: 1px solid var(--rule); }
+.rows.dates > div { grid-template-columns: 10.5rem minmax(0, 1fr); }
+.rows.tight > div { grid-template-columns: 5.5rem minmax(0, 1fr); }
+.rows dt { padding-top: 0.2em; font-size: var(--step--1); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.rows dd { min-width: 0; overflow-wrap: anywhere; }
+.rows dd .sub { display: block; font-size: var(--step--1); color: var(--ink-soft); }
+
+/* 언론보도 절(press.json → work/build_press.py, 2026. 10. 22.): 강의 목록과 같은 날짜 줄(dl.rows.dates)에 언론사·기사 제목(새 창)·한 줄 설명·관련 사례 링크, 활동 기사는 본인 발언을 크림슨 왼줄 인용으로 */
+.press-body { gap: 2rem; }
+/* 2026. 10. 22. 본인 지시: 언론보도는 가급적 작은 글씨로 → 2026. 10. 23. 본인 지시(홈페이지 간이화): 지금보다 절반으로 —
+   본문(17px)의 절반 수준인 기사 제목 11px(0.6875rem)·날짜·언론사·설명·인용 10px(0.625rem), 줄 간격·행 간격도 좁힘. 절 머리말 11px, 소제목 13px. */
+#press .section-head p { font-size: 0.6875rem; line-height: 1.6; }
+#press .block-h { font-size: 0.8125rem; margin-bottom: 0.4rem; }
+.press-body { gap: 1.25rem; }
+.press-list.rows.dates > div { grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.1rem 0.6rem; padding-block: 0.3rem; }
+.press-list dt { font-size: 0.625rem; padding-top: 0.1em; line-height: 1.5; }
+.press-list dd { display: grid; gap: 0.1rem; font-size: 0.6875rem; line-height: 1.5; }
+.press-list dd .sub { display: block; font-size: 0.625rem; line-height: 1.5; color: var(--ink-soft); }
+.press-list .outlet { font-weight: 700; color: var(--ink); margin-right: 0.35rem; font-size: 0.625rem; }
+.press-list .press-title { font-family: var(--serif); font-weight: 600; color: var(--ink); text-decoration: none; }
+.press-list .press-title:hover { text-decoration: underline; text-underline-offset: 0.15em; }
+.press-list .sub a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 0.15em; }
+.press-list .sub a:hover { color: var(--seal); }
+.press-list q { display: block; margin-top: 0.15rem; padding-left: 0.6rem; border-left: 2px solid var(--seal); font-size: 0.625rem; line-height: 1.5; color: var(--ink-soft); quotes: "“" "”"; }
+.press-note { margin-top: 0.45rem; font-size: 0.625rem; color: var(--ink-soft); }
+/* 2026. 10. 23. 낮 본인 지시: 수행 사건 보도 최근 3건만 펼쳐 보이고, 지난 사건 보도·토론회·위원회·강의 기사는 그 아래 details.press-more('더 보기 …' / 펼치면 '접기')에 접어 둠 */
+.press-more { margin-top: -0.4rem; }
+.press-more summary { cursor: pointer; font-family: var(--serif); font-size: 0.6875rem; font-weight: 600; color: var(--ink-soft); }
+.press-more summary:hover { color: var(--seal); }
+.press-more summary .when-open { display: none; }
+.press-more[open] summary { margin-bottom: 0.9rem; }
+.press-more[open] summary .when-closed { display: none; }
+.press-more[open] summary .when-open { display: inline; }
+.press-more .block + .block { margin-top: 1.25rem; }
+@media (max-width: 640px) { .press-list.rows.dates > div { grid-template-columns: minmax(0, 1fr); gap: 0.05rem; } .press-list dt { padding-top: 0; } }
+
+/* advisory wall */
+.wall {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.wall li {
+  display: grid;
+  gap: 0.3rem;
+  align-content: start;
+  min-height: 6.75rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+.wall .org { font-family: var(--serif); font-weight: 600; font-size: 1.0625rem; line-height: 1.4; }
+.wall .role { font-size: var(--step--2); color: var(--ink-soft); }
+.wall .since { margin-top: auto; padding-top: 0.4rem; font-size: var(--step--2); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.wall .stat { font-size: var(--step--2); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.past { margin-top: 1.5rem; font-size: var(--step--1); line-height: 1.75; color: var(--ink-soft); }
+.past b { font-weight: 500; color: var(--ink); margin-right: 0.5em; }
+
+/* advisory tiles (certificate-first) */
+.advisors { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem 1rem; }
+.adv { display: grid; gap: 0.6rem; align-content: start; min-width: 0; }
+.adv-fig {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  justify-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1.3;
+  padding: 0.4rem;
+  color: var(--ink-soft);
+  background: var(--wash);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+button.adv-fig { cursor: zoom-in; }
+button.adv-fig:hover { border-color: var(--ink-soft); }
+.adv-fig img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; }
+.adv-fig .count { position: absolute; right: 0.55rem; bottom: 0.55rem; padding: 0.1rem 0.55rem; font-size: var(--step--2); color: var(--paper); background: var(--ink); border-radius: 999px; }
+.adv-fig.none { gap: 0.5rem; }
+.adv-fig.none svg { width: 2.4rem; height: 2.4rem; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.7; }
+.adv-fig.none span { font-family: var(--serif); font-size: var(--step--1); letter-spacing: 0.04em; }
+.adv-body { display: grid; gap: 0.15rem; }
+.adv-body .org { font-family: var(--serif); font-weight: 600; font-size: 1.0625rem; line-height: 1.4; overflow-wrap: anywhere; }
+.adv-body .role, .adv-body .term { font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
+.adv-body .term { font-variant-numeric: tabular-nums; }
+/* 기관 로고 띠 (2026. 10. 21.): 위촉·위원회 타일마다 위촉장 그림 위에 작은 흰 띠를 붙이고 그 기관의 공식 로고를 작게 놓는다.
+   띠를 누르면 기관 누리집이 새 창으로 열리고, 위촉장 그림을 누르면 전처럼 위촉장이 크게 열린다.
+   띠는 어두운 화면에서도 흰색이라 로고의 지정색이 그대로 보인다. (2026. 10. 20.의 로고 벽은 위촉장 타일과 겹치고 로고가 커서 없앰) */
+.adv { gap: 0; }
+.adv-body { margin-top: 0.6rem; }
+.adv-logo {
+  display: flex; align-items: center; justify-content: center;
+  box-sizing: border-box; height: 2.4rem; padding: 0.25rem 0.6rem;
+  background: #fff; border: 1px solid var(--rule); border-bottom: 0; border-radius: 3px 3px 0 0;
+  text-decoration: none; transition: border-color 0.15s;
+}
+.adv-logo img { display: block; width: auto; max-width: 84%; height: 1.4rem; object-fit: contain; }
+.adv-logo.tall img { height: 1.9rem; }    /* 세로로 짜인 로고(서울시설공단) */
+.adv-logo.mid img { height: 1.6rem; }     /* 짧고 높은 로고(SR·TIPA) */
+.adv-logo:hover, .adv-logo:focus-visible { border-color: var(--ink-soft); }
+.adv-logo:hover img { opacity: 0.85; }
+.adv-logo:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.adv-logo + .adv-fig { border-top-left-radius: 0; border-top-right-radius: 0; }
+.adv-fig.none span { font-size: var(--step--2); }
+.past-grid .adv-body { margin-top: 0.4rem; }
+.past-grid .adv-logo { height: 1.7rem; padding: 0.2rem 0.4rem; }
+.past-grid .adv-logo img { height: 1rem; max-width: 88%; }
+.past-grid .adv-logo.tall img { height: 1.3rem; }
+.past-grid .adv-logo.mid img { height: 1.15rem; }
+/* 강의 목록·경력·학력·수상: 글줄 앞의 작은 로고 띠(2026. 10. 21. 경력·학력·수상에도 — 기관·학교 누리집 링크. 누리집이 없는 법률사무소 비앤케이는 span 띠) */
+.lec-logo { display: inline-flex; align-items: center; vertical-align: -0.35em; box-sizing: border-box; height: 1.6rem; margin-right: 0.55rem; padding: 0.15rem 0.45rem; background: #fff; border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; }
+.lec-logo img { display: block; width: auto; max-width: 8rem; height: 1.05rem; object-fit: contain; }
+.lec-logo.tall img { height: 1.3rem; }   /* 글자가 작은 로고(정부법무공단·비앤케이·법무법인 금성)는 띠 안에서 조금 크게 */
+a.lec-logo:hover { border-color: var(--ink-soft); }
+.lec-logo + .lec-logo { margin-left: -0.2rem; }   /* 한 줄에 로고가 둘(법무부·법률구조공단)이면 조금 붙여 */
+.timeline .lec-logo { height: 1.75rem; margin-right: 0.6rem; padding: 0.15rem 0.5rem; vertical-align: -0.4em; }
+.timeline .lec-logo img { height: 1.15rem; }
+.timeline .lec-logo.tall img { height: 1.45rem; }
+.past-wrap { display: grid; gap: 1rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+.past-wrap h3 { font-size: var(--step-1); }
+.past-wrap .past { margin-top: 0.25rem; }
+.past-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.more { margin-top: 1.5rem; }
+.sub-h { font-size: var(--step-1); margin-bottom: 1rem; }
+.award-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 1rem; }
+
+/* certificate gallery + lightbox */
+.gallery { display: grid; gap: 1rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
+.gallery-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 1rem; }
+.gallery-head h3 { font-size: var(--step-1); }
+.gallery-head p { font-size: var(--step--1); color: var(--ink-soft); }
+.certs { list-style: none; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.25rem 0.75rem; }
+.cert { display: grid; gap: 0.45rem; margin: 0; min-width: 0; }
+.cert button {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1.35;
+  padding: 0.35rem;
+  background: var(--wash);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  cursor: zoom-in;
+}
+.cert button:hover { border-color: var(--ink-soft); }
+.cert img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.cert figcaption { font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.cert figcaption b { display: block; font-weight: 500; color: var(--ink); overflow-wrap: anywhere; }
+.certs.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cert figcaption span { display: block; white-space: nowrap; }
+.lightbox {
+  width: min(96vw, 64rem);
+  max-height: 96vh;
+  padding: 0;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.lightbox::backdrop { background: rgba(0, 0, 0, 0.72); }
+.lb-inner { display: grid; grid-template-rows: minmax(0, 1fr) auto; max-height: 96vh; }
+.lb-scroll { min-height: 0; overflow: auto; overscroll-behavior: contain; background: var(--wash); }
+.lb-inner img { display: block; width: 100%; max-height: 82vh; object-fit: contain; background: var(--wash); }
+/* 세로로 긴 이미지(1면 아래에 주문 면을 이어 붙인 판결문)는 창 안에서 스크롤해 읽는다 */
+.lightbox.tall .lb-inner img { max-height: none; height: auto; object-fit: fill; }
+.lb-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.75rem 1rem; border-top: 1px solid var(--rule); }
+.lb-bar p { font-size: var(--step--1); color: var(--ink-soft); }
+.lb-bar p b { display: block; font-weight: 500; color: var(--ink); }
+.lb-btns { display: flex; gap: 0.5rem; }
+
+
+/* online accounts */
+.sns { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sns.icons { gap: 0.9rem 0.8rem; align-items: start; }
+/* The footer tile row holds four accounts to a row (eight accounts on two rows) on narrow screens, and all eight on
+   one row from 901px up, where the row spans the whole footer (2026. 10. 21.: 홈페이지 간이화 — 바닥글 SNS 8개를 PC에서 한 줄에).
+   The contact list (.large) keeps its own grid below. */
+.sns.icons:not(.large) { display: grid; grid-template-columns: repeat(4, minmax(0, 7rem)); justify-content: start; }
+@media (min-width: 901px) { .sns.icons:not(.large) { grid-template-columns: repeat(8, minmax(0, 7rem)); } }
+.sns.icons:not(.large) a { min-width: 0; }
+.sns.icons a span:not(.ico) { overflow-wrap: normal; }
+/* 넓은 화면: 7rem 열의 가운데에 놓인 첫 계정 상자(min-width 3.75rem)가 글 왼끝과 나란하도록 열 여백의 절반만큼 왼쪽으로 */
+@media (min-width: 761px) { .sns.icons:not(.large) { margin-left: calc(-1 * (7rem - 3.75rem) / 2); } }
+.sns.icons a {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  min-width: 3.75rem;
+  padding: 0;
+  font-size: var(--step--2);
+  line-height: 1.3;
+  color: var(--ink-soft);
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  border-radius: 6px;
+}
+/* Every account sits on the same 2.75rem tile. A service's own mark (.brand) fills the tile exactly as the
+   service draws it: never recoloured, reshaped or cropped. A black or white tile (.edge) only gets a hairline
+   outside the mark, so it does not melt into a ground of the same tone. */
+.sns.icons a .ico { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; }
+.sns.icons a .ico:not(.brand) { color: var(--ink); background: var(--wash); border: 1px solid var(--rule); border-radius: 18.75%; }
+.sns.icons a .ico:not(.brand) svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.sns.icons a .ico.brand svg { display: block; width: 100%; height: 100%; }
+.sns.icons a .ico.edge { border-radius: 18.75%; box-shadow: 0 0 0 1px var(--tile-edge); }
+.sns.icons a:hover .ico:not(.brand) { border-color: var(--ink-soft); background: var(--paper); }
+.sns.icons a:hover span:not(.ico) { color: var(--ink); text-decoration: underline; text-underline-offset: 0.15em; }
+.sns.icons a small { display: block; margin-left: 0; color: var(--ink-soft); font-size: 0.72rem; }
+.sns.icons.large { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(13rem, 100%), 1fr)); gap: 0.6rem 1rem; }
+.sns.icons.large a {
+  grid-template-columns: auto 1fr;
+  justify-items: start;
+  align-items: center;
+  column-gap: 0.7rem;
+  row-gap: 0;
+  min-width: 0;
+  text-align: left;
+  font-size: var(--step--1);
+  color: var(--ink);
+}
+.sns.icons.large a .ico { grid-row: 1 / 3; }
+.sns.icons.large a span:not(.ico):last-child { grid-row: 1 / 3; }
+.sns.icons.large a small { overflow-wrap: anywhere; }
+.hero .sns.icons a { color: var(--hero-soft); }
+.hero .sns.icons a:hover span:not(.ico) { color: var(--hero-fg); }
+.hero .sns.icons a:focus-visible { outline-color: var(--hero-fg); }
+.hero .sns.icons a .ico:not(.brand) { color: var(--hero-fg); background: rgba(243, 241, 236, 0.07); border-color: var(--hero-line); }
+.hero .sns.icons a .ico.edge { box-shadow: 0 0 0 1px rgba(243, 241, 236, 0.24); }
+.hero .sns.icons a:hover .ico:not(.brand) { background: rgba(243, 241, 236, 0.14); border-color: var(--hero-soft); }
+.sns a {
+  display: inline-block;
+  padding: 0.1rem 0.75rem;
+  font-size: var(--step--1);
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+}
+.sns a:hover { border-color: var(--ink-soft); }
+.sns a small { color: var(--ink-soft); margin-left: 0.3em; }
+
+/* contact */
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+.contact dd { font-variant-numeric: tabular-nums; }
+.copy {
+  margin-left: 0.6rem;
+  padding: 0.05rem 0.75rem;
+  font-size: var(--step--1);
+  color: var(--ink-soft);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  cursor: pointer;
+  vertical-align: 0.1em;
+}
+.copy:hover { color: var(--ink); border-color: var(--ink-soft); }
+.before { display: grid; gap: 0.8rem; padding: clamp(1.25rem, 3vw, 1.75rem); background: var(--wash); border-radius: 3px; }
+.before h3 { font-size: var(--step-1); }
+.before p { font-size: 1rem; line-height: 1.75; }
+
+/* online consultation form */
+.consult { position: relative; display: grid; gap: 0.9rem; padding: clamp(1.25rem, 3vw, 1.75rem); border: 1px solid var(--rule); border-radius: 3px; }
+.consult h3 { font-size: var(--step-1); }
+.consult .hint { font-size: var(--step--1); color: var(--ink-soft); }
+.consult .fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
+.consult .full { grid-column: 1 / -1; }
+.consult label { display: grid; gap: 0.3rem; font-size: var(--step--1); color: var(--ink-soft); }
+.consult label small { margin-left: 0.4em; opacity: 0.8; }
+.consult .req { color: var(--seal); font-weight: 500; }
+.consult input, .consult select, .consult textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+.consult textarea { min-height: 9rem; resize: vertical; }
+.consult input[type="file"] { padding: 0.4rem; font-size: var(--step--1); }
+.consult .consent { display: grid; gap: 0.5rem; font-size: var(--step--1); }
+.consult .check { display: flex; gap: 0.5rem; align-items: start; color: var(--ink); font-size: 1rem; }
+.consult .check input { width: auto; margin-top: 0.3em; }
+.consult details { color: var(--ink-soft); }
+.consult summary { cursor: pointer; }
+.consult details dl { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.35rem 0.8rem; margin-top: 0.6rem; padding: 0.8rem 1rem; background: var(--wash); border-radius: 3px; line-height: 1.6; }
+.consult details dt { font-weight: 500; color: var(--ink); }
+.consult .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+.consult .status { font-size: var(--step--1); color: var(--ink-soft); }
+.consult .status a { color: var(--ink); }
+.consult .honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+/* ---------- signature ---------- */
+.sign {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "nav nav" "sns sns" "fine seal";   /* 2026. 10. 21.: 차례·SNS 줄은 두 칸을 모두 쓰고, 잔글·서명은 그 아래 나란히 */
+  align-items: end;
+  column-gap: 2.5rem;
+  row-gap: 0;
+  padding-block: clamp(3rem, 7vw, 5rem) 0;
+  border-top: 1px solid var(--rule);
+}
+.sign > .foot-nav { grid-area: nav; }
+.sign > .sns { grid-area: sns; margin-bottom: 0.9rem; }
+.sign > .fine { grid-area: fine; }
+.sign > .sign-block { grid-area: seal; }
+.fine { display: grid; gap: 0.2rem; font-size: var(--step--1); color: var(--ink-soft); }
+.sign-block { display: grid; gap: 0.3rem; justify-items: end; text-align: right; font-family: var(--serif); }
+.sign-date { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.sign-name { display: flex; align-items: center; gap: 0.2rem; font-family: var(--name); font-size: 2rem; font-weight: 900; white-space: nowrap; } /* 2026. 10. 21.: 이름은 노토 명조 900, 조금 크게 */
+.sign-name small { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); margin-right: 0.5rem; }
+.spaced { letter-spacing: 0.3em; }
+.seal { flex: none; width: 4.25rem; height: auto; margin-left: 0.15rem; transform: rotate(-5deg); mix-blend-mode: var(--seal-blend); filter: var(--seal-filter); }
+
+/* ---------- narrow screens ---------- */
+@media (max-width: 1000px) {
+  .pair, .contact { grid-template-columns: minmax(0, 1fr); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .areas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .situations { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .situation.half { grid-column: span 2; }   /* 두 칸 격자에서는 반 폭 카드도 다른 카드와 같은 폭(2026. 10. 21.) */
+  .case-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wall { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .advisors { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .certs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .deadlines { align-self: start; }
+  .situations { grid-template-columns: minmax(0, 1fr); }
+  .situation, .situation.wide, .situation.half { grid-column: auto; }
+  .situation.wide .cols { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  /* 첫 화면이 한 단으로 쌓이는 경계를 900px → 760px로 (2026. 10. 21. 13시 30분): 펼친 폴드·태블릿·좁게 띄운 PC 창(760~900px)은
+     사진 띠가 상한까지 커져 높아 보이므로 넓은 화면처럼 두 단(글 + 오른쪽 사진 판)으로 둔다. 그 너비에서도 제목 마지막 줄(약 360px)이 글 칸(약 380px 이상)에 들어간다. */
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .hero-copy { padding-bottom: 2.5rem; }   /* 2026. 10. 21. 낮: 아래의 누끼 인물 사진을 없애 숫자 타일이 바닥에 붙지 않도록 0 → 2.5rem */
+  .section { grid-template-columns: minmax(0, 1fr); }
+  .sign { grid-template-columns: minmax(0, 1fr); grid-template-areas: "seal" "nav" "sns" "fine"; }
+}
+@media (max-width: 640px) {
+  .areas { grid-template-columns: minmax(0, 1fr); }
+  .case-list { grid-template-columns: minmax(0, 1fr); }
+  .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .advisors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .certs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .consult .fgrid { grid-template-columns: minmax(0, 1fr); }
+  .consult details dl { grid-template-columns: minmax(0, 1fr); }
+  .deadline { grid-template-columns: 5.5rem minmax(0, 1fr); }
+}
+@media (max-width: 520px) {
+  .rows.dates > div { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+  .rows.dates dt { padding-top: 0; }
+}
+@media (max-width: 420px) {
+  .rows > div { grid-template-columns: 6.75rem minmax(0, 1fr); gap: 0.75rem; }
+  .rows.tight > div { grid-template-columns: 4.5rem minmax(0, 1fr); }
+  .rows.dates > div { grid-template-columns: minmax(0, 1fr); }
+  .certs, .certs.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .faq dd { grid-column: 1 / -1; }
+}
+
+
+/* ---------- 길잡이 (2026. 10. 16., Version 71) ---------- */
+/* 분야 칩: 누르는 것임이 보이도록 글자를 키우고 먹색으로, 가리키면 크림슨색 */
+.chip { padding: 0.35rem 1rem; font-size: 1rem; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; }
+.chip:hover { color: var(--seal); border-color: var(--seal); }
+.chip[aria-selected="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.chip[aria-selected="true"]:hover { color: var(--paper); border-color: var(--ink); }
+.case-tools { display: grid; gap: 0.6rem; }
+.case-tools .label { font-size: var(--step--2); }
+.find { display: flex; gap: 0.5rem; align-items: center; max-width: 36rem; margin-top: 0.2rem; }
+.find input { flex: 1; min-width: 0; padding: 0.45rem 1rem; font: inherit; font-size: 1rem; line-height: 1.5; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; }
+.find input::placeholder { color: var(--ink-soft); }
+.find input:focus { outline: none; border-color: var(--ink); }
+.find input::-webkit-search-cancel-button { cursor: pointer; }
+@media (max-width: 640px) { .find .long { display: none; } }
+/* 맨 위로 */
+.totop { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 25; padding: 0.45rem 1rem; font-size: var(--step--1); font-weight: 500; color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 999px; text-decoration: none; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; }
+.totop.show { opacity: 1; visibility: visible; transform: none; }
+/* 바닥글 차례 */
+.foot-nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; margin-bottom: 1rem; font-size: var(--step--1); }
+.foot-nav a { color: var(--ink); text-decoration: none; }
+.foot-nav a:hover { color: var(--seal); }
+
+/* 무엇을 찾으시나요? */
+.finder { display: grid; gap: 0.9rem; padding-block: clamp(1.5rem, 4vw, 2.25rem); border-bottom: 1px solid var(--rule); }
+.finder .cap { font-size: var(--step--1); font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); }
+.finder-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }   /* 2026. 10. 21. 다섯 칸 → 네 칸(03 '국가연구개발 제재처분을 받았습니다' 삭제, 그 내용은 02로) */
+.finder-list li { min-width: 0; }
+.finder-list a { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; box-sizing: border-box; padding: 1rem 1.1rem 1.05rem; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper); color: inherit; text-decoration: none; transition: border-color 0.15s ease; }
+.finder-list .no { font-size: var(--step--2); font-weight: 500; letter-spacing: 0.08em; color: var(--seal); font-variant-numeric: tabular-nums; }
+.finder-list b { font-family: var(--serif); font-size: var(--step-0); font-weight: 600; line-height: 1.4; }
+.finder-list .w { font-size: var(--step--1); line-height: 1.55; color: var(--ink-soft); }
+.finder-list .go { margin-top: auto; padding-top: 0.3rem; font-size: var(--step--1); font-weight: 500; color: var(--ink); }
+.finder-list a:hover { border-color: var(--ink); }
+.finder-list a:hover b, .finder-list a:hover .go { color: var(--seal); }
+@media (max-width: 1000px) { .finder-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .finder-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .finder-list .w { display: none; } .finder-list a { padding: 0.8rem 0.9rem; gap: 0.2rem; } }
+@media (max-width: 420px) { .finder-list { grid-template-columns: minmax(0, 1fr); } }
+/* 다루는 사건 바로 가기 */
+.jump { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; margin-top: 0.6rem; font-size: var(--step--1); line-height: 1.6; }
+.jump .cap { width: 100%; font-size: var(--step--2); font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); }
+.jump a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+.jump a:hover { color: var(--seal); border-bottom-color: var(--seal); }
+@media (min-width: 761px) { .section-head .jump { flex-direction: column; align-items: start; gap: 0.3rem; } }
+#record .chips { margin-bottom: 0; }
+#record .case-tools { margin-bottom: 1.5rem; }
+
+/* 단어 찾기 상자 (2026. 10. 16., Version 76): 눈에 띄도록 옅은 바탕의 상자에 제목·안내·큰 입력 칸 */
+.findbox { display: grid; gap: 0.55rem; padding: 0.95rem 1.1rem 1.1rem; background: var(--wash); border: 1px solid var(--rule); border-radius: 3px; }
+.find-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem; }
+.find-head b, .find-title { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 600; white-space: nowrap; }
+.find-head svg, .find-title svg { width: 1.1em; height: 1.1em; color: var(--seal); flex: none; }
+.find-head .hint { font-size: var(--step--1); color: var(--ink-soft); }
+.findbox .find { max-width: none; margin-top: 0; }
+.findbox .find input { padding: 0.55rem 1.1rem; font-size: var(--step-0); border-color: var(--ink-soft); }
+.findbox .find input:focus { border-color: var(--seal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--seal) 18%, transparent); }
+.findbox .find .btn { flex: none; }
+.findbox.compact { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; }
+@media (max-width: 640px) { .findbox.compact { grid-template-columns: minmax(0, 1fr); gap: 0.4rem; } }
+
+/* ---------- 사례 찾기 보강 (2026. 10. 16., Version 82) ---------- */
+/* 결과 배지 */
+.badge { display: inline-block; padding: 0.02rem 0.6rem; font-size: var(--step--2); font-weight: 500; line-height: 1.65; letter-spacing: 0; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
+.badge.win { color: var(--ink); border-color: var(--ink); }
+.badge.part { color: var(--ink); border-color: var(--ink-soft); }
+.case-meta .badge { margin-left: auto; }
+/* 언론보도 표시(press.json, 2026. 10. 22.): 보도된 기사가 있는 사례의 카드에 작은 회색 표(결과 배지와 같은 꼴) — 개별 페이지의 '이 사건의 언론보도' 칸으로 안내 */
+.pressmark { display: inline-block; padding: 0.02rem 0.5rem; font-size: var(--step--2); font-weight: 500; line-height: 1.65; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
+.case-meta .pressmark { margin-left: auto; }
+.case-meta .badge + .pressmark { margin-left: 0.3rem; }
+.case-list:not(.list) .case-meta .pressmark { padding: 0 0.4rem; font-size: 0.6875rem; line-height: 1.5; }
+/* 요지 두 줄 접기 — '더 보기' 단추 없이 접힌 채로 두고 '자세히 →' 링크로 개별 페이지에 간다 (2026. 10. 21.) */
+.case-summary.clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* 자주 찾는 주제 */
+.presets { display: flex; flex-wrap: wrap; gap: 0.3rem 0.45rem; align-items: center; }
+.presets .cap { margin-right: 0.3rem; font-size: var(--step--2); font-weight: 500; letter-spacing: 0.06em; color: var(--ink-soft); }
+.preset { padding: 0.08rem 0.7rem; font: inherit; font-size: var(--step--1); line-height: 1.6; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; }
+.preset:hover { color: var(--seal); border-color: var(--seal); }
+
+/* ---------- 경력·위촉·위원회 직관성 보강 (2026. 10. 16., Version 85) ---------- */
+.career-body { gap: 2.25rem; }
+.career-body .pair { gap: 2.5rem clamp(2rem, 4vw, 3.5rem); }
+.timeline > div { grid-template-columns: 11rem minmax(0, 1fr); gap: 1rem 1.5rem; padding-block: 0.9rem; }
+.timeline dd { font-family: var(--serif); font-size: 1.0625rem; font-weight: 600; line-height: 1.45; }
+.timeline dd .sub { margin-top: 0.15rem; font-family: var(--sans); font-weight: 400; line-height: 1.6; }
+.timeline .now dt { color: var(--seal); font-weight: 500; }
+.rows.short > div { grid-template-columns: 4.75rem minmax(0, 1fr); gap: 0.75rem; }   /* 2026. 10. 21. 6rem→4.75rem: 학력 줄에 로고 띠가 들어가 글 칸을 넓힘 */
+#advisory .sub-h { margin-bottom: 0.9rem; }
+#advisory .sub-h.gap-top { margin-top: 2.25rem; }
+@media (max-width: 760px) {
+  .timeline > div { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; }
+}
+/* 좁은 화면: 위촉장·위원회 타일을 작은 그림이 붙은 한 줄 목록으로 */
+@media (max-width: 640px) {
+  .advisors { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+  .advisors .adv { grid-template-columns: 4.25rem minmax(0, 1fr); gap: 0.85rem; align-items: center; padding-bottom: 0.6rem; border-bottom: 1px solid var(--rule); }
+  .advisors .adv-fig { padding: 0.2rem; }
+  .advisors .adv-fig.none svg { width: 1.4rem; height: 1.4rem; }
+  .advisors .adv-fig.none span { font-size: 0.7rem; letter-spacing: 0; }
+  .advisors .adv-fig .count { right: 0.25rem; bottom: 0.25rem; padding: 0 0.4rem; font-size: 0.7rem; }
+  .advisors .adv-body .org { font-size: 1rem; }
+}
+
+/* ---------- 분야 카드의 '주요 수행 사례 보기' 단추 (2026. 10. 16., Version 87) ----------
+   글자 링크로는 눈에 띄지 않아 카드 맨 아래 먹색 단추로. 그 분야의 사례 건수를 함께 적고, 가리키면 크림슨색. */
+/* 카드를 세로 flex로 바꿔 근거 법령(.ref의 margin-top:auto)과 단추가 카드 바닥에 나란히 오도록 — 한 줄의 단추 높이가 맞춰진다 */
+.situation { display: flex; flex-direction: column; }
+.situation .cases-link {
+  display: flex; align-items: center; gap: 0.5rem; min-width: 0;
+  margin-top: 0.2rem; padding: 0.7rem 0.8rem;
+  font-size: var(--step--1); font-weight: 600; line-height: 1.4;
+  color: var(--paper); background: var(--ink);
+  border: 1px solid var(--ink); border-radius: 3px;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.situation .cases-link .lbl { flex: 1 1 auto; min-width: 0; }
+.situation .cases-link .n { font-weight: 700; font-variant-numeric: tabular-nums; }
+.situation .cases-link .arr { flex: none; font-weight: 500; transition: transform 0.15s ease; }
+.situation .cases-link:hover, .situation .cases-link:focus-visible { background: var(--seal); border-color: var(--seal); color: #fff; }
+.situation .cases-link:hover .arr { transform: translateX(3px); }
+.situation a.more { color: var(--ink-soft); }
+.situation a.more:hover { color: var(--seal); text-decoration-color: var(--seal); }
+@media (max-width: 1100px) and (min-width: 901px) {
+  .situation .cases-link { font-size: var(--step--2); padding-inline: 0.75rem; }
+}
+
+/* ---------- 다루는 사건 '바로 가기' 강조 (2026. 10. 16., Version 88) ----------
+   글자 링크 아홉 줄은 눈에 띄지 않아 테두리 알약 단추로. 가리키면 크림슨색. 넓은 화면에서는 세로로, 좁은 화면에서는 줄바꿈 가로로. */
+.section-head .jump { gap: 0.45rem 0.5rem; margin-top: 0.9rem; }
+.section-head .jump .cap { margin-bottom: 0.15rem; }
+.section-head .jump a { display: inline-block; padding: 0.32rem 0.9rem; font-size: var(--step--1); font-weight: 500; line-height: 1.5; color: var(--ink); background: var(--paper); border: 1px solid var(--ink); border-radius: 999px; transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
+.section-head .jump a:hover, .section-head .jump a:focus-visible { color: #fff; background: var(--seal); border-color: var(--seal); }
+@media (min-width: 761px) { .section-head .jump { gap: 0.45rem; } }
+
+/* 좁은 화면: 날짜(dt) 아래로 내려간 설명(dd)이 브라우저 기본값 40px만큼 들여써지던 것을 없앰 (2026. 10. 16., Version 89) */
+@media (max-width: 760px) { .timeline dd { margin-left: 0; } }
+@media (max-width: 640px) { .consult details dd { margin-left: 0; } }
+@media (max-width: 520px) { .rows.dates dd { margin-left: 0; } }
+@media (max-width: 420px) { .faq dd { margin-left: 0; } }
+
+/* 첫 화면 제목의 사실 줄 (2026. 10. 16., Version 91): 큰 제목 위에 근거(국가로펌 6년 · 소송·자문 약 3,300건)를 한 줄로 */
+.hero h1 .kicker { display: block; margin-bottom: 0.55rem; font-size: clamp(1.0625rem, 1.6vw, 1.3125rem); font-weight: 600; line-height: 1.4; letter-spacing: 0; color: var(--hero-fg); }
+
+/* 첫 화면 제목 (2026. 10. 21. 낮): "처분의 과정과 변곡점을 / 제대로 아는 변호사입니다."(두 줄; 종전 같은 날 아침 "처분의 기준을 / 아는 변호사는 / 다투는 방법부터 다릅니다.",
+   그 전 "처분이 만들어지는 / 기준을 아는 변호사가 / 그 처분을 제대로 다툽니다."). 글자는 한 단계 줄인 값 그대로(넓은 화면 2.5rem, 휴대전화 1.75rem)이고,
+   마지막 줄(.l3)을 회색이 아닌 본문색으로 두고 크림슨 밑줄로 강조. 마지막 줄은 넓은 화면에서 줄바꿈하지 않음(2.5rem이면 두 단 배치의 글 칸 약 570px에 넉넉히 들어감). */
+.hero h1 { font-size: min(var(--display), 2.5rem); }
+.hero h1 em { color: var(--hero-fg); text-decoration: underline; text-decoration-color: var(--hero-seal); text-decoration-thickness: 3px; text-underline-offset: 0.2em; text-decoration-skip-ink: none; }
+@media (min-width: 761px) { .hero h1 .l3 { white-space: nowrap; } }   /* 2026. 10. 21. 13시 30분: 두 단 배치 경계를 따라 901px → 761px */
+@media (max-width: 760px) { .hero h1 { font-size: 1.75rem; } }
+
+/* 첫 화면 윗부분 배경 사진 (2026. 10. 21.): 휴대전화에서는 첫 화면이 글씨 위주라, 한 단으로 쌓이는 화면(760px 이하)에서만
+   먹색 바탕 윗부분에 밝은 사무실 사진(photo-desk.webp — 창가에서 판례집을 읽는 모습, 본인 사진에서 천장과 맨 위 서가 한 줄을 뺀 윗부분을 잘라 냄)을 깔고
+   아래로 갈수록 첫 화면 바탕색(--hero-bg)으로 녹아들게 한다. 이름 줄은 사진이 거의 어두워진 자리에서 시작해 글씨가 묻히지 않는다.
+   띠 높이는 사진 비율(1.515:1)에 맞춘 66vw — 휴대전화에서는 사진이 잘리지 않는다. 상한 24rem(작은 태블릿·좁은 PC 창, 약 580px부터)과 50vh(가로로 눕힌 휴대전화)로
+   어느 화면에서도 띠가 첫 화면의 절반을 넘지 않게 한다. 얼굴(띠의 21~73%)은 페이드 바깥이고 턱 아래 목·옷깃에서 어두워진다.
+   (처음 84vw·1.195:1 → 13시 70vw·1.434:1 → 13시 30분 66vw·1.515:1, 띠가 높다는 지적에 따라 두 번 낮춤. 760~900px는 아래 두 단 블록.)
+   color-mix를 모르는 옛 브라우저는 그 앞의 rgba 선언으로 같은 효과를 낸다. */
+@media (max-width: 760px) {
+  .hero { --band: min(66vw, 24rem, 50vh); padding-top: calc(var(--band) - 2.75rem); }
+  .hero::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: var(--band);
+    background-image:
+      linear-gradient(to bottom, rgba(45, 50, 57, 0) 0%, rgba(45, 50, 57, 0.04) 58%, rgba(45, 50, 57, 0.18) 72%, rgba(45, 50, 57, 0.86) 84%, rgba(45, 50, 57, 0.97) 93%, #2d3239 100%),
+      url("photo-desk.webp");
+    background-image:
+      linear-gradient(to bottom,
+        color-mix(in srgb, var(--hero-bg) 0%, transparent) 0%,
+        color-mix(in srgb, var(--hero-bg) 4%, transparent) 58%,
+        color-mix(in srgb, var(--hero-bg) 18%, transparent) 72%,
+        color-mix(in srgb, var(--hero-bg) 86%, transparent) 84%,
+        color-mix(in srgb, var(--hero-bg) 97%, transparent) 93%,
+        var(--hero-bg) 100%),
+      url("photo-desk.webp");
+    background-size: cover;
+    background-position: 50% 60%;   /* 상한(24rem)에 걸려 세로로 잘리는 너비(약 580~760px)에서는 아래쪽(얼굴·책상)을 보이고 위쪽(서가)을 잘라 턱이 페이드에 덜 걸리게 */
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .hero > * { position: relative; }
+}
+/* 두 단 배치(761px 이상 — 2026. 10. 21. 13시 30분부터; 그 전에는 901px 이상)도 같은 사진으로 (2026. 10. 21. 낮): 오른쪽 누끼 인물 사진(photo-hero.webp)을 없애고 그 자리에
+   세로로 긴 크롭(photo-desk-tall.webp — 서가·모니터·읽는 모습·책상 위의 판례집, 원본 y 0~2000)을 첫 화면 오른쪽 48%에 위아래로 꽉 차게 깔고
+   왼쪽 가장자리는 바탕색으로 녹아들게 한다. 글 칸(7/12)은 그대로이며 글 칸의 오른쪽 끝이 걸리는 자리는 거의 불투명하다.
+   background-position 66%: 어느 너비에서든 얼굴이 판의 오른쪽 절반에 오도록(760~900px처럼 판이 세로로 길면 얼굴을 가운데 둔 세로 조각이 보인다). */
+@media (min-width: 761px) {
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 48%;
+    background-image:
+      linear-gradient(to right, rgba(45, 50, 57, 1) 0%, rgba(45, 50, 57, 0.85) 14%, rgba(45, 50, 57, 0.35) 30%, rgba(45, 50, 57, 0) 46%),
+      url("photo-desk-tall.webp");
+    background-image:
+      linear-gradient(to right,
+        var(--hero-bg) 0%,
+        color-mix(in srgb, var(--hero-bg) 85%, transparent) 14%,
+        color-mix(in srgb, var(--hero-bg) 35%, transparent) 30%,
+        color-mix(in srgb, var(--hero-bg) 0%, transparent) 46%),
+      url("photo-desk-tall.webp");
+    background-size: cover;
+    background-position: 66% 20%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  .hero > * { position: relative; }
+}
+
+/* ---------- '경력' 큰 묶음 (2026. 10. 16., Version 93): 경력 · 학력·수상 · 법률고문 위촉 · 위원회·강의를 한 절에 ---------- */
+.career-body { gap: 0; }
+.career-body > .block { padding-block: 2.25rem; border-top: 1px solid var(--rule); }
+.career-body > .block:first-child { padding-top: 0; border-top: 0; }
+.career-body > .block:last-child { padding-bottom: 0; }
+.career-body > #education { padding-top: 1.75rem; border-top: 0; } /* 연표 마지막 줄의 밑금이 이미 있으므로 */
+.career-body .block-h { font-size: var(--step-1); margin-bottom: 1rem; }
+.career-body .block-lead { max-width: 44rem; margin: -0.35rem 0 1.5rem; font-size: var(--step--1); line-height: 1.75; color: var(--ink-soft); }
+.career-body h4.sub-h { font-size: var(--step-0); margin-bottom: 0.9rem; }
+.career-body .past-wrap h4 { font-size: var(--step-0); }
+/* 임기를 마친 위촉·위원회는 현행보다 작게: 한 줄 6칸, 글씨 한 단계 작게 */
+.past-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.1rem 0.75rem; }
+.past-grid .adv { gap: 0.4rem; }
+.past-grid .adv-fig { padding: 0.3rem; }
+.past-grid .adv-fig .count { right: 0.35rem; bottom: 0.35rem; padding: 0 0.4rem; font-size: 0.7rem; }
+.past-grid .adv-body .org { font-size: var(--step--1); font-weight: 500; }
+.past-grid .adv-body .role, .past-grid .adv-body .term { font-size: 0.72rem; line-height: 1.45; }
+@media (max-width: 1000px) { .past-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .past-grid { grid-template-columns: minmax(0, 1fr); gap: 0.45rem; }
+  .past-grid .adv { grid-template-columns: 3.25rem minmax(0, 1fr); gap: 0.7rem; padding-bottom: 0.45rem; }
+  .past-grid .adv-body .org { font-size: var(--step--1); }
+}
+
+/* ---------- 휴대전화 번호를 위쪽 여러 곳에 (2026. 10. 16., Version 98) ---------- */
+.top .tel { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.top .tel svg { width: 1.25rem; height: 1.25rem; color: var(--seal); }
+.top .tel:hover { color: var(--seal); }
+.top nav .tel::after { content: none; }
+.top .tel-m { display: none; }
+@media (max-width: 760px) {
+  .top { gap: 0.4rem 1rem; }
+  .top .tel-m { display: inline-flex; margin-left: auto; font-size: 1rem; }
+  .top nav .tel-d { display: none; }
+  .top nav { flex-basis: 100%; }
+}
+.hero-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.4rem; margin-top: -0.35rem; font-size: var(--step--1); color: var(--hero-soft); }
+.hero-contact a { color: inherit; text-decoration: none; }
+.hero-contact a:hover { color: var(--hero-fg); text-decoration: underline; text-underline-offset: 0.2em; }
+.hero-contact .tel { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 700; line-height: 1.2; letter-spacing: 0.01em; color: var(--hero-fg); font-variant-numeric: tabular-nums; }
+.hero-contact .tel svg { width: 1.35rem; height: 1.35rem; color: var(--hero-seal); }
+.hero-contact .tel:hover { text-decoration: none; color: var(--hero-fg); }
+
+/* 임기를 마친 위촉·위원회를 한 단계 더 작게 (2026. 10. 16., Version 100) */
+.career-body .past-wrap.ended h4 { font-size: var(--step--1); color: var(--ink-soft); }
+.past-wrap.ended { gap: 0.75rem; margin-top: 2rem; padding-top: 1.25rem; }
+.past-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.9rem 0.6rem; }
+.past-grid .adv { gap: 0.3rem; }
+.past-grid .adv-fig { padding: 0.25rem; }
+.past-grid .adv-fig .count { right: 0.25rem; bottom: 0.25rem; padding: 0 0.35rem; font-size: 0.62rem; }
+.past-grid .adv-body { gap: 0.1rem; }
+.past-grid .adv-body .org { font-size: var(--step--2); font-weight: 500; line-height: 1.35; }
+.past-grid .adv-body .role, .past-grid .adv-body .term { font-size: 0.68rem; line-height: 1.4; }
+.past-wrap .past { font-size: var(--step--2); }
+@media (max-width: 1000px) { .past-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .past-grid { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; }
+  .past-grid .adv { grid-template-columns: 2.75rem minmax(0, 1fr); gap: 0.6rem; padding-bottom: 0.35rem; }
+  .past-grid .adv-body .org { font-size: var(--step--2); }
+}
+
+/* ---------- 휴대전화의 '무엇을 찾으시나요?' 강조 (2026. 10. 17., Version 107) ----------
+   정보가 많아 보이는 작은 화면에서는 길잡이가 길 안내 역할을 하도록: 제목을 크게, 항목은 한 줄씩 넓은 행(번호 · 제목 · 먹색 알약)으로, 행 전체가 눌린다. */
+@media (max-width: 640px) {
+  .finder { gap: 0.8rem; padding-block: 1.4rem 1.6rem; }
+  .finder .cap { font-family: var(--serif); font-size: var(--step-1); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .finder-list { grid-template-columns: minmax(0, 1fr); gap: 0.55rem; }
+  .finder-list a { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 0.75rem; row-gap: 0.45rem; align-items: center; padding: 0.85rem 0.95rem 0.9rem; border-color: var(--ink-soft); }
+  .finder-list .no { grid-row: 1; grid-column: 1; align-self: center; font-size: var(--step--1); }
+  .finder-list b { grid-row: 1; grid-column: 2; font-size: var(--step-0); line-height: 1.35; }
+  .finder-list .w { display: none; }
+  .finder-list .go { grid-row: 2; grid-column: 2; justify-self: start; margin: 0; padding: 0.3rem 0.8rem; font-size: var(--step--2); font-weight: 600; color: var(--paper); background: var(--ink); border-radius: 999px; white-space: nowrap; }
+  .finder-list a:active { border-color: var(--seal); }
+  .finder-list a:active .go { background: var(--seal); }
+}
+
+/* 학력·수상 글씨체를 경력과 같게(명조 굵게), 크기는 작게; 경력의 몇 문구(.lite)도 같은 크기로 (2026. 10. 17., Version 109) */
+.rows.short dd { font-family: var(--serif); font-size: 0.9375rem; font-weight: 600; line-height: 1.5; }
+.rows.short dd .sub { font-family: var(--sans); font-weight: 400; }
+.rows.short dd .t { display: inline-block; max-width: 100%; }   /* 로고 띠 옆의 글 덩이(2026. 10. 21.): 띠 옆에 다 들어가지 않으면 통째로 다음 줄로 */
+.rows.short .lec-logo { height: 1.45rem; margin-right: 0.45rem; padding: 0.1rem 0.35rem; }   /* 학력·수상 줄의 띠는 조금 작게(학교 머리글 로고가 가로로 길어서) */
+.rows.short .lec-logo img { height: 0.95rem; }
+.rows.short.edu .lec-logo { display: flex; width: max-content; max-width: 100%; margin: 0 0 0.35rem; }   /* 학력 줄: 칸이 좁아 띠를 글 위에 한 줄로(화면 폭에 따라 들쭉날쭉하지 않게) */
+.timeline dd .lite { font-size: 0.9375rem; font-weight: 600; }
+
+/* ---------- 사례마다 담당변호사 표기 (2026. 10. 17., Version 111) ---------- */
+.who { white-space: nowrap; }
+
+/* ---------- 바닥글 인장을 키운 만큼 '맨 위로' 단추와 겹치지 않게 (2026. 10. 17., Version 112) ---------- */
+@media (min-width: 761px) { .sign { padding-bottom: 3.25rem; } }
+
+/* ---------- 휴대전화의 사례 카드: 한 줄 두 장 (2026. 10. 17., Version 113) ----------
+   한 줄 한 장이면 카드 한 장이 화면 하나를 거의 다 차지해 여덟 장(2026. 10. 21.까지는 열두 장)이 너무 길어지므로, 작은 화면에서는 두 장씩 작게. 한 줄 목록 보기(.case-list.list)는 그대로. */
+@media (max-width: 640px) {
+  .case-list:not(.list) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1rem; }
+  .case-list:not(.list) .case-body { gap: 0.3rem; padding: 0.6rem 0.65rem 0.75rem; }
+  .case-list:not(.list) .case-meta { gap: 0.15rem 0.5rem; font-size: 0.6875rem; }
+  .case-list:not(.list) .case-meta .tag { flex-basis: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; letter-spacing: 0.02em; }
+  .case-list:not(.list) .case-meta .badge { padding: 0 0.45rem; font-size: 0.6875rem; line-height: 1.5; }
+  .case-list:not(.list) .case-title { font-size: 0.9375rem; line-height: 1.4; }
+  .case-list:not(.list) .case-sub { font-size: 0.6875rem; line-height: 1.5; }
+  .case-list:not(.list) .case-summary { display: none; }
+}
+
+/* ---------- 강의 목록을 경력 연표와 같은 글씨로 (2026. 10. 17., Version 119) ---------- */
+.past-wrap .rows.dates dd { font-family: var(--serif); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; }
+.past-wrap .rows.dates dd .sub { margin-top: 0.15rem; font-family: var(--sans); font-weight: 400; line-height: 1.6; }
+
+/* ---------- 분야 카드 전체가 눌리는 단추처럼 (2026. 10. 18., Version 120) ----------
+   사례 단추가 눈에 띄지 않는다는 지적에: 글자에 '보기'를 넣고 화살표를 원 안에, 카드에 손을 올리면 테두리와 단추가 크림슨색, 카드 아무 곳을 눌러도 그 분야 사례로. */
+.situation.linked { cursor: pointer; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+.situation.linked:hover { border-color: var(--seal); box-shadow: 0 1px 0 var(--seal); }
+.situation.linked:hover .cases-link { background: var(--seal); border-color: var(--seal); color: #fff; }
+.situation.linked:hover .cases-link .arr { transform: translateX(3px); }
+.situation .cases-link .arr { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border: 1px solid currentColor; border-radius: 50%; font-size: 0.9em; line-height: 1; }
+
+/* ---------- '단어로 찾기' 부각 (2026. 10. 18., Version 122) ----------
+   찾기 상자를 주요 수행 사례 절 맨 위에 두 칸을 가로질러 크게 놓고, 첫 화면 단추와 길잡이 04에서 바로 이어지게. */
+.findbox.big { grid-column: 1 / -1; gap: 0.7rem; padding: 1.3rem 1.5rem 1.4rem; border-color: var(--ink); }
+.findbox.big .find-head { gap: 0.2rem 1rem; }
+.findbox.big .find-head b { font-size: var(--step-1); }
+.findbox.big .find-head b svg { color: var(--seal); }
+.findbox.big .find input { padding: 0.8rem 1.2rem; font-size: var(--step-0); }
+.findbox.big .find .btn { padding: 0.8rem 1.4rem; font-size: var(--step-0); }
+.findbox.big .presets { margin-top: 0.15rem; }
+@media (max-width: 640px) {
+  .findbox.big { padding: 1rem 1rem 1.1rem; }
+  .findbox.big .find-head b { font-size: var(--step-0); }
+  .findbox.big .find input { padding: 0.7rem 1rem; }
+  .findbox.big .find .btn { padding: 0.7rem 1rem; }
+}
+
+/* ---------- '위치 | 연락처' 띠와 바닥글 보완 (2026. 10. 20., Version 139) ----------
+   김·장 법률사무소 홈페이지를 참고: 본문이 끝나는 자리에 사무소 위치와 전화번호를 큰 그림과 함께 한 줄로 두어,
+   끝까지 읽은 방문자가 바로 길을 찾거나 전화를 걸 수 있게 한다. 바닥글에는 법적 고지(접어 둠)와 저작권 표시를 더한다. */
+.quick { display: flex; justify-content: center; align-items: stretch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.quick > a, .quick > .maps { flex: 1 1 0; display: inline-flex; justify-content: center; align-items: center; gap: 0.65rem; min-width: 0; padding: 1.35rem 1rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; font-variant-numeric: tabular-nums; }
+.quick > * + * { border-left: 1px solid var(--rule); }
+.quick svg { flex: none; width: 1.6rem; height: 1.6rem; color: var(--seal); }
+.quick > a:hover { color: var(--seal); }
+.quick + .sign { border-top: 0; }
+/* 2026. 10. 21.: '사무소 위치'는 한 곳으로 바로 보내지 않고 네이버 지도·구글 지도 가운데 고르게 한다(이용자마다 쓰는 지도 앱이 다르므로).
+   글자 옆의 두 알약 단추가 각 지도로 가고, 좁은 화면에서는 단추가 글자 아래 줄로 내려간다. */
+.quick .maps { flex-wrap: wrap; row-gap: 0.45rem; }
+.quick .maps .pick { display: inline-flex; gap: 0.35rem; margin-left: 0.15rem; }
+.quick .maps .pick a { display: inline-block; padding: 0.22rem 0.8rem; font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0; line-height: 1.5; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 999px; text-decoration: none; white-space: nowrap; }
+.quick .maps .pick a:hover { color: var(--seal); border-color: var(--seal); }
+@media (max-width: 520px) {
+  .quick > a, .quick > .maps { gap: 0.5rem; padding: 1.1rem 0.5rem; font-size: var(--step-0); }
+  .quick svg { width: 1.35rem; height: 1.35rem; }
+  .quick .maps .pick { flex-basis: 100%; justify-content: center; margin-left: 0; }
+  .quick .maps .pick a { padding: 0.2rem 0.7rem; font-size: var(--step--2); }
+}
+.fine .notice { margin-top: 0.7rem; }
+.fine .notice summary { cursor: pointer; font-weight: 500; color: var(--ink); }
+.fine .notice p { margin-top: 0.45rem; max-width: 62ch; line-height: 1.7; }
+.fine .rights { margin-top: 0.9rem; font-variant-numeric: tabular-nums; }
+
+
+/* ---------- 좁은 화면의 로고 띠 (2026. 10. 21. 밤) ----------
+   한 줄 목록에서 로고 띠가 기관명 '위'에 놓이면 로고 속 글자와 기관명이 겹쳐 보여 어색하다는 지적에,
+   넓은 화면과 같은 짜임으로: 왼쪽 칸에 [로고 띠][위촉장 그림]을 세로로 붙이고 오른쪽 칸은 글만.
+   그림 칸은 4.25rem → 5rem(임기를 마친 묶음 2.75rem → 4rem)으로 조금 넓혀 띠 안의 로고가 읽히게 한다.
+   이 블록은 위의 한 줄 목록 규칙(.advisors .adv, .past-grid .adv)보다 뒤에 있어야 한다. */
+@media (max-width: 640px) {
+  .advisors .adv { grid-template-columns: 5rem minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "logo body" "fig body"; gap: 0 0.85rem; align-items: start; }
+  .advisors .adv-logo { grid-area: logo; justify-self: stretch; height: 1.55rem; padding: 0.15rem 0.3rem; border-bottom: 0; border-radius: 3px 3px 0 0; }
+  .advisors .adv-logo img { height: 0.95rem; max-width: 90%; }
+  .advisors .adv-logo.tall img { height: 1.25rem; }
+  .advisors .adv-logo.mid img { height: 1.1rem; }
+  .advisors .adv-fig { grid-area: fig; align-self: start; }
+  .advisors .adv-logo + .adv-fig { border-top-left-radius: 0; border-top-right-radius: 0; }
+  .advisors .adv-body { grid-area: body; align-self: center; margin-top: 0; }
+  .past-grid .adv { grid-template-columns: 4rem minmax(0, 1fr); gap: 0 0.6rem; }
+  .past-grid .adv-logo { height: 1.3rem; padding: 0.1rem 0.25rem; }
+  .past-grid .adv-logo img { height: 0.8rem; }
+  .past-grid .adv-logo.tall img { height: 1rem; }
+  .past-grid .adv-logo.mid img { height: 0.9rem; }
+  .lec-logo { height: 1.45rem; margin-right: 0.45rem; }
+  .lec-logo img { height: 0.95rem; }
+  .lec-logo.tall img { height: 1.15rem; }
+  .timeline .lec-logo { height: 1.55rem; margin-right: 0.5rem; padding: 0.15rem 0.4rem; }
+  .timeline .lec-logo img { height: 1rem; }
+  .timeline .lec-logo.tall img { height: 1.25rem; }
+}
+
+/* ---------- 국가연구개발 카드의 세 기한과 주제별 사례 (2026. 10. 21.) ----------
+   '가장 많이 다루는 처분' 절을 없애면서, 그 절의 기한 타일(20일·30일·90일)은 카드 안의 작은 표(.due-list)로, 주제별 사례 단추는 글 링크 한 줄(.topics)로 옮겼다.
+   내용이 늘어난 국가연구개발 카드는 대표 분야답게 한 줄을 다 쓰는 카드(.lead)로 두고 안을 세 칸(설명 | 세 기한 | 다룬 사건·주제별 사례·법령)으로 나눈다.
+   그러면 나머지 여덟 장이 3·3·2로 놓이므로 마지막 두 장(국가배상·법률자문)은 반 폭(.half)으로 하여 줄이 비지 않게 했는데,
+   2026. 10. 21. 국가계약법·지방계약법 카드(국가배상 앞)를 더해 아홉 장이 3·3·3으로 놓이므로 반 폭(.half)은 쓰지 않는다(규칙은 남겨 둠). */
+.situation.lead { grid-column: 1 / -1; }
+.situation.lead .cols.three { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 0.8rem 2rem; }
+.situation.lead .cols.three > div { display: grid; gap: 0.8rem; align-content: start; min-width: 0; }
+.situation.lead .cols.three .ref { margin-top: 0; padding-top: 0; }
+@media (max-width: 1000px) {
+  .situation.lead .cols.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .situation.lead .cols.three > div:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .situation.lead .cols.three { grid-template-columns: minmax(0, 1fr); }
+  .situation.lead .cols.three > div:last-child { grid-column: auto; }
+}
+.situation .due-list { display: grid; margin: 0; border-top: 1px solid var(--rule); }
+.situation .due-list > div { display: grid; grid-template-columns: 3.1rem minmax(0, 1fr); gap: 0.6rem; align-items: baseline; padding-block: 0.4rem; border-bottom: 1px solid var(--rule); }
+.situation .due-list dt { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--seal); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.situation .due-list dt small { font-size: 0.6em; font-weight: 500; margin-left: 0.05em; }
+.situation .due-list dd { margin: 0; min-width: 0; font-size: var(--step--2); line-height: 1.55; }
+.situation .due-list dd .r { display: block; color: var(--ink-soft); }
+.situation .topics a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 0.15em; }
+.situation .topics a:hover { color: var(--seal); text-decoration-color: var(--seal); }
+
+/* ---------- 움직임과 그라데이션 효과 (2026. 10. 23.) ----------
+   본인 지시: "효과를 조금, 과하지 않을 정도로 — 클릭이나 페이지를 넘길 때 부드럽게, 약간의 그라데이션".
+   ① 페이지 넘김: 홈 ↔ 전체 사례 ↔ 개별 사례·주제 페이지 사이를 오갈 때 두 화면이 0.3초 겹쳐 바뀐다(cross-document view transition —
+      크롬·엣지·삼성 인터넷·사파리의 요즘 판에서 되고, 안 되는 브라우저는 종전처럼 바로 바뀐다). 넓은 화면(머리글이 위에 붙는 761px 이상)에서는
+      머리글의 이름(.brand)이 제자리에 남고 나머지만 바뀐다.
+   ② 떠오르기: 절 머리·카드·타일·FAQ 항목이 화면에 들어올 때 14px 아래에서 0.6초에 걸쳐 떠오른다(.reveal → .in). 스크립트가 "실행되는 순간 화면
+      아래에 있는 것"에만 .reveal을 붙이므로 처음 보이는 부분은 깜박이지 않고, 스크립트가 없는 환경(검색 로봇·AI)에서는 모두 그대로 보인다.
+      한 번에 여러 개가 들어오면 70ms 간격으로 차례로(--d). 분야 칩을 눌러 카드가 바뀔 때도 같은 방식으로 떠오르고, 끝나면 클래스를 떼어
+      보통 상태(③의 손 올림 전환)로 돌아간다. 이 규칙은 ③보다 뒤에 두어야 한다(같은 요소의 transition을 이기도록).
+   ③ 손을 올리면: 카드·길잡이·단추가 1~2px 떠오르며 옅은 그림자, 판결문 그림은 2.5% 확대, SNS 타일은 살짝 떠오름; 누르는 순간 조금 눌린다(:active).
+      터치 화면(hover: none)에서는 떠오르기·확대를 두지 않는다(손을 뗀 뒤 그대로 남는 hover 상태를 피하려고).
+   ④ 그라데이션: 먹색 단추의 윗부분 광택, 절·바닥글 구분선은 오른쪽으로 옅어짐, 찾기 상자·안내 상자는 옅은 바탕이 아래로 갈수록 종이색으로,
+      머리글은 위에 붙은 뒤 반투명 + 흐림(backdrop-filter). (첫 화면의 옅은 크림슨 빛과 위아래 명암은 index.html의 블록에, 개별 사례 페이지의 상담 상자·판결 인용 왼줄은
+      build_cases.py의 EXTRA_CSS 끝에 — case.css는 build_cases.py가 cases.html의 <style> + EXTRA_CSS로 다시 만들므로 이 블록은 cases.html에만 두면 된다.)
+   ⑤ 판결문·위촉장 크게 보기 창(dialog)은 살짝 커지며 열리고, 접힌 글(details)·목록 보기의 펼친 칸은 짧게 떠오르며 펼쳐진다.
+   움직임 줄이기(prefers-reduced-motion: reduce)를 켠 기기와 인쇄에서는 모두 끈다. 색은 모두 변수를 써서 어두운 화면에서도 맞는다. */
+:root { --shadow-c: rgba(45, 50, 57, 0.28); --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --shadow-c: rgba(0, 0, 0, 0.6); } }
+:root[data-theme="dark"] { --shadow-c: rgba(0, 0, 0, 0.6); }
+@keyframes fx-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ① 페이지 넘김 */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.3s; animation-timing-function: ease-out; }
+@media (min-width: 761px) { .top .brand { view-transition-name: brand; } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+/* ③ 손을 올리면·누르면 */
+.btn, .chip, .preset, .copy, .mini, .finder-list a, .situation, .situation.linked, .case, .case-fig, .adv-fig, .cert button, .adv-logo, .lec-logo,
+.section-head .jump a, .quick .maps .pick a, .quick > a, .sns.icons a .ico, .sns a, .foot-nav a, .top nav a, .press-list .press-title, .case-docs figure a, .related li a, .topic-cases h3 a, .case-detail .kw-line a, .find input, .consult input, .consult select, .consult textarea {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity, text-decoration-color;
+  transition-duration: 0.18s, 0.18s, 0.18s, 0.25s, 0.25s, 0.18s, 0.18s;
+  transition-timing-function: ease, ease, ease, var(--ease-out), var(--ease-out), ease, ease;
+}
+.totop { transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, background-color 0.18s ease, border-color 0.18s ease; }
+.case-fig { overflow: hidden; }
+.case-fig img { transition: transform 0.6s var(--ease-out), opacity 0.2s ease; }
+.btn:active, .chip:active, .preset:active, .finder-list a:active, .section-head .jump a:active, .situation.linked:active, .sns.icons a:active .ico, .quick .maps .pick a:active { transform: translateY(0) scale(0.985); transition-duration: 0.08s; }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 16px -10px var(--shadow-c); }
+  .top nav .btn:hover, .findbox .find .btn:hover, .consult .btn:hover, .case-cta .btns .btn:not(.ghost):hover { color: #fff; background-color: var(--seal); border-color: var(--seal); }
+  .cta .btn:not(.ghost):hover { background-color: #fff; border-color: #fff; }
+  .case:hover { transform: translateY(-2px); border-color: var(--ink-soft); box-shadow: 0 12px 26px -16px var(--shadow-c); }
+  .case:hover .case-fig img { transform: scale(1.025); }
+  .case-list.list .case.row:hover { transform: none; box-shadow: none; }   /* 목록 보기의 한 줄 칸은 떠오르지 않는다 */
+  .finder-list a:hover { transform: translateY(-2px); box-shadow: 0 12px 26px -16px var(--shadow-c); }
+  .situation.linked:hover { transform: translateY(-2px); box-shadow: 0 1px 0 var(--seal), 0 14px 28px -18px var(--shadow-c); }
+  button.adv-fig:hover, .cert button:hover { box-shadow: 0 10px 20px -14px var(--shadow-c); }
+  .sns.icons a:hover .ico { transform: translateY(-2px); }
+  .case-docs figure a:hover { border-color: var(--ink-soft); box-shadow: 0 14px 30px -18px var(--shadow-c); }
+  .totop:hover { background: var(--seal); border-color: var(--seal); }
+}
+
+/* ② 떠오르기 (③보다 뒤에) */
+.reveal { opacity: 0; transform: translateY(14px); }
+.reveal.in { opacity: 1; transform: none; transition: opacity 0.6s ease-out, transform 0.6s var(--ease-out); transition-delay: var(--d, 0ms); }
+.case-list > .reveal { transform: translateY(10px); }
+.case-list > .reveal.in { transition-duration: 0.45s; }   /* 분야 칩·검색으로 카드가 바뀔 때는 조금 더 짧게 */
+
+/* ④ 그라데이션 */
+.btn:not(.ghost):not(.danger), .situation .cases-link, .chip[aria-selected="true"] { background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 60%); }
+.section { border-image: linear-gradient(90deg, var(--rule) 0, var(--rule) 58%, transparent) 1; }
+.section.first { border-image: none; }
+.sign, .quick { border-image: linear-gradient(90deg, var(--rule) 0, var(--rule) 58%, transparent) 1; }
+.quick + .sign { border-image: none; }
+.findbox.big, .before { background-image: linear-gradient(180deg, var(--wash), color-mix(in srgb, var(--wash) 45%, var(--paper))); }
+.top { transition: border-color 0.2s ease, background-color 0.25s ease; }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @media (min-width: 761px) {
+    .top.stuck { background: color-mix(in srgb, var(--paper) 86%, transparent); -webkit-backdrop-filter: saturate(1.3) blur(12px); backdrop-filter: saturate(1.3) blur(12px); }
+  }
+}
+
+/* ⑤ 창·접힌 글 */
+@keyframes fx-lb { from { opacity: 0; transform: translateY(8px) scale(0.985); } to { opacity: 1; transform: none; } }
+.lightbox[open] { animation: fx-lb 0.26s var(--ease-out); }
+.lightbox[open]::backdrop { animation: fx-fade 0.26s ease-out; }
+details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
+.case.row .row-body:not([hidden]) { animation: fx-up 0.3s var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.in { opacity: 1; transform: none; transition: none; }
+  .lightbox[open], .lightbox[open]::backdrop, details[open] > :not(summary), .case.row .row-body:not([hidden]) { animation: none; }
+  .btn:hover, .case:hover, .finder-list a:hover, .situation.linked:hover, .sns.icons a:hover .ico, .case:hover .case-fig img { transform: none; }
+}
+@media print { .reveal, .reveal.in { opacity: 1 !important; transform: none !important; } }
+
+/* 첫 화면(index.html만): 이름 → 제목 → 설명 → 단추 → 연락처 → 숫자 타일이 0.08초 간격으로 차례로 떠오른다(열릴 때 한 번).
+   사진(.hero::before)은 가장 큰 그림(LCP)이므로 움직이지 않는다. 바탕에는 이름 뒤의 아주 옅은 크림슨 빛(radial-gradient, 12%)과
+   위는 조금 밝고 아래는 조금 어두운 명암(.hero::after — 사진 위에도 같이 깔려 이음새가 없다). 이름 앞 짧은 크림슨 줄과 숫자 타일 윗금은 오른쪽으로 옅어진다. */
+.hero-id, .hero h1, .hero .lead, .hero .cta, .hero-contact, .hero-stats { animation: fx-up 0.7s var(--ease-out) both; }
+.hero h1 { animation-delay: 0.08s; }
+.hero .lead { animation-delay: 0.16s; }
+.hero .cta { animation-delay: 0.24s; }
+.hero-contact { animation-delay: 0.3s; }
+.hero-stats { animation-delay: 0.36s; }
+.hero {
+  background-image:
+    radial-gradient(var(--hero-dot) 1px, transparent 1.2px),
+    radial-gradient(46rem 28rem at 6% 58%, color-mix(in srgb, var(--hero-seal) 12%, transparent), transparent 70%);
+  background-size: 22px 22px, auto;
+}
+.hero::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 36%, rgba(0, 0, 0, 0.13)); }
+.hero > * { position: relative; z-index: 1; }
+.hero-name::before { background: linear-gradient(90deg, var(--hero-seal), color-mix(in srgb, var(--hero-seal) 35%, transparent)); }
+.hero-stats { border-image: linear-gradient(90deg, var(--hero-line), transparent) 1; }
+@media (prefers-reduced-motion: reduce) { .hero-id, .hero h1, .hero .lead, .hero .cta, .hero-contact, .hero-stats { animation: none; } }
+
+/* ---------- 홈 주요 수행 사례 절 끝의 접힌 전체 목록 (2026. 10. 23.) ----------
+   검색 로봇·AI가 홈만 읽어도 전체 사례(제목·분야·법원·날짜·결과·개별 페이지 링크)를 알 수 있게 글로 넣되, 사람에게는 접혀 보인다.
+   ssr_cases.py 가 <!-- all-list:start --> … <!-- all-list:end --> 사이를 데이터대로 다시 만든다. */
+.all-list { margin-top: 1.25rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); }
+.all-list summary { cursor: pointer; font-family: var(--serif); font-size: var(--step--1); font-weight: 600; color: var(--ink-soft); list-style-position: inside; }
+.all-list summary:hover { color: var(--seal); }
+.all-list summary .when-open { display: none; }
+.all-list[open] summary .when-closed { display: none; }
+.all-list[open] summary .when-open { display: inline; }
+.all-list-note { margin: 0.7rem 0 0.5rem; font-size: var(--step--2); line-height: 1.6; color: var(--ink-soft); }
+.all-list-note a { color: var(--ink); text-decoration: underline; text-underline-offset: 0.15em; }
+.all-list-body { margin: 0; padding-left: 1.6rem; font-size: var(--step--2); line-height: 1.55; color: var(--ink-soft); }
+.all-list-body li { margin: 0.2rem 0; }
+.all-list-body li::marker { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.all-list-body a { color: var(--ink); text-decoration: none; }
+.all-list-body a:hover { color: var(--seal); text-decoration: underline; text-underline-offset: 0.15em; }
+.all-list-body .m { color: var(--ink-soft); }
+.all-list-body .m::before { content: "— "; }

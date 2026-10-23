@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-work/details/*.json (작성자별 배치)를 cases-detail.json 에 합치고, summary_new 가 있으면 index.html 의 사례 요지를 바꾼다.
+work/details/*.json (작성자별 배치)를 cases-detail.json 에 합치고, summary_new 가 있으면 사례 데이터(cases-data.js)의 요지를 바꾼다.
     python3 work/merge_details.py .            # 합치기
 그 뒤  python3 work/ssr_cases.py .  →  python3 work/build_cases.py .
 """
@@ -21,9 +21,7 @@ def main():
     site = sys.argv[1] if len(sys.argv) > 1 else "."
     dp = os.path.join(site, "cases-detail.json")
     details = json.load(open(dp, encoding="utf-8")) if os.path.exists(dp) else {}
-    ip = os.path.join(site, "index.html")
-    idoc = S.read(ip)
-    cases, _ = S.load_json_block(idoc, "cases-data")
+    cases = S.load_cases(site)
     by_id = {c["id"]: c for c in cases}
     n_new = n_sum = 0
     for path in sorted(glob.glob(os.path.join(site, "work", "details", "*.json"))):
@@ -50,7 +48,7 @@ def main():
     order = {c["id"]: i for i, c in enumerate(cases)}
     details = dict(sorted(details.items(), key=lambda kv: order.get(kv[0], 10**6)))
     json.dump(details, open(dp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    S.write(ip, S.replace_json_block(idoc, "cases-data", cases))
+    S.save_cases(site, cases)
     print("상세 소개 %d건 합침(요지 교체 %d건) → cases-detail.json %d건" % (n_new, n_sum, len(details)))
 
 
