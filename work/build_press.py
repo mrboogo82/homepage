@@ -14,8 +14,9 @@ press.json(items)의 기사 가운데 home 이 true 인 것을 세 묶음으로 
   최근 HOME_RECENT(3)건과 언론보도 페이지(press.html) 링크뿐이고(2026. 10. 23. 저녁: 접힌 목록 대신 페이지로), 전체는 press.html 의 같은 표식 사이에 접지 않고 넣는다(사례 페이지에만 싣던 기사까지 모두).
   (종전 접힌 <details class="press-more">
   ('더 보기 …' / 펼치면 '접기') 안에 들어간다.
-index.html 에서는 <!-- press:start --> … <!-- press:end --> 사이를 바꾸고(없으면 경력 절 다음에 절 전체를 넣는다),
-llms.txt 에서는 '## 언론보도' 절을 바꾼다(없으면 '## 경력' 앞에 넣는다). 그 뒤 ssr_cases.py → build_cases.py 를 돌린다.
+index.html 에서는 <!-- press:start --> … <!-- press:end --> 사이를 바꾸고(없으면 상담 문의 절 앞 — 다루는 사건 절 다음 — 에 절 전체를 넣는다;
+  2026. 10. 23. 저녁 본인 지시로 홈의 순서가 '다루는 사건 → 언론보도'가 되었다), 길잡이 05 '언론에 보도된 사건'의 기사 건수도 맞춘다.
+llms.txt 에서는 '## 언론보도' 절을 바꾼다(없으면 '## 연락처' 앞에 넣는다). 그 뒤 ssr_cases.py → build_cases.py 를 돌린다.
 """
 import html
 import json
@@ -145,19 +146,22 @@ SECTION_TMPL = '''    <section class="section" id="press" aria-labelledby="press
 
 '''
 
-FIELDS_ANCHOR = '    <section class="section" id="fields" aria-labelledby="fields-h">'
+CONTACT_ANCHOR = '    <section class="section" id="contact" aria-labelledby="contact-h">'   # 표식이 없을 때 절을 넣는 자리: 다루는 사건 절 다음, 상담 문의 절 앞(2026. 10. 23. 저녁 순서)
+FINDER_RE = re.compile(r'(<span class="no">05</span><b>언론에 보도된 사건</b><span class="w">[^<]*?기사 )\d+(건)')   # 길잡이 05 의 기사 건수
 
 
-def patch_index(idoc, inner):
+def patch_index(idoc, inner, n_all=None):
     block = SECTION_TMPL % (START, inner, END)
     if START in idoc and END in idoc:
         a, b = idoc.index(START), idoc.index(END) + len(END)
         new = idoc[:a] + START + "\n      " + inner + "\n      " + END + idoc[b:]
     else:
-        k = idoc.find(FIELDS_ANCHOR)
+        k = idoc.find(CONTACT_ANCHOR)
         if k < 0:
-            raise SystemExit("index.html 에서 '다루는 사건' 절을 찾지 못해 언론보도 절을 넣을 자리를 모릅니다")
+            raise SystemExit("index.html 에서 '상담 문의' 절을 찾지 못해 언론보도 절을 넣을 자리를 모릅니다")
         new = idoc[:k] + block + idoc[k:]
+    if n_all is not None:
+        new = FINDER_RE.sub(lambda m: m.group(1) + str(n_all) + m.group(2), new)   # 길잡이('무엇을 찾으시나요?') 05 언론보도 칸의 건수
     # 머리글 차림표·바닥글 차례에 '언론보도' 링크(한 번만)
     # 2026. 10. 23. 저녁부터 머리글·바닥글의 '언론보도' 링크는 press.html 로(공용 부품은 work/build_pages.py 가 맞춤) — 여기서는 손대지 않는다
     return new
@@ -184,7 +188,7 @@ def patch_llms(doc, block):
     m = re.search(r"(?ms)^## 언론보도.*?(?=^## |\Z)", doc)
     if m:
         return doc[: m.start()] + block + doc[m.end():]
-    k = doc.find("## 경력")
+    k = doc.find("## 연락처")   # 2026. 10. 23. 저녁: 홈 순서(다루는 사건 → 언론보도)에 맞춰 '## 다루는 사건' 다음
     if k < 0:
         return doc.rstrip("\n") + "\n\n" + block
     return doc[:k] + block + doc[k:]
@@ -202,7 +206,7 @@ def main():
     press = load_press(site)
     check_press(press, set(cases_by_id))
     inner = section_inner(press, cases_by_id)
-    new_idoc = patch_index(idoc, inner)
+    new_idoc = patch_index(idoc, inner, len(press))
     pp = os.path.join(site, "press.html")
     pdoc = read(pp) if os.path.exists(pp) else None
     new_pdoc = patch_page(pdoc, section_full(press, cases_by_id)) if pdoc is not None else None

@@ -451,7 +451,7 @@ document.addEventListener('click', function (e) {
 // ---------- 홈에서 본 부분 집계 (Version 116) ----------
 (function () {
   if (!('IntersectionObserver' in window)) return;
-  var names = { record: '주요 수행 사례', career: '경력', fields: '다루는 사건', contact: '상담 문의' };   // 2026. 10. 21. '국가연구개발 제재처분' 절(rnd)은 없앰; 2026. 10. 23. 오후 '자주 묻는 질문'(faq)도 삭제
+  var names = { record: '주요 수행 사례', career: '경력', fields: '다루는 사건', press: '언론보도', contact: '상담 문의' };   // 2026. 10. 23. 저녁 홈 순서(다루는 사건 → 언론보도)에 맞춰 언론보도 절도 집계   // 2026. 10. 21. '국가연구개발 제재처분' 절(rnd)은 없앰; 2026. 10. 23. 오후 '자주 묻는 질문'(faq)도 삭제
   var seen = {};
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) { if (en.isIntersecting && !seen[en.target.id]) { seen[en.target.id] = 1; track('section_view', { section: names[en.target.id] }); } });
