@@ -385,20 +385,22 @@ button.case-fig:hover img { opacity: 0.92; }
    줄이 비는 자리가 없게. JS는 아홉 장을 그리고, 두 장씩 놓이는 화면에서는 아홉째 장을 감춘다. */
 @media (max-width: 1000px) { .case-list > .case:nth-child(n+9) { display: none; } }
 
-/* faq — 2026. 10. 21. 글자(질문 1.3125→1.0625rem, 답 1→0.9375rem)와 줄 간격(1.8→1.6), 항목 사이(1.4→0.95rem)를 줄여 간결하게 */
+/* faq — 2026. 10. 21. 글자(질문 1.3125→1.0625rem, 답 1→0.9375rem)와 줄 간격(1.8→1.6), 항목 사이(1.4→0.95rem)를 줄여 간결하게
+   → 2026. 10. 23. 낮(길이 줄이기): 질문을 누르면 답이 펼쳐지는 접이식(details.faq-item) — 'Q' 표시, 오른쪽 끝에 +/−, 첫 질문만 열어 둔다.
+   펼쳐질 때의 짧은 떠오르기는 효과 블록 ⑤의 details[open] 규칙이 맡는다. */
 .faq { display: grid; }
-.faq > div {
-  display: grid;
-  grid-template-columns: 2rem minmax(0, 1fr);
-  gap: 0.3rem 1rem;
-  padding-block: 0.95rem;
-  border-top: 1px solid var(--rule);
-}
-.faq > div:last-child { border-bottom: 1px solid var(--rule); }
-.faq dt { grid-column: 1 / -1; display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 600; line-height: 1.35; }
-.faq dt::before { content: "Q"; font-family: var(--serif); color: var(--seal); }
-.faq dd { grid-column: 2; max-width: 44rem; font-size: 0.9375rem; line-height: 1.6; }
-.faq dd .ref { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
+.faq-item { border-top: 1px solid var(--rule); }
+.faq-item:last-child { border-bottom: 1px solid var(--rule); }
+.faq-item summary { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; gap: 1rem; align-items: start; padding-block: 0.8rem; list-style: none; cursor: pointer; font-family: var(--serif); font-size: var(--step-0); font-weight: 600; line-height: 1.35; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::before { content: "Q"; color: var(--seal); }
+.faq-item summary::after { content: "+"; align-self: center; width: 1.25rem; height: 1.25rem; display: grid; place-items: center; font-family: var(--sans); font-size: 1rem; font-weight: 400; line-height: 1; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 50%; }
+.faq-item[open] summary::after { content: "−"; color: var(--ink); border-color: var(--ink-soft); }
+.faq-item summary:hover .q, .faq-item summary:hover::after { color: var(--seal); }
+.faq-item summary:hover::after { border-color: var(--seal); }
+.faq-item .a { max-width: 44rem; padding: 0 2.75rem 0.9rem 3rem; font-size: 0.9375rem; line-height: 1.6; }
+.faq-item .a .ref { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
+@media (max-width: 420px) { .faq-item summary { grid-template-columns: 1.5rem minmax(0, 1fr) auto; gap: 0.6rem; } .faq-item .a { padding: 0 0 0.8rem 0; } }
 
 /* practice areas */
 .areas {
@@ -953,7 +955,6 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 @media (max-width: 760px) { .timeline dd { margin-left: 0; } }
 @media (max-width: 640px) { .consult details dd { margin-left: 0; } }
 @media (max-width: 520px) { .rows.dates dd { margin-left: 0; } }
-@media (max-width: 420px) { .faq dd { margin-left: 0; } }
 
 /* 첫 화면 제목의 사실 줄 (2026. 10. 16., Version 91): 큰 제목 위에 근거(국가로펌 6년 · 소송·자문 약 3,300건)를 한 줄로 */
 .hero h1 .kicker { display: block; margin-bottom: 0.55rem; font-size: clamp(1.0625rem, 1.6vw, 1.3125rem); font-weight: 600; line-height: 1.4; letter-spacing: 0; color: var(--hero-fg); }
@@ -1368,3 +1369,186 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
 .all-list-body a:hover { color: var(--seal); text-decoration: underline; text-underline-offset: 0.15em; }
 .all-list-body .m { color: var(--ink-soft); }
 .all-list-body .m::before { content: "— "; }
+
+/* ---------- 길이 줄이기 (2026. 10. 23. 낮) ----------
+   본인 지시: "많은 정보량을 넣다보니 스크롤을 너무 많이 하게 돼. 특히 모바일은 그럴거야. 이걸 고려해서 전체적인 길이를 줄여줘.
+   주요 수행 사례 개별 사례 높이 또는 길이를 조금씩 줄이면 좋을 듯." — 글은 하나도 지우지 않고 여백·글자·줄 간격·배치로 줄인다(검색·AI가 읽는 내용은 그대로).
+   ① 절 사이 여백(위아래 2.75~4.5rem → 2.25~3.5rem)과 절 안 묶음 사이 여백(2.75 → 2.25rem)을 한 단계씩.
+   ② 첫 화면: 위 여백·덩어리 사이 간격을 줄이고, 휴대전화에서는 설명·숫자 타일 글을 조금 작게(사진 띠 높이는 그대로).
+   ③ 길잡이: 휴대전화에서 번호·제목·알약 단추를 한 줄에(종전 두 줄).
+   ④ 주요 수행 사례 카드: 판결문 그림 4:3 → 16:10, 안쪽 여백·간격·제목 글자(1.125 → 1.0625rem)·줄 간격을 줄임 — 넓은 화면 한 장 약 570 → 약 430px.
+      휴대전화 두 장 카드도 같은 방식. 자주 찾는 단어(35개)는 휴대전화에서 한 줄로 옆으로 넘겨 보고(오른쪽 끝이 옅어짐), 분야 칩은 조금 작게.
+   ⑤ 경력: 위촉 타일을 넓은 화면에서 한 줄 4장 → 6장(1100px 이하 5장, 1000px 이하 4장; 위원회 7장은 4+3 그대로 — 6+1이나 7장 한 줄은 홀로 남는 장·낱말 가운데 끊김), 글자는 한 단계 작게;
+      휴대전화는 한 줄 한 장 → 두 장씩(작은 로고 띠·위촉장 그림 + 기관명·역할·기간; '위촉장 2026. 7. 1. ~ …' 기간은 .cert-term으로 감싸 휴대전화에서만 숨김).
+      연표·학력·강의 줄의 위아래 여백도 조금.
+   ⑥ 다루는 사건 카드: 안쪽 여백·간격·글자(1 → 0.9375rem)·줄 간격을 줄임. 휴대전화(640px 이하)에서는 카드마다 설명을 네 줄까지만 보이고 '다룬 사건'·근거 법령을
+      접어 두며 '더 보기' 단추로 펼친다(스크립트가 .fold를 붙임 — 스크립트 없는 환경·넓은 화면에서는 다 보임; 국가연구개발 카드의 세 기한은 접지 않음).
+   ⑦ 자주 묻는 질문: 접이식(위 faq 규칙, index.html은 details.faq-item) — 첫 질문만 펼쳐 둠.
+   ⑧ 상담 문의: 넓은 화면(1180px 이상)에서 연락처와 온라인 상담 신청서를 나란히, '처음 연락하실 때'는 그 아래 전체 폭; 신청서·안내 상자 여백을 줄이고 온라인 계정 목록은 두 칸으로.
+   측정(Playwright, 움직임 줄이기 켬, 글은 그대로; 같은 날 낮의 f248b91 구조 기준): 휴대전화 390×844 26,220 → 16,978px(31 → 20화면, −35%), 1280×800 18,159 → 13,773px(−24%),
+   1440×900 18,233 → 13,778px, 768×1024 23,391 → 18,917px. 홈 사례 카드 한 장(넓은 화면 세 줄) 572·531·505 → 480·466·393px, 휴대전화 두 장 카드 417·351·410·330 → 369·321·378·301px.
+   전체 사례(cases.html, 271장)는 1280px 51,029 → 43,483px, 휴대전화 51,484 → 46,294px. */
+
+/* ① 절 */
+.section { gap: 1.25rem clamp(2rem, 5vw, 4.5rem); padding-block: clamp(2.25rem, 4.5vw, 3.5rem); }
+.section-body { gap: 2.25rem; }
+.sign { padding-block: clamp(2.5rem, 5vw, 3.5rem) 0; }
+@media (max-width: 760px) { .section { gap: 1rem; } }
+
+/* ② 첫 화면 */
+@media (min-width: 761px) { .hero { padding-top: clamp(2.5rem, 5vw, 4rem); } }
+.hero-copy { gap: 1.25rem; padding-bottom: clamp(2.25rem, 4.5vw, 3.25rem); }
+.hero .lead { line-height: 1.7; }
+.hero-stats { gap: 0.75rem 1.25rem; padding-top: 1rem; }
+@media (max-width: 760px) {
+  .hero-copy { gap: 1.1rem; padding-bottom: 2rem; }
+  .hero-id { gap: 0.55rem; }
+  .hero .lead { font-size: 0.9375rem; line-height: 1.65; }
+  .hero-stats { gap: 0.6rem 1rem; }
+  .hero-stats .n { font-size: 1.125rem; }
+  .hero-stats .l { font-size: 0.75rem; line-height: 1.4; }
+}
+
+/* ③ 길잡이 */
+.finder { gap: 0.75rem; padding-block: clamp(1.25rem, 3vw, 1.75rem); }
+.finder-list a { padding: 0.85rem 1rem 0.9rem; gap: 0.3rem; }
+.finder-list .w { line-height: 1.5; }
+@media (min-width: 641px) { .finder-list .w { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; } }   /* 02 '어느 분야의 사건인지' 설명이 아홉 줄이라 네 칸이 다 그 높이가 되므로 여섯 줄까지만(…); 휴대전화에서는 종전대로 숨김 */
+@media (max-width: 640px) {
+  .finder { gap: 0.65rem; padding-block: 1.2rem 1.3rem; }
+  .finder-list { gap: 0.45rem; }
+  .finder-list a { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto; column-gap: 0.6rem; row-gap: 0; align-items: center; padding: 0.65rem 0.8rem; }
+  .finder-list .no { grid-row: 1; grid-column: 1; }
+  .finder-list b { grid-row: 1; grid-column: 2; font-size: 1rem; }
+  .finder-list .go { grid-row: 1; grid-column: 3; justify-self: end; padding: 0.25rem 0.65rem; font-size: 0.6875rem; }
+}
+
+/* ④ 주요 수행 사례 */
+.findbox.big { gap: 0.6rem; padding: 1.1rem 1.3rem 1.2rem; }
+#record .case-tools { margin-bottom: 1rem; }
+.case-list { gap: 1rem; margin-top: 0.9rem; }
+.case-fig { aspect-ratio: 16 / 10; }
+.case-body { gap: 0.4rem; padding: 0.85rem 1rem 0.95rem; }
+.case-meta { gap: 0.25rem 0.8rem; font-size: 0.75rem; }
+.case-meta .tag { letter-spacing: 0.03em; }
+.case-title { font-size: 1.0625rem; line-height: 1.4; }
+.case-sub { line-height: 1.5; }
+.case-summary { line-height: 1.6; }
+.more { margin-top: 1.25rem; }
+/* 결과 배지('승소' 등)는 분야·날짜 줄에서 자주 둘째 줄로 밀리므로, 판결문 그림의 오른쪽 위(빈 여백)에 겹쳐 둔다 — 글줄 한 줄을 아낀다. 목록 보기(.list)는 그대로. */
+.case-list:not(.list) .case { position: relative; }
+.case-list:not(.list) .case-meta .badge { position: absolute; top: 0.5rem; right: 0.5rem; z-index: 1; margin-left: 0; background: var(--paper); }
+.case-list:not(.list) .case-meta .badge + .pressmark { margin-left: auto; }
+@media (max-width: 640px) {
+  .findbox.big { gap: 0.5rem; padding: 0.9rem 0.9rem 0.95rem; }
+  .findbox.big .presets { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -0.9rem; padding-inline: 0.9rem; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); }
+  .findbox.big .presets::-webkit-scrollbar { display: none; }
+  .findbox.big .presets .cap, .findbox.big .preset { flex: none; white-space: nowrap; }
+  #record .chips { gap: 0.4rem; }
+  #record .chip { padding: 0.22rem 0.72rem; font-size: 0.875rem; }
+  .case-list:not(.list) { gap: 0.5rem; margin-top: 0.8rem; }
+  .case-list:not(.list) .case-body { gap: 0.25rem; padding: 0.55rem 0.6rem 0.65rem; }
+  .case-list:not(.list) .case-title { line-height: 1.35; }
+  .case-list:not(.list) .case-sub { line-height: 1.45; }
+  .case-list:not(.list) .case-meta .badge { top: 0.35rem; right: 0.35rem; }
+  .more { margin-top: 1rem; }
+}
+
+/* ⑤ 경력 */
+.career-body > .block { padding-block: 1.75rem; }
+.career-body > #education { padding-top: 1.4rem; }
+.career-body .block-h { margin-bottom: 0.8rem; }
+.career-body .block-lead { margin-bottom: 1.1rem; line-height: 1.65; }
+.career-body .pair { gap: 1.75rem clamp(2rem, 4vw, 3.5rem); }
+.timeline > div { padding-block: 0.7rem; }
+.rows > div { padding-block: 0.7rem; }
+ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0.8rem; }   /* 수상 타일(학력 옆 반 폭 칸): 위촉 타일과 비슷한 폭이 되도록 세 칸 — 아래 6·5·4장 규칙보다 센 선택자 */
+#advisory .sub-h.gap-top { margin-top: 1.6rem; }
+.past-wrap { margin-top: 1.75rem; padding-top: 1.1rem; gap: 0.8rem; }
+.past-wrap.ended { margin-top: 1.5rem; padding-top: 1rem; gap: 0.6rem; }
+.advisors:not(.past-grid) { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.1rem 0.75rem; }   /* 임기를 마친 묶음(.past-grid)은 종전대로 8장 */
+#committees .advisors:not(.past-grid) { grid-template-columns: repeat(4, minmax(0, 1fr)); }   /* 위원회 7장: 6+1은 홀로 남는 한 장 때문에 어차피 두 줄이고 긴 이름이 낱말 가운데서 끊기므로 4+3(두 줄, 같은 높이) */
+.adv-fig { padding: 0.3rem; }
+.adv-logo { height: 2rem; padding: 0.2rem 0.5rem; }
+.adv-logo img { height: 1.2rem; }
+.adv-logo.tall img { height: 1.55rem; }
+.adv-logo.mid img { height: 1.35rem; }
+.adv-body { margin-top: 0.45rem; }
+.adv-body .org { font-size: 0.9375rem; line-height: 1.35; }
+.adv-body .role, .adv-body .term { font-size: 0.75rem; line-height: 1.45; }
+@media (max-width: 1100px) { .advisors:not(.past-grid) { grid-template-columns: repeat(5, minmax(0, 1fr)); } #committees .advisors:not(.past-grid) { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 1000px) { .advisors:not(.past-grid), #committees .advisors:not(.past-grid) { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .advisors:not(.past-grid), #committees .advisors:not(.past-grid) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.45rem 0.7rem; }
+  .advisors .adv { grid-template-columns: 3rem minmax(0, 1fr); gap: 0 0.55rem; padding-bottom: 0.45rem; }
+  .advisors .adv-logo { height: 1.25rem; padding: 0.1rem 0.2rem; }
+  .advisors .adv-logo img { height: 0.75rem; max-width: 92%; }
+  .advisors .adv-logo.tall img { height: 0.95rem; }
+  .advisors .adv-logo.mid img { height: 0.85rem; }
+  .advisors .adv-fig { padding: 0.15rem; }
+  .advisors .adv-fig .count { right: 0.15rem; bottom: 0.15rem; padding: 0 0.3rem; font-size: 0.6rem; }
+  .advisors .adv-fig.none svg { width: 1.1rem; height: 1.1rem; }
+  .advisors .adv-fig.none span { font-size: 0.6rem; }
+  .advisors .adv-body { gap: 0.05rem; }
+  .advisors .adv-body .org { font-size: 0.8125rem; line-height: 1.3; }
+  .advisors .adv-body .role, .advisors .adv-body .term { font-size: 0.6875rem; line-height: 1.35; }
+  .adv-body .term .cert-term { display: none; }
+  ul.advisors.award-grid { grid-template-columns: minmax(0, 1fr); }
+  .past-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem 0.7rem; }
+  .past-grid .adv { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 0 0.5rem; padding-bottom: 0.35rem; }
+  .past-grid .adv-logo { height: 1.1rem; padding: 0.05rem 0.15rem; }
+  .past-grid .adv-logo img { height: 0.65rem; }
+  .past-grid .adv-logo.tall img { height: 0.8rem; }
+  .past-grid .adv-logo.mid img { height: 0.75rem; }
+  .past-grid .adv-body .org { font-size: 0.75rem; }
+  .past-grid .adv-body .role, .past-grid .adv-body .term { font-size: 0.65rem; }
+  .career-body > .block { padding-block: 1.4rem; }
+  .career-body .pair { gap: 1.25rem; }
+  .rows.short.edu .lec-logo { display: inline-flex; width: auto; margin: 0 0.45rem 0 0; }   /* 학력 줄: 한 단 화면에서는 띠를 글과 한 줄에(두 줄 → 한 줄) */
+}
+
+/* ⑥ 다루는 사건 */
+.situations { gap: 0.8rem; }
+.situation { gap: 0.6rem; padding: clamp(1.1rem, 2.2vw, 1.4rem); }
+.situation svg { width: 1.75rem; height: 1.75rem; }
+.situation h3 { font-size: 1.25rem; }
+.situation p { font-size: 0.9375rem; line-height: 1.65; }
+.situation .eg { font-size: 0.8125rem; line-height: 1.55; }
+.situation .ref { padding-top: 0.35rem; font-size: 0.75rem; line-height: 1.5; }
+.situation .cases-link { margin-top: 0.15rem; padding: 0.55rem 0.75rem; }
+.situation.lead .cols.three { gap: 0.6rem 1.75rem; }
+@media (min-width: 1001px) { .situation.lead .cols.three { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr) minmax(0, 1.05fr); } }   /* 세 칸일 때 설명 칸을 조금 넓혀 줄 수를 줄임 */
+.situation.lead .cols.three > div { gap: 0.6rem; }
+.situation .due-list > div { padding-block: 0.3rem; }
+.situation .due-list dd { line-height: 1.5; }
+.situation-more { display: none; }
+@media (max-width: 640px) {
+  .situation.fold:not(.open) > p:not(.eg):not(.ref), .situation.fold.lead:not(.open) .cols.three > div:first-child > p { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .situation.fold:not(.open) > .eg, .situation.fold:not(.open) > .ref, .situation.fold.lead:not(.open) .cols.three > div:last-child { display: none; }
+  .situation.fold .situation-more { display: inline-block; align-self: flex-start; margin: -0.1rem 0 0.1rem; padding: 0.12rem 0.7rem; font: inherit; font-size: 0.8125rem; font-weight: 500; line-height: 1.6; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; }
+  .situation.fold .situation-more::after { content: " ⌄"; }
+  .situation.fold.open .situation-more::after { content: " ⌃"; }
+  .situation.fold .situation-more:active { color: var(--seal); border-color: var(--seal); }
+}
+
+/* ⑧ 상담 문의 */
+#contact .section-body { gap: 1.75rem; }
+@media (min-width: 1180px) {   /* 본문 칸이 약 800px일 때만(그보다 좁으면 연락처 칸이 300px 아래로 떨어져 이메일·계정 목록이 비좁다) */
+  #contact .section-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem 2rem; align-items: start; }
+  #contact .before { grid-column: 1 / -1; }
+}
+.contact .rows > div { padding-block: 0.55rem; }
+.contact .rows dd:has(> .copy) { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.6rem; }
+.contact .rows dd:has(> .copy) .copy { margin-left: 0; }
+.contact .rows dd:has(> .copy) > span { overflow-wrap: normal; white-space: nowrap; }   /* 이메일·전화번호는 낱말 가운데서 끊지 않고 복사 단추만 다음 줄로 */
+#c-mail { font-size: 0.9375rem; }
+@media (min-width: 1180px) { .contact .rows.tight > div { grid-template-columns: 4.75rem minmax(0, 1fr); } }
+.contact .rows.tight > div:last-child { grid-template-columns: minmax(0, 1fr); gap: 0.3rem; }   /* '온라인' 줄: 계정 목록이 두 칸이 되도록 전체 폭(dt 아래 dd, 브라우저 기본 들여쓰기 없이) */
+.contact .rows.tight > div:last-child dd { margin-left: 0; }
+.sns.icons.large { grid-template-columns: repeat(auto-fill, minmax(min(9rem, 100%), 1fr)); gap: 0.5rem 0.8rem; }   /* 휴대전화(358px)·넓은 화면의 연락처 칸에서 두 칸 */
+.consult { gap: 0.75rem; padding: clamp(1rem, 2.5vw, 1.4rem); }
+.consult .fgrid { gap: 0.7rem; }
+.consult input, .consult select, .consult textarea { padding: 0.5rem 0.65rem; }
+.consult textarea { min-height: 6.5rem; }
+.before { gap: 0.6rem; padding: clamp(1rem, 2.5vw, 1.4rem); }
+.before p { font-size: 0.9375rem; line-height: 1.65; }

@@ -1035,3 +1035,34 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
 /* 전체 사례 페이지(cases.html만): 제목 머리(.all-head)는 열릴 때 짧게 떠오른다. 분야·단어로 카드가 바뀔 때의 떠오르기는 공통 블록 ②와 스크립트(FX). */
 .all-head { animation: fx-up 0.6s var(--ease-out) both; }
 @media (prefers-reduced-motion: reduce) { .all-head { animation: none; } }
+
+/* ---------- 길이 줄이기 (2026. 10. 23. 낮) — 홈(home.css)의 같은 블록 가운데 이 페이지에 있는 것(절 여백·사례 카드)만; case.css는 build_cases.py가 이 파일 + EXTRA_CSS로 다시 만듦 ----------
+   본인 지시: "스크롤을 너무 많이 하게 돼 … 주요 수행 사례 개별 사례 높이 또는 길이를 조금씩 줄이면 좋을 듯." 카드: 판결문 그림 4:3 → 16:10,
+   안쪽 여백·간격·제목 글자(1.125 → 1.0625rem)·줄 간격을 줄임, 결과 배지는 그림 오른쪽 위에. 휴대전화 두 장 카드도 같은 방식(목록 보기 .list와 개별 사례 페이지의 머리는 그대로 — .case-list 안으로 한정). */
+.section { gap: 1.25rem clamp(2rem, 5vw, 4.5rem); padding-block: clamp(2.25rem, 4.5vw, 3.5rem); }
+.section-body { gap: 2.25rem; }
+.sign { padding-block: clamp(2.5rem, 5vw, 3.5rem) 0; }
+.case-list { gap: 1rem; margin-top: 0.9rem; }
+.all-body .case-list { margin-top: 1rem; }
+.case-list:not(.list) .case-fig { aspect-ratio: 16 / 10; }
+.case-list .case-body { gap: 0.4rem; padding: 0.85rem 1rem 0.95rem; }
+.case-list .case-meta { gap: 0.25rem 0.8rem; font-size: 0.75rem; }
+.case-list .case-meta .tag { letter-spacing: 0.03em; }
+.case-list .case-title { font-size: 1.0625rem; line-height: 1.4; }
+.case-list .case-sub { line-height: 1.5; }
+.case-list .case-summary { line-height: 1.6; }
+/* 결과 배지('승소' 등)는 분야·날짜 줄에서 자주 둘째 줄로 밀리므로, 판결문 그림의 오른쪽 위(빈 여백)에 겹쳐 둔다 — 글줄 한 줄을 아낀다. 목록 보기(.list)는 그대로. */
+.case-list:not(.list) .case { position: relative; }
+.case-list:not(.list) .case-meta .badge { position: absolute; top: 0.5rem; right: 0.5rem; z-index: 1; margin-left: 0; background: var(--paper); }
+.case-list:not(.list) .case-meta .badge + .pressmark { margin-left: auto; }
+@media (max-width: 640px) {
+  .case-list:not(.list) { gap: 0.5rem; margin-top: 0.8rem; }
+  .case-list:not(.list) .case-body { gap: 0.25rem; padding: 0.55rem 0.6rem 0.65rem; }
+  .case-list:not(.list) .case-title { line-height: 1.35; }
+  .case-list:not(.list) .case-sub { line-height: 1.45; }
+  .case-list:not(.list) .case-meta .badge { top: 0.35rem; right: 0.35rem; }
+  /* 자주 찾는 단어(35개)는 휴대전화에서 한 줄로 옆으로 넘겨 보기(오른쪽 끝이 옅어짐) — 홈과 같게 */
+  .findbox .presets { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -0.8rem; padding-inline: 0.8rem; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent); }
+  .findbox .presets::-webkit-scrollbar { display: none; }
+  .findbox .presets .cap, .findbox .preset { flex: none; white-space: nowrap; }
+}
