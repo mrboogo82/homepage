@@ -981,6 +981,100 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
   .case-list:not(.list) .case-summary { display: none; }
 }
 
+
+/* ---------- 움직임과 그라데이션 효과 (2026. 10. 23.) ----------
+   본인 지시: "효과를 조금, 과하지 않을 정도로 — 클릭이나 페이지를 넘길 때 부드럽게, 약간의 그라데이션".
+   ① 페이지 넘김: 홈 ↔ 전체 사례 ↔ 개별 사례·주제 페이지 사이를 오갈 때 두 화면이 0.3초 겹쳐 바뀐다(cross-document view transition —
+      크롬·엣지·삼성 인터넷·사파리의 요즘 판에서 되고, 안 되는 브라우저는 종전처럼 바로 바뀐다). 넓은 화면(머리글이 위에 붙는 761px 이상)에서는
+      머리글의 이름(.brand)이 제자리에 남고 나머지만 바뀐다.
+   ② 떠오르기: 절 머리·카드·타일·FAQ 항목이 화면에 들어올 때 14px 아래에서 0.6초에 걸쳐 떠오른다(.reveal → .in). 스크립트가 "실행되는 순간 화면
+      아래에 있는 것"에만 .reveal을 붙이므로 처음 보이는 부분은 깜박이지 않고, 스크립트가 없는 환경(검색 로봇·AI)에서는 모두 그대로 보인다.
+      한 번에 여러 개가 들어오면 70ms 간격으로 차례로(--d). 분야 칩을 눌러 카드가 바뀔 때도 같은 방식으로 떠오르고, 끝나면 클래스를 떼어
+      보통 상태(③의 손 올림 전환)로 돌아간다. 이 규칙은 ③보다 뒤에 두어야 한다(같은 요소의 transition을 이기도록).
+   ③ 손을 올리면: 카드·길잡이·단추가 1~2px 떠오르며 옅은 그림자, 판결문 그림은 2.5% 확대, SNS 타일은 살짝 떠오름; 누르는 순간 조금 눌린다(:active).
+      터치 화면(hover: none)에서는 떠오르기·확대를 두지 않는다(손을 뗀 뒤 그대로 남는 hover 상태를 피하려고).
+   ④ 그라데이션: 먹색 단추의 윗부분 광택, 절·바닥글 구분선은 오른쪽으로 옅어짐, 찾기 상자·안내 상자는 옅은 바탕이 아래로 갈수록 종이색으로,
+      머리글은 위에 붙은 뒤 반투명 + 흐림(backdrop-filter). (첫 화면의 옅은 크림슨 빛과 위아래 명암은 index.html의 블록에, 개별 사례 페이지의 상담 상자·판결 인용 왼줄은
+      build_cases.py의 EXTRA_CSS 끝에 — case.css는 build_cases.py가 cases.html의 <style> + EXTRA_CSS로 다시 만들므로 이 블록은 cases.html에만 두면 된다.)
+   ⑤ 판결문·위촉장 크게 보기 창(dialog)은 살짝 커지며 열리고, 접힌 글(details)·목록 보기의 펼친 칸은 짧게 떠오르며 펼쳐진다.
+   움직임 줄이기(prefers-reduced-motion: reduce)를 켠 기기와 인쇄에서는 모두 끈다. 색은 모두 변수를 써서 어두운 화면에서도 맞는다. */
+:root { --shadow-c: rgba(45, 50, 57, 0.28); --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --shadow-c: rgba(0, 0, 0, 0.6); } }
+:root[data-theme="dark"] { --shadow-c: rgba(0, 0, 0, 0.6); }
+@keyframes fx-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ① 페이지 넘김 */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.3s; animation-timing-function: ease-out; }
+@media (min-width: 761px) { .top .brand { view-transition-name: brand; } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+/* ③ 손을 올리면·누르면 */
+.btn, .chip, .preset, .copy, .mini, .finder-list a, .situation, .situation.linked, .case, .case-fig, .adv-fig, .cert button, .adv-logo, .lec-logo,
+.section-head .jump a, .quick .maps .pick a, .quick > a, .sns.icons a .ico, .sns a, .foot-nav a, .top nav a, .press-list .press-title, .case-docs figure a, .related li a, .topic-cases h3 a, .case-detail .kw-line a, .find input, .consult input, .consult select, .consult textarea {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity, text-decoration-color;
+  transition-duration: 0.18s, 0.18s, 0.18s, 0.25s, 0.25s, 0.18s, 0.18s;
+  transition-timing-function: ease, ease, ease, var(--ease-out), var(--ease-out), ease, ease;
+}
+.totop { transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, background-color 0.18s ease, border-color 0.18s ease; }
+.case-fig { overflow: hidden; }
+.case-fig img { transition: transform 0.6s var(--ease-out), opacity 0.2s ease; }
+.btn:active, .chip:active, .preset:active, .finder-list a:active, .section-head .jump a:active, .situation.linked:active, .sns.icons a:active .ico, .quick .maps .pick a:active { transform: translateY(0) scale(0.985); transition-duration: 0.08s; }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 16px -10px var(--shadow-c); }
+  .top nav .btn:hover, .findbox .find .btn:hover, .consult .btn:hover, .case-cta .btns .btn:not(.ghost):hover { color: #fff; background-color: var(--seal); border-color: var(--seal); }
+  .cta .btn:not(.ghost):hover { background-color: #fff; border-color: #fff; }
+  .case:hover { transform: translateY(-2px); border-color: var(--ink-soft); box-shadow: 0 12px 26px -16px var(--shadow-c); }
+  .case:hover .case-fig img { transform: scale(1.025); }
+  .case-list.list .case.row:hover { transform: none; box-shadow: none; }   /* 목록 보기의 한 줄 칸은 떠오르지 않는다 */
+  .finder-list a:hover { transform: translateY(-2px); box-shadow: 0 12px 26px -16px var(--shadow-c); }
+  .situation.linked:hover { transform: translateY(-2px); box-shadow: 0 1px 0 var(--seal), 0 14px 28px -18px var(--shadow-c); }
+  button.adv-fig:hover, .cert button:hover { box-shadow: 0 10px 20px -14px var(--shadow-c); }
+  .sns.icons a:hover .ico { transform: translateY(-2px); }
+  .case-docs figure a:hover { border-color: var(--ink-soft); box-shadow: 0 14px 30px -18px var(--shadow-c); }
+  .totop:hover { background: var(--seal); border-color: var(--seal); }
+}
+
+/* ② 떠오르기 (③보다 뒤에) */
+.reveal { opacity: 0; transform: translateY(14px); }
+.reveal.in { opacity: 1; transform: none; transition: opacity 0.6s ease-out, transform 0.6s var(--ease-out); transition-delay: var(--d, 0ms); }
+.case-list > .reveal { transform: translateY(10px); }
+.case-list > .reveal.in { transition-duration: 0.45s; }   /* 분야 칩·검색으로 카드가 바뀔 때는 조금 더 짧게 */
+
+/* ④ 그라데이션 */
+.btn:not(.ghost):not(.danger), .situation .cases-link, .chip[aria-selected="true"] { background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 60%); }
+.section { border-image: linear-gradient(90deg, var(--rule) 0, var(--rule) 58%, transparent) 1; }
+.section.first { border-image: none; }
+.sign, .quick { border-image: linear-gradient(90deg, var(--rule) 0, var(--rule) 58%, transparent) 1; }
+.quick + .sign { border-image: none; }
+.findbox.big, .before { background-image: linear-gradient(180deg, var(--wash), color-mix(in srgb, var(--wash) 45%, var(--paper))); }
+.top { transition: border-color 0.2s ease, background-color 0.25s ease; }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @media (min-width: 761px) {
+    .top.stuck { background: color-mix(in srgb, var(--paper) 86%, transparent); -webkit-backdrop-filter: saturate(1.3) blur(12px); backdrop-filter: saturate(1.3) blur(12px); }
+  }
+}
+
+/* ⑤ 창·접힌 글 */
+@keyframes fx-lb { from { opacity: 0; transform: translateY(8px) scale(0.985); } to { opacity: 1; transform: none; } }
+.lightbox[open] { animation: fx-lb 0.26s var(--ease-out); }
+.lightbox[open]::backdrop { animation: fx-fade 0.26s ease-out; }
+details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
+.case.row .row-body:not([hidden]) { animation: fx-up 0.3s var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.in { opacity: 1; transform: none; transition: none; }
+  .lightbox[open], .lightbox[open]::backdrop, details[open] > :not(summary), .case.row .row-body:not([hidden]) { animation: none; }
+  .btn:hover, .case:hover, .finder-list a:hover, .situation.linked:hover, .sns.icons a:hover .ico, .case:hover .case-fig img { transform: none; }
+}
+@media print { .reveal, .reveal.in { opacity: 1 !important; transform: none !important; } }
+
+/* 전체 사례 페이지(cases.html만): 제목 머리(.all-head)는 열릴 때 짧게 떠오른다. 분야·단어로 카드가 바뀔 때의 떠오르기는 공통 블록 ②와 스크립트(FX). */
+.all-head { animation: fx-up 0.6s var(--ease-out) both; }
+@media (prefers-reduced-motion: reduce) { .all-head { animation: none; } }
 </style>
 </head>
 <body>
@@ -10506,6 +10600,56 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 ]
 </script>
 <script>
+  // ---------- 떠오르기 (2026. 10. 23.) ----------
+  // 효과 블록 ②의 .reveal/.in을 붙이고 떼는 쪽. add(요소들, 아래만): "지금 화면 아래에 있는 것"에만 .reveal을 붙이므로 처음 보이는 부분은
+  // 깜박이지 않고, 스크립트가 없는 환경(검색 로봇·AI)에서는 모두 그대로 보인다. 화면에 들어오면(IntersectionObserver) .in을 붙여 떠오르게 하고,
+  // 한 번에 들어온 여러 개는 70ms 간격(--d)으로 차례로; 전환이 끝나면 두 클래스를 떼어 보통 상태로 돌려놓는다. 페이지 맨 아래에 닿으면 남은 것을 모두 보인다.
+  // collect(절, 모음): 절 안에서 떠오를 단위를 고른다 — 격자(.case-list·.situations·.advisors·.finder-list·.certs·.faq)는 칸마다, 묶음(.section-body·.block·.pair…)은 안으로 들어가고, 그 밖은 덩어리째.
+  var FX = (function () {
+    var ok = 'IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var pending = [];
+    function finish(el) {
+      var i = pending.indexOf(el); if (i >= 0) pending.splice(i, 1);
+      el.classList.remove('reveal', 'in'); el.style.removeProperty('--d');
+    }
+    function show(el, k) {
+      io.unobserve(el);
+      el.style.setProperty('--d', (Math.min(k, 6) * 70) + 'ms');
+      el.classList.add('in');
+      var done = false;
+      function end(e) { if (e && e.target !== el) return; if (done) return; done = true; el.removeEventListener('transitionend', end); finish(el); }
+      el.addEventListener('transitionend', end);
+      setTimeout(end, 1500);
+    }
+    var io = ok ? new IntersectionObserver(function (entries) {
+      var k = 0;
+      entries.forEach(function (en) { if (en.isIntersecting) show(en.target, k++); });
+    }, { rootMargin: '0px 0px -4% 0px', threshold: 0 }) : null;
+    if (ok) window.addEventListener('scroll', function () {
+      if (pending.length && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) pending.slice().forEach(function (el, k) { show(el, k); });
+    }, { passive: true });
+    var GRIDS = '.case-list, .situations, .advisors, .finder-list, .certs, .areas, .faq';
+    var CONTAINERS = '.section-body, .block, .pair, .pair > div, .past-wrap, .gallery, .contact, .section-body > div:not([class])';
+    function collect(node, out) {
+      Array.prototype.forEach.call(node.children, function (c) {
+        if (c.hidden || c.matches('script, style, template, .visually-hidden, .lightbox')) return;
+        if (c.matches(GRIDS)) Array.prototype.forEach.call(c.children, function (it) { if (!it.hidden) out.push(it); });
+        else if (c.matches(CONTAINERS)) collect(c, out);
+        else out.push(c);
+      });
+    }
+    function add(els, onlyBelow) {
+      if (!ok) return;
+      var h = window.innerHeight;
+      Array.prototype.forEach.call(els, function (el) {
+        if (el.classList.contains('reveal')) return;
+        if (onlyBelow && el.getBoundingClientRect().top < h) return;
+        el.classList.add('reveal'); pending.push(el); io.observe(el);
+      });
+    }
+    return { ok: ok, collect: collect, add: add };
+  })();
+
 (function () {
   var CATS = { rnd: '국가연구개발 제재처분', penalty: '제재부가금·환수', personnel: '공무원·교원 인사처분', license: '인허가·면허·자격 처분', comp: '손실보상', admin: '그 밖의 행정처분', criminal: '형사', contract: '국가계약법·지방계약법', state: '국가배상', civil: '민사' };   // 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤(형사는 출연금·보조금 외 사건도 있어 '형사'로, 민사는 카드가 없어 맨 뒤)
   var cases = [];
@@ -10528,6 +10672,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
     var hay = [c.title, c.summary, c.court, c.party, c.result, c.date, CATS[c.cat], (c.kw || []).join(' ')].join(' ').toLowerCase();
     return ts.every(function (alts) { return alts.some(function (t) { return hay.indexOf(t) >= 0; }); });   // 띄어쓰기 = 모두, '·' = 어느 하나
   }
+  var fxFirst = true;   // 처음 그릴 때는 화면 아래의 카드만 떠오르고, 그 뒤(칩·검색·보기 바꿈)에는 화면 안의 카드도 떠오른다 (2026. 10. 23.)
   var listEl = document.getElementById('case-list'), chipsEl = document.getElementById('chips'), emptyEl = document.getElementById('case-empty'), loadingEl = document.getElementById('loading'), countEl = document.getElementById('all-count');
 
   var LB = (function () {
@@ -10660,6 +10805,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
       : (state.filter !== 'all' && totalHits > 0) ? ('이 분야에는 찾는 사례가 없습니다. 다른 분야에 ' + totalHits + '건이 있습니다 — ‘전체’를 누르면 모두 보입니다.')
       : '찾는 단어이 들어 있는 사례가 없습니다. 다른 단어로 찾아보십시오.';
     shown.forEach(function (c) { listEl.appendChild(state.view === 'list' ? row(c) : card(c)); });
+    FX.add(listEl.children, fxFirst); fxFirst = false;
   }
   function render() {
     renderChips(); renderList();
@@ -10707,7 +10853,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
         var m = t.match(/<script type="application\/json" id="cases-data">([\s\S]*?)<\/script>/);
         if (!m) continue;
         var fresh = JSON.parse(m[1]);
-        if (Array.isArray(fresh) && fresh.length) { cases = fresh; render(); }
+        if (Array.isArray(fresh) && fresh.length && JSON.stringify(fresh) !== JSON.stringify(cases)) { cases = fresh; render(); }   // 같은 자료면 다시 그리지 않는다(떠오르기가 두 번 되지 않게, 2026. 10. 23.)
         return;
       } catch (e) { /* try the next candidate */ }
     }
@@ -10745,6 +10891,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
     if (method) track('contact_click', { method: method });
   }, true);
 
+  FX.add(document.querySelectorAll('footer.sign'), true);   // 바닥글 떠오르기 (2026. 10. 23.)
 </script>
 </body>
 </html>

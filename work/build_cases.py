@@ -328,6 +328,14 @@ EXTRA_CSS = """
   .case-cta .btns .btn { color: var(--paper); background: var(--ink); border-color: var(--ink); }
   .case-cta .btns .btn.ghost { color: var(--ink); background: none; }
 }
+/* 개별 사례·주제 페이지(case.css만, 효과 블록 2026. 10. 23.): 스크립트 없이 CSS만으로 — 현재 위치 줄과 제목 머리(개별 사례), 머리말(주제 페이지)이 열릴 때 짧게 떠오른다.
+   판결문 그림(.case-docs)은 가장 큰 그림(LCP)이므로 움직이지 않는다. 상담 상자는 옅은 바탕이 아래로 갈수록 종이색으로, 판결 인용의 크림슨 왼줄은 아래로 옅어진다.
+   (이 규칙은 EXTRA_CSS 끝에 있어야 한다 — 위의 .case-cta { background: … } 단축 속성이 뒤에 오면 그라데이션이 지워진다.) */
+.crumbs, .case-head, .topic-page .intro { animation: fx-up 0.55s var(--ease-out) both; }
+.case-head { animation-delay: 0.06s; }
+.case-cta { background-image: linear-gradient(180deg, var(--wash), color-mix(in srgb, var(--wash) 45%, var(--paper))); }
+.case-detail blockquote { border-image: linear-gradient(180deg, var(--seal), color-mix(in srgb, var(--seal) 30%, transparent)) 1; }
+@media (prefers-reduced-motion: reduce) { .crumbs, .case-head, .topic-page .intro { animation: none; } }
 """
 
 
@@ -591,6 +599,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 {ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>@view-transition {{ navigation: auto; }}</style><!-- 페이지 넘김 효과(2026. 10. 23.): 바깥 case.css가 아직 안 받아진 첫 방문에도 두 화면이 겹쳐 바뀌도록 머리에 바로 적음 -->
 <link rel="stylesheet" href="../case.css">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
@@ -730,6 +739,7 @@ def build_topic_page(t, matched, cat_counts):
 {ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>@view-transition {{ navigation: auto; }}</style><!-- 페이지 넘김 효과(2026. 10. 23.): 바깥 case.css가 아직 안 받아진 첫 방문에도 두 화면이 겹쳐 바뀌도록 머리에 바로 적음 -->
 <link rel="stylesheet" href="../case.css">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
