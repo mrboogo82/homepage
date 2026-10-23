@@ -36,7 +36,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FONT_TTC = "/usr/share/fonts/opentype/noto/NotoSerifCJK-Black.ttc"
 FONT_INDEX = 1  # Noto Serif CJK KR Black
 
-CRIMSON = "#a21a2d"   # 홈페이지 --seal 값(고려대 크림슨을 화면용으로 올린 값)
+CRIMSON = "#6e1623"   # 깊은 크림슨(2026. 10. 23. 본인 요청으로 홈페이지 --seal #a21a2d보다 어둡고 진하게; 한 단계 밝은 값은 #7a1a2a)
 PAPER = "#ffffff"
 CHAR = "부"
 
@@ -153,8 +153,8 @@ def main():
         "background_color": PAPER,
         "theme_color": CRIMSON,
         "icons": [
-            {"src": "/icon-192.png?v=2", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
-            {"src": "/icon-512.png?v=2", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
+            {"src": "/icon-192.png?v=3", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+            {"src": "/icon-512.png?v=3", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
         ],
     }
     with open(os.path.join(ROOT, "site.webmanifest"), "w", encoding="utf-8") as f:

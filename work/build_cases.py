@@ -580,9 +580,9 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <meta name="author" content="부효준">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{esc(url)}">
-<link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
-<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="icon" href="/favicon.ico?v=3" sizes="32x32">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
@@ -738,9 +738,9 @@ def render_topic_page(t, matched, cat_counts, modified):
 <meta name="author" content="부효준">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{esc(url)}">
-<link rel="icon" href="/favicon.ico?v=2" sizes="32x32">
-<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="icon" href="/favicon.ico?v=3" sizes="32x32">
+<link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
