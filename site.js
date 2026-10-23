@@ -265,8 +265,8 @@ var LB = (function () {
 (function () {
   var DATA_ID = 'cases-data';
   var CATS = { rnd: '국가연구개발 제재처분', penalty: '제재부가금·환수', personnel: '공무원·교원 인사처분', license: '인허가·면허·자격 처분', comp: '손실보상', admin: '그 밖의 행정처분', criminal: '형사', contract: '국가계약법·지방계약법', state: '국가배상', civil: '민사' };   // 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤(형사는 출연금·보조금 외 사건도 있어 '형사'로, 민사는 카드가 없어 맨 뒤)
-  var RECENT = 9;   // 홈 화면의 사례 수(2026. 10. 21.): 세 장씩 놓이는 넓은 화면은 9건, 두 장씩 놓이는 화면(1000px 이하)은 CSS가 아홉째 장을 감춰 8건
-  var MAIN = ['rnd', 'penalty', 'criminal']; // 홈 화면이 먼저 보이는 세 분야 (Version 90)
+  var RECENT = 6;   // 홈 화면의 사례 수(2026. 10. 23. 오후 본인 지시): 세 장씩 놓이는 화면은 2줄, 두 장씩 놓이는 화면은 3줄 — 어느 쪽이든 6건
+  var MAIN = ['criminal', 'rnd', 'penalty']; // 홈 '주요 분야'의 세 분야와 순서(2026. 10. 23. 오후 본인 지시: 형사 → 국가연구개발 제재처분 → 제재부가금·환수) — 이 순서로 번갈아 두 건씩
   var WHO = '담당변호사 부효준'; // 모든 사례에 적는 담당변호사 (Version 111)
   function bySortDesc(a, b) { return (b.sort || '') < (a.sort || '') ? -1 : (b.sort || '') > (a.sort || '') ? 1 : 0; }
   var cases = [];
@@ -306,7 +306,7 @@ var LB = (function () {
     if (state.filter !== 'all' && state.filter !== 'main' && !counts[state.filter]) state.filter = 'main';
     keys.forEach(function (k) {
       var b = el('button', 'chip', k === 'main' ? '주요 분야' : k === 'all' ? '전체' : CATS[k]);
-      if (k === 'main') b.title = '국가연구개발 제재처분 · 제재부가금·환수 · 형사';
+      if (k === 'main') b.title = '형사 · 국가연구개발 제재처분 · 제재부가금·환수';
       b.type = 'button';
       b.id = 'chip-' + k;
       b.setAttribute('role', 'tab');
@@ -366,12 +366,21 @@ var LB = (function () {
 
   function renderList() {
     listEl.textContent = '';
-    var shown = cases.filter(function (c) { return state.filter === 'all' || (state.filter === 'main' ? MAIN.indexOf(c.cat) >= 0 : c.cat === state.filter); });
-    // 최근 결정일 순으로 정렬하고, 홈 화면에는 최근 9건(두 장씩 놓이는 화면에서는 8건)만 보입니다(전체는 cases.html, 최근 순).
-    shown = shown.map(function (c, i) { return [c, i]; })
-      .sort(function (a, b) { return bySortDesc(a[0], b[0]) || a[1] - b[1]; })
-      .map(function (t) { return t[0]; });
-    shown = shown.slice(0, RECENT);
+    function recent(list) {   // 최근 결정일 순(같으면 데이터 순)
+      return list.map(function (c, i) { return [c, i]; }).sort(function (a, b) { return bySortDesc(a[0], b[0]) || a[1] - b[1]; }).map(function (t) { return t[0]; });
+    }
+    var shown;
+    if (state.filter === 'main') {
+      // '주요 분야'(2026. 10. 23. 오후): 세 분야를 MAIN 순서로 번갈아 — 형사·국가연구개발·제재부가금·형사·… — 분야마다 최근 순, 어느 분야도 빠지지 않게. 6건이면 분야마다 2건.
+      var per = MAIN.map(function (k) { return recent(cases.filter(function (c) { return c.cat === k; })); });
+      shown = [];
+      for (var r = 0; shown.length < RECENT && per.some(function (l) { return l.length > r; }); r++) {
+        per.forEach(function (l) { if (r < l.length && shown.length < RECENT) shown.push(l[r]); });
+      }
+    } else {
+      // 그 밖의 칩: 최근 결정일 순으로 6건(전체는 cases.html, 최근 순).
+      shown = recent(cases.filter(function (c) { return state.filter === 'all' || c.cat === state.filter; })).slice(0, RECENT);
+    }
     if (allLink) {
       var whole = state.filter === 'all' || state.filter === 'main';
       allLink.textContent = whole ? '주요 수행 사례 전체 보기 (최근 순)' : (CATS[state.filter] || '') + ' 사례 전체 보기';
@@ -442,7 +451,7 @@ document.addEventListener('click', function (e) {
 // ---------- 홈에서 본 부분 집계 (Version 116) ----------
 (function () {
   if (!('IntersectionObserver' in window)) return;
-  var names = { record: '주요 수행 사례', career: '경력', fields: '다루는 사건', faq: '자주 묻는 질문', contact: '상담 문의' };   // 2026. 10. 21. '국가연구개발 제재처분' 절(rnd)은 없앰
+  var names = { record: '주요 수행 사례', career: '경력', fields: '다루는 사건', contact: '상담 문의' };   // 2026. 10. 21. '국가연구개발 제재처분' 절(rnd)은 없앰; 2026. 10. 23. 오후 '자주 묻는 질문'(faq)도 삭제
   var seen = {};
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) { if (en.isIntersecting && !seen[en.target.id]) { seen[en.target.id] = 1; track('section_view', { section: names[en.target.id] }); } });

@@ -381,26 +381,10 @@ button.case-fig:hover img { opacity: 0.92; }
 .case-link { justify-self: start; font-size: var(--step--1); }
 .empty { padding-block: 1.5rem; font-size: var(--step--1); color: var(--ink-soft); border-block: 1px solid var(--rule); }
 
-/* 홈 주요 수행 사례의 장수 (2026. 10. 21.): 세 장씩 놓이는 넓은 화면은 아홉 장, 두 장씩 놓이는 화면(1000px 이하, 휴대전화 포함)은 여덟 장 —
-   줄이 비는 자리가 없게. JS는 아홉 장을 그리고, 두 장씩 놓이는 화면에서는 아홉째 장을 감춘다. */
-@media (max-width: 1000px) { .case-list > .case:nth-child(n+9) { display: none; } }
+/* 홈 주요 수행 사례의 장수: 2026. 10. 23. 오후 본인 지시로 6건(세 장씩 놓이는 화면 2줄 = 두 장씩 놓이는 화면 3줄, 형사·국가연구개발·제재부가금 순으로 번갈아) —
+   줄이 비는 자리가 없으므로 종전의 '아홉째 장 감추기' 규칙(2026. 10. 21.)은 없앰. */
 
-/* faq — 2026. 10. 21. 글자(질문 1.3125→1.0625rem, 답 1→0.9375rem)와 줄 간격(1.8→1.6), 항목 사이(1.4→0.95rem)를 줄여 간결하게
-   → 2026. 10. 23. 낮(길이 줄이기): 질문을 누르면 답이 펼쳐지는 접이식(details.faq-item) — 'Q' 표시, 오른쪽 끝에 +/−, 첫 질문만 열어 둔다.
-   펼쳐질 때의 짧은 떠오르기는 효과 블록 ⑤의 details[open] 규칙이 맡는다. */
-.faq { display: grid; }
-.faq-item { border-top: 1px solid var(--rule); }
-.faq-item:last-child { border-bottom: 1px solid var(--rule); }
-.faq-item summary { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; gap: 1rem; align-items: start; padding-block: 0.8rem; list-style: none; cursor: pointer; font-family: var(--serif); font-size: var(--step-0); font-weight: 600; line-height: 1.35; }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::before { content: "Q"; color: var(--seal); }
-.faq-item summary::after { content: "+"; align-self: center; width: 1.25rem; height: 1.25rem; display: grid; place-items: center; font-family: var(--sans); font-size: 1rem; font-weight: 400; line-height: 1; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 50%; }
-.faq-item[open] summary::after { content: "−"; color: var(--ink); border-color: var(--ink-soft); }
-.faq-item summary:hover .q, .faq-item summary:hover::after { color: var(--seal); }
-.faq-item summary:hover::after { border-color: var(--seal); }
-.faq-item .a { max-width: 44rem; padding: 0 2.75rem 0.9rem 3rem; font-size: 0.9375rem; line-height: 1.6; }
-.faq-item .a .ref { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
-@media (max-width: 420px) { .faq-item summary { grid-template-columns: 1.5rem minmax(0, 1fr) auto; gap: 0.6rem; } .faq-item .a { padding: 0 0 0.8rem 0; } }
+/* 자주 묻는 질문 절·페이지는 2026. 10. 23. 오후 본인 지시로 삭제(규칙도 지움). */
 
 /* practice areas */
 .areas {
@@ -813,7 +797,6 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   .rows.tight > div { grid-template-columns: 4.5rem minmax(0, 1fr); }
   .rows.dates > div { grid-template-columns: minmax(0, 1fr); }
   .certs, .certs.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .faq dd { grid-column: 1 / -1; }
 }
 
 
@@ -1383,7 +1366,7 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
       연표·학력·강의 줄의 위아래 여백도 조금.
    ⑥ 다루는 사건 카드: 안쪽 여백·간격·글자(1 → 0.9375rem)·줄 간격을 줄임. 휴대전화(640px 이하)에서는 카드마다 설명을 네 줄까지만 보이고 '다룬 사건'·근거 법령을
       접어 두며 '더 보기' 단추로 펼친다(스크립트가 .fold를 붙임 — 스크립트 없는 환경·넓은 화면에서는 다 보임; 국가연구개발 카드의 세 기한은 접지 않음).
-   ⑦ 자주 묻는 질문: 접이식(위 faq 규칙, index.html은 details.faq-item) — 첫 질문만 펼쳐 둠.
+   ⑦ (자주 묻는 질문은 2026. 10. 23. 오후 삭제)
    ⑧ 상담 문의: 넓은 화면(1180px 이상)에서 연락처와 온라인 상담 신청서를 나란히, '처음 연락하실 때'는 그 아래 전체 폭; 신청서·안내 상자 여백을 줄이고 온라인 계정 목록은 두 칸으로.
    측정(Playwright, 움직임 줄이기 켬, 글은 그대로; 같은 날 낮의 f248b91 구조 기준): 휴대전화 390×844 26,220 → 16,978px(31 → 20화면, −35%), 1280×800 18,159 → 13,773px(−24%),
    1440×900 18,233 → 13,778px, 768×1024 23,391 → 18,917px. 홈 사례 카드 한 장(넓은 화면 세 줄) 572·531·505 → 480·466·393px, 휴대전화 두 장 카드 417·351·410·330 → 369·321·378·301px.
@@ -1559,7 +1542,7 @@ ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margi
 
 /* ---------- 짧은 홈 + 항목별 페이지 (2026. 10. 23. 저녁) ----------
    본인 지시(창천 lawcc.co.kr 참고): "각 항목마다 별도 페이지로 … 첫 화면, 주요 수행 사례 검색은 전면에 나오게". 경력·다루는 사건·자주 묻는 질문·언론보도·상담 문의의 전체는
-   career.html·fields.html·faq.html·press.html·contact.html 로 옮기고(같은 home.css, 공용 부품은 work/build_pages.py 가 index.html 에서 맞춤), 홈에는 같은 id 의 요약 절만 둔다.
+   career.html·fields.html·press.html·contact.html 로 옮기고(faq.html 은 같은 날 오후 삭제)(같은 home.css, 공용 부품은 work/build_pages.py 가 index.html 에서 맞춤), 홈에는 같은 id 의 요약 절만 둔다.
    ① 항목별 페이지의 제목 머리(.page-head: 현재 위치 › 제목 › 한 줄 설명) ② 홈 경력 요약의 기관 띠(.org-chips — 로고+이름, 누르면 기관 누리집; 흰 바탕이라 어두운 화면에서도 로고 색이 그대로)
    ③ 홈 다루는 사건 요약(.field-list — 열 영역의 제목·한 줄·단추; 국가연구개발 카드는 한 줄 폭에 세 기한 띠) ④ 요약 절 머리의 '자세히' 알약과 '… 전체 보기 →' 단추(.more) */
 .page-head { display: grid; gap: 0.5rem; padding-block: clamp(1.75rem, 4vw, 2.75rem) 1.25rem; animation: fx-up 0.6s var(--ease-out) both; }
@@ -1613,10 +1596,23 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
   .field svg { width: 1.4rem; height: 1.4rem; }
   .field.lead .due-line { gap: 0.25rem 1rem; }
 }
-#faq .faq + .more, #record .more { margin-top: 1rem; }
+#record .more { margin-top: 1rem; }
 /* 상담 문의 페이지(contact.html)의 '오시는 길' 칸 */
 .directions { grid-column: 1 / -1; display: grid; gap: 0.45rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
 .directions h3 { font-size: var(--step-1); }
 .directions p { font-size: 1rem; line-height: 1.7; }
 .directions .sub { font-size: var(--step--1); color: var(--ink-soft); }
 .directions .map-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.3rem; }
+
+/* ---------- 홈 경력 절 (2026. 10. 23. 오후) ----------
+   본인 지시: 법률고문 위촉과 현재 활동 중인 위원회의 위촉장은 모두 홈 본문에, 나머지(경력·학력·수상·임기를 마친 위촉·위원회)는 간단하게 —
+   경력·학력·수상은 두 줄(.career-brief), 임기를 마친 위촉·위원회와 강의는 타일 아래 한 줄(.past, work/build_pages.py 가 career.html 에서 만듦). */
+.career-brief { max-width: 60rem; font-size: var(--step--1); line-height: 1.75; }
+.career-brief b { font-weight: 600; color: var(--ink); }
+.career-brief.sub { margin-top: 0.35rem; color: var(--ink-soft); }
+.career-brief a { color: var(--ink); text-decoration-color: var(--rule); }
+.career-brief a:hover { color: var(--seal); text-decoration-color: var(--seal); }
+.career-body .past { margin-top: 1.1rem; font-size: var(--step--2); line-height: 1.7; }
+.career-body .past + .past { margin-top: 0.4rem; }
+.career-body .past a { color: var(--ink-soft); text-decoration-color: var(--rule); }
+.career-body .past a:hover { color: var(--seal); text-decoration-color: var(--seal); }

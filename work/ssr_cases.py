@@ -9,8 +9,8 @@
     python3 work/ssr_cases.py . --check  # 지금 파일이 데이터와 일치하는지 검사만
 
 규칙(페이지의 JS card() 와 같은 마크업):
-  - 홈(index.html): 주요 분야(rnd·penalty·criminal)의 최근 9건, sort 내림차순(같으면 데이터 순).
-    (2026. 10. 21. 12건→9건: 세 장씩 놓이는 화면은 9건, 두 장씩 놓이는 화면은 페이지 CSS가 아홉째 장을 감춰 8건)
+  - 홈(index.html): 주요 분야 세 가지(MAIN 순서: 형사 → 국가연구개발 제재처분 → 제재부가금·환수)를 번갈아 6건 — 분야마다 최근 순(sort 내림차순, 같으면 데이터 순) 2건씩.
+    (2026. 10. 23. 오후 본인 지시: 세 장씩 놓이는 화면은 2줄, 두 장씩 놓이는 화면은 3줄; 그 전 2026. 10. 21. 12건→9건)
   - 전체(cases.html): 전체를 sort 내림차순(같으면 데이터 순)으로.
   - 제목·'자세히 →' 링크는 cases/<첫 이미지 이름>.html (build_cases.py의 page_href 와 같음).
   - 2026. 10. 21. 본인 지시: 카드에는 '판결문 N장' 수를 적지 않고, 요지는 두 줄로 접되 '더 보기' 단추 없이
@@ -48,8 +48,8 @@ CATS = {   # 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤
     "state": "국가배상",
     "civil": "민사",
 }
-MAIN = ("rnd", "penalty", "criminal")
-RECENT = 9
+MAIN = ("criminal", "rnd", "penalty")   # 홈 '주요 분야'의 순서(2026. 10. 23. 오후): 형사 → 국가연구개발 제재처분 → 제재부가금·환수
+RECENT = 6                                # 세 장씩 2줄 = 두 장씩 3줄
 WHO = "담당변호사 부효준"
 SITE = "https://lawyermrboo82.com"
 LINK_TEXT = "자세히 →"   # 상세 소개(det) 유무와 상관없이 하나(2026. 10. 21.)
@@ -228,11 +228,27 @@ def ordered(cases, cats=None):
     return [c for c, _ in idx]
 
 
+def home_order(cases):
+    """홈 '주요 분야' 보기: MAIN 의 분야를 차례로 번갈아(형사·국가연구개발·제재부가금·형사·…) 분야마다 최근 순 — 어느 분야도 빠지지 않게(페이지의 JS renderList 와 같은 규칙)."""
+    per = [ordered(cases, (k,)) for k in MAIN]
+    out, r = [], 0
+    while len(out) < RECENT and any(len(l) > r for l in per):
+        for l in per:
+            if r < len(l) and len(out) < RECENT:
+                out.append(l[r])
+        r += 1
+    return out
+
+
 def render_list(cases, cats=None, limit=None):
     lst = ordered(cases, cats)
     if limit:
         lst = lst[:limit]
     return "\n".join(render_li(c) for c in lst)
+
+
+def render_home(cases):
+    return "\n".join(render_li(c) for c in home_order(cases))
 
 
 LIST_RE = re.compile(r'(<ol class="case-list" id="case-list">)\n?(.*?)(\n?\s*</ol>)', re.S)
@@ -456,7 +472,7 @@ def main():
     press = load_press(site)                   # 언론보도(press.json): 카드의 '언론보도' 표시(pr)와 llms 줄에 쓰임
     cases_kw = with_keywords(cases, details, press)   # 데이터 파일에 검색어(kw)·언론보도 건수(pr)를 더한다(단어로 찾기에 쓰임)
 
-    home = render_list(cases_kw, MAIN, RECENT)
+    home = render_home(cases_kw)
     full = render_list(cases_kw)
     all_list = render_all_list(cases_kw)
     new_idoc = count_text(replace_all_list(set_data_tag(replace_list(idoc, home), cases_kw), all_list), n)
@@ -514,7 +530,7 @@ def main():
         for p in stale_parts:
             os.remove(p)
     print("사례 %d건: cases-data.js·index.html(홈 %d건 + 접힌 전체 목록)·cases.html·llms.txt·llms-full.txt(분야별 파일 %d개) 갱신"
-          % (n, min(RECENT, len(ordered(cases, MAIN))), len(parts)))
+          % (n, len(home_order(cases)), len(parts)))
 
 
 if __name__ == "__main__":

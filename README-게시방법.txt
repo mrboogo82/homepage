@@ -2,10 +2,11 @@
 ※ 묶음이 커져 두 파일로 나누었습니다: 1of2(페이지·certs 등 전부, cases/ 제외)와 2of2-cases(cases/ 폴더). 두 파일을 같은 폴더에 풀면 아래 구성이 됩니다.
 
 구성
-- index.html       홈(2026. 10. 23. 저녁부터 '짧은 홈 + 항목별 페이지' 구조, 창천 lawcc.co.kr 참고 — 본인 지시 "첫 화면, 주요 수행 사례 검색은 전면에"): 첫 화면 → 길잡이 → 단어로 판결문 찾기 + 주요 수행 사례 최근 8~9건
-                   → 경력 요약(연표 + 위촉·위원회 기관 띠) → 최근 언론보도 3건 → 다루는 사건 열 영역 요약 → 자주 묻는 질문 2문답 → 상담 문의(연락처·신청서) → 접힌 전체 목록. 스타일은 home.css, 스크립트는 site.js
-- career.html / fields.html / faq.html / press.html / contact.html   경력(학력·수상·위촉장·위원회·강의 전체) / 다루는 사건(열 영역 전체 설명) / 자주 묻는 질문(일곱 문답) / 언론보도(기사 전체) / 상담 문의(연락처·신청서·처음 연락하실 때·오시는 길).
-                   같은 home.css·site.js. 머리글·바닥글·그림 심벌·크게 보기 창·계정 목록은 index.html 이 기준이고 work/build_pages.py 가 다섯 페이지에 복사한다(<!-- chrome:이름:start/end --> 표식 사이).
+- index.html       홈(2026. 10. 23. 저녁부터 '짧은 홈 + 항목별 페이지' 구조, 창천 lawcc.co.kr 참고 — 본인 지시 "첫 화면, 주요 수행 사례 검색은 전면에"): 첫 화면 → 길잡이 → 단어로 판결문 찾기 + 주요 수행 사례 6건
+                   (형사·국가연구개발 제재처분·제재부가금·환수를 번갈아 2건씩 — 세 장씩 2줄, 두 장씩 3줄; 2026. 10. 23. 오후 본인 지시) → 경력(경력·학력·수상 두 줄 + 현행 법률고문 위촉·위원회 위촉장 타일 전부 + 임기를 마친 것·강의 한 줄)
+                   → 최근 언론보도 3건 → 다루는 사건 열 영역 요약 → 상담 문의(연락처·신청서) → 접힌 전체 목록. 스타일은 home.css, 스크립트는 site.js. (자주 묻는 질문 절·페이지는 2026. 10. 23. 오후 삭제 — faq.html 은 홈으로 넘기는 작은 페이지만 남김)
+- career.html / fields.html / press.html / contact.html   경력(학력·수상·위촉장·위원회·강의 전체) / 다루는 사건(열 영역 전체 설명) / 언론보도(기사 전체) / 상담 문의(연락처·신청서·처음 연락하실 때·오시는 길).
+                   같은 home.css·site.js. 머리글·바닥글·그림 심벌·크게 보기 창·계정 목록은 index.html 이 기준이고 work/build_pages.py 가 네 페이지에 복사한다(<!-- chrome:이름:start/end --> 표식 사이).
 - cases-data.js    사례 데이터 원본("window.CASES_DATA = [...];", 2026. 10. 23. index.html·cases.html 안의 22만 자 JSON 블록에서 분리) — 두 페이지가 <script src="cases-data.js?v=해시">로 읽음
 - home.css / cases.css / case.css   홈 · 전체 사례 페이지 · 사례·주제 페이지(case.css = cases.css + build_cases.py 의 EXTRA_CSS, 자동 생성)의 스타일(2026. 10. 23. 인라인 <style>에서 분리)
 - llms.txt, llms-full.txt, llms-full-<분야>-<번호>.txt   AI·검색 로봇용 텍스트(llms-full.txt 는 사례 한 줄 목록 + 분야별 전체 텍스트 파일 안내, 2026. 10. 23. 분할)
@@ -42,8 +43,8 @@
   기관을 더하면 logos/ 폴더에 로고를 넣고(SVG 권장, PNG는 투명 배경) 그 타일에 로고 띠 한 줄을 붙입니다. 강의 목록·경력·학력·수상 줄은 <a class="lec-logo">(2026. 10. 21. 경력·학력·수상에도). 자세한 것은 work/logos-src/README.md.
   기간 글(<span class="term">)에서 '· 위촉장 2026. 7. 1. ~ 2028. 6. 30.' 부분은 <span class="cert-term">…</span>으로 감쌉니다(2026. 10. 23. — 휴대전화 두 장 목록에서는 숨기고 넓은 화면에서만 보임).
 - 홈 길이 줄이기(2026. 10. 23. 낮, 본인 지시 "스크롤을 너무 많이 하게 돼 … 특히 모바일"): home.css 끝의 '길이 줄이기' 블록(절 여백·첫 화면·길잡이·사례 카드·경력 타일·다루는 사건 카드·상담 문의)과
-  cases.css 끝의 같은 이름 블록(사례 카드만; case.css는 cases.css + EXTRA_CSS로 다시 만듦)에 모여 있습니다. 글은 하나도 지우지 않았고 여백·글자·배치만 줄였습니다(휴대전화 26,220 → 16,978px, PC 18,159 → 13,773px).
-  · 자주 묻는 질문은 <details class="faq-item"> 접이식(첫 질문만 open), 답은 <div class="a">(규칙은 home.css의 faq 블록). 질문을 더할 때도 같은 꼴로.
+  cases.css 끝의 같은 이름 블록(사례 카드만; case.css는 cases.css + EXTRA_CSS로 다시 만듦)에 모여 있습니다. 글은 하나도 지우지 않았고 여백·글자·배치만 줄였습니다(휴대전화 26,220 → 16,978px, PC 18,159 → 13,773px;
+  같은 날 저녁 항목별 페이지 + 오후 지시(위촉장 홈 복귀·사례 6건·FAQ 삭제) 뒤 홈은 PC 9,146px·휴대전화 12,402px).
   · 휴대전화(640px 이하)에서는 '다루는 사건' 카드의 설명을 네 줄까지만 보이고 '다룬 사건'·근거 법령을 접어 둡니다(index.html 스크립트가 .fold를 붙이고 '더 보기' 단추를 넣음; 스크립트 없는 환경·넓은 화면에서는 다 보임).
   · 사례 카드의 결과 배지('승소' 등)는 판결문 그림 오른쪽 위에 겹쳐 둡니다(.case-list:not(.list) .badge — 목록 보기는 그대로). 판결문 그림은 4:3 → 16:10.
   · 위촉 타일은 넓은 화면 한 줄 6장(위원회는 4장 그대로), 휴대전화는 두 장씩. 자주 찾는 단어 칩은 휴대전화에서 한 줄로 옆으로 넘겨 봅니다(홈·전체 사례).
@@ -64,10 +65,11 @@
   (보급·확산사업·구축사업·지원사업 같은 다른 표기는 쓰지 않음; 판결문 원문 인용(quotes)만 그대로). 새 사례를 더한 뒤  python3 work/smart_factory_term.py .  을 돌리면
   같은 파일들에 한꺼번에 적용됩니다( --dry-run · --check 는 no_gigak.py 와 같음). 분야 'civil'의 이름은 2026. 10. 21. '민사·연금·계약'에서 '민사'로 바꾸었습니다.
 - 항목별 페이지(2026. 10. 23. 저녁): 머리글 차림표·바닥글 차례·SNS 계정(#links-data)·전화번호·스크립트 태그를 고칠 때는 index.html 만 고치고  python3 work/build_pages.py .  을 돌리면
-  career·fields·faq·press·contact 다섯 페이지에 같은 부품이 복사되고(그 페이지의 차림표 항목에 class="current"), site.js 의 해시(?v=)도 여섯 페이지에 들어갑니다( --check 는 일치 여부만).
-  홈 경력 요약의 기관 띠(법률고문 위촉·위원회)는 career.html 의 현행 타일(<li class="adv">)에서 같은 스크립트가 다시 만듭니다 — 위촉·위원회를 더하거나 뺄 때는 career.html 만 고치면 됩니다.
+  career·fields·press·contact 네 페이지에 같은 부품이 복사되고(그 페이지의 차림표 항목에 class="current"), site.js 의 해시(?v=)도 다섯 페이지에 들어갑니다( --check 는 일치 여부만).
+  홈 경력 절의 현행 위촉·위원회 위촉장 타일(<ul class="advisors">)과 '임기를 마친 위촉/위원회'·'강의' 한 줄은 career.html 에서 같은 스크립트가 다시 만듭니다(<!-- advisory-tiles / advisory-past / committees-tiles / committees-past:start/end -->) —
+  위촉·위원회·강의를 더하거나 뺄 때는 career.html 만 고치면 됩니다. 홈의 '경력 · 학력 · 수상' 두 줄(.career-brief)은 index.html 에 직접 있으니 경력이 바뀌면 career.html 연표와 함께 고칩니다.
   홈 '다루는 사건' 요약(열 영역의 한 줄)은 index.html 에 직접 있고 분야 건수는 site.js 가 cases-data.js 로 채웁니다; 분야를 더하면 fields.html 과 홈 요약을 함께 고칩니다.
-  홈 자주 묻는 질문 요약은 faq.html 의 첫 두 문답과 같은 글이어야 합니다(둘 다 고침). 언론보도는 build_press.py 가 홈(최근 3건)과 press.html(전체)을 함께 만듭니다.
+  언론보도는 build_press.py 가 홈(최근 3건)과 press.html(전체)을 함께 만듭니다.
   cases.html 과 사례·주제 페이지의 머리글·바닥글은 따로입니다(cases.html 은 직접, 사례·주제 페이지는 build_cases.py 템플릿).
   돌리는 차례: build_press.py → ssr_cases.py → build_pages.py → build_cases.py.
 - 그 다음 반드시 저장소 최상위에서  python3 work/build_cases.py .  을 돌립니다(2026. 10. 19. 추가).

@@ -613,7 +613,6 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../career.html">경력</a>
       <a href="../fields.html">다루는 사건</a>
-      <a href="../faq.html">자주 묻는 질문</a>
       <a class="btn small" href="../contact.html">상담 문의</a>
     </nav>
   </header>
@@ -657,7 +656,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../press.html">언론보도</a> <a href="../fields.html">다루는 사건</a> <a href="../faq.html">자주 묻는 질문</a> <a href="../contact.html">상담 문의</a>
+        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../press.html">언론보도</a> <a href="../fields.html">다루는 사건</a> <a href="../contact.html">상담 문의</a>
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
@@ -770,7 +769,6 @@ def render_topic_page(t, matched, cat_counts, modified):
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../career.html">경력</a>
       <a href="../fields.html">다루는 사건</a>
-      <a href="../faq.html">자주 묻는 질문</a>
       <a class="btn small" href="../contact.html">상담 문의</a>
     </nav>
   </header>
@@ -812,7 +810,7 @@ def render_topic_page(t, matched, cat_counts, modified):
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../press.html">언론보도</a> <a href="../fields.html">다루는 사건</a> <a href="../faq.html">자주 묻는 질문</a> <a href="../contact.html">상담 문의</a>
+        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../press.html">언론보도</a> <a href="../fields.html">다루는 사건</a> <a href="../contact.html">상담 문의</a>
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
@@ -1047,7 +1045,7 @@ def build_sitemap(cases, site="."):
         (SITE + "/", git_lastmod(site, "index.html"), "weekly", "1.0"),
         (SITE + "/cases.html", git_lastmod(site, "cases.html"), "weekly", "0.9"),
     ]
-    for page, pr in (("fields.html", "0.9"), ("career.html", "0.8"), ("faq.html", "0.8"), ("press.html", "0.7"), ("contact.html", "0.7")):   # 항목별 페이지(2026. 10. 23. 저녁)
+    for page, pr in (("fields.html", "0.9"), ("career.html", "0.8"), ("press.html", "0.7"), ("contact.html", "0.7")):   # faq.html 은 2026. 10. 23. 오후 삭제   # 항목별 페이지(2026. 10. 23. 저녁)
         if os.path.exists(os.path.join(site, page)):
             rows.append((SITE + "/" + page, git_lastmod(site, page), "weekly", pr))
     for t in TOPICS:
