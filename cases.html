@@ -441,6 +441,8 @@
   (function () {
     var m = /[#&]cat=([a-z]+)/.exec(location.hash || ''); if (m && CATS[m[1]]) state.filter = m[1];
     var mq = /[#&]q=([^&]*)/.exec(location.hash || ''); if (mq) { try { state.q = decodeURIComponent(mq[1]).trim(); } catch (e) { state.q = ''; } }
+    // 홈 길잡이 '단어로 주요 수행 판결문 찾기'(cases.html#find-form, 2026. 10. 23. 오후)로 들어오면 찾기 칸에 커서를 둔다
+    if (location.hash === '#find-form') window.addEventListener('load', function () { var q = document.getElementById('find-q'); if (q) setTimeout(function () { try { q.focus({ preventScroll: true }); } catch (e) { q.focus(); } }, 300); });
   })();
   function setHash() {
     var h = [];

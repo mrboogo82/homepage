@@ -20,8 +20,8 @@
   ("window.CASES_DATA = [...];" — 두 페이지가 <script src="cases-data.js?v=해시"> 로 읽고, 파이썬은 load_cases()/save_cases() 로 읽고 쓴다).
   종전처럼 index.html·cases.html 안에 22만 자 JSON을 두면 검색 로봇·AI 읽기 도구가 받는 HTML이 너무 커지므로 밖으로 뺐다.
   옛 인라인 블록이 남아 있으면 이 스크립트가 한 번 읽어 파일로 옮기고 블록을 지운다.
-홈의 접힌 전체 목록(2026. 10. 23.): 주요 수행 사례 절 끝의 <details class="all-list">(<!-- all-list:start --> … <!-- all-list:end -->)에
-  전체 사례의 제목·분야·법원·날짜·결과·개별 페이지 링크를 한 줄씩 넣는다. 사람에게는 접혀 보이고, 홈만 읽는 검색 로봇·AI는 전체 사례를 알 수 있다.
+홈의 접힌 전체 목록(2026. 10. 23. 낮 추가 → 같은 날 오후 본인 지시 "사무소 위치 위의 '주요 수행 사례 전체 목록'은 삭제"로 없앰): HOME_ALL_LIST = False 이면 만들지 않고,
+  index.html 에 옛 블록(<!-- all-list:start --> … <!-- all-list:end -->)이 남아 있으면 걷어 낸다. 전체 사례는 cases.html·llms-full.txt·사이트맵으로 읽힌다.
 llms(2026. 10. 23.): llms-full.txt 한 파일(2.2MB)은 AI 읽기 도구의 한도를 넘으므로, llms-full.txt 는 '분야별 파일 안내 + 사례 한 줄 목록'으로,
   사례마다의 전체 텍스트는 분야별 llms-full-<분야>-<번호>.txt (각 LLMS_PART_MAX 바이트 이하)로 나눈다.
 """
@@ -283,6 +283,7 @@ def count_text(doc, n):
 # ---------- 홈의 접힌 전체 목록 (2026. 10. 23.) ----------
 
 ALL_LIST_RE = re.compile(r"<!-- all-list:start -->.*?<!-- all-list:end -->", re.S)
+HOME_ALL_LIST = False   # 2026. 10. 23. 오후 본인 지시로 홈의 전체 목록 삭제 — True 로 바꾸고 ssr_cases.py 를 돌리면 </main> 앞에 다시 생긴다
 
 
 def line_meta(c):
@@ -320,11 +321,13 @@ def render_all_list(cases):
 
 
 def replace_all_list(doc, body):
-    """홈의 전체 목록(부록 절)을 데이터대로 바꾼다. 어디에 있든 옛 블록은 걷어 내고 </main> 바로 앞에 둔다."""
+    """홈의 전체 목록(부록 절)을 데이터대로 바꾼다. 어디에 있든 옛 블록은 걷어 내고 </main> 바로 앞에 둔다(HOME_ALL_LIST 가 False 면 걷어 내기만)."""
     m = ALL_LIST_RE.search(doc)
     if m:
         end = m.end() + (1 if doc[m.end(): m.end() + 1] == "\n" else 0)   # 블록과 그 뒤 줄바꿈까지 걷어 내면 넣기 전 모습으로 돌아간다
         doc = doc[: m.start()] + doc[end:]
+    if not body:
+        return doc
     k = doc.find("</main>")
     if k < 0:
         raise SystemExit("홈의 </main> 을 찾지 못했습니다(전체 목록을 넣을 자리)")
@@ -474,7 +477,7 @@ def main():
 
     home = render_home(cases_kw)
     full = render_list(cases_kw)
-    all_list = render_all_list(cases_kw)
+    all_list = render_all_list(cases_kw) if HOME_ALL_LIST else None
     new_idoc = count_text(replace_all_list(set_data_tag(replace_list(idoc, home), cases_kw), all_list), n)
     new_cdoc = count_text(set_data_tag(replace_list(cdoc, full), cases_kw), n)
 
@@ -497,7 +500,7 @@ def main():
         if current_list(cdoc) != full:
             print("cases.html 정적 목록이 데이터와 다릅니다"); ok = False
         if current_all_list(idoc) != all_list:
-            print("index.html 접힌 전체 목록이 데이터와 다릅니다"); ok = False
+            print("index.html 접힌 전체 목록이 데이터와 다릅니다(HOME_ALL_LIST=%s)" % HOME_ALL_LIST); ok = False
         if cases != cases_kw:
             print("cases-data.js 의 검색어(kw)·언론보도 건수(pr)가 cases-detail.json·press.json과 다릅니다"); ok = False
         if not os.path.exists(os.path.join(site, DATA_FILE)):
@@ -529,8 +532,8 @@ def main():
             write(os.path.join(site, name), text)
         for p in stale_parts:
             os.remove(p)
-    print("사례 %d건: cases-data.js·index.html(홈 %d건 + 접힌 전체 목록)·cases.html·llms.txt·llms-full.txt(분야별 파일 %d개) 갱신"
-          % (n, len(home_order(cases)), len(parts)))
+    print("사례 %d건: cases-data.js·index.html(홈 %d건%s)·cases.html·llms.txt·llms-full.txt(분야별 파일 %d개) 갱신"
+          % (n, len(home_order(cases)), " + 접힌 전체 목록" if HOME_ALL_LIST else "", len(parts)))
 
 
 if __name__ == "__main__":
