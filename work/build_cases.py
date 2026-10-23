@@ -324,7 +324,7 @@ EXTRA_CSS = """
 .topic-cases .gist { margin: 0; font-size: var(--step--1); line-height: 1.7; }
 .topic-nav { display: grid; gap: 0.75rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
   .case-cta .btns .btn { color: var(--paper); background: var(--ink); border-color: var(--ink); }
   .case-cta .btns .btn.ghost { color: var(--ink); background: none; }
 }

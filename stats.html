@@ -23,7 +23,7 @@
   --sans: "Noto Sans KR", "Noto Sans CJK KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --gutter: clamp(1rem, 4vw, 3rem);
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
   :root:not([data-theme="light"]) { --paper: #1b1e22; --ink: #e9e8e4; --ink-soft: #a0a3a8; --rule: #363940; --wash: #24272c; --seal: #ec4b63; --bar: #d6d8dc; --bar-soft: #44474d; color-scheme: dark; }
 }
 :root[data-theme="dark"] { --paper: #1b1e22; --ink: #e9e8e4; --ink-soft: #a0a3a8; --rule: #363940; --wash: #24272c; --seal: #ec4b63; --bar: #d6d8dc; --bar-soft: #44474d; color-scheme: dark; }

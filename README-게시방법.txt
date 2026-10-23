@@ -85,7 +85,8 @@
   press.html 의 전체 목록(같은 표식 사이, 접지 않음 — 사례 페이지에만 싣던 기사까지 모두), llms.txt 의 '## 언론보도' 절을 다시 만듭니다( --check 는 일치 여부만). 머리글·바닥글 링크는 build_pages.py 몫.
 - 그 뒤 ssr_cases.py(카드의 '언론보도' 표시 pr, llms-full.txt 의 '- 언론보도:' 줄) → build_cases.py(사례 페이지의 '이 사건의 언론보도' 칸, JSON-LD citation) 순서로 돌립니다.
 - 홈 절에는 home 이 true 인 기사만(사건마다 대표 기사), 사례 페이지·llms-full.txt 에는 그 사건의 기사 전부가 실립니다. 사법시험 합격자 명단·공익법무관 인사 배치처럼 이름만 실린 기사는 싣지 않습니다(2026. 10. 23. 본인 지시; kind=mention 은 홈 절 끝의 접힌 목록에 가지만 지금은 비어 있음).
-- 글씨는 본인 지시(홈페이지 간이화)로 본문의 절반 수준(기사 제목 11px, 날짜·언론사·설명·인용 10px; index.html의 '#press' CSS).
+- 글씨는 본인 지시(홈페이지 간이화)로 본문의 절반 수준이었다가(기사 제목 11px, 날짜·언론사·설명·인용 10px), 언론보도 페이지가 생긴 2026. 10. 23. 오후 조금 키움 — 제목 13px, 그 밖 12px(home.css의 '#press'·'.press-list' 규칙, 홈·press.html 공통).
+- 어두운 화면(다크 모드)은 마우스를 쓰는 PC에서만 적용됩니다(home.css·cases.css·case.css·stats.html의 @media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine); 2026. 10. 23. 오후 본인 지시 "모바일에서는 어떤 모드로 보던지 하얀 배경"). 휴대전화·태블릿은 늘 밝은 바탕.
 - 홈 절에 보이는 것은 수행 사건 보도 최근 3건뿐(work/build_press.py 의 HOME_RECENT; 2026. 10. 23. 낮 본인 지시). 그보다 오래된 사건 보도와 토론회·위원회·강의 기사는
   2026. 10. 23. 저녁부터 접힌 목록 대신 언론보도 페이지(press.html)에 전부 들어갑니다. 보이는 건수를 바꾸려면 HOME_RECENT 를 고치고 다시 돌립니다.
 

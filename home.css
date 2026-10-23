@@ -37,7 +37,9 @@
 
   --gutter: clamp(1rem, 4vw, 3rem);
 }
-@media (prefers-color-scheme: dark) {
+/* 어두운 화면(다크 모드)은 마우스를 쓰는 PC에서만(2026. 10. 23. 오후 본인 지시: "모바일에서는 어떤 모드로 보던지 하얀 배경으로") —
+   손가락으로 다루는 기기(휴대전화·태블릿, hover: none / pointer: coarse)는 기기 설정과 상관없이 늘 밝은 종이색 바탕. 아래 dark 규칙들의 @media 조건이 모두 같다. */
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
   :root:not([data-theme="light"]) {
     --paper: #1b1e22;
     --ink: #e9e8e4;
@@ -436,20 +438,21 @@ button.case-fig:hover img { opacity: 0.92; }
 .press-body { gap: 2rem; }
 /* 2026. 10. 22. 본인 지시: 언론보도는 가급적 작은 글씨로 → 2026. 10. 23. 본인 지시(홈페이지 간이화): 지금보다 절반으로 —
    본문(17px)의 절반 수준인 기사 제목 11px(0.6875rem)·날짜·언론사·설명·인용 10px(0.625rem), 줄 간격·행 간격도 좁힘. 절 머리말 11px, 소제목 13px. */
-#press .section-head p { font-size: 0.6875rem; line-height: 1.6; }
-#press .block-h { font-size: 0.8125rem; margin-bottom: 0.4rem; }
-.press-body { gap: 1.25rem; }
-.press-list.rows.dates > div { grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.1rem 0.6rem; padding-block: 0.3rem; }
-.press-list dt { font-size: 0.625rem; padding-top: 0.1em; line-height: 1.5; }
-.press-list dd { display: grid; gap: 0.1rem; font-size: 0.6875rem; line-height: 1.5; }
-.press-list dd .sub { display: block; font-size: 0.625rem; line-height: 1.5; color: var(--ink-soft); }
-.press-list .outlet { font-weight: 700; color: var(--ink); margin-right: 0.35rem; font-size: 0.625rem; }
+/* → 2026. 10. 23. 오후 본인 지시: 언론보도 페이지(press.html)가 따로 생겼으니 글씨를 조금 키움 — 기사 제목 13px(0.8125rem)·날짜·언론사·설명·인용 12px(0.75rem), 절 머리말 13px, 소제목 15px (홈·press.html 공통) */
+#press .section-head p { font-size: 0.8125rem; line-height: 1.6; }
+#press .block-h { font-size: 0.9375rem; margin-bottom: 0.5rem; }
+.press-body { gap: 1.5rem; }
+.press-list.rows.dates > div { grid-template-columns: 6rem minmax(0, 1fr); gap: 0.15rem 0.8rem; padding-block: 0.45rem; }
+.press-list dt { font-size: 0.75rem; padding-top: 0.1em; line-height: 1.55; }
+.press-list dd { display: grid; gap: 0.15rem; font-size: 0.8125rem; line-height: 1.55; }
+.press-list dd .sub { display: block; font-size: 0.75rem; line-height: 1.55; color: var(--ink-soft); }
+.press-list .outlet { font-weight: 700; color: var(--ink); margin-right: 0.4rem; font-size: 0.75rem; }
 .press-list .press-title { font-family: var(--serif); font-weight: 600; color: var(--ink); text-decoration: none; }
 .press-list .press-title:hover { text-decoration: underline; text-underline-offset: 0.15em; }
 .press-list .sub a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 0.15em; }
 .press-list .sub a:hover { color: var(--seal); }
-.press-list q { display: block; margin-top: 0.15rem; padding-left: 0.6rem; border-left: 2px solid var(--seal); font-size: 0.625rem; line-height: 1.5; color: var(--ink-soft); quotes: "“" "”"; }
-.press-note { margin-top: 0.45rem; font-size: 0.625rem; color: var(--ink-soft); }
+.press-list q { display: block; margin-top: 0.2rem; padding-left: 0.7rem; border-left: 2px solid var(--seal); font-size: 0.75rem; line-height: 1.55; color: var(--ink-soft); quotes: "“" "”"; }
+.press-note { margin-top: 0.5rem; font-size: 0.75rem; color: var(--ink-soft); }
 /* 2026. 10. 23. 낮 본인 지시: 수행 사건 보도 최근 3건만 펼쳐 보이고, 지난 사건 보도·토론회·위원회·강의 기사는 그 아래 details.press-more('더 보기 …' / 펼치면 '접기')에 접어 둠 */
 .press-more { margin-top: -0.4rem; }
 .press-more summary { cursor: pointer; font-family: var(--serif); font-size: 0.6875rem; font-weight: 600; color: var(--ink-soft); }
@@ -1240,7 +1243,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
    ⑤ 판결문·위촉장 크게 보기 창(dialog)은 살짝 커지며 열리고, 접힌 글(details)·목록 보기의 펼친 칸은 짧게 떠오르며 펼쳐진다.
    움직임 줄이기(prefers-reduced-motion: reduce)를 켠 기기와 인쇄에서는 모두 끈다. 색은 모두 변수를 써서 어두운 화면에서도 맞는다. */
 :root { --shadow-c: rgba(45, 50, 57, 0.28); --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --shadow-c: rgba(0, 0, 0, 0.6); } }
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) { :root:not([data-theme="light"]) { --shadow-c: rgba(0, 0, 0, 0.6); } }
 :root[data-theme="dark"] { --shadow-c: rgba(0, 0, 0, 0.6); }
 @keyframes fx-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
@@ -1582,7 +1585,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .field .links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin-top: auto; padding-top: 0.35rem; font-size: var(--step--1); }
 .field .links a { color: var(--ink-soft); text-decoration: none; }
 .field .links a:hover { color: var(--seal); text-decoration: underline; text-underline-offset: 0.2em; }
-.field .cases-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.22rem 0.8rem; font-weight: 600; color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 999px; transition: background-color 0.15s ease, border-color 0.15s ease; }
+.field .links a.cases-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.22rem 0.8rem; font-weight: 600; color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 999px; transition: background-color 0.15s ease, border-color 0.15s ease; }   /* 2026. 10. 23. 오후: 선택자를 .field .links a 보다 세게 — 종전엔 회색 글자가 먹색 단추에 묻혀 안 보였음(본인 지적) */
 .field .cases-link .n { font-variant-numeric: tabular-nums; }
 .field .cases-link .arr { font-weight: 500; }
 .field .links a.cases-link:hover { color: #fff; background: var(--seal); border-color: var(--seal); text-decoration: none; }

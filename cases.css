@@ -35,7 +35,9 @@
 
   --gutter: clamp(1rem, 4vw, 3rem);
 }
-@media (prefers-color-scheme: dark) {
+/* 어두운 화면(다크 모드)은 마우스를 쓰는 PC에서만(2026. 10. 23. 오후 본인 지시: "모바일에서는 어떤 모드로 보던지 하얀 배경으로") —
+   손가락으로 다루는 기기(휴대전화·태블릿, hover: none / pointer: coarse)는 기기 설정과 상관없이 늘 밝은 종이색 바탕. 아래 dark 규칙들의 @media 조건이 모두 같다. */
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) {
   :root:not([data-theme="light"]) {
     --paper: #1b1e22;
     --ink: #e9e8e4;
@@ -959,7 +961,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
    ⑤ 판결문·위촉장 크게 보기 창(dialog)은 살짝 커지며 열리고, 접힌 글(details)·목록 보기의 펼친 칸은 짧게 떠오르며 펼쳐진다.
    움직임 줄이기(prefers-reduced-motion: reduce)를 켠 기기와 인쇄에서는 모두 끈다. 색은 모두 변수를 써서 어두운 화면에서도 맞는다. */
 :root { --shadow-c: rgba(45, 50, 57, 0.28); --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --shadow-c: rgba(0, 0, 0, 0.6); } }
+@media (prefers-color-scheme: dark) and (hover: hover) and (pointer: fine) { :root:not([data-theme="light"]) { --shadow-c: rgba(0, 0, 0, 0.6); } }
 :root[data-theme="dark"] { --shadow-c: rgba(0, 0, 0, 0.6); }
 @keyframes fx-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
