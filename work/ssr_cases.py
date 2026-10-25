@@ -10,12 +10,16 @@
 
 규칙(페이지의 JS card() 와 같은 마크업):
   - 홈(index.html): 6건(2026. 10. 23. 오후 본인 지시: 세 장씩 놓이는 화면은 2줄, 두 장씩 놓이는 화면은 3줄; 그 전 2026. 10. 21. 12건→9건).
-    2026. 10. 25. 본인 지시("원고 대리하여 승소한 사건(예: 공공재정환수법, 집행정지 각 인용 사건), 국가연구개발사업 관련 형사 승소(불송치 등)를 먼저 게시해주고,
-    그 다음 종전처럼 국가연구개발사업 분야, 제재부가금, 환수 분야, 형사 분야 승소 사례를 보이게"):
-      ① 앞 LEAD_MAX(3)건 = '앞세우는 사례'(lead_cases) — 주요 분야(rnd·penalty)에서 처분 상대방을 대리하여 이긴 사건(party 에 '대리', 결과 승소·일부승소·…인용)을 최근 순으로,
-         이어서 제목에 '국가연구개발'이 든 형사 사건 가운데 불송치·불기소·혐의없음·무죄·공소기각을 최근 순으로.
-      ② 나머지 자리 = MAIN 의 세 분야(국가연구개발 제재처분 → 제재부가금·환수 → 형사)를 번갈아 분야마다 최근 순(sort 내림차순, 같으면 데이터 순), ①에 든 사례는 빼고.
-      세 장씩 놓이면 첫 줄이 ①, 둘째 줄이 ② 세 분야 한 건씩. (그 전 2026. 10. 23. 오후: 형사 → 국가연구개발 → 제재부가금을 번갈아 2건씩)
+    2026. 10. 25. 본인 지시(10:09 "원고 대리하여 승소한 사건(예: 공공재정환수법, 집행정지 각 인용 사건), 국가연구개발사업 관련 형사 승소(불송치 등)를 먼저 게시해주고,
+    그 다음 종전처럼 국가연구개발사업 분야, 제재부가금, 환수 분야, 형사 분야 승소 사례를 보이게" → 10:31 "승소 사건 순서를 주요 분야(국가연구개발·제재부가금) 가운데
+    처분 상대방을 대리해 이긴 사건(승소·일부승소·인용)을 최근 순으로, 이어서 제목에 '국가연구개발'이 든 형사 승소(불송치·불기소 등), 그 외 처분 상대방을 대리해 이긴 사건 순으로"):
+      ① '앞세우는 사례'(lead_cases, 최대 LEAD_MAX = RECENT 건) — 세 단계를 차례로 이어 붙임:
+         ㉠ 주요 분야(LEAD_CATS = rnd·penalty)에서 처분 상대방을 대리하여 이긴 사건(party 에 '대리'(보조참가 제외), 결과 승소·일부승소·…인용)을 최근 순으로,
+         ㉡ 제목에 '국가연구개발'이 든 형사 사건 가운데 불송치·불기소·혐의없음·무죄·공소기각을 최근 순으로,
+         ㉢ 그 외 분야(민사·형사 제외)에서 처분 상대방을 대리하여 이긴 사건(기준은 ㉠과 같음 — 소청 임시처분 인용·교습정지 취소 등)을 최근 순으로.
+      ② 앞세우는 사례가 RECENT 에 못 미치면 남는 자리는 MAIN 의 세 분야(국가연구개발 제재처분 → 제재부가금·환수 → 형사)를 번갈아 분야마다 최근 순(sort 내림차순, 같으면 데이터 순), ①에 든 사례는 빼고.
+      (10:09 지시 때는 ①을 3건(첫 줄)으로 끊고 둘째 줄에 ② 세 분야 한 건씩을 두었으나, 10:31 지시로 ①을 세 단계로 늘리면서 한도를 RECENT 로 — 지금 데이터로는 6건이 모두 ①.
+       그 전 2026. 10. 23. 오후: 형사 → 국가연구개발 → 제재부가금을 번갈아 2건씩)
   - 전체(cases.html): 전체를 sort 내림차순(같으면 데이터 순)으로.
   - 제목·'자세히 →' 링크는 cases/<첫 이미지 이름>.html (build_cases.py의 page_href 와 같음).
   - 2026. 10. 21. 본인 지시: 카드에는 '판결문 N장' 수를 적지 않고, 요지는 두 줄로 접되 '더 보기' 단추 없이
@@ -55,8 +59,9 @@ CATS = {   # 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤
 }
 MAIN = ("rnd", "penalty", "criminal")   # 홈 '주요 분야'에서 앞세우는 사례 뒤에 번갈아 보이는 세 분야와 순서(2026. 10. 25. 본인 지시: 국가연구개발 제재처분 → 제재부가금·환수 → 형사; 그 전 2026. 10. 23. 오후: 형사 → 국가연구개발 → 제재부가금)
 RECENT = 6                                # 세 장씩 2줄 = 두 장씩 3줄
-LEAD_MAX = RECENT - len(MAIN)             # 앞세우는 사례(처분 상대방 대리 승소 + 국가연구개발 관련 형사 승소)는 최대 3건 — 세 장씩 놓이면 첫 줄; 둘째 줄에 MAIN 세 분야가 한 건씩 남게 (2026. 10. 25.)
-LEAD_CATS = ("rnd", "penalty")            # 처분 상대방 대리 승소를 찾는 분야(주요 분야 가운데 행정사건)
+LEAD_MAX = RECENT                         # 앞세우는 사례(세 단계) 한도 — 홈 전부를 채울 수 있음(2026. 10. 25. 10:31 본인 지시; 10:09 때는 RECENT - len(MAIN) = 3건으로 끊고 둘째 줄에 MAIN 세 분야 한 건씩)
+LEAD_CATS = ("rnd", "penalty")            # ㉠ 주요 분야 가운데 처분 상대방 대리 승소를 먼저 찾는 행정사건 분야
+LEAD_SKIP_CATS = ("civil", "criminal")    # ㉢ '그 외 처분 상대방 대리 승소'에서 빼는 분야(처분 사건이 아님; 형사는 ㉡에서 국가연구개발 관련만)
 LEAD_WIN_RE = re.compile(r"^(승소|일부승소)|인용")          # 승소·일부승소, 집행정지·임시처분 '…인용'
 LEAD_CRIM_WIN_RE = re.compile(r"불송치|불기소|혐의없음|무죄|공소기각")   # 형사 '승소'(불송치 등)
 LEAD_CRIM_TITLE = "국가연구개발"            # 형사 사건 가운데 국가연구개발사업 관련(제목 기준 — 사례 제목 규칙상 국가연구개발 분야 사건은 제목에 '국가연구개발사업'이 들어감)
@@ -238,25 +243,36 @@ def ordered(cases, cats=None):
     return [c for c, _ in idx]
 
 
-def is_lead_party_win(c):
-    """처분 상대방(원고·신청인·소청인)을 대리하여 이긴 주요 분야의 행정사건: party 에 '대리'(보조참가 제외), 결과가 승소·일부승소·…인용."""
+def is_party_win(c):
+    """처분 상대방(원고·신청인·소청인 등 민간 의뢰인)을 대리하여 이긴 사건: party 에 '대리'(보조참가 제외), 결과가 승소·일부승소·…인용."""
     party = c.get("party") or ""
-    return c["cat"] in LEAD_CATS and "대리" in party and "보조참가" not in party and bool(LEAD_WIN_RE.search(c.get("result") or ""))
+    return "대리" in party and "보조참가" not in party and bool(LEAD_WIN_RE.search(c.get("result") or ""))
+
+
+def is_lead_party_win(c):
+    """㉠ 주요 분야(LEAD_CATS)의 처분 상대방 대리 승소."""
+    return c["cat"] in LEAD_CATS and is_party_win(c)
 
 
 def is_lead_crim_win(c):
-    """국가연구개발사업 관련 형사 사건의 승소(불송치·불기소·혐의없음·무죄·공소기각)."""
+    """㉡ 국가연구개발사업 관련 형사 사건의 승소(불송치·불기소·혐의없음·무죄·공소기각)."""
     return c["cat"] == "criminal" and LEAD_CRIM_TITLE in (c.get("title") or "") and bool(LEAD_CRIM_WIN_RE.search(c.get("result") or ""))
 
 
+def is_other_party_win(c):
+    """㉢ 그 외 분야(민사·형사 제외)의 처분 상대방 대리 승소."""
+    return c["cat"] not in LEAD_CATS and c["cat"] not in LEAD_SKIP_CATS and is_party_win(c)
+
+
 def lead_cases(cases):
-    """홈에 앞세우는 사례(2026. 10. 25. 본인 지시): 처분 상대방 대리 승소(최근 순) → 국가연구개발 관련 형사 승소(최근 순), 합쳐서 LEAD_MAX 건까지 — JS leadCases 와 같은 규칙."""
-    lead = [c for c in ordered(cases) if is_lead_party_win(c)] + [c for c in ordered(cases) if is_lead_crim_win(c)]
+    """홈에 앞세우는 사례(2026. 10. 25. 본인 지시): ㉠ 주요 분야 처분 상대방 대리 승소(최근 순) → ㉡ 국가연구개발 관련 형사 승소(최근 순) → ㉢ 그 외 처분 상대방 대리 승소(최근 순), 합쳐서 LEAD_MAX 건까지 — JS renderList 와 같은 규칙."""
+    o = ordered(cases)
+    lead = [c for c in o if is_lead_party_win(c)] + [c for c in o if is_lead_crim_win(c)] + [c for c in o if is_other_party_win(c)]
     return lead[:LEAD_MAX]
 
 
 def home_order(cases):
-    """홈 '주요 분야' 보기: 앞세우는 사례(lead_cases) 다음에 MAIN 의 분야를 차례로 번갈아(국가연구개발·제재부가금·형사·국가연구개발·…) 분야마다 최근 순 — 앞에 든 사례는 빼고, 어느 분야도 빠지지 않게(페이지의 JS renderList 와 같은 규칙)."""
+    """홈 '주요 분야' 보기: 앞세우는 사례(lead_cases)로 채우고, 자리가 남으면 MAIN 의 분야를 차례로 번갈아(국가연구개발·제재부가금·형사·국가연구개발·…) 분야마다 최근 순 — 앞에 든 사례는 빼고(페이지의 JS renderList 와 같은 규칙)."""
     out = lead_cases(cases)
     seen = {c["id"] for c in out}
     per = [[c for c in ordered(cases, (k,)) if c["id"] not in seen] for k in MAIN]
