@@ -1768,4 +1768,5 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .hero-name-en { justify-self: stretch; margin: 0; padding-top: 0.5rem; border-top: 1px solid var(--hero-line); font-size: 0.75rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--hero-soft); }
 @media (max-width: 760px) { .hero-lockup { row-gap: 0.45rem; } .hero-name-en { padding-top: 0.4rem; font-size: 0.6875rem; letter-spacing: 0.24em; } }
 /* 바닥글 서명: 이름·인장 / 줄 / BOO HYOEJUNE */
-.sign-en { justify-self: stretch; margin: 0.15rem 0 0; padding-top: 0.4rem; border-top: 1px solid var(--rule); font-size: 0.6875rem; letter-spacing: 0.24em; text-transform: uppercase; }
+.sign-en { margin: 0.1rem 0 0; font-size: 0.6875rem; letter-spacing: 0.24em; text-transform: uppercase; }   /* 23:30 본인 지시: 바닥글에는 줄 없이, 영문은 "BOO HYOEJUNE · ATTORNEY AT LAW" */
+.hero-name-en .sep, .sign-en .sep { margin: 0 0.15em; opacity: 0.6; }
