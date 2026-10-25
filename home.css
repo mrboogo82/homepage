@@ -828,7 +828,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .foot-nav a { color: var(--ink); text-decoration: none; }
 .foot-nav a:hover { color: var(--seal); }
 
-/* 무엇을 찾으시나요? */
+/* 무엇을 찾으시나요? — 길잡이(.finder)는 2026. 10. 25. 본인 지시로 홈에서 삭제했고(index.html 에 없음), 아래 규칙은 되살릴 때를 위해 남겨 둔 것 */
 .finder { display: grid; gap: 0.9rem; padding-block: clamp(1.5rem, 4vw, 2.25rem); border-bottom: 1px solid var(--rule); }
 .finder .cap { font-size: var(--step--1); font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); }
 .finder-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }   /* 2026. 10. 21. 다섯 칸 → 네 칸(03 '국가연구개발 제재처분을 받았습니다' 삭제, 그 내용은 02로); 2026. 10. 23. 저녁 05 '언론에 보도된 사건'을 더해 다시 다섯 칸 */

@@ -204,16 +204,7 @@
       <!-- 2026. 10. 21. 낮: 오른쪽 누끼 인물 사진(photo-hero.webp) 삭제 — 그 자리에는 CSS(.hero::before)로 사무실 사진(photo-desk-tall.webp)을 깐다. photo-hero.webp는 공유 이미지(work/og_image.py)에서 계속 쓴다. -->
     </section>
 
-    <nav class="finder" aria-labelledby="finder-cap"><!-- 2026. 10. 23. 오후 본인 지시: 길잡이 칸은 홈 안의 요약이 아니라 각 분야의 전체 페이지(contact·fields·cases·career·press)로. 같은 날 저녁 본인 지시로 05 '언론에 보도된 사건' 추가(기사 건수는 work/build_press.py 가 맞춤) -->
-      <p class="cap" id="finder-cap">무엇을 찾으시나요?</p>
-      <ol class="finder-list">
-        <li><a href="contact.html"><span class="no">01</span><b>처분서를 받았습니다</b><span class="w">이의신청 30일·행정심판·소송 90일, 국가연구개발 제재처분 사전통지 20일 — 처분서를 받은 날짜와 처분청을 알려 주시면 남은 기한과 쟁점을 바로 확인해 드립니다</span><span class="go">상담 문의 페이지 →</span></a></li>
-        <li><a href="fields.html"><span class="no">02</span><b>어느 분야의 사건인지</b><span class="w">국가연구개발 제재처분(참여제한·환수·제재부가금 — 사전통지 20일·납부 30일·불복 90일의 세 기한과 주제별 사례), 제재부가금·환수, 공무원·교원 인사처분, 인허가·면허·자격, 손실보상, 그 밖의 행정처분, 정부출연금·보조금 형사사건, 국가계약법·지방계약법(입찰·계약금액 조정·부정당업자 제재), 국가배상, 법률자문</span><span class="go">다루는 사건 페이지 →</span></a></li>
-        <li><a href="cases.html#find-form"><span class="no">03</span><b>단어로 주요 수행 판결문 찾기</b><span class="w">참여제한·환수·징계처럼 처분이나 법령 이름 한 단어로 판결문 271건에서 찾습니다</span><span class="go">전체 사례에서 찾기 →</span></a></li>
-        <li><a href="career.html"><span class="no">04</span><b>변호사가 어떤 사람인지</b><span class="w">경력과 학력, 법률고문 위촉, 위원회·강의</span><span class="go">경력 페이지 →</span></a></li>
-        <li><a href="press.html"><span class="no">05</span><b>언론에 보도된 사건</b><span class="w">수행한 사건의 판결·결정 보도와 토론회·위원회·강의 기사 52건 — 사건별 기사는 각 사례 페이지의 '이 사건의 언론보도'에도 있습니다</span><span class="go">언론보도 페이지 →</span></a></li>
-      </ol>
-    </nav>
+    <!-- 첫 화면과 주요 수행 사례 사이에 있던 길잡이('무엇을 찾으시나요?' 다섯 칸, <nav class="finder">)는 2026. 10. 25. 본인 지시로 모두 삭제 — 되살리려면 커밋 1fc2aff 의 index.html(home.css 의 .finder 규칙은 남아 있음). -->
 
     <section class="section first" id="record" aria-labelledby="record-h">
       <form class="findbox big" id="find-form" role="search" aria-labelledby="find-h">
@@ -238,12 +229,12 @@
             <div class="chips" id="chips" role="tablist" aria-labelledby="chips-cap"></div>
           </div>
           <ol class="case-list" id="case-list">
+<li class="case" data-cat="penalty" id="case-n-pen-public-fund"><button type="button" class="case-fig" aria-label="공공재정환수법상 부정이익 환수·제재부가금 부과처분 취소소송 판결문 크게 보기"><img src="cases/pen-2025guhap61864.jpg" alt="수원지방법원 2025구합61864 판결 제1면" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">제재부가금·환수</span><span class="date">2026. 10.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/pen-2025guhap61864.html">공공재정환수법상 부정이익 환수·제재부가금 부과처분 취소소송</a></h3><p class="case-sub">수원지방법원 2025구합61864 · 기업 대표자(처분 상대방) 대리 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">지방자치단체 출연기관의 창업기업 사업화 지원금을 둘러싸고 그 기관의 장이 기업 대표자 개인에게 한 「공공재정 부정청구 금지 및 부정이익 환수 등에 관한 법률」상 부정이익 환수처분과 제재부가금 부과처분을 다툰 사건입니다. 출연기관의 장이 같은 법상 처분권한을 가진 행정청에 해당하는지, 지원금을 받은 법인이 아닌 대표자 개인을 처분의 상대방으로 삼은 것이 적법한지, 지원 협약이 지방계약법의 적용을 받는 계약인지 등이 쟁점이었고, 처분권한의 부존재와 처분 상대방의 오인을 이유로 두 처분이 모두 취소되었습니다.</p><a class="case-link" href="cases/pen-2025guhap61864.html">자세히 →</a></div></li>
+<li class="case" data-cat="rnd" id="case-n-rnd-dongil"><button type="button" class="case-fig" aria-label="국가연구개발사업 참여제한·제재부가금 부과처분 집행정지 판결문 크게 보기"><img src="cases/rnd-2025a12878.jpg" alt="서울행정법원 2025아12878 결정 제1면" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">국가연구개발 제재처분</span><span class="date">2025. 9.</span><span class="badge other">집행정지 인용</span></div><h3 class="case-title"><a href="cases/rnd-2025a12878.html">국가연구개발사업 참여제한·제재부가금 부과처분 집행정지</a></h3><p class="case-sub">서울행정법원 2025아12878 · 연구개발기업과 연구책임자 대리 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">산업기술 연구개발과제의 연구개발비 사용을 이유로 기업과 연구책임자에게 내려진 1년 참여제한처분과 합계 11억 원의 제재부가금 부과처분에 관하여, 본안 판결 선고 때까지 처분의 효력을 정지하는 결정을 받았습니다.</p><a class="case-link" href="cases/rnd-2025a12878.html">자세히 →</a></div></li>
 <li class="case" data-cat="criminal" id="case-n-crim-rnd-fraud"><button type="button" class="case-fig" aria-label="국가연구개발사업 관련 사기 혐의 사건 변호 (경찰 불송치) 판결문 크게 보기"><img src="cases/crim-2026-chungnam-rnd-1.jpg" alt="충청남도경찰청 불송치 결정서 제1면 (피의자 1, 사건번호 가림)" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">형사</span><span class="date">2026. 4.</span><span class="badge other">불송치 (혐의없음)</span></div><h3 class="case-title"><a href="cases/crim-2026-chungnam-rnd-1.html">국가연구개발사업 관련 사기 혐의 사건 변호 (경찰 불송치)</a></h3><p class="case-sub">충청남도경찰청 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">국가연구개발사업과 관련하여 사기 혐의로 입건된 피의자들을 수사 단계에서 변호하여, 증거불충분 혐의없음 불송치 결정을 받은 사건입니다.</p><a class="case-link" href="cases/crim-2026-chungnam-rnd-1.html">자세히 →</a></div></li>
 <li class="case" data-cat="rnd" id="case-n-rnd-recovery"><button type="button" class="case-fig" aria-label="국가연구개발사업 연구개발비 회수금 미납을 이유로 한 참여제한처분 취소소송 판결문 크게 보기"><img src="cases/rnd-2025guhap200493.jpg" alt="대전지방법원 2025구합200493 판결 제1면·제2면(주문·이유)" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">국가연구개발 제재처분</span><span class="date">2026. 9.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/rnd-2025guhap200493.html">국가연구개발사업 연구개발비 회수금 미납을 이유로 한 참여제한처분 취소소송</a></h3><p class="case-sub">대전지방법원 2025구합200493 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">과제 중단에 따른 정산으로 통보된 연구개발비 회수금을 납부하지 않은 연구개발기관에 대하여 회수금을 납부할 때까지 참여를 제한한 처분에 관하여, 처분서에 적힌 회수금액이 독립한 &#x27;회수금 부과처분&#x27;으로서 취소소송의 대상이 되는지와 「국가연구개발혁신법」 제32조 제1항 제6호, 같은 법 시행령 [별표 6]에 따른 참여제한의 재량권 일탈·남용 여부가 다투어진 사건입니다. 회수금 부과처분의 취소를 구하는 부분은 각하되고, 참여제한처분 취소청구는 받아들여지지 않았습니다.</p><a class="case-link" href="cases/rnd-2025guhap200493.html">자세히 →</a></div></li>
-<li class="case" data-cat="penalty" id="case-n-pen-public-fund"><button type="button" class="case-fig" aria-label="공공재정환수법상 부정이익 환수·제재부가금 부과처분 취소소송 판결문 크게 보기"><img src="cases/pen-2025guhap61864.jpg" alt="수원지방법원 2025구합61864 판결 제1면" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">제재부가금·환수</span><span class="date">2026. 10.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/pen-2025guhap61864.html">공공재정환수법상 부정이익 환수·제재부가금 부과처분 취소소송</a></h3><p class="case-sub">수원지방법원 2025구합61864 · 기업 대표자(처분 상대방) 대리 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">지방자치단체 출연기관의 창업기업 사업화 지원금을 둘러싸고 그 기관의 장이 기업 대표자 개인에게 한 「공공재정 부정청구 금지 및 부정이익 환수 등에 관한 법률」상 부정이익 환수처분과 제재부가금 부과처분을 다툰 사건입니다. 출연기관의 장이 같은 법상 처분권한을 가진 행정청에 해당하는지, 지원금을 받은 법인이 아닌 대표자 개인을 처분의 상대방으로 삼은 것이 적법한지, 지원 협약이 지방계약법의 적용을 받는 계약인지 등이 쟁점이었고, 처분권한의 부존재와 처분 상대방의 오인을 이유로 두 처분이 모두 취소되었습니다.</p><a class="case-link" href="cases/pen-2025guhap61864.html">자세히 →</a></div></li>
-<li class="case" data-cat="criminal" id="case-n-crim-subsidy-equipment"><button type="button" class="case-fig" aria-label="정부 지원사업 실증설비 처분 관련 보조금법 위반 혐의 사건 변호 (경찰 불송치) 판결문 크게 보기"><img src="cases/crim-cheongju-subsidy-equipment.jpg" alt="충북청주흥덕경찰서 불송치 결정서 제1면 (결정일·사건번호 가림)" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">형사</span><span class="badge other">불송치 (혐의없음)</span></div><h3 class="case-title"><a href="cases/crim-cheongju-subsidy-equipment.html">정부 지원사업 실증설비 처분 관련 보조금법 위반 혐의 사건 변호 (경찰 불송치)</a></h3><p class="case-sub">충북청주흥덕경찰서 · 피의자(지원사업 주관기업 대표) 변호 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">정부 지원사업의 주관기업이 실증 목적으로 설치한 설비를 승인 없이 처분하였다는 혐의(「보조금 관리에 관한 법률」 위반)로 수사의뢰된 기업 대표를 수사 단계에서 변호하여, 범죄가 인정되지 않는다는 혐의없음 불송치 결정을 받은 사건입니다.</p><a class="case-link" href="cases/crim-cheongju-subsidy-equipment.html">자세히 →</a></div></li>
-<li class="case" data-cat="rnd" id="case-n-rnd-ed"><button type="button" class="case-fig" aria-label="국가연구개발사업 제재부가금·연구개발비 환수처분 취소소송 판결문 크게 보기"><img src="cases/rnd-2024guhap206998.jpg" alt="대전지방법원 2024구합206998 판결 제1면·제2면(주문·이유)" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">국가연구개발 제재처분</span><span class="date">2026. 8.</span><span class="badge part">일부승소</span></div><h3 class="case-title"><a href="cases/rnd-2024guhap206998.html">국가연구개발사업 제재부가금·연구개발비 환수처분 취소소송</a></h3><p class="case-sub">대전지방법원 2024구합206998 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">실질적인 연구개발 없이 구입한 설비를 자체 개발한 것처럼 연구개발자료를 작성·제출하고 연구개발비를 과제와 무관한 용도로 사용하였다는 이유로 내려진 제재부가금 부과처분과 연구개발비 환수처분에 관하여, 「국가연구개발혁신법」 제31조 제1항 제1호·제2호·제5호 처분사유의 존부와 중복 적용 여부, 환수대상 연구개발비의 범위, 재량권 일탈·남용이 다투어진 사건입니다. 제재부가금 부과처분은 전부 적법하다고 판단되었고, 환수처분은 환수금액의 약 7%에 해당하는 부분만 취소되었습니다.</p><a class="case-link" href="cases/rnd-2024guhap206998.html">자세히 →</a></div></li>
 <li class="case" data-cat="penalty" id="case-n-pen-giant-suit"><button type="button" class="case-fig" aria-label="제재부가금 부과·보조금 지급제한 처분 취소청구 행정심판 및 취소소송 (1·2·3심) 판결문 크게 보기"><img src="cases/pen-haengsim-2024-11047.jpg" alt="중앙행정심판위원회 2024-11047 재결서" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">제재부가금·환수</span><span class="date">2024. 8. ~ 2026. 10.</span><span class="badge win">승소</span></div><h3 class="case-title"><a href="cases/pen-haengsim-2024-11047.html">제재부가금 부과·보조금 지급제한 처분 취소청구 행정심판 및 취소소송 (1·2·3심)</a></h3><p class="case-sub">중앙행정심판위원회 2024-11047 · 서울행정법원 2024구합89856 · 서울고등법원 2025누7538 · 대법원 2026두31417 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">「보조금 관리에 관한 법률」 제33조의2에 따른 제재부가금 부과처분과 보조금 지급제한 처분에 관하여, 제재부가금 산정의 기준이 되는 금액(반환을 명한 보조금 총액)과 감경 여부, 재량권 일탈·남용이 다투어진 사건입니다. 중앙행정심판위원회의 재결에 이어, 취소소송에서도 1심과 항소심을 거쳐 대법원까지 처분의 적법성이 확정되었습니다.</p><a class="case-link" href="cases/pen-haengsim-2024-11047.html">자세히 →</a></div></li>
+<li class="case" data-cat="criminal" id="case-n-crim-subsidy-equipment"><button type="button" class="case-fig" aria-label="정부 지원사업 실증설비 처분 관련 보조금법 위반 혐의 사건 변호 (경찰 불송치) 판결문 크게 보기"><img src="cases/crim-cheongju-subsidy-equipment.jpg" alt="충북청주흥덕경찰서 불송치 결정서 제1면 (결정일·사건번호 가림)" loading="lazy" decoding="async"></button><div class="case-body"><div class="case-meta"><span class="tag">형사</span><span class="badge other">불송치 (혐의없음)</span></div><h3 class="case-title"><a href="cases/crim-cheongju-subsidy-equipment.html">정부 지원사업 실증설비 처분 관련 보조금법 위반 혐의 사건 변호 (경찰 불송치)</a></h3><p class="case-sub">충북청주흥덕경찰서 · 피의자(지원사업 주관기업 대표) 변호 · <span class="who">담당변호사 부효준</span></p><p class="case-summary clamp">정부 지원사업의 주관기업이 실증 목적으로 설치한 설비를 승인 없이 처분하였다는 혐의(「보조금 관리에 관한 법률」 위반)로 수사의뢰된 기업 대표를 수사 단계에서 변호하여, 범죄가 인정되지 않는다는 혐의없음 불송치 결정을 받은 사건입니다.</p><a class="case-link" href="cases/crim-cheongju-subsidy-equipment.html">자세히 →</a></div></li>
       </ol>
           <p class="empty" id="case-empty" hidden>등록된 사례가 없습니다.</p>
           <p class="more"><a class="btn ghost" id="all-cases" href="cases.html">주요 수행 사례 전체 보기 (최근 순)</a></p>
@@ -257,7 +248,6 @@
            경력·학력·수상 한 줄 요약은 여기에 직접 적음(바뀌는 일이 드묾; career.html 연표와 맞출 것). -->
       <header class="section-head">
         <h2 id="career-h">경력</h2>
-        <p>2026. 10. 기준 · 위촉장을 누르면 크게 볼 수 있고, 로고를 누르면 그 기관의 누리집이 열립니다.</p>
         <nav class="jump" aria-label="경력 바로 가기">
           <span class="cap">바로 가기</span>
           <a href="#advisory">법률고문 위촉</a>
@@ -272,8 +262,7 @@
           <p class="career-brief sub">고려대학교 법학과 졸업(2009) · 고려대학교 대학원 법학과 석사과정, 행정법(2012) · 법무부장관 표창, 국가소송 업무 수행 유공(2014) · <a href="career.html">경력 · 학력 · 수상 자세히 →</a></p>
         </div>
         <div class="block" id="advisory">
-          <h3 class="block-h">법률고문 위촉 <span class="count-note">중앙행정기관 · 지방자치단체 · 공공기관 약 20곳</span></h3>
-          <p class="block-lead">처분을 만드는 기관들이 법률 판단을 맡기는 변호사라는 뜻입니다. 처분청이 이 가운데 하나인 사건은 맡지 않습니다.</p>
+          <h3 class="block-h">법률고문 위촉</h3>
           <!-- advisory-tiles:start -->
           <h4 class="sub-h">중앙행정기관 · 지방자치단체</h4>
           <ul class="advisors">
@@ -308,7 +297,6 @@
         </div>
         <div class="block" id="committees">
           <h3 class="block-h">위원회 <span class="count-note">제재처분 · 소청 · 행정처분 심의 위원</span></h3>
-          <p class="block-lead">처분을 심의하는 자리에서 본 기준이 처분을 다투는 사건의 출발점입니다.</p>
           <!-- committees-tiles:start -->
           <h4 class="sub-h">현재 활동 중인 위원회</h4>
           <ul class="advisors">
@@ -333,7 +321,6 @@
       <!-- 2026. 10. 23. 저녁: 다루는 사건의 전체 설명(다룬 사건·근거 법령·세 기한·주제별 사례)은 fields.html 로 옮기고 홈에는 열 영역의 제목과 한 줄 요약만. 분야를 더하거나 이름을 바꾸면 fields.html 과 여기를 함께 고친다. -->
       <header class="section-head">
         <h2 id="fields-h">다루는 사건</h2>
-        <p>처분의 종류에 따라 다투는 길이 다릅니다. 열 영역 모두 직접 다루어 온 사건입니다. 분야 이름을 누르면 자세한 설명과 다룬 사건이, 단추를 누르면 그 분야의 판결문이 열립니다.</p>
         <nav class="jump" aria-label="다루는 사건 페이지로">
           <span class="cap">자세히</span>
           <a href="fields.html">다루는 사건 전체</a>
@@ -343,7 +330,7 @@
       <li class="field lead" id="sum-rnd">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M11 15h10M11 19h10M11 23h6"/><circle cx="23" cy="24" r="4"/></svg>
         <h3><a href="fields.html#area-rnd">국가연구개발 제재처분</a></h3>
-        <p>참여제한·연구개발비 환수·제재부가금 처분을 사전통지 단계의 재검토 요청부터 취소소송·집행정지까지 다툽니다. 국가연구개발사업과 그 제재처분은 「국가연구개발혁신법」에 따르며, 이 처분을 심의하는 과학기술정보통신부 연구자권익보호위원회와 중소벤처기업부 제재처분 재검토위원회의 위원입니다.</p>
+        <p>참여제한·연구개발비 환수·제재부가금 처분을 사전통지 단계의 재검토 요청부터 취소소송·집행정지까지 다툽니다. 국가연구개발사업과 그 제재처분은 「국가연구개발혁신법」에 따릅니다.</p>
         <p class="due-line" aria-label="국가연구개발 제재처분의 세 기한"><span><b>20<small>일</small></b> 사전통지를 받은 날부터 재검토 요청 의견 제출</span><span><b>30<small>일</small></b> 처분 통보를 받은 날부터 제재부가금·환수금 납부</span><span><b>90<small>일</small></b> 처분이 있음을 안 날부터 취소소송 제기 — 집행정지도 함께</span></p>
         <p class="links"><a class="cases-link" href="cases.html#cat=rnd" data-cat="rnd"><span class="lbl">수행 사례 <b class="n">56건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-rnd">자세히 →</a></p>
       </li>
@@ -408,7 +395,6 @@
       <!-- press:start -->
       <header class="section-head">
         <h2 id="press-h">언론보도</h2>
-        <p>수행한 사건의 판결·결정이 보도된 최근 기사입니다. 지난 사건 보도와 토론회·위원회·강의 기사 등 52건 전체는 언론보도 페이지에 있습니다.</p>
         <nav class="jump" aria-label="언론보도 페이지로"><span class="cap">자세히</span><a href="press.html">언론보도 전체</a></nav>
       </header>
       <div class="section-body press-body">
@@ -549,7 +535,7 @@
       <p class="rights">© 2026 변호사 부효준. All rights reserved.</p>
     </div>
     <div class="sign-block">
-      <p class="sign-date"><time class="sign-date-time" id="sign-date" datetime="2026-10-23" title="홈페이지 최종 수정일">2026. 10. 23.</time></p>
+      <p class="sign-date"><time class="sign-date-time" id="sign-date" datetime="2026-10-25" title="홈페이지 최종 수정일">2026. 10. 25.</time></p>
       <p class="sign-name">
         <span><small>변호사</small><span class="spaced">부효준</span></span>
         <img class="seal" src="seal.png" alt="부효준 인장" width="234" height="231" decoding="async">
@@ -632,7 +618,7 @@
 
 <script src="cases-data.js?v=ad41bb2d"></script>
 
-<script src="site.js?v=00b65ffd"></script>
+<script src="site.js?v=4679d72f"></script>
 <!-- chrome:tail:end -->
 </body>
 </html>

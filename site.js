@@ -266,7 +266,17 @@ var LB = (function () {
   var DATA_ID = 'cases-data';
   var CATS = { rnd: '국가연구개발 제재처분', penalty: '제재부가금·환수', personnel: '공무원·교원 인사처분', license: '인허가·면허·자격 처분', comp: '손실보상', admin: '그 밖의 행정처분', criminal: '형사', contract: '국가계약법·지방계약법', state: '국가배상', civil: '민사' };   // 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤(형사는 출연금·보조금 외 사건도 있어 '형사'로, 민사는 카드가 없어 맨 뒤)
   var RECENT = 6;   // 홈 화면의 사례 수(2026. 10. 23. 오후 본인 지시): 세 장씩 놓이는 화면은 2줄, 두 장씩 놓이는 화면은 3줄 — 어느 쪽이든 6건
-  var MAIN = ['criminal', 'rnd', 'penalty']; // 홈 '주요 분야'의 세 분야와 순서(2026. 10. 23. 오후 본인 지시: 형사 → 국가연구개발 제재처분 → 제재부가금·환수) — 이 순서로 번갈아 두 건씩
+  var MAIN = ['rnd', 'penalty', 'criminal']; // 홈 '주요 분야'에서 앞세우는 사례 뒤에 번갈아 보이는 세 분야와 순서(2026. 10. 25. 본인 지시: 국가연구개발 제재처분 → 제재부가금·환수 → 형사; 그 전 2026. 10. 23. 오후: 형사 → 국가연구개발 → 제재부가금)
+  // 앞세우는 사례(2026. 10. 25. 본인 지시 "원고 대리하여 승소한 사건(예: 공공재정환수법, 집행정지 각 인용 사건), 국가연구개발사업 관련 형사 승소(불송치 등)를 먼저"):
+  // 주요 분야(rnd·penalty)에서 처분 상대방을 대리하여 이긴 사건(party 에 '대리', 보조참가 제외, 결과 승소·일부승소·…인용) 최근 순 → 제목에 '국가연구개발'이 든 형사 사건의 불송치·불기소·혐의없음·무죄·공소기각 최근 순,
+  // 합쳐서 LEAD_MAX 건(세 장씩 놓이면 첫 줄). 나머지 자리는 MAIN 세 분야를 번갈아 한 건씩. work/ssr_cases.py 의 lead_cases()·home_order() 와 같은 규칙.
+  var LEAD_MAX = RECENT - MAIN.length;
+  var LEAD_CATS = ['rnd', 'penalty'];
+  var LEAD_WIN_RE = /^(승소|일부승소)|인용/;
+  var LEAD_CRIM_WIN_RE = /불송치|불기소|혐의없음|무죄|공소기각/;
+  var LEAD_CRIM_TITLE = '국가연구개발';
+  function isLeadPartyWin(c) { var p = c.party || ''; return LEAD_CATS.indexOf(c.cat) >= 0 && p.indexOf('대리') >= 0 && p.indexOf('보조참가') < 0 && LEAD_WIN_RE.test(c.result || ''); }
+  function isLeadCrimWin(c) { return c.cat === 'criminal' && String(c.title || '').indexOf(LEAD_CRIM_TITLE) >= 0 && LEAD_CRIM_WIN_RE.test(c.result || ''); }
   var WHO = '담당변호사 부효준'; // 모든 사례에 적는 담당변호사 (Version 111)
   function bySortDesc(a, b) { return (b.sort || '') < (a.sort || '') ? -1 : (b.sort || '') > (a.sort || '') ? 1 : 0; }
   var cases = [];
@@ -306,7 +316,7 @@ var LB = (function () {
     if (state.filter !== 'all' && state.filter !== 'main' && !counts[state.filter]) state.filter = 'main';
     keys.forEach(function (k) {
       var b = el('button', 'chip', k === 'main' ? '주요 분야' : k === 'all' ? '전체' : CATS[k]);
-      if (k === 'main') b.title = '형사 · 국가연구개발 제재처분 · 제재부가금·환수';
+      if (k === 'main') b.title = '처분을 받은 쪽을 대리해 이긴 사건과 국가연구개발 관련 형사 승소를 먼저, 이어서 국가연구개발 제재처분 · 제재부가금·환수 · 형사';
       b.type = 'button';
       b.id = 'chip-' + k;
       b.setAttribute('role', 'tab');
@@ -371,9 +381,12 @@ var LB = (function () {
     }
     var shown;
     if (state.filter === 'main') {
-      // '주요 분야'(2026. 10. 23. 오후): 세 분야를 MAIN 순서로 번갈아 — 형사·국가연구개발·제재부가금·형사·… — 분야마다 최근 순, 어느 분야도 빠지지 않게. 6건이면 분야마다 2건.
-      var per = MAIN.map(function (k) { return recent(cases.filter(function (c) { return c.cat === k; })); });
-      shown = [];
+      // '주요 분야'(2026. 10. 25.): 앞세우는 사례(처분 상대방 대리 승소 → 국가연구개발 관련 형사 승소, 최근 순, LEAD_MAX 건) 다음에
+      // 세 분야를 MAIN 순서로 번갈아 — 국가연구개발·제재부가금·형사·국가연구개발·… — 분야마다 최근 순, 앞에 든 사례는 빼고, 어느 분야도 빠지지 않게.
+      var all = recent(cases);
+      shown = all.filter(isLeadPartyWin).concat(all.filter(isLeadCrimWin)).slice(0, LEAD_MAX);
+      var seen = {}; shown.forEach(function (c) { seen[c.id] = true; });
+      var per = MAIN.map(function (k) { return all.filter(function (c) { return c.cat === k && !seen[c.id]; }); });
       for (var r = 0; shown.length < RECENT && per.some(function (l) { return l.length > r; }); r++) {
         per.forEach(function (l) { if (r < l.length && shown.length < RECENT) shown.push(l[r]); });
       }
