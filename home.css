@@ -386,8 +386,8 @@ button.case-fig:hover img { opacity: 0.92; }
 .case-link { justify-self: start; font-size: var(--step--1); }
 .empty { padding-block: 1.5rem; font-size: var(--step--1); color: var(--ink-soft); border-block: 1px solid var(--rule); }
 
-/* 홈 주요 수행 사례의 장수: 2026. 10. 23. 오후 본인 지시로 6건(세 장씩 놓이는 화면 2줄 = 두 장씩 놓이는 화면 3줄, 형사·국가연구개발·제재부가금 순으로 번갈아) —
-   줄이 비는 자리가 없으므로 종전의 '아홉째 장 감추기' 규칙(2026. 10. 21.)은 없앰. */
+/* 홈 주요 수행 사례의 장수: 2026. 10. 25. 저녁 본인 지시로 한 줄만(PC 4장·펼친 폴드7 3장·접은 폴드7 2장) — 규칙은 파일 끝의 같은 날짜 블록.
+   (그 전 2026. 10. 23. 오후: 6건 = 세 장씩 2줄·두 장씩 3줄; 2026. 10. 21.의 '아홉째 장 감추기'는 그때 없앰.) */
 
 /* 자주 묻는 질문 절·페이지는 2026. 10. 23. 오후 본인 지시로 삭제(규칙도 지움). */
 
@@ -1644,3 +1644,19 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 }
 .consult { background: var(--wash); }
 .consult details dl { background: var(--paper); border: 1px solid var(--rule); }
+
+/* ---------- 홈 주요 수행 사례: 카드는 한 줄만 — PC 네 장 · 펼친 폴드7 세 장 · 접은 폴드7 두 장 (2026. 10. 25. 저녁 본인 지시) ----------
+   work/ssr_cases.py·site.js 는 RECENT = 4 장을 만들어 두고, 여기서 641~1000px(펼친 폴드7·태블릿)에서는 넷째 장을, ≤640px(접은 폴드7·휴대전화)에서는 셋째·넷째 장을 감춘다.
+   네 장이 한 줄에 들어가려면 본문이 전체 폭이어야 하므로 이 절만 제목·설명을 위에 두고 카드 줄을 전체 폭으로 편다(다른 절은 왼쪽 제목 + 오른쪽 본문 그대로).
+   그 전(2026. 10. 23. 오후)은 6건 = 세 장씩 2줄·두 장씩 3줄. */
+#record { grid-template-columns: minmax(0, 1fr); }
+#record .section-head { max-width: 46rem; }
+#record .case-list:not(.list) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1000px) {
+  #record .case-list:not(.list) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #record .case-list:not(.list) > li:nth-child(n+4) { display: none; }
+}
+@media (max-width: 640px) {
+  #record .case-list:not(.list) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #record .case-list:not(.list) > li:nth-child(n+3) { display: none; }
+}

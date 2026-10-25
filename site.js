@@ -265,7 +265,7 @@ var LB = (function () {
 (function () {
   var DATA_ID = 'cases-data';
   var CATS = { rnd: '국가연구개발 제재처분', penalty: '제재부가금·환수', personnel: '공무원·교원 인사처분', license: '인허가·면허·자격 처분', comp: '손실보상', admin: '그 밖의 행정처분', criminal: '형사', contract: '국가계약법·지방계약법', state: '국가배상', civil: '민사' };   // 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤(형사는 출연금·보조금 외 사건도 있어 '형사'로, 민사는 카드가 없어 맨 뒤)
-  var RECENT = 6;   // 홈 화면의 사례 수(2026. 10. 23. 오후 본인 지시): 세 장씩 놓이는 화면은 2줄, 두 장씩 놓이는 화면은 3줄 — 어느 쪽이든 6건
+  var RECENT = 4;   // 홈 화면의 사례 수(2026. 10. 25. 저녁 본인 지시 "PC 4개, 폴드7 펼치면 3개, 접으면 2개"): 카드는 한 줄만 — 넷을 만들어 두고 home.css 가 641~1000px 에서는 넷째 장을, ≤640px 에서는 셋째·넷째 장을 감춘다(그 전 2026. 10. 23. 오후: 6건 = 세 장씩 2줄·두 장씩 3줄)
   var MAIN = ['rnd', 'penalty', 'criminal']; // 홈 '주요 분야'에서 앞세우는 사례 뒤에 번갈아 보이는 세 분야와 순서(2026. 10. 25. 본인 지시: 국가연구개발 제재처분 → 제재부가금·환수 → 형사; 그 전 2026. 10. 23. 오후: 형사 → 국가연구개발 → 제재부가금)
   // 앞세우는 사례(2026. 10. 25. 본인 지시 10:31 "승소 사건 순서를 주요 분야(국가연구개발·제재부가금) 가운데 처분 상대방을 대리해 이긴 사건(승소·일부승소·인용)을 최근 순으로,
   // 이어서 제목에 '국가연구개발'이 든 형사 승소(불송치·불기소 등), 그 외 처분 상대방을 대리해 이긴 사건 순으로") — 세 단계를 이어 붙여 LEAD_MAX 건까지:
@@ -396,7 +396,7 @@ var LB = (function () {
         per.forEach(function (l) { if (r < l.length && shown.length < RECENT) shown.push(l[r]); });
       }
     } else {
-      // 그 밖의 칩: 최근 결정일 순으로 6건(전체는 cases.html, 최근 순).
+      // 그 밖의 칩: 최근 결정일 순으로 RECENT 건(전체는 cases.html, 최근 순).
       shown = recent(cases.filter(function (c) { return state.filter === 'all' || c.cat === state.filter; })).slice(0, RECENT);
     }
     if (allLink) {

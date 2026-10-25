@@ -10,8 +10,8 @@
 press.json(items)의 기사 가운데 home 이 true 인 것을 세 묶음으로 보인다:
   수행 사건 보도(kind=case, 관련 사례로 링크) · 토론회·위원회·강의(kind=activity, 본인 발언 quote 포함) ·
   그 밖에 이름이 실린 기사(kind=mention — 2026. 10. 23. 본인 지시로 사법시험 합격자 명단·공익법무관 인사 배치 기사는 모두 뺐으므로 지금은 비어 있음).
-2026. 10. 23. 낮 본인 지시("수행사건 보도 최근 3개 정도만 나오게 하고 나머지는 '접기'로"): 펼친 채 보이는 것은 수행 사건 보도
-  최근 HOME_RECENT(3)건과 언론보도 페이지(press.html) 링크뿐이고(2026. 10. 23. 저녁: 접힌 목록 대신 페이지로), 전체는 press.html 의 같은 표식 사이에 접지 않고 넣는다(사례 페이지에만 싣던 기사까지 모두).
+2026. 10. 23. 낮 본인 지시("수행사건 보도 최근 3개 정도만 나오게 하고 나머지는 '접기'로") → 2026. 10. 25. 저녁 본인 지시("언론보도도 최근 1개만"): 홈에 보이는 것은 수행 사건 보도
+  최근 HOME_RECENT(1)건과 언론보도 페이지(press.html) 링크뿐이고(2026. 10. 23. 저녁: 접힌 목록 대신 페이지로), 전체는 press.html 의 같은 표식 사이에 접지 않고 넣는다(사례 페이지에만 싣던 기사까지 모두).
   (종전 접힌 <details class="press-more">
   ('더 보기 …' / 펼치면 '접기') 안에 들어간다.
 index.html 에서는 <!-- press:start --> … <!-- press:end --> 사이를 바꾼다(없으면 상담 문의 절 앞 — 다루는 사건 절 다음 — 에 절 전체를 넣는다;
@@ -31,7 +31,7 @@ from ssr_cases import load_cases  # noqa: E402  (사례 데이터 파일 cases-d
 
 SITE = "https://lawyermrboo82.com"
 START, END = "<!-- press:start -->", "<!-- press:end -->"
-HOME_RECENT = 3   # 접지 않고 보이는 수행 사건 보도 건수(최근순). 나머지는 접힌 목록으로(2026. 10. 23. 본인 지시)
+HOME_RECENT = 1   # 홈에 보이는 수행 사건 보도 건수(최근순) — 2026. 10. 25. 저녁 본인 지시로 1건(그 전 2026. 10. 23. 낮 지시 3건). 나머지는 언론보도 페이지(press.html)로
 
 
 def esc(s):
@@ -105,7 +105,7 @@ def section_full(items, cases_by_id):
 
 
 def section_inner(items, cases_by_id):
-    """홈(index.html)의 언론보도 요약: 수행 사건 보도 최근 HOME_RECENT 건 + 언론보도 페이지(press.html) 링크 (2026. 10. 23. 저녁 — 접힌 목록 대신 페이지로)."""
+    """홈(index.html)의 언론보도 요약: 수행 사건 보도 최근 HOME_RECENT 건(2026. 10. 25. 저녁부터 1건) + 언론보도 페이지(press.html) 링크 (2026. 10. 23. 저녁 — 접힌 목록 대신 페이지로)."""
     n_all = len(items)
     items = [p for p in items if p.get("home")]
     groups = {"case": [], "activity": [], "mention": []}
