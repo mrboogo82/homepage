@@ -11,7 +11,7 @@
                    본문 끝의 접힌 '주요 수행 사례 전체 목록'도 같은 날 오후 본인 지시로 삭제 — work/ssr_cases.py 의 HOME_ALL_LIST = False. 첫 화면 아래의 길잡이('무엇을 찾으시나요?' 다섯 칸, <nav class="finder">)는 2026. 10. 25. 본인 지시로 모두 삭제 — home.css 의 .finder 규칙만 남아 있음.
                    같은 날 본인 지시로 지운 설명 문구: 경력 절 머리의 '2026. 10. 기준 · 위촉장을 누르면 … 누리집이 열립니다', 법률고문 위촉의 '약 20곳' 건수와 '처분을 만드는 기관들이 … 맡지 않습니다'(career.html 도), 위원회의 '처분을 심의하는 자리에서 … 출발점입니다'(career.html 도),
                    다루는 사건 절 머리의 '처분의 종류에 따라 … 판결문이 열립니다'와 국가연구개발 카드 요약의 '… 재검토위원회의 위원입니다', 언론보도 절 머리의 '수행한 사건의 … 언론보도 페이지에 있습니다'(build_press.py 템플릿))
-- career.html / fields.html / press.html / contact.html   경력(학력·수상·위촉장·위원회·강의 전체) / 다루는 사건(열 영역 전체 설명) / 언론보도(기사 전체) / 상담 문의(연락처·신청서·처음 연락하실 때·오시는 길).
+- career.html / fields.html / press.html / contact.html   경력(학력·수상·위촉장·위원회·강의 전체) / 다루는 사건(열 영역 전체 설명) / 언론보도(기사 전체) / 상담 문의(연락처·신청서; "처음 연락하실 때"·"오시는 길" 블록과 홈의 그 링크는 2026. 10. 25. 밤 본인 지시로 삭제).
                    같은 home.css·site.js. 머리글·바닥글·그림 심벌·크게 보기 창·계정 목록은 index.html 이 기준이고 work/build_pages.py 가 네 페이지에 복사한다(<!-- chrome:이름:start/end --> 표식 사이).
 - cases-data.js    사례 데이터 원본("window.CASES_DATA = [...];", 2026. 10. 23. index.html·cases.html 안의 22만 자 JSON 블록에서 분리) — 두 페이지가 <script src="cases-data.js?v=해시">로 읽음
 - home.css / cases.css / case.css   홈 · 전체 사례 페이지 · 사례·주제 페이지(case.css = cases.css + build_cases.py 의 EXTRA_CSS, 자동 생성)의 스타일(2026. 10. 23. 인라인 <style>에서 분리)
