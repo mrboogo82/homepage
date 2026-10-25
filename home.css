@@ -1660,3 +1660,39 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
   #record .case-list:not(.list) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #record .case-list:not(.list) > li:nth-child(n+3) { display: none; }
 }
+
+/* ---------- 2026. 10. 25. 저녁 본인 지시 ②③: 전체(넓은) 화면에서 한 줄에 더 많이 ----------
+   ① 경력 절(#career — 홈·career.html 공통)과 다루는 사건 절(#fields)도 주요 수행 사례처럼 제목을 위에 두고 본문을 전체 폭으로 편다('경력'·'다루는 사건' 제목 옆에 알약을 한 줄로).
+      두 단(왼쪽 제목 12rem + 오른쪽 본문 약 800px)으로는 타일·카드를 한 줄에 더 넣을수록 휴대전화만큼 작아지기 때문. 언론보도·상담 문의 절은 두 단 그대로.
+   ② 위촉장·위원회 타일(.advisors)은 한 줄 9장 — 중앙행정기관 9장·위원회 7장이 각각 한 줄, 공공기관 11장은 9+2(그 전 6장: 6+3·6+5·6+1).
+      1100px 이하 7장, 900px 이하 6장, 760px 이하 5장, 640px 이하는 종전 두 장 목록 그대로. career.html 의 임기를 마친 묶음(.past-grid)은 현행 타일보다 작아야 하므로 12장(1100px 이하 9장, 900px 이하 8장, 760px 이하 6장).
+   ③ 다루는 사건 카드는 국가연구개발 제재처분(한 줄 폭) 아래 아홉 영역을 한 줄 5장(5+4; 그 전 3장씩 세 줄) — 1100px 이하 3장, 760px 이하 2장, 640px 이하 한 장(종전). 5장일 때는 카드 여백·제목·단추를 조금 줄여 '수행 사례 N건 보기' 단추가 칸 안에 들어가게 한다. */
+#career, #fields { grid-template-columns: minmax(0, 1fr); }
+#career .section-head, #fields .section-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; }
+#career .section-head .jump, #fields .section-head .jump { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin-top: 0; }
+#career .section-head .jump .cap { width: auto; margin: 0 0.3rem 0 0; }
+@media (min-width: 641px) {
+  .advisors:not(.past-grid) { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 1rem 0.75rem; }
+  .past-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+}
+@media (min-width: 641px) and (max-width: 1100px) {
+  .advisors:not(.past-grid) { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .past-grid { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+}
+@media (min-width: 641px) and (max-width: 900px) {
+  .advisors:not(.past-grid) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .past-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+}
+@media (min-width: 641px) and (max-width: 760px) {
+  .advisors:not(.past-grid) { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .past-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+@media (min-width: 1101px) {
+  .field-list { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.7rem; }
+  .field:not(.lead) { padding: 0.9rem 0.85rem; }
+  .field:not(.lead) h3 { font-size: 1rem; }
+  .field .links { gap: 0.35rem 0.7rem; }
+  .field .links a.cases-link { font-size: 0.8125rem; padding: 0.2rem 0.65rem; }
+}
+@media (min-width: 761px) and (max-width: 1100px) { .field-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 641px) and (max-width: 760px) { .field-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
