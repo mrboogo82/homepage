@@ -1645,8 +1645,8 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .consult { background: var(--wash); }
 .consult details dl { background: var(--paper); border: 1px solid var(--rule); }
 
-/* ---------- 홈 주요 수행 사례: 카드는 한 줄만 — PC 네 장 · 펼친 폴드7 세 장 · 접은 폴드7 두 장 (2026. 10. 25. 저녁 본인 지시) ----------
-   work/ssr_cases.py·site.js 는 RECENT = 4 장을 만들어 두고, 여기서 641~1000px(펼친 폴드7·태블릿)에서는 넷째 장을, ≤640px(접은 폴드7·휴대전화)에서는 셋째·넷째 장을 감춘다.
+/* ---------- 홈 주요 수행 사례: PC 네 장 한 줄 · 펼친 폴드7 세 장 한 줄 · 접은 폴드7 두 장씩 두 줄(네 장) (2026. 10. 25. 저녁 본인 지시 → 같은 날 밤 "접은 상태에서도 4개는 나오게") ----------
+   work/ssr_cases.py·site.js 는 RECENT = 4 장을 만들어 두고, 여기서 641~1000px(펼친 폴드7·태블릿)에서는 넷째 장을 감춘다. ≤640px(접은 폴드7·휴대전화)은 두 장씩 두 줄로 넷 다 보인다(저녁에는 두 장만 보이게 셋째·넷째를 감췄었음).
    네 장이 한 줄에 들어가려면 본문이 전체 폭이어야 하므로 이 절만 제목·설명을 위에 두고 카드 줄을 전체 폭으로 편다(다른 절은 왼쪽 제목 + 오른쪽 본문 그대로).
    그 전(2026. 10. 23. 오후)은 6건 = 세 장씩 2줄·두 장씩 3줄. */
 #record { grid-template-columns: minmax(0, 1fr); }
@@ -1658,7 +1658,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 }
 @media (max-width: 640px) {
   #record .case-list:not(.list) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  #record .case-list:not(.list) > li:nth-child(n+3) { display: none; }
+  #record .case-list:not(.list) > li:nth-child(n+3) { display: block; }   /* 밤 지시: 접은 폴드7에서도 네 장(2×2) */
 }
 
 /* ---------- 2026. 10. 25. 저녁 본인 지시 ②③: 전체(넓은) 화면에서 한 줄에 더 많이 ----------
@@ -1721,3 +1721,18 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .career-body .creed-text { max-width: 60rem; font-size: var(--step--1); line-height: 1.8; }
 .career-body .creed-text a { color: var(--ink); text-decoration-color: var(--rule); }
 .career-body .creed-text a:hover { color: var(--seal); text-decoration-color: var(--seal); }
+
+/* ---------- 2026. 10. 25. 밤 본인 지시 ----------
+   ① 첫 화면 이름 아래 영문 한 줄(.hero-name-en: Boo Hyoejune · Attorney at Law)
+   ② 접은 폴드7(휴대전화)에서 머리글 차림표(주요 수행 사례·경력·다루는 사건·언론보도·상담 문의)가 한 줄에 — 글씨를 화면 폭에 맞춰(clamp) 줄이고 줄바꿈을 막음(전화번호는 이름 줄 오른쪽 그대로)
+   ③ 접은 폴드7에서 첫 화면 분야 줄('국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 행정쟁송')이 한 줄에 — 글씨·자간을 화면 폭에 맞춰 줄이고 줄바꿈을 막음
+   ④ 작은 제목 '국가로펌 출신' → '국가로펌 출신 행정법 전문변호사'(index.html)  ⑤ 접은 폴드7에서 주요 수행 사례 네 장(위 블록) */
+.hero-name-en { margin: -0.15rem 0 0; font-family: var(--sans); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.1em; color: var(--hero-soft); }
+.hero-name-en .sep { margin: 0 0.3em; opacity: 0.6; }
+@media (max-width: 760px) {
+  .top nav { flex-wrap: nowrap; justify-content: space-between; gap: 0 2vw; font-size: clamp(0.72rem, 3.45vw, 0.9375rem); }
+  .top nav a:not(.btn) { flex: none; white-space: nowrap; padding: 0.3rem 0; }
+  .top nav .btn.small { flex: none; white-space: nowrap; padding: 0.28em 0.85em; font-size: inherit; }
+  .hero .eyebrow { white-space: nowrap; font-size: clamp(0.62rem, 3.05vw, 0.875rem); letter-spacing: 0.01em; }
+  .hero-name-en { font-size: 0.75rem; letter-spacing: 0.08em; }
+}
