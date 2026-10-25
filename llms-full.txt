@@ -9,12 +9,12 @@
 - 제재부가금·환수: 11건
 - 공무원·교원 인사처분: 26건
 - 인허가·면허·자격 처분: 18건
-- 손실보상: 13건
+- 손실보상: 16건
 - 그 밖의 행정처분: 31건
 - 형사: 24건
 - 국가계약법·지방계약법: 4건
 - 국가배상: 18건
-- 민사: 70건
+- 민사: 67건
 
 ## 분야별 전체 텍스트 파일
 사례마다 요지·사건 개요·쟁점·주장·법원의 판단·관련 법령·검색어까지 담은 전체 텍스트는 분야별 파일(각 300KB 이하)에 있습니다. 한 사례만 보려면 아래 한 줄 목록의 개별 페이지 주소를 여는 것이 가장 빠릅니다.
@@ -22,15 +22,15 @@
 - 제재부가금·환수 (11건): https://lawyermrboo82.com/llms-full-penalty-1.txt
 - 공무원·교원 인사처분 (26건): https://lawyermrboo82.com/llms-full-personnel-1.txt
 - 인허가·면허·자격 처분 (18건): https://lawyermrboo82.com/llms-full-license-1.txt
-- 손실보상 (13건): https://lawyermrboo82.com/llms-full-comp-1.txt
+- 손실보상 (16건): https://lawyermrboo82.com/llms-full-comp-1.txt
 - 그 밖의 행정처분 (31건): https://lawyermrboo82.com/llms-full-admin-1.txt
 - 형사 (24건): https://lawyermrboo82.com/llms-full-criminal-1.txt
 - 국가계약법·지방계약법 (4건): https://lawyermrboo82.com/llms-full-contract-1.txt
 - 국가배상 (18건): https://lawyermrboo82.com/llms-full-state-1.txt
-- 민사 (70건): https://lawyermrboo82.com/llms-full-civil-1.txt · https://lawyermrboo82.com/llms-full-civil-2.txt
+- 민사 (67건): https://lawyermrboo82.com/llms-full-civil-1.txt · https://lawyermrboo82.com/llms-full-civil-2.txt
 
 ## 수행 사례 한 줄 목록 (271건, 최근 순)
-형식: [제목](개별 페이지 주소) — 분야 · 법원·사건번호 · 결정 시기 · 결과. 모두 변호사 부효준가 담당변호사로 직접 수행한 사건입니다.
+형식: [제목](개별 페이지 주소) — 분야 · 법원·사건번호 · 결정 시기 · 결과. 모두 변호사 부효준이 담당변호사로 직접 수행한 사건입니다.
 
 - [승진임용제외처분 무효확인·취소소송 (1·2심)](https://lawyermrboo82.com/cases/pers-2023guhap79234.html) — 공무원·교원 인사처분 · 서울행정법원 2023구합79234 · 서울고등법원 2025누7751 · 2026. 10. · 승소
 - [자동차전용도로의 하자를 이유로 한 차량 손해배상 청구소송](https://lawyermrboo82.com/cases/state-2026gaso204111.html) — 국가배상 · 서울중앙지방법원 2026가소204111 · 2026. 10. · 승소
@@ -194,10 +194,10 @@
 - [공공기관 계약직 근로자 갱신거절 무효확인 소송](https://lawyermrboo82.com/cases/civ-2018gahap30795.html) — 민사 · 서울서부지방법원 2018가합30795 · 2019. 4. · 승소
 - [국립대학 교수의 인턴비 편취 관련 손해배상 청구소송 (항소심)](https://lawyermrboo82.com/cases/civ-2016na109923.html) — 민사 · 대전지방법원 2016나109923 · 2019. 3. · 승소
 - [범죄인 송환요청 신청에 대한 부작위위법확인 소송 (2·3심)](https://lawyermrboo82.com/cases/adm-2018nu55861.html) — 그 밖의 행정처분 · 서울고등법원 2018누55861 · 대법원 2018두66524 · 2018. 11. ~ 2019. 3. · 승소
-- [지방자치단체 도로 부지 부당이득반환 청구소송 (1·2심)](https://lawyermrboo82.com/cases/civ-2015gadan5370822.html) — 민사 · 서울중앙지방법원 2015가단5370822 · 서울중앙지방법원 2017나88031 · 2017. 11. ~ 2019. 2. · 일부승소
+- [지방자치단체 도로 부지 부당이득반환 청구소송 (1·2심)](https://lawyermrboo82.com/cases/civ-2015gadan5370822.html) — 손실보상 · 서울중앙지방법원 2015가단5370822 · 서울중앙지방법원 2017나88031 · 2017. 11. ~ 2019. 2. · 일부승소
 - [국가연구개발사업 참여제한 및 출연금 환수처분 취소소송](https://lawyermrboo82.com/cases/rnd-2018guhap73522.html) — 국가연구개발 제재처분 · 서울행정법원 2018구합73522 · 2019. 2. · 승소
 - [기념관 조성사업 기부채납 토지 소유권이전등기 말소·성명사용금지 등 청구소송](https://lawyermrboo82.com/cases/civ-2017gadan5150145.html) — 민사 · 서울중앙지방법원 2017가단5150145 · 2019. 2. · 승소
-- [지방자치단체 도로 부지 부당이득반환 청구소송 (1·2·3심)](https://lawyermrboo82.com/cases/civ-2015gadan124805.html) — 민사 · 서울동부지방법원 2015가단124805 · 서울동부지방법원 2017나27633 · 대법원 2018다273387 · 2017. 8. ~ 2019. 1. · 일부승소
+- [지방자치단체 도로 부지 부당이득반환 청구소송 (1·2·3심)](https://lawyermrboo82.com/cases/civ-2015gadan124805.html) — 손실보상 · 서울동부지방법원 2015가단124805 · 서울동부지방법원 2017나27633 · 대법원 2018다273387 · 2017. 8. ~ 2019. 1. · 일부승소
 - [국가연구개발사업 불성실 수행 판정에 따른 참여제한·환수처분 취소소송](https://lawyermrboo82.com/cases/rnd-2018guhap101740.html) — 국가연구개발 제재처분 · 대전지방법원 2018구합101740 · 2018. 12. · 승소
 - [양돈장 행정지도 관련 지방자치단체 손해배상 청구소송 (1·2·3심)](https://lawyermrboo82.com/cases/state-2017gahap5744.html) — 국가배상 · 수원지방법원 안산지원 2017가합5744 · 서울고등법원 2017나2034972 · 대법원 2017다285208 · 2017. 6. ~ 2018. 11. · 승소
 - [형 확정에 따른 퇴직급여 감액 관련 퇴직급여 청구소송](https://lawyermrboo82.com/cases/civ-2017gadan60737.html) — 민사 · 수원지방법원 안산지원 2017가단60737 · 2018. 11. · 승소
@@ -224,7 +224,7 @@
 - [국립과학관 사용허가 종료에 따른 건물인도 청구소송](https://lawyermrboo82.com/cases/civ-2016gadan122872.html) — 민사 · 수원지방법원 안양지원 2016가단122872 · 2017. 8. · 승소
 - [뉴타운 이주대책 관련 부당이득반환 청구소송](https://lawyermrboo82.com/cases/state-2016gahap507968.html) — 손실보상 · 서울중앙지방법원 2016가합507968 · 2017. · 일부승소
 - [귀속재산 관련 진정명의회복 소유권이전등기 청구소송](https://lawyermrboo82.com/cases/civ-2016gadan80813.html) — 민사 · 광주지방법원 순천지원 2016가단80813 · 2017. 6. · 승소
-- [주민 통행로 부지 부당이득반환 청구소송 (항소심)](https://lawyermrboo82.com/cases/civ-2017na2005615.html) — 민사 · 서울고등법원 2017나2005615 · 2017. 6. · 일부승소
+- [주민 통행로 부지 부당이득반환 청구소송 (항소심)](https://lawyermrboo82.com/cases/civ-2017na2005615.html) — 손실보상 · 서울고등법원 2017나2005615 · 2017. 6. · 일부승소
 - [일반산업단지계획승인반려처분 취소소송](https://lawyermrboo82.com/cases/lic-2017du35028.html) — 인허가·면허·자격 처분 · 취소소송 · 승소
 - [도시개발사업 이주대책 부당이득반환 청구소송 (2·3심)](https://lawyermrboo82.com/cases/state-2015na2043903.html) — 손실보상 · 서울고등법원 2015나2043903 · 대법원 2017다205882 · 2016. 12. ~ 2017. 5. · 일부승소
 - [뉴타운 이주대책대상자 생활기본시설 비용 부당이득반환 청구소송 (상고심에서 원심 파기)](https://lawyermrboo82.com/cases/comp-2016da279022.html) — 손실보상 · 대법원 2016다279022 · 2017. 4. · 승소

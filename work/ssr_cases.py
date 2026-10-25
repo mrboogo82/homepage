@@ -497,7 +497,7 @@ def llms_index(cases, intro_from, parts):
             continue
         lines.append("- %s (%d건): %s" % (name, cat_counts.get(cat, 0), " · ".join("%s/%s" % (SITE, f) for f in names)))
     lines += ["", "## 수행 사례 한 줄 목록 (%d건, 최근 순)" % n,
-              "형식: [제목](개별 페이지 주소) — 분야 · 법원·사건번호 · 결정 시기 · 결과. 모두 %s가 담당변호사로 직접 수행한 사건입니다." % WHO.replace("담당변호사 ", "변호사 "), ""]
+              "형식: [제목](개별 페이지 주소) — 분야 · 법원·사건번호 · 결정 시기 · 결과. 모두 %s이 담당변호사로 직접 수행한 사건입니다." % WHO.replace("담당변호사 ", "변호사 "), ""]
     for c in ordered(cases):
         lines.append("- [%s](%s/%s) — %s" % (c["title"], SITE, page_href(c), line_meta(c)))
     return "\n".join(lines).rstrip("\n") + "\n"
