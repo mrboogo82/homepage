@@ -111,7 +111,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="home.css?v=20261023c">
+<link rel="stylesheet" href="home.css?v=20261025">
 </head>
 <body>
 <div class="page" id="top" lang="ko">
@@ -248,11 +248,10 @@
            경력·학력·수상 한 줄 요약은 여기에 직접 적음(바뀌는 일이 드묾; career.html 연표와 맞출 것). -->
       <header class="section-head">
         <h2 id="career-h">경력</h2>
-        <nav class="jump" aria-label="경력 바로 가기">
-          <span class="cap">바로 가기</span>
+        <nav class="jump" aria-label="경력 바로 가기"><!-- 2026. 10. 25. 본인 지시: '바로 가기' 글귀 삭제, 순서는 경력 · 학력 전체 → 법률고문 위촉 → 위원회 -->
+          <a href="career.html">경력 · 학력 전체</a>
           <a href="#advisory">법률고문 위촉</a>
           <a href="#committees">위원회</a>
-          <a href="career.html">경력 · 학력 전체</a>
         </nav>
       </header>
       <div class="section-body career-body">
@@ -318,11 +317,11 @@
     </section>
 
     <section class="section" id="fields" aria-labelledby="fields-h">
-      <!-- 2026. 10. 23. 저녁: 다루는 사건의 전체 설명(다룬 사건·근거 법령·세 기한·주제별 사례)은 fields.html 로 옮기고 홈에는 열 영역의 제목과 한 줄 요약만. 분야를 더하거나 이름을 바꾸면 fields.html 과 여기를 함께 고친다. -->
+      <!-- 2026. 10. 23. 저녁: 다루는 사건의 전체 설명(다룬 사건·근거 법령·세 기한·주제별 사례)은 fields.html 로 옮기고 홈에는 열 영역의 제목과 한 줄 요약만. 분야를 더하거나 이름을 바꾸면 fields.html 과 여기를 함께 고친다.
+           2026. 10. 25. 본인 지시: 절 머리의 '자세히' 글귀와 카드마다의 한 줄 설명(국가연구개발 카드의 세 기한 띠 포함)도 지우고, 카드에는 제목과 '수행 사례 N건 보기'·'자세히 →' 링크만 둔다. -->
       <header class="section-head">
         <h2 id="fields-h">다루는 사건</h2>
         <nav class="jump" aria-label="다루는 사건 페이지로">
-          <span class="cap">자세히</span>
           <a href="fields.html">다루는 사건 전체</a>
         </nav>
       </header>
@@ -330,62 +329,51 @@
       <li class="field lead" id="sum-rnd">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M11 15h10M11 19h10M11 23h6"/><circle cx="23" cy="24" r="4"/></svg>
         <h3><a href="fields.html#area-rnd">국가연구개발 제재처분</a></h3>
-        <p>참여제한·연구개발비 환수·제재부가금 처분을 사전통지 단계의 재검토 요청부터 취소소송·집행정지까지 다툽니다. 국가연구개발사업과 그 제재처분은 「국가연구개발혁신법」에 따릅니다.</p>
-        <p class="due-line" aria-label="국가연구개발 제재처분의 세 기한"><span><b>20<small>일</small></b> 사전통지를 받은 날부터 재검토 요청 의견 제출</span><span><b>30<small>일</small></b> 처분 통보를 받은 날부터 제재부가금·환수금 납부</span><span><b>90<small>일</small></b> 처분이 있음을 안 날부터 취소소송 제기 — 집행정지도 함께</span></p>
         <p class="links"><a class="cases-link" href="cases.html#cat=rnd" data-cat="rnd"><span class="lbl">수행 사례 <b class="n">56건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-rnd">자세히 →</a></p>
       </li>
       <li class="field" id="sum-penalty">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v14"/><path d="M20 12.5c-.6-1.5-2.2-2-4-2-2.3 0-4 1.1-4 2.8 0 3.6 8 1.8 8 5.4 0 1.7-1.8 2.8-4 2.8-2 0-3.6-.7-4.2-2.2"/></svg>
         <h3><a href="fields.html#area-penalty">제재부가금 · 환수</a></h3>
-        <p>보조금법의 교부결정 취소·환수·제재부가금·지급제한과 공공재정환수법의 부정이익 환수·제재부가금(최대 5배)·명단 공표를 다툽니다.</p>
         <p class="links"><a class="cases-link" href="cases.html#cat=penalty" data-cat="penalty"><span class="lbl">수행 사례 <b class="n">11건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-penalty">자세히 →</a></p>
       </li>
       <li class="field" id="sum-personnel">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="10" r="5"/><path d="M6 28c0-5.5 4.5-9 10-9s10 3.5 10 9"/></svg>
         <h3><a href="fields.html#area-personnel">공무원 · 교원 인사처분</a></h3>
-        <p>파면·해임·정직 등 징계와 직위해제·면직·임용·승진 처분을 소청심사와 행정소송으로 다툽니다.</p>
         <p class="links"><a class="cases-link" href="cases.html#cat=personnel" data-cat="personnel"><span class="lbl">수행 사례 <b class="n">26건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-personnel">자세히 →</a></p>
       </li>
       <li class="field" id="sum-license">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27V9l11-5 11 5v18"/><path d="M5 27h22"/><path d="M12 27v-8h8v8"/><path d="M16 12v3"/></svg>
         <h3><a href="fields.html#area-license">인허가 · 면허 · 자격 처분</a></h3>
-        <p>지정·승인의 거부와 취소, 면허·자격 정지, 영업정지·업무정지와 그에 갈음하는 과징금을 다툽니다.</p>
         <p class="links"><a class="cases-link" href="cases.html#cat=license" data-cat="license"><span class="lbl">수행 사례 <b class="n">18건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-license">자세히 →</a></p>
       </li>
       <li class="field" id="sum-comp">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 24l5-14h12l5 14z"/><path d="M16 10v14"/><path d="M8.5 17h15"/><path d="M5 28h22"/></svg>
         <h3><a href="fields.html#area-comp">손실보상</a></h3>
-        <p>공익사업으로 토지·건물·영업이 수용되거나 제한될 때의 보상금 증액, 잔여지·영업손실·하천구역 편입토지 보상, 이주대책 분쟁을 다룹니다.</p>
         <p class="links"><a class="cases-link" href="cases.html#cat=comp" data-cat="comp"><span class="lbl">수행 사례 <b class="n">13건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-comp">자세히 →</a></p>
       </li>
       <li class="field" id="sum-admin">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5h20v22H6z"/><path d="M11 11h10M11 16h10M11 21h6"/><circle cx="22" cy="22" r="3.5"/></svg>
         <h3><a href="fields.html#area-admin">그 밖의 행정처분</a></h3>
-        <p>출국금지·난민 인정, 정보공개 거부, 취득세·변상금·부담금 부과, 철거명령·대집행 계고, 인가·감사, 학교폭력 조치까지 종류는 달라도 같은 틀로 다툽니다.</p>
         <p class="links"><a class="cases-link" href="cases.html#cat=admin" data-cat="admin"><span class="lbl">수행 사례 <b class="n">31건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-admin">자세히 →</a></p>
       </li>
       <li class="field" id="sum-criminal">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3l10 4v8c0 7-4.5 11-10 14C10.5 26 6 22 6 15V7z"/><path d="M11.5 16l3 3 6-7"/></svg>
         <h3><a href="fields.html#area-criminal">정부출연금 · 보조금 형사사건</a></h3>
-        <p>연구개발비·보조금의 부정집행에 뒤따르는 사기·보조금법 위반·업무상 횡령 사건을 수사 단계부터 공판까지 행정제재 대응과 한 흐름으로 맡습니다.</p>
         <p class="links"><a class="cases-link" href="cases.html#cat=criminal" data-cat="criminal"><span class="lbl">수행 사례 <b class="n">24건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-criminal">자세히 →</a></p>
       </li>
       <li class="field" id="sum-contract">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M11 14h10M11 18h7"/><path d="M11 24.5c1.2-2.2 2.4-2.2 3.6 0s2.4 2.2 3.6 0 2.4-2.2 3.8 0"/></svg>
         <h3><a href="fields.html#area-contract">국가계약법 · 지방계약법</a></h3>
-        <p>입찰 무효·낙찰자 결정, 계약금액 조정(물가변동·설계변경·공사기간 연장 간접비), 계약의 해제·해지, 부정당업자 입찰참가자격 제한, 입찰담합 손해배상을 다룹니다.</p>
         <p class="links"><a class="cases-link" href="cases.html#cat=contract" data-cat="contract"><span class="lbl">수행 사례 <b class="n">4건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-contract">자세히 →</a></p>
       </li>
       <li class="field" id="sum-state">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4v24"/><path d="M6 10h20"/><path d="M6 10l-3 8h6zM26 10l-3 8h6z"/><path d="M11 28h10"/></svg>
         <h3><a href="fields.html#area-state">국가배상</a></h3>
-        <p>공무원의 직무상 불법행위와 도로·하천 같은 영조물의 설치·관리 하자로 인한 국가배상청구를 수행합니다.</p>
         <p class="links"><a class="cases-link" href="cases.html#cat=state" data-cat="state"><span class="lbl">수행 사례 <b class="n">18건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-state">자세히 →</a></p>
       </li>
       <li class="field" id="sum-advice">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5h14l6 6v16H6z"/><path d="M20 5v6h6"/><path d="M10 16h12M10 20h12M10 24h8"/></svg>
         <h3><a href="fields.html#area-advice">법률자문 · 법령 해석</a></h3>
-        <p>중앙행정기관·지방자치단체·공공기관 약 20곳의 고문변호사로서 인사·노무, 법령 해석·입법, 계약서·협약서 검토 등 법률자문 약 1,300건을 처리했습니다.</p>
         <p class="links"><a href="fields.html#area-advice">자세히 →</a></p>
       </li>
       </ul>
@@ -395,7 +383,6 @@
       <!-- press:start -->
       <header class="section-head">
         <h2 id="press-h">언론보도</h2>
-        <nav class="jump" aria-label="언론보도 페이지로"><span class="cap">자세히</span><a href="press.html">언론보도 전체</a></nav>
       </header>
       <div class="section-body press-body">
         <div class="block" id="press-cases">

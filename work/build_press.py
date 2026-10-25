@@ -16,7 +16,7 @@ press.json(items)의 기사 가운데 home 이 true 인 것을 세 묶음으로 
   ('더 보기 …' / 펼치면 '접기') 안에 들어간다.
 index.html 에서는 <!-- press:start --> … <!-- press:end --> 사이를 바꾼다(없으면 상담 문의 절 앞 — 다루는 사건 절 다음 — 에 절 전체를 넣는다;
   2026. 10. 23. 저녁 본인 지시로 홈의 순서가 '다루는 사건 → 언론보도'가 되었다). 절 머리의 설명 문장("수행한 사건의 … 언론보도 페이지에 있습니다")과
-  길잡이('무엇을 찾으시나요?') 05 칸의 기사 건수 맞추기는 2026. 10. 25. 본인 지시(설명 문장 삭제, 길잡이 전부 삭제)로 없앴다 — 절 머리는 제목과 '자세히 › 언론보도 전체' 링크뿐.
+  길잡이('무엇을 찾으시나요?') 05 칸의 기사 건수 맞추기는 2026. 10. 25. 본인 지시(설명 문장 삭제, 길잡이 전부 삭제)로 없앴고, 같은 날 '자세히 › 언론보도 전체' 알약도 뺐다 — 절 머리는 제목뿐.
 llms.txt 에서는 '## 언론보도' 절을 바꾼다(없으면 '## 연락처' 앞에 넣는다). 그 뒤 ssr_cases.py → build_cases.py 를 돌린다.
 """
 import html
@@ -116,8 +116,8 @@ def section_inner(items, cases_by_id):
     out = []
     out.append('<header class="section-head">')
     out.append('        <h2 id="press-h">언론보도</h2>')
-    # 절 머리의 설명 문장("수행한 사건의 판결·결정이 보도된 최근 기사입니다. … 전체는 언론보도 페이지에 있습니다.")은 2026. 10. 25. 본인 지시로 삭제
-    out.append('        <nav class="jump" aria-label="언론보도 페이지로"><span class="cap">자세히</span><a href="press.html">언론보도 전체</a></nav>')
+    # 절 머리의 설명 문장("수행한 사건의 판결·결정이 보도된 최근 기사입니다. … 전체는 언론보도 페이지에 있습니다.")과
+    # '자세히 › 언론보도 전체' 알약(<nav class="jump">)은 2026. 10. 25. 본인 지시로 삭제 — 절 머리는 제목뿐, 전체는 목록 아래 '언론보도 전체 보기 (N건) →' 단추로.
     out.append('      </header>')
     out.append('      <div class="section-body press-body">')
     recent, older = groups["case"][:HOME_RECENT], []

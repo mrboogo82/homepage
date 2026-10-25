@@ -1629,3 +1629,18 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .career-body .past + .past { margin-top: 0.4rem; }
 .career-body .past a { color: var(--ink-soft); text-decoration-color: var(--rule); }
 .career-body .past a:hover { color: var(--seal); text-decoration-color: var(--seal); }
+
+/* ---------- 2026. 10. 25. 본인 지시 ----------
+   ① 홈 다루는 사건 카드에서 한 줄 설명과 세 기한 띠를 지우고 제목·'수행 사례 N건 보기'·'자세히 →'만 남김 — 한 줄 폭인 국가연구개발 카드(.field.lead)는 설명이 없어져 빈 띠처럼
+      보이지 않도록 그림·제목을 왼쪽, 링크를 오른쪽에 가로로 놓는다(휴대전화에서는 다른 카드처럼 세로).
+   ② '온라인 상담 신청' 신청서(.consult)는 바탕색을 종이색보다 살짝 다르게(--wash) — 입력 칸은 종이색 그대로라 도드라지고, 안내 보기(details dl)는 바탕과 겹치지 않게 종이색으로. */
+.field.lead { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; }
+.field.lead h3 { flex: 1 1 12rem; }
+.field.lead .links { margin-top: 0; margin-left: auto; padding-top: 0; }
+@media (max-width: 640px) {
+  .field.lead { flex-direction: column; align-items: stretch; gap: 0.35rem; }
+  .field.lead h3 { flex: 0 1 auto; }   /* 세로 배치에서는 flex-basis 12rem 이 높이가 되어 버리므로 되돌림 */
+  .field.lead .links { margin-left: 0; padding-top: 0.35rem; }
+}
+.consult { background: var(--wash); }
+.consult details dl { background: var(--paper); border: 1px solid var(--rule); }
