@@ -616,7 +616,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <body>
 <div class="page" id="top">
   <header class="top">
-    <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span></a>
+    <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
     <nav aria-label="페이지 이동">
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../career.html">경력</a>
@@ -770,7 +770,7 @@ def render_topic_page(t, matched, cat_counts, modified):
 <body>
 <div class="page" id="top">
   <header class="top">
-    <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span></a>
+    <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
     <nav aria-label="페이지 이동">
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../career.html">경력</a>

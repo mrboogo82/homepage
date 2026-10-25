@@ -1071,3 +1071,14 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
   .findbox .presets::-webkit-scrollbar { display: none; }
   .findbox .presets .cap, .findbox .preset { flex: none; white-space: nowrap; }
 }
+
+/* ---------- 2026. 10. 25. 밤 본인 지시: 머리글 이름 옆 영문 이름 (Boo Hyoejune) ----------
+   넓은 화면은 이름 뒤에 가는 세로줄을 두고 작은 고딕으로, 휴대전화(≤760px)는 이름 아래 한 줄로(이름 줄 오른쪽의 전화번호와 겹치지 않게). */
+.brand-en { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); white-space: nowrap; }
+.brand-en::before { content: ""; display: inline-block; width: 1px; height: 0.95em; margin-right: 0.7rem; vertical-align: -0.12em; background: var(--rule); }
+.brand:hover .brand-en { color: var(--ink); }
+@media (max-width: 760px) {
+  .brand { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 0.5rem; row-gap: 0.1rem; }
+  .brand-en { grid-column: 1 / -1; font-size: 0.6875rem; letter-spacing: 0.07em; }
+  .brand-en::before { content: none; }
+}
