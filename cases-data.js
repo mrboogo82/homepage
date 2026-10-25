@@ -13,7 +13,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2025nu9379.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2025nu9379.jpg",
     "alt": "서울고등법원 2025누9379 판결 제1면"
    }
   ],
@@ -46,7 +46,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2025guhap61864.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2025guhap61864.jpg",
     "alt": "수원지방법원 2025구합61864 판결 제1면"
    }
   ],
@@ -80,7 +80,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2024guhap91767.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2024guhap91767.jpg",
     "alt": "서울행정법원 2024구합91767 판결 제1면"
    },
    {
@@ -135,7 +135,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-haengsim-2024-11047.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-haengsim-2024-11047.jpg",
     "alt": "중앙행정심판위원회 2024-11047 재결서"
    },
    {
@@ -183,7 +183,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2026kadan12815.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2026kadan12815.jpg",
     "alt": "제주지방법원 2026카단12815 가압류 결정 제1면"
    }
   ]
@@ -202,7 +202,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2025guhap200493.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2025guhap200493.jpg",
     "alt": "대전지방법원 2025구합200493 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -237,7 +237,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2024guhap206998.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2024guhap206998.jpg",
     "alt": "대전지방법원 2024구합206998 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -272,7 +272,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2025nu7844.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2025nu7844.jpg",
     "alt": "서울고등법원 2025누7844 판결 제1면"
    }
   ],
@@ -306,7 +306,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2026-598.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2026-598.jpg",
     "alt": "소청심사위원회 2026-598 임시처분 결정서"
    }
   ]
@@ -325,7 +325,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2025gadan106830.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2025gadan106830.jpg",
     "alt": "서울동부지방법원 2025가단106830 화해권고결정 제1면"
    }
   ]
@@ -344,7 +344,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2025ja42161.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2025ja42161.jpg",
     "alt": "서울중앙지방법원 2025자42161 화해조서 화해조항(금액 가림)"
    }
   ]
@@ -363,7 +363,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2025guhap55284.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2025guhap55284.jpg",
     "alt": "서울행정법원 2025구합55284 판결 제1면"
    }
   ],
@@ -396,7 +396,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2025gaso298594.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2025gaso298594.jpg",
     "alt": "서울중앙지방법원 2025가소298594 판결 제1면·제2면(주문)"
    },
    {
@@ -435,7 +435,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2024guhap91781.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2024guhap91781.jpg",
     "alt": "서울행정법원 2024구합91781 판결 제1면"
    },
    {
@@ -474,7 +474,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2025guhap54101.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2025guhap54101.jpg",
     "alt": "서울행정법원 2025구합54101 판결 제1면·제2면(주문)"
    }
   ],
@@ -508,7 +508,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2026-chungnam-rnd-1.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2026-chungnam-rnd-1.jpg",
     "alt": "충청남도경찰청 불송치 결정서 제1면 (피의자 1, 사건번호 가림)"
    },
    {
@@ -532,7 +532,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2026a10960.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2026a10960.jpg",
     "alt": "서울행정법원 2026아10960 결정 제1면"
    }
   ],
@@ -565,7 +565,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2025guhap54176.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2025guhap54176.jpg",
     "alt": "서울행정법원 2025구합54176 판결 제1면"
    }
   ],
@@ -599,7 +599,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2024guhap75192.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2024guhap75192.jpg",
     "alt": "서울행정법원 2024구합75192 판결 제1면"
    },
    {
@@ -638,7 +638,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2025guhap53853.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2025guhap53853.jpg",
     "alt": "서울행정법원 2025구합53853 판결 제1면·제2면(주문·이유)"
    },
    {
@@ -678,7 +678,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2025guhap53158.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2025guhap53158.jpg",
     "alt": "서울행정법원 2025구합53158 판결 제1면"
    }
   ],
@@ -712,7 +712,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2025guhap52962.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2025guhap52962.jpg",
     "alt": "서울행정법원 2025구합52962 판결 제1면"
    }
   ],
@@ -747,7 +747,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2024guhap74830.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2024guhap74830.jpg",
     "alt": "서울행정법원 2024구합74830 판결 제1면"
    }
   ],
@@ -781,7 +781,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2023gahap104565.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2023gahap104565.jpg",
     "alt": "서울중앙지방법원 2023가합104565 판결 제1면·제2~3면(주문)"
    }
   ],
@@ -819,7 +819,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2025guhap54132.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2025guhap54132.jpg",
     "alt": "서울행정법원 2025구합54132 판결 제1면"
    },
    {
@@ -860,7 +860,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2024guhap93008.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2024guhap93008.jpg",
     "alt": "서울행정법원 2024구합93008 판결 제1면·제2면(주문)"
    }
   ],
@@ -895,7 +895,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2025ja41345.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2025ja41345.jpg",
     "alt": "서울중앙지방법원 2025자41345 화해조서 화해조항(금액 가림)"
    }
   ]
@@ -914,7 +914,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2025guhap52110.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2025guhap52110.jpg",
     "alt": "서울행정법원 2025구합52110 판결 제1면·제2면(주문)"
    }
   ],
@@ -950,7 +950,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2024gadan5233130.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2024gadan5233130.jpg",
     "alt": "서울중앙지방법원 2024가단5233130 판결 제1면·제2~3면(주문)"
    }
   ],
@@ -983,7 +983,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2025guhap50923.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2025guhap50923.jpg",
     "alt": "서울행정법원 2025구합50923 판결 제1면·제2면(주문)"
    }
   ],
@@ -1020,7 +1020,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-hakpok-2025.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-hakpok-2025.jpg",
     "alt": "학교폭력대책심의위원회 조치결정 통보서 제1면 (당사자 정보 가림)"
    }
   ]
@@ -1039,7 +1039,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2024nu62785.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2024nu62785.jpg",
     "alt": "서울고등법원 2024누62785 판결 제1면·제2면(주문)"
    }
   ],
@@ -1076,7 +1076,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2024guhap69371.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2024guhap69371.jpg",
     "alt": "서울행정법원 2024구합69371 판결 제1면"
    }
   ],
@@ -1111,7 +1111,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2021gahap110279.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2021gahap110279.jpg",
     "alt": "서울동부지방법원 2021가합110279 판결 제1면·제4면(주문)"
    },
    {
@@ -1155,7 +1155,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2025a12878.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2025a12878.jpg",
     "alt": "서울행정법원 2025아12878 결정 제1면"
    }
   ],
@@ -1187,7 +1187,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2023gadan261671.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2023gadan261671.jpg",
     "alt": "서울서부지방법원 2023가단261671 판결 제1면"
    }
   ],
@@ -1221,7 +1221,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2023gadan64535.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2023gadan64535.jpg",
     "alt": "의정부지방법원 고양지원 2023가단64535 판결 제1면"
    },
    {
@@ -1260,7 +1260,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2024guhap79941.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2024guhap79941.jpg",
     "alt": "서울행정법원 2024구합79941 판결 제1면"
    }
   ],
@@ -1297,7 +1297,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2024gadan5167066.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2024gadan5167066.jpg",
     "alt": "서울중앙지방법원 2024가단5167066 판결 제1면·제2면(주문)"
    }
   ],
@@ -1331,7 +1331,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2023guhap79234.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2023guhap79234.jpg",
     "alt": "서울행정법원 2023구합79234 판결 제1면"
    },
    {
@@ -1373,7 +1373,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2022guhap100041.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2022guhap100041.jpg",
     "alt": "대전지방법원 2022구합100041 판결 제1면·제2면(주문)"
    },
    {
@@ -1416,7 +1416,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2023guhap86935.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2023guhap86935.jpg",
     "alt": "서울행정법원 2023구합86935 판결 제1면"
    },
    {
@@ -1460,7 +1460,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2024guhap58425.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2024guhap58425.jpg",
     "alt": "서울행정법원 2024구합58425 판결 제1면·제2면(주문)"
    }
   ],
@@ -1494,7 +1494,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2023guhap84519.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2023guhap84519.jpg",
     "alt": "서울행정법원 2023구합84519 판결 제1면·제2면(주문)"
    },
    {
@@ -1539,7 +1539,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2024guhap200112.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2024guhap200112.jpg",
     "alt": "대전지방법원 2024구합200112 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -1574,7 +1574,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2023guhap60308.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2023guhap60308.jpg",
     "alt": "서울행정법원 2023구합60308 판결 제1면"
    },
    {
@@ -1619,7 +1619,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2024guhap31336.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2024guhap31336.jpg",
     "alt": "춘천지방법원 2024구합31336 판결 제1면"
    },
    {
@@ -1659,7 +1659,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2024gadan160339.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2024gadan160339.jpg",
     "alt": "서울동부지방법원 2024가단160339 판결 제1면·제2면(주문)"
    },
    {
@@ -1696,7 +1696,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2024gadan6406.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2024gadan6406.jpg",
     "alt": "의정부지방법원 고양지원 2024가단6406 화해권고결정 제1면"
    }
   ]
@@ -1715,7 +1715,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2024gadan5047674.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2024gadan5047674.jpg",
     "alt": "서울중앙지방법원 2024가단5047674 판결 제1면·제2면(주문)"
    }
   ],
@@ -1749,7 +1749,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2023gadan57551.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2023gadan57551.jpg",
     "alt": "의정부지방법원 고양지원 2023가단57551 판결 제1면"
    }
   ],
@@ -1783,7 +1783,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2023gadan1229.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2023gadan1229.jpg",
     "alt": "수원지방법원 여주지원 2023가단1229 조정조서 제1면·제2면(주문)"
    }
   ]
@@ -1802,7 +1802,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2023nu67738.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2023nu67738.jpg",
     "alt": "서울고등법원 2023누67738 판결 제1면"
    }
   ],
@@ -1836,7 +1836,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2024godan2382.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2024godan2382.jpg",
     "alt": "서울중앙지방법원 2024고단2382 판결 제1면"
    }
   ],
@@ -1864,7 +1864,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2023guhap191.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2023guhap191.jpg",
     "alt": "서울행정법원 2023구합191 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -1898,7 +1898,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2024a12477.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2024a12477.jpg",
     "alt": "서울행정법원 2024아12477 결정 제1면"
    }
   ],
@@ -1928,7 +1928,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2022guhap106087.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2022guhap106087.jpg",
     "alt": "대전지방법원 2022구합106087 판결 제1면"
    },
    {
@@ -1982,7 +1982,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2023guhap74260.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2023guhap74260.jpg",
     "alt": "서울행정법원 2023구합74260 판결 제1면"
    },
    {
@@ -2019,7 +2019,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2024gaso1036720.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2024gaso1036720.jpg",
     "alt": "서울중앙지방법원 2024가소1036720 판결 제1면"
    }
   ],
@@ -2051,7 +2051,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2023gadan563980.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2023gadan563980.jpg",
     "alt": "광주지방법원 2023가단563980 판결 제1면"
    }
   ],
@@ -2085,7 +2085,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2024a11366.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2024a11366.jpg",
     "alt": "서울행정법원 2024아11366 결정 제1면"
    }
   ],
@@ -2117,7 +2117,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2023guhap76419.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2023guhap76419.jpg",
     "alt": "서울행정법원 2023구합76419 판결 제1면"
    }
   ],
@@ -2151,7 +2151,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2023guhap60070.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2023guhap60070.jpg",
     "alt": "서울행정법원 2023구합60070 판결 제1면·제2면(주문)"
    },
    {
@@ -2191,7 +2191,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2023na28934.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2023na28934.jpg",
     "alt": "서울동부지방법원 2023나28934 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -2223,7 +2223,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2024-dongdaemun-air.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2024-dongdaemun-air.jpg",
     "alt": "서울동대문경찰서 불송치 결정서 제1면 (사건번호 가림)"
    }
   ],
@@ -2252,7 +2252,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2022guhap80589.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2022guhap80589.jpg",
     "alt": "서울행정법원 2022구합80589 판결 제1면·제2면(주문)"
    }
   ],
@@ -2287,7 +2287,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2022gadan271271.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2022gadan271271.jpg",
     "alt": "인천지방법원 2022가단271271 판결 제1면"
    }
   ],
@@ -2320,7 +2320,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2023guhap53113.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2023guhap53113.jpg",
     "alt": "인천지방법원 2023구합53113 판결 제1면"
    }
   ],
@@ -2355,7 +2355,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2021guhap56972.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2021guhap56972.jpg",
     "alt": "인천지방법원 2021구합56972 판결 제1면"
    },
    {
@@ -2400,7 +2400,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2022guhap100188.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2022guhap100188.jpg",
     "alt": "대전지방법원 2022구합100188 판결 제1면"
    }
   ],
@@ -2434,7 +2434,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2021gaso142712.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2021gaso142712.jpg",
     "alt": "대전지방법원 2021가소142712 판결 제1면"
    },
    {
@@ -2473,7 +2473,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2021guhap85389.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2021guhap85389.jpg",
     "alt": "서울행정법원 2021구합85389 판결 제1면·제2면(주문)"
    },
    {
@@ -2524,7 +2524,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2023-mapo-subsidy.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2023-mapo-subsidy.jpg",
     "alt": "서울마포경찰서 불송치 결정서 제1면 (사건번호 가림)"
    }
   ],
@@ -2552,7 +2552,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2021guhap830.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2021guhap830.jpg",
     "alt": "대전지방법원 2021구합830 판결 제1면"
    }
   ],
@@ -2586,7 +2586,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2022guhap54805.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2022guhap54805.jpg",
     "alt": "인천지방법원 2022구합54805 판결 제1면"
    }
   ],
@@ -2622,7 +2622,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2021gahap568394.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2021gahap568394.jpg",
     "alt": "서울중앙지방법원 2021가합568394 판결 제1면·제2면(주문)"
    },
    {
@@ -2661,7 +2661,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2022-bucheon-assault.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2022-bucheon-assault.jpg",
     "alt": "경기부천소사경찰서 수사결과 통지서 (불송치, 사건번호 가림)"
    }
   ],
@@ -2688,7 +2688,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2021gaso142972.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2021gaso142972.jpg",
     "alt": "대전지방법원 2021가소142972 판결 제1면"
    }
   ],
@@ -2719,7 +2719,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2022-seongnam-subsidy.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2022-seongnam-subsidy.jpg",
     "alt": "수원지방검찰청 성남지청 불기소결정서 제1면 (사건번호 가림)"
    }
   ],
@@ -2747,7 +2747,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2021nu43417.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2021nu43417.jpg",
     "alt": "서울고등법원 2021누43417 판결 제1면·제2면(주문)"
    },
    {
@@ -2787,7 +2787,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2021gaso1572256.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2021gaso1572256.jpg",
     "alt": "서울중앙지방법원 2021가소1572256 판결 제1면"
    }
   ],
@@ -2818,7 +2818,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2021gadan34247.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2021gadan34247.jpg",
     "alt": "대전지방법원 홍성지원 2021가단34247 판결 제1면·제2면(주문)"
    }
   ],
@@ -2851,7 +2851,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2021-seoul-hygiene.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2021-seoul-hygiene.jpg",
     "alt": "서울중앙지방검찰청 불기소결정서 제1면 (사건번호 가림)"
    }
   ],
@@ -2881,7 +2881,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2020guhap30741.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2020guhap30741.jpg",
     "alt": "춘천지방법원 강릉지원 2020구합30741 판결 제1면"
    }
   ],
@@ -2915,7 +2915,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2020nu61661.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2020nu61661.jpg",
     "alt": "서울고등법원 2020누61661 판결 제1면"
    }
   ],
@@ -2949,7 +2949,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2019guhap12895.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2019guhap12895.jpg",
     "alt": "의정부지방법원 2019구합12895 판결 제1면"
    },
    {
@@ -2988,7 +2988,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2020guhap101361.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2020guhap101361.jpg",
     "alt": "대전지방법원 2020구합101361 판결 제1면"
    }
   ],
@@ -3023,7 +3023,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2019guhap103873.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2019guhap103873.jpg",
     "alt": "대전지방법원 2019구합103873 판결 제1면·제2면(주문)"
    },
    {
@@ -3063,7 +3063,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2021gaso1501919.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2021gaso1501919.jpg",
     "alt": "서울중앙지방법원 2021가소1501919 판결 제1면"
    }
   ],
@@ -3094,7 +3094,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2021na54536.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2021na54536.jpg",
     "alt": "서울남부지방법원 2021나54536 판결 제1면·제2면(주문)"
    }
   ],
@@ -3127,7 +3127,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2021-mapo-0806.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2021-mapo-0806.jpg",
     "alt": "서울마포경찰서 불송치 결정서 제1면 (사건번호 가림)"
    }
   ]
@@ -3146,7 +3146,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2021a10554.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2021a10554.jpg",
     "alt": "서울행정법원 2021아10554 결정 제1면"
    }
   ],
@@ -3180,7 +3180,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2020guhap101132.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2020guhap101132.jpg",
     "alt": "대전지방법원 2020구합101132 판결 제1면·제2면(주문)"
    }
   ],
@@ -3215,7 +3215,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2020guhap73716.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2020guhap73716.jpg",
     "alt": "서울행정법원 2020구합73716 판결 제1면·제2면(주문)"
    }
   ],
@@ -3249,7 +3249,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2020guhap101750.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2020guhap101750.jpg",
     "alt": "대전지방법원 2020구합101750 판결 제1면"
    }
   ],
@@ -3283,7 +3283,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2017gahap522315.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2017gahap522315.jpg",
     "alt": "서울중앙지방법원 2017가합522315 판결 제1면·제2면(주문)"
    }
   ],
@@ -3317,7 +3317,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2020guhap30314.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2020guhap30314.jpg",
     "alt": "춘천지방법원 강릉지원 2020구합30314 판결 제1면·제2면(주문)"
    }
   ],
@@ -3351,7 +3351,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2020guhap100313.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2020guhap100313.jpg",
     "alt": "2020구합100313 판결 제1면"
    }
   ],
@@ -3385,7 +3385,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2020guhap70588.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2020guhap70588.jpg",
     "alt": "서울행정법원 2020구합70588 판결 제1면"
    }
   ],
@@ -3421,7 +3421,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2019du53389.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2019du53389.jpg",
     "alt": "2019두53389 판결 제1면"
    }
   ],
@@ -3454,7 +3454,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2019gahap60252.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2019gahap60252.jpg",
     "alt": "광주지방법원 2019가합60252 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -3487,7 +3487,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2020guhap61331.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2020guhap61331.jpg",
     "alt": "서울행정법원 2020구합61331 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -3521,7 +3521,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2019guhap83304.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2019guhap83304.jpg",
     "alt": "서울행정법원 2019구합83304 판결 제1면"
    },
    {
@@ -3561,7 +3561,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2019guhap80411.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2019guhap80411.jpg",
     "alt": "서울행정법원 2019구합80411 판결 제1면"
    }
   ],
@@ -3596,7 +3596,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2013guhap51343.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2013guhap51343.jpg",
     "alt": "서울행정법원 2013구합51343 판결 제1면"
    }
   ],
@@ -3630,7 +3630,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2019guhap69513.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2019guhap69513.jpg",
     "alt": "서울행정법원 2019구합69513 판결 제1면·제2면(주문)"
    },
    {
@@ -3669,7 +3669,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2019guhap745.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2019guhap745.jpg",
     "alt": "대전지방법원 2019구합745 판결 제1면·제2면(주문)"
    }
   ],
@@ -3703,7 +3703,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap69080.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap69080.jpg",
     "alt": "서울행정법원 2018구합69080 판결 제1면"
    },
    {
@@ -3742,7 +3742,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap101344.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap101344.jpg",
     "alt": "대전지방법원 2018구합101344 판결 제1면·제2면(주문)"
    }
   ],
@@ -3776,7 +3776,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap105438.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap105438.jpg",
     "alt": "대전지방법원 2018구합105438 판결 제1면·제2면(주문)"
    }
   ],
@@ -3810,7 +3810,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2019gadan23879.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2019gadan23879.jpg",
     "alt": "청주지방법원 2019가단23879 판결 제1면"
    }
   ]
@@ -3829,7 +3829,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2018gadan58019.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2018gadan58019.jpg",
     "alt": "수원지방법원 평택지원 2018가단58019 판결 제1면·제2면(주문)"
    },
    {
@@ -3868,7 +3868,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2019na106437.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2019na106437.jpg",
     "alt": "대전지방법원 2019나106437 판결 제1면"
    }
   ],
@@ -3900,7 +3900,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap104442.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap104442.jpg",
     "alt": "대전지방법원 2018구합104442 판결 제1면·제2면(주문)"
    },
    {
@@ -3940,7 +3940,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap82342.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap82342.jpg",
     "alt": "서울행정법원 2018구합82342 판결 제1면·제2면(주문)"
    },
    {
@@ -3984,7 +3984,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2019na61259.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2019na61259.jpg",
     "alt": "광주지방법원 2019나61259 판결 제1면·제2면(주문)"
    }
   ],
@@ -4019,7 +4019,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2019guhap81780.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2019guhap81780.jpg",
     "alt": "2019구합81780 판결 제1면·제2면(주문)"
    }
   ],
@@ -4053,7 +4053,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap104770.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap104770.jpg",
     "alt": "대전지방법원 2018구합104770 판결 제1면"
    }
   ],
@@ -4087,7 +4087,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2019nu43483.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2019nu43483.jpg",
     "alt": "서울고등법원 2019누43483 판결 제1면·제2면(주문·이유)"
    },
    {
@@ -4126,7 +4126,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2017gadan5215103.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2017gadan5215103.jpg",
     "alt": "서울중앙지방법원 2017가단5215103 판결 제1면·제2~3면(주문)"
    },
    {
@@ -4165,7 +4165,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap69073.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap69073.jpg",
     "alt": "서울행정법원 2018구합69073 판결 제1면"
    }
   ],
@@ -4201,7 +4201,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/comp-2014gahap508899.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/comp-2014gahap508899.jpg",
     "alt": "서울중앙지방법원 2014가합508899 판결 제1면·제3~4면(당사자·주문)"
    },
    {
@@ -4247,7 +4247,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap104626.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap104626.jpg",
     "alt": "대전지방법원 2018구합104626 판결 제1면·제2면(주문)"
    }
   ],
@@ -4281,7 +4281,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap67091.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap67091.jpg",
     "alt": "서울행정법원 2018구합67091 판결 제1면·제2면(주문)"
    },
    {
@@ -4321,7 +4321,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2019guhap59226.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2019guhap59226.jpg",
     "alt": "2019구합59226 판결 제1면"
    }
   ],
@@ -4355,7 +4355,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2018guhap2884.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2018guhap2884.jpg",
     "alt": "의정부지방법원 2018구합2884 판결 제1면"
    }
   ],
@@ -4390,7 +4390,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2016gaso5944347.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2016gaso5944347.jpg",
     "alt": "서울중앙지방법원 2016가소5944347 판결 제1면·제4면(주문)"
    },
    {
@@ -4433,7 +4433,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2015du47836.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2015du47836.jpg",
     "alt": "2015두47836 판결 제1면·제2면(주문)"
    }
   ],
@@ -4465,7 +4465,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap100006.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap100006.jpg",
     "alt": "대전지방법원 2018구합100006 판결 제1면·제2면(주문)"
    },
    {
@@ -4505,7 +4505,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap105162.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap105162.jpg",
     "alt": "대전지방법원 2018구합105162 판결 제1면·제2면(주문)"
    }
   ],
@@ -4540,7 +4540,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2019na16504.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2019na16504.jpg",
     "alt": "서울중앙지방법원 2019나16504 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -4573,7 +4573,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap102439.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap102439.jpg",
     "alt": "대전지방법원 2018구합102439 판결 제1면·제2면(주문)"
    }
   ],
@@ -4607,7 +4607,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2017guhap105769.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2017guhap105769.jpg",
     "alt": "대전지방법원 2017구합105769 판결 제1면·제2면(주문·이유)"
    },
    {
@@ -4649,7 +4649,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2018guhap2118.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2018guhap2118.jpg",
     "alt": "수원지방법원 2018구합2118 판결 제1면"
    }
   ],
@@ -4683,7 +4683,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap71274.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap71274.jpg",
     "alt": "서울행정법원 2018구합71274 판결 제1면"
    }
   ],
@@ -4718,7 +4718,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2017guhap53736.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2017guhap53736.jpg",
     "alt": "서울행정법원 2017구합53736 판결 제1면·제5면(주문)"
    },
    {
@@ -4767,7 +4767,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2018gahap30795.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2018gahap30795.jpg",
     "alt": "서울서부지방법원 2018가합30795 판결 제1면·제2면(주문)"
    }
   ],
@@ -4800,7 +4800,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2016na109923.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2016na109923.jpg",
     "alt": "대전지방법원 2016나109923 판결 제1면"
    }
   ],
@@ -4833,7 +4833,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2018nu55861.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2018nu55861.jpg",
     "alt": "서울고등법원 2018누55861 판결 제1면·제2면(주문·이유)"
    },
    {
@@ -4870,7 +4870,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2015gadan5370822.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2015gadan5370822.jpg",
     "alt": "서울중앙지방법원 2015가단5370822 판결 제1면·제2면(주문)"
    },
    {
@@ -4909,7 +4909,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap73522.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap73522.jpg",
     "alt": "서울행정법원 2018구합73522 판결 제1면·제2면(주문)"
    }
   ],
@@ -4943,7 +4943,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2015gadan124805.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2015gadan124805.jpg",
     "alt": "서울동부지방법원 2015가단124805 판결 제1면·제2면(주문)"
    },
    {
@@ -4987,7 +4987,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap101740.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap101740.jpg",
     "alt": "대전지방법원 2018구합101740 판결 제1면·제2면(주문)"
    }
   ],
@@ -5021,7 +5021,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2017gahap5744.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2017gahap5744.jpg",
     "alt": "수원지방법원 안산지원 2017가합5744 판결 제1면"
    },
    {
@@ -5066,7 +5066,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2017gadan60737.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2017gadan60737.jpg",
     "alt": "수원지방법원 안산지원 2017가단60737 판결 제1면"
    }
   ],
@@ -5098,7 +5098,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2017guhap13832.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2017guhap13832.jpg",
     "alt": "의정부지방법원 2017구합13832 판결 제1면·제2면(주문)"
    }
   ],
@@ -5133,7 +5133,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2017guhap938.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2017guhap938.jpg",
     "alt": "창원지방법원 2017구합938 판결 제1면"
    }
   ],
@@ -5165,7 +5165,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2017guhap51501.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2017guhap51501.jpg",
     "alt": "서울행정법원 2017구합51501 판결 제1면·제2면(주문·이유)"
    },
    {
@@ -5210,7 +5210,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2016gaso200820.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2016gaso200820.jpg",
     "alt": "서울중앙지방법원 2016가소200820 판결 제1면·제5면(주문)"
    },
    {
@@ -5249,7 +5249,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2016guhap7274.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2016guhap7274.jpg",
     "alt": "의정부지방법원 2016구합7274 판결 제1면·제2면(주문)"
    }
   ],
@@ -5285,7 +5285,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2017gahap528429.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2017gahap528429.jpg",
     "alt": "서울중앙지방법원 2017가합528429 판결 제1면·제2면(주문·이유)"
    },
    {
@@ -5322,7 +5322,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2017guhap14675.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2017guhap14675.jpg",
     "alt": "의정부지방법원 2017구합14675 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -5357,7 +5357,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2017guhap11881.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2017guhap11881.jpg",
     "alt": "의정부지방법원 2017구합11881 판결 제1면·제4면(주문)"
    }
   ],
@@ -5392,7 +5392,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2017guhap84471.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2017guhap84471.jpg",
     "alt": "서울행정법원 2017구합84471 판결 제1면"
    }
   ],
@@ -5425,7 +5425,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2017gadan112539.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2017gadan112539.jpg",
     "alt": "의정부지방법원 2017가단112539 판결 제1면·제2면(주문)"
    }
   ],
@@ -5456,7 +5456,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2017guhap51181.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2017guhap51181.jpg",
     "alt": "서울행정법원 2017구합51181 판결 제1면·제2면(주문)"
    },
    {
@@ -5497,7 +5497,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2016guhap11976.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2016guhap11976.jpg",
     "alt": "청주지방법원 2016구합11976 판결 제1면"
    },
    {
@@ -5536,7 +5536,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2017guhap51877.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2017guhap51877.jpg",
     "alt": "서울행정법원 2017구합51877 판결 제1면·제2면(주문·이유)"
    },
    {
@@ -5578,7 +5578,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2017guhap101736.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2017guhap101736.jpg",
     "alt": "대전지방법원 2017구합101736 판결 제1면·제2면(주문)"
    }
   ],
@@ -5612,7 +5612,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2015na2067589.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2015na2067589.jpg",
     "alt": "서울고등법원 2015나2067589 판결 제1면·제4~5면(주문)"
    }
   ],
@@ -5646,7 +5646,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2017na2032440.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2017na2032440.jpg",
     "alt": "2017나2032440 판결 제1면·제2면(주문)"
    }
   ],
@@ -5680,7 +5680,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2017na2032044.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2017na2032044.jpg",
     "alt": "서울고등법원 2017나2032044 판결 제1면·제2면(주문)"
    }
   ],
@@ -5715,7 +5715,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2015du52296.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2015du52296.jpg",
     "alt": "2015두52296 판결 제1면"
    }
   ],
@@ -5748,7 +5748,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2016guhap2343.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2016guhap2343.jpg",
     "alt": "수원지방법원 2016구합2343 판결 제1면"
    },
    {
@@ -5787,7 +5787,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2017guhap72.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2017guhap72.jpg",
     "alt": "의정부지방법원 2017구합72 판결 제1면"
    }
   ],
@@ -5821,7 +5821,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2016gadan122872.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2016gadan122872.jpg",
     "alt": "수원지방법원 안양지원 2016가단122872 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -5853,7 +5853,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2016gahap507968.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2016gahap507968.jpg",
     "alt": "서울중앙지방법원 2016가합507968 판결 제1면·제4~5면(주문)"
    }
   ],
@@ -5888,7 +5888,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2016gadan80813.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2016gadan80813.jpg",
     "alt": "광주지방법원 순천지원 2016가단80813 판결 제1면"
    }
   ],
@@ -5919,7 +5919,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2017na2005615.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2017na2005615.jpg",
     "alt": "서울고등법원 2017나2005615 판결 제1면·제2면(주문)"
    }
   ],
@@ -5953,7 +5953,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2017du35028.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2017du35028.jpg",
     "alt": "대법원 2017두35028 판결 제1면·제2면(주문)"
    }
   ]
@@ -5972,7 +5972,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2015na2043903.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2015na2043903.jpg",
     "alt": "서울고등법원 2015나2043903 판결 제1면·제2면(주문)"
    },
    {
@@ -6012,7 +6012,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2016nu50725.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2016nu50725.jpg",
     "alt": "2016누50725 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -6045,7 +6045,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2016da267043.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2016da267043.jpg",
     "alt": "2016다267043 판결 제1면"
    }
   ],
@@ -6076,7 +6076,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2016guhap53753.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2016guhap53753.jpg",
     "alt": "서울행정법원 2016구합53753 판결 제1면"
    },
    {
@@ -6126,7 +6126,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2016guhap68335.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2016guhap68335.jpg",
     "alt": "서울행정법원 2016구합68335 판결 제1면"
    }
   ],
@@ -6160,7 +6160,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2016gahap441.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2016gahap441.jpg",
     "alt": "부산지방법원 2016가합441 판결 제1면·제2면(주문)"
    }
   ],
@@ -6194,7 +6194,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2016gadan5026849.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2016gadan5026849.jpg",
     "alt": "서울중앙지방법원 2016가단5026849 판결 제1면·제2면(주문)"
    }
   ],
@@ -6227,7 +6227,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2016guhap50495.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2016guhap50495.jpg",
     "alt": "서울행정법원 2016구합50495 판결 제1면·제2면(주문)"
    }
   ],
@@ -6261,7 +6261,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2016guhap58192.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2016guhap58192.jpg",
     "alt": "서울행정법원 2016구합58192 판결 제1면"
    }
   ],
@@ -6295,7 +6295,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2015guhap2209.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2015guhap2209.jpg",
     "alt": "2015구합2209 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -6329,7 +6329,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2015na54430.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2015na54430.jpg",
     "alt": "서울중앙지방법원 2015나54430 판결 제1면·제2면(주문)"
    }
   ],
@@ -6362,7 +6362,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2013guhap15171.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2013guhap15171.jpg",
     "alt": "수원지방법원 2013구합15171 판결 제1면·제2면(주문)"
    }
   ],
@@ -6396,7 +6396,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2015guhap67663.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2015guhap67663.jpg",
     "alt": "서울행정법원 2015구합67663 판결 제1면·제2면(주문·이유)"
    },
    {
@@ -6435,7 +6435,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2015gahap20091.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2015gahap20091.jpg",
     "alt": "청주지방법원 2015가합20091 판결 제1면"
    },
    {
@@ -6477,7 +6477,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2015guhap65798.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2015guhap65798.jpg",
     "alt": "수원지방법원 2015구합65798 판결 제1면·제2면(주문)"
    },
    {
@@ -6520,7 +6520,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2015gadan241481.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2015gadan241481.jpg",
     "alt": "서울서부지방법원 2015가단241481 판결 제1면"
    }
   ],
@@ -6554,7 +6554,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2015guhap5399.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2015guhap5399.jpg",
     "alt": "서울행정법원 2015구합5399 판결 제1면"
    },
    {
@@ -6599,7 +6599,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2014guhap66762.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2014guhap66762.jpg",
     "alt": "서울행정법원 2014구합66762 판결 제1면·제2면(주문)"
    },
    {
@@ -6638,7 +6638,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/lic-2014guhap52160.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/lic-2014guhap52160.jpg",
     "alt": "수원지방법원 2014구합52160 판결 제1면·제2면(주문)"
    }
   ],
@@ -6672,7 +6672,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2015nu48183.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2015nu48183.jpg",
     "alt": "서울고등법원 2015누48183 판결 제1면·제2면(주문)"
    },
    {
@@ -6711,7 +6711,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2013guhap22475.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2013guhap22475.jpg",
     "alt": "서울행정법원 2013구합22475 판결 제1면"
    }
   ],
@@ -6748,7 +6748,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2015gudan5637.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2015gudan5637.jpg",
     "alt": "서울행정법원 2015구단5637 판결 제1면"
    }
   ],
@@ -6779,7 +6779,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2015na2029747.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2015na2029747.jpg",
     "alt": "서울고등법원 2015나2029747 판결 제1면·제2면(주문)"
    }
   ],
@@ -6812,7 +6812,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2015gudan4658.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2015gudan4658.jpg",
     "alt": "서울행정법원 2015구단4658 판결 제1면"
    }
   ],
@@ -6843,7 +6843,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2015gudan9974.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2015gudan9974.jpg",
     "alt": "서울행정법원 2015구단9974 판결 제1면"
    }
   ],
@@ -6874,7 +6874,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2013guhap19134.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2013guhap19134.jpg",
     "alt": "서울행정법원 2013구합19134 판결 제1면"
    },
    {
@@ -6928,7 +6928,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2014guhap5453.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2014guhap5453.jpg",
     "alt": "서울행정법원 2014구합5453 판결 제1면"
    }
   ],
@@ -6961,7 +6961,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2013guhap54908.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2013guhap54908.jpg",
     "alt": "서울행정법원 2013구합54908 판결 제1면"
    },
    {
@@ -6999,7 +6999,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2013guhap56201.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2013guhap56201.jpg",
     "alt": "서울행정법원 2013구합56201 판결 제1면"
    },
    {
@@ -7037,7 +7037,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2014guhap2768.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2014guhap2768.jpg",
     "alt": "서울행정법원 2014구합2768 판결 제1면"
    }
   ],
@@ -7068,7 +7068,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2013guhap59088.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2013guhap59088.jpg",
     "alt": "서울행정법원 2013구합59088 판결 제1면"
    }
   ],
@@ -7101,7 +7101,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2013guhap28701.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2013guhap28701.jpg",
     "alt": "서울행정법원 2013구합28701 판결 제1면"
    }
   ],
@@ -7134,7 +7134,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pers-2013guhap21434.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pers-2013guhap21434.jpg",
     "alt": "서울행정법원 2013구합21434 판결 제1면"
    }
   ],
@@ -7172,7 +7172,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2013guhap12775.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2013guhap12775.jpg",
     "alt": "서울행정법원 2013구합12775 판결 제1면"
    }
   ],
@@ -7204,7 +7204,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2013guhap16517.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2013guhap16517.jpg",
     "alt": "서울행정법원 2013구합16517 판결 제1면"
    }
   ],
@@ -7236,7 +7236,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2013guhap17138.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2013guhap17138.jpg",
     "alt": "서울행정법원 2013구합17138 판결 제1면"
    }
   ],
@@ -7269,7 +7269,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso13927.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso13927.jpg",
     "alt": "창원지방법원 진주지원 2012가소13927 판결 제1면"
    }
   ],
@@ -7298,7 +7298,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2013gojeong10.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2013gojeong10.jpg",
     "alt": "창원지방법원 진주지원 2013고정10 판결 제1면"
    }
   ],
@@ -7327,7 +7327,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2012gojeong549.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2012gojeong549.jpg",
     "alt": "창원지방법원 진주지원 2012고정549 판결 제1면"
    }
   ],
@@ -7358,7 +7358,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2012gojeong577.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2012gojeong577.jpg",
     "alt": "창원지방법원 진주지원 2012고정577 판결 제1면"
    }
   ],
@@ -7388,7 +7388,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso12047.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso12047.jpg",
     "alt": "창원지방법원 진주지원 2012가소12047 판결 제1면"
    }
   ],
@@ -7417,7 +7417,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso13286.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso13286.jpg",
     "alt": "창원지방법원 진주지원 2012가소13286 판결 제1면"
    }
   ],
@@ -7446,7 +7446,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso16094.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso16094.jpg",
     "alt": "창원지방법원 진주지원 2012가소16094 판결 제1면"
    }
   ],
@@ -7475,7 +7475,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gadan4202.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gadan4202.jpg",
     "alt": "창원지방법원 진주지원 2012가단4202 판결 제1면"
    }
   ],
@@ -7505,7 +7505,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso9805.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso9805.jpg",
     "alt": "창원지방법원 진주지원 2012가소9805 판결 제1면"
    }
   ]
@@ -7524,7 +7524,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso11754.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso11754.jpg",
     "alt": "창원지방법원 진주지원 2012가소11754 판결 제1면"
    }
   ],
@@ -7553,7 +7553,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso1641.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso1641.jpg",
     "alt": "창원지방법원 진주지원 2012가소1641 판결 제1면"
    }
   ],
@@ -7581,7 +7581,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gadan11903.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gadan11903.jpg",
     "alt": "창원지방법원 진주지원 2012가단11903 판결 제1면"
    }
   ],
@@ -7611,7 +7611,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gadan9832.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gadan9832.jpg",
     "alt": "창원지방법원 진주지원 2012가단9832 판결 제1면"
    }
   ],
@@ -7640,7 +7640,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso7243.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso7243.jpg",
     "alt": "창원지방법원 진주지원 2012가소7243 판결 제1면"
    }
   ],
@@ -7669,7 +7669,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso7489.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso7489.jpg",
     "alt": "창원지방법원 진주지원 2012가소7489 판결 제1면"
    }
   ],
@@ -7699,7 +7699,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso8932.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso8932.jpg",
     "alt": "창원지방법원 진주지원 2012가소8932 판결 제1면"
    }
   ],
@@ -7728,7 +7728,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso6929.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso6929.jpg",
     "alt": "창원지방법원 진주지원 2012가소6929 판결 제1면"
    }
   ],
@@ -7758,7 +7758,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2011gadan17775.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2011gadan17775.jpg",
     "alt": "창원지방법원 진주지원 2011가단17775 판결 제1면·제2면(주문·이유)"
    }
   ],
@@ -7788,7 +7788,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso5407.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso5407.jpg",
     "alt": "창원지방법원 진주지원 2012가소5407 판결 제1면"
    }
   ]
@@ -7807,7 +7807,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso6264.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso6264.jpg",
     "alt": "창원지방법원 진주지원 2012가소6264 판결 제1면"
    }
   ]
@@ -7826,7 +7826,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso4367.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso4367.jpg",
     "alt": "창원지방법원 진주지원 2012가소4367 판결 제1면"
    }
   ]
@@ -7845,7 +7845,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso4664.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso4664.jpg",
     "alt": "창원지방법원 진주지원 2012가소4664 판결 제1면"
    }
   ],
@@ -7875,7 +7875,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso6233.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso6233.jpg",
     "alt": "창원지방법원 진주지원 2012가소6233 판결 제1면"
    }
   ],
@@ -7904,7 +7904,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso2989.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso2989.jpg",
     "alt": "창원지방법원 진주지원 2012가소2989 판결 제1면"
    }
   ],
@@ -7933,7 +7933,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2012gojeong249.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2012gojeong249.jpg",
     "alt": "창원지방법원 진주지원 2012고정249 판결 제1면"
    }
   ],
@@ -7964,7 +7964,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gadan31037.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gadan31037.jpg",
     "alt": "부산지방법원 2012가단31037 판결 제1면"
    }
   ],
@@ -7994,7 +7994,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2011gadan11777.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2011gadan11777.jpg",
     "alt": "창원지방법원 진주지원 2011가단11777 판결 제1면"
    }
   ],
@@ -8024,7 +8024,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso3067.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso3067.jpg",
     "alt": "창원지방법원 진주지원 2012가소3067 판결 제1면"
    }
   ],
@@ -8053,7 +8053,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso4022.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso4022.jpg",
     "alt": "창원지방법원 진주지원 2012가소4022 판결 제1면"
    }
   ],
@@ -8083,7 +8083,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso4039.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso4039.jpg",
     "alt": "창원지방법원 진주지원 2012가소4039 판결 제1면"
    }
   ],
@@ -8112,7 +8112,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso4077.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso4077.jpg",
     "alt": "창원지방법원 진주지원 2012가소4077 판결 제1면"
    }
   ],
@@ -8142,7 +8142,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso2774.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso2774.jpg",
     "alt": "창원지방법원 진주지원 2012가소2774 판결 제1면"
    }
   ],
@@ -8171,7 +8171,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2011gojeong732.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2011gojeong732.jpg",
     "alt": "창원지방법원 진주지원 2011고정732 판결 제1면"
    }
   ],
@@ -8201,7 +8201,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso3586.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso3586.jpg",
     "alt": "창원지방법원 진주지원 2012가소3586 판결 제1면"
    }
   ],
@@ -8231,7 +8231,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso4046.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso4046.jpg",
     "alt": "창원지방법원 진주지원 2012가소4046 판결 제1면"
    }
   ],
@@ -8260,7 +8260,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2012gaso563.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2012gaso563.jpg",
     "alt": "창원지방법원 진주지원 2012가소563 판결 제1면"
    }
   ],
@@ -8290,7 +8290,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2012gojeong22.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2012gojeong22.jpg",
     "alt": "창원지방법원 진주지원 2012고정22 판결 제1면"
    }
   ],
@@ -8320,7 +8320,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-2011gojeong939.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-2011gojeong939.jpg",
     "alt": "창원지방법원 진주지원 2011고정939 결정 제1면"
    }
   ]
@@ -8339,7 +8339,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2011gaso19409.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2011gaso19409.jpg",
     "alt": "창원지방법원 진주지원 2011가소19409 판결 제1면"
    }
   ],
@@ -8368,7 +8368,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2019guhap102207.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2019guhap102207.jpg",
     "alt": "대전지방법원 2019구합102207 판결 제1면"
    }
   ],
@@ -8401,7 +8401,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap106080.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap106080.jpg",
     "alt": "대전지방법원 2018구합106080 판결 제1면"
    }
   ],
@@ -8435,7 +8435,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2019guhap100461.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2019guhap100461.jpg",
     "alt": "대전지방법원 2019구합100461 판결 제1면"
    }
   ],
@@ -8469,7 +8469,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/rnd-2018guhap105537.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/rnd-2018guhap105537.jpg",
     "alt": "대전지방법원 2018구합105537 판결 제1면"
    }
   ],
@@ -8503,7 +8503,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-namdaemun-subsidy-bonus.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-namdaemun-subsidy-bonus.jpg",
     "alt": "서울남대문경찰서 불송치 결정서 제1면 (결정일·사건번호 가림)"
    }
   ],
@@ -8532,7 +8532,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-seocho-indecent.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-seocho-indecent.jpg",
     "alt": "서울서초경찰서 불송치 결정서 제1면 (결정일·사건번호 가림)"
    }
   ]
@@ -8551,7 +8551,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-cheongju-subsidy-equipment.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-cheongju-subsidy-equipment.jpg",
     "alt": "충북청주흥덕경찰서 불송치 결정서 제1면 (결정일·사건번호 가림)"
    }
   ],
@@ -8581,7 +8581,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-ansan-smartfactory.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-ansan-smartfactory.jpg",
     "alt": "경기안산단원경찰서 불송치 결정서 제1면 (결정일·사건번호 가림)"
    }
   ],
@@ -8611,7 +8611,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-ansan-sex-nonpros.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-ansan-sex-nonpros.jpg",
     "alt": "경기안산단원경찰서 불송치 결정서 제1면 (결정일·사건번호 가림)"
    }
   ]
@@ -8630,7 +8630,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-seoul-employment-subsidy.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-seoul-employment-subsidy.jpg",
     "alt": "서울중앙지방검찰청 불기소결정서 제1면 (결정일·사건번호 가림)"
    }
   ],
@@ -8659,7 +8659,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-seoul-foundation-subsidy.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-seoul-foundation-subsidy.jpg",
     "alt": "서울중앙지방검찰청 불기소결정서 제1면 (결정일·사건번호 가림)"
    }
   ],
@@ -8689,7 +8689,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-east-welfare-property.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-east-welfare-property.jpg",
     "alt": "서울동부지방검찰청 불기소결정서 제1면 (결정일·사건번호 가림)"
    }
   ],
@@ -8718,7 +8718,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/crim-incheon-rnd-personnel.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/crim-incheon-rnd-personnel.jpg",
     "alt": "인천지방검찰청 불기소결정서 제1면 (결정일·사건번호 가림)"
    }
   ],
@@ -8749,7 +8749,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-smart-appeal-2024.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-smart-appeal-2024.jpg",
     "alt": "스마트공장 구축, 확산 사업 이의신청평가위원회 심의결과 안내서 (당사자 정보·과제번호 가림)"
    }
   ],
@@ -8784,7 +8784,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/state-2026gaso204111.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/state-2026gaso204111.jpg",
     "alt": "서울중앙지방법원 2026가소204111 판결 제1면·제2면(이유)"
    }
   ],
@@ -8818,7 +8818,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/con-2018gahap112992.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/con-2018gahap112992.jpg",
     "alt": "서울동부지방법원 2018가합112992 판결 제1면·제2~3면(당사자·주문)"
    }
   ],
@@ -8853,7 +8853,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2016heonma364.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2016heonma364.jpg",
     "alt": "헌법재판소 2016헌마364 결정 제1면"
    }
   ],
@@ -8890,7 +8890,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2019da293814.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2019da293814.jpg",
     "alt": "대법원 2019다293814 판결 제1면"
    }
   ],
@@ -8924,7 +8924,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2020kahap50865.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2020kahap50865.jpg",
     "alt": "서울서부지방법원 2020카합50865 결정 제1면·제2면(주문·이유)"
    }
   ],
@@ -8957,7 +8957,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2016chu5094.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2016chu5094.jpg",
     "alt": "대법원 2016추5094 판결 제1면"
    }
   ],
@@ -8991,7 +8991,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2015chu573.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2015chu573.jpg",
     "alt": "대법원 2015추573 판결 제1면"
    }
   ],
@@ -9025,7 +9025,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/pen-2019gahap145.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/pen-2019gahap145.jpg",
     "alt": "춘천지방법원 강릉지원 2019가합145 판결 제1면"
    }
   ],
@@ -9058,7 +9058,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/adm-2018guhap1062.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/adm-2018guhap1062.jpg",
     "alt": "대전지방법원 2018구합1062 판결 제1면"
    }
   ],
@@ -9092,7 +9092,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/civ-2017gadan5150145.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/civ-2017gadan5150145.jpg",
     "alt": "서울중앙지방법원 2017가단5150145 판결 제1면"
    }
   ],
@@ -9125,7 +9125,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/comp-2016da279022.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/comp-2016da279022.jpg",
     "alt": "대법원 2016다279022 판결 제1면"
    }
   ],
@@ -9159,7 +9159,7 @@ window.CASES_DATA = [
   "images": [
    {
     "src": "cases/comp-2014gahap550814.jpg",
-    "thumb": "",
+    "thumb": "cases/thumbs/comp-2014gahap550814.jpg",
     "alt": "서울중앙지방법원 2014가합550814 판결 제1면·제4~5면(당사자·주문)"
    }
   ],

@@ -516,6 +516,9 @@ def main():
     idoc, cdoc = read(ip), read(cp)
     cases = load_cases(site)                   # cases-data.js (없으면 index.html 의 옛 블록에서 읽어 아래에서 파일로 옮긴다)
     n = len(cases)
+    # 카드용 썸네일(cases/thumbs/, 2026. 10. 25. — 전체 사례 페이지 스크롤이 버벅인 원인 하나): 없거나 오래된 것은 만들고 images[0].thumb 를 적는다(work/make_thumbs.py)
+    from make_thumbs import ensure_thumbs
+    th_made, th_missing, th_removed, th_changed = ensure_thumbs(site, cases, write=not check)
     details = load_details(site)
     press = load_press(site)                   # 언론보도(press.json): 카드의 '언론보도' 표시(pr)와 llms 줄에 쓰임
     cases_kw = with_keywords(cases, details, press)   # 데이터 파일에 검색어(kw)·언론보도 건수(pr)를 더한다(단어로 찾기에 쓰임)
@@ -540,6 +543,8 @@ def main():
 
     if check:
         ok = True
+        if th_missing or th_removed or th_changed:
+            print("사례 카드 썸네일이 데이터와 다릅니다(빠짐 %d, 군더더기 %d, thumb 갱신 필요 %s)" % (th_missing, th_removed, "있음" if th_changed else "없음")); ok = False
         if current_list(idoc) != home:
             print("index.html 정적 목록이 데이터와 다릅니다"); ok = False
         if current_list(cdoc) != full:
@@ -577,8 +582,9 @@ def main():
             write(os.path.join(site, name), text)
         for p in stale_parts:
             os.remove(p)
-    print("사례 %d건: cases-data.js·index.html(홈 %d건%s)·cases.html·llms.txt·llms-full.txt(분야별 파일 %d개) 갱신"
-          % (n, len(home_order(cases)), " + 접힌 전체 목록" if HOME_ALL_LIST else "", len(parts)))
+    print("사례 %d건: cases-data.js·index.html(홈 %d건%s)·cases.html·llms.txt·llms-full.txt(분야별 파일 %d개) 갱신%s"
+          % (n, len(home_order(cases)), " + 접힌 전체 목록" if HOME_ALL_LIST else "", len(parts),
+             (" · 카드 썸네일 만듦 %d" % th_made if th_made else "") + (" · 썸네일 지움 %d" % th_removed if th_removed else "")))
 
 
 if __name__ == "__main__":

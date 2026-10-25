@@ -54,11 +54,11 @@ var FX = (function () {
   function add(els, onlyBelow) {
     if (!ok) return;
     var h = window.innerHeight;
-    Array.prototype.forEach.call(els, function (el) {
-      if (el.classList.contains('reveal')) return;
-      if (onlyBelow && el.getBoundingClientRect().top < h) return;
-      el.classList.add('reveal'); pending.push(el); io.observe(el);
-    });
+    // 읽기(getBoundingClientRect)를 모두 마친 뒤에 쓰기(classList.add)를 한다 (2026. 10. 25.): 요소마다 읽고 쓰기를 번갈아 하면 쓸 때마다 배치가 무효가 되어
+    // 다음 읽기에서 페이지 전체를 다시 배치한다 — 홈(위촉장 타일 27장·카드 등 60여 개)에서도 수백 ms, 전체 사례 페이지(카드 271장)에서는 몇 초가 걸렸다(본인 지적 "스크롤이 버벅").
+    var list = Array.prototype.filter.call(els, function (el) { return !el.classList.contains('reveal'); });
+    if (onlyBelow) list = list.filter(function (el) { return el.getBoundingClientRect().top >= h; });
+    list.forEach(function (el) { el.classList.add('reveal'); pending.push(el); io.observe(el); });
   }
   return { ok: ok, collect: collect, add: add };
 })();
