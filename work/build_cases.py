@@ -63,9 +63,10 @@ PRIORITY = {"rnd": "0.8", "penalty": "0.8", "criminal": "0.7", "personnel": "0.6
 # 메인 페이지 제목·설명: 사람들이 실제로 찾는 말(참여제한·연구비 환수·제재부가금)을 앞세운다 (2026. 10. 19.)
 NEW_TITLE = "국가연구개발사업 참여제한·연구비 환수·제재부가금 취소소송 — 변호사 부효준 | 행정쟁송 · 법무법인(유한) 금성"
 NEW_OG_TITLE = "변호사 부효준 — 국가연구개발사업 참여제한·연구비 환수·제재부가금 · 행정쟁송"
-NEW_DESCRIPTION = ("국가연구개발사업 참여제한·연구비(연구개발비) 환수·제재부가금 처분의 취소소송·집행정지와 행정쟁송 전반을 맡는 부효준 변호사(법무법인(유한) 금성). "
-                   "국가연구개발 제재처분을 심의하는 위원회의 위원이자 정부·지방자치단체·공공기관 약 20곳의 고문변호사로서, 처분을 받은 연구자·기업·공무원을 대리하고, "
-                   "정부출연금·보조금의 부정집행을 이유로 한 사기·보조금법 위반 등 형사사건도 제재처분과 함께 변호합니다. 주요 수행 사례를 판결문과 함께 공개합니다.")
+# 2026. 10. 25. 249자 → 126자로 줄임(빙 웹마스터 URL 검사 'Meta Description too long' 지적; 검색 설명문은 25~160자, 한글은 130자 안팎이면 잘리지 않음)
+NEW_DESCRIPTION = ("국가연구개발사업 참여제한·연구비 환수·제재부가금 처분의 취소소송·집행정지를 맡는 부효준 변호사(법무법인(유한) 금성). "
+                   "제재처분 심의위원회 위원이자 정부·공공기관 약 20곳의 고문변호사. 수행 사례를 판결문과 함께 공개합니다.")
+DESC_MAX = 160   # 검색 설명문(meta description) 최대 길이 — 빙은 160자를 넘으면 '너무 길다'고 표시한다
 NEW_EYEBROW = "국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 행정쟁송"   # 2026. 10. 21. 14시: 국가연구개발을 맨 앞에(이름은 10. 21. 새벽부터 따로 큰 이름 줄)
 EXTRA_KEYWORDS = ["국가연구개발사업 참여제한 변호사", "참여제한 변호사", "연구비 환수 변호사", "국가연구개발혁신법 변호사", "참여제한 처분 취소소송",
                   "국가 R&D 제재처분", "연구비 제재부가금 취소", "참여제한 집행정지", "연구개발비 회수금 당사자소송", "부효준 변호사"]
@@ -211,21 +212,28 @@ def badge_class(r):
     return "part" if r.startswith("일부승소") else "win" if r.startswith("승소") else "other"
 
 
-def description_of(c):
-    """검색 결과에 보일 설명문: 법원·사건번호 + 요지 앞부분(약 150자)."""
-    head = c.get("court") or ""
-    body = (c.get("summary") or "").strip()
-    text = (head + ". " if head else "") + body
-    if len(text) <= 160:
+def clip_description(text, limit=DESC_MAX):
+    """검색 설명문을 limit자 안으로 자른다(줄임표 포함). 문장 끝(다.)에서, 아니면 낱말 경계에서 자르고 줄임표를 붙인다.
+    사례 페이지와 주제 페이지가 같은 규칙을 쓴다(2026. 10. 25. — 주제 페이지는 165자 기준이라 161자가 나와 빙이 '너무 길다'고 표시했음)."""
+    text = (text or "").strip()
+    if len(text) <= limit:
         return text
-    cut = text[:160]
-    k = cut.rfind("다.")                       # 문장 끝에서 자른다
+    cut = text[:limit]
+    k = max(cut.rfind("다."), cut.rfind(")."))   # 문장 끝에서 자른다 — '…멈춥니다(「행정소송법」 제23조).'처럼 괄호로 끝나는 문장도
     if k > 80:
         return cut[: k + 2]
+    cut = text[: limit - 1]                    # 줄임표 한 자를 넣어도 limit 안에 들도록
     k = cut.rfind(" ")                         # 아니면 낱말 경계에서 자르고 줄임표
     if k > 80:
         cut = cut[:k]
     return cut.rstrip(" ,·") + "…"
+
+
+def description_of(c):
+    """검색 결과에 보일 설명문: 법원·사건번호 + 요지 앞부분(약 150자)."""
+    head = c.get("court") or ""
+    body = (c.get("summary") or "").strip()
+    return clip_description((head + ". " if head else "") + body)
 
 
 def ga_snippet():
@@ -684,9 +692,7 @@ def build_topic_page(t, matched, cat_counts, site="."):
 
 def render_topic_page(t, matched, cat_counts, modified):
     url = topic_url(t)
-    desc = t["lead"] + " " + first_sentence(t["intro"][0])
-    if len(desc) > 165:
-        desc = desc[:160].rstrip(" ,·") + "…"
+    desc = clip_description(t["lead"] + " " + first_sentence(t["intro"][0]))
     ld = {
         "@context": "https://schema.org",
         "@graph": [
