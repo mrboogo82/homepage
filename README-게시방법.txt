@@ -77,9 +77,9 @@
   위촉·위원회·강의를 더하거나 뺄 때는 career.html 만 고치면 됩니다. 홈의 '경력 · 학력 · 수상' 두 줄(.career-brief)은 index.html 에 직접 있으니 경력이 바뀌면 career.html 연표와 함께 고칩니다.
   홈 '다루는 사건' 요약(열 영역의 한 줄)은 index.html 에 직접 있고 분야 건수는 site.js 가 cases-data.js 로 채웁니다; 분야를 더하면 fields.html 과 홈 요약을 함께 고칩니다.
   언론보도는 build_press.py 가 홈(최근 1건 — 2026. 10. 25. 저녁부터, 그 전 3건)과 press.html(전체)을 함께 만듭니다.
-- 항목별 페이지의 사진(2026. 10. 26. 밤 본인 지시 "세부 페이지 여백마다 사진"): 네 페이지의 제목 머리(<section class="page-head">) 오른쪽에 한 장씩(<figure class="page-photo">,
-  경력·언론보도는 증명사진 photo-portrait.webp, 다루는 사건·상담 문의는 사무실 사진 photo-office-wide.webp — 휴대전화에서는 <picture>로 인물 위주 세로 조각 photo-office-tall.webp),
-  언론보도·상담 문의 페이지의 왼쪽 칸(.section-head) 아래에 다른 한 장(<figure class="side-photo">; 언론보도 쪽은 build_press.py 가 넣음). 홈·전체 사례·사례 페이지에는 넣지 않습니다.
+- 항목별 페이지의 사진(2026. 10. 26. 밤 본인 지시 "세부 페이지 여백마다 사진" → 같은 날 20:31 "'언론보도', '상담문의' 사진은 모두 삭제"): 경력·다루는 사건 두 페이지의 제목 머리
+  (<section class="page-head">) 오른쪽에 한 장씩(<figure class="page-photo">, 경력은 증명사진 photo-portrait.webp, 다루는 사건은 사무실 사진 photo-office-wide.webp — 휴대전화에서는
+  <picture>로 인물 위주 세로 조각 photo-office-tall.webp). 언론보도·상담 문의·홈·전체 사례·사례 페이지에는 넣지 않습니다(언론보도·상담 문의에 있던 것은 커밋 85e6608 에 남아 있음).
   사진 파일 세 장은 원본(증명사진 720×960 JPG, 제미나이 사무실 장면 2816×1536 PNG — 저장소에 없음)에서 work/photo_pages.py 가 잘라 만듭니다(증명사진은 팔짱 낀 가슴까지만).
   규칙은 home.css 끝의 '항목별 페이지의 여백에 사진' 블록(휴대전화는 제목 아래 오른쪽에 작게 띄우고 side-photo 는 숨김).
   cases.html 과 사례·주제 페이지의 머리글·바닥글은 따로입니다(cases.html 은 직접, 사례·주제 페이지는 build_cases.py 템플릿).

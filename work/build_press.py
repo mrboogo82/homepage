@@ -89,8 +89,6 @@ def section_full(items, cases_by_id):
     out.append('        <p>기사 %d건 — 수행 사건 보도 %d건, %s %d건%s. 사건별 기사는 각 사례 페이지의 \'이 사건의 언론보도\'에도 있습니다.</p>'
                % (len(items), len(groups["case"]), KIND_NAMES["activity"].replace(" · ", "·"), len(groups["activity"]),
                   (", %s %d건" % (KIND_NAMES["mention"], len(groups["mention"]))) if groups["mention"] else ""))
-    # 2026. 10. 26. 밤 본인 지시(세부 페이지 여백마다 사진): 왼쪽 칸의 빈자리에 사무실 사진 세로 조각(work/photo_pages.py) — 휴대전화에서는 home.css 가 숨김
-    out.append('        <figure class="side-photo office"><img src="photo-office-tall.webp" alt="사무실 책상에서 사건 기록을 검토하는 모습" width="720" height="900" loading="lazy"></figure>')
     out.append('      </header>')
     out.append('      <div class="section-body press-body">')
     for k in ("case", "activity", "mention"):
