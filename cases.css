@@ -193,10 +193,10 @@ img { max-width: 100%; }
 }
 
 /* 2026. 10. 21.: 머리글의 이름을 차림표보다 한눈에 띄게 — '변호사'는 작은 고딕, '부효준'은 노토 명조 900으로 크게(1.5rem, 자간 띄움). */
-.brand { display: inline-flex; align-items: baseline; gap: 0.5rem; color: var(--ink); text-decoration: none; line-height: 1; }
+.top .brand { display: inline-flex; align-items: baseline; gap: 0.5rem; color: var(--ink); text-decoration: none; line-height: 1; }
 .brand-role { font-family: var(--sans); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); }
 .brand-name { font-family: var(--name); font-size: 1.5rem; font-weight: 900; letter-spacing: 0.06em; }
-.brand:hover .brand-name { color: var(--seal); }
+.top .brand:hover .brand-name { color: var(--seal); }
 .top { gap: 0.5rem 1.25rem; }
 .top nav { gap: 0.25rem 1.5rem; }
 @media (max-width: 760px) { .brand-name { font-size: 1.375rem; } }
@@ -1076,22 +1076,29 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
    넓은 화면은 이름 뒤에 가는 세로줄을 두고 작은 고딕으로, 휴대전화(≤760px)는 이름 아래 한 줄로(이름 줄 오른쪽의 전화번호와 겹치지 않게). */
 .brand-en { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); white-space: nowrap; }
 .brand-en::before { content: ""; display: inline-block; width: 1px; height: 0.95em; margin-right: 0.7rem; vertical-align: -0.12em; background: var(--rule); }
-.brand:hover .brand-en { color: var(--ink); }
+.top .brand:hover .brand-en { color: var(--ink); }
 @media (max-width: 760px) {
-  .brand { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 0.5rem; row-gap: 0.1rem; }
+  .top .brand { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 0.5rem; row-gap: 0.1rem; }
   .brand-en { grid-column: 1 / -1; font-size: 0.6875rem; letter-spacing: 0.07em; }
   .brand-en::before { content: none; }
 }
 
 /* ---------- 2026. 10. 25. 밤 본인 지시(23:20): 이름 아래 가는 줄 + 대문자 영문 이름 — 참고한 다른 사무소 로고(이름 / 줄 / KANG CHANG HYO)처럼 ----------
    머리글 .brand 를 모든 너비에서 격자로: 1행 변호사·부효준, 2행 가는 줄(.brand-en 의 border-top) 아래 BOO HYOEJUNE(대문자·자간 넓게). 세로줄(::before)과 "· Attorney at Law"는 없앰. */
-.brand { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 0.5rem; row-gap: 0.28rem; }
+.top .brand { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 0.5rem; row-gap: 0.28rem; }
 .brand-en { grid-column: 1 / -1; justify-self: stretch; padding-top: 0.3rem; border-top: 1px solid var(--rule); font-size: 0.625rem; letter-spacing: 0.24em; text-transform: uppercase; }
 .brand-en::before { content: none; }
-.brand:hover .brand-en { border-top-color: var(--seal); }
+.top .brand:hover .brand-en { border-top-color: var(--seal); }
 .top { padding-top: 0.55rem; padding-bottom: 0.55rem; }   /* 이름 칸이 두 줄이 되어 머리글이 두꺼워지지 않도록 위아래 여백을 줄임(0.9rem → 0.55rem) */
 @media (max-width: 760px) {
-  .brand { row-gap: 0.2rem; }
+  .top .brand { row-gap: 0.2rem; }
   .brand-en { font-size: 0.5625rem; letter-spacing: 0.22em; padding-top: 0.22rem; }
   .top { padding-top: 0.9rem; padding-bottom: 0.4rem; }
 }
+
+/* ---------- 2026. 10. 26. 밤 본인 지시: "SNS 로고 사진들 크기가 네모 선과 안 맞는 듯" ----------
+   원인: 2026. 10. 25. 밤 머리글 이름 묶음(변호사 부효준 / 줄 / BOO HYOEJUNE)을 위해 둔 `.brand { display: grid; grid-template-columns: auto auto; column-gap: 0.5rem; … }` 가
+   SNS 타일의 상자(.ico.brand — site.js 가 브랜드 로고 타일에 붙이는 class)에도 걸려, 44px 타일 안의 로고 SVG 가 두 번째(빈) 열과 열 간격 0.5rem 만큼 밀려
+   36×44px 로 줄었다. 흰·검은 타일의 가는 테두리(.edge 의 box-shadow)는 44px 상자에 그려지므로 로고와 네모 선이 어긋나 보였음(상담 문의 '온라인' 줄·바닥글 모두).
+   수정: 머리글 이름 묶음 규칙의 선택자를 모두 `.top .brand` 로 좁힘(이 파일의 .brand 규칙 7곳; 머리글 link 는 모든 페이지에서 <header class="top"> 안에만 있음).
+   SNS 타일 쪽 규칙(.sns.icons a .ico.brand svg { width: 100%; height: 100% })은 그대로. 같은 수정을 cases.css·case.css 에도 넣음(그쪽 페이지에는 SNS 타일이 없어 보이는 변화는 없음). */
