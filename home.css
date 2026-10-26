@@ -1764,3 +1764,37 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 /* 바닥글 서명: 이름·인장 / 줄 / BOO HYOEJUNE */
 .sign-en { margin: 0.1rem 0 0; font-size: 0.6875rem; letter-spacing: 0.24em; text-transform: uppercase; }   /* 23:30 본인 지시: 바닥글에는 줄 없이, 영문은 "BOO HYOEJUNE · ATTORNEY AT LAW" */
 .hero-name-en .sep, .sign-en .sep { margin: 0 0.15em; opacity: 0.6; }
+
+/* ---------- 2026. 10. 26. 밤 본인 지시: 항목별(세부) 페이지의 여백에 사진 ----------
+   "전체 페이지 말고, 세부 페이지 여백마다 위 사진들을 적절히 넣어줘. 한 장만 넣어도 되고 두 장 모두 넣어도 되고 … 증명사진의 경우 허리가 너무 길게
+   나와 보이므로 가슴 부분 상반신만 나오게끔." — 홈·전체 사례 페이지는 그대로 두고 경력·다루는 사건·언론보도·상담 문의 네 페이지만.
+   사진 세 장(work/photo_pages.py): photo-portrait.webp(증명사진, 팔짱 낀 가슴까지 4:5) · photo-office-wide.webp(사무실 사진 3:2) · photo-office-tall.webp(사무실 사진 인물 위주 4:5).
+   ① 제목 머리(.page-head)의 오른쪽 빈자리에 한 장(.page-photo): 경력·언론보도는 증명사진, 다루는 사건·상담 문의는 사무실 사진 — 차림표 순서대로 번갈아.
+      넓은 화면(761px 이상)은 글(현재 위치·작은 제목·제목·한 줄) 왼쪽 + 사진 오른쪽 두 단(사진이 글보다 길면 넷째 줄(한 줄 설명)이 늘어나 글은 위에 붙음);
+      휴대전화(760px 이하)는 제목 아래 오른쪽에 작은 사진(4:5, 폭 34vw·최대 10.5rem)을 띄우고 한 줄 설명이 그 왼쪽을 감싼다(사무실 사진은 세로 조각으로).
+   ② 두 단 절의 왼쪽 칸(.section-head) 아래 빈자리에 다른 한 장(.side-photo, 칸 폭 12rem·4:5): 언론보도 페이지는 사무실 세로 조각, 상담 문의 페이지는 증명사진.
+      휴대전화에서는 한 단이 되어 빈자리가 없고 길이만 늘어나므로 숨긴다. 언론보도 페이지의 .section-head 는 work/build_press.py(section_full)가 만든다. */
+.page-photo, .side-photo { margin: 0; }
+.page-photo img, .side-photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; background: var(--wash); }
+.page-photo.portrait img, .side-photo.portrait img { object-position: 50% 18%; }   /* 세로 공간이 모자라면 얼굴 쪽을 남김 */
+.page-photo.office img, .side-photo.office img { object-position: 50% 40%; }
+@media (min-width: 761px) {
+  .page-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto minmax(0, 1fr);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+  .page-head > * { grid-column: 1; }
+  .page-head .page-photo { grid-column: 2; grid-row: 1 / 5; align-self: center; }
+  .page-photo.portrait { width: clamp(11.5rem, 21vw, 15rem); aspect-ratio: 4 / 5; }
+  .page-photo.office { width: clamp(17rem, 33vw, 25rem); aspect-ratio: 3 / 2; }
+}
+@media (max-width: 760px) {
+  .page-head { display: block; }
+  .page-head::after { content: ""; display: block; clear: both; }   /* 띄운 사진이 한 줄 설명보다 길어도 다음 절과 겹치지 않도록 */
+  .page-head > * + * { margin-top: 0.5rem; }   /* 격자의 gap 0.5rem 대신 */
+  .page-head .page-photo { float: right; width: clamp(7.5rem, 34vw, 10.5rem); aspect-ratio: 4 / 5; margin: 0.35rem 0 0.4rem 1rem; }
+}
+.side-photo { margin-top: 0.75rem; aspect-ratio: 4 / 5; }
+@media (max-width: 760px) { .side-photo { display: none; } }
