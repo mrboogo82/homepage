@@ -1836,3 +1836,13 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 36%, rgba(0, 0, 0, 0.13));
 }
 @media (max-width: 760px) { .hero::after { --hero-corner: 2rem; } }
+
+/* ---------- 2026. 10. 27. 18:11 본인 지시 ----------
+   ① "폴드7 접은 화면에서 '상담문의', '다루는 사건 보기', '주요수행사례 보기'가 한 줄에 나오게" — 첫 화면 단추 셋(.cta)을 760px 이하에서 줄바꿈 없이 한 줄로:
+      글씨를 화면 폭에 맞춰(clamp) 줄이고 안쪽 여백을 em 으로 바꿔 412·390·360px 에서 모두 한 줄(세 단추 폭 합이 글 칸 폭 안에 들어감).
+   ② 넓은 화면 머리글의 '상담 문의'를 다른 차림표 항목과 같은 글자 링크로 — index.html 의 차림표에서 class="btn small" 과 휴대전화 번호(.tel-d)를 뺌(cases.html·build_cases.py 템플릿도 같게).
+      아래 .top nav .btn / .tel-d 규칙들은 더 쓰이지 않지만 남겨 둠. 휴대전화의 이름 줄 오른쪽 번호(.tel-m)는 그대로. */
+@media (max-width: 760px) {
+  .cta { flex-wrap: nowrap; gap: 0.45rem; }
+  .cta .btn { flex: none; white-space: nowrap; padding: 0.6em 0.85em; font-size: clamp(0.72rem, 3.2vw, 0.9375rem); }
+}

@@ -621,7 +621,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../career.html">경력</a>
       <a href="../fields.html">다루는 사건</a>
-      <a class="btn small" href="../contact.html">상담 문의</a>
+      <a href="../contact.html">상담 문의</a>
     </nav>
   </header>
   <main>
@@ -775,7 +775,7 @@ def render_topic_page(t, matched, cat_counts, modified):
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../career.html">경력</a>
       <a href="../fields.html">다루는 사건</a>
-      <a class="btn small" href="../contact.html">상담 문의</a>
+      <a href="../contact.html">상담 문의</a>
     </nav>
   </header>
   <main>

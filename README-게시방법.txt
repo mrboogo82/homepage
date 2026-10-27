@@ -77,6 +77,9 @@
   위촉·위원회·강의를 더하거나 뺄 때는 career.html 만 고치면 됩니다. 홈의 '경력 · 학력 · 수상' 두 줄(.career-brief)은 index.html 에 직접 있으니 경력이 바뀌면 career.html 연표와 함께 고칩니다.
   홈 '다루는 사건' 요약(열 영역의 한 줄)은 index.html 에 직접 있고 분야 건수는 site.js 가 cases-data.js 로 채웁니다; 분야를 더하면 fields.html 과 홈 요약을 함께 고칩니다.
   언론보도는 build_press.py 가 홈(최근 1건 — 2026. 10. 25. 저녁부터, 그 전 3건)과 press.html(전체)을 함께 만듭니다.
+- 머리글 차림표(2026. 10. 27. 18:11 본인 지시): 넓은 화면의 '상담 문의'는 먹색 알약 단추가 아니라 다른 항목과 같은 글자 링크(class 없음)이고, 차림표의 휴대전화 번호(.tel-d)는 뺐습니다
+  (휴대전화 화면의 이름 줄 오른쪽 번호 .tel-m 은 그대로). cases.html 과 build_cases.py 의 두 템플릿도 같게 고쳤고, build_pages.py 의 CURRENT 에 contact.html 을 넣어 상담 문의 페이지에서는
+  '상담 문의'에 class="current"가 붙습니다. 첫 화면 단추 셋(상담 문의·다루는 사건 보기·주요 수행 사례 보기)은 760px 이하에서 한 줄(home.css 끝 블록: 글씨 clamp·여백 em·nowrap; 412·390·360px 확인).
 - 항목별 페이지의 사진(2026. 10. 26. 밤 본인 지시 "세부 페이지 여백마다 사진" → 같은 날 20:31 "'언론보도', '상담문의' 사진은 모두 삭제"): 경력·다루는 사건 두 페이지의 제목 머리
   (<section class="page-head">) 오른쪽에 한 장씩(<figure class="page-photo">, 경력은 증명사진 photo-portrait.webp, 다루는 사건은 사무실 사진 photo-office-wide.webp — 휴대전화에서는
   <picture>로 인물 위주 세로 조각 photo-office-tall.webp). 언론보도·상담 문의·홈·전체 사례·사례 페이지에는 넣지 않습니다(언론보도·상담 문의에 있던 것은 커밋 85e6608 에 남아 있음).
