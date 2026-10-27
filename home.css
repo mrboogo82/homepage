@@ -1820,3 +1820,19 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
    36×44px 로 줄었다. 흰·검은 타일의 가는 테두리(.edge 의 box-shadow)는 44px 상자에 그려지므로 로고와 네모 선이 어긋나 보였음(상담 문의 '온라인' 줄·바닥글 모두).
    수정: 머리글 이름 묶음 규칙의 선택자를 모두 `.top .brand` 로 좁힘(이 파일의 .brand 규칙 7곳; 머리글 link 는 모든 페이지에서 <header class="top"> 안에만 있음).
    SNS 타일 쪽 규칙(.sns.icons a .ico.brand svg { width: 100%; height: 100% })은 그대로. 같은 수정을 cases.css·case.css 에도 넣음(그쪽 페이지에는 SNS 타일이 없어 보이는 변화는 없음). */
+
+/* ---------- 2026. 10. 27. 18:00 본인 지시: "전체 화면의 검은 배경도 모서리를 살짝 녹여줘" ----------
+   홈 첫 화면(.hero, 먹색 바탕 + 오른쪽/윗부분 사진)의 네 모서리를 종이색으로 녹인다 — 세부 페이지 사진(.page-photo)의 모서리 처리와 같은 느낌.
+   마스크 대신, 이미 사진 위에 깔려 있는 명암 겹(.hero::after, 글 아래·사진 위)에 종이색 원형 그라데이션 넷(각 모서리에서 반지름 3rem까지 투명해짐)을 더해 그린다 —
+   종이색이 단색이라 마스크로 지운 것과 똑같이 보이고, 큰 요소에 마스크를 씌울 때의 그리기 부담이 없으며 어두운 화면에서는 var(--paper)가 따라 바뀐다.
+   글은 gutter(≥1rem)만큼 안쪽에 있고 모서리 반지름 안에는 글이 없다. 휴대전화(760px 이하)는 첫 화면이 화면 폭에 꽉 차므로 2rem만. 가장자리(변)는 그대로 — 모서리만. */
+.hero::after {
+  --hero-corner: 3rem;
+  background:
+    radial-gradient(circle at 0 0, var(--paper) 0, var(--paper) 3px, transparent var(--hero-corner)),
+    radial-gradient(circle at 100% 0, var(--paper) 0, var(--paper) 3px, transparent var(--hero-corner)),
+    radial-gradient(circle at 0 100%, var(--paper) 0, var(--paper) 3px, transparent var(--hero-corner)),
+    radial-gradient(circle at 100% 100%, var(--paper) 0, var(--paper) 3px, transparent var(--hero-corner)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 36%, rgba(0, 0, 0, 0.13));
+}
+@media (max-width: 760px) { .hero::after { --hero-corner: 2rem; } }
