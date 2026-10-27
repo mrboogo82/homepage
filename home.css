@@ -1778,16 +1778,19 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .page-photo, .side-photo { margin: 0; }
 .page-photo img, .side-photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; background: var(--wash); }
 .page-photo.portrait img, .side-photo.portrait img { object-position: 50% 18%; }   /* 세로 공간이 모자라면 얼굴 쪽을 남김 */
-/* 2026. 10. 27. 본인 지시: "'경력'에 실린 사진이 너무 네모네모한 느낌이라 모서리 부분을 살짝 흐리게" — 증명사진의 네 모서리·가장자리를 마스크로 종이색에 녹인다.
-   세 겹 마스크의 교집합(mask-composite: intersect; 웹킷은 -webkit-mask-composite: source-in): ① 가장 먼 모서리까지 닿는 타원(중심을 56%로 조금 내려 팔짱 낀 아래쪽은 덜 녹고
-   회색 바탕뿐인 위 모서리는 더 녹음, 66%부터 투명) ② 좌우 7% 깃털 ③ 위 8%·아래 3% 깃털(아래는 팔이 잘리는 자리라 살짝만). 네모 테두리(border-radius)는 뜻이 없어 0.
-   마스크를 못 쓰는 옛 브라우저는 종전대로 모서리 4px 네모. 다루는 사건 페이지의 사무실 사진(.office)은 장면 사진이라 그대로 네모. */
+/* 2026. 10. 27. 본인 지시: "'경력'에 실린 사진이 너무 네모네모한 느낌이라 모서리 부분을 살짝 흐리게" → 17:37 "'다루는 사건' 사진도 해줘. 다만, 두 사진 전부 녹이는 정도는 약하게"
+   — 두 페이지 사진의 네 모서리·가장자리를 마스크로 종이색에 녹인다. 세 겹 마스크의 교집합(mask-composite: intersect; 웹킷은 -webkit-mask-composite: source-in):
+   ① 가장 먼 모서리까지 닿는 타원(76%부터 투명 — 처음 66%에서 약하게 조정; 증명사진은 중심을 56%로 조금 내려 팔짱 낀 아래쪽은 덜 녹고 회색 바탕뿐인 위 모서리는 더 녹음)
+   ② 좌우 4% 깃털 ③ 위 4%·아래 깃털(증명사진은 팔이 잘리는 자리라 2%, 사무실 사진은 4%). 네모 테두리(border-radius)는 뜻이 없어 0.
+   마스크를 못 쓰는 옛 브라우저는 종전대로 모서리 4px 네모. 사무실 사진은 휴대전화의 세로 조각(photo-office-tall.webp)에도 같은 비율로 적용된다. */
+.page-photo img { border-radius: 0; -webkit-mask-composite: source-in, source-in; mask-composite: intersect; }
 .page-photo.portrait img {
-  border-radius: 0;
-  -webkit-mask-image: radial-gradient(ellipse farthest-corner at 50% 56%, #000 66%, transparent 100%), linear-gradient(to right, transparent, #000 7%, #000 93%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 97%, transparent);
-  -webkit-mask-composite: source-in, source-in;
-  mask-image: radial-gradient(ellipse farthest-corner at 50% 56%, #000 66%, transparent 100%), linear-gradient(to right, transparent, #000 7%, #000 93%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 97%, transparent);
-  mask-composite: intersect;
+  -webkit-mask-image: radial-gradient(ellipse farthest-corner at 50% 56%, #000 76%, transparent 100%), linear-gradient(to right, transparent, #000 4%, #000 96%, transparent), linear-gradient(to bottom, transparent, #000 4%, #000 98%, transparent);
+  mask-image: radial-gradient(ellipse farthest-corner at 50% 56%, #000 76%, transparent 100%), linear-gradient(to right, transparent, #000 4%, #000 96%, transparent), linear-gradient(to bottom, transparent, #000 4%, #000 98%, transparent);
+}
+.page-photo.office img {
+  -webkit-mask-image: radial-gradient(ellipse farthest-corner at 50% 50%, #000 76%, transparent 100%), linear-gradient(to right, transparent, #000 4%, #000 96%, transparent), linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
+  mask-image: radial-gradient(ellipse farthest-corner at 50% 50%, #000 76%, transparent 100%), linear-gradient(to right, transparent, #000 4%, #000 96%, transparent), linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
 }
 .page-photo.office img, .side-photo.office img { object-position: 50% 40%; }
 @media (min-width: 761px) {
