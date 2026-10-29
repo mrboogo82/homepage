@@ -45,6 +45,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from press_lib import load_press, press_by_case, kdate  # noqa: E402  (press.json: 언론보도, 2026. 10. 22.)
+from make_thumbs import THUMB_W, THUMB_H  # noqa: E402  (카드 썸네일 크기 640×480 — <img width·height>, 2026. 10. 29.)
 
 CATS = {   # 2026. 10. 21. 이름·순서를 '다루는 사건' 카드와 맞춤(형사는 출연금·보조금 외 사건도 있어 '형사', 민사는 카드가 없어 맨 뒤)
     "rnd": "국가연구개발 제재처분",
@@ -215,7 +216,9 @@ def render_li(c):
     if ims:
         im = ims[0]
         out.append('<button type="button" class="case-fig" aria-label="%s 판결문 크게 보기">' % esc(c["title"]))
-        out.append('<img src="%s" alt="%s" loading="lazy" decoding="async">' % (esc(im.get("thumb") or im["src"]), esc(im.get("alt") or (c["title"] + " 판결문"))))
+        # width·height 는 썸네일(640×480, work/make_thumbs.py)일 때만 — 자리를 미리 잡아 레이아웃 밀림(CLS)을 막는다(2026. 10. 29. SEO·GEO 보고서 '페이지 환경' 항목; 그림 상자는 CSS aspect-ratio 라 보이는 크기는 그대로)
+        size = ' width="%d" height="%d"' % (THUMB_W, THUMB_H) if im.get("thumb") else ""
+        out.append('<img src="%s" alt="%s"%s loading="lazy" decoding="async">' % (esc(im.get("thumb") or im["src"]), esc(im.get("alt") or (c["title"] + " 판결문")), size))
         out.append('</button>')
     else:
         out.append('<div class="case-fig none" aria-hidden="true"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"></path><path d="M19 3v6h6"></path><path d="M12 15h8M12 19h8M12 23h5"></path></svg><span>%s</span></div>' % esc(CATS.get(c["cat"], c["cat"])))

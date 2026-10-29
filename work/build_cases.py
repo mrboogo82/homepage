@@ -38,6 +38,22 @@ from ssr_cases import load_details, load_cases  # noqa: E402  (cases-detail.json
 from press_lib import load_press, press_by_case, kdate, check_press  # noqa: E402  (press.json: 언론보도, 2026. 10. 22.)
 
 PRESS_BY_CASE = {}   # main() 에서 채움: {사례 id: [기사, ...]}
+SITE_DIR = "."       # main() 에서 채움 — 판결문 이미지 크기를 읽을 때 쓴다
+IMAGE_SIZES = {}     # {이미지 경로: (너비, 높이)} — 사례 페이지 <img width·height>(2026. 10. 29., 레이아웃 밀림 방지; CSS 가 width:100%; height:auto 라 보이는 크기는 그대로)
+
+
+def image_size(src):
+    """cases/ 의 판결문 이미지 크기. Pillow 가 없거나 파일이 없으면 None."""
+    if src not in IMAGE_SIZES:
+        size = None
+        try:
+            from PIL import Image
+            with Image.open(os.path.join(SITE_DIR, src)) as im:
+                size = im.size
+        except Exception:
+            size = None
+        IMAGE_SIZES[src] = size
+    return IMAGE_SIZES[src]
 
 SITE = "https://lawyermrboo82.com"
 TODAY = date.today().isoformat()
@@ -61,12 +77,18 @@ PRIORITY = {"rnd": "0.8", "penalty": "0.8", "criminal": "0.7", "personnel": "0.6
             "admin": "0.6", "contract": "0.6", "comp": "0.5", "state": "0.5", "civil": "0.4"}
 
 # 메인 페이지 제목·설명: 사람들이 실제로 찾는 말(참여제한·연구비 환수·제재부가금)을 앞세운다 (2026. 10. 19.)
-NEW_TITLE = "국가연구개발사업 참여제한·연구비 환수·제재부가금 취소소송 — 변호사 부효준 | 행정쟁송 · 법무법인(유한) 금성"
-NEW_OG_TITLE = "변호사 부효준 — 국가연구개발사업 참여제한·연구비 환수·제재부가금 · 행정쟁송"
-# 2026. 10. 25. 249자 → 126자로 줄임(빙 웹마스터 URL 검사 'Meta Description too long' 지적; 검색 설명문은 25~160자, 한글은 130자 안팎이면 잘리지 않음)
-NEW_DESCRIPTION = ("국가연구개발사업 참여제한·연구비 환수·제재부가금 처분의 취소소송·집행정지를 맡는 부효준 변호사(법무법인(유한) 금성). "
-                   "제재처분 심의위원회 위원이자 정부·공공기관 약 20곳의 고문변호사. 수행 사례를 판결문과 함께 공개합니다.")
-DESC_MAX = 160   # 검색 설명문(meta description) 최대 길이 — 빙은 160자를 넘으면 '너무 길다'고 표시한다
+# 2026. 10. 29. SEO·GEO 분석 보고서(commerce24.ai)에 따라 길이를 줄임 — 네이버 웹마스터 가이드는 제목 40자·설명 80자·og:title 40자·og:description 80자 이내를 권장하고
+#   그보다 길면 검색결과에서 잘린다(구글은 길이 제한이 없고 핵심을 앞에 두라고만 함). 제목 62 → 39자('— … | 행정쟁송 · 법무법인(유한) 금성' 꼬리를 뺌),
+#   설명 126 → 80자(제목과 83% 겹치던 앞부분을 빼고 제목에 없는 정보 — 소속·위원·고문·판결문 공개 — 만, 서술어 없이), og:title 43 → 36자, og:description 132 → 78자.
+NEW_TITLE = "국가연구개발사업 참여제한·연구비 환수·제재부가금 취소소송 변호사 부효준"
+NEW_OG_TITLE = "변호사 부효준 — 국가연구개발사업 참여제한·연구비 환수·제재부가금"
+NEW_DESCRIPTION = "법무법인(유한) 금성 · 제재처분 심의위원회 위원 · 정부·공공기관 약 20곳 고문변호사. 집행정지부터 취소소송까지 수행 사례를 판결문으로 공개"
+NEW_OG_DESCRIPTION = "제재처분 심의위원회 위원 · 정부·공공기관 약 20곳 고문변호사. 처분을 받은 연구자·기업·공무원을 대리하고 수행 사례를 판결문과 함께 공개"
+DESC_MAX = 160   # 사례·주제 페이지 검색 설명문(meta description) 최대 길이 — 빙은 160자를 넘으면 '너무 길다'고 표시한다
+HOME_TITLE_MAX, HOME_DESC_MAX = 40, 80   # 홈의 제목·설명 — 네이버 웹마스터 가이드 권장 길이(2026. 10. 29.)
+for _s, _m, _n in ((NEW_TITLE, HOME_TITLE_MAX, "NEW_TITLE"), (NEW_OG_TITLE, HOME_TITLE_MAX, "NEW_OG_TITLE"),
+                   (NEW_DESCRIPTION, HOME_DESC_MAX, "NEW_DESCRIPTION"), (NEW_OG_DESCRIPTION, HOME_DESC_MAX, "NEW_OG_DESCRIPTION")):
+    assert len(_s) <= _m, "%s 가 %d자를 넘습니다(%d자)" % (_n, _m, len(_s))
 NEW_EYEBROW = "국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 행정쟁송"   # 2026. 10. 21. 14시: 국가연구개발을 맨 앞에(이름은 10. 21. 새벽부터 따로 큰 이름 줄)
 EXTRA_KEYWORDS = ["국가연구개발사업 참여제한 변호사", "참여제한 변호사", "연구비 환수 변호사", "국가연구개발혁신법 변호사", "참여제한 처분 취소소송",
                   "국가 R&D 제재처분", "연구비 제재부가금 취소", "참여제한 집행정지", "연구개발비 회수금 당사자소송", "부효준 변호사"]
@@ -539,11 +561,13 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     for k, im in enumerate(ims):
         fname = im["src"].rsplit("/", 1)[-1]
         alt = im.get("alt") or ("%s 판결문 %d" % (title, k + 1))
+        wh = image_size(im["src"])
+        size = ' width="%d" height="%d"' % wh if wh else ""
         figs.append(
             '<figure><a href="%s" target="_blank" rel="noopener" aria-label="%s 크게 보기">'
-            '<img src="%s" alt="%s" loading="%s" decoding="async"></a>'
+            '<img src="%s" alt="%s"%s loading="%s" decoding="async"></a>'
             "<figcaption>%s</figcaption></figure>"
-            % (esc(fname), esc(alt), esc(fname), esc(alt), "eager" if k == 0 else "lazy", esc(alt))
+            % (esc(fname), esc(alt), esc(fname), esc(alt), size, "eager" if k == 0 else "lazy", esc(alt))
         )
 
     rel_items = []
@@ -588,7 +612,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <meta name="author" content="부효준">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{esc(url)}">
-<link rel="icon" href="/favicon.ico?v=3" sizes="32x32">
+<link rel="shortcut icon" href="https://lawyermrboo82.com/favicon.ico?v=3" sizes="32x32">
 <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
 <link rel="manifest" href="/site.webmanifest">
@@ -616,7 +640,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <body>
 <div class="page" id="top">
   <header class="top">
-    <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
+    <a class="brand" href="../index.html" rel="author" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
     <nav aria-label="페이지 이동">
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../career.html">경력</a>
@@ -668,6 +692,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
+      <p><a class="policy-link" href="../privacy.html">개인정보처리방침</a></p>
     </div>
   </footer>
 </div>
@@ -743,7 +768,7 @@ def render_topic_page(t, matched, cat_counts, modified):
 <meta name="author" content="부효준">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{esc(url)}">
-<link rel="icon" href="/favicon.ico?v=3" sizes="32x32">
+<link rel="shortcut icon" href="https://lawyermrboo82.com/favicon.ico?v=3" sizes="32x32">
 <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3">
 <link rel="manifest" href="/site.webmanifest">
@@ -770,7 +795,7 @@ def render_topic_page(t, matched, cat_counts, modified):
 <body>
 <div class="page" id="top">
   <header class="top">
-    <a class="brand" href="../index.html" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
+    <a class="brand" href="../index.html" rel="author" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
     <nav aria-label="페이지 이동">
       <a href="../cases.html">주요 수행 사례</a>
       <a href="../career.html">경력</a>
@@ -820,6 +845,7 @@ def render_topic_page(t, matched, cat_counts, modified):
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
+      <p><a class="policy-link" href="../privacy.html">개인정보처리방침</a></p>
     </div>
   </footer>
 </div>
@@ -941,6 +967,7 @@ def patch_index(doc, links):
     doc = replace_meta(doc, "name", "description", NEW_DESCRIPTION)
     doc = replace_meta(doc, "property", "og:title", NEW_OG_TITLE)
     doc = replace_meta(doc, "name", "twitter:title", NEW_OG_TITLE)
+    doc = replace_meta(doc, "property", "og:description", NEW_OG_DESCRIPTION)   # 2026. 10. 29. 80자 이내
     mk = re.search(r'<meta name="keywords" content="([^"]*)"', doc)
     if mk:
         kws = [k.strip() for k in html.unescape(mk.group(1)).split(",") if k.strip()]
@@ -982,6 +1009,7 @@ def patch_index(doc, links):
     doc = patch_js(doc)
     doc = patch_link_text(doc)
     doc = stamp_sign_date(doc)
+    doc = patch_home_graph(doc)
     return doc
 
 
@@ -997,6 +1025,28 @@ def stamp_sign_date(doc):
     """바닥글 서명 날짜(<time id="sign-date">)를 빌드한 날로 맞춘다(2026. 10. 23.). 페이지 JS가 서버의 Last-Modified 로 다시 맞추지만 정적 값도 최신으로.
     (종전에는 '2026. 10. 14.'이 고정되어 구글이 페이지 날짜로 읽어 '8일 전'처럼 보였다.)"""
     return SIGN_DATE_RE.sub(lambda m: m.group(1) + TODAY + m.group(2) + kdate_dots(TODAY) + m.group(3), doc, count=1)
+
+
+LD_BLOCK_RE = re.compile(r'(<script type="application/ld\+json">\s*)(\{.*?\})(\s*</script>)', re.S)
+
+
+def patch_home_graph(doc):
+    """홈의 둘째 JSON-LD(2026. 10. 29., SEO·GEO 보고서의 '최신성·구조화 표현' 항목): "@graph" 에 WebSite 와 WebPage(datePublished·dateModified) 가 있다.
+    WebPage 의 name·description 은 NEW_TITLE·NEW_DESCRIPTION 과 같게, dateModified 는 빌드한 날(바닥글 서명 날짜와 같은 뜻)로 맞춘다. datePublished(2026. 10. 17. 게시) 는 그대로."""
+    for m in LD_BLOCK_RE.finditer(doc):
+        try:
+            ld = json.loads(m.group(2))
+        except ValueError:
+            continue
+        if not isinstance(ld, dict) or "@graph" not in ld:
+            continue
+        for node in ld["@graph"]:
+            if node.get("@type") == "WebPage":
+                node["name"] = NEW_TITLE
+                node["description"] = NEW_DESCRIPTION
+                node["dateModified"] = TODAY
+        return doc[: m.start(2)] + json.dumps(ld, ensure_ascii=False, indent=1) + doc[m.end(2):]
+    return doc
 
 
 def patch_cases(doc, n_cases=None):
@@ -1051,7 +1101,7 @@ def build_sitemap(cases, site="."):
         (SITE + "/", git_lastmod(site, "index.html"), "weekly", "1.0"),
         (SITE + "/cases.html", git_lastmod(site, "cases.html"), "weekly", "0.9"),
     ]
-    for page, pr in (("fields.html", "0.9"), ("career.html", "0.8"), ("press.html", "0.7"), ("contact.html", "0.7")):   # faq.html 은 2026. 10. 23. 오후 삭제   # 항목별 페이지(2026. 10. 23. 저녁)
+    for page, pr in (("fields.html", "0.9"), ("career.html", "0.8"), ("press.html", "0.7"), ("contact.html", "0.7"), ("privacy.html", "0.3")):   # privacy.html(개인정보처리방침) 은 2026. 10. 29. 추가   # faq.html 은 2026. 10. 23. 오후 삭제   # 항목별 페이지(2026. 10. 23. 저녁)
         if os.path.exists(os.path.join(site, page)):
             rows.append((SITE + "/" + page, git_lastmod(site, page), "weekly", pr))
     for t in TOPICS:
@@ -1115,6 +1165,8 @@ def main():
     if len(sys.argv) != 2:
         raise SystemExit(__doc__)
     site = sys.argv[1]
+    global SITE_DIR
+    SITE_DIR = site
     index_path, cases_path = os.path.join(site, "index.html"), os.path.join(site, "cases.html")
     index_doc, cases_doc = read(index_path), read(cases_path)
     cases = load_cases(site)                   # cases-data.js (2026. 10. 23. index.html 의 #cases-data 블록에서 분리; ssr_cases.py 가 먼저 옮겨 둔다)

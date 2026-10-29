@@ -36,7 +36,7 @@ import os
 import re
 import sys
 
-PAGES = ["career.html", "fields.html", "press.html", "contact.html"]   # index.html 이 기준(master); faq.html 은 2026. 10. 23. 오후 삭제
+PAGES = ["career.html", "fields.html", "press.html", "contact.html", "privacy.html"]   # index.html 이 기준(master); faq.html 은 2026. 10. 23. 오후 삭제; privacy.html(개인정보처리방침) 은 2026. 10. 29. 추가
 ALL_PAGES = ["index.html"] + PAGES
 BLOCKS = ["symbols", "header", "quick", "footer", "tail"]
 NEEDS_DATA = {"index.html", "fields.html"}   # cases-data.js(사례 데이터, 약 300KB)를 읽는 페이지 — 사례 카드·분야별 건수가 있는 곳만; 다른 페이지의 꼬리에서는 그 태그를 뺀다

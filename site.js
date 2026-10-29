@@ -351,6 +351,7 @@ var LB = (function () {
       var fig = el('button', 'case-fig'); fig.type = 'button';
       fig.setAttribute('aria-label', c.title + ' 판결문 크게 보기');
       var pic = el('img'); pic.src = imgs[0].thumb || imgs[0].src; pic.alt = imgs[0].alt || (c.title + ' 판결문'); pic.loading = 'lazy'; pic.decoding = 'async';
+      if (imgs[0].thumb) { pic.width = 640; pic.height = 480; }   // 썸네일 크기(work/make_thumbs.py) — 자리를 미리 잡아 레이아웃 밀림(CLS)을 막는다(2026. 10. 29.; 보이는 크기는 CSS aspect-ratio 그대로)
       fig.appendChild(pic);   // 장수('판결문 N장') 표시는 두지 않는다 (2026. 10. 21.)
       fig.addEventListener('click', function () { track('case_open', { case_title: c.title, case_id: c.id }); LB.open(lbItems, 0); });
       return fig;

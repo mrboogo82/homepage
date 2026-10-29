@@ -153,3 +153,15 @@
   (종전처럼 push 마다 홈·전체 사례를 다시 보내지 않음). Actions 탭에서 수동 실행(scope=all)하면 sitemap 전체를 보냅니다.
 - 그 밖에 색인을 앞당기는 일은 손으로: 구글 서치콘솔 URL 검사 → 색인 생성 요청(하루 10건 안팎), 네이버 서치어드바이저 요청 → 웹 페이지 수집(하루 50건),
   빙 웹마스터 URL 제출. 외부 링크(금성 홈페이지 구성원 소개·네이버 블로그·인스타·스레드·링크드인·엘파인드·나의변호사)와 네이버 인물정보 등록도 함께.
+
+SEO·GEO 분석 보고서 반영(2026. 10. 29., commerce24.ai 보고서 — 홈 기준 SEO 92·GEO 77·UI/UX 89·CVR 74·NAVER 70·GOOGLE 100)
+- 제목·설명 길이: 네이버 웹마스터 가이드 권장(제목 40자·설명 80자·og:title 40자·og:description 80자)에 맞춤 — work/build_cases.py 의 NEW_TITLE(39자)·NEW_DESCRIPTION(80자)·NEW_OG_TITLE(36자)·NEW_OG_DESCRIPTION(78자);
+  넘으면 스크립트가 assert 로 멈춘다. 항목별 페이지(career·fields·contact)의 제목 꼬리('| 행정쟁송 · 법무법인(유한) 금성' 등)도 뺐다. 설명문은 제목과 겹치지 않게 제목에 없는 정보(소속·위원·고문·판결문 공개)만, 서술어 없이.
+- 기관 로고 <img>(위촉장 타일·경력 줄의 adv-logo·lec-logo)의 alt 는 ''(장식용) 대신 '기관명 로고' — 보고서가 alt 누락 28건·빈 앵커 27건으로 집계한 것이 모두 이 로고 링크였다(career.html·index.html 모두 적용; 새 타일을 더할 때도 alt="기관명 로고").
+- 사례 카드 썸네일 <img> 에 width="640" height="480"(ssr_cases.py·site.js·cases.html), 사례 페이지 판결문 <img> 에 실제 크기 width·height(build_cases.py 가 Pillow 로 읽음) — 레이아웃 밀림(CLS) 방지. 보이는 크기는 CSS(aspect-ratio / width:100%; height:auto) 그대로.
+- 파비콘: 같은 rel="icon" 두 줄 가운데 ICO 쪽을 네이버 권장 형태 <link rel="shortcut icon" href="https://lawyermrboo82.com/favicon.ico?v=3"> 로(루트 페이지·stats·404·build_cases.py 템플릿). SVG 쪽은 rel="icon" 그대로.
+- 구조화 데이터: 홈 둘째 JSON-LD 에 WebSite(#website)·WebPage(#webpage, datePublished 2026-10-17·dateModified = 빌드 날; name·description 은 NEW_* 와 같게 build_cases.py 의 patch_home_graph 가 맞춤).
+  Person.worksFor 는 ["LegalService","Organization"] + @id(keumseong.com/#organization)·legalName·logo. 머리글 이름 링크(.brand)에 rel="author"(사례·주제 페이지 템플릿 포함).
+- privacy.html(개인정보처리방침) 신설: 바닥글 '© …' 줄 끝의 링크(.policy-link; cases.html·사례·주제 페이지 바닥글에도), 사이트맵(priority 0.3), build_pages.py 의 PAGES 에 포함(공용 부품 복사). 본문 규칙은 home.css 끝 '.policy' 블록(#policy 는 한 단).
+- 하지 않은 것(본인 판단 사항): H1 에 검색어 넣기(첫 화면 문구 변경), FAQ 되살리기(2026. 10. 23. 본인 지시로 삭제 — 되살리려면 커밋 df7e089^ 의 faq.html 일곱 문답), 사업자등록번호 표기(실제 번호 필요; 보고서의 예시 번호는 쓰지 않음),
+  의뢰인 후기·평점(AggregateRating) 스키마(실제 후기 없이 넣으면 허위 표시이고 변호사 광고 규정과도 맞지 않음), RSS·hreflang(불필요).

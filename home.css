@@ -1846,3 +1846,22 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
   .cta { flex-wrap: nowrap; gap: 0.45rem; }
   .cta .btn { flex: none; white-space: nowrap; padding: 0.6em 0.85em; font-size: clamp(0.72rem, 3.2vw, 0.9375rem); }
 }
+
+/* ---------- 2026. 10. 29. SEO·GEO 분석 보고서(commerce24.ai) 반영 ----------
+   ① 바닥글 '© …' 줄 끝의 개인정보처리방침 링크(.policy-link; 보고서의 '신뢰 요소: 개인정보처리방침 링크 없음' 항목).
+   ② 새 페이지 privacy.html(개인정보처리방침)의 본문(.policy): 글 폭 48rem, 번호 소제목(h3)은 명조, 항목은 dl.rows 와 ul 그대로. */
+.fine .rights .policy-link, .fine .policy-link { color: inherit; text-decoration: underline; text-underline-offset: 0.18em; text-decoration-color: var(--rule); }
+.fine .rights .policy-link { margin-left: 0.55em; }
+.fine .policy-link:hover { color: var(--seal); text-decoration-color: currentColor; }
+#policy { grid-template-columns: minmax(0, 1fr); }   /* 절은 두 단(제목 12rem + 본문)이 기본이라 한 단으로 */
+.policy { max-width: 48rem; display: grid; gap: 0.55rem; font-size: var(--step--1); line-height: 1.8; color: var(--ink); }
+.policy h3 { margin-top: 1.1rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 700; color: var(--ink); }
+.policy h3:first-child { margin-top: 0; }
+.policy p { max-width: 68ch; }
+.policy ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.3rem; }
+.policy ul li { max-width: 68ch; }
+.policy dl.rows dd { line-height: 1.7; }
+.policy a { color: inherit; text-decoration: underline; text-underline-offset: 0.18em; text-decoration-color: var(--rule); }
+.policy a:hover { color: var(--seal); text-decoration-color: currentColor; }
+.policy .rows.policy-rows > div { grid-template-columns: 11.5rem minmax(0, 1fr); gap: 0.75rem; }
+@media (max-width: 640px) { .policy .rows.policy-rows > div { grid-template-columns: 1fr; gap: 0.15rem; } }
