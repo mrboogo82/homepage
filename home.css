@@ -738,7 +738,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .sign {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas: "nav nav" "sns sns" "fine seal";   /* 2026. 10. 21.: 차례·SNS 줄은 두 칸을 모두 쓰고, 잔글·서명은 그 아래 나란히 */
+  grid-template-areas: "nav nav" "fine seal";   /* 2026. 10. 21.: 차례 줄은 두 칸을 모두 쓰고, 잔글·서명은 그 아래 나란히. 2026. 11. 3.: 차례와 잔글 사이의 SNS 타일 줄("sns sns")은 본인 지시로 뺌 */
   align-items: end;
   column-gap: 2.5rem;
   row-gap: 0;
@@ -746,7 +746,6 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   border-top: 1px solid var(--rule);
 }
 .sign > .foot-nav { grid-area: nav; }
-.sign > .sns { grid-area: sns; margin-bottom: 0.9rem; }
 .sign > .fine { grid-area: fine; }
 .sign > .sign-block { grid-area: seal; }
 .fine { display: grid; gap: 0.2rem; font-size: var(--step--1); color: var(--ink-soft); }
@@ -782,7 +781,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   .hero { grid-template-columns: minmax(0, 1fr); }
   .hero-copy { padding-bottom: 2.5rem; }   /* 2026. 10. 21. 낮: 아래의 누끼 인물 사진을 없애 숫자 타일이 바닥에 붙지 않도록 0 → 2.5rem */
   .section { grid-template-columns: minmax(0, 1fr); }
-  .sign { grid-template-columns: minmax(0, 1fr); grid-template-areas: "seal" "nav" "sns" "fine"; }
+  .sign { grid-template-columns: minmax(0, 1fr); grid-template-areas: "seal" "nav" "fine"; }   /* 2026. 11. 3.: "sns" 줄 뺌 */
 }
 @media (max-width: 640px) {
   .areas { grid-template-columns: minmax(0, 1fr); }

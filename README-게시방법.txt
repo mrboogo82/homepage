@@ -77,6 +77,8 @@
   위촉·위원회·강의를 더하거나 뺄 때는 career.html 만 고치면 됩니다. 홈의 '경력 · 학력 · 수상' 두 줄(.career-brief)은 index.html 에 직접 있으니 경력이 바뀌면 career.html 연표와 함께 고칩니다.
   홈 '다루는 사건' 요약(열 영역의 한 줄)은 index.html 에 직접 있고 분야 건수는 site.js 가 cases-data.js 로 채웁니다; 분야를 더하면 fields.html 과 홈 요약을 함께 고칩니다.
   언론보도는 build_press.py 가 홈(최근 1건 — 2026. 10. 25. 저녁부터, 그 전 3건)과 press.html(전체)을 함께 만듭니다.
+- 바닥글의 온라인 계정 타일 줄(#sns-footer, 차례 아래 여덟 계정)은 2026. 11. 3. 본인 지시("홈페이지 가장 아래의 SNS 링크 8개 모두 삭제")로 뺐습니다(index.html 바닥글·home.css .sign 격자의 "sns" 줄·site.js 의 타일 목록).
+  계정 목록(#links-data)과 상담 문의의 '온라인' 칸(#sns-contact, 홈·contact.html)은 그대로이므로, 계정을 고칠 때는 여전히 index.html 의 #links-data 만 고치고 build_pages.py 를 돌립니다. 되살리려면 커밋 99d2386 의 바닥글.
 - 머리글 차림표(2026. 10. 27. 18:11 본인 지시): 넓은 화면의 '상담 문의'는 먹색 알약 단추가 아니라 다른 항목과 같은 글자 링크(class 없음)이고, 차림표의 휴대전화 번호(.tel-d)는 뺐습니다
   (휴대전화 화면의 이름 줄 오른쪽 번호 .tel-m 은 그대로). cases.html 과 build_cases.py 의 두 템플릿도 같게 고쳤고, build_pages.py 의 CURRENT 에 contact.html 을 넣어 상담 문의 페이지에서는
   '상담 문의'에 class="current"가 붙습니다. 첫 화면 단추 셋(상담 문의·다루는 사건 보기·주요 수행 사례 보기)은 760px 이하에서 한 줄(home.css 끝 블록: 글씨 clamp·여백 em·nowrap; 412·390·360px 확인).

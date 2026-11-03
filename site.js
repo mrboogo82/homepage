@@ -187,7 +187,8 @@ var LB = (function () {
     wrap.appendChild(svg);
     return wrap;
   }
-  [['sns-hero', false], ['sns-contact', true], ['sns-footer', false]].forEach(function (cfg) {
+  // 2026. 11. 3. 본인 지시로 바닥글의 계정 타일 줄(#sns-footer)을 뺌 — 지금 타일이 놓이는 곳은 상담 문의의 '온라인' 칸(#sns-contact)뿐(첫 화면 #sns-hero 는 2026. 10. 17. 삭제).
+  [['sns-hero', false], ['sns-contact', true]].forEach(function (cfg) {
     var box = document.getElementById(cfg[0]);
     if (!box) return;
     links.forEach(function (l) {
