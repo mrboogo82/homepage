@@ -176,7 +176,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;900&display=swap">
-<link rel="stylesheet" href="home.css?v=20261109-7">
+<link rel="stylesheet" href="home.css?v=20261109-8">
 </head>
 <body>
 <div class="page" id="top" lang="ko">
@@ -266,7 +266,76 @@
 
     <!-- 첫 화면과 주요 수행 사례 사이에 있던 길잡이('무엇을 찾으시나요?' 다섯 칸, <nav class="finder">)는 2026. 10. 25. 본인 지시로 모두 삭제 — 되살리려면 커밋 1fc2aff 의 index.html(home.css 의 .finder 규칙은 남아 있음). -->
 
-    <section class="section first" id="record" aria-labelledby="record-h">
+    <!-- 2026. 11. 9. 16:18 본인 지시: '다루는 사건' 절을 첫 화면 바로 다음으로(종전 순서: 주요 수행 사례 → 경력 → 다루는 사건). 첫 절이라 윗선 없음(.first). -->
+    <section class="section first" id="fields" aria-labelledby="fields-h">
+      <!-- 2026. 10. 23. 저녁: 다루는 사건의 전체 설명(다룬 사건·근거 법령·세 기한·주제별 사례)은 fields.html 로 옮기고 홈에는 열 영역의 제목과 한 줄 요약만. 분야를 더하거나 이름을 바꾸면 fields.html 과 여기를 함께 고친다.
+           2026. 10. 25. 본인 지시: 절 머리의 '자세히' 글귀와 카드마다의 한 줄 설명(국가연구개발 카드의 세 기한 띠 포함)도 지우고, 카드에는 제목과 '수행 사례 N건 보기'·'자세히 →' 링크만 둔다. -->
+      <header class="section-head">
+        <h2 id="fields-h">다루는 사건</h2>
+        <nav class="jump" aria-label="다루는 사건 페이지로">
+          <a href="fields.html">다루는 사건 전체</a>
+        </nav>
+      </header>
+      <ul class="field-list">
+      <li class="field lead" id="sum-rnd">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M11 15h10M11 19h10M11 23h6"/><circle cx="23" cy="24" r="4"/></svg>
+        <h3><a href="fields.html#area-rnd">국가연구개발 제재처분</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=rnd" data-cat="rnd"><span class="lbl">수행 사례 <b class="n">56건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-rnd">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-penalty">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v14"/><path d="M20 12.5c-.6-1.5-2.2-2-4-2-2.3 0-4 1.1-4 2.8 0 3.6 8 1.8 8 5.4 0 1.7-1.8 2.8-4 2.8-2 0-3.6-.7-4.2-2.2"/></svg>
+        <h3><a href="fields.html#area-penalty">제재부가금 · 환수</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=penalty" data-cat="penalty"><span class="lbl">수행 사례 <b class="n">11건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-penalty">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-personnel">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="10" r="5"/><path d="M6 28c0-5.5 4.5-9 10-9s10 3.5 10 9"/></svg>
+        <h3><a href="fields.html#area-personnel">공무원 · 교원 인사처분</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=personnel" data-cat="personnel"><span class="lbl">수행 사례 <b class="n">26건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-personnel">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-license">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27V9l11-5 11 5v18"/><path d="M5 27h22"/><path d="M12 27v-8h8v8"/><path d="M16 12v3"/></svg>
+        <h3><a href="fields.html#area-license">인허가 · 면허 · 자격 처분</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=license" data-cat="license"><span class="lbl">수행 사례 <b class="n">18건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-license">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-comp">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 24l5-14h12l5 14z"/><path d="M16 10v14"/><path d="M8.5 17h15"/><path d="M5 28h22"/></svg>
+        <h3><a href="fields.html#area-comp">손실보상</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=comp" data-cat="comp"><span class="lbl">수행 사례 <b class="n">17건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-comp">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-admin">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5h20v22H6z"/><path d="M11 11h10M11 16h10M11 21h6"/><circle cx="22" cy="22" r="3.5"/></svg>
+        <h3><a href="fields.html#area-admin">그 밖의 행정처분</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=admin" data-cat="admin"><span class="lbl">수행 사례 <b class="n">31건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-admin">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-criminal">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3l10 4v8c0 7-4.5 11-10 14C10.5 26 6 22 6 15V7z"/><path d="M11.5 16l3 3 6-7"/></svg>
+        <h3><a href="fields.html#area-criminal">정부출연금 · 보조금 형사사건</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=criminal" data-cat="criminal"><span class="lbl">수행 사례 <b class="n">24건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-criminal">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-contract">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M11 14h10M11 18h7"/><path d="M11 24.5c1.2-2.2 2.4-2.2 3.6 0s2.4 2.2 3.6 0 2.4-2.2 3.8 0"/></svg>
+        <h3><a href="fields.html#area-contract">국가계약법 · 지방계약법</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=contract" data-cat="contract"><span class="lbl">수행 사례 <b class="n">4건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-contract">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-state">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4v24"/><path d="M6 10h20"/><path d="M6 10l-3 8h6zM26 10l-3 8h6z"/><path d="M11 28h10"/></svg>
+        <h3><a href="fields.html#area-state">국가배상</a></h3>
+        <p class="links"><a class="cases-link" href="cases.html#cat=state" data-cat="state"><span class="lbl">수행 사례 <b class="n">18건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-state">자세히 →</a></p>
+      </li>
+      <li class="field" id="sum-advice">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5h14l6 6v16H6z"/><path d="M20 5v6h6"/><path d="M10 16h12M10 20h12M10 24h8"/></svg>
+        <h3><a href="fields.html#area-advice">법률자문 · 법령 해석</a></h3>
+        <p class="links"><a href="fields.html#area-advice">자세히 →</a></p>
+      </li>
+      </ul>
+    </section>
+
+    <section class="section" id="record" aria-labelledby="record-h">
+      <header class="section-head">
+        <h2 id="record-h">주요 수행 사례</h2>
+        <p id="record-count">전문성은 말보다 실제 승소사례로 보여 드립니다. 모두 부효준 변호사가 담당변호사로 직접 수행한 사건입니다.</p><!-- 2026. 10. 25. 밤 본인 지시: 절 머리 문장을 두 문장으로 간결화 — '변론의 방식' 한 문장('어느 기일도 비워 두지 않고 …')과 '판결·결정·재결을 받은 주요 사건의 승소사례를 공개하였고' 삭제 -->
+      </header>
+      <!-- 2026. 11. 9. 16:18 본인 지시: 판결문 찾기 상자를 절 머리(제목·설명) 바로 아래로(종전에는 절 맨 위, 제목 위) -->
       <form class="findbox big" id="find-form" role="search" aria-labelledby="find-h">
               <div class="find-head">
                 <b id="find-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg><span>단어로 주요 수행 판결문 <span id="find-count">272</span>건 찾기</span></b>
@@ -278,10 +347,6 @@
               </div>
               <div class="presets" aria-label="자주 찾는 단어"><span class="cap">자주 찾는 단어</span><button type="button" class="preset" data-q="참여제한">참여제한</button><button type="button" class="preset" data-q="환수">환수</button><button type="button" class="preset" data-q="제재부가금">제재부가금</button><button type="button" class="preset" data-q="연구개발비">연구개발비</button><button type="button" class="preset" data-q="출연금">출연금</button><button type="button" class="preset" data-q="보조금">보조금</button><button type="button" class="preset" data-q="스마트공장">스마트공장</button><button type="button" class="preset" data-q="국가연구개발혁신법">국가연구개발혁신법</button><button type="button" class="preset" data-q="보조금법">보조금법</button><button type="button" class="preset" data-q="공공재정환수법">공공재정환수법</button><button type="button" class="preset" data-q="부정당업자">부정당업자</button><button type="button" class="preset" data-q="국가계약법">국가계약법</button><button type="button" class="preset" data-q="입찰">입찰</button><button type="button" class="preset" data-q="간접비">간접비</button><button type="button" class="preset" data-q="당사자소송">당사자소송</button><button type="button" class="preset" data-q="집행정지">집행정지</button><button type="button" class="preset" data-q="무효확인">무효확인</button><button type="button" class="preset" data-q="징계">징계</button><button type="button" class="preset" data-q="해임">해임</button><button type="button" class="preset" data-q="파면">파면</button><button type="button" class="preset" data-q="소청">소청</button><button type="button" class="preset" data-q="임용">임용</button><button type="button" class="preset" data-q="공무원">공무원</button><button type="button" class="preset" data-q="교원">교원</button><button type="button" class="preset" data-q="허가">허가</button><button type="button" class="preset" data-q="자격">자격</button><button type="button" class="preset" data-q="규제샌드박스">규제샌드박스</button><button type="button" class="preset" data-q="손실보상">손실보상</button><button type="button" class="preset" data-q="국가배상">국가배상</button><button type="button" class="preset" data-q="손해배상">손해배상</button><button type="button" class="preset" data-q="사기">사기</button><button type="button" class="preset" data-q="불송치">불송치</button><button type="button" class="preset" data-q="출국금지">출국금지</button><button type="button" class="preset" data-q="변상금">변상금</button><button type="button" class="preset" data-q="부담금">부담금</button></div>
       </form>
-      <header class="section-head">
-        <h2 id="record-h">주요 수행 사례</h2>
-        <p id="record-count">전문성은 말보다 실제 승소사례로 보여 드립니다. 모두 부효준 변호사가 담당변호사로 직접 수행한 사건입니다.</p><!-- 2026. 10. 25. 밤 본인 지시: 절 머리 문장을 두 문장으로 간결화 — '변론의 방식' 한 문장('어느 기일도 비워 두지 않고 …')과 '판결·결정·재결을 받은 주요 사건의 승소사례를 공개하였고' 삭제 -->
-      </header>
       <div class="section-body">
         <div>
           <div class="case-tools">
@@ -372,69 +437,6 @@
           <!-- committees-past:end -->
         </div>
       </div>
-    </section>
-
-    <section class="section" id="fields" aria-labelledby="fields-h">
-      <!-- 2026. 10. 23. 저녁: 다루는 사건의 전체 설명(다룬 사건·근거 법령·세 기한·주제별 사례)은 fields.html 로 옮기고 홈에는 열 영역의 제목과 한 줄 요약만. 분야를 더하거나 이름을 바꾸면 fields.html 과 여기를 함께 고친다.
-           2026. 10. 25. 본인 지시: 절 머리의 '자세히' 글귀와 카드마다의 한 줄 설명(국가연구개발 카드의 세 기한 띠 포함)도 지우고, 카드에는 제목과 '수행 사례 N건 보기'·'자세히 →' 링크만 둔다. -->
-      <header class="section-head">
-        <h2 id="fields-h">다루는 사건</h2>
-        <nav class="jump" aria-label="다루는 사건 페이지로">
-          <a href="fields.html">다루는 사건 전체</a>
-        </nav>
-      </header>
-      <ul class="field-list">
-      <li class="field lead" id="sum-rnd">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M11 15h10M11 19h10M11 23h6"/><circle cx="23" cy="24" r="4"/></svg>
-        <h3><a href="fields.html#area-rnd">국가연구개발 제재처분</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=rnd" data-cat="rnd"><span class="lbl">수행 사례 <b class="n">56건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-rnd">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-penalty">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 9v14"/><path d="M20 12.5c-.6-1.5-2.2-2-4-2-2.3 0-4 1.1-4 2.8 0 3.6 8 1.8 8 5.4 0 1.7-1.8 2.8-4 2.8-2 0-3.6-.7-4.2-2.2"/></svg>
-        <h3><a href="fields.html#area-penalty">제재부가금 · 환수</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=penalty" data-cat="penalty"><span class="lbl">수행 사례 <b class="n">11건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-penalty">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-personnel">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="10" r="5"/><path d="M6 28c0-5.5 4.5-9 10-9s10 3.5 10 9"/></svg>
-        <h3><a href="fields.html#area-personnel">공무원 · 교원 인사처분</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=personnel" data-cat="personnel"><span class="lbl">수행 사례 <b class="n">26건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-personnel">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-license">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27V9l11-5 11 5v18"/><path d="M5 27h22"/><path d="M12 27v-8h8v8"/><path d="M16 12v3"/></svg>
-        <h3><a href="fields.html#area-license">인허가 · 면허 · 자격 처분</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=license" data-cat="license"><span class="lbl">수행 사례 <b class="n">18건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-license">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-comp">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 24l5-14h12l5 14z"/><path d="M16 10v14"/><path d="M8.5 17h15"/><path d="M5 28h22"/></svg>
-        <h3><a href="fields.html#area-comp">손실보상</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=comp" data-cat="comp"><span class="lbl">수행 사례 <b class="n">17건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-comp">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-admin">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5h20v22H6z"/><path d="M11 11h10M11 16h10M11 21h6"/><circle cx="22" cy="22" r="3.5"/></svg>
-        <h3><a href="fields.html#area-admin">그 밖의 행정처분</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=admin" data-cat="admin"><span class="lbl">수행 사례 <b class="n">31건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-admin">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-criminal">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3l10 4v8c0 7-4.5 11-10 14C10.5 26 6 22 6 15V7z"/><path d="M11.5 16l3 3 6-7"/></svg>
-        <h3><a href="fields.html#area-criminal">정부출연금 · 보조금 형사사건</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=criminal" data-cat="criminal"><span class="lbl">수행 사례 <b class="n">24건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-criminal">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-contract">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h11l6 6v20H8z"/><path d="M19 3v6h6"/><path d="M11 14h10M11 18h7"/><path d="M11 24.5c1.2-2.2 2.4-2.2 3.6 0s2.4 2.2 3.6 0 2.4-2.2 3.8 0"/></svg>
-        <h3><a href="fields.html#area-contract">국가계약법 · 지방계약법</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=contract" data-cat="contract"><span class="lbl">수행 사례 <b class="n">4건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-contract">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-state">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4v24"/><path d="M6 10h20"/><path d="M6 10l-3 8h6zM26 10l-3 8h6z"/><path d="M11 28h10"/></svg>
-        <h3><a href="fields.html#area-state">국가배상</a></h3>
-        <p class="links"><a class="cases-link" href="cases.html#cat=state" data-cat="state"><span class="lbl">수행 사례 <b class="n">18건</b> 보기</span><span class="arr" aria-hidden="true">→</span></a> <a href="fields.html#area-state">자세히 →</a></p>
-      </li>
-      <li class="field" id="sum-advice">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5h14l6 6v16H6z"/><path d="M20 5v6h6"/><path d="M10 16h12M10 20h12M10 24h8"/></svg>
-        <h3><a href="fields.html#area-advice">법률자문 · 법령 해석</a></h3>
-        <p class="links"><a href="fields.html#area-advice">자세히 →</a></p>
-      </li>
-      </ul>
     </section>
 
     <section class="section" id="press" aria-labelledby="press-h">
