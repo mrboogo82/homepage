@@ -1865,6 +1865,23 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .policy .rows.policy-rows > div { grid-template-columns: 11.5rem minmax(0, 1fr); gap: 0.75rem; }
 @media (max-width: 640px) { .policy .rows.policy-rows > div { grid-template-columns: 1fr; gap: 0.15rem; } }
 
+/* ---------- 2026. 11. 9. 15:34 본인 지시: 첫 화면 간소화 ----------
+   단추는 '주요 수행 사례 보기'·'다루는 사건 보기' 둘만, 연락처 줄과 숫자 타일 셋을 지우고 '국가로펌 출신 변호사' 한 줄(.hero-stats.one)만 남긴 뒤 먹갈색 바탕 전체를 줄인다:
+   위아래 안쪽 여백과 요소 사이 간격을 한 단계씩 줄이고(PC 약 870px → 약 650px), 남은 한 줄은 제목·설명이 가로로 나란히 한 줄(좁으면 줄바꿈). 휴대전화의 사진 띠(--band)는 그대로. */
+.hero-stats.one { grid-template-columns: minmax(0, 1fr); margin-top: 0; padding-top: 0.9rem; }
+.hero-stats.one div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.9rem; }
+.hero-stats.one .n { font-size: var(--step-0); letter-spacing: 0; }
+.hero-stats.one .l { margin-top: 0; font-size: var(--step--2); }
+@media (min-width: 761px) { .hero { padding-top: clamp(2rem, 3.6vw, 2.9rem); } }
+.hero-copy { gap: 1.05rem; padding-bottom: clamp(1.75rem, 3.2vw, 2.4rem); }
+.hero-id { gap: 0.55rem; }
+.hero h1 .kicker { margin-bottom: 0.4rem; }
+@media (max-width: 760px) {
+  .hero-copy { gap: 0.95rem; padding-bottom: 1.6rem; }
+  .hero-stats.one .n { font-size: 1rem; }
+  .hero-stats.one .l { font-size: 0.75rem; line-height: 1.45; }
+}
+
 /* =========================================================
    2026. 11. 9. 차분한 겉옷 — 법무법인 구도 홈페이지(kudolaw.co.kr)의 장점을 일정 정도 반영.
    본인 지시: "차분한 분위기가 좋아 보여 — 전체적인 색이나 글씨체 덕분인 것 같아. 지금 홈페이지도 전체적으로 마음에 들지만 그 장점을 일정 정도 반영해줘."
