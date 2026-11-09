@@ -299,22 +299,22 @@ EXTRA_CSS = """
 .related { display: grid; gap: 0.9rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); }
 .related ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
 .related li { display: grid; gap: 0.15rem; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
-.related li a { font-family: var(--serif); font-weight: 600; text-decoration: none; }
+.related li a { font-family: var(--serif); font-weight: 500; text-decoration: none; }
 .related li a:hover { text-decoration: underline; }
 .related .meta { font-size: var(--step--2); color: var(--ink-soft); }
 .related .meta .badge { margin-left: 0.4rem; }
 .related .more { margin-top: 0.25rem; }
 /* 언론보도(press.json, 2026. 10. 22.): 요지 아래에 이 사건이 보도된 기사 목록 */
-.case-press { display: grid; gap: 0.7rem; padding: 1.1rem 1.3rem; border: 1px solid var(--rule); border-left: 3px solid var(--seal); border-radius: 3px; }
+.case-press { display: grid; gap: 0.7rem; padding: 1.1rem 1.3rem; border: 1px solid var(--rule); border-left: 3px solid var(--seal); border-radius: 0; }
 .case-press h2 { font-size: var(--step-0); margin: 0; }
 .case-press ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
 .case-press li { display: grid; gap: 0.1rem; font-size: var(--step--1); line-height: 1.7; }
 .case-press .date { font-variant-numeric: tabular-nums; color: var(--ink-soft); margin-right: 0.45rem; }
-.case-press .outlet { font-weight: 700; margin-right: 0.45rem; }
-.case-press .head a { font-family: var(--serif); font-weight: 600; }
+.case-press .outlet { font-weight: 500; margin-right: 0.45rem; }
+.case-press .head a { font-family: var(--serif); font-weight: 500; }
 .case-press .note { font-size: var(--step--2); color: var(--ink-soft); }
 .case-press .source-line { margin: 0; font-size: var(--step--2); color: var(--ink-soft); }
-.case-cta { display: grid; gap: 0.75rem; padding: 1.4rem 1.5rem; border: 1px solid var(--rule); border-radius: 3px; background: var(--wash); }
+.case-cta { display: grid; gap: 0.75rem; padding: 1.4rem 1.5rem; border: 1px solid var(--rule); border-radius: 0; background: var(--wash); }
 .case-cta p { margin: 0; font-size: var(--step--1); line-height: 1.75; }
 .case-cta .btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .case-cta .btns .btn { color: var(--paper); background: var(--ink); border-color: var(--ink); }
@@ -331,7 +331,7 @@ EXTRA_CSS = """
 .case-detail blockquote cite { display: block; margin-top: 0.5rem; font-style: normal; font-family: var(--sans); font-size: var(--step--2); color: var(--ink-soft); }
 .case-detail .laws-line, .case-detail .kw-line { margin: 0; font-size: var(--step--1); line-height: 1.9; }
 .case-detail .laws-line .label, .case-detail .kw-line .label { margin-right: 0.5rem; }
-.case-detail .kw-line a, .case-detail .kw-line span.kw { display: inline-block; margin: 0.15rem 0.35rem 0.15rem 0; padding: 0.1rem 0.6rem; border: 1px solid var(--rule); border-radius: 999px; font-size: var(--step--2); text-decoration: none; color: var(--ink); }
+.case-detail .kw-line a, .case-detail .kw-line span.kw { display: inline-block; margin: 0.15rem 0.35rem 0.15rem 0; padding: 0.1rem 0.6rem; border: 1px solid var(--rule); border-radius: 0; font-size: var(--step--2); text-decoration: none; color: var(--ink); }
 .case-detail .kw-line a:hover { border-color: var(--seal); color: var(--seal); }
 .case-detail .source-line { margin: 0; font-size: var(--step--2); color: var(--ink-soft); line-height: 1.7; }
 .topic-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 1rem 0 0; font-size: var(--step--1); }
@@ -366,6 +366,10 @@ EXTRA_CSS = """
 .case-cta { background-image: linear-gradient(180deg, var(--wash), color-mix(in srgb, var(--wash) 45%, var(--paper))); }
 .case-detail blockquote { border-image: linear-gradient(180deg, var(--seal), color-mix(in srgb, var(--seal) 30%, transparent)) 1; }
 @media (prefers-reduced-motion: reduce) { .crumbs, .case-head, .topic-page .intro { animation: none; } }
+/* 2026. 11. 9. 차분한 겉옷(cases.css 끝 블록과 같은 취지 — 구도 홈페이지 참고): 상담 상자 바탕·판결 인용 왼줄의 그라데이션을 평평하게, 제목 자간은 0 */
+.case-cta { background-image: none; }
+.case-detail blockquote { border-image: none; }
+.case-h1 { letter-spacing: 0; }
 """
 
 
@@ -630,9 +634,9 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <meta name="twitter:image" content="{esc(og_image)}">
 {ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;900&display=swap">
 <style>@view-transition {{ navigation: auto; }}</style><!-- 페이지 넘김 효과(2026. 10. 23.): 바깥 case.css가 아직 안 받아진 첫 방문에도 두 화면이 겹쳐 바뀌도록 머리에 바로 적음 -->
-<link rel="stylesheet" href="../case.css">
+<link rel="stylesheet" href="../case.css?v=20261109">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
 </script>
@@ -785,9 +789,9 @@ def render_topic_page(t, matched, cat_counts, modified):
 <meta name="twitter:image" content="{SITE}/og-image.jpg?v=4">
 {ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;900&display=swap">
 <style>@view-transition {{ navigation: auto; }}</style><!-- 페이지 넘김 효과(2026. 10. 23.): 바깥 case.css가 아직 안 받아진 첫 방문에도 두 화면이 겹쳐 바뀌도록 머리에 바로 적음 -->
-<link rel="stylesheet" href="../case.css">
+<link rel="stylesheet" href="../case.css?v=20261109">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
 </script>

@@ -91,12 +91,12 @@ body {
 
 a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 0.3em; }
 a:hover { text-decoration-color: currentColor; }
-:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 0; }
 
 h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--serif);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.35;
   letter-spacing: -0.01em;
   text-wrap: balance;
@@ -115,7 +115,7 @@ img { max-width: 100%; }
 .nw { white-space: nowrap; }
 .eyebrow, .label {
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.08em;
   color: var(--ink-soft);
 }
@@ -127,11 +127,11 @@ img { max-width: 100%; }
   display: inline-block;
   padding: 0.5rem 1.2rem;
   font-size: var(--step--1);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--paper);
   background: var(--ink);
   border: 1px solid var(--ink);
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
   cursor: pointer;
 }
@@ -160,7 +160,7 @@ img { max-width: 100%; }
 
 .top.stuck { border-bottom-color: var(--rule); }
 
-.top nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.75rem; font-size: var(--step-0); font-weight: 500; }
+.top nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.75rem; font-size: var(--step-0); font-weight: 400; }
 
 .top nav a { color: var(--ink); text-decoration: none; }
 
@@ -187,7 +187,7 @@ img { max-width: 100%; }
 
 /* 2026. 10. 21.: 머리글의 이름을 차림표보다 한눈에 띄게 — '변호사'는 작은 고딕, '부효준'은 노토 명조 900으로 크게(1.5rem, 자간 띄움). */
 .top .brand { display: inline-flex; align-items: baseline; gap: 0.5rem; color: var(--ink); text-decoration: none; line-height: 1; }
-.brand-role { font-family: var(--sans); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); }
+.brand-role { font-family: var(--sans); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.14em; color: var(--ink-soft); }
 .brand-name { font-family: var(--name); font-size: 1.5rem; font-weight: 900; letter-spacing: 0.06em; }
 .top .brand:hover .brand-name { color: var(--seal); }
 .top { gap: 0.5rem 1.25rem; }
@@ -208,7 +208,7 @@ img { max-width: 100%; }
   background-color: var(--hero-bg);
   background-image: radial-gradient(var(--hero-dot) 1px, transparent 1.2px);
   background-size: 22px 22px;
-  border-radius: 3px;
+  border-radius: 0;
 }
 .hero .eyebrow { color: var(--hero-soft); }
 /* 2026. 10. 21.: 첫 화면 맨 위에 이름을 따로 크게 — 짧은 크림슨 줄 아래 '변호사'(작은 고딕) + '부효준'(노토 명조 900, 제목과 같은 크기 + 자간).
@@ -216,24 +216,24 @@ img { max-width: 100%; }
 .hero-id { display: grid; gap: 0.7rem; }
 .hero-name { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; margin: 0; font-family: var(--name); line-height: 1; }
 .hero-name::before { content: ""; flex: 0 0 100%; width: 2.5rem; max-width: 2.5rem; height: 2px; margin-bottom: 1.1rem; background: var(--hero-seal); }
-.hero-name .role { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.16em; color: var(--hero-soft); }
+.hero-name .role { font-family: var(--sans); font-size: var(--step--1); font-weight: 400; letter-spacing: 0.16em; color: var(--hero-soft); }
 .hero-name strong { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: 0.07em; color: var(--hero-fg); } /* 제목(2.5rem)과 같은 크기 — 굵기·자간으로 구별 */
 .hero-copy { display: grid; gap: 1.5rem; align-content: center; min-width: 0; padding-bottom: clamp(3rem, 6vw, 4.5rem); }
 /* .portrait(오른쪽 누끼 인물 사진) 규칙은 2026. 10. 21. 낮에 사진을 없애면서 지움 — 오른쪽 사진은 아래 '첫 화면 배경 사진' 블록의 .hero::before */
 .hero-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem 1.5rem; margin-top: 0.25rem; padding-top: 1.25rem; border-top: 1px solid var(--hero-line); }
 .hero-stats div { min-width: 0; }
-.hero-stats .n { display: block; font-family: var(--serif); font-size: var(--step-1); font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.hero-stats .n { display: block; font-family: var(--serif); font-size: var(--step-1); font-weight: 500; letter-spacing: -0.01em; line-height: 1.25; font-variant-numeric: tabular-nums; }
 .hero-stats .l { display: block; margin-top: 0.1rem; font-size: var(--step--2); line-height: 1.5; color: var(--hero-soft); }
 .headshot { display: block; width: 7.5rem; height: 7.5rem; margin-top: 0.75rem; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); }
 .hero h1 {
   font-size: var(--display);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.02em;
 }
 .hero h1 em { font-style: normal; color: var(--hero-soft); }
 .hero .lead { max-width: 36rem; font-size: var(--step-0); color: var(--hero-fg); }
-.hero .lead b { font-weight: 500; }
+.hero .lead b { font-weight: 400; }
 .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .cta .btn { color: var(--hero-bg); background: var(--hero-fg); border-color: var(--hero-fg); padding: 0.6rem 1.4rem; }
 .cta .btn.ghost { color: var(--hero-fg); background: none; border-color: var(--hero-soft); }
@@ -257,15 +257,15 @@ img { max-width: 100%; }
 .deadline .days {
   font-family: var(--serif);
   font-size: clamp(2.4rem, 4vw, 3.2rem);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
 }
-.deadline .days small { font-size: 0.42em; font-weight: 500; margin-left: 0.15em; letter-spacing: 0; }
+.deadline .days small { font-size: 0.42em; font-weight: 400; margin-left: 0.15em; letter-spacing: 0; }
 .deadline .days.word { font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.2; }
 .deadline .what { font-size: var(--step-0); line-height: 1.55; }
-.deadline .what b { display: block; font-weight: 500; }
+.deadline .what b { display: block; font-weight: 400; }
 .deadline .ref { grid-column: 2; font-size: var(--step--2); color: var(--hero-soft); }
 
 /* stats strip under the opening screen */
@@ -277,7 +277,7 @@ img { max-width: 100%; }
   border-bottom: 1px solid var(--rule);
 }
 .stats div { min-width: 0; }
-.stats .n { display: block; font-family: var(--serif); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stats .n { display: block; font-family: var(--serif); font-size: var(--step-2); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .stats .l { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
 
 /* ---------- sections ---------- */
@@ -307,7 +307,7 @@ img { max-width: 100%; }
   align-content: start;
   padding: clamp(1.25rem, 2.5vw, 1.75rem);
   border: 1px solid var(--rule);
-  border-radius: 3px;
+  border-radius: 0;
   min-width: 0;
 }
 .situation svg { width: 2rem; height: 2rem; color: var(--seal); }
@@ -315,7 +315,7 @@ img { max-width: 100%; }
 .situation p { font-size: 1rem; line-height: 1.75; }
 .situation .ref { margin-top: auto; padding-top: 0.5rem; font-size: var(--step--2); color: var(--ink-soft); }
 .situation .eg { font-size: var(--step--1); line-height: 1.65; color: var(--ink-soft); }
-.situation .eg b { font-weight: 500; color: var(--ink); }
+.situation .eg b { font-weight: 400; color: var(--ink); }
 .situation a.more { font-size: var(--step--1); }
 .situation.wide { grid-column: span 4; }
 .situation.half { grid-column: span 3; }
@@ -334,7 +334,7 @@ img { max-width: 100%; }
   border-top: 1px solid var(--rule);
 }
 .numbers div { min-width: 0; }
-.numbers .n { display: block; font-family: var(--serif); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.numbers .n { display: block; font-family: var(--serif); font-size: var(--step-2); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .numbers .l { display: block; margin-top: 0.2rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
 
 /* case board: image-first cards, like the certificate gallery */
@@ -345,7 +345,7 @@ img { max-width: 100%; }
   color: var(--ink-soft);
   background: none;
   border: 1px solid var(--rule);
-  border-radius: 999px;
+  border-radius: 0;
   cursor: pointer;
 }
 .chip:hover { color: var(--ink); border-color: var(--ink-soft); }
@@ -353,7 +353,7 @@ img { max-width: 100%; }
 .chip .n { margin-left: 0.4em; font-variant-numeric: tabular-nums; opacity: 0.75; }
 #record .chips { margin-bottom: 1.25rem; }
 .case-list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem 1rem; margin-top: 1.25rem; }
-.case { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; min-width: 0; border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; }
+.case { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; min-width: 0; border: 1px solid var(--rule); border-radius: 0; overflow: hidden; }
 .case-fig {
   position: relative;
   display: grid;
@@ -381,7 +381,7 @@ button.case-fig:hover img { opacity: 0.92; }
 .case-meta .date { font-variant-numeric: tabular-nums; }
 .case-title { font-size: 1.125rem; line-height: 1.45; }
 .case-sub { font-size: var(--step--2); line-height: 1.6; color: var(--ink-soft); }
-.case-sub b { font-weight: 700; color: var(--ink); }
+.case-sub b { font-weight: 500; color: var(--ink); }
 .case-summary { font-size: var(--step--1); line-height: 1.7; }
 .case-link { justify-self: start; font-size: var(--step--1); }
 .empty { padding-block: 1.5rem; font-size: var(--step--1); color: var(--ink-soft); border-block: 1px solid var(--rule); }
@@ -412,7 +412,7 @@ button.case-fig:hover img { opacity: 0.92; }
   font-size: 1.0625rem;
   line-height: 1.95;
 }
-.letter-sign { padding-top: 0.5rem; text-align: right; font-weight: 700; }
+.letter-sign { padding-top: 0.5rem; text-align: right; font-weight: 500; }
 
 /* label / value rows */
 .pair {
@@ -449,8 +449,8 @@ button.case-fig:hover img { opacity: 0.92; }
 .press-list dt { font-size: 0.75rem; padding-top: 0.1em; line-height: 1.55; }
 .press-list dd { display: grid; gap: 0.15rem; font-size: 0.8125rem; line-height: 1.55; }
 .press-list dd .sub { display: block; font-size: 0.75rem; line-height: 1.55; color: var(--ink-soft); }
-.press-list .outlet { font-weight: 700; color: var(--ink); margin-right: 0.4rem; font-size: 0.75rem; }
-.press-list .press-title { font-family: var(--serif); font-weight: 600; color: var(--ink); text-decoration: none; }
+.press-list .outlet { font-weight: 500; color: var(--ink); margin-right: 0.4rem; font-size: 0.75rem; }
+.press-list .press-title { font-family: var(--serif); font-weight: 500; color: var(--ink); text-decoration: none; }
 .press-list .press-title:hover { text-decoration: underline; text-underline-offset: 0.15em; }
 .press-list .sub a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 0.15em; }
 .press-list .sub a:hover { color: var(--seal); }
@@ -458,7 +458,7 @@ button.case-fig:hover img { opacity: 0.92; }
 .press-note { margin-top: 0.5rem; font-size: 0.75rem; color: var(--ink-soft); }
 /* 2026. 10. 23. 낮 본인 지시: 수행 사건 보도 최근 3건만 펼쳐 보이고, 지난 사건 보도·토론회·위원회·강의 기사는 그 아래 details.press-more('더 보기 …' / 펼치면 '접기')에 접어 둠 */
 .press-more { margin-top: -0.4rem; }
-.press-more summary { cursor: pointer; font-family: var(--serif); font-size: 0.6875rem; font-weight: 600; color: var(--ink-soft); }
+.press-more summary { cursor: pointer; font-family: var(--serif); font-size: 0.6875rem; font-weight: 500; color: var(--ink-soft); }
 .press-more summary:hover { color: var(--seal); }
 .press-more summary .when-open { display: none; }
 .press-more[open] summary { margin-bottom: 0.9rem; }
@@ -481,14 +481,14 @@ button.case-fig:hover img { opacity: 0.92; }
   min-height: 6.75rem;
   padding: 1rem 1.1rem;
   border: 1px solid var(--rule);
-  border-radius: 3px;
+  border-radius: 0;
 }
-.wall .org { font-family: var(--serif); font-weight: 600; font-size: 1.0625rem; line-height: 1.4; }
+.wall .org { font-family: var(--serif); font-weight: 500; font-size: 1.0625rem; line-height: 1.4; }
 .wall .role { font-size: var(--step--2); color: var(--ink-soft); }
 .wall .since { margin-top: auto; padding-top: 0.4rem; font-size: var(--step--2); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .wall .stat { font-size: var(--step--2); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .past { margin-top: 1.5rem; font-size: var(--step--1); line-height: 1.75; color: var(--ink-soft); }
-.past b { font-weight: 500; color: var(--ink); margin-right: 0.5em; }
+.past b { font-weight: 400; color: var(--ink); margin-right: 0.5em; }
 
 /* advisory tiles (certificate-first) */
 .advisors { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem 1rem; }
@@ -507,17 +507,17 @@ button.case-fig:hover img { opacity: 0.92; }
   color: var(--ink-soft);
   background: var(--wash);
   border: 1px solid var(--rule);
-  border-radius: 3px;
+  border-radius: 0;
 }
 button.adv-fig { cursor: zoom-in; }
 button.adv-fig:hover { border-color: var(--ink-soft); }
 .adv-fig img { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; }
-.adv-fig .count { position: absolute; right: 0.55rem; bottom: 0.55rem; padding: 0.1rem 0.55rem; font-size: var(--step--2); color: var(--paper); background: var(--ink); border-radius: 999px; }
+.adv-fig .count { position: absolute; right: 0.55rem; bottom: 0.55rem; padding: 0.1rem 0.55rem; font-size: var(--step--2); color: var(--paper); background: var(--ink); border-radius: 0; }
 .adv-fig.none { gap: 0.5rem; }
 .adv-fig.none svg { width: 2.4rem; height: 2.4rem; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.7; }
 .adv-fig.none span { font-family: var(--serif); font-size: var(--step--1); letter-spacing: 0.04em; }
 .adv-body { display: grid; gap: 0.15rem; }
-.adv-body .org { font-family: var(--serif); font-weight: 600; font-size: 1.0625rem; line-height: 1.4; overflow-wrap: anywhere; }
+.adv-body .org { font-family: var(--serif); font-weight: 500; font-size: 1.0625rem; line-height: 1.4; overflow-wrap: anywhere; }
 .adv-body .role, .adv-body .term { font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); }
 .adv-body .term { font-variant-numeric: tabular-nums; }
 /* 기관 로고 띠 (2026. 10. 21.): 위촉·위원회 타일마다 위촉장 그림 위에 작은 흰 띠를 붙이고 그 기관의 공식 로고를 작게 놓는다.
@@ -528,7 +528,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .adv-logo {
   display: flex; align-items: center; justify-content: center;
   box-sizing: border-box; height: 2.4rem; padding: 0.25rem 0.6rem;
-  background: #fff; border: 1px solid var(--rule); border-bottom: 0; border-radius: 3px 3px 0 0;
+  background: #fff; border: 1px solid var(--rule); border-bottom: 0; border-radius: 0;
   text-decoration: none; transition: border-color 0.15s;
 }
 .adv-logo img { display: block; width: auto; max-width: 84%; height: 1.4rem; object-fit: contain; }
@@ -545,7 +545,7 @@ button.adv-fig:hover { border-color: var(--ink-soft); }
 .past-grid .adv-logo.tall img { height: 1.3rem; }
 .past-grid .adv-logo.mid img { height: 1.15rem; }
 /* 강의 목록·경력·학력·수상: 글줄 앞의 작은 로고 띠(2026. 10. 21. 경력·학력·수상에도 — 기관·학교 누리집 링크. 누리집이 없는 법률사무소 비앤케이는 span 띠) */
-.lec-logo { display: inline-flex; align-items: center; vertical-align: -0.35em; box-sizing: border-box; height: 1.6rem; margin-right: 0.55rem; padding: 0.15rem 0.45rem; background: #fff; border: 1px solid var(--rule); border-radius: 3px; text-decoration: none; }
+.lec-logo { display: inline-flex; align-items: center; vertical-align: -0.35em; box-sizing: border-box; height: 1.6rem; margin-right: 0.55rem; padding: 0.15rem 0.45rem; background: #fff; border: 1px solid var(--rule); border-radius: 0; text-decoration: none; }
 .lec-logo img { display: block; width: auto; max-width: 8rem; height: 1.05rem; object-fit: contain; }
 .lec-logo.tall img { height: 1.3rem; }   /* 글자가 작은 로고(정부법무공단·비앤케이·법무법인 금성)는 띠 안에서 조금 크게 */
 a.lec-logo:hover { border-color: var(--ink-soft); }
@@ -575,13 +575,13 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   padding: 0.35rem;
   background: var(--wash);
   border: 1px solid var(--rule);
-  border-radius: 3px;
+  border-radius: 0;
   cursor: zoom-in;
 }
 .cert button:hover { border-color: var(--ink-soft); }
 .cert img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .cert figcaption { font-size: var(--step--2); line-height: 1.5; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.cert figcaption b { display: block; font-weight: 500; color: var(--ink); overflow-wrap: anywhere; }
+.cert figcaption b { display: block; font-weight: 400; color: var(--ink); overflow-wrap: anywhere; }
 .certs.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .cert figcaption span { display: block; white-space: nowrap; }
 .lightbox {
@@ -591,7 +591,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--rule);
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
 }
 .lightbox::backdrop { background: rgba(0, 0, 0, 0.72); }
@@ -602,7 +602,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .lightbox.tall .lb-inner img { max-height: none; height: auto; object-fit: fill; }
 .lb-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.75rem 1rem; border-top: 1px solid var(--rule); }
 .lb-bar p { font-size: var(--step--1); color: var(--ink-soft); }
-.lb-bar p b { display: block; font-weight: 500; color: var(--ink); }
+.lb-bar p b { display: block; font-weight: 400; color: var(--ink); }
 .lb-btns { display: flex; gap: 0.5rem; }
 
 
@@ -630,7 +630,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   text-align: center;
   text-decoration: none;
   border: 0;
-  border-radius: 6px;
+  border-radius: 0;
 }
 /* Every account sits on the same 2.75rem tile. A service's own mark (.brand) fills the tile exactly as the
    service draws it: never recoloured, reshaped or cropped. A black or white tile (.edge) only gets a hairline
@@ -671,7 +671,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   color: var(--ink);
   text-decoration: none;
   border: 1px solid var(--rule);
-  border-radius: 999px;
+  border-radius: 0;
 }
 .sns a:hover { border-color: var(--ink-soft); }
 .sns a small { color: var(--ink-soft); margin-left: 0.3em; }
@@ -691,24 +691,24 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   color: var(--ink-soft);
   background: none;
   border: 1px solid var(--rule);
-  border-radius: 999px;
+  border-radius: 0;
   cursor: pointer;
   vertical-align: 0.1em;
 }
 .copy:hover { color: var(--ink); border-color: var(--ink-soft); }
-.before { display: grid; gap: 0.8rem; padding: clamp(1.25rem, 3vw, 1.75rem); background: var(--wash); border-radius: 3px; }
+.before { display: grid; gap: 0.8rem; padding: clamp(1.25rem, 3vw, 1.75rem); background: var(--wash); border-radius: 0; }
 .before h3 { font-size: var(--step-1); }
 .before p { font-size: 1rem; line-height: 1.75; }
 
 /* online consultation form */
-.consult { position: relative; display: grid; gap: 0.9rem; padding: clamp(1.25rem, 3vw, 1.75rem); border: 1px solid var(--rule); border-radius: 3px; }
+.consult { position: relative; display: grid; gap: 0.9rem; padding: clamp(1.25rem, 3vw, 1.75rem); border: 1px solid var(--rule); border-radius: 0; }
 .consult h3 { font-size: var(--step-1); }
 .consult .hint { font-size: var(--step--1); color: var(--ink-soft); }
 .consult .fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
 .consult .full { grid-column: 1 / -1; }
 .consult label { display: grid; gap: 0.3rem; font-size: var(--step--1); color: var(--ink-soft); }
 .consult label small { margin-left: 0.4em; opacity: 0.8; }
-.consult .req { color: var(--seal); font-weight: 500; }
+.consult .req { color: var(--seal); font-weight: 400; }
 .consult input, .consult select, .consult textarea {
   width: 100%;
   min-width: 0;
@@ -718,7 +718,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--rule);
-  border-radius: 3px;
+  border-radius: 0;
 }
 .consult textarea { min-height: 9rem; resize: vertical; }
 .consult input[type="file"] { padding: 0.4rem; font-size: var(--step--1); }
@@ -727,8 +727,8 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .consult .check input { width: auto; margin-top: 0.3em; }
 .consult details { color: var(--ink-soft); }
 .consult summary { cursor: pointer; }
-.consult details dl { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.35rem 0.8rem; margin-top: 0.6rem; padding: 0.8rem 1rem; background: var(--wash); border-radius: 3px; line-height: 1.6; }
-.consult details dt { font-weight: 500; color: var(--ink); }
+.consult details dl { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.35rem 0.8rem; margin-top: 0.6rem; padding: 0.8rem 1rem; background: var(--wash); border-radius: 0; line-height: 1.6; }
+.consult details dt { font-weight: 400; color: var(--ink); }
 .consult .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
 .consult .status { font-size: var(--step--1); color: var(--ink-soft); }
 .consult .status a { color: var(--ink); }
@@ -752,7 +752,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .sign-block { display: grid; gap: 0.3rem; justify-items: end; text-align: right; font-family: var(--serif); }
 .sign-date { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .sign-name { display: flex; align-items: center; gap: 0.2rem; font-family: var(--name); font-size: 2rem; font-weight: 900; white-space: nowrap; } /* 2026. 10. 21.: 이름은 노토 명조 900, 조금 크게 */
-.sign-name small { font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); margin-right: 0.5rem; }
+.sign-name small { font-family: var(--sans); font-size: var(--step--1); font-weight: 400; letter-spacing: 0.14em; color: var(--ink-soft); margin-right: 0.5rem; }
 .spaced { letter-spacing: 0.3em; }
 .seal { flex: none; width: 4.25rem; height: auto; margin-left: 0.15rem; transform: rotate(-5deg); mix-blend-mode: var(--seal-blend); filter: var(--seal-filter); }
 
@@ -807,20 +807,20 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 
 /* ---------- 길잡이 (2026. 10. 16., Version 71) ---------- */
 /* 분야 칩: 누르는 것임이 보이도록 글자를 키우고 먹색으로, 가리키면 크림슨색 */
-.chip { padding: 0.35rem 1rem; font-size: 1rem; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; }
+.chip { padding: 0.35rem 1rem; font-size: 1rem; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 0; cursor: pointer; }
 .chip:hover { color: var(--seal); border-color: var(--seal); }
 .chip[aria-selected="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 .chip[aria-selected="true"]:hover { color: var(--paper); border-color: var(--ink); }
 .case-tools { display: grid; gap: 0.6rem; }
 .case-tools .label { font-size: var(--step--2); }
 .find { display: flex; gap: 0.5rem; align-items: center; max-width: 36rem; margin-top: 0.2rem; }
-.find input { flex: 1; min-width: 0; padding: 0.45rem 1rem; font: inherit; font-size: 1rem; line-height: 1.5; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; }
+.find input { flex: 1; min-width: 0; padding: 0.45rem 1rem; font: inherit; font-size: 1rem; line-height: 1.5; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 0; }
 .find input::placeholder { color: var(--ink-soft); }
 .find input:focus { outline: none; border-color: var(--ink); }
 .find input::-webkit-search-cancel-button { cursor: pointer; }
 @media (max-width: 640px) { .find .long { display: none; } }
 /* 맨 위로 */
-.totop { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 25; padding: 0.45rem 1rem; font-size: var(--step--1); font-weight: 500; color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 999px; text-decoration: none; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; }
+.totop { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 25; padding: 0.45rem 1rem; font-size: var(--step--1); font-weight: 400; color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 0; text-decoration: none; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14); opacity: 0; visibility: hidden; transform: translateY(6px); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s; }
 .totop.show { opacity: 1; visibility: visible; transform: none; }
 /* 바닥글 차례 */
 .foot-nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem; margin-bottom: 1rem; font-size: var(--step--1); }
@@ -829,14 +829,14 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 
 /* 무엇을 찾으시나요? — 길잡이(.finder)는 2026. 10. 25. 본인 지시로 홈에서 삭제했고(index.html 에 없음), 아래 규칙은 되살릴 때를 위해 남겨 둔 것 */
 .finder { display: grid; gap: 0.9rem; padding-block: clamp(1.5rem, 4vw, 2.25rem); border-bottom: 1px solid var(--rule); }
-.finder .cap { font-size: var(--step--1); font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); }
+.finder .cap { font-size: var(--step--1); font-weight: 400; letter-spacing: 0.08em; color: var(--ink-soft); }
 .finder-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.75rem; }   /* 2026. 10. 21. 다섯 칸 → 네 칸(03 '국가연구개발 제재처분을 받았습니다' 삭제, 그 내용은 02로); 2026. 10. 23. 저녁 05 '언론에 보도된 사건'을 더해 다시 다섯 칸 */
 .finder-list li { min-width: 0; }
-.finder-list a { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; box-sizing: border-box; padding: 1rem 1.1rem 1.05rem; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper); color: inherit; text-decoration: none; transition: border-color 0.15s ease; }
-.finder-list .no { font-size: var(--step--2); font-weight: 500; letter-spacing: 0.08em; color: var(--seal); font-variant-numeric: tabular-nums; }
-.finder-list b { font-family: var(--serif); font-size: var(--step-0); font-weight: 600; line-height: 1.4; }
+.finder-list a { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; box-sizing: border-box; padding: 1rem 1.1rem 1.05rem; border: 1px solid var(--rule); border-radius: 0; background: var(--paper); color: inherit; text-decoration: none; transition: border-color 0.15s ease; }
+.finder-list .no { font-size: var(--step--2); font-weight: 400; letter-spacing: 0.08em; color: var(--seal); font-variant-numeric: tabular-nums; }
+.finder-list b { font-family: var(--serif); font-size: var(--step-0); font-weight: 500; line-height: 1.4; }
 .finder-list .w { font-size: var(--step--1); line-height: 1.55; color: var(--ink-soft); }
-.finder-list .go { margin-top: auto; padding-top: 0.3rem; font-size: var(--step--1); font-weight: 500; color: var(--ink); }
+.finder-list .go { margin-top: auto; padding-top: 0.3rem; font-size: var(--step--1); font-weight: 400; color: var(--ink); }
 .finder-list a:hover { border-color: var(--ink); }
 .finder-list a:hover b, .finder-list a:hover .go { color: var(--seal); }
 @media (max-width: 1000px) { .finder-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .finder-list li:last-child:nth-child(odd) { grid-column: 1 / -1; } }   /* 두 칸씩 놓을 때 홀수 번째 마지막 칸(05)은 한 줄 폭으로 — 빈 칸이 남지 않게(2026. 10. 23. 저녁) */
@@ -844,7 +844,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 @media (max-width: 420px) { .finder-list { grid-template-columns: minmax(0, 1fr); } }
 /* 다루는 사건 바로 가기 */
 .jump { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; margin-top: 0.6rem; font-size: var(--step--1); line-height: 1.6; }
-.jump .cap { width: 100%; font-size: var(--step--2); font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); }
+.jump .cap { width: 100%; font-size: var(--step--2); font-weight: 400; letter-spacing: 0.08em; color: var(--ink-soft); }
 .jump a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
 .jump a:hover { color: var(--seal); border-bottom-color: var(--seal); }
 @media (min-width: 761px) { .section-head .jump { flex-direction: column; align-items: start; gap: 0.3rem; } }
@@ -852,9 +852,9 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 #record .case-tools { margin-bottom: 1.5rem; }
 
 /* 단어 찾기 상자 (2026. 10. 16., Version 76): 눈에 띄도록 옅은 바탕의 상자에 제목·안내·큰 입력 칸 */
-.findbox { display: grid; gap: 0.55rem; padding: 0.95rem 1.1rem 1.1rem; background: var(--wash); border: 1px solid var(--rule); border-radius: 3px; }
+.findbox { display: grid; gap: 0.55rem; padding: 0.95rem 1.1rem 1.1rem; background: var(--wash); border: 1px solid var(--rule); border-radius: 0; }
 .find-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem; }
-.find-head b, .find-title { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 600; white-space: nowrap; }
+.find-head b, .find-title { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 500; white-space: nowrap; }
 .find-head svg, .find-title svg { width: 1.1em; height: 1.1em; color: var(--seal); flex: none; }
 .find-head .hint { font-size: var(--step--1); color: var(--ink-soft); }
 .findbox .find { max-width: none; margin-top: 0; }
@@ -866,12 +866,12 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 
 /* ---------- 사례 찾기 보강 (2026. 10. 16., Version 82) ---------- */
 /* 결과 배지 */
-.badge { display: inline-block; padding: 0.02rem 0.6rem; font-size: var(--step--2); font-weight: 500; line-height: 1.65; letter-spacing: 0; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
+.badge { display: inline-block; padding: 0.02rem 0.6rem; font-size: var(--step--2); font-weight: 400; line-height: 1.65; letter-spacing: 0; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 0; white-space: nowrap; }
 .badge.win { color: var(--ink); border-color: var(--ink); }
 .badge.part { color: var(--ink); border-color: var(--ink-soft); }
 .case-meta .badge { margin-left: auto; }
 /* 언론보도 표시(press.json, 2026. 10. 22.): 보도된 기사가 있는 사례의 카드에 작은 회색 표(결과 배지와 같은 꼴) — 개별 페이지의 '이 사건의 언론보도' 칸으로 안내 */
-.pressmark { display: inline-block; padding: 0.02rem 0.5rem; font-size: var(--step--2); font-weight: 500; line-height: 1.65; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
+.pressmark { display: inline-block; padding: 0.02rem 0.5rem; font-size: var(--step--2); font-weight: 400; line-height: 1.65; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 0; white-space: nowrap; }
 .case-meta .pressmark { margin-left: auto; }
 .case-meta .badge + .pressmark { margin-left: 0.3rem; }
 .case-list:not(.list) .case-meta .pressmark { padding: 0 0.4rem; font-size: 0.6875rem; line-height: 1.5; }
@@ -879,17 +879,17 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .case-summary.clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 /* 자주 찾는 주제 */
 .presets { display: flex; flex-wrap: wrap; gap: 0.3rem 0.45rem; align-items: center; }
-.presets .cap { margin-right: 0.3rem; font-size: var(--step--2); font-weight: 500; letter-spacing: 0.06em; color: var(--ink-soft); }
-.preset { padding: 0.08rem 0.7rem; font: inherit; font-size: var(--step--1); line-height: 1.6; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; }
+.presets .cap { margin-right: 0.3rem; font-size: var(--step--2); font-weight: 400; letter-spacing: 0.06em; color: var(--ink-soft); }
+.preset { padding: 0.08rem 0.7rem; font: inherit; font-size: var(--step--1); line-height: 1.6; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 0; cursor: pointer; }
 .preset:hover { color: var(--seal); border-color: var(--seal); }
 
 /* ---------- 경력·위촉·위원회 직관성 보강 (2026. 10. 16., Version 85) ---------- */
 .career-body { gap: 2.25rem; }
 .career-body .pair { gap: 2.5rem clamp(2rem, 4vw, 3.5rem); }
 .timeline > div { grid-template-columns: 11rem minmax(0, 1fr); gap: 1rem 1.5rem; padding-block: 0.9rem; }
-.timeline dd { font-family: var(--serif); font-size: 1.0625rem; font-weight: 600; line-height: 1.45; }
+.timeline dd { font-family: var(--serif); font-size: 1.0625rem; font-weight: 500; line-height: 1.45; }
 .timeline dd .sub { margin-top: 0.15rem; font-family: var(--sans); font-weight: 400; line-height: 1.6; }
-.timeline .now dt { color: var(--seal); font-weight: 500; }
+.timeline .now dt { color: var(--seal); font-weight: 400; }
 .rows.short > div { grid-template-columns: 4.75rem minmax(0, 1fr); gap: 0.75rem; }   /* 2026. 10. 21. 6rem→4.75rem: 학력 줄에 로고 띠가 들어가 글 칸을 넓힘 */
 #advisory .sub-h { margin-bottom: 0.9rem; }
 #advisory .sub-h.gap-top { margin-top: 2.25rem; }
@@ -914,15 +914,15 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .situation .cases-link {
   display: flex; align-items: center; gap: 0.5rem; min-width: 0;
   margin-top: 0.2rem; padding: 0.7rem 0.8rem;
-  font-size: var(--step--1); font-weight: 600; line-height: 1.4;
+  font-size: var(--step--1); font-weight: 500; line-height: 1.4;
   color: var(--paper); background: var(--ink);
-  border: 1px solid var(--ink); border-radius: 3px;
+  border: 1px solid var(--ink); border-radius: 0;
   text-decoration: none;
   transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 .situation .cases-link .lbl { flex: 1 1 auto; min-width: 0; }
-.situation .cases-link .n { font-weight: 700; font-variant-numeric: tabular-nums; }
-.situation .cases-link .arr { flex: none; font-weight: 500; transition: transform 0.15s ease; }
+.situation .cases-link .n { font-weight: 500; font-variant-numeric: tabular-nums; }
+.situation .cases-link .arr { flex: none; font-weight: 400; transition: transform 0.15s ease; }
 .situation .cases-link:hover, .situation .cases-link:focus-visible { background: var(--seal); border-color: var(--seal); color: #fff; }
 .situation .cases-link:hover .arr { transform: translateX(3px); }
 .situation a.more { color: var(--ink-soft); }
@@ -935,7 +935,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
    글자 링크 아홉 줄은 눈에 띄지 않아 테두리 알약 단추로. 가리키면 크림슨색. 넓은 화면에서는 세로로, 좁은 화면에서는 줄바꿈 가로로. */
 .section-head .jump { gap: 0.45rem 0.5rem; margin-top: 0.9rem; }
 .section-head .jump .cap { margin-bottom: 0.15rem; }
-.section-head .jump a { display: inline-block; padding: 0.32rem 0.9rem; font-size: var(--step--1); font-weight: 500; line-height: 1.5; color: var(--ink); background: var(--paper); border: 1px solid var(--ink); border-radius: 999px; transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
+.section-head .jump a { display: inline-block; padding: 0.32rem 0.9rem; font-size: var(--step--1); font-weight: 400; line-height: 1.5; color: var(--ink); background: var(--paper); border: 1px solid var(--ink); border-radius: 0; transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
 .section-head .jump a:hover, .section-head .jump a:focus-visible { color: #fff; background: var(--seal); border-color: var(--seal); }
 @media (min-width: 761px) { .section-head .jump { gap: 0.45rem; } }
 
@@ -945,7 +945,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 @media (max-width: 520px) { .rows.dates dd { margin-left: 0; } }
 
 /* 첫 화면 제목의 사실 줄 (2026. 10. 16., Version 91): 큰 제목 위에 근거(국가로펌 6년 · 소송·자문 약 3,300건)를 한 줄로 */
-.hero h1 .kicker { display: block; margin-bottom: 0.55rem; font-size: clamp(1.0625rem, 1.6vw, 1.3125rem); font-weight: 600; line-height: 1.4; letter-spacing: 0; color: var(--hero-fg); }
+.hero h1 .kicker { display: block; margin-bottom: 0.55rem; font-size: clamp(1.0625rem, 1.6vw, 1.3125rem); font-weight: 500; line-height: 1.4; letter-spacing: 0; color: var(--hero-fg); }
 
 /* 첫 화면 제목 (2026. 10. 21. 낮): "처분의 과정과 변곡점을 / 제대로 아는 변호사입니다."(두 줄; 종전 같은 날 아침 "처분의 기준을 / 아는 변호사는 / 다투는 방법부터 다릅니다.",
    그 전 "처분이 만들어지는 / 기준을 아는 변호사가 / 그 처분을 제대로 다툽니다."). 글자는 한 단계 줄인 값 그대로(넓은 화면 2.5rem, 휴대전화 1.75rem)이고,
@@ -1037,7 +1037,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .past-grid .adv { gap: 0.4rem; }
 .past-grid .adv-fig { padding: 0.3rem; }
 .past-grid .adv-fig .count { right: 0.35rem; bottom: 0.35rem; padding: 0 0.4rem; font-size: 0.7rem; }
-.past-grid .adv-body .org { font-size: var(--step--1); font-weight: 500; }
+.past-grid .adv-body .org { font-size: var(--step--1); font-weight: 400; }
 .past-grid .adv-body .role, .past-grid .adv-body .term { font-size: 0.72rem; line-height: 1.45; }
 @media (max-width: 1000px) { .past-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 640px) {
@@ -1047,7 +1047,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 }
 
 /* ---------- 휴대전화 번호를 위쪽 여러 곳에 (2026. 10. 16., Version 98) ---------- */
-.top .tel { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.top .tel { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; color: var(--ink); text-decoration: none; white-space: nowrap; }
 .top .tel svg { width: 1.25rem; height: 1.25rem; color: var(--seal); }
 .top .tel:hover { color: var(--seal); }
 .top nav .tel::after { content: none; }
@@ -1061,7 +1061,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .hero-contact { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.4rem; margin-top: -0.35rem; font-size: var(--step--1); color: var(--hero-soft); }
 .hero-contact a { color: inherit; text-decoration: none; }
 .hero-contact a:hover { color: var(--hero-fg); text-decoration: underline; text-underline-offset: 0.2em; }
-.hero-contact .tel { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 700; line-height: 1.2; letter-spacing: 0.01em; color: var(--hero-fg); font-variant-numeric: tabular-nums; }
+.hero-contact .tel { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 500; line-height: 1.2; letter-spacing: 0.01em; color: var(--hero-fg); font-variant-numeric: tabular-nums; }
 .hero-contact .tel svg { width: 1.35rem; height: 1.35rem; color: var(--hero-seal); }
 .hero-contact .tel:hover { text-decoration: none; color: var(--hero-fg); }
 
@@ -1073,7 +1073,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .past-grid .adv-fig { padding: 0.25rem; }
 .past-grid .adv-fig .count { right: 0.25rem; bottom: 0.25rem; padding: 0 0.35rem; font-size: 0.62rem; }
 .past-grid .adv-body { gap: 0.1rem; }
-.past-grid .adv-body .org { font-size: var(--step--2); font-weight: 500; line-height: 1.35; }
+.past-grid .adv-body .org { font-size: var(--step--2); font-weight: 400; line-height: 1.35; }
 .past-grid .adv-body .role, .past-grid .adv-body .term { font-size: 0.68rem; line-height: 1.4; }
 .past-wrap .past { font-size: var(--step--2); }
 @media (max-width: 1000px) { .past-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
@@ -1087,25 +1087,25 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
    정보가 많아 보이는 작은 화면에서는 길잡이가 길 안내 역할을 하도록: 제목을 크게, 항목은 한 줄씩 넓은 행(번호 · 제목 · 먹색 알약)으로, 행 전체가 눌린다. */
 @media (max-width: 640px) {
   .finder { gap: 0.8rem; padding-block: 1.4rem 1.6rem; }
-  .finder .cap { font-family: var(--serif); font-size: var(--step-1); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .finder .cap { font-family: var(--serif); font-size: var(--step-1); font-weight: 500; letter-spacing: -0.01em; color: var(--ink); }
   .finder-list { grid-template-columns: minmax(0, 1fr); gap: 0.55rem; }
   .finder-list a { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 0.75rem; row-gap: 0.45rem; align-items: center; padding: 0.85rem 0.95rem 0.9rem; border-color: var(--ink-soft); }
   .finder-list .no { grid-row: 1; grid-column: 1; align-self: center; font-size: var(--step--1); }
   .finder-list b { grid-row: 1; grid-column: 2; font-size: var(--step-0); line-height: 1.35; }
   .finder-list .w { display: none; }
-  .finder-list .go { grid-row: 2; grid-column: 2; justify-self: start; margin: 0; padding: 0.3rem 0.8rem; font-size: var(--step--2); font-weight: 600; color: var(--paper); background: var(--ink); border-radius: 999px; white-space: nowrap; }
+  .finder-list .go { grid-row: 2; grid-column: 2; justify-self: start; margin: 0; padding: 0.3rem 0.8rem; font-size: var(--step--2); font-weight: 500; color: var(--paper); background: var(--ink); border-radius: 0; white-space: nowrap; }
   .finder-list a:active { border-color: var(--seal); }
   .finder-list a:active .go { background: var(--seal); }
 }
 
 /* 학력·수상 글씨체를 경력과 같게(명조 굵게), 크기는 작게; 경력의 몇 문구(.lite)도 같은 크기로 (2026. 10. 17., Version 109) */
-.rows.short dd { font-family: var(--serif); font-size: 0.9375rem; font-weight: 600; line-height: 1.5; }
+.rows.short dd { font-family: var(--serif); font-size: 0.9375rem; font-weight: 500; line-height: 1.5; }
 .rows.short dd .sub { font-family: var(--sans); font-weight: 400; }
 .rows.short dd .t { display: inline-block; max-width: 100%; }   /* 로고 띠 옆의 글 덩이(2026. 10. 21.): 띠 옆에 다 들어가지 않으면 통째로 다음 줄로 */
 .rows.short .lec-logo { height: 1.45rem; margin-right: 0.45rem; padding: 0.1rem 0.35rem; }   /* 학력·수상 줄의 띠는 조금 작게(학교 머리글 로고가 가로로 길어서) */
 .rows.short .lec-logo img { height: 0.95rem; }
 .rows.short.edu .lec-logo { display: flex; width: max-content; max-width: 100%; margin: 0 0 0.35rem; }   /* 학력 줄: 칸이 좁아 띠를 글 위에 한 줄로(화면 폭에 따라 들쭉날쭉하지 않게) */
-.timeline dd .lite { font-size: 0.9375rem; font-weight: 600; }
+.timeline dd .lite { font-size: 0.9375rem; font-weight: 500; }
 
 /* ---------- 사례마다 담당변호사 표기 (2026. 10. 17., Version 111) ---------- */
 .who { white-space: nowrap; }
@@ -1127,7 +1127,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 }
 
 /* ---------- 강의 목록을 경력 연표와 같은 글씨로 (2026. 10. 17., Version 119) ---------- */
-.past-wrap .rows.dates dd { font-family: var(--serif); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; }
+.past-wrap .rows.dates dd { font-family: var(--serif); font-size: 0.9375rem; font-weight: 500; line-height: 1.45; }
 .past-wrap .rows.dates dd .sub { margin-top: 0.15rem; font-family: var(--sans); font-weight: 400; line-height: 1.6; }
 
 /* ---------- 분야 카드 전체가 눌리는 단추처럼 (2026. 10. 18., Version 120) ----------
@@ -1158,7 +1158,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
    김·장 법률사무소 홈페이지를 참고: 본문이 끝나는 자리에 사무소 위치와 전화번호를 큰 그림과 함께 한 줄로 두어,
    끝까지 읽은 방문자가 바로 길을 찾거나 전화를 걸 수 있게 한다. 바닥글에는 법적 고지(접어 둠)와 저작권 표시를 더한다. */
 .quick { display: flex; justify-content: center; align-items: stretch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-.quick > a, .quick > .maps { flex: 1 1 0; display: inline-flex; justify-content: center; align-items: center; gap: 0.65rem; min-width: 0; padding: 1.35rem 1rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; font-variant-numeric: tabular-nums; }
+.quick > a, .quick > .maps { flex: 1 1 0; display: inline-flex; justify-content: center; align-items: center; gap: 0.65rem; min-width: 0; padding: 1.35rem 1rem; font-family: var(--serif); font-size: var(--step-1); font-weight: 500; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; font-variant-numeric: tabular-nums; }
 .quick > * + * { border-left: 1px solid var(--rule); }
 .quick svg { flex: none; width: 1.6rem; height: 1.6rem; color: var(--seal); }
 .quick > a:hover { color: var(--seal); }
@@ -1167,7 +1167,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
    글자 옆의 두 알약 단추가 각 지도로 가고, 좁은 화면에서는 단추가 글자 아래 줄로 내려간다. */
 .quick .maps { flex-wrap: wrap; row-gap: 0.45rem; }
 .quick .maps .pick { display: inline-flex; gap: 0.35rem; margin-left: 0.15rem; }
-.quick .maps .pick a { display: inline-block; padding: 0.22rem 0.8rem; font-family: var(--sans); font-size: var(--step--1); font-weight: 500; letter-spacing: 0; line-height: 1.5; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 999px; text-decoration: none; white-space: nowrap; }
+.quick .maps .pick a { display: inline-block; padding: 0.22rem 0.8rem; font-family: var(--sans); font-size: var(--step--1); font-weight: 400; letter-spacing: 0; line-height: 1.5; color: var(--ink); background: none; border: 1px solid var(--rule); border-radius: 0; text-decoration: none; white-space: nowrap; }
 .quick .maps .pick a:hover { color: var(--seal); border-color: var(--seal); }
 @media (max-width: 520px) {
   .quick > a, .quick > .maps { gap: 0.5rem; padding: 1.1rem 0.5rem; font-size: var(--step-0); }
@@ -1176,7 +1176,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   .quick .maps .pick a { padding: 0.2rem 0.7rem; font-size: var(--step--2); }
 }
 .fine .notice { margin-top: 0.7rem; }
-.fine .notice summary { cursor: pointer; font-weight: 500; color: var(--ink); }
+.fine .notice summary { cursor: pointer; font-weight: 400; color: var(--ink); }
 .fine .notice p { margin-top: 0.45rem; max-width: 62ch; line-height: 1.7; }
 .fine .rights { margin-top: 0.9rem; font-variant-numeric: tabular-nums; }
 
@@ -1188,7 +1188,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
    이 블록은 위의 한 줄 목록 규칙(.advisors .adv, .past-grid .adv)보다 뒤에 있어야 한다. */
 @media (max-width: 640px) {
   .advisors .adv { grid-template-columns: 5rem minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "logo body" "fig body"; gap: 0 0.85rem; align-items: start; }
-  .advisors .adv-logo { grid-area: logo; justify-self: stretch; height: 1.55rem; padding: 0.15rem 0.3rem; border-bottom: 0; border-radius: 3px 3px 0 0; }
+  .advisors .adv-logo { grid-area: logo; justify-self: stretch; height: 1.55rem; padding: 0.15rem 0.3rem; border-bottom: 0; border-radius: 0; }
   .advisors .adv-logo img { height: 0.95rem; max-width: 90%; }
   .advisors .adv-logo.tall img { height: 1.25rem; }
   .advisors .adv-logo.mid img { height: 1.1rem; }
@@ -1227,8 +1227,8 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 }
 .situation .due-list { display: grid; margin: 0; border-top: 1px solid var(--rule); }
 .situation .due-list > div { display: grid; grid-template-columns: 3.1rem minmax(0, 1fr); gap: 0.6rem; align-items: baseline; padding-block: 0.4rem; border-bottom: 1px solid var(--rule); }
-.situation .due-list dt { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; color: var(--seal); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.situation .due-list dt small { font-size: 0.6em; font-weight: 500; margin-left: 0.05em; }
+.situation .due-list dt { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; color: var(--seal); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.situation .due-list dt small { font-size: 0.6em; font-weight: 400; margin-left: 0.05em; }
 .situation .due-list dd { margin: 0; min-width: 0; font-size: var(--step--2); line-height: 1.55; }
 .situation .due-list dd .r { display: block; color: var(--ink-soft); }
 .situation .topics a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 0.15em; }
@@ -1349,7 +1349,7 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
    검색 로봇·AI가 홈만 읽어도 전체 사례(제목·분야·법원·날짜·결과·개별 페이지 링크)를 알 수 있게 글로 넣되, 사람에게는 접혀 보인다.
    ssr_cases.py 가 <!-- all-list:start --> … <!-- all-list:end --> 사이를 데이터대로 다시 만든다. */
 .all-list { margin-top: 1.25rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); }
-.all-list summary { cursor: pointer; font-family: var(--serif); font-size: var(--step--1); font-weight: 600; color: var(--ink-soft); list-style-position: inside; }
+.all-list summary { cursor: pointer; font-family: var(--serif); font-size: var(--step--1); font-weight: 500; color: var(--ink-soft); list-style-position: inside; }
 .all-list summary:hover { color: var(--seal); }
 .all-list summary .when-open { display: none; }
 .all-list[open] summary .when-closed { display: none; }
@@ -1520,7 +1520,7 @@ ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margi
 @media (max-width: 640px) {
   .situation.fold:not(.open) > p:not(.eg):not(.ref), .situation.fold.lead:not(.open) .cols.three > div:first-child > p { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
   .situation.fold:not(.open) > .eg, .situation.fold:not(.open) > .ref, .situation.fold.lead:not(.open) .cols.three > div:last-child { display: none; }
-  .situation.fold .situation-more { display: inline-block; align-self: flex-start; margin: -0.1rem 0 0.1rem; padding: 0.12rem 0.7rem; font: inherit; font-size: 0.8125rem; font-weight: 500; line-height: 1.6; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; }
+  .situation.fold .situation-more { display: inline-block; align-self: flex-start; margin: -0.1rem 0 0.1rem; padding: 0.12rem 0.7rem; font: inherit; font-size: 0.8125rem; font-weight: 400; line-height: 1.6; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 0; cursor: pointer; }
   .situation.fold .situation-more::after { content: " ⌄"; }
   .situation.fold.open .situation-more::after { content: " ⌃"; }
   .situation.fold .situation-more:active { color: var(--seal); border-color: var(--seal); }
@@ -1569,7 +1569,7 @@ ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margi
 
 .count-note { margin-left: 0.5rem; font-family: var(--sans); font-size: var(--step--2); font-weight: 400; letter-spacing: 0; color: var(--ink-soft); }
 .org-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.9rem; padding: 0; }
-.org-chip { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2rem; padding: 0.2rem 0.7rem 0.2rem 0.45rem; font-size: var(--step--1); line-height: 1.3; color: #2d3239; background: #fff; border: 1px solid var(--tile-edge); border-radius: 999px; text-decoration: none; }
+.org-chip { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2rem; padding: 0.2rem 0.7rem 0.2rem 0.45rem; font-size: var(--step--1); line-height: 1.3; color: #2d3239; background: #fff; border: 1px solid var(--tile-edge); border-radius: 0; text-decoration: none; }
 .org-chip img { display: block; width: auto; height: 1rem; max-width: 5.5rem; object-fit: contain; }
 .org-chip img.tall { height: 1.3rem; }
 .org-chip img.mid { height: 1.15rem; }
@@ -1583,7 +1583,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 }
 
 .field-list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; margin: 0; padding: 0; }
-.field { display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 3px; }
+.field { display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 0; }
 .field.lead { grid-column: 1 / -1; }
 .field svg { width: 1.6rem; height: 1.6rem; color: var(--seal); }
 .field h3 { font-size: var(--step-0); line-height: 1.35; }
@@ -1593,14 +1593,14 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .field .links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; margin-top: auto; padding-top: 0.35rem; font-size: var(--step--1); }
 .field .links a { color: var(--ink-soft); text-decoration: none; }
 .field .links a:hover { color: var(--seal); text-decoration: underline; text-underline-offset: 0.2em; }
-.field .links a.cases-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.22rem 0.8rem; font-weight: 600; color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 999px; transition: background-color 0.15s ease, border-color 0.15s ease; }   /* 2026. 10. 23. 오후: 선택자를 .field .links a 보다 세게 — 종전엔 회색 글자가 먹색 단추에 묻혀 안 보였음(본인 지적) */
+.field .links a.cases-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.22rem 0.8rem; font-weight: 500; color: var(--paper); background: var(--ink); border: 1px solid var(--ink); border-radius: 0; transition: background-color 0.15s ease, border-color 0.15s ease; }   /* 2026. 10. 23. 오후: 선택자를 .field .links a 보다 세게 — 종전엔 회색 글자가 먹색 단추에 묻혀 안 보였음(본인 지적) */
 .field .cases-link .n { font-variant-numeric: tabular-nums; }
-.field .cases-link .arr { font-weight: 500; }
+.field .cases-link .arr { font-weight: 400; }
 .field .links a.cases-link:hover { color: #fff; background: var(--seal); border-color: var(--seal); text-decoration: none; }
-.field.lead .due-line { display: flex; flex-wrap: wrap; gap: 0.3rem 1.6rem; margin-top: 0.1rem; padding: 0.55rem 0.85rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink); background: var(--wash); border-radius: 3px; }
+.field.lead .due-line { display: flex; flex-wrap: wrap; gap: 0.3rem 1.6rem; margin-top: 0.1rem; padding: 0.55rem 0.85rem; font-size: var(--step--2); line-height: 1.5; color: var(--ink); background: var(--wash); border-radius: 0; }
 .field.lead .due-line span { display: inline-flex; align-items: baseline; gap: 0.35rem; }
-.field.lead .due-line b { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--seal); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.field.lead .due-line b small { font-size: 0.6em; font-weight: 500; margin-left: 0.05em; }
+.field.lead .due-line b { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; line-height: 1; letter-spacing: -0.02em; color: var(--seal); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.field.lead .due-line b small { font-size: 0.6em; font-weight: 400; margin-left: 0.05em; }
 @media (max-width: 1000px) { .field-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) {
   .field-list { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
@@ -1620,7 +1620,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
    본인 지시: 법률고문 위촉과 현재 활동 중인 위원회의 위촉장은 모두 홈 본문에, 나머지(경력·학력·수상·임기를 마친 위촉·위원회)는 간단하게 —
    경력·학력·수상은 두 줄(.career-brief), 임기를 마친 위촉·위원회와 강의는 타일 아래 한 줄(.past, work/build_pages.py 가 career.html 에서 만듦). */
 .career-brief { max-width: 60rem; font-size: var(--step--1); line-height: 1.75; }
-.career-brief b { font-weight: 600; color: var(--ink); }
+.career-brief b { font-weight: 500; color: var(--ink); }
 .career-brief.sub { margin-top: 0.35rem; color: var(--ink-soft); }
 .career-brief a { color: var(--ink); text-decoration-color: var(--rule); }
 .career-brief a:hover { color: var(--seal); text-decoration-color: var(--seal); }
@@ -1720,7 +1720,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
    ② 접은 폴드7(휴대전화)에서 머리글 차림표(주요 수행 사례·경력·다루는 사건·언론보도·상담 문의)가 한 줄에 — 글씨를 화면 폭에 맞춰(clamp) 줄이고 줄바꿈을 막음(전화번호는 이름 줄 오른쪽 그대로)
    ③ 접은 폴드7에서 첫 화면 분야 줄('국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 행정쟁송')이 한 줄에 — 글씨·자간을 화면 폭에 맞춰 줄이고 줄바꿈을 막음
    ④ 작은 제목 '국가로펌 출신' → '국가로펌 출신 행정법 전문변호사'(index.html)  ⑤ 접은 폴드7에서 주요 수행 사례 네 장(위 블록) */
-.hero-name-en { margin: -0.15rem 0 0; font-family: var(--sans); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.1em; color: var(--hero-soft); }
+.hero-name-en { margin: -0.15rem 0 0; font-family: var(--sans); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.1em; color: var(--hero-soft); }
 .hero-name-en .sep { margin: 0 0.3em; opacity: 0.6; }
 @media (max-width: 760px) {
   .top nav { flex-wrap: nowrap; justify-content: space-between; gap: 0 2vw; font-size: clamp(0.72rem, 3.45vw, 0.9375rem); }
@@ -1732,7 +1732,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 
 /* ---------- 2026. 10. 25. 밤 본인 지시: 머리글 이름 옆 영문 이름 (Boo Hyoejune) ----------
    넓은 화면은 이름 뒤에 가는 세로줄을 두고 작은 고딕으로, 휴대전화(≤760px)는 이름 아래 한 줄로(이름 줄 오른쪽의 전화번호와 겹치지 않게). */
-.brand-en { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; color: var(--ink-soft); white-space: nowrap; }
+.brand-en { font-family: var(--sans); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.08em; color: var(--ink-soft); white-space: nowrap; }
 .brand-en::before { content: ""; display: inline-block; width: 1px; height: 0.95em; margin-right: 0.7rem; vertical-align: -0.12em; background: var(--rule); }
 .top .brand:hover .brand-en { color: var(--ink); }
 @media (max-width: 760px) {
@@ -1741,7 +1741,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
   .brand-en::before { content: none; }
 }
 /* 바닥글 서명 아래 영문 한 줄 (같은 지시) */
-.sign-en { margin: -0.1rem 0 0; font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; color: var(--ink-soft); white-space: nowrap; }
+.sign-en { margin: -0.1rem 0 0; font-family: var(--sans); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em; color: var(--ink-soft); white-space: nowrap; }
 .sign-en .sep { margin: 0 0.3em; opacity: 0.6; }
 
 /* ---------- 2026. 10. 25. 밤 본인 지시(23:20): 이름 아래 가는 줄 + 대문자 영문 이름 — 참고한 다른 사무소 로고(이름 / 줄 / KANG CHANG HYO)처럼 ----------
@@ -1775,7 +1775,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
    ② 두 단 절의 왼쪽 칸(.section-head) 아래 빈자리의 다른 한 장(.side-photo, 칸 폭 12rem·4:5; 휴대전화에서는 숨김)은 언론보도·상담 문의 페이지에 있었으나 20:31 지시로 삭제 —
       지금은 어느 페이지도 쓰지 않는 규칙(되살리려면 커밋 85e6608 의 contact.html·work/build_press.py 의 <figure class="side-photo …"> 줄). */
 .page-photo, .side-photo { margin: 0; }
-.page-photo img, .side-photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; background: var(--wash); }
+.page-photo img, .side-photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 0; background: var(--wash); }
 .page-photo.portrait img, .side-photo.portrait img { object-position: 50% 18%; }   /* 세로 공간이 모자라면 얼굴 쪽을 남김 */
 /* 2026. 10. 27. 본인 지시: "'경력'에 실린 사진이 너무 네모네모한 느낌이라 모서리 부분을 살짝 흐리게" → 17:37 "'다루는 사건' 사진도 해줘. 다만, 두 사진 전부 녹이는 정도는 약하게"
    — 두 페이지 사진의 네 모서리·가장자리를 마스크로 종이색에 녹인다. 세 겹 마스크의 교집합(mask-composite: intersect; 웹킷은 -webkit-mask-composite: source-in):
@@ -1854,7 +1854,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .fine .policy-link:hover { color: var(--seal); text-decoration-color: currentColor; }
 #policy { grid-template-columns: minmax(0, 1fr); }   /* 절은 두 단(제목 12rem + 본문)이 기본이라 한 단으로 */
 .policy { max-width: 48rem; display: grid; gap: 0.55rem; font-size: var(--step--1); line-height: 1.8; color: var(--ink); }
-.policy h3 { margin-top: 1.1rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 700; color: var(--ink); }
+.policy h3 { margin-top: 1.1rem; font-family: var(--serif); font-size: var(--step-0); font-weight: 500; color: var(--ink); }
 .policy h3:first-child { margin-top: 0; }
 .policy p { max-width: 68ch; }
 .policy ul { margin: 0; padding-left: 1.25rem; display: grid; gap: 0.3rem; }
@@ -1864,3 +1864,83 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .policy a:hover { color: var(--seal); text-decoration-color: currentColor; }
 .policy .rows.policy-rows > div { grid-template-columns: 11.5rem minmax(0, 1fr); gap: 0.75rem; }
 @media (max-width: 640px) { .policy .rows.policy-rows > div { grid-template-columns: 1fr; gap: 0.15rem; } }
+
+/* =========================================================
+   2026. 11. 9. 차분한 겉옷 — 법무법인 구도 홈페이지(kudolaw.co.kr)의 장점을 일정 정도 반영.
+   본인 지시: "차분한 분위기가 좋아 보여 — 전체적인 색이나 글씨체 덕분인 것 같아. 지금 홈페이지도 전체적으로 마음에 들지만 그 장점을 일정 정도 반영해줘."
+   구도의 인상은 ① 본문까지 모두 명조이고 굵은 글씨가 없음 ② 흰 바탕·먹색 글자·가는 먹선, 강조색은 깊은 팥색(#791717) 하나 — 큰 절 제목에만
+   ③ 각진 모서리, 그림자·광택 없음, 평평한 연회색 상자 ④ 넉넉한 행간(1.71)·자간(0.03em)에서 온다.
+   구조(절·카드·단추 배치)는 그대로 두고 글씨체·굵기·색·선·모서리·효과만 바꾼다. 모서리(border-radius → 0)와 글자 굵기(700·600 → 500, 500 → 400, 이름 900은 그대로)는
+   앞의 본문 규칙에서 직접 바꿨고, 나머지는 이 블록이 파일 끝에서 덮어쓴다(이 블록을 지우면 색·글씨체·효과는 종전으로 돌아감).
+   ========================================================= */
+:root {
+  --paper: #ffffff;        /* 종이색: 따뜻한 미색(#fbfbf9) → 흰색 (구도 #fff) */
+  --ink-soft: #6b7076;     /* 보조 글자: 조금 연하고 중립적인 회색 (구도 회색 #8b8b8b은 작은 글자에 너무 옅어 그보다 진하게) */
+  --rule: #e3e4e2;         /* 안쪽 구분선(표·카드·타일): 더 옅게 */
+  --line: var(--ink);      /* 절 사이·바닥글의 긴 가로선: 가는 먹선 (구도의 1px 검은 윗선) */
+  --wash: #f5f5f4;         /* 회색 상자: 평평한 연회색 (구도 #f7f7f7) */
+  --seal: #7a1e2d;         /* 크림슨: 더 어둡고 차분한 쪽 — 고려대 크림슨(PANTONE 202C) 계열을 유지하되 파비콘의 깊은 와인빛(#6e1623)에 가깝게 (구도 팥색 #791717과 비슷한 깊이) */
+  --hero-seal: #d0596d;    /* 어두운 첫 화면 위의 크림슨: 덜 쨍하게 */
+  --tile-edge: #e3e4e2;
+  --sans: var(--serif);    /* 고딕을 쓰던 자리(본문·잔글·단추·표)도 모두 명조로 — 구도처럼 한 글씨체 */
+}
+@media (prefers-color-scheme: dark) and (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  :root:not([data-theme="light"]) { --ink-soft: #a3a6ab; --rule: #34373d; --line: #777b82; --wash: #23262b; --seal: #d9687b; --hero-seal: #d9687b; --tile-edge: #44464a; }
+}
+:root[data-theme="dark"] { --ink-soft: #a3a6ab; --rule: #34373d; --line: #777b82; --wash: #23262b; --seal: #d9687b; --hero-seal: #d9687b; --tile-edge: #44464a; }
+
+/* 글씨체: 본문도 명조(노토 명조 400), 자간을 조금 띄우고 행간을 넉넉히 — 제목은 500, 글 속 강조(b·strong)는 600까지만 */
+body { font-family: var(--serif); font-weight: 400; letter-spacing: 0.01em; line-height: 1.85; }
+h1, h2, h3, h4 { font-weight: 500; letter-spacing: 0.01em; }
+b, strong { font-weight: 600; }
+.hero h1 { letter-spacing: 0; }
+.hero h1 .kicker { font-weight: 500; }
+.stats .n, .hero-stats .n, .numbers .n, .deadline .days { letter-spacing: 0; }
+.btn, .chip, .preset, .badge, .section-head .jump a, .top nav, .finder-list .go { font-weight: 400; letter-spacing: 0.02em; }
+.top .tel, .hero-contact .tel { font-weight: 500; }
+
+/* 절 제목: 구도처럼 깊은 팥색 명조(굵지 않게), 절 사이는 가는 먹선 — 오른쪽으로 옅어지던 그라데이션 선은 끝까지 그은 선으로 */
+.section { border-top: 1px solid var(--line); border-image: none; }
+.section-head h2 { color: var(--seal); font-weight: 400; font-size: 1.875rem; line-height: 1.3; }
+.section-head p { color: var(--ink-soft); }
+.sign, .quick { border-image: none; }
+.sign { border-top-color: var(--line); }
+.quick { border-top-color: var(--line); border-bottom-color: var(--line); }
+.quick + .sign { border-top: 0; }
+
+/* 첫 화면: 점무늬·크림슨 빛·위아래 명암을 걷어 평평한 먹색 바탕으로 (사진과 모서리 녹임은 그대로) */
+.hero { background-image: none; border-radius: 0; }
+.hero::after {
+  background:
+    radial-gradient(circle at 0 0, var(--paper) 0, var(--paper) 3px, transparent var(--hero-corner)),
+    radial-gradient(circle at 100% 0, var(--paper) 0, var(--paper) 3px, transparent var(--hero-corner)),
+    radial-gradient(circle at 0 100%, var(--paper) 0, var(--paper) 3px, transparent var(--hero-corner)),
+    radial-gradient(circle at 100% 100%, var(--paper) 0, var(--paper) 3px, transparent var(--hero-corner));
+}
+.hero-name::before { background: var(--hero-seal); }
+.hero-stats { border-image: none; }
+
+/* 머리글 차림표: 명조 400, 밑줄은 1px 가는 선 */
+.top nav a:not(.btn)::after { height: 1px; }
+
+/* 상자·단추: 광택·바탕 그라데이션·그림자 없이 평평하게; 손을 올리면 떠오르는 대신 글자·선이 크림슨으로 (구도의 선 호버) */
+.btn:not(.ghost):not(.danger), .situation .cases-link, .chip[aria-selected="true"] { background-image: none; }
+.findbox.big, .before { background-image: none; }
+.findbox .find input:focus { box-shadow: none; border-color: var(--seal); }
+.consult input:focus, .consult select:focus, .consult textarea:focus { box-shadow: none; }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover, .case:hover, .finder-list a:hover, .situation.linked:hover, .sns.icons a:hover .ico { transform: none; box-shadow: none; }
+  button.adv-fig:hover, .cert button:hover, .case-docs figure a:hover { box-shadow: none; }
+  .case:hover { border-color: var(--ink); }
+  .case:hover .case-title a { color: var(--seal); }
+  .case:hover .case-fig img { transform: none; }
+  .situation.linked:hover { border-color: var(--seal); }
+  .finder-list a:hover { border-color: var(--seal); }
+  .btn.ghost:hover { color: var(--seal); border-color: var(--seal); }
+  .cta .btn.ghost:hover { color: var(--hero-fg); border-color: var(--hero-fg); }
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @media (min-width: 761px) {
+    .top.stuck { background: color-mix(in srgb, var(--paper) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  }
+}
