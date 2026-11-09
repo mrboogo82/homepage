@@ -176,7 +176,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;900&display=swap">
-<link rel="stylesheet" href="home.css?v=20261109-6">
+<link rel="stylesheet" href="home.css?v=20261109-7">
 </head>
 <body>
 <div class="page" id="top" lang="ko">
@@ -255,11 +255,7 @@
         <!-- 2026. 11. 9. 15:34 본인 지시(간소화): 첫 화면 단추에서 '상담 문의'를 빼고 '주요 수행 사례 보기'·'다루는 사건 보기'만(그 순서) — 연락처 줄(휴대전화·사무실 전화·이메일, .hero-contact)과
              숫자 타일 셋(소송·자문 약 3,300건, 약 20개 기관 고문, 다수 위원회)도 삭제, '국가로펌 출신 변호사' 한 줄만 남김(.hero-stats.one). 연락처는 머리글(휴대전화 화면)·상담 문의 절·바닥글에 그대로. -->
         <!-- 2026. 11. 9. 16:00 본인 지시: 단추는 '경력 보기'·'주요 수행 사례 보기'·'다루는 사건 보기' 셋(그 순서, 모두 같은 테두리 단추); 아래 줄은 '국가로펌 출신 변호사' 제목을 빼고 경력 한 줄만 -->
-        <div class="cta">
-          <a class="btn ghost" href="#career">경력 보기</a>
-          <a class="btn ghost" href="#record">주요 수행 사례 보기</a>
-          <a class="btn ghost" href="#fields">다루는 사건 보기</a>
-        </div>
+        <!-- 2026. 11. 9. 16:11 본인 지시: 첫 화면 단추 셋(경력 보기·주요 수행 사례 보기·다루는 사건 보기)도 삭제 — 차림표로 충분. 되살리려면 커밋 35431db의 .cta -->
         <div class="hero-stats one" aria-label="경력 요약">
           <div><span class="l"><span class="nw">사법연수원 41기</span> · <span class="nw">(전) 정부법무공단(KGLS) 변호사</span> · <span class="nw">법무부장관 표창 (국가소송 유공)</span></span></div><!-- 항목 단위로만 줄바꿈(.nw) -->
         </div>
@@ -274,7 +270,7 @@
       <form class="findbox big" id="find-form" role="search" aria-labelledby="find-h">
               <div class="find-head">
                 <b id="find-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg><span>단어로 주요 수행 판결문 <span id="find-count">272</span>건 찾기</span></b>
-                <span class="hint">처분이나 법령의 이름 한 단어면 됩니다 · 제목·요지·법원·처분내용·결과에서 찾습니다</span>
+                <!-- 2026. 11. 9. 16:11 본인 지시: 안내 문구(처분이나 법령의 이름 한 단어면 됩니다 · 제목·요지·법원·처분내용·결과에서 찾습니다) 삭제 -->
               </div>
               <div class="find">
                 <input type="search" id="find-q" placeholder="예: 참여제한, 환수, 징계, 면허" autocomplete="off" aria-label="찾을 단어">
