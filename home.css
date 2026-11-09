@@ -1889,6 +1889,14 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
   .hero { margin-inline: 0; padding-inline: clamp(1.75rem, 3vw, 2.5rem); }
 }
 
+/* ---------- 2026. 11. 9. 16:27 본인 지시: 바닥글 간소화 — '개인 소개 페이지입니다 …' 줄을 빼고 여백 정리 ----------
+   차례 → 잔글(광고책임변호사 · 법적 고지 · ©) 사이와 바닥글 위아래 여백을 한 단계씩 줄인다. */
+.sign { padding-block: clamp(2rem, 4vw, 2.75rem) 0; }
+.foot-nav { margin-bottom: 0.75rem; }
+.fine { gap: 0.15rem; }
+.page { padding-block: 0 1.75rem; }
+@media (max-width: 760px) { .sign { padding-top: 1.75rem; } }
+
 /* =========================================================
    2026. 11. 9. 차분한 겉옷 — 법무법인 구도 홈페이지(kudolaw.co.kr)의 장점을 일정 정도 반영.
    본인 지시: "차분한 분위기가 좋아 보여 — 전체적인 색이나 글씨체 덕분인 것 같아. 지금 홈페이지도 전체적으로 마음에 들지만 그 장점을 일정 정도 반영해줘."
