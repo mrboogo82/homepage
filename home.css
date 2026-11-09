@@ -1584,7 +1584,9 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 
 .field-list { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; margin: 0; padding: 0; }
 .field { display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 0; }
-.field.lead { grid-column: 1 / -1; }
+/* 2026. 11. 9. 본인 지시: 전체(넓은) 화면에서 국가연구개발 제재처분 카드도 다른 아홉 장과 같은 크기 — 열 장이 5장씩 두 줄로 꽉 찬다. 휴대전화(≤760px, 두 장씩)도 열 장 = 다섯 줄로 꼭 맞으므로 같게.
+   한 줄 3장이 되는 761~1100px(펼친 폴드7·태블릿)에서만 종전처럼 한 줄 폭(1 + 9 = 세 줄) — 열 장을 3장씩 놓으면 마지막 줄에 한 장이 남기 때문. */
+@media (min-width: 761px) and (max-width: 1100px) { .field.lead { grid-column: 1 / -1; } }
 .field svg { width: 1.6rem; height: 1.6rem; color: var(--seal); }
 .field h3 { font-size: var(--step-0); line-height: 1.35; }
 .field h3 a { text-decoration: none; }
@@ -1633,13 +1635,11 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
    ① 홈 다루는 사건 카드에서 한 줄 설명과 세 기한 띠를 지우고 제목·'수행 사례 N건 보기'·'자세히 →'만 남김 — 한 줄 폭인 국가연구개발 카드(.field.lead)는 설명이 없어져 빈 띠처럼
       보이지 않도록 그림·제목을 왼쪽, 링크를 오른쪽에 가로로 놓는다(휴대전화에서는 다른 카드처럼 세로).
    ② '온라인 상담 신청' 신청서(.consult)는 바탕색을 종이색보다 살짝 다르게(--wash) — 입력 칸은 종이색 그대로라 도드라지고, 안내 보기(details dl)는 바탕과 겹치지 않게 종이색으로. */
-.field.lead { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; }
-.field.lead h3 { flex: 1 1 12rem; }
-.field.lead .links { margin-top: 0; margin-left: auto; padding-top: 0; }
-@media (max-width: 640px) {
-  .field.lead { flex-direction: column; align-items: stretch; gap: 0.35rem; }
-  .field.lead h3 { flex: 0 1 auto; }   /* 세로 배치에서는 flex-basis 12rem 이 높이가 되어 버리므로 되돌림 */
-  .field.lead .links { margin-left: 0; padding-top: 0.35rem; }
+/* 2026. 11. 9.: 가로 배치는 카드가 한 줄 폭인 761~1100px에서만 (그 밖의 폭에서는 다른 카드와 같은 세로 카드) */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .field.lead { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; }
+  .field.lead h3 { flex: 1 1 12rem; }
+  .field.lead .links { margin-top: 0; margin-left: auto; padding-top: 0; }
 }
 .consult { background: var(--wash); }
 .consult details dl { background: var(--paper); border: 1px solid var(--rule); }
@@ -1665,7 +1665,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
       두 단(왼쪽 제목 12rem + 오른쪽 본문 약 800px)으로는 타일·카드를 한 줄에 더 넣을수록 휴대전화만큼 작아지기 때문. 언론보도·상담 문의 절은 두 단 그대로.
    ② 위촉장·위원회 타일(.advisors)은 한 줄 9장 — 중앙행정기관 9장·위원회 7장이 각각 한 줄, 공공기관 11장은 9+2(그 전 6장: 6+3·6+5·6+1).
       1100px 이하 7장, 900px 이하 6장, 760px 이하 5장, 640px 이하는 종전 두 장 목록 그대로. career.html 의 임기를 마친 묶음(.past-grid)은 현행 타일보다 작아야 하므로 12장(1100px 이하 9장, 900px 이하 8장, 760px 이하 6장).
-   ③ 다루는 사건 카드는 국가연구개발 제재처분(한 줄 폭) 아래 아홉 영역을 한 줄 5장(5+4; 그 전 3장씩 세 줄) — 1100px 이하 3장, 760px 이하 2장, 640px 이하 한 장(종전). 5장일 때는 카드 여백·제목·단추를 조금 줄여 '수행 사례 N건 보기' 단추가 칸 안에 들어가게 한다. */
+   ③ 다루는 사건 카드는 국가연구개발 제재처분(한 줄 폭) 아래 아홉 영역을 한 줄 5장(5+4; 그 전 3장씩 세 줄 — 2026. 11. 9.부터 국가연구개발 카드도 같은 크기로 5+5) — 1100px 이하 3장, 760px 이하 2장, 640px 이하 한 장(종전). 5장일 때는 카드 여백·제목·단추를 조금 줄여 '수행 사례 N건 보기' 단추가 칸 안에 들어가게 한다. */
 #career, #fields { grid-template-columns: minmax(0, 1fr); }
 #career .section-head, #fields .section-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; }
 #career .section-head .jump, #fields .section-head .jump { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin-top: 0; }
@@ -1688,8 +1688,8 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 }
 @media (min-width: 1101px) {
   .field-list { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.7rem; }
-  .field:not(.lead) { padding: 0.9rem 0.85rem; }
-  .field:not(.lead) h3 { font-size: 1rem; }
+  .field { padding: 0.9rem 0.85rem; }   /* 2026. 11. 9.: 국가연구개발 카드도 같은 치수(종전 :not(.lead)) */
+  .field h3 { font-size: 1rem; }
   .field .links { gap: 0.35rem 0.7rem; }
   .field .links a.cases-link { font-size: 0.8125rem; padding: 0.2rem 0.65rem; }
 }
@@ -1699,18 +1699,18 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 /* ---------- 2026. 10. 25. 저녁 본인 지시 ④: 접은 폴드7(휴대전화)에서도 다루는 사건 카드를 한 줄 두 장 ----------
    국가연구개발 제재처분 카드(.field.lead)는 한 줄 폭 그대로(grid-column: 1 / -1), 아래 아홉 영역은 두 장씩(5줄; 그 전 한 장씩 9줄).
    좁은 칸(412px 화면에서 약 185px, 360px 화면에서 약 159px)에 '수행 사례 N건 보기' 단추가 들어가도록 카드 여백·제목·단추를 줄인다. */
-@media (max-width: 640px) {
+@media (max-width: 640px) {   /* 2026. 11. 9.: 국가연구개발 카드도 같은 치수(종전 :not(.lead)) — 열 장이 두 장씩 다섯 줄 */
   .field-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
-  .field:not(.lead) { gap: 0.3rem; padding: 0.7rem 0.65rem 0.75rem; }
-  .field:not(.lead) svg { width: 1.25rem; height: 1.25rem; }
-  .field:not(.lead) h3 { font-size: 0.9375rem; line-height: 1.3; }
-  .field:not(.lead) .links { gap: 0.25rem 0.5rem; padding-top: 0.25rem; }
-  .field:not(.lead) .links a { font-size: 0.75rem; }
-  .field:not(.lead) .links a.cases-link { gap: 0.3rem; padding: 0.16rem 0.5rem; }
+  .field { gap: 0.3rem; padding: 0.7rem 0.65rem 0.75rem; }
+  .field svg { width: 1.25rem; height: 1.25rem; }
+  .field h3 { font-size: 0.9375rem; line-height: 1.3; }
+  .field .links { gap: 0.25rem 0.5rem; padding-top: 0.25rem; }
+  .field .links a { font-size: 0.75rem; }
+  .field .links a.cases-link { gap: 0.3rem; padding: 0.16rem 0.5rem; }
 }
 @media (max-width: 380px) {   /* 더 좁은 휴대전화: 단추가 칸 밖으로 나가지 않도록 한 단계 더 */
-  .field:not(.lead) { padding-inline: 0.55rem; }
-  .field:not(.lead) .links a.cases-link { font-size: 0.7rem; padding-inline: 0.45rem; }
+  .field { padding-inline: 0.55rem; }
+  .field .links a.cases-link { font-size: 0.7rem; padding-inline: 0.45rem; }
 }
 
 /* 2026. 10. 25. 저녁의 '변론의 방식' 규칙(.hero .lead.creed, .career-body .creed-text)은 2026. 10. 26. 00:03 본인 지시로 문구와 함께 삭제 — 되살리려면 커밋 336db45 */
