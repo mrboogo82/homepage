@@ -1871,7 +1871,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .hero-stats.one { grid-template-columns: minmax(0, 1fr); margin-top: 0; padding-top: 0.9rem; }
 .hero-stats.one div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.9rem; }
 .hero-stats.one .n { font-size: var(--step-0); letter-spacing: 0; }
-.hero-stats.one .l { margin-top: 0; font-size: var(--step--2); }
+.hero-stats.one .l { margin-top: 0; font-size: var(--step--1); line-height: 1.6; }   /* 2026. 11. 9. 16:00: 제목(.n) 없이 이 한 줄만 남아 한 단계 키움 */
 @media (min-width: 761px) { .hero { padding-top: clamp(2rem, 3.6vw, 2.9rem); } }
 .hero-copy { gap: 1.05rem; padding-bottom: clamp(1.75rem, 3.2vw, 2.4rem); }
 .hero-id { gap: 0.55rem; }
