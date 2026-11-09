@@ -636,7 +636,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;900&display=swap">
 <style>@view-transition {{ navigation: auto; }}</style><!-- 페이지 넘김 효과(2026. 10. 23.): 바깥 case.css가 아직 안 받아진 첫 방문에도 두 화면이 겹쳐 바뀌도록 머리에 바로 적음 -->
-<link rel="stylesheet" href="../case.css?v=20261109">
+<link rel="stylesheet" href="../case.css?v=20261109-2">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
 </script>
@@ -791,7 +791,7 @@ def render_topic_page(t, matched, cat_counts, modified):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;900&display=swap">
 <style>@view-transition {{ navigation: auto; }}</style><!-- 페이지 넘김 효과(2026. 10. 23.): 바깥 case.css가 아직 안 받아진 첫 방문에도 두 화면이 겹쳐 바뀌도록 머리에 바로 적음 -->
-<link rel="stylesheet" href="../case.css?v=20261109">
+<link rel="stylesheet" href="../case.css?v=20261109-2">
 <script type="application/ld+json">
 {json.dumps(ld, ensure_ascii=False, indent=1)}
 </script>

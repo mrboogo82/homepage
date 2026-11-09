@@ -3,26 +3,27 @@
 <head>
 <meta charset="utf-8">
 <!-- 링크 공유용 이미지(og-image.jpg, 1200×630)의 본. work/og_image.py가 이 파일을 크로미움으로 찍어 저장한다.
-     바탕은 첫 화면과 같은 연한 먹색(--hero-bg #2d3239), 글자는 첫 화면의 밝은 색, 짧은 줄은 어두운 바탕용 크림슨(#ec4b63).
+     바탕은 첫 화면과 같은 연한 먹색(--hero-bg; 2026. 11. 9.부터 따뜻한 먹갈색 #3b322e, 종전 #2d3239), 글자는 첫 화면의 밝은 색, 짧은 줄은 어두운 바탕용 크림슨(2026. 11. 9. #d0596d, 종전 #ec4b63).
+     2026. 11. 9.: 홈페이지가 본문까지 명조가 되어(구도 참고) 이미지의 글씨체도 모두 노토 명조로.
      2026. 10. 21.: 오른쪽 누끼 인물 사진 대신 첫 화면과 같은 사무실 사진(photo-desk-tall.webp)을 오른쪽 46%에 깔고 왼쪽을 바탕색으로 녹임.
      2026. 10. 23.: '이미지인 만큼 정보를 덜어 내자'는 본인 뜻에 따라 A형으로 간소화 — 변호사 / 부효준 / 짧은 크림슨 줄 / 분야 한 줄 / 주소만
      (분야 두 줄·소속·고문 문구는 뺌). 구성은 홈페이지 첫 화면의 이름 줄(짧은 크림슨 줄 + 변호사 + 이름)과 같다.
      글꼴은 Google Fonts가 막힌 환경에서는 설치된 Noto Serif/Sans CJK KR로 찍힌다(같은 글꼴). -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;900&display=swap">
 <style>
   html, body { margin: 0; }
-  body { width: 1200px; height: 630px; overflow: hidden; background: #2d3239; color: #f3f1ec; font-family: "Noto Sans KR", "Noto Sans CJK KR", "Malgun Gothic", sans-serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: #3b322e; color: #f3f1ec; font-family: "Noto Serif KR", "Noto Serif CJK KR", "Batang", serif; -webkit-font-smoothing: antialiased; word-break: keep-all; }
   .card { position: relative; width: 1200px; height: 630px; }
   .copy { position: absolute; left: 72px; top: 150px; width: 760px; z-index: 1; }   /* 오른쪽 사진 판 위에 */
-  .role { margin: 0; font-size: 30px; font-weight: 500; letter-spacing: 0.08em; color: #b3b8c0; }
+  .role { margin: 0; font-size: 30px; font-weight: 500; letter-spacing: 0.08em; color: #c4b9b0; }
   .name { margin: 14px 0 0; font-family: "Noto Serif KR", "Noto Serif CJK KR", "Batang", serif; font-size: 116px; font-weight: 900; line-height: 1.05; letter-spacing: 0.07em; color: #f3f1ec; } /* 홈페이지 이름(노토 명조 900, 자간)과 맞춤 */
-  .rule { width: 72px; height: 4px; margin: 34px 0 0; background: #ec4b63; }
+  .rule { width: 72px; height: 4px; margin: 34px 0 0; background: #d0596d; }
   .field { margin: 28px 0 0; font-size: 34px; font-weight: 500; line-height: 1.45; color: #f3f1ec; }
-  .domain { margin: 44px 0 0; font-size: 26px; font-weight: 400; letter-spacing: 0.02em; color: #b3b8c0; }
+  .domain { margin: 44px 0 0; font-size: 26px; font-weight: 400; letter-spacing: 0.02em; color: #c4b9b0; }
   .photo {
     position: absolute; right: 0; top: 0; bottom: 0; width: 46%;
     background-image:
-      linear-gradient(to right, rgba(45, 50, 57, 1) 0%, rgba(45, 50, 57, 0.92) 18%, rgba(45, 50, 57, 0.4) 38%, rgba(45, 50, 57, 0) 56%),
+      linear-gradient(to right, rgba(59, 50, 46, 1) 0%, rgba(59, 50, 46, 0.92) 18%, rgba(59, 50, 46, 0.4) 38%, rgba(59, 50, 46, 0) 56%),
       url("../photo-desk-tall.webp");
     background-size: cover; background-position: 66% 20%; background-repeat: no-repeat;
   }
