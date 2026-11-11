@@ -17,46 +17,79 @@
   // 조절 자리: 크기는 아래 CSS 의 .season-tree height, 색은 TREE 의 색 셋.
   (function () {
     var brand = document.querySelector('.top .brand'); if (!brand) return;
-    var TREE = {
-      spring: { c: ['#f6c6d3', '#f9dbe3', '#efaec0'], o: 0.95 },
-      summer: { c: ['#6f9a60', '#86ad72', '#587f51'], o: 1 },
-      autumn: { c: ['#c2553a', '#d98a35', '#dcab45'], o: 1 }
+    // 2026. 11. 11. 19:25 본인 지시("실제 나무 같은 느낌이 더 나도록"): 둥근 덩이 일곱 개 대신, 줄기에서 가지가 갈라져 나가는 뼈대를 먼저 기르고(grow)
+    // 가지 끝마다 작은 잎 뭉치를 그늘 → 중간 → 햇빛 받는 쪽 차례로 겹쳐 얹는다. 난수는 씨앗을 고정해 어느 페이지에서나 같은 나무가 나온다.
+    var seed = +(/[?&]seed=(\d+)/.exec(location.search) || [0, 11])[1];   // 씨앗 11번 나무(미리 보기: ?seed=숫자)
+    function rnd() { seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
+    function r2(a, b) { return a + rnd() * (b - a); }
+    function f(n) { return n.toFixed(1); }
+    var limbs = [], tips = [], nodes = [];
+    function grow(x, y, ang, len, w, depth) {
+      if (ang > 1.3) ang = 1.3; if (ang < -1.3) ang = -1.3;
+      var bend = r2(-0.22, 0.22), x2 = x + Math.sin(ang) * len, y2 = y - Math.cos(ang) * len;
+      var mx = (x + x2) / 2 + Math.cos(ang) * bend * len * 0.5, my = (y + y2) / 2 + Math.sin(ang) * bend * len * 0.5;
+      limbs.push({ d: 'M' + f(x) + ' ' + f(y) + 'Q' + f(mx) + ' ' + f(my) + ' ' + f(x2) + ' ' + f(y2), w: w });
+      if (depth <= 2) tips.push([x2, y2]);
+      if (depth >= 1 && depth <= 3) nodes.push([x2, y2, ang]);
+      if (depth === 0) return;
+      var n = depth === 4 ? 3 : 2, i, a;
+      for (i = 0; i < n; i++) {
+        a = ang + (i - (n - 1) / 2) * r2(0.5, 0.72) + r2(-0.14, 0.14);
+        grow(x2, y2, a, len * r2(0.66, 0.8), Math.max(0.45, w * 0.6), depth - 1);
+      }
+    }
+    grow(24, 50, 0.03, 13.5, 3.2, 4);
+
+    var PAL = {
+      spring: { dark: ['#e38fa8', '#e9a3b7'], mid: ['#f3bccb', '#f6c9d5'], light: ['#fbe1e8', '#fff3f6'], n: 5, r: [1.2, 2.1], R: 4.4, o: 0.96 },
+      summer: { dark: ['#3f6a3d', '#4a7745'], mid: ['#5d8c4f', '#6b9a59'], light: ['#86b06c', '#a2c684'], n: 7, r: [1.7, 2.8], R: 4.6, o: 1 },
+      autumn: { dark: ['#8f3423', '#a8432b'], mid: ['#c4553a', '#d67a33', '#cf6a35'], light: ['#e0a03f', '#e8bd57'], n: 6, r: [1.5, 2.5], R: 4.4, o: 1 }
     };
-    var BLOBS = [[15, 23, 8, 1], [33, 23, 8, 2], [24, 25, 7.5, 0], [18, 14, 8, 0], [30, 14, 8, 1], [24, 9.5, 7, 2], [24, 17.5, 8.5, 1]];
-    var wood = '#7a5a44';
-    var h = '<ellipse cx="24" cy="50.4" rx="10" ry="1.3" fill="rgba(60,45,35,0.10)"/>';
+    var bark = '#5c4434', barkLight = '#836651', k, j, L;
+    var h = '<ellipse cx="24" cy="50.5" rx="11" ry="1.3" fill="rgba(60,45,35,0.10)"/>';
+    var body = '<path d="M20.4 50.7Q22.8 49.2 22.7 45.5L25.5 45.5Q25.6 49.3 27.8 50.7Z" fill="' + bark + '"/>';
+    for (k = 0; k < limbs.length; k++) { L = limbs[k]; body += '<path d="' + L.d + '" fill="none" stroke="' + bark + '" stroke-width="' + f(L.w) + '" stroke-linecap="round"/>'; }
+    body += '<path d="M23.3 49.5C23 44 23.6 39.5 23.6 36" fill="none" stroke="' + barkLight + '" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>';
+
     if (season === 'winter') {
-      var BR = ['M24 36L14 26', 'M24 33L34 23', 'M24 28L18 15', 'M24 28L30 14', 'M14 26L8.5 22.5', 'M34 23L39.5 20', 'M18 15L14.5 9.5', 'M30 14L33 8.5', 'M24 28L24 12'];
-      var SNOW = ['M9 21.2L14 24.4L19 29.4', 'M39 18.7L34 21.4L29.5 25.9'];
-      var PUFF = [[13.5, 20.5, 5.2], [34.5, 18.5, 5.2], [18, 13, 6.2], [30, 12.5, 6.2], [24, 8.5, 5.8], [24, 16.5, 5.6]], k, puffs = '', lines = '';
-      h += '<path d="M24 50C23.4 43 24.6 36 24 28" fill="none" stroke="' + wood + '" stroke-width="2.8" stroke-linecap="round"/>';
-      h += '<path d="' + BR.join('') + '" fill="none" stroke="' + wood + '" stroke-width="1.5" stroke-linecap="round"/>';
-      h += '<path d="' + SNOW.join('') + '" fill="none" stroke="#b9c7d6" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>';
-      h += '<path d="' + SNOW.join('') + '" fill="none" stroke="#f4f8fb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
-      // 가지 위에 소복이 얹힌 눈: 바깥 금(옅은 청회색)을 먼저 한꺼번에 그리고 그 위에 흰 덩이를 얹어 덩이끼리 겹친 자리에 금이 남지 않게
-      for (k = 0; k < PUFF.length; k++) { lines += '<circle cx="' + PUFF[k][0] + '" cy="' + PUFF[k][1] + '" r="' + (PUFF[k][2] + 0.55) + '"/>'; puffs += '<circle cx="' + PUFF[k][0] + '" cy="' + PUFF[k][1] + '" r="' + PUFF[k][2] + '"/>'; }
-      h += '<g fill="#b9c7d6">' + lines + '</g><g fill="#f4f8fb">' + puffs + '</g>';
-      h += '<g fill="#dfe7ef"><circle cx="20" cy="15.5" r="2.2"/><circle cx="29" cy="10.5" r="1.8"/><circle cx="14" cy="22" r="1.5"/></g>';
-      h += '<path d="M24 27L24 20.5M21 22.5L24 25.5L27.4 21.8" fill="none" stroke="' + wood + '" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/>';
-      h += '<path d="M11 50.6Q24 44.6 37 50.6Z" fill="#f4f8fb" stroke="#b9c7d6" stroke-width="0.7" stroke-linejoin="round"/>';
-      h += '<g fill="#b9c7d6"><circle cx="7" cy="33" r="1"/><circle cx="41" cy="31" r="1.1"/><circle cx="38" cy="41" r="0.8"/><circle cx="10" cy="43" r="0.8"/><circle cx="24" cy="4" r="0.9"/></g>';
+      var sh = '', sn = '', x, y, rx, ry;
+      for (k = 0; k < nodes.length; k++) {
+        if (rnd() < 0.18) continue;
+        x = nodes[k][0] + r2(-0.6, 0.6); y = nodes[k][1] - 0.9; rx = r2(2.1, 3.4); ry = rx * r2(0.42, 0.58);
+        sh += '<ellipse cx="' + f(x) + '" cy="' + f(y + 0.55) + '" rx="' + f(rx + 0.35) + '" ry="' + f(ry + 0.3) + '"/>';
+        sn += '<ellipse cx="' + f(x) + '" cy="' + f(y) + '" rx="' + f(rx) + '" ry="' + f(ry) + '"/>';
+      }
+      for (k = 0; k < tips.length; k++) {
+        if (rnd() < 0.45) continue;
+        x = tips[k][0]; y = tips[k][1] - 0.4; rx = r2(1.1, 1.8);
+        sh += '<ellipse cx="' + f(x) + '" cy="' + f(y + 0.45) + '" rx="' + f(rx + 0.3) + '" ry="' + f(rx * 0.6 + 0.25) + '"/>';
+        sn += '<ellipse cx="' + f(x) + '" cy="' + f(y) + '" rx="' + f(rx) + '" ry="' + f(rx * 0.6) + '"/>';
+      }
+      h += body + '<g fill="#b4c3d3">' + sh + '</g><g fill="#f6f9fc">' + sn + '</g>';
+      h += '<path d="M10.5 50.7Q17 46.6 24 47.6Q31.5 46.4 37.5 50.7Z" fill="#f6f9fc" stroke="#b4c3d3" stroke-width="0.7" stroke-linejoin="round"/>';
+      h += '<g fill="#b4c3d3"><circle cx="5.5" cy="33" r="0.9"/><circle cx="43" cy="30" r="1"/><circle cx="40" cy="42" r="0.75"/><circle cx="8.5" cy="43" r="0.75"/></g>';
     } else {
-      var t = TREE[season], k, b, top = '';
-      h += '<path d="M24 50C23.4 44 24.6 38 24 27M24 37L16.5 28M24 34L31.5 26" fill="none" stroke="' + wood + '" stroke-width="2.6" stroke-linecap="round"/>';
-      for (k = 0; k < BLOBS.length; k++) { b = BLOBS[k]; top += '<circle cx="' + b[0] + '" cy="' + b[1] + '" r="' + b[2] + '" fill="' + t.c[b[3]] + '"/>'; }
-      if (season === 'spring') top += '<g fill="#fff" opacity="0.75"><circle cx="19" cy="12" r="1.3"/><circle cx="29" cy="18" r="1.2"/><circle cx="14" cy="22" r="1.1"/><circle cx="33" cy="25" r="1"/><circle cx="24" cy="8" r="1"/></g><g fill="#e58fa8"><circle cx="23" cy="15" r="0.9"/><circle cx="31" cy="11" r="0.8"/><circle cx="17" cy="19" r="0.8"/><circle cx="27" cy="24" r="0.8"/></g>';
-      if (season === 'summer') top += '<g fill="#a5c88f" opacity="0.8"><circle cx="19.5" cy="11.5" r="3"/><circle cx="29.5" cy="19" r="2.4"/><circle cx="13.5" cy="21" r="2"/></g>';
-      if (season === 'autumn') top += '<g fill="#e9c35a" opacity="0.85"><circle cx="20" cy="11" r="2.4"/><circle cx="31" cy="20" r="2"/></g><g fill="#a93f2e"><circle cx="27" cy="13" r="1.6"/><circle cx="16" cy="23" r="1.4"/></g>';
-      h += '<g class="season-tree-top" opacity="' + t.o + '">' + top + '</g>';
-      if (season === 'spring') h += '<g fill="#efaec0"><ellipse cx="41" cy="33" rx="1.5" ry="1" transform="rotate(-30 41 33)"/><ellipse cx="8" cy="38" rx="1.4" ry="0.9" transform="rotate(25 8 38)"/><ellipse cx="35" cy="49.6" rx="1.5" ry="0.8"/><ellipse cx="14" cy="50" rx="1.3" ry="0.7"/></g>';
-      if (season === 'autumn') h += '<g><ellipse cx="41" cy="35" rx="1.8" ry="1.1" fill="#d98a35" transform="rotate(-35 41 35)"/><ellipse cx="8" cy="40" rx="1.6" ry="1" fill="#c2553a" transform="rotate(30 8 40)"/><ellipse cx="34" cy="49.8" rx="1.8" ry="0.9" fill="#dcab45"/><ellipse cx="15" cy="50" rx="1.6" ry="0.8" fill="#c2553a"/><ellipse cx="29" cy="50.4" rx="1.4" ry="0.7" fill="#d98a35"/></g>';
+      var P = PAL[season], lay = { dark: '', mid: '', light: '' }, ang2, dist, px, py, sc, tone, col, rr;
+      for (k = 0; k < tips.length; k++) {
+        for (j = 0; j < P.n; j++) {
+          ang2 = r2(0, 6.283); dist = Math.sqrt(rnd()) * P.R;
+          px = tips[k][0] + Math.cos(ang2) * dist; py = tips[k][1] + Math.sin(ang2) * dist * 0.85 - 0.8;
+          sc = (py - 19) / 14 * 0.85 + (px - 24) / 20 * 0.18 + r2(-0.6, 0.6);   // 아래·오른쪽일수록 그늘, 위·왼쪽일수록 햇빛
+          tone = sc > 0.4 ? 'dark' : sc < -0.3 ? 'light' : 'mid';
+          col = P[tone][Math.floor(rnd() * P[tone].length)]; rr = r2(P.r[0], P.r[1]);
+          lay[tone] += '<ellipse cx="' + f(px) + '" cy="' + f(py) + '" rx="' + f(rr) + '" ry="' + f(rr * r2(0.62, 0.9)) + '" fill="' + col + '" transform="rotate(' + Math.round(r2(-60, 60)) + ' ' + f(px) + ' ' + f(py) + ')"/>';
+        }
+      }
+      h += '<g class="season-tree-top">' + body + '<g opacity="' + P.o + '">' + lay.dark + lay.mid + lay.light + '</g></g>';
+      if (season === 'spring') h += '<g fill="#efaec0"><ellipse cx="43.5" cy="34" rx="1.4" ry="0.9" transform="rotate(-30 43.5 34)"/><ellipse cx="5" cy="39" rx="1.3" ry="0.85" transform="rotate(25 5 39)"/><ellipse cx="35" cy="49.8" rx="1.4" ry="0.75"/><ellipse cx="14" cy="50.1" rx="1.2" ry="0.65"/><ellipse cx="30" cy="50.5" rx="1.1" ry="0.6" fill="#f6c9d5"/></g>';
+      if (season === 'autumn') h += '<g><ellipse cx="43.5" cy="36" rx="1.6" ry="1" fill="#d67a33" transform="rotate(-35 43.5 36)"/><ellipse cx="5" cy="41" rx="1.5" ry="0.95" fill="#c4553a" transform="rotate(30 5 41)"/><ellipse cx="34" cy="49.9" rx="1.7" ry="0.85" fill="#e0a03f"/><ellipse cx="15" cy="50.1" rx="1.5" ry="0.8" fill="#c4553a"/><ellipse cx="29.5" cy="50.5" rx="1.3" ry="0.7" fill="#d67a33"/><ellipse cx="19" cy="50.6" rx="1.1" ry="0.6" fill="#e8bd57"/></g>';
     }
     var st = document.createElement('style');
     st.textContent =
       '.top .brand{position:relative}' +
       '.season-tree{position:absolute;left:100%;bottom:-0.15rem;height:2.9rem;width:auto;margin-left:0.55rem;overflow:visible;pointer-events:none}' +
       '.season-tree-top{transform-box:view-box;transform-origin:24px 50px;animation:season-tree-sway 7s ease-in-out infinite alternate}' +
-      '@keyframes season-tree-sway{from{transform:rotate(-1.3deg)}to{transform:rotate(1.3deg)}}' +
+      '@keyframes season-tree-sway{from{transform:rotate(-0.9deg)}to{transform:rotate(0.9deg)}}' +
       '@media (max-width:760px){.season-tree{height:2.45rem;margin-left:0.4rem}}' +
       '@media (prefers-reduced-motion:reduce){.season-tree-top{animation:none}}' +
       '@media print{.season-tree{display:none}}';
