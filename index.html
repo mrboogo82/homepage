@@ -176,7 +176,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap">
-<link rel="stylesheet" href="home.css?v=20261111-3">
+<link rel="stylesheet" href="home.css?v=20261111-4">
 </head>
 <body>
 <div class="page" id="top" lang="ko">
@@ -376,8 +376,31 @@
       <div class="section-body career-body">
         <div class="block" id="career-history">
           <h3 class="block-h">경력 · 학력 · 수상 <a class="h-more" href="career.html#career-history">자세히</a></h3><!-- 2026. 11. 11. 20:35 본인 지시: 블록 제목 옆에 '자세히' 링크(아래 줄 끝의 '경력 · 학력 · 수상 자세히 →'는 삭제). 법률고문 위촉·위원회 · 강의도 같게 -->
-          <p class="career-brief">제51회 사법시험 합격(2009) · 사법연수원 제41기 수료(2012) · 법무부 법무실 국가송무과 · 대한법률구조공단 법무관(2012 ~ 2015) · <b>정부법무공단(KGLS) 변호사(2015 ~ 2021)</b> · 법률사무소 비앤케이 대표변호사(2021 ~ 2024) · <b>법무법인(유한) 금성 구성원변호사(2024. 10. ~ 현재)</b></p>
-          <p class="career-brief sub">고려대학교 법학과 졸업(2009) · 고려대학교 대학원 법학과 석사과정, 행정법(2012) · 법무부장관 표창(2014)</p>
+          <!-- 2026. 11. 11. 21:09 본인 지시: 줄글 두 줄(career-brief)이 한 번에 파악하기 어렵다 → 경력 / 학력 / 수상 세 묶음의 '연도 + 직함' 표로 정리(내용은 그대로, career.html 연표와 맞출 것). 종전 줄글은 커밋 6528ba2 -->
+          <div class="brief-grid">
+            <div class="brief-col">
+              <h4 class="brief-h">경력</h4>
+              <ul class="brief-list">
+                <li><span class="y">2009</span><span class="t">제51회 사법시험 합격</span></li>
+                <li><span class="y">2012</span><span class="t">사법연수원 제41기 수료</span></li>
+                <li><span class="y">2012 ~ 2015</span><span class="t">법무부 법무실 국가송무과 · 대한법률구조공단 법무관</span></li>
+                <li><span class="y">2015 ~ 2021</span><span class="t"><b>정부법무공단(KGLS) 변호사</b></span></li>
+                <li><span class="y">2021 ~ 2024</span><span class="t">법률사무소 비앤케이 대표변호사</span></li>
+                <li class="now"><span class="y">2024. 10. ~ 현재</span><span class="t"><b>법무법인(유한) 금성 구성원변호사</b></span></li>
+              </ul>
+            </div>
+            <div class="brief-col">
+              <h4 class="brief-h">학력</h4>
+              <ul class="brief-list">
+                <li><span class="y">2009</span><span class="t">고려대학교 법학과 졸업</span></li>
+                <li><span class="y">2012</span><span class="t">고려대학교 대학원 법학과 석사과정 (행정법)</span></li>
+              </ul>
+              <h4 class="brief-h gap">수상</h4>
+              <ul class="brief-list">
+                <li><span class="y">2014</span><span class="t">법무부장관 표창</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="block" id="advisory">
           <h3 class="block-h">법률고문 위촉 <a class="h-more" href="career.html#advisory">자세히</a></h3>
