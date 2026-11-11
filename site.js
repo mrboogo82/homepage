@@ -289,7 +289,7 @@ var LB = (function () {
   // 사례 데이터는 외부 파일 cases-data.js(window.CASES_DATA; 2026. 10. 23. 인라인 JSON 블록에서 분리)에서; 옛 인라인 블록이 있으면 그것을 읽는다
   try { cases = Array.isArray(window.CASES_DATA) ? window.CASES_DATA : (JSON.parse(document.getElementById(DATA_ID).textContent) || []); } catch (e) { cases = []; }
 
-  // 분야 카드 맨 아래 '주요 수행 사례 N건 →' 단추의 건수 (Version 87)
+  // 분야 카드 맨 아래 '수행 사례 N건 →' 단추의 건수 (Version 87)
   Array.prototype.forEach.call(document.querySelectorAll('.cases-link[data-cat]'), function (a) {
     var cat = a.getAttribute('data-cat'), n = 0;
     cases.forEach(function (c) { if (c.cat === cat) n++; });
@@ -403,7 +403,7 @@ var LB = (function () {
     }
     if (allLink) {
       var whole = state.filter === 'all' || state.filter === 'main';
-      allLink.textContent = whole ? '주요 수행 사례 전체 보기 (최근 순)' : (CATS[state.filter] || '') + ' 사례 전체 보기';
+      allLink.textContent = whole ? '수행 사례 전체 보기 (최근 순)' : (CATS[state.filter] || '') + ' 사례 전체 보기';
       allLink.href = whole ? 'cases.html' : 'cases.html#cat=' + state.filter;
     }
     emptyEl.hidden = shown.length > 0;
@@ -441,7 +441,7 @@ var LB = (function () {
   window.addEventListener('load', update);
   update();
 })();
-// 2026. 10. 16. (Version 71·75): 주요 수행 사례의 찾기 칸 — 단어을 들고 전체 사례 페이지로 가서 모든 분야에서 찾는다.
+// 2026. 10. 16. (Version 71·75): 수행 사례의 찾기 칸 — 단어을 들고 전체 사례 페이지로 가서 모든 분야에서 찾는다.
 (function () {
   var form = document.getElementById('find-form'), q = document.getElementById('find-q');
   if (!form || !q) return;
@@ -471,7 +471,7 @@ document.addEventListener('click', function (e) {
 // ---------- 홈에서 본 부분 집계 (Version 116) ----------
 (function () {
   if (!('IntersectionObserver' in window)) return;
-  var names = { record: '주요 수행 사례', career: '경력', fields: '다루는 사건', press: '언론보도', contact: '상담 문의' };   // 2026. 10. 23. 저녁 홈 순서(다루는 사건 → 언론보도)에 맞춰 언론보도 절도 집계   // 2026. 10. 21. '국가연구개발 제재처분' 절(rnd)은 없앰; 2026. 10. 23. 오후 '자주 묻는 질문'(faq)도 삭제
+  var names = { record: '수행 사례', career: '경력', fields: '다루는 사건', press: '언론보도', contact: '상담 문의' };   // 2026. 10. 23. 저녁 홈 순서(다루는 사건 → 언론보도)에 맞춰 언론보도 절도 집계   // 2026. 10. 21. '국가연구개발 제재처분' 절(rnd)은 없앰; 2026. 10. 23. 오후 '자주 묻는 질문'(faq)도 삭제
   var seen = {};
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) { if (en.isIntersecting && !seen[en.target.id]) { seen[en.target.id] = 1; track('section_view', { section: names[en.target.id] }); } });

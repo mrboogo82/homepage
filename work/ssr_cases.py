@@ -30,7 +30,7 @@
   ("window.CASES_DATA = [...];" — 두 페이지가 <script src="cases-data.js?v=해시"> 로 읽고, 파이썬은 load_cases()/save_cases() 로 읽고 쓴다).
   종전처럼 index.html·cases.html 안에 22만 자 JSON을 두면 검색 로봇·AI 읽기 도구가 받는 HTML이 너무 커지므로 밖으로 뺐다.
   옛 인라인 블록이 남아 있으면 이 스크립트가 한 번 읽어 파일로 옮기고 블록을 지운다.
-홈의 접힌 전체 목록(2026. 10. 23. 낮 추가 → 같은 날 오후 본인 지시 "사무소 위치 위의 '주요 수행 사례 전체 목록'은 삭제"로 없앰): HOME_ALL_LIST = False 이면 만들지 않고,
+홈의 접힌 전체 목록(2026. 10. 23. 낮 추가 → 같은 날 오후 본인 지시 "사무소 위치 위의 '수행 사례 전체 목록'은 삭제"로 없앰): HOME_ALL_LIST = False 이면 만들지 않고,
   index.html 에 옛 블록(<!-- all-list:start --> … <!-- all-list:end -->)이 남아 있으면 걷어 낸다. 전체 사례는 cases.html·llms-full.txt·사이트맵으로 읽힌다.
 llms(2026. 10. 23.): llms-full.txt 한 파일(2.2MB)은 AI 읽기 도구의 한도를 넘으므로, llms-full.txt 는 '분야별 파일 안내 + 사례 한 줄 목록'으로,
   사례마다의 전체 텍스트는 분야별 llms-full-<분야>-<번호>.txt (각 LLMS_PART_MAX 바이트 이하)로 나눈다.
@@ -324,7 +324,7 @@ def replace_json_block(doc, block_id, data):
 def count_text(doc, n):
     doc = re.sub(r"주요 수행 판결문 \d+건 찾기", "주요 수행 판결문 %d건 찾기" % n, doc)   # 2026. 10. 21. 홈 찾기 상자 제목 "단어로 주요 수행 판결문 N건 찾기"(종전 "판결문 N건에서 단어로 찾기")
     doc = re.sub(r"판결문 \d+건에", "판결문 %d건에" % n, doc)
-    doc = re.sub(r"주요 수행 사례 \d+건 — ", "주요 수행 사례 %d건 — " % n, doc)
+    doc = re.sub(r"수행 사례 \d+건 — ", "수행 사례 %d건 — " % n, doc)
     doc = re.sub(r'(<span id="find-count">)\d+(</span>)', r"\g<1>%d\g<2>" % n, doc)   # 홈 찾기 상자의 건수(JS가 다시 쓰지만 정적 값도 맞춘다)
     return doc
 
@@ -353,14 +353,14 @@ def render_all_list(cases):
         "<!-- all-list:start -->",
         '<section class="section appendix" id="all-list-sec" aria-labelledby="all-list-h">',
         '  <header class="section-head">',
-        '    <h2 id="all-list-h">주요 수행 사례 전체 목록</h2>',
+        '    <h2 id="all-list-h">수행 사례 전체 목록</h2>',
         '    <p>%d건 · 최근 결정일 순</p>' % n,
         '  </header>',
         '  <div class="section-body">',
         '<details class="all-list" id="all-list">',
         '  <summary><span class="when-closed">전체 목록 %d건 펼쳐 보기 — 제목만 한 줄씩</span><span class="when-open">전체 목록 접기</span></summary>' % n,
         '  <p class="all-list-note">제목을 누르면 판결문과 사건 소개가 있는 개별 페이지가 열립니다. '
-        '분야별로 보거나 단어로 찾으려면 <a href="cases.html">주요 수행 사례 전체 보기</a>를 이용해 주십시오. 모두 부효준 변호사가 담당변호사로 직접 수행한 사건입니다.</p>',
+        '분야별로 보거나 단어로 찾으려면 <a href="cases.html">수행 사례 전체 보기</a>를 이용해 주십시오. 모두 부효준 변호사가 담당변호사로 직접 수행한 사건입니다.</p>',
         '  <ol class="all-list-body">',
     ]
     for c in lst:
@@ -467,7 +467,7 @@ def llms_parts(cases, details=None, press=None):
             chunks.append(cur)
         for k, chunk in enumerate(chunks, 1):
             head = [
-                "# 변호사 부효준 — 주요 수행 사례 전체 텍스트: %s (%d/%d)" % (name, k, len(chunks)),
+                "# 변호사 부효준 — 수행 사례 전체 텍스트: %s (%d/%d)" % (name, k, len(chunks)),
                 "",
                 "> 변호사 부효준(법무법인(유한) 금성, https://lawyermrboo82.com/)이 담당변호사로 직접 수행한 '%s' 분야 사례 %d건의 전체 텍스트%s입니다. "
                 "사례마다 요지·사건 개요·쟁점·주장·법원의 판단·관련 법령과 개별 페이지 주소가 있습니다. "
@@ -486,7 +486,7 @@ def llms_index(cases, intro_from, parts):
     for c in cases:
         cat_counts[c["cat"]] = cat_counts.get(c["cat"], 0) + 1
     head = intro_from or ""
-    head = re.sub(r"주요 수행 사례 \d+건을", "주요 수행 사례 %d건을" % n, head)
+    head = re.sub(r"수행 사례 \d+건을", "수행 사례 %d건을" % n, head)
     head = re.sub(r"수행 사례 \d+건을 글로", "수행 사례 %d건을 글로" % n, head)
     lines = [head.rstrip("\n"), "", "## 분야별 건수"]
     for k, name in CATS.items():
@@ -537,7 +537,7 @@ def main():
     new_llms = None
     if os.path.exists(lp):
         d = read(lp)
-        d = re.sub(r"주요 수행 사례 \d+건을", "주요 수행 사례 %d건을" % n, d)
+        d = re.sub(r"수행 사례 \d+건을", "수행 사례 %d건을" % n, d)
         d = re.sub(r"사건 \d+건, 최근 결정일 순", "사건 %d건, 최근 결정일 순" % n, d)
         d = re.sub(r"\d+건의 제목·분야", "%d건의 제목·분야" % n, d)
         new_llms = d

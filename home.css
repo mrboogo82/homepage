@@ -4,7 +4,7 @@
 /* Layout: a client-first brief for people and companies facing an administrative disposition.
    A dark opening screen carries the three statutory deadlines; the body reads like a signed legal document
    (left-margin section titles, paper and ink, crimson (고려대학교 크림슨) for emphasis) and closes with a signature block.
-   The case board (주요 수행 사례) renders from the JSON block #cases-data (the ten most recent on the home page; cases.html lists all). */
+   The case board (수행 사례) renders from the JSON block #cases-data (the ten most recent on the home page; cases.html lists all). */
 :root {
   color-scheme: only light;   /* 2026. 10. 23. 17시: 기본은 늘 밝은 화면 — 브라우저·웹뷰의 '강제 어둡게'(auto dark)도 끈다. 어두운 화면은 아래 @media(PC·마우스·1024px 이상)에서만 color-scheme: dark로 바꾼다 */
   --paper: #fbfbf9;
@@ -386,7 +386,7 @@ button.case-fig:hover img { opacity: 0.92; }
 .case-link { justify-self: start; font-size: var(--step--1); }
 .empty { padding-block: 1.5rem; font-size: var(--step--1); color: var(--ink-soft); border-block: 1px solid var(--rule); }
 
-/* 홈 주요 수행 사례의 장수: 2026. 10. 25. 저녁 본인 지시로 한 줄만(PC 4장·펼친 폴드7 3장·접은 폴드7 2장) — 규칙은 파일 끝의 같은 날짜 블록.
+/* 홈 수행 사례의 장수: 2026. 10. 25. 저녁 본인 지시로 한 줄만(PC 4장·펼친 폴드7 3장·접은 폴드7 2장) — 규칙은 파일 끝의 같은 날짜 블록.
    (그 전 2026. 10. 23. 오후: 6건 = 세 장씩 2줄·두 장씩 3줄; 2026. 10. 21.의 '아홉째 장 감추기'는 그때 없앰.) */
 
 /* 자주 묻는 질문 절·페이지는 2026. 10. 23. 오후 본인 지시로 삭제(규칙도 지움). */
@@ -907,7 +907,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
   .advisors .adv-body .org { font-size: 1rem; }
 }
 
-/* ---------- 분야 카드의 '주요 수행 사례 보기' 단추 (2026. 10. 16., Version 87) ----------
+/* ---------- 분야 카드의 '수행 사례 보기' 단추 (2026. 10. 16., Version 87) ----------
    글자 링크로는 눈에 띄지 않아 카드 맨 아래 먹색 단추로. 그 분야의 사례 건수를 함께 적고, 가리키면 크림슨색. */
 /* 카드를 세로 flex로 바꿔 근거 법령(.ref의 margin-top:auto)과 단추가 카드 바닥에 나란히 오도록 — 한 줄의 단추 높이가 맞춰진다 */
 .situation { display: flex; flex-direction: column; }
@@ -1139,7 +1139,7 @@ a.lec-logo:hover { border-color: var(--ink-soft); }
 .situation .cases-link .arr { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border: 1px solid currentColor; border-radius: 50%; font-size: 0.9em; line-height: 1; }
 
 /* ---------- '단어로 찾기' 부각 (2026. 10. 18., Version 122) ----------
-   찾기 상자를 주요 수행 사례 절 맨 위에 두 칸을 가로질러 크게 놓고, 첫 화면 단추와 길잡이 04에서 바로 이어지게. */
+   찾기 상자를 수행 사례 절 맨 위에 두 칸을 가로질러 크게 놓고, 첫 화면 단추와 길잡이 04에서 바로 이어지게. */
 .findbox.big { grid-column: 1 / -1; gap: 0.7rem; padding: 1.3rem 1.5rem 1.4rem; border-color: var(--ink); }
 .findbox.big .find-head { gap: 0.2rem 1rem; }
 .findbox.big .find-head b { font-size: var(--step-1); }
@@ -1345,7 +1345,7 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
 .hero-stats { border-image: linear-gradient(90deg, var(--hero-line), transparent) 1; }
 @media (prefers-reduced-motion: reduce) { .hero-id, .hero h1, .hero .lead, .hero .cta, .hero-contact, .hero-stats { animation: none; } }
 
-/* ---------- 홈 주요 수행 사례 절 끝의 접힌 전체 목록 (2026. 10. 23.) ----------
+/* ---------- 홈 수행 사례 절 끝의 접힌 전체 목록 (2026. 10. 23.) ----------
    검색 로봇·AI가 홈만 읽어도 전체 사례(제목·분야·법원·날짜·결과·개별 페이지 링크)를 알 수 있게 글로 넣되, 사람에게는 접혀 보인다.
    ssr_cases.py 가 <!-- all-list:start --> … <!-- all-list:end --> 사이를 데이터대로 다시 만든다. */
 .all-list { margin-top: 1.25rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); }
@@ -1366,11 +1366,11 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
 
 /* ---------- 길이 줄이기 (2026. 10. 23. 낮) ----------
    본인 지시: "많은 정보량을 넣다보니 스크롤을 너무 많이 하게 돼. 특히 모바일은 그럴거야. 이걸 고려해서 전체적인 길이를 줄여줘.
-   주요 수행 사례 개별 사례 높이 또는 길이를 조금씩 줄이면 좋을 듯." — 글은 하나도 지우지 않고 여백·글자·줄 간격·배치로 줄인다(검색·AI가 읽는 내용은 그대로).
+   수행 사례 개별 사례 높이 또는 길이를 조금씩 줄이면 좋을 듯." — 글은 하나도 지우지 않고 여백·글자·줄 간격·배치로 줄인다(검색·AI가 읽는 내용은 그대로).
    ① 절 사이 여백(위아래 2.75~4.5rem → 2.25~3.5rem)과 절 안 묶음 사이 여백(2.75 → 2.25rem)을 한 단계씩.
    ② 첫 화면: 위 여백·덩어리 사이 간격을 줄이고, 휴대전화에서는 설명·숫자 타일 글을 조금 작게(사진 띠 높이는 그대로).
    ③ 길잡이: 휴대전화에서 번호·제목·알약 단추를 한 줄에(종전 두 줄).
-   ④ 주요 수행 사례 카드: 판결문 그림 4:3 → 16:10, 안쪽 여백·간격·제목 글자(1.125 → 1.0625rem)·줄 간격을 줄임 — 넓은 화면 한 장 약 570 → 약 430px.
+   ④ 수행 사례 카드: 판결문 그림 4:3 → 16:10, 안쪽 여백·간격·제목 글자(1.125 → 1.0625rem)·줄 간격을 줄임 — 넓은 화면 한 장 약 570 → 약 430px.
       휴대전화 두 장 카드도 같은 방식. 자주 찾는 단어(35개)는 휴대전화에서 한 줄로 옆으로 넘겨 보고(오른쪽 끝이 옅어짐), 분야 칩은 조금 작게.
    ⑤ 경력: 위촉 타일을 넓은 화면에서 한 줄 4장 → 6장(1100px 이하 5장, 1000px 이하 4장; 위원회 7장은 4+3 그대로 — 6+1이나 7장 한 줄은 홀로 남는 장·낱말 가운데 끊김), 글자는 한 단계 작게;
       휴대전화는 한 줄 한 장 → 두 장씩(작은 로고 띠·위촉장 그림 + 기관명·역할·기간; '위촉장 2026. 7. 1. ~ …' 기간은 .cert-term으로 감싸 휴대전화에서만 숨김).
@@ -1417,7 +1417,7 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
   .finder-list .go { grid-row: 1; grid-column: 3; justify-self: end; padding: 0.25rem 0.65rem; font-size: 0.6875rem; }
 }
 
-/* ④ 주요 수행 사례 */
+/* ④ 수행 사례 */
 .findbox.big { gap: 0.6rem; padding: 1.1rem 1.3rem 1.2rem; }
 #record .case-tools { margin-bottom: 1rem; }
 .case-list { gap: 1rem; margin-top: 0.9rem; }
@@ -1553,7 +1553,7 @@ ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margi
 .section.appendix .all-list { margin-top: 0; padding-top: 0; border-top: 0; }
 
 /* ---------- 짧은 홈 + 항목별 페이지 (2026. 10. 23. 저녁) ----------
-   본인 지시(창천 lawcc.co.kr 참고): "각 항목마다 별도 페이지로 … 첫 화면, 주요 수행 사례 검색은 전면에 나오게". 경력·다루는 사건·자주 묻는 질문·언론보도·상담 문의의 전체는
+   본인 지시(창천 lawcc.co.kr 참고): "각 항목마다 별도 페이지로 … 첫 화면, 수행 사례 검색은 전면에 나오게". 경력·다루는 사건·자주 묻는 질문·언론보도·상담 문의의 전체는
    career.html·fields.html·press.html·contact.html 로 옮기고(faq.html 은 같은 날 오후 삭제)(같은 home.css, 공용 부품은 work/build_pages.py 가 index.html 에서 맞춤), 홈에는 같은 id 의 요약 절만 둔다.
    ① 항목별 페이지의 제목 머리(.page-head: 현재 위치 › 제목 › 한 줄 설명) ② 홈 경력 요약의 기관 띠(.org-chips — 로고+이름, 누르면 기관 누리집; 흰 바탕이라 어두운 화면에서도 로고 색이 그대로)
    ③ 홈 다루는 사건 요약(.field-list — 열 영역의 제목·한 줄·단추; 국가연구개발 카드는 한 줄 폭에 세 기한 띠) ④ 요약 절 머리의 '자세히' 알약과 '… 전체 보기 →' 단추(.more) */
@@ -1644,7 +1644,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 .consult { background: var(--wash); }
 .consult details dl { background: var(--paper); border: 1px solid var(--rule); }
 
-/* ---------- 홈 주요 수행 사례: PC 네 장 한 줄 · 펼친 폴드7 세 장 한 줄 · 접은 폴드7 두 장씩 두 줄(네 장) (2026. 10. 25. 저녁 본인 지시 → 같은 날 밤 "접은 상태에서도 4개는 나오게") ----------
+/* ---------- 홈 수행 사례: PC 네 장 한 줄 · 펼친 폴드7 세 장 한 줄 · 접은 폴드7 두 장씩 두 줄(네 장) (2026. 10. 25. 저녁 본인 지시 → 같은 날 밤 "접은 상태에서도 4개는 나오게") ----------
    work/ssr_cases.py·site.js 는 RECENT = 4 장을 만들어 두고, 여기서 641~1000px(펼친 폴드7·태블릿)에서는 넷째 장을 감춘다. ≤640px(접은 폴드7·휴대전화)은 두 장씩 두 줄로 넷 다 보인다(저녁에는 두 장만 보이게 셋째·넷째를 감췄었음).
    네 장이 한 줄에 들어가려면 본문이 전체 폭이어야 하므로 이 절만 제목·설명을 위에 두고 카드 줄을 전체 폭으로 편다(다른 절은 왼쪽 제목 + 오른쪽 본문 그대로).
    그 전(2026. 10. 23. 오후)은 6건 = 세 장씩 2줄·두 장씩 3줄. */
@@ -1661,7 +1661,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 }
 
 /* ---------- 2026. 10. 25. 저녁 본인 지시 ②③: 전체(넓은) 화면에서 한 줄에 더 많이 ----------
-   ① 경력 절(#career — 홈·career.html 공통)과 다루는 사건 절(#fields)도 주요 수행 사례처럼 제목을 위에 두고 본문을 전체 폭으로 편다('경력'·'다루는 사건' 제목 옆에 알약을 한 줄로).
+   ① 경력 절(#career — 홈·career.html 공통)과 다루는 사건 절(#fields)도 수행 사례처럼 제목을 위에 두고 본문을 전체 폭으로 편다('경력'·'다루는 사건' 제목 옆에 알약을 한 줄로).
       두 단(왼쪽 제목 12rem + 오른쪽 본문 약 800px)으로는 타일·카드를 한 줄에 더 넣을수록 휴대전화만큼 작아지기 때문. 언론보도·상담 문의 절은 두 단 그대로.
    ② 위촉장·위원회 타일(.advisors)은 한 줄 9장 — 중앙행정기관 9장·위원회 7장이 각각 한 줄, 공공기관 11장은 9+2(그 전 6장: 6+3·6+5·6+1).
       1100px 이하 7장, 900px 이하 6장, 760px 이하 5장, 640px 이하는 종전 두 장 목록 그대로. career.html 의 임기를 마친 묶음(.past-grid)은 현행 타일보다 작아야 하므로 12장(1100px 이하 9장, 900px 이하 8장, 760px 이하 6장).
@@ -1717,9 +1717,9 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 
 /* ---------- 2026. 10. 25. 밤 본인 지시 ----------
    ① 첫 화면 이름 아래 영문 한 줄(.hero-name-en: Boo Hyoejune · Attorney at Law)
-   ② 접은 폴드7(휴대전화)에서 머리글 차림표(주요 수행 사례·경력·다루는 사건·언론보도·상담 문의)가 한 줄에 — 글씨를 화면 폭에 맞춰(clamp) 줄이고 줄바꿈을 막음(전화번호는 이름 줄 오른쪽 그대로)
+   ② 접은 폴드7(휴대전화)에서 머리글 차림표(수행 사례·경력·다루는 사건·언론보도·상담 문의)가 한 줄에 — 글씨를 화면 폭에 맞춰(clamp) 줄이고 줄바꿈을 막음(전화번호는 이름 줄 오른쪽 그대로)
    ③ 접은 폴드7에서 첫 화면 분야 줄('국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 행정쟁송')이 한 줄에 — 글씨·자간을 화면 폭에 맞춰 줄이고 줄바꿈을 막음
-   ④ 작은 제목 '국가로펌 출신' → '국가로펌 출신 행정법 전문변호사'(index.html)  ⑤ 접은 폴드7에서 주요 수행 사례 네 장(위 블록) */
+   ④ 작은 제목 '국가로펌 출신' → '국가로펌 출신 행정법 전문변호사'(index.html)  ⑤ 접은 폴드7에서 수행 사례 네 장(위 블록) */
 .hero-name-en { margin: -0.15rem 0 0; font-family: var(--sans); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.1em; color: var(--hero-soft); }
 .hero-name-en .sep { margin: 0 0.3em; opacity: 0.6; }
 @media (max-width: 760px) {
@@ -1866,7 +1866,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 @media (max-width: 640px) { .policy .rows.policy-rows > div { grid-template-columns: 1fr; gap: 0.15rem; } }
 
 /* ---------- 2026. 11. 9. 15:34 본인 지시: 첫 화면 간소화 ----------
-   단추는 '주요 수행 사례 보기'·'다루는 사건 보기' 둘만, 연락처 줄과 숫자 타일 셋을 지우고 '국가로펌 출신 변호사' 한 줄(.hero-stats.one)만 남긴 뒤 먹갈색 바탕 전체를 줄인다:
+   단추는 '수행 사례 보기'·'다루는 사건 보기' 둘만, 연락처 줄과 숫자 타일 셋을 지우고 '국가로펌 출신 변호사' 한 줄(.hero-stats.one)만 남긴 뒤 먹갈색 바탕 전체를 줄인다:
    위아래 안쪽 여백과 요소 사이 간격을 한 단계씩 줄이고(PC 약 870px → 약 650px), 남은 한 줄은 제목·설명이 가로로 나란히 한 줄(좁으면 줄바꿈). 휴대전화의 사진 띠(--band)는 그대로. */
 .hero-stats.one { grid-template-columns: minmax(0, 1fr); margin-top: 0; padding-top: 0.9rem; }
 .hero-stats.one div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.9rem; }

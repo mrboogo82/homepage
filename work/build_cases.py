@@ -92,7 +92,7 @@ for _s, _m, _n in ((NEW_TITLE, HOME_TITLE_MAX, "NEW_TITLE"), (NEW_OG_TITLE, HOME
 NEW_EYEBROW = "국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 행정쟁송"   # 2026. 10. 21. 14시: 국가연구개발을 맨 앞에(이름은 10. 21. 새벽부터 따로 큰 이름 줄)
 EXTRA_KEYWORDS = ["국가연구개발사업 참여제한 변호사", "참여제한 변호사", "연구비 환수 변호사", "국가연구개발혁신법 변호사", "참여제한 처분 취소소송",
                   "국가 R&D 제재처분", "연구비 제재부가금 취소", "참여제한 집행정지", "연구개발비 회수금 당사자소송", "부효준 변호사"]
-NEW_CASES_TITLE = "주요 수행 사례 %d건 — 행정소송 · 국가연구개발 제재처분 판결문 · 변호사 부효준"   # %d에 사례 수가 들어간다
+NEW_CASES_TITLE = "수행 사례 %d건 — 행정소송 · 국가연구개발 제재처분 판결문 · 변호사 부효준"   # %d에 사례 수가 들어간다
 
 # 주제별 모아 보기 페이지 (검색 의도별: 참여제한 / 환수 / 제재부가금 / 집행정지 / 당사자소송)
 TOPICS = [
@@ -547,7 +547,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "홈", "item": SITE + "/"},
-                    {"@type": "ListItem", "position": 2, "name": "주요 수행 사례", "item": SITE + "/cases.html"},
+                    {"@type": "ListItem", "position": 2, "name": "수행 사례", "item": SITE + "/cases.html"},
                     {"@type": "ListItem", "position": 3, "name": cat, "item": "%s/cases.html#cat=%s" % (SITE, c["cat"])},
                     {"@type": "ListItem", "position": 4, "name": title},
                 ],
@@ -647,7 +647,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     <a class="brand" href="../index.html" rel="author" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
     <nav aria-label="페이지 이동">
       <a href="../fields.html">다루는 사건</a>
-      <a href="../cases.html">주요 수행 사례</a>
+      <a href="../cases.html">수행 사례</a>
       <a href="../career.html">경력</a>
       <a href="../contact.html">상담 문의</a>
     </nav>
@@ -656,7 +656,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     <nav class="crumbs" aria-label="현재 위치">
       <ol>
         <li><a href="../index.html">홈</a></li>
-        <li><a href="../cases.html">주요 수행 사례</a></li>
+        <li><a href="../cases.html">수행 사례</a></li>
         <li><a href="../cases.html#cat={esc(c['cat'])}">{esc(cat)}</a></li>
       </ol>
     </nav>
@@ -692,7 +692,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../fields.html">다루는 사건</a> <a href="../press.html">언론보도</a> <a href="../contact.html">상담 문의</a>
+        <a href="../index.html">홈으로</a> <a href="../cases.html">수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../fields.html">다루는 사건</a> <a href="../press.html">언론보도</a> <a href="../contact.html">상담 문의</a>
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
@@ -742,7 +742,7 @@ def render_topic_page(t, matched, cat_counts, modified):
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "홈", "item": SITE + "/"},
-                    {"@type": "ListItem", "position": 2, "name": "주요 수행 사례", "item": SITE + "/cases.html"},
+                    {"@type": "ListItem", "position": 2, "name": "수행 사례", "item": SITE + "/cases.html"},
                     {"@type": "ListItem", "position": 3, "name": t["name"]},
                 ],
             },
@@ -803,7 +803,7 @@ def render_topic_page(t, matched, cat_counts, modified):
     <a class="brand" href="../index.html" rel="author" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
     <nav aria-label="페이지 이동">
       <a href="../fields.html">다루는 사건</a>
-      <a href="../cases.html">주요 수행 사례</a>
+      <a href="../cases.html">수행 사례</a>
       <a href="../career.html">경력</a>
       <a href="../contact.html">상담 문의</a>
     </nav>
@@ -812,7 +812,7 @@ def render_topic_page(t, matched, cat_counts, modified):
     <nav class="crumbs" aria-label="현재 위치">
       <ol>
         <li><a href="../index.html">홈</a></li>
-        <li><a href="../cases.html">주요 수행 사례</a></li>
+        <li><a href="../cases.html">수행 사례</a></li>
         <li>{esc(t["name"])}</li>
       </ol>
     </nav>
@@ -846,7 +846,7 @@ def render_topic_page(t, matched, cat_counts, modified):
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="../index.html">홈으로</a> <a href="../cases.html">주요 수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../fields.html">다루는 사건</a> <a href="../press.html">언론보도</a> <a href="../contact.html">상담 문의</a>
+        <a href="../index.html">홈으로</a> <a href="../cases.html">수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../fields.html">다루는 사건</a> <a href="../press.html">언론보도</a> <a href="../contact.html">상담 문의</a>
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
@@ -1058,14 +1058,14 @@ def patch_home_graph(doc):
 def patch_cases(doc, n_cases=None):
     doc = patch_html_lang(doc)
     title = NEW_CASES_TITLE % n_cases if n_cases else NEW_CASES_TITLE
-    doc = doc.replace("<title>주요 수행 사례 전체 · 변호사 부효준</title>", "<title>%s</title>" % title, 1)
-    doc = doc.replace('<meta property="og:title" content="주요 수행 사례 전체 · 변호사 부효준">',
+    doc = doc.replace("<title>수행 사례 전체 · 변호사 부효준</title>", "<title>%s</title>" % title, 1)
+    doc = doc.replace('<meta property="og:title" content="수행 사례 전체 · 변호사 부효준">',
                       '<meta property="og:title" content="%s">' % title, 1)
-    doc = doc.replace('<meta name="twitter:title" content="주요 수행 사례 전체 · 변호사 부효준">',
+    doc = doc.replace('<meta name="twitter:title" content="수행 사례 전체 · 변호사 부효준">',
                       '<meta name="twitter:title" content="%s">' % title, 1)
     # 사례 수가 바뀌면 제목의 건수도 맞춘다 (ssr_cases.py 도 같은 일을 하지만 여기서도 보장)
     if n_cases:
-        doc = re.sub(r"주요 수행 사례 \d+건 — ", "주요 수행 사례 %d건 — " % n_cases, doc)
+        doc = re.sub(r"수행 사례 \d+건 — ", "수행 사례 %d건 — " % n_cases, doc)
     doc = link_static_cards(doc)
     doc = patch_js(doc)
     doc = patch_link_text(doc)

@@ -1,4 +1,4 @@
-/* 변호사 부효준 홈페이지 — 주요 수행 사례 전체(cases.html) 스타일.
+/* 변호사 부효준 홈페이지 — 수행 사례 전체(cases.html) 스타일.
    2026. 10. 23. cases.html 의 인라인 <style>(약 5만 자)을 이 파일로 옮김. build_cases.py 가 이 파일에 개별 페이지용 규칙(EXTRA_CSS)을 덧붙여 case.css 를 만든다
    (사례·주제 페이지가 씀). 홈(index.html)은 home.css. */
 /* Layout: a client-first brief for people and companies facing an administrative disposition.
@@ -1042,7 +1042,7 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
 @media (prefers-reduced-motion: reduce) { .all-head { animation: none; } }
 
 /* ---------- 길이 줄이기 (2026. 10. 23. 낮) — 홈(home.css)의 같은 블록 가운데 이 페이지에 있는 것(절 여백·사례 카드)만; case.css는 build_cases.py가 이 파일 + EXTRA_CSS로 다시 만듦 ----------
-   본인 지시: "스크롤을 너무 많이 하게 돼 … 주요 수행 사례 개별 사례 높이 또는 길이를 조금씩 줄이면 좋을 듯." 카드: 판결문 그림 4:3 → 16:10,
+   본인 지시: "스크롤을 너무 많이 하게 돼 … 수행 사례 개별 사례 높이 또는 길이를 조금씩 줄이면 좋을 듯." 카드: 판결문 그림 4:3 → 16:10,
    안쪽 여백·간격·제목 글자(1.125 → 1.0625rem)·줄 간격을 줄임, 결과 배지는 그림 오른쪽 위에. 휴대전화 두 장 카드도 같은 방식(목록 보기 .list와 개별 사례 페이지의 머리는 그대로 — .case-list 안으로 한정). */
 .section { gap: 1.25rem clamp(2rem, 5vw, 4.5rem); padding-block: clamp(2.25rem, 4.5vw, 3.5rem); }
 .section-body { gap: 2.25rem; }
