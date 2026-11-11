@@ -19,37 +19,38 @@
     var brand = document.querySelector('.top .brand'); if (!brand) return;
     // 2026. 11. 11. 19:25 본인 지시("실제 나무 같은 느낌이 더 나도록"): 둥근 덩이 일곱 개 대신, 줄기에서 가지가 갈라져 나가는 뼈대를 먼저 기르고(grow)
     // 가지 끝마다 작은 잎 뭉치를 그늘 → 중간 → 햇빛 받는 쪽 차례로 겹쳐 얹는다. 난수는 씨앗을 고정해 어느 페이지에서나 같은 나무가 나온다.
-    var seed = +(/[?&]seed=(\d+)/.exec(location.search) || [0, 11])[1];   // 씨앗 11번 나무(미리 보기: ?seed=숫자)
+    var seed = +(/[?&]seed=(\d+)/.exec(location.search) || [0, 3])[1];   // 씨앗 11번 나무(미리 보기: ?seed=숫자)
     function rnd() { seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
     function r2(a, b) { return a + rnd() * (b - a); }
     function f(n) { return n.toFixed(1); }
     var limbs = [], tips = [], nodes = [];
     function grow(x, y, ang, len, w, depth) {
       if (ang > 1.3) ang = 1.3; if (ang < -1.3) ang = -1.3;
-      var bend = r2(-0.22, 0.22), x2 = x + Math.sin(ang) * len, y2 = y - Math.cos(ang) * len;
+      var bend = depth === 4 ? 0.34 : r2(-0.34, 0.34), x2 = x + Math.sin(ang) * len, y2 = y - Math.cos(ang) * len;
       var mx = (x + x2) / 2 + Math.cos(ang) * bend * len * 0.5, my = (y + y2) / 2 + Math.sin(ang) * bend * len * 0.5;
       limbs.push({ d: 'M' + f(x) + ' ' + f(y) + 'Q' + f(mx) + ' ' + f(my) + ' ' + f(x2) + ' ' + f(y2), w: w });
-      if (depth <= 2) tips.push([x2, y2]);
+      if (depth <= 1) tips.push([x2, y2]);
       if (depth >= 1 && depth <= 3) nodes.push([x2, y2, ang]);
       if (depth === 0) return;
       var n = depth === 4 ? 3 : 2, i, a;
       for (i = 0; i < n; i++) {
-        a = ang + (i - (n - 1) / 2) * r2(0.5, 0.72) + r2(-0.14, 0.14);
-        grow(x2, y2, a, len * r2(0.66, 0.8), Math.max(0.45, w * 0.6), depth - 1);
+        a = ang + (i - (n - 1) / 2) * r2(0.55, 0.95) + r2(-0.24, 0.24);
+        grow(x2, y2, a, len * r2(0.6, 0.84), Math.max(0.45, w * 0.58), depth - 1);
       }
     }
-    grow(24, 50, 0.03, 13.5, 3.2, 4);
+    grow(25.5, 50, -0.2, 14, 4, 4);   // 19:30 지시(고목처럼 고독하게): 굵고 한쪽으로 기운 줄기, 들쭉날쭉 뻗은 가지, 성긴 잎
 
     var PAL = {
-      spring: { dark: ['#e38fa8', '#e9a3b7'], mid: ['#f3bccb', '#f6c9d5'], light: ['#fbe1e8', '#fff3f6'], n: 5, r: [1.2, 2.1], R: 4.4, o: 0.96 },
-      summer: { dark: ['#3f6a3d', '#4a7745'], mid: ['#5d8c4f', '#6b9a59'], light: ['#86b06c', '#a2c684'], n: 7, r: [1.7, 2.8], R: 4.6, o: 1 },
-      autumn: { dark: ['#8f3423', '#a8432b'], mid: ['#c4553a', '#d67a33', '#cf6a35'], light: ['#e0a03f', '#e8bd57'], n: 6, r: [1.5, 2.5], R: 4.4, o: 1 }
+      spring: { dark: ['#e38fa8', '#e9a3b7'], mid: ['#f3bccb', '#f6c9d5'], light: ['#fbe1e8', '#fff3f6'], n: 5, r: [1.1, 1.9], R: 3.9, o: 0.96 },
+      summer: { dark: ['#3f6a3d', '#4a7745'], mid: ['#5d8c4f', '#6b9a59'], light: ['#86b06c', '#a2c684'], n: 6, r: [1.4, 2.3], R: 3.9, o: 1 },
+      autumn: { dark: ['#8f3423', '#a8432b'], mid: ['#c4553a', '#d67a33', '#cf6a35'], light: ['#e0a03f', '#e8bd57'], n: 5, r: [1.3, 2.1], R: 3.8, o: 1 }
     };
+    var FLIP = '<g transform="translate(48 0) scale(-1 1)">';   // 줄기가 이름 반대쪽(오른쪽)으로 기울도록 좌우를 뒤집어 그린다
     var bark = '#5c4434', barkLight = '#836651', k, j, L;
-    var h = '<ellipse cx="24" cy="50.5" rx="11" ry="1.3" fill="rgba(60,45,35,0.10)"/>';
-    var body = '<path d="M20.4 50.7Q22.8 49.2 22.7 45.5L25.5 45.5Q25.6 49.3 27.8 50.7Z" fill="' + bark + '"/>';
+    var h = '<path d="M1 50.9H47" fill="none" stroke="rgba(60,45,35,0.22)" stroke-width="0.5" stroke-linecap="round"/>';   // 빈 들판의 지평선 한 줄
+    var body = '<path d="M20.2 50.9Q23.4 49.4 23 44.5L27 44.5Q27.2 49.4 30.6 50.9Z" fill="' + bark + '"/>';
     for (k = 0; k < limbs.length; k++) { L = limbs[k]; body += '<path d="' + L.d + '" fill="none" stroke="' + bark + '" stroke-width="' + f(L.w) + '" stroke-linecap="round"/>'; }
-    body += '<path d="M23.3 49.5C23 44 23.6 39.5 23.6 36" fill="none" stroke="' + barkLight + '" stroke-width="0.8" stroke-linecap="round" opacity="0.8"/>';
+    body += '<path d="M24.6 49.6C24.3 46.5 24 44 23.2 41" fill="none" stroke="' + barkLight + '" stroke-width="0.8" stroke-linecap="round" opacity="0.75"/><ellipse cx="25.4" cy="43.6" rx="0.75" ry="1.05" fill="#3f2e23"/>';
 
     if (season === 'winter') {
       var sh = '', sn = '', x, y, rx, ry;
@@ -65,12 +66,13 @@
         sh += '<ellipse cx="' + f(x) + '" cy="' + f(y + 0.45) + '" rx="' + f(rx + 0.3) + '" ry="' + f(rx * 0.6 + 0.25) + '"/>';
         sn += '<ellipse cx="' + f(x) + '" cy="' + f(y) + '" rx="' + f(rx) + '" ry="' + f(rx * 0.6) + '"/>';
       }
-      h += body + '<g fill="#b4c3d3">' + sh + '</g><g fill="#f6f9fc">' + sn + '</g>';
+      h += FLIP + body + '<g fill="#b4c3d3">' + sh + '</g><g fill="#f6f9fc">' + sn + '</g></g>';
       h += '<path d="M10.5 50.7Q17 46.6 24 47.6Q31.5 46.4 37.5 50.7Z" fill="#f6f9fc" stroke="#b4c3d3" stroke-width="0.7" stroke-linejoin="round"/>';
       h += '<g fill="#b4c3d3"><circle cx="5.5" cy="33" r="0.9"/><circle cx="43" cy="30" r="1"/><circle cx="40" cy="42" r="0.75"/><circle cx="8.5" cy="43" r="0.75"/></g>';
     } else {
       var P = PAL[season], lay = { dark: '', mid: '', light: '' }, ang2, dist, px, py, sc, tone, col, rr;
       for (k = 0; k < tips.length; k++) {
+        if (rnd() < 0.22) continue;   // 잎이 없는 잔가지도 남김
         for (j = 0; j < P.n; j++) {
           ang2 = r2(0, 6.283); dist = Math.sqrt(rnd()) * P.R;
           px = tips[k][0] + Math.cos(ang2) * dist; py = tips[k][1] + Math.sin(ang2) * dist * 0.85 - 0.8;
@@ -80,23 +82,26 @@
           lay[tone] += '<ellipse cx="' + f(px) + '" cy="' + f(py) + '" rx="' + f(rr) + '" ry="' + f(rr * r2(0.62, 0.9)) + '" fill="' + col + '" transform="rotate(' + Math.round(r2(-60, 60)) + ' ' + f(px) + ' ' + f(py) + ')"/>';
         }
       }
-      h += '<g class="season-tree-top">' + body + '<g opacity="' + P.o + '">' + lay.dark + lay.mid + lay.light + '</g></g>';
+      h += '<g class="season-tree-top">' + FLIP + body + '<g opacity="' + P.o + '">' + lay.dark + lay.mid + lay.light + '</g></g></g>';
       if (season === 'spring') h += '<g fill="#efaec0"><ellipse cx="43.5" cy="34" rx="1.4" ry="0.9" transform="rotate(-30 43.5 34)"/><ellipse cx="5" cy="39" rx="1.3" ry="0.85" transform="rotate(25 5 39)"/><ellipse cx="35" cy="49.8" rx="1.4" ry="0.75"/><ellipse cx="14" cy="50.1" rx="1.2" ry="0.65"/><ellipse cx="30" cy="50.5" rx="1.1" ry="0.6" fill="#f6c9d5"/></g>';
       if (season === 'autumn') h += '<g><ellipse cx="43.5" cy="36" rx="1.6" ry="1" fill="#d67a33" transform="rotate(-35 43.5 36)"/><ellipse cx="5" cy="41" rx="1.5" ry="0.95" fill="#c4553a" transform="rotate(30 5 41)"/><ellipse cx="34" cy="49.9" rx="1.7" ry="0.85" fill="#e0a03f"/><ellipse cx="15" cy="50.1" rx="1.5" ry="0.8" fill="#c4553a"/><ellipse cx="29.5" cy="50.5" rx="1.3" ry="0.7" fill="#d67a33"/><ellipse cx="19" cy="50.6" rx="1.1" ry="0.6" fill="#e8bd57"/></g>';
     }
     var st = document.createElement('style');
     st.textContent =
       '.top .brand{position:relative}' +
-      '.season-tree{position:absolute;left:100%;bottom:-0.15rem;height:2.9rem;width:auto;margin-left:0.55rem;overflow:visible;pointer-events:none}' +
-      '.season-tree-top{transform-box:view-box;transform-origin:24px 50px;animation:season-tree-sway 7s ease-in-out infinite alternate}' +
+      '.season-tree{position:absolute;left:100%;top:0.16rem;height:calc(100% - 0.21rem);width:auto;margin-left:0.45rem;overflow:visible;pointer-events:none}' +
+      '.season-tree-top{transform-box:view-box;transform-origin:50% 100%;animation:season-tree-sway 7s ease-in-out infinite alternate}' +
       '@keyframes season-tree-sway{from{transform:rotate(-0.9deg)}to{transform:rotate(0.9deg)}}' +
-      '@media (max-width:760px){.season-tree{height:2.45rem;margin-left:0.4rem}}' +
+      '@media (max-width:760px){.season-tree{top:0.1rem;height:calc(100% - 0.15rem);margin-left:0.35rem}}' +
       '@media (prefers-reduced-motion:reduce){.season-tree-top{animation:none}}' +
       '@media print{.season-tree{display:none}}';
     document.head.appendChild(st);
     var box = document.createElement('span');
     box.innerHTML = '<svg class="season-tree" viewBox="0 0 48 52" aria-hidden="true" focusable="false">' + h + '</svg>';
-    brand.appendChild(box.firstChild);
+    var tree = brand.appendChild(box.firstChild), y0 = 1.2;
+    // 19:30 지시(이름 글씨와 나무의 높이 맞춤): 그림 틀(viewBox)을 나무 꼭대기 ~ 땅 줄에 딱 맞게 잘라, 나무 꼭대기는 '부효준' 글자 윗선에, 땅 줄은 BOO HYOEJUNE 글자 아랫선에 오게 한다(CSS 의 top·height).
+    try { var bb = tree.querySelector('g[transform]').getBBox(); if (bb && bb.height) y0 = bb.y - 0.2; } catch (e) {}
+    tree.setAttribute('viewBox', '2 ' + y0.toFixed(1) + ' 52 ' + (51.2 - y0).toFixed(1));
   })();
 
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // 떨어지는 조각·햇볕은 움직임 줄이기 설정에서 끔(나무는 멈춘 그림으로 남김)
