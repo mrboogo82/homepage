@@ -1996,3 +1996,25 @@ b, strong { font-weight: 600; }
   .field .links { padding-top: 0.1rem; }
   .field-list { gap: 0.4rem; }
 }
+
+/* ---------- 2026. 11. 11. 20:21 본인 지시(간소화): 상담 문의 절(홈 #contact · contact.html)의 글씨를 두 단계쯤 줄임 ----------
+   연락처 표: 항목 이름 14 → 12px, 내용 17 → 14px, 덧붙임·복사 단추 14 → 12px. 온라인 상담 신청: 제목 21 → 17px, 안내·칸 이름 14 → 12px, 동의 문구 16 → 13px, 보내기 단추 14 → 13px.
+   입력 칸 글씨(16px)는 마우스 PC(761px 이상)에서만 14px로 — 휴대전화에서 16px보다 작으면 칸을 누를 때 화면이 저절로 확대되기 때문(iOS).
+   '상담 분야' 고르는 칸(.cat)은 한 줄 폭으로 넓히고 글씨를 줄여 긴 분야 이름도 다 보이게(종전 PC 187px 칸에서 '국가연구개발 제재처'까지만 보였음).
+   되돌리려면 이 블록을 지우고 두 페이지의 <label class="full cat"> 를 <label> 로. */
+#contact .rows dt { font-size: 0.75rem; }
+#contact .rows dd { font-size: 0.875rem; }
+#contact .rows dd .sub, #contact .copy { font-size: 0.75rem; }
+#contact .consult h3 { font-size: 1.0625rem; }
+#contact .consult .hint, #contact .consult .fgrid label > span, #contact .consult summary, #contact .consult details dl { font-size: 0.75rem; }
+#contact .consult .fgrid label > span small { font-size: 0.6875rem; }
+#contact .consult .check span { font-size: 0.8125rem; }
+#contact .consult .btn { font-size: 0.8125rem; }
+#contact .consult .status { font-size: 0.8125rem; }
+@media (min-width: 761px) {
+  #contact .consult input:not([type="checkbox"]), #contact .consult textarea { font-size: 0.875rem; }
+  #contact .consult select { font-size: 0.8125rem; }
+}
+#contact .sns.icons.large a { font-size: 0.8125rem; }
+#contact .sns.icons.large a small { font-size: 0.6875rem; }
+#contact .consult input[type="file"] { font-size: 0.8125rem; }
