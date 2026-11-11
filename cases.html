@@ -661,13 +661,39 @@
       document.documentElement.style.scrollPaddingTop = sticky ? (top.offsetHeight + 8) + 'px' : '';
       document.documentElement.style.setProperty('--top-h', sticky ? top.offsetHeight + 'px' : '0px');
       var tools = document.querySelector('.all-body .case-tools');
-      if (tools) tools.classList.toggle('stuck', sticky && window.scrollY > 120 && tools.getBoundingClientRect().top <= top.offsetHeight + 1);
+      if (tools) setToolsStuck(tools, sticky, top.offsetHeight);
       var totop = document.getElementById('totop');
       if (totop) totop.classList.toggle('show', window.scrollY > window.innerHeight * 1.2);
     }
+    // 2026. 11. 11. 본인 지적("국가계약법 · 지방계약법을 누르면 스크롤이 잘 안 됨") 수정 — 원인: 칩·찾기 묶음(.case-tools)이 머리글 아래에 붙을 때(.stuck) '자주 찾는 단어'를 감춰
+    // 묶음 높이가 200px 넘게 줄고, 그만큼 문서가 짧아져 스크롤 위치가 되밀리면 다시 '안 붙음'이 되어 단어가 도로 나타나는 일이 되풀이됨(사례가 몇 건뿐인 분야·검색 결과에서 화면이 위아래로 튐).
+    // 고침: ① 붙었는지를 묶음의 현재 자리가 아니라 그 앞에 둔 높이 0짜리 표식(.tools-mark)의 문서상 자리로 판단(붙든 안 붙든 변하지 않음)
+    //       ② 붙어서 줄어든 높이만큼 묶음 바로 뒤의 빈 칸(.tools-pad)을 그만큼 키워 문서 길이를 그대로 유지 → 스크롤 위치가 밀리지 않음. 창 크기가 바뀌면 다시 잼.
+    var mark = null, pad = null, toolsStuck = false;
+    function setToolsStuck(tools, sticky, topH) {
+      if (!mark) { mark = document.createElement('div'); mark.className = 'tools-mark'; mark.setAttribute('aria-hidden', 'true'); tools.parentNode.insertBefore(mark, tools);
+        pad = document.createElement('div'); pad.className = 'tools-pad'; pad.setAttribute('aria-hidden', 'true'); pad.style.height = '0'; tools.parentNode.insertBefore(pad, tools.nextSibling); }
+      var on = sticky && window.scrollY > 120 && mark.getBoundingClientRect().top <= topH + 1;
+      if (on === toolsStuck) return;
+      toolsStuck = on;
+      if (on) {
+        var h0 = tools.getBoundingClientRect().height;
+        tools.classList.add('stuck');
+        var d = h0 - tools.getBoundingClientRect().height;
+        pad.style.height = d > 0 ? d + 'px' : '0';
+      } else {
+        tools.classList.remove('stuck');
+        pad.style.height = '0';
+      }
+    }
     function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    function onResize() {   // 폭이 바뀌면 줄어드는 높이도 달라지므로 한 번 풀었다가 다시 잼
+      var tools = document.querySelector('.all-body .case-tools');
+      if (tools && toolsStuck) { toolsStuck = false; tools.classList.remove('stuck'); if (pad) pad.style.height = '0'; }
+      onScroll();
+    }
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', onResize);
     update();
   })();
 
