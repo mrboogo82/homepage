@@ -156,6 +156,19 @@ def lecture_items(block_html):
     return out
 
 
+def lecture_rows(block_html):
+    """강의 목록 → (날짜, 기관·과정, 과목) 튜플들 — 홈의 강의 표(2026. 11. 11.)."""
+    m = re.search(r'<h4>강의</h4>\s*<dl class="rows dates">(.*?)</dl>', block_html, re.S)
+    if not m:
+        return []
+    out = []
+    for dt, dd in re.findall(r'<div><dt>(.*?)</dt><dd>(.*?)</dd></div>', m.group(1), re.S):
+        sub = re.search(r'<span class="sub">(.*?)</span>', dd, re.S)
+        main = strip_tags(re.sub(r'<span class="sub">.*?</span>', '', dd, flags=re.S))
+        out.append((html.escape(strip_tags(dt)), html.escape(main), html.escape(strip_tags(sub.group(1))) if sub else ""))
+    return out
+
+
 def past_line(label, items, more_href, more_text):
     if not items:
         return "\n          "
@@ -189,10 +202,13 @@ def main():
         # 2026. 11. 11. 20:35 본인 지시: 홈에서는 '임기를 마친 위촉'·'임기를 마친 위원회' 줄을 보이지 않게(자세히 = career.html 에만), 강의는 '현재 활동 중인 위원회'와 같은 크기의
         # 소제목(<h4 class="sub-h">강의</h4>) 아래 내용만 — '자세히 →' 링크 없음. 되살리려면 past_line(...) 을 다시 쓴다(커밋 4236fa1).
         new_idoc = fill(new_idoc, "advisory-past", "\n          ")
-        new_idoc = fill(new_idoc, "committees-tiles", current_tiles_html(com))
-        lec = lecture_items(com)
+        # 2026. 11. 11. 21:18 본인 지시: 홈에서는 소제목 '현재 활동 중인 위원회'를 빼고(career.html 에는 그대로), 강의는 줄글 대신 '날짜 + 과정 + 과목' 표(.brief-list)로.
+        com_tiles = re.sub(r'<h4 class="sub-h">현재 활동 중인 위원회</h4>\s*', '', current_tiles_html(com), count=1)
+        new_idoc = fill(new_idoc, "committees-tiles", "\n          " + com_tiles.lstrip())
+        lec = lecture_rows(com)
         new_idoc = fill(new_idoc, "committees-past",
-                        ('\n          <h4 class="sub-h gap-top">강의</h4>\n          <p class="past lecture">%s</p>\n          ' % " · ".join(lec)) if lec else "\n          ")
+                        ('\n          <h4 class="sub-h gap-top">강의</h4>\n          <ul class="brief-list lectures">\n%s          </ul>\n          ' % "".join(
+                            '            <li><span class="y">%s</span><span class="t">%s%s</span></li>\n' % (d, m, (' <small>%s</small>' % sub) if sub else '') for d, m, sub in lec)) if lec else "\n          ")
     if new_idoc != idoc:
         changed.append("index.html")
         if not check:

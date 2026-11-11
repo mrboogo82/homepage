@@ -2041,3 +2041,10 @@ b, strong { font-weight: 600; }
   .brief-grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   .brief-list li { grid-template-columns: 6.6rem minmax(0, 1fr); gap: 0 0.6rem; padding: 0.18rem 0; }
 }
+
+/* ---------- 2026. 11. 11. 21:18 본인 지시: 홈 강의도 줄글 대신 표로(.brief-list.lectures — 날짜 + 과정, 과목은 옅은 작은 글씨). 넓은 화면은 두 단 ---------- */
+.brief-list.lectures { max-width: 60rem; }
+.brief-list.lectures li { grid-template-columns: 9.2rem minmax(0, 1fr); }
+.brief-list .t small { margin-left: 0.5rem; font-family: var(--sans); font-size: var(--step--2); color: var(--ink-soft); }
+@media (min-width: 761px) { .brief-list.lectures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; } }
+@media (max-width: 760px) { .brief-list.lectures li { grid-template-columns: 6.6rem minmax(0, 1fr); } .brief-list .t small { display: block; margin-left: 0; } }
