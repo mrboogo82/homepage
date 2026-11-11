@@ -26,7 +26,7 @@
     var limbs = [], tips = [], nodes = [];
     function grow(x, y, ang, len, w, depth) {
       if (ang > 1.3) ang = 1.3; if (ang < -1.3) ang = -1.3;
-      var bend = depth === 4 ? 0.34 : r2(-0.34, 0.34), x2 = x + Math.sin(ang) * len, y2 = y - Math.cos(ang) * len;
+      var bend = depth === 4 ? 0.55 : r2(-0.8, 0.8), x2 = x + Math.sin(ang) * len, y2 = y - Math.cos(ang) * len;
       var mx = (x + x2) / 2 + Math.cos(ang) * bend * len * 0.5, my = (y + y2) / 2 + Math.sin(ang) * bend * len * 0.5;
       limbs.push({ d: 'M' + f(x) + ' ' + f(y) + 'Q' + f(mx) + ' ' + f(my) + ' ' + f(x2) + ' ' + f(y2), w: w });
       if (depth <= 1) tips.push([x2, y2]);
@@ -43,7 +43,7 @@
     var PAL = {
       spring: { dark: ['#e38fa8', '#e9a3b7'], mid: ['#f3bccb', '#f6c9d5'], light: ['#fbe1e8', '#fff3f6'], n: 5, r: [1.1, 1.9], R: 3.9, o: 0.96 },
       summer: { dark: ['#3f6a3d', '#4a7745'], mid: ['#5d8c4f', '#6b9a59'], light: ['#86b06c', '#a2c684'], n: 6, r: [1.4, 2.3], R: 3.9, o: 1 },
-      autumn: { dark: ['#8f3423', '#a8432b'], mid: ['#c4553a', '#d67a33', '#cf6a35'], light: ['#e0a03f', '#e8bd57'], n: 5, r: [1.3, 2.1], R: 3.8, o: 1 }
+      autumn: { dark: ['#6a2317', '#7f2d1c'], mid: ['#98391f', '#a9521f', '#a24423'], light: ['#bd7a27', '#c99334'], n: 5, r: [1.3, 2.1], R: 3.8, o: 1 }
     };
     var FLIP = '<g transform="translate(48 0) scale(-1 1)">';   // 줄기가 이름 반대쪽(오른쪽)으로 기울도록 좌우를 뒤집어 그린다
     var bark = '#5c4434', barkLight = '#836651', k, j, L;
@@ -84,7 +84,7 @@
       }
       h += '<g class="season-tree-top">' + FLIP + body + '<g opacity="' + P.o + '">' + lay.dark + lay.mid + lay.light + '</g></g></g>';
       if (season === 'spring') h += '<g fill="#efaec0"><ellipse cx="43.5" cy="34" rx="1.4" ry="0.9" transform="rotate(-30 43.5 34)"/><ellipse cx="5" cy="39" rx="1.3" ry="0.85" transform="rotate(25 5 39)"/><ellipse cx="35" cy="49.8" rx="1.4" ry="0.75"/><ellipse cx="14" cy="50.1" rx="1.2" ry="0.65"/><ellipse cx="30" cy="50.5" rx="1.1" ry="0.6" fill="#f6c9d5"/></g>';
-      if (season === 'autumn') h += '<g><ellipse cx="43.5" cy="36" rx="1.6" ry="1" fill="#d67a33" transform="rotate(-35 43.5 36)"/><ellipse cx="5" cy="41" rx="1.5" ry="0.95" fill="#c4553a" transform="rotate(30 5 41)"/><ellipse cx="34" cy="49.9" rx="1.7" ry="0.85" fill="#e0a03f"/><ellipse cx="15" cy="50.1" rx="1.5" ry="0.8" fill="#c4553a"/><ellipse cx="29.5" cy="50.5" rx="1.3" ry="0.7" fill="#d67a33"/><ellipse cx="19" cy="50.6" rx="1.1" ry="0.6" fill="#e8bd57"/></g>';
+      if (season === 'autumn') h += '<g><ellipse cx="43.5" cy="36" rx="1.6" ry="1" fill="#a9521f" transform="rotate(-35 43.5 36)"/><ellipse cx="5" cy="41" rx="1.5" ry="0.95" fill="#98391f" transform="rotate(30 5 41)"/><ellipse cx="34" cy="49.9" rx="1.7" ry="0.85" fill="#bd7a27"/><ellipse cx="15" cy="50.1" rx="1.5" ry="0.8" fill="#98391f"/><ellipse cx="29.5" cy="50.5" rx="1.3" ry="0.7" fill="#a9521f"/><ellipse cx="19" cy="50.6" rx="1.1" ry="0.6" fill="#c99334"/></g>';
     }
     var st = document.createElement('style');
     st.textContent =
@@ -116,7 +116,7 @@
   function leaf(c, v) { return svg('<path fill="' + c + '" d="M12 2.5c-5 3.4-7.2 8.6-5.6 13.6.8 2.4 2.7 3.9 5.6 4.6 2.9-.7 4.8-2.2 5.6-4.6C19.2 11.1 17 5.9 12 2.5z"/><path fill="none" stroke="' + v + '" stroke-width="1" stroke-linecap="round" d="M12 6.5V23"/>'); }
   function petal(c) { return svg('<path fill="' + c + '" d="M12 3.2l1.3 1.5 1.6-1c3.6 3.4 4.5 8.6 2.2 13-1.2 2.2-2.9 3.6-5.1 4.3-2.2-.7-3.9-2.1-5.1-4.3-2.3-4.4-1.4-9.6 2.2-13l1.6 1z"/>'); }
   var IMG = {
-    autumn: [leaf('#b9691f', '#8a4a12'), leaf('#cf9a2e', '#a37318'), leaf('#96362b', '#6e231b')],
+    autumn: [leaf('#a9521f', '#7a3a12'), leaf('#bd7a27', '#8f5a14'), leaf('#7f2d1c', '#5a1e12')],
     spring: [petal('#f4bccb'), petal('#f8d3dc'), petal('#eeaabd')],
     winter: ['radial-gradient(circle, #c9d3de 0 38%, rgba(201,211,222,0.55) 55%, rgba(201,211,222,0) 72%)']
   };
