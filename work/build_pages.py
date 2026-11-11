@@ -22,9 +22,9 @@
   2. 공용 스크립트 site.js 의 해시를 <script src="site.js?v=해시"> 에 넣는다(여섯 페이지 모두). 브라우저 캐시 때문.
   3. 홈 '경력' 절의 위촉장 타일과 한 줄 요약을 career.html 에서 다시 만든다(2026. 10. 23. 오후 본인 지시: 현행 법률고문 위촉·위원회의 위촉장은 모두 홈 본문에, 나머지는 간단하게):
        <!-- advisory-tiles:start/end -->   career.html #advisory 의 현행 타일(소제목 '중앙행정기관 · 지방자치단체' / '공공기관 · 공기업 · 단체'와 <ul class="advisors">) 그대로
-       <!-- advisory-past:start/end -->    임기를 마친 위촉 한 줄(타일의 기관·역할·기간 + 글줄의 것) + career.html 링크
+       <!-- advisory-past:start/end -->    (2026. 11. 11.부터 비움 — 임기를 마친 위촉은 career.html 에만)
        <!-- committees-tiles:start/end --> #committees 의 현행 위원회 타일 그대로
-       <!-- committees-past:start/end -->  임기를 마친 위원회 한 줄 + 강의 한 줄
+       <!-- committees-past:start/end -->  소제목 '강의' + 강의 한 줄(2026. 11. 11.부터 임기를 마친 위원회 줄은 뺌)
      위촉·위원회·강의를 더하거나 뺄 때는 career.html 만 고치고 이 스크립트를 돌린다.
   4. sitemap.xml 은 build_cases.py 가 만들며 다섯 페이지도 그 목록에 들어 있다.
 
@@ -186,11 +186,13 @@ def main():
         cdoc = read(cpath)
         adv, com = block_of(cdoc, "advisory"), block_of(cdoc, "committees")
         new_idoc = fill(new_idoc, "advisory-tiles", current_tiles_html(adv))
-        new_idoc = fill(new_idoc, "advisory-past", past_line("임기를 마친 위촉", past_items(adv), "career.html#advisory", "위촉장 보기 →"))
+        # 2026. 11. 11. 20:35 본인 지시: 홈에서는 '임기를 마친 위촉'·'임기를 마친 위원회' 줄을 보이지 않게(자세히 = career.html 에만), 강의는 '현재 활동 중인 위원회'와 같은 크기의
+        # 소제목(<h4 class="sub-h">강의</h4>) 아래 내용만 — '자세히 →' 링크 없음. 되살리려면 past_line(...) 을 다시 쓴다(커밋 4236fa1).
+        new_idoc = fill(new_idoc, "advisory-past", "\n          ")
         new_idoc = fill(new_idoc, "committees-tiles", current_tiles_html(com))
+        lec = lecture_items(com)
         new_idoc = fill(new_idoc, "committees-past",
-                        past_line("임기를 마친 위원회", past_items(com), "career.html#committees", "위촉장 보기 →").rstrip() +
-                        past_line("강의", lecture_items(com), "career.html#committees", "자세히 →"))
+                        ('\n          <h4 class="sub-h gap-top">강의</h4>\n          <p class="past lecture">%s</p>\n          ' % " · ".join(lec)) if lec else "\n          ")
     if new_idoc != idoc:
         changed.append("index.html")
         if not check:

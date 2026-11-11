@@ -2018,3 +2018,10 @@ b, strong { font-weight: 600; }
 #contact .sns.icons.large a { font-size: 0.8125rem; }
 #contact .sns.icons.large a small { font-size: 0.6875rem; }
 #contact .consult input[type="file"] { font-size: 0.8125rem; }
+
+/* ---------- 2026. 11. 11. 20:35 본인 지시: 홈 경력 절 — 블록 제목(경력 · 학력 · 수상 / 법률고문 위촉 / 위원회 · 강의) 옆의 '자세히' 링크, 강의 소제목 ----------
+   '자세히'(.h-more)는 절 제목 옆 알약(.section-head .jump a)과 같은 모양을 한 단계 작게. 강의는 '현재 활동 중인 위원회'와 같은 크기의 소제목(h4.sub-h) 아래에 내용 한 줄. */
+.block-h .h-more { display: inline-block; margin-left: 0.6rem; padding: 0.14rem 0.7rem; vertical-align: 0.14em; font-family: var(--sans); font-size: var(--step--2); font-weight: 400; line-height: 1.5; letter-spacing: 0; color: var(--ink); text-decoration: none; background: var(--paper); border: 1px solid var(--ink); border-radius: 0; transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
+.block-h .h-more:hover, .block-h .h-more:focus-visible { color: #fff; background: var(--seal); border-color: var(--seal); }
+.career-body h4.sub-h.gap-top { margin-top: 1.6rem; }
+.career-body h4.sub-h + .past.lecture { margin-top: 0; }
