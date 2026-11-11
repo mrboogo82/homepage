@@ -700,6 +700,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     </div>
   </footer>
 </div>
+<script src="../season.js?v=20261111-1" defer></script>
 </body>
 </html>
 """
@@ -853,6 +854,7 @@ def render_topic_page(t, matched, cat_counts, modified):
     </div>
   </footer>
 </div>
+<script src="../season.js?v=20261111-1" defer></script>
 </body>
 </html>
 """
