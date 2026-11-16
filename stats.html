@@ -222,7 +222,7 @@ tr.paid td.lbl b { color: var(--seal); }
     <section class="sec">
       <div class="sec-h"><h2>본 페이지 · 기기 · 지역 · 시간대</h2></div>
       <div class="grid2">
-        <div><p class="sub-h">본 페이지 <span class="note">조회수 · 한 번 열었을 때 평균 머문 시간</span></p>
+        <div><p class="sub-h">본 페이지 <span class="note">조회수 · 한 번 열었을 때 평균 머문 시간 · 방문자는 어림(이름이 같은 줄을 합침)</span></p>
           <table id="page-table"><thead><tr><th>페이지</th><th class="num">조회</th><th class="num">방문자</th><th class="num">머문 시간</th></tr></thead><tbody></tbody></table></div>
         <div><p class="sub-h">처음 들어온 페이지 <span class="note">방문이 시작된 페이지</span></p>
           <table id="land-table"><thead><tr><th>페이지</th><th class="num">방문</th><th class="num">머문 시간</th><th class="num">관심 방문</th></tr></thead><tbody></tbody></table></div>
@@ -296,6 +296,7 @@ tr.paid td.lbl b { color: var(--seal); }
   function isPaid(m) { return /paid|cpc|ppc|cpm|retargeting|(^|[_-])ads?($|[_-])/.test((m || '').toLowerCase()); }
   function baseLabel(s, m) {
     if (s === '(direct)' || s === '(not set)' && m === '(none)') return '직접 입력(즐겨찾기·주소 입력·카카오톡 등)';
+    if (/chatgpt|openai|perplexity|claude|anthropic|gemini|copilot|wrtn|clova|liner/.test(s) || m === 'ai-assistant') return 'AI 검색 (' + s + ')';
     if (/naver/.test(s)) { if (/blog/.test(s)) return '네이버 블로그'; if (m === 'organic' || /search/.test(s)) return '네이버 검색'; return '네이버 (' + s + ')'; }
     if (/google/.test(s)) return m === 'organic' ? '구글 검색' : '구글 (' + s + ')';
     if (/bing/.test(s)) return '빙 검색';
@@ -310,12 +311,11 @@ tr.paid td.lbl b { color: var(--seal); }
     if (/kakao/.test(s)) return '카카오';
     if (/youtube/.test(s)) return '유튜브';
     if (/lawyermrboo82/.test(s)) return '홈페이지 안에서 이동';
-    if (/chatgpt|openai|perplexity|claude|anthropic|gemini|copilot|wrtn|clova|liner/.test(s)) return 'AI 검색 (' + s + ')';
     if (/lfind|엘파인드/.test(s)) return '엘파인드';
     return s + (m && m !== '(none)' && m !== 'referral' ? ' / ' + m : '');
   }
   var PAGES = { '/': '홈', '/index.html': '홈', '/cases.html': '수행 사례 전체', '/career.html': '경력', '/fields.html': '다루는 사건', '/press.html': '언론보도', '/contact.html': '상담 문의', '/privacy.html': '개인정보처리방침', '/stats.html': '방문 통계(이 페이지)', '(not set)': '알 수 없음' };
-  function pageLabel(p, title) { var base = (p || '').split('?')[0]; if (PAGES[base]) return PAGES[base]; var t = (title || '').split(/ [|—–] | - /)[0].trim(); return t && t !== '(not set)' ? t : p; }
+  function pageLabel(p, title) { var base = (p || '').split('?')[0]; if (PAGES[base]) return PAGES[base]; var t = (title || '').split(/ [|—–·] | - /)[0].trim(); return t && t !== '(not set)' ? t : p; }
   function dur(sec) { sec = Math.round(Number(sec) || 0); if (sec < 60) return sec + '초'; var m = Math.floor(sec / 60), s = sec % 60; if (m >= 60) { var hh = Math.floor(m / 60); return hh + '시간 ' + (m % 60) + '분'; } return m + '분' + (s ? ' ' + s + '초' : ''); }
   function pct(a, b) { return b > 0 ? Math.round(a / b * 100) + '%' : '–'; }
   var DEVICES = { mobile: '휴대전화', desktop: 'PC', tablet: '태블릿', smarttv: 'TV' };
@@ -469,11 +469,12 @@ tr.paid td.lbl b { color: var(--seal); }
     });
     var mt = j.meta; $('meta-line').hidden = !mt;
     if (mt) $('meta-line').textContent = '참고 — ' + rangeText + ' 동안 인스타그램·페이스북의 링크를 눌러 들어온 방문(주소에 fbclid 가 붙은 방문; 광고와 일반 게시물·프로필 링크를 합친 수)은 ' + fmt(mt.sessions) + '회, 방문자 ' + fmt(mt.users) + '명, 평균 머문 시간 ' + dur(mt.avgSec) + ', 관심 방문 ' + pct(mt.engaged, mt.sessions) + '입니다.';
+    function merge(rows, nKey) { var map = {}, out = []; rows.forEach(function (p) { var k = pageLabel(p.path, p.title || titles[p.path]), m = map[k]; if (!m) { m = map[k] = { label: k, path: p.path, n: 0, users: 0, sec: 0, engaged: 0 }; out.push(m); } var n = Number(p[nKey]) || 0; m.n += n; m.users += Number(p.users) || 0; m.sec += (Number(p.avgSec) || 0) * n; m.engaged += Number(p.engaged) || 0; }); out.sort(function (a, b) { return b.n - a.n; }); return out; }
+    var titles = {}; (j.pages || []).forEach(function (p) { if (!titles[p.path]) titles[p.path] = p.title; });
     var ptb = $('page-table').querySelector('tbody'); ptb.textContent = '';
-    (j.pages || []).slice(0, 15).forEach(function (p) { var tr = el('tr'), td = el('td', null, pageLabel(p.path, p.title)); td.title = p.path; tr.appendChild(td); tr.appendChild(el('td', 'num', fmt(p.views))); tr.appendChild(el('td', 'num', fmt(p.users))); tr.appendChild(el('td', 'num', V2 ? dur(p.avgSec) : '–')); ptb.appendChild(tr); });
-    var titles = {}; (j.pages || []).forEach(function (p) { titles[p.path] = p.title; });
+    merge(j.pages || [], 'views').slice(0, 15).forEach(function (p) { var tr = el('tr'), td = el('td', null, p.label); td.title = p.path; tr.appendChild(td); tr.appendChild(el('td', 'num', fmt(p.n))); tr.appendChild(el('td', 'num', fmt(p.users))); tr.appendChild(el('td', 'num', V2 ? dur(p.n ? p.sec / p.n : 0) : '–')); ptb.appendChild(tr); });
     var ltb = $('land-table').querySelector('tbody'); ltb.textContent = '';
-    (j.landings || []).slice(0, 12).forEach(function (p) { var tr = el('tr'), td = el('td', null, pageLabel(p.path, titles[p.path])); td.title = p.path; tr.appendChild(td); tr.appendChild(el('td', 'num', fmt(p.sessions))); tr.appendChild(el('td', 'num', dur(p.avgSec))); tr.appendChild(el('td', 'num', pct(p.engaged, p.sessions))); ltb.appendChild(tr); });
+    merge(j.landings || [], 'sessions').slice(0, 12).forEach(function (p) { var tr = el('tr'), td = el('td', null, p.label); td.title = p.path; tr.appendChild(td); tr.appendChild(el('td', 'num', fmt(p.n))); tr.appendChild(el('td', 'num', dur(p.n ? p.sec / p.n : 0))); tr.appendChild(el('td', 'num', pct(p.engaged, p.n))); ltb.appendChild(tr); });
     if (!(j.landings || []).length) { var e1 = el('tr'); var c1 = el('td', null, V2 ? '아직 없습니다' : '창구를 새 판으로 바꾸면 보입니다'); c1.colSpan = 4; e1.appendChild(c1); ltb.appendChild(e1); }
     bars('devices', (j.devices || []).map(function (d) { return { label: (DEVICES[d.name] || d.name) + (d.sessions ? ' · 평균 ' + dur(d.avgSec) : ''), n: d.users }; }), sumOf(j.devices, 'users'));
     var NR = { 'new': '처음 온 사람', returning: '다시 온 사람' };
