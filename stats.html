@@ -206,7 +206,7 @@ tr.paid td.lbl b { color: var(--seal); }
     </section>
 
     <section class="sec">
-      <div class="sec-h"><h2>광고 · 캠페인</h2><span class="note">광고 주소에 꼬리표(utm)를 붙인 방문만 여기에 따로 잡힙니다</span></div>
+      <div class="sec-h"><h2>광고 · 캠페인</h2><span class="note">광고 주소에 꼬리표(utm)가 붙어 들어온 방문</span></div>
       <div id="camp-empty" class="note" hidden>아직 꼬리표가 붙은 주소로 들어온 방문이 없습니다.</div>
       <div class="scroll"><table id="camp-table" hidden>
         <thead><tr><th>캠페인 <small>utm_campaign</small></th><th>광고 소재 <small>utm_content</small></th><th class="num">방문</th><th class="num">방문자</th><th class="num">평균 머문 시간</th><th class="num">관심 방문</th><th class="num">연락 단추</th></tr></thead>
@@ -214,9 +214,8 @@ tr.paid td.lbl b { color: var(--seal); }
       </table></div>
       <div class="help">
         <p id="meta-line"></p>
-        <p><b>인스타그램 광고를 일반 게시물·프로필 링크와 갈라 보려면</b> 광고의 '웹사이트 주소' 칸에 홈페이지 주소 대신 아래처럼 꼬리표를 붙인 주소를 넣어 주십시오. 그날부터 위 표와 '경로 종류'의 '유료 SNS(광고)'에 따로 잡힙니다.</p>
-        <code>https://lawyermrboo82.com/?utm_source=instagram&amp;utm_medium=paid_social&amp;utm_campaign=2026-11-homepage&amp;utm_content=ad1</code>
-        <p>utm_campaign 은 광고 묶음 이름(예: 2026-11-homepage), utm_content 는 광고 소재 이름(예: ad1, photo-desk)으로 — 영문·숫자·줄표로 자유롭게 바꾸시면 소재별로 나뉘어 보입니다.</p>
+        <p><b>인스타그램 앱에서 집행한 광고</b>는 주소에 꼬리표가 자동으로 붙어 들어오므로, 위 표와 '출처 상세'의 '인스타그램 광고'(ig / paid)로 일반 게시물·프로필 링크(인스타그램, ig / social)와 따로 잡힙니다. 캠페인·광고 소재 칸의 긴 숫자는 메타가 광고마다 붙인 캠페인 번호·광고 번호입니다.</p>
+        <p>번호 대신 이름으로 보고 싶으면 광고의 웹사이트 주소를 직접 <span style="overflow-wrap:anywhere">https://lawyermrboo82.com/?utm_source=ig&amp;utm_medium=paid&amp;utm_campaign=이름&amp;utm_content=소재이름</span> 꼴로 넣으시면 됩니다(영문·숫자·줄표).</p>
       </div>
     </section>
 
@@ -266,7 +265,7 @@ tr.paid td.lbl b { color: var(--seal); }
       <p>숫자는 Google Analytics 집계입니다. 오늘 숫자는 몇 시간 늦게 반영될 수 있고, 지난 날짜의 숫자는 이튿날 확정됩니다.</p>
       <p>'방문자'는 같은 사람이 여러 번 와도 한 명으로 셉니다. '조회수'는 페이지를 연 횟수, '방문'은 들어온 횟수(30분 넘게 쉬었다 다시 보면 새 방문)입니다.</p>
       <p>'평균 머문 시간'은 방문 1회 동안 화면을 실제로 보고 있던 시간의 평균입니다. 열자마자 닫은 방문도 0초로 평균에 들어가므로, 광고 유입이 많은 날은 짧게 나옵니다.</p>
-      <p>인스타그램·카카오톡 등 앱 안의 브라우저로 연 방문은 출처가 '직접 입력'이나 l.instagram.com 으로 섞여 잡힐 수 있습니다. 광고 주소에 꼬리표(utm)를 붙이면 정확히 갈라집니다.</p>
+      <p>인스타그램·카카오톡 등 앱 안의 브라우저로 연 방문은 출처가 '직접 입력'이나 l.instagram.com 으로 섞여 잡힐 수 있습니다. 인스타그램 광고는 꼬리표(utm)가 붙어 있어 따로 잡힙니다.</p>
     </div>
   </div>
 </div>
@@ -288,7 +287,7 @@ tr.paid td.lbl b { color: var(--seal); }
   function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
   // ---- 한국어 이름표 ------------------------------------------------------
-  var CHANNELS = { 'Organic Search': '검색', 'Organic Social': 'SNS', 'Direct': '직접 입력', 'Referral': '다른 사이트 링크', 'Unassigned': '분류 안 됨', 'Organic Video': '동영상', 'Email': '이메일', 'Paid Search': '유료 검색(광고)', 'Paid Social': '유료 SNS(광고)', 'Paid Other': '그 밖의 광고', 'Paid Video': '동영상 광고', 'Display': '배너', 'Cross-network': '혼합', 'Audio': '오디오', 'SMS': '문자', 'Mobile Push Notifications': '알림', 'Organic Shopping': '쇼핑' };
+  var CHANNELS = { 'Organic Search': '검색', 'Organic Social': 'SNS', 'Direct': '직접 입력', 'Referral': '다른 사이트 링크', 'Unassigned': '분류 안 됨', 'Organic Video': '동영상', 'Email': '이메일', 'Paid Search': '유료 검색(광고)', 'Paid Social': '유료 SNS(광고)', 'Paid Other': '그 밖의 광고', 'AI Assistants': 'AI 검색', 'AI Assistant': 'AI 검색', 'Paid Video': '동영상 광고', 'Display': '배너', 'Cross-network': '혼합', 'Audio': '오디오', 'SMS': '문자', 'Mobile Push Notifications': '알림', 'Organic Shopping': '쇼핑' };
   function sourceLabel(src, med) {
     var s = (src || '').toLowerCase(), m = (med || '').toLowerCase();
     if (isPaid(m)) return baseLabel(s, 'referral') + ' 광고';
@@ -459,7 +458,7 @@ tr.paid td.lbl b { color: var(--seal); }
       tb.appendChild(tr);
     });
     if (!(j.sources || []).length) { var e0 = el('tr'); var c0 = el('td', null, '아직 없습니다'); c0.colSpan = 6; e0.appendChild(c0); tb.appendChild(e0); }
-    var camps = j.campaigns || [], ctb = $('camp-table').querySelector('tbody'); ctb.textContent = '';
+    var camps = (j.campaigns || []).filter(function (c) { return c.campaign.charAt(0) !== '('; }), ctb = $('camp-table').querySelector('tbody'); ctb.textContent = '';
     $('camp-table').hidden = !camps.length; $('camp-empty').hidden = !!camps.length;
     if (!V2) $('camp-empty').textContent = '창구(Apps Script)를 새 판으로 바꾸면 보입니다.';
     camps.forEach(function (c) {
