@@ -1,3 +1,30 @@
+// ---------- 머문 시간 집계 (2026. 11. 16. 본인 지시: "어느 정도 머물다 가는지 구체적인 시간") ----------
+// 계절 효과와는 상관없는 토막이지만, 모든 페이지가 함께 부르는 파일이 이것뿐이라 여기에 둔다(계절 효과를 꺼도 이 토막은 돈다).
+// 화면이 실제로 보이는 동안만 초를 세고, 한 번의 방문(같은 탭, 30분 넘게 쉬면 새 방문) 동안 10초·30초·1분·3분·5분·10분을 넘길 때마다
+// GA 이벤트 stay_10 · stay_30 · stay_60 · stay_180 · stay_300 · stay_600 을 한 번씩 보낸다. 통계 페이지(stats.html)의 '머문 시간 분포'가 이 숫자다.
+// '내 방문 빼기'를 켠 기기(ga-disable)와 gtag 가 막힌 곳(아티팩트 뷰어 등)에서는 아무것도 하지 않는다.
+(function () {
+  try {
+    if (window['ga-disable-G-STLB5BC2G2'] || typeof gtag !== 'function') return;
+    var STEPS = [10, 30, 60, 180, 300, 600], KEY = 'stay-sec', REST = 30 * 60 * 1000;
+    var total = 0, fired = 0, last = Date.now(), timer = null;
+    try { var o = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (o && last - o.at < REST) { total = +o.t || 0; fired = +o.f || 0; } } catch (e) {}
+    function save() { try { sessionStorage.setItem(KEY, JSON.stringify({ t: Math.round(total * 10) / 10, f: fired, at: Date.now() })); } catch (e) {} }
+    function tick() {
+      var now = Date.now(), d = (now - last) / 1000; last = now;
+      if (d > 0 && d < 5) total += d;   // 5초 넘게 건너뛴 틈(절전·멈춘 탭)은 세지 않는다
+      while (fired < STEPS.length && total >= STEPS[fired]) { gtag('event', 'stay_' + STEPS[fired]); fired++; }
+      save();
+      if (fired >= STEPS.length) stop();
+    }
+    function start() { if (timer || fired >= STEPS.length || document.visibilityState === 'hidden') return; last = Date.now(); timer = setInterval(tick, 1000); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') { tick(); stop(); } else start(); });
+    window.addEventListener('pagehide', function () { if (timer) tick(); });
+    start();
+  } catch (e) {}
+})();
+
 // ---------- 계절 효과 (2026. 11. 11. 본인 지시) ----------
 // 가을(9~11월) 낙엽 · 겨울(12~2월) 눈 · 봄(3~5월) 벚꽃 · 여름(6~8월) 햇볕. "너무 많이는 말고 살짝 알아차릴 수 있을 정도로만."
 // 모든 페이지가 이 파일 하나만 부른다(<script src="season.js" defer>) — 모양·움직임 CSS도 여기서 넣으므로 home.css·cases.css·case.css 는 건드리지 않는다.

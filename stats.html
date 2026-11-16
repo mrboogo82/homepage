@@ -100,6 +100,25 @@ table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 th, td { padding: 0.4rem 0.4rem; text-align: left; border-bottom: 1px solid var(--rule); vertical-align: top; }
 th { font-weight: 600; font-size: 0.8125rem; color: var(--ink-soft); }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td small, .raw { display: block; font-size: 0.75rem; color: var(--ink-soft); font-weight: 400; overflow-wrap: anywhere; }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.scroll table { min-width: 34rem; }
+td.lbl { min-width: 9rem; }
+tr.paid td.lbl b { color: var(--seal); }
+.tiles.four { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0; }
+.tiles.four .tile .v { font-size: 1.5rem; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
+.steps li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) 6.5rem; gap: 0.7rem; align-items: center; font-size: 0.875rem; }
+.steps .track { height: 0.9rem; background: var(--wash); border-radius: 2px; overflow: hidden; }
+.steps .fill { height: 100%; background: var(--bar); }
+.steps .n { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.steps .n small { font-weight: 400; color: var(--ink-soft); margin-left: 0.25rem; }
+.hours { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); gap: 2px; align-items: end; height: 5.5rem; }
+.hours i { display: block; background: var(--bar); border-radius: 1px 1px 0 0; min-height: 1px; }
+.hours-x { display: flex; justify-content: space-between; margin-top: 0.2rem; font-size: 0.6875rem; color: var(--ink-soft); }
+.help { margin: 0.8rem 0 0; padding: 0.7rem 0.9rem; font-size: 0.8125rem; background: var(--wash); border-radius: 3px; }
+.help p { margin: 0 0 0.4rem; } .help p:last-child { margin: 0; }
+.help code { display: block; margin: 0.3rem 0 0.5rem; padding: 0.4rem 0.5rem; font-size: 0.75rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; overflow-wrap: anywhere; user-select: all; }
 /* 설정 */
 .settings { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.875rem; color: var(--ink-soft); }
 .settings label { display: flex; gap: 0.5rem; align-items: flex-start; color: var(--ink); }
@@ -112,6 +131,9 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 @media (max-width: 760px) {
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tiles .tile:last-child { grid-column: 1 / -1; }
+  .tiles.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiles.four .tile:last-child { grid-column: auto; }
+  .steps li { grid-template-columns: 5.6rem minmax(0, 1fr) 5.6rem; gap: 0.5rem; }
   .grid2, .grid3 { grid-template-columns: minmax(0, 1fr); }
   .chart { height: 11rem; }
   h1 { font-size: 1.4rem; }
@@ -154,6 +176,16 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 
     <div class="tiles" id="tiles"></div>
 
+    <section class="sec" id="stay-sec">
+      <div class="sec-h"><h2>머문 시간</h2><span class="note" id="stay-note">화면을 실제로 보고 있던 시간만 셉니다(다른 탭·앱으로 넘어간 동안은 빼고)</span></div>
+      <div id="eng-empty" class="note" hidden></div>
+      <div id="eng-body">
+        <div class="tiles four" id="eng-tiles"></div>
+        <p class="sub-h" style="margin-top:1.2rem">얼마나 머물다 갔는지 <span class="note" id="steps-note"></span></p>
+        <ul class="steps" id="steps"></ul>
+      </div>
+    </section>
+
     <section class="sec">
       <div class="sec-h"><h2>날짜별 조회수와 방문자</h2><span class="note" id="chart-note"></span></div>
       <div class="chart" id="chart"></div>
@@ -164,16 +196,43 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
       <div class="sec-h"><h2>유입 경로</h2><span class="note">어디에서 홈페이지로 들어왔는지 · 카카오톡·문자·이메일 앱에서 연 방문은 '직접 입력'으로 잡힙니다</span></div>
       <div class="grid2">
         <div><p class="sub-h">경로 종류</p><ul class="bars" id="channels"></ul></div>
-        <div><p class="sub-h">출처 상세</p><ul class="bars" id="sources"></ul></div>
+        <div><p class="sub-h">경로 종류별 평균 머문 시간</p><ul class="bars" id="channels-time"></ul></div>
+      </div>
+      <p class="sub-h" style="margin-top:1.4rem">출처 상세 <span class="note">방문 = 들어온 횟수 · 관심 방문 = 10초 넘게 보았거나 두 쪽 이상 본 방문 · 연락 단추 = 전화·이메일·상담 신청·SNS 단추를 누른 횟수</span></p>
+      <div class="scroll"><table id="src-table">
+        <thead><tr><th>출처</th><th class="num">방문</th><th class="num">방문자</th><th class="num">평균 머문 시간</th><th class="num">관심 방문</th><th class="num">연락 단추</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h"><h2>광고 · 캠페인</h2><span class="note">광고 주소에 꼬리표(utm)를 붙인 방문만 여기에 따로 잡힙니다</span></div>
+      <div id="camp-empty" class="note" hidden>아직 꼬리표가 붙은 주소로 들어온 방문이 없습니다.</div>
+      <div class="scroll"><table id="camp-table" hidden>
+        <thead><tr><th>캠페인 <small>utm_campaign</small></th><th>광고 소재 <small>utm_content</small></th><th class="num">방문</th><th class="num">방문자</th><th class="num">평균 머문 시간</th><th class="num">관심 방문</th><th class="num">연락 단추</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <div class="help">
+        <p id="meta-line"></p>
+        <p><b>인스타그램 광고를 일반 게시물·프로필 링크와 갈라 보려면</b> 광고의 '웹사이트 주소' 칸에 홈페이지 주소 대신 아래처럼 꼬리표를 붙인 주소를 넣어 주십시오. 그날부터 위 표와 '경로 종류'의 '유료 SNS(광고)'에 따로 잡힙니다.</p>
+        <code>https://lawyermrboo82.com/?utm_source=instagram&amp;utm_medium=paid_social&amp;utm_campaign=2026-11-homepage&amp;utm_content=ad1</code>
+        <p>utm_campaign 은 광고 묶음 이름(예: 2026-11-homepage), utm_content 는 광고 소재 이름(예: ad1, photo-desk)으로 — 영문·숫자·줄표로 자유롭게 바꾸시면 소재별로 나뉘어 보입니다.</p>
       </div>
     </section>
 
     <section class="sec">
-      <div class="sec-h"><h2>본 페이지 · 기기 · 지역</h2></div>
-      <div class="grid3">
-        <div><p class="sub-h">본 페이지</p><ul class="bars" id="pages"></ul></div>
-        <div><p class="sub-h">기기</p><ul class="bars" id="devices"></ul></div>
+      <div class="sec-h"><h2>본 페이지 · 기기 · 지역 · 시간대</h2></div>
+      <div class="grid2">
+        <div><p class="sub-h">본 페이지 <span class="note">조회수 · 한 번 열었을 때 평균 머문 시간</span></p>
+          <table id="page-table"><thead><tr><th>페이지</th><th class="num">조회</th><th class="num">방문자</th><th class="num">머문 시간</th></tr></thead><tbody></tbody></table></div>
+        <div><p class="sub-h">처음 들어온 페이지 <span class="note">방문이 시작된 페이지</span></p>
+          <table id="land-table"><thead><tr><th>페이지</th><th class="num">방문</th><th class="num">머문 시간</th><th class="num">관심 방문</th></tr></thead><tbody></tbody></table></div>
+      </div>
+      <div class="grid3" style="margin-top:1.6rem">
+        <div><p class="sub-h">기기</p><ul class="bars" id="devices"></ul>
+          <p class="sub-h" style="margin-top:1.2rem">처음 온 사람 · 다시 온 사람</p><ul class="bars" id="newret"></ul></div>
         <div><p class="sub-h">지역</p><ul class="bars" id="cities"></ul></div>
+        <div><p class="sub-h">시간대 <span class="note">방문이 시작된 시각</span></p><div class="hours" id="hours"></div><div class="hours-x"><span>0시</span><span>6시</span><span>12시</span><span>18시</span><span>23시</span></div></div>
       </div>
     </section>
 
@@ -205,7 +264,9 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 
     <div class="foot">
       <p>숫자는 Google Analytics 집계입니다. 오늘 숫자는 몇 시간 늦게 반영될 수 있고, 지난 날짜의 숫자는 이튿날 확정됩니다.</p>
-      <p>'방문자'는 같은 사람이 여러 번 와도 한 명으로 셉니다. '조회수'는 페이지를 연 횟수입니다.</p>
+      <p>'방문자'는 같은 사람이 여러 번 와도 한 명으로 셉니다. '조회수'는 페이지를 연 횟수, '방문'은 들어온 횟수(30분 넘게 쉬었다 다시 보면 새 방문)입니다.</p>
+      <p>'평균 머문 시간'은 방문 1회 동안 화면을 실제로 보고 있던 시간의 평균입니다. 열자마자 닫은 방문도 0초로 평균에 들어가므로, 광고 유입이 많은 날은 짧게 나옵니다.</p>
+      <p>인스타그램·카카오톡 등 앱 안의 브라우저로 연 방문은 출처가 '직접 입력'이나 l.instagram.com 으로 섞여 잡힐 수 있습니다. 광고 주소에 꼬리표(utm)를 붙이면 정확히 갈라집니다.</p>
     </div>
   </div>
 </div>
@@ -227,9 +288,14 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
   function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
   // ---- 한국어 이름표 ------------------------------------------------------
-  var CHANNELS = { 'Organic Search': '검색', 'Organic Social': 'SNS', 'Direct': '직접 입력', 'Referral': '다른 사이트 링크', 'Unassigned': '분류 안 됨', 'Organic Video': '동영상', 'Email': '이메일', 'Paid Search': '유료 검색', 'Paid Social': '유료 SNS', 'Display': '배너', 'Cross-network': '혼합', 'Audio': '오디오', 'SMS': '문자', 'Mobile Push Notifications': '알림', 'Organic Shopping': '쇼핑' };
+  var CHANNELS = { 'Organic Search': '검색', 'Organic Social': 'SNS', 'Direct': '직접 입력', 'Referral': '다른 사이트 링크', 'Unassigned': '분류 안 됨', 'Organic Video': '동영상', 'Email': '이메일', 'Paid Search': '유료 검색(광고)', 'Paid Social': '유료 SNS(광고)', 'Paid Other': '그 밖의 광고', 'Paid Video': '동영상 광고', 'Display': '배너', 'Cross-network': '혼합', 'Audio': '오디오', 'SMS': '문자', 'Mobile Push Notifications': '알림', 'Organic Shopping': '쇼핑' };
   function sourceLabel(src, med) {
     var s = (src || '').toLowerCase(), m = (med || '').toLowerCase();
+    if (isPaid(m)) return baseLabel(s, 'referral') + ' 광고';
+    return baseLabel(s, m);
+  }
+  function isPaid(m) { return /paid|cpc|ppc|cpm|retargeting|(^|[_-])ads?($|[_-])/.test((m || '').toLowerCase()); }
+  function baseLabel(s, m) {
     if (s === '(direct)' || s === '(not set)' && m === '(none)') return '직접 입력(즐겨찾기·주소 입력·카카오톡 등)';
     if (/naver/.test(s)) { if (/blog/.test(s)) return '네이버 블로그'; if (m === 'organic' || /search/.test(s)) return '네이버 검색'; return '네이버 (' + s + ')'; }
     if (/google/.test(s)) return m === 'organic' ? '구글 검색' : '구글 (' + s + ')';
@@ -237,6 +303,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
     if (/daum/.test(s)) return '다음 검색';
     if (/yahoo|duckduckgo|yandex|baidu/.test(s)) return s + ' 검색';
     if (/threads/.test(s)) return '스레드';
+    if (s === 'ig') return '인스타그램';
+    if (s === 'fb' || s === 'an') return '페이스북';
     if (/instagram/.test(s)) return '인스타그램';
     if (/linkedin|lnkd/.test(s)) return '링크드인';
     if (/facebook|fb\.com/.test(s)) return '페이스북';
@@ -247,8 +315,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
     if (/lfind|엘파인드/.test(s)) return '엘파인드';
     return s + (m && m !== '(none)' && m !== 'referral' ? ' / ' + m : '');
   }
-  var PAGES = { '/': '홈', '/index.html': '홈', '/cases.html': '수행 사례 전체', '/stats.html': '방문 통계(이 페이지)' };
-  function pageLabel(p) { var base = (p || '').split('?')[0]; return PAGES[base] || p; }
+  var PAGES = { '/': '홈', '/index.html': '홈', '/cases.html': '수행 사례 전체', '/career.html': '경력', '/fields.html': '다루는 사건', '/press.html': '언론보도', '/contact.html': '상담 문의', '/privacy.html': '개인정보처리방침', '/stats.html': '방문 통계(이 페이지)', '(not set)': '알 수 없음' };
+  function pageLabel(p, title) { var base = (p || '').split('?')[0]; if (PAGES[base]) return PAGES[base]; var t = (title || '').split(/ [|—–] | - /)[0].trim(); return t && t !== '(not set)' ? t : p; }
+  function dur(sec) { sec = Math.round(Number(sec) || 0); if (sec < 60) return sec + '초'; var m = Math.floor(sec / 60), s = sec % 60; if (m >= 60) { var hh = Math.floor(m / 60); return hh + '시간 ' + (m % 60) + '분'; } return m + '분' + (s ? ' ' + s + '초' : ''); }
+  function pct(a, b) { return b > 0 ? Math.round(a / b * 100) + '%' : '–'; }
   var DEVICES = { mobile: '휴대전화', desktop: 'PC', tablet: '태블릿', smarttv: 'TV' };
   var CITIES = { Seoul: '서울', Busan: '부산', Incheon: '인천', Daegu: '대구', Daejeon: '대전', Gwangju: '광주', Ulsan: '울산', Sejong: '세종', 'Sejong-si': '세종', Suwon: '수원', 'Suwon-si': '수원', Seongnam: '성남', 'Seongnam-si': '성남', Goyang: '고양', 'Goyang-si': '고양', Yongin: '용인', 'Yongin-si': '용인', Bucheon: '부천', 'Bucheon-si': '부천', Ansan: '안산', 'Ansan-si': '안산', Anyang: '안양', 'Anyang-si': '안양', Hwaseong: '화성', 'Hwaseong-si': '화성', Namyangju: '남양주', 'Namyangju-si': '남양주', Pyeongtaek: '평택', 'Pyeongtaek-si': '평택', Uijeongbu: '의정부', 'Uijeongbu-si': '의정부', Paju: '파주', 'Paju-si': '파주', Gimpo: '김포', 'Gimpo-si': '김포', Siheung: '시흥', 'Siheung-si': '시흥', Gwangmyeong: '광명', Changwon: '창원', 'Changwon-si': '창원', Gimhae: '김해', 'Gimhae-si': '김해', Jinju: '진주', 'Jinju-si': '진주', Cheongju: '청주', 'Cheongju-si': '청주', Cheonan: '천안', 'Cheonan-si': '천안', Jeonju: '전주', 'Jeonju-si': '전주', Pohang: '포항', 'Pohang-si': '포항', Gumi: '구미', 'Gumi-si': '구미', Gyeongju: '경주', Chuncheon: '춘천', 'Chuncheon-si': '춘천', Wonju: '원주', 'Wonju-si': '원주', Gangneung: '강릉', Jeju: '제주', 'Jeju-si': '제주', Seogwipo: '서귀포', Mokpo: '목포', Yeosu: '여수', Suncheon: '순천', Iksan: '익산', Gunsan: '군산', Asan: '아산', 'Asan-si': '아산', Gwacheon: '과천', Guri: '구리', Hanam: '하남', 'Hanam-si': '하남', Osan: '오산', Icheon: '이천', Yangju: '양주', Dongducheon: '동두천', Chungju: '충주', Jecheon: '제천', Andong: '안동', Gyeongsan: '경산', Geoje: '거제', Yangsan: '양산', Tongyeong: '통영', Sacheon: '사천', Naju: '나주', Gwangyang: '광양', Jeongeup: '정읍', Namwon: '남원', Gimje: '김제', Nonsan: '논산', Gongju: '공주', Boryeong: '보령', Seosan: '서산', Dangjin: '당진', Gyeryong: '계룡', Sokcho: '속초', Samcheok: '삼척', Donghae: '동해', Taebaek: '태백', '(not set)': '알 수 없음' };
   function cityLabel(c) { return CITIES[c] || c; }
@@ -264,10 +334,17 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
       demo: true, generated: new Date().toISOString(), realtime: 2,
       totals: { today: { views: daily[daily.length - 1].views, users: daily[daily.length - 1].users }, yesterday: { views: daily[daily.length - 2].views, users: daily[daily.length - 2].users }, d7: { views: sum('views', 7), users: sum('users', 7) }, d30: { views: sum('views', 30), users: sum('users', 30) }, all: { views: sum('views', 99), users: sum('users', 99) } },
       daily: daily,
-      channels: [{ name: 'Organic Search', sessions: 412 }, { name: 'Direct', sessions: 268 }, { name: 'Organic Social', sessions: 143 }, { name: 'Referral', sessions: 61 }, { name: 'Unassigned', sessions: 9 }],
-      sources: [{ source: 'naver', medium: 'organic', sessions: 301 }, { source: '(direct)', medium: '(none)', sessions: 268 }, { source: 'google', medium: 'organic', sessions: 98 }, { source: 'threads.net', medium: 'referral', sessions: 72 }, { source: 'instagram.com', medium: 'referral', sessions: 44 }, { source: 'blog.naver.com', medium: 'referral', sessions: 31 }, { source: 'linkedin.com', medium: 'referral', sessions: 15 }, { source: 'bing', medium: 'organic', sessions: 13 }, { source: 'm.facebook.com', medium: 'referral', sessions: 9 }],
-      pages: [{ path: '/', title: '변호사 부효준', views: 1120, users: 690 }, { path: '/cases.html', title: '수행 사례 전체', views: 486, users: 310 }],
-      devices: [{ name: 'mobile', users: 540 }, { name: 'desktop', users: 262 }, { name: 'tablet', users: 11 }],
+      engagement: { sessions: 1077, users: 813, newUsers: 742, engagedSessions: 571, avgSec: 74, avgSecPerUser: 98, spanSec: 131, views: 2190, viewsPerSession: 2.0 },
+      stay: { since: '2026-11-17', from: '2026-11-17', sessions: 1077, steps: { 10: 690, 30: 498, 60: 341, 180: 152, 300: 77, 600: 21 } },
+      channels: [{ name: 'Organic Search', sessions: 412, avgSec: 96 }, { name: 'Direct', sessions: 268, avgSec: 71 }, { name: 'Paid Social', sessions: 184, avgSec: 22 }, { name: 'Organic Social', sessions: 143, avgSec: 48 }, { name: 'Referral', sessions: 61, avgSec: 105 }, { name: 'Unassigned', sessions: 9, avgSec: 12 }],
+      campaigns: [{ campaign: '2026-11-homepage', source: 'instagram', medium: 'paid_social', content: 'ad1', sessions: 121, users: 113, engaged: 38, avgSec: 24, contacts: 3 }, { campaign: '2026-11-homepage', source: 'instagram', medium: 'paid_social', content: 'photo-desk', sessions: 63, users: 60, engaged: 15, avgSec: 18, contacts: 1 }],
+      meta: { sessions: 233, users: 214, engaged: 71, avgSec: 27 },
+      landings: [{ path: '/', sessions: 702, users: 560, engaged: 371, avgSec: 69 }, { path: '/cases.html', sessions: 141, users: 120, engaged: 96, avgSec: 112 }, { path: '/fields.html', sessions: 58, users: 51, engaged: 33, avgSec: 64 }],
+      newReturning: [{ name: 'new', sessions: 760, users: 742, avgSec: 58 }, { name: 'returning', sessions: 317, users: 121, avgSec: 112 }],
+      hours: [3, 2, 1, 1, 0, 2, 9, 21, 44, 71, 83, 78, 66, 74, 81, 77, 69, 58, 49, 55, 63, 71, 52, 24],
+      sources: [{ source: 'naver', medium: 'organic', sessions: 301, users: 248, engaged: 204, avgSec: 99, contacts: 14 }, { source: '(direct)', medium: '(none)', sessions: 268, users: 190, engaged: 141, avgSec: 71, contacts: 9 }, { source: 'instagram', medium: 'paid_social', sessions: 184, users: 173, engaged: 53, avgSec: 22, contacts: 4 }, { source: 'google', medium: 'organic', sessions: 98, users: 81, engaged: 66, avgSec: 91, contacts: 5 }, { source: 'threads.net', medium: 'referral', sessions: 72, users: 60, engaged: 31, avgSec: 44, contacts: 1 }, { source: 'l.instagram.com', medium: 'referral', sessions: 44, users: 39, engaged: 20, avgSec: 51, contacts: 2 }, { source: 'blog.naver.com', medium: 'referral', sessions: 31, users: 26, engaged: 22, avgSec: 118, contacts: 3 }, { source: 'linkedin.com', medium: 'referral', sessions: 15, users: 13, engaged: 9, avgSec: 80, contacts: 0 }, { source: 'bing', medium: 'organic', sessions: 13, users: 11, engaged: 8, avgSec: 77, contacts: 0 }, { source: 'm.facebook.com', medium: 'referral', sessions: 9, users: 8, engaged: 3, avgSec: 30, contacts: 0 }],
+      pages: [{ path: '/', title: '변호사 부효준', views: 1120, users: 690, avgSec: 41 }, { path: '/cases.html', title: '수행 사례 전체', views: 486, users: 310, avgSec: 63 }, { path: '/rnd-2024guhap91781.html', title: '국가연구개발사업 참여제한처분 무효확인소송 — 변호사 부효준', views: 92, users: 71, avgSec: 88 }, { path: '/fields.html', title: '다루는 사건', views: 81, users: 66, avgSec: 52 }],
+      devices: [{ name: 'mobile', users: 540, sessions: 700, avgSec: 52 }, { name: 'desktop', users: 262, sessions: 360, avgSec: 118 }, { name: 'tablet', users: 11, sessions: 17, avgSec: 60 }],
       cities: [{ name: 'Seoul', users: 388 }, { name: 'Daejeon', users: 96 }, { name: 'Seongnam-si', users: 61 }, { name: 'Sejong', users: 44 }, { name: 'Busan', users: 39 }, { name: 'Suwon-si', users: 33 }, { name: 'Incheon', users: 27 }, { name: '(not set)', users: 52 }],
       events: {
         section: [{ key: '수행 사례', count: 512 }, { key: '경력', count: 431 }, { key: '다루는 사건', count: 377 }, { key: '국가연구개발 제재처분', count: 298 }, { key: '자주 묻는 질문', count: 214 }, { key: '상담 문의', count: 171 }],
@@ -301,7 +378,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
     var max = Math.max.apply(null, rows.map(function (r) { return r.n; })) || 1;
     rows.forEach(function (r) {
       var li = el('li'); li.appendChild(el('span', 'lbl', r.label)); li.title = r.label;
-      var n = el('span', 'n', fmt(r.n)); if (total) n.appendChild(el('small', null, Math.round(r.n / total * 100) + '%')); li.appendChild(n);
+      var n = el('span', 'n', r.text != null ? r.text : fmt(r.n)); if (total) n.appendChild(el('small', null, Math.round(r.n / total * 100) + '%')); li.appendChild(n);
       var tr = el('div', 'track'); var f = el('div', 'fill'); f.style.width = Math.max(2, r.n / max * 100) + '%'; tr.appendChild(f); li.appendChild(tr);
       ul.appendChild(li);
     });
@@ -334,6 +411,30 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
   function dateLabel(ymd, full) { var s = String(ymd); if (s.length !== 8) return s; var m = parseInt(s.slice(4, 6), 10), d = parseInt(s.slice(6, 8), 10); return full ? s.slice(0, 4) + '. ' + m + '. ' + d + '.' : m + '/' + d; }
   function tile(k, v) { var t = el('div', 'tile'); t.appendChild(el('div', 'k', k)); var vv = el('div', 'v', fmt(v && v.views)); vv.appendChild(el('small', null, '조회')); t.appendChild(vv); var u = el('div', 'u'); u.appendChild(el('span', null, '방문자 ')); u.appendChild(el('b', null, fmt(v && v.users))); t.appendChild(u); return t; }
 
+  function renderStay(j, rangeText) {
+    var e = j.engagement, box = $('eng-tiles'); box.textContent = '';
+    $('eng-body').hidden = !e; $('eng-empty').hidden = !!e;
+    if (!e) { $('eng-empty').textContent = '창구(Apps Script)를 새 판으로 바꾸면 머문 시간이 보입니다.'; return; }
+    function t(k, v, sub) { var d = el('div', 'tile'); d.appendChild(el('div', 'k', k)); d.appendChild(el('div', 'v', v)); d.appendChild(el('div', 'u', sub)); box.appendChild(d); }
+    t('평균 머문 시간', dur(e.avgSec), '방문 1회당 · 방문자 1명당 ' + dur(e.avgSecPerUser));
+    t('방문 1회당 본 페이지', (e.viewsPerSession || 0).toFixed(1) + '쪽', '방문 ' + fmt(e.sessions) + '회 · 조회 ' + fmt(e.views));
+    t('관심 방문', pct(e.engagedSessions, e.sessions), fmt(e.engagedSessions) + '회 · 10초 넘게 보았거나 두 쪽 이상');
+    t('처음 온 방문자', pct(e.newUsers, e.users), fmt(e.newUsers) + '명 / 방문자 ' + fmt(e.users) + '명');
+    var st = j.stay, ul = $('steps'); ul.textContent = '';
+    var today = new Date(Date.now() + 9 * 3600 * 1000).toISOString().slice(0, 10);
+    if (!st || !st.from || !st.sessions) {
+      $('steps-note').textContent = '';
+      ul.appendChild(el('li', null, st && st.since > today ? '머문 시간 구간은 ' + dateLabel(st.since.replace(/-/g, ''), true) + ' 방문부터 쌓입니다.' : '아직 쌓인 숫자가 없습니다(머문 시간 구간은 ' + (st && st.since ? dateLabel(st.since.replace(/-/g, ''), true) : '') + ' 방문부터 셉니다).'));
+      ul.firstChild.style.display = 'block'; ul.firstChild.className = 'note'; return;
+    }
+    $('steps-note').textContent = dateLabel(st.from.replace(/-/g, ''), true) + ' 이후 방문 ' + fmt(st.sessions) + '회 기준';
+    var S = st.steps || {}, N = st.sessions, cut = [10, 30, 60, 180, 300, 600], names = ['10초 미만', '10~30초', '30초~1분', '1~3분', '3~5분', '5~10분', '10분 이상'];
+    var reach = [N].concat(cut.map(function (c) { return Math.min(N, Number(S[c]) || 0); })); for (var i = 1; i < reach.length; i++) if (reach[i] > reach[i - 1]) reach[i] = reach[i - 1];
+    var mx = 1, buckets = names.map(function (nm, i) { var n = reach[i] - (i + 1 < reach.length ? reach[i + 1] : 0); if (n > mx) mx = n; return { nm: nm, n: n }; });
+    buckets.forEach(function (b) { var li = el('li'); li.appendChild(el('span', null, b.nm)); var tr = el('div', 'track'), f = el('div', 'fill'); f.style.width = (b.n / mx * 100) + '%'; tr.appendChild(f); li.appendChild(tr); var n = el('span', 'n', fmt(b.n) + '회'); n.appendChild(el('small', null, pct(b.n, N))); li.appendChild(n); ul.appendChild(li); });
+    var li2 = el('li'); li2.className = 'note'; li2.style.display = 'block'; li2.textContent = '1분 넘게 머문 방문 ' + pct(reach[3], N) + ' · 3분 넘게 ' + pct(reach[4], N) + ' · 5분 넘게 ' + pct(reach[5], N); ul.appendChild(li2);
+  }
+
   function render(j) {
     state.data = j; $('reload').disabled = false; $('banner').hidden = true;
     var t = j.generated ? new Date(j.generated) : new Date();
@@ -346,12 +447,40 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
     $('range-note').textContent = '아래 그래프와 목록은 ' + rangeText + ' 기준';
     $('chart-note').textContent = rangeText;
     chart(j.daily);
+    var V2 = !!j.engagement;   // 창구(Apps Script) 둘째 판부터 머문 시간·캠페인 숫자가 온다
+    renderStay(j, rangeText);
     var ch = (j.channels || []).map(function (c) { return { label: CHANNELS[c.name] || c.name, n: c.sessions }; });
     bars('channels', ch, sumOf(j.channels, 'sessions'));
-    var src = (j.sources || []).map(function (s) { return { label: sourceLabel(s.source, s.medium), n: s.sessions }; });
-    bars('sources', src, sumOf(j.sources, 'sessions'));
-    bars('pages', (j.pages || []).map(function (p) { return { label: pageLabel(p.path), n: p.views }; }), sumOf(j.pages, 'views'));
-    bars('devices', (j.devices || []).map(function (d) { return { label: DEVICES[d.name] || d.name, n: d.users }; }), sumOf(j.devices, 'users'));
+    bars('channels-time', V2 ? (j.channels || []).map(function (c) { return { label: CHANNELS[c.name] || c.name, n: c.avgSec || 0, text: dur(c.avgSec) }; }) : [], 0, { empty: '창구를 새 판으로 바꾸면 보입니다' });
+    var tb = $('src-table').querySelector('tbody'); tb.textContent = '';
+    (j.sources || []).forEach(function (s) {
+      var tr = el('tr', isPaid(s.medium) ? 'paid' : null), td = el('td', 'lbl'); td.appendChild(el('b', null, sourceLabel(s.source, s.medium))); td.appendChild(el('small', null, s.source + ' / ' + s.medium)); tr.appendChild(td);
+      tr.appendChild(el('td', 'num', fmt(s.sessions))); tr.appendChild(el('td', 'num', V2 ? fmt(s.users) : '–')); tr.appendChild(el('td', 'num', V2 ? dur(s.avgSec) : '–')); tr.appendChild(el('td', 'num', V2 ? pct(s.engaged, s.sessions) : '–')); tr.appendChild(el('td', 'num', V2 ? fmt(s.contacts) : '–'));
+      tb.appendChild(tr);
+    });
+    if (!(j.sources || []).length) { var e0 = el('tr'); var c0 = el('td', null, '아직 없습니다'); c0.colSpan = 6; e0.appendChild(c0); tb.appendChild(e0); }
+    var camps = j.campaigns || [], ctb = $('camp-table').querySelector('tbody'); ctb.textContent = '';
+    $('camp-table').hidden = !camps.length; $('camp-empty').hidden = !!camps.length;
+    if (!V2) $('camp-empty').textContent = '창구(Apps Script)를 새 판으로 바꾸면 보입니다.';
+    camps.forEach(function (c) {
+      var tr = el('tr', isPaid(c.medium) ? 'paid' : null), td = el('td', 'lbl'); td.appendChild(el('b', null, c.campaign)); td.appendChild(el('small', null, sourceLabel(c.source, c.medium) + ' · ' + c.source + ' / ' + c.medium)); tr.appendChild(td);
+      tr.appendChild(el('td', null, c.content && c.content !== '(not set)' ? c.content : '–'));
+      tr.appendChild(el('td', 'num', fmt(c.sessions))); tr.appendChild(el('td', 'num', fmt(c.users))); tr.appendChild(el('td', 'num', dur(c.avgSec))); tr.appendChild(el('td', 'num', pct(c.engaged, c.sessions))); tr.appendChild(el('td', 'num', fmt(c.contacts)));
+      ctb.appendChild(tr);
+    });
+    var mt = j.meta; $('meta-line').hidden = !mt;
+    if (mt) $('meta-line').textContent = '참고 — ' + rangeText + ' 동안 인스타그램·페이스북의 링크를 눌러 들어온 방문(주소에 fbclid 가 붙은 방문; 광고와 일반 게시물·프로필 링크를 합친 수)은 ' + fmt(mt.sessions) + '회, 방문자 ' + fmt(mt.users) + '명, 평균 머문 시간 ' + dur(mt.avgSec) + ', 관심 방문 ' + pct(mt.engaged, mt.sessions) + '입니다.';
+    var ptb = $('page-table').querySelector('tbody'); ptb.textContent = '';
+    (j.pages || []).slice(0, 15).forEach(function (p) { var tr = el('tr'), td = el('td', null, pageLabel(p.path, p.title)); td.title = p.path; tr.appendChild(td); tr.appendChild(el('td', 'num', fmt(p.views))); tr.appendChild(el('td', 'num', fmt(p.users))); tr.appendChild(el('td', 'num', V2 ? dur(p.avgSec) : '–')); ptb.appendChild(tr); });
+    var titles = {}; (j.pages || []).forEach(function (p) { titles[p.path] = p.title; });
+    var ltb = $('land-table').querySelector('tbody'); ltb.textContent = '';
+    (j.landings || []).slice(0, 12).forEach(function (p) { var tr = el('tr'), td = el('td', null, pageLabel(p.path, titles[p.path])); td.title = p.path; tr.appendChild(td); tr.appendChild(el('td', 'num', fmt(p.sessions))); tr.appendChild(el('td', 'num', dur(p.avgSec))); tr.appendChild(el('td', 'num', pct(p.engaged, p.sessions))); ltb.appendChild(tr); });
+    if (!(j.landings || []).length) { var e1 = el('tr'); var c1 = el('td', null, V2 ? '아직 없습니다' : '창구를 새 판으로 바꾸면 보입니다'); c1.colSpan = 4; e1.appendChild(c1); ltb.appendChild(e1); }
+    bars('devices', (j.devices || []).map(function (d) { return { label: (DEVICES[d.name] || d.name) + (d.sessions ? ' · 평균 ' + dur(d.avgSec) : ''), n: d.users }; }), sumOf(j.devices, 'users'));
+    var NR = { 'new': '처음 온 사람', returning: '다시 온 사람' };
+    bars('newret', (j.newReturning || []).filter(function (r) { return NR[r.name]; }).map(function (r) { return { label: NR[r.name] + ' · 평균 ' + dur(r.avgSec), n: r.sessions }; }), 0, { empty: V2 ? '아직 없습니다' : '창구를 새 판으로 바꾸면 보입니다' });
+    var hb = $('hours'); hb.textContent = ''; var hs = j.hours || [], hmax = Math.max.apply(null, hs.concat([1]));
+    hs.forEach(function (n, i) { var b = el('i'); b.style.height = Math.max(1, n / hmax * 100) + '%'; b.title = i + '시 · 방문 ' + fmt(n); hb.appendChild(b); });
     bars('cities', (j.cities || []).map(function (c) { return { label: cityLabel(c.name), n: c.users }; }), sumOf(j.cities, 'users'));
     var ev = j.events;
     if (!ev) { $('events-grid').hidden = true; $('events-empty').hidden = false; $('events-empty').textContent = j.events_note || 'GA 관리 화면에서 맞춤 측정기준(section·case_title·filter·method)을 등록하면 이 항목이 보입니다. 등록한 날부터 쌓입니다.'; }
