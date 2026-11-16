@@ -3442,7 +3442,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2019gahap60252",
-  "cat": "civil",
+  "cat": "personnel",
   "sort": "2021-01-28",
   "date": "2021. 1.",
   "title": "분할연금 선청구 승인결정 무효확인 소송",
@@ -3856,7 +3856,7 @@ window.CASES_DATA = [
  },
  {
   "id": "c-civ-1b",
-  "cat": "civil",
+  "cat": "personnel",
   "sort": "2020-06-30",
   "date": "2019. 3. ~ 2020. 6.",
   "title": "사립학교 교원 유족보상금(직무상 재해보상) 청구소송 (1·2심)",
@@ -4545,7 +4545,7 @@ window.CASES_DATA = [
  },
  {
   "id": "c-civ-1a",
-  "cat": "civil",
+  "cat": "personnel",
   "sort": "2019-09-19",
   "date": "2019. 3. ~ 2019. 9.",
   "title": "사립학교 교직원 퇴직급여 청구소송 (1·2심)",
@@ -5078,7 +5078,7 @@ window.CASES_DATA = [
  },
  {
   "id": "c-civ-1c",
-  "cat": "civil",
+  "cat": "personnel",
   "sort": "2018-11-23",
   "date": "2018. 11.",
   "title": "형 확정에 따른 퇴직급여 감액 관련 퇴직급여 청구소송",
