@@ -2048,3 +2048,8 @@ b, strong { font-weight: 600; }
 .brief-list .t small { margin-left: 0.5rem; font-family: var(--sans); font-size: var(--step--2); color: var(--ink-soft); }
 @media (min-width: 761px) { .brief-list.lectures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 3rem; } }
 @media (max-width: 760px) { .brief-list.lectures li { grid-template-columns: 6.6rem minmax(0, 1fr); } .brief-list .t small { display: block; margin-left: 0; } }
+
+/* 2026. 11. 16. 본인 지시: 첫 화면(먹갈색 바탕) 큰 제목의 글씨체가 클로드 화면에서 흔히 보는 것(노토 명조) 같다 → 고운바탕 700으로.
+   제목(h1)과 그 윗줄(.kicker)만 — 이름 '부효준'과 본문은 그대로. 웹폰트는 index.html 의 구글 폰트 링크(Gowun Batang 700). 되돌리려면 이 블록과 링크의 &family=Gowun+Batang:wght@700 을 지운다. */
+.hero h1 { font-family: "Gowun Batang", var(--serif); font-weight: 700; letter-spacing: -0.01em; }
+.hero h1 .kicker { font-weight: 700; letter-spacing: 0; }
