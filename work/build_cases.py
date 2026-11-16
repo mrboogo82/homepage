@@ -82,8 +82,8 @@ PRIORITY = {"rnd": "0.8", "penalty": "0.8", "criminal": "0.7", "personnel": "0.6
 #   설명 126 → 80자(제목과 83% 겹치던 앞부분을 빼고 제목에 없는 정보 — 소속·위원·고문·판결문 공개 — 만, 서술어 없이), og:title 43 → 36자, og:description 132 → 78자.
 NEW_TITLE = "국가연구개발사업 참여제한·연구비 환수·제재부가금 취소소송 변호사 부효준"
 NEW_OG_TITLE = "변호사 부효준 — 국가연구개발사업 참여제한·연구비 환수·제재부가금"
-NEW_DESCRIPTION = "법무법인(유한) 금성 · 제재처분 심의위원회 위원 · 정부·공공기관 약 20곳 고문변호사. 집행정지부터 취소소송까지 수행 사례를 판결문으로 공개"
-NEW_OG_DESCRIPTION = "제재처분 심의위원회 위원 · 정부·공공기관 약 20곳 고문변호사. 처분을 받은 연구자·기업·공무원을 대리하고 수행 사례를 판결문과 함께 공개"
+NEW_DESCRIPTION = "법무법인(유한) 금성 · 제재처분 심의위원회 위원 · 정부·공공기관 약 20곳 고문변호사. 집행정지부터 취소소송까지 수행사례를 판결문으로 공개"
+NEW_OG_DESCRIPTION = "제재처분 심의위원회 위원 · 정부·공공기관 약 20곳 고문변호사. 처분을 받은 연구자·기업·공무원을 대리하고 수행사례를 판결문과 함께 공개"
 DESC_MAX = 160   # 사례·주제 페이지 검색 설명문(meta description) 최대 길이 — 빙은 160자를 넘으면 '너무 길다'고 표시한다
 HOME_TITLE_MAX, HOME_DESC_MAX = 40, 80   # 홈의 제목·설명 — 네이버 웹마스터 가이드 권장 길이(2026. 10. 29.)
 for _s, _m, _n in ((NEW_TITLE, HOME_TITLE_MAX, "NEW_TITLE"), (NEW_OG_TITLE, HOME_TITLE_MAX, "NEW_OG_TITLE"),
@@ -92,7 +92,7 @@ for _s, _m, _n in ((NEW_TITLE, HOME_TITLE_MAX, "NEW_TITLE"), (NEW_OG_TITLE, HOME
 NEW_EYEBROW = "국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 행정쟁송"   # 2026. 10. 21. 14시: 국가연구개발을 맨 앞에(이름은 10. 21. 새벽부터 따로 큰 이름 줄)
 EXTRA_KEYWORDS = ["국가연구개발사업 참여제한 변호사", "참여제한 변호사", "연구비 환수 변호사", "국가연구개발혁신법 변호사", "참여제한 처분 취소소송",
                   "국가 R&D 제재처분", "연구비 제재부가금 취소", "참여제한 집행정지", "연구개발비 회수금 당사자소송", "부효준 변호사"]
-NEW_CASES_TITLE = "수행 사례 %d건 — 행정소송 · 국가연구개발 제재처분 판결문 · 변호사 부효준"   # %d에 사례 수가 들어간다
+NEW_CASES_TITLE = "수행사례 %d건 — 행정소송 · 국가연구개발 제재처분 판결문 · 변호사 부효준"   # %d에 사례 수가 들어간다
 
 # 주제별 모아 보기 페이지 (검색 의도별: 참여제한 / 환수 / 제재부가금 / 집행정지 / 당사자소송)
 TOPICS = [
@@ -547,7 +547,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "홈", "item": SITE + "/"},
-                    {"@type": "ListItem", "position": 2, "name": "수행 사례", "item": SITE + "/cases.html"},
+                    {"@type": "ListItem", "position": 2, "name": "수행사례", "item": SITE + "/cases.html"},
                     {"@type": "ListItem", "position": 3, "name": cat, "item": "%s/cases.html#cat=%s" % (SITE, c["cat"])},
                     {"@type": "ListItem", "position": 4, "name": title},
                 ],
@@ -611,7 +611,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>{esc(title)} · {esc(cat)} 수행 사례 · 변호사 부효준</title>
+<title>{esc(title)} · {esc(cat)} 수행사례 · 변호사 부효준</title>
 <meta name="description" content="{esc(desc)}">{('\n<meta name="keywords" content="%s">' % esc(", ".join(d["keywords"]))) if d.get("keywords") else ""}
 <meta name="author" content="부효준">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -624,12 +624,12 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="변호사 부효준">
 <meta property="og:url" content="{esc(url)}">
-<meta property="og:title" content="{esc(title)} — 변호사 부효준 수행 사례">
+<meta property="og:title" content="{esc(title)} — 변호사 부효준 수행사례">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:image" content="{esc(og_image)}">
 <meta property="og:image:alt" content="{esc(ims[0].get('alt') if ims else title)}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{esc(title)} — 변호사 부효준 수행 사례">
+<meta name="twitter:title" content="{esc(title)} — 변호사 부효준 수행사례">
 <meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:image" content="{esc(og_image)}">
 {ga_snippet()}<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -680,7 +680,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
         <ul>
           {''.join(rel_items)}
         </ul>
-        <p class="more"><a class="btn ghost" href="../cases.html#cat={esc(c['cat'])}">{esc(cat)} 수행 사례 {cat_counts[c['cat']]}건 전체 보기</a></p>
+        <p class="more"><a class="btn ghost" href="../cases.html#cat={esc(c['cat'])}">{esc(cat)} 수행사례 {cat_counts[c['cat']]}건 전체 보기</a></p>
       </section>
       <section class="case-cta" aria-labelledby="cta-h">
         <h2 id="cta-h">비슷한 처분을 받으셨다면</h2>
@@ -692,7 +692,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="../index.html">홈으로</a> <a href="../cases.html">수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../fields.html">다루는 사건</a> <a href="../press.html">언론보도</a> <a href="../contact.html">상담 문의</a>
+        <a href="../index.html">홈으로</a> <a href="../cases.html">수행사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../fields.html">다루는 사건</a> <a href="../press.html">언론보도</a> <a href="../contact.html">상담 문의</a>
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
@@ -742,7 +742,7 @@ def render_topic_page(t, matched, cat_counts, modified):
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "홈", "item": SITE + "/"},
-                    {"@type": "ListItem", "position": 2, "name": "수행 사례", "item": SITE + "/cases.html"},
+                    {"@type": "ListItem", "position": 2, "name": "수행사례", "item": SITE + "/cases.html"},
                     {"@type": "ListItem", "position": 3, "name": t["name"]},
                 ],
             },
@@ -827,7 +827,7 @@ def render_topic_page(t, matched, cat_counts, modified):
         {intro_html}
       </section>
       <section aria-labelledby="list-h">
-        <h2 id="list-h">수행 사례 {len(matched)}건 <small class="meta">(최근 순)</small></h2>
+        <h2 id="list-h">수행사례 {len(matched)}건 <small class="meta">(최근 순)</small></h2>
         <ol class="topic-cases">
           {"".join(items)}
         </ol>
@@ -846,7 +846,7 @@ def render_topic_page(t, matched, cat_counts, modified):
   <footer class="sign">
     <div class="fine">
       <nav class="foot-nav" aria-label="페이지 차례">
-        <a href="../index.html">홈으로</a> <a href="../cases.html">수행 사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../fields.html">다루는 사건</a> <a href="../press.html">언론보도</a> <a href="../contact.html">상담 문의</a>
+        <a href="../index.html">홈으로</a> <a href="../cases.html">수행사례 전체</a> <a href="../career.html">경력</a> <a href="../career.html#advisory">법률고문 위촉</a> <a href="../fields.html">다루는 사건</a> <a href="../press.html">언론보도</a> <a href="../contact.html">상담 문의</a>
       </nav>
       <p>광고책임변호사 부효준</p>
       <p>법무법인(유한) 금성 · 서울 서초구 반포대로30길 12-6, 4층</p>
@@ -1058,14 +1058,14 @@ def patch_home_graph(doc):
 def patch_cases(doc, n_cases=None):
     doc = patch_html_lang(doc)
     title = NEW_CASES_TITLE % n_cases if n_cases else NEW_CASES_TITLE
-    doc = doc.replace("<title>수행 사례 전체 · 변호사 부효준</title>", "<title>%s</title>" % title, 1)
-    doc = doc.replace('<meta property="og:title" content="수행 사례 전체 · 변호사 부효준">',
+    doc = doc.replace("<title>수행사례 전체 · 변호사 부효준</title>", "<title>%s</title>" % title, 1)
+    doc = doc.replace('<meta property="og:title" content="수행사례 전체 · 변호사 부효준">',
                       '<meta property="og:title" content="%s">' % title, 1)
-    doc = doc.replace('<meta name="twitter:title" content="수행 사례 전체 · 변호사 부효준">',
+    doc = doc.replace('<meta name="twitter:title" content="수행사례 전체 · 변호사 부효준">',
                       '<meta name="twitter:title" content="%s">' % title, 1)
     # 사례 수가 바뀌면 제목의 건수도 맞춘다 (ssr_cases.py 도 같은 일을 하지만 여기서도 보장)
     if n_cases:
-        doc = re.sub(r"수행 사례 \d+건 — ", "수행 사례 %d건 — " % n_cases, doc)
+        doc = re.sub(r"수행사례 \d+건 — ", "수행사례 %d건 — " % n_cases, doc)
     doc = link_static_cards(doc)
     doc = patch_js(doc)
     doc = patch_link_text(doc)
