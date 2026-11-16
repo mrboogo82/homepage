@@ -647,7 +647,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     <a class="brand" href="../index.html" rel="author" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
     <nav aria-label="페이지 이동">
       <a href="../fields.html">다루는 사건</a>
-      <a href="../cases.html">수행 사례</a>
+      <a href="../cases.html">수행사례</a>
       <a href="../career.html">경력</a>
       <a href="../contact.html">상담 문의</a>
     </nav>
@@ -656,7 +656,7 @@ def render_case_page(c, by_cat, cat_counts, details, published, modified):
     <nav class="crumbs" aria-label="현재 위치">
       <ol>
         <li><a href="../index.html">홈</a></li>
-        <li><a href="../cases.html">수행 사례</a></li>
+        <li><a href="../cases.html">수행사례</a></li>
         <li><a href="../cases.html#cat={esc(c['cat'])}">{esc(cat)}</a></li>
       </ol>
     </nav>
@@ -803,7 +803,7 @@ def render_topic_page(t, matched, cat_counts, modified):
     <a class="brand" href="../index.html" rel="author" aria-label="변호사 부효준 — 처음으로"><span class="brand-role">변호사</span> <span class="brand-name">부효준</span><span class="brand-en" lang="en">Boo Hyoejune</span></a>
     <nav aria-label="페이지 이동">
       <a href="../fields.html">다루는 사건</a>
-      <a href="../cases.html">수행 사례</a>
+      <a href="../cases.html">수행사례</a>
       <a href="../career.html">경력</a>
       <a href="../contact.html">상담 문의</a>
     </nav>
@@ -812,7 +812,7 @@ def render_topic_page(t, matched, cat_counts, modified):
     <nav class="crumbs" aria-label="현재 위치">
       <ol>
         <li><a href="../index.html">홈</a></li>
-        <li><a href="../cases.html">수행 사례</a></li>
+        <li><a href="../cases.html">수행사례</a></li>
         <li>{esc(t["name"])}</li>
       </ol>
     </nav>
