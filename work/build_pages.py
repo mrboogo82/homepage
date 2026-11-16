@@ -17,7 +17,7 @@
        quick    본문 끝의 '사무소 위치 | 전화' 띠(<nav class="quick">)
        footer   바닥글(<footer class="sign">)과 '맨 위로' 단추
        tail     판결문·위촉장 크게 보기 창(<dialog>), 온라인 계정 목록(#links-data), cases-data.js(사례 카드·분야 건수가 있는 index·fields 에만)·site.js 스크립트 태그
-     그러므로 머리글·바닥글·계정·스크립트를 고칠 때는 index.html 만 고치고 이 스크립트를 돌리면 된다. cases.html 과 사례·주제 페이지는 머리글이 달라(홈으로·상담 문의만)
+     그러므로 머리글·바닥글·계정·스크립트를 고칠 때는 index.html 만 고치고 이 스크립트를 돌리면 된다. cases.html 과 사례·주제 페이지는 머리글이 달라(홈으로·상담문의만)
      여기서 맞추지 않는다(사례·주제 페이지는 build_cases.py 의 템플릿).
   2. 공용 스크립트 site.js 의 해시를 <script src="site.js?v=해시"> 에 넣는다(여섯 페이지 모두). 브라우저 캐시 때문.
   3. 홈 '경력' 절의 위촉장 타일과 한 줄 요약을 career.html 에서 다시 만든다(2026. 10. 23. 오후 본인 지시: 현행 법률고문 위촉·위원회의 위촉장은 모두 홈 본문에, 나머지는 간단하게):
@@ -42,7 +42,7 @@ BLOCKS = ["symbols", "header", "quick", "footer", "tail"]
 NEEDS_DATA = {"index.html", "fields.html"}   # cases-data.js(사례 데이터, 약 300KB)를 읽는 페이지 — 사례 카드·분야별 건수가 있는 곳만; 다른 페이지의 꼬리에서는 그 태그를 뺀다
 DATA_TAG_RE = re.compile(r'<script src="cases-data\.js(?:\?v=[0-9a-f]+)?"></script>\n?')
 # 머리글 차림표에서 class="current" 를 받는 링크(href). 홈은 없음(허브).
-CURRENT = {"career.html": "career.html", "fields.html": "fields.html", "press.html": "press.html", "contact.html": "contact.html"}   # contact 는 2026. 10. 27. '상담 문의'가 단추에서 글자 링크가 되면서 추가
+CURRENT = {"career.html": "career.html", "fields.html": "fields.html", "press.html": "press.html", "contact.html": "contact.html"}   # contact 는 2026. 10. 27. '상담문의'가 단추에서 글자 링크가 되면서 추가
 
 
 def read(p):

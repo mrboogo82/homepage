@@ -1378,7 +1378,7 @@ details[open] > :not(summary) { animation: fx-up 0.3s var(--ease-out); }
    ⑥ 다루는 사건 카드: 안쪽 여백·간격·글자(1 → 0.9375rem)·줄 간격을 줄임. 휴대전화(640px 이하)에서는 카드마다 설명을 네 줄까지만 보이고 '다룬 사건'·근거 법령을
       접어 두며 '더 보기' 단추로 펼친다(스크립트가 .fold를 붙임 — 스크립트 없는 환경·넓은 화면에서는 다 보임; 국가연구개발 카드의 세 기한은 접지 않음).
    ⑦ (자주 묻는 질문은 2026. 10. 23. 오후 삭제)
-   ⑧ 상담 문의: 넓은 화면(1180px 이상)에서 연락처와 온라인 상담 신청서를 나란히, '처음 연락하실 때'는 그 아래 전체 폭; 신청서·안내 상자 여백을 줄이고 온라인 계정 목록은 두 칸으로.
+   ⑧ 상담문의: 넓은 화면(1180px 이상)에서 연락처와 온라인 상담 신청서를 나란히, '처음 연락하실 때'는 그 아래 전체 폭; 신청서·안내 상자 여백을 줄이고 온라인 계정 목록은 두 칸으로.
    측정(Playwright, 움직임 줄이기 켬, 글은 그대로; 같은 날 낮의 f248b91 구조 기준): 휴대전화 390×844 26,220 → 16,978px(31 → 20화면, −35%), 1280×800 18,159 → 13,773px(−24%),
    1440×900 18,233 → 13,778px, 768×1024 23,391 → 18,917px. 홈 사례 카드 한 장(넓은 화면 세 줄) 572·531·505 → 480·466·393px, 휴대전화 두 장 카드 417·351·410·330 → 369·321·378·301px.
    전체 사례(cases.html, 271장)는 1280px 51,029 → 43,483px, 휴대전화 51,484 → 46,294px. */
@@ -1526,7 +1526,7 @@ ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margi
   .situation.fold .situation-more:active { color: var(--seal); border-color: var(--seal); }
 }
 
-/* ⑧ 상담 문의 */
+/* ⑧ 상담문의 */
 #contact .section-body { gap: 1.75rem; }
 @media (min-width: 1180px) {   /* 본문 칸이 약 800px일 때만(그보다 좁으면 연락처 칸이 300px 아래로 떨어져 이메일·계정 목록이 비좁다) */
   #contact .section-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem 2rem; align-items: start; }
@@ -1547,13 +1547,13 @@ ul.advisors.award-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margi
 .consult textarea { min-height: 6.5rem; }
 .before { gap: 0.6rem; padding: clamp(1rem, 2.5vw, 1.4rem); }
 .before p { font-size: 0.9375rem; line-height: 1.65; }
-/* 2026. 10. 23. 낮: 전체 목록은 본문 맨 끝의 부록 절(.section.appendix)로 — 긴 목록이 경력·다루는 사건·상담 문의보다 앞에 오면 AI 읽기 도구가 그 절들을 놓치므로 */
+/* 2026. 10. 23. 낮: 전체 목록은 본문 맨 끝의 부록 절(.section.appendix)로 — 긴 목록이 경력·다루는 사건·상담문의보다 앞에 오면 AI 읽기 도구가 그 절들을 놓치므로 */
 .section.appendix { padding-block: clamp(1.75rem, 3.5vw, 2.5rem); }
 .section.appendix .section-head h2 { font-size: var(--step-0); }
 .section.appendix .all-list { margin-top: 0; padding-top: 0; border-top: 0; }
 
 /* ---------- 짧은 홈 + 항목별 페이지 (2026. 10. 23. 저녁) ----------
-   본인 지시(창천 lawcc.co.kr 참고): "각 항목마다 별도 페이지로 … 첫 화면, 수행사례 검색은 전면에 나오게". 경력·다루는 사건·자주 묻는 질문·언론보도·상담 문의의 전체는
+   본인 지시(창천 lawcc.co.kr 참고): "각 항목마다 별도 페이지로 … 첫 화면, 수행사례 검색은 전면에 나오게". 경력·다루는 사건·자주 묻는 질문·언론보도·상담문의의 전체는
    career.html·fields.html·press.html·contact.html 로 옮기고(faq.html 은 같은 날 오후 삭제)(같은 home.css, 공용 부품은 work/build_pages.py 가 index.html 에서 맞춤), 홈에는 같은 id 의 요약 절만 둔다.
    ① 항목별 페이지의 제목 머리(.page-head: 현재 위치 › 제목 › 한 줄 설명) ② 홈 경력 요약의 기관 띠(.org-chips — 로고+이름, 누르면 기관 누리집; 흰 바탕이라 어두운 화면에서도 로고 색이 그대로)
    ③ 홈 다루는 사건 요약(.field-list — 열 영역의 제목·한 줄·단추; 국가연구개발 카드는 한 줄 폭에 세 기한 띠) ④ 요약 절 머리의 '자세히' 알약과 '… 전체 보기 →' 단추(.more) */
@@ -1611,7 +1611,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
   .field.lead .due-line { gap: 0.25rem 1rem; }
 }
 #record .more { margin-top: 1rem; }
-/* 상담 문의 페이지(contact.html)의 '오시는 길' 칸 */
+/* 상담문의 페이지(contact.html)의 '오시는 길' 칸 */
 .directions { grid-column: 1 / -1; display: grid; gap: 0.45rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
 .directions h3 { font-size: var(--step-1); }
 .directions p { font-size: 1rem; line-height: 1.7; }
@@ -1662,7 +1662,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 
 /* ---------- 2026. 10. 25. 저녁 본인 지시 ②③: 전체(넓은) 화면에서 한 줄에 더 많이 ----------
    ① 경력 절(#career — 홈·career.html 공통)과 다루는 사건 절(#fields)도 수행사례처럼 제목을 위에 두고 본문을 전체 폭으로 편다('경력'·'다루는 사건' 제목 옆에 알약을 한 줄로).
-      두 단(왼쪽 제목 12rem + 오른쪽 본문 약 800px)으로는 타일·카드를 한 줄에 더 넣을수록 휴대전화만큼 작아지기 때문. 언론보도·상담 문의 절은 두 단 그대로.
+      두 단(왼쪽 제목 12rem + 오른쪽 본문 약 800px)으로는 타일·카드를 한 줄에 더 넣을수록 휴대전화만큼 작아지기 때문. 언론보도·상담문의 절은 두 단 그대로.
    ② 위촉장·위원회 타일(.advisors)은 한 줄 9장 — 중앙행정기관 9장·위원회 7장이 각각 한 줄, 공공기관 11장은 9+2(그 전 6장: 6+3·6+5·6+1).
       1100px 이하 7장, 900px 이하 6장, 760px 이하 5장, 640px 이하는 종전 두 장 목록 그대로. career.html 의 임기를 마친 묶음(.past-grid)은 현행 타일보다 작아야 하므로 12장(1100px 이하 9장, 900px 이하 8장, 760px 이하 6장).
    ③ 다루는 사건 카드는 국가연구개발 제재처분(한 줄 폭) 아래 아홉 영역을 한 줄 5장(5+4; 그 전 3장씩 세 줄 — 2026. 11. 9.부터 국가연구개발 카드도 같은 크기로 5+5) — 1100px 이하 3장, 760px 이하 2장, 640px 이하 한 장(종전). 5장일 때는 카드 여백·제목·단추를 조금 줄여 '수행사례 N건 보기' 단추가 칸 안에 들어가게 한다. */
@@ -1717,7 +1717,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 
 /* ---------- 2026. 10. 25. 밤 본인 지시 ----------
    ① 첫 화면 이름 아래 영문 한 줄(.hero-name-en: Boo Hyoejune · Attorney at Law)
-   ② 접은 폴드7(휴대전화)에서 머리글 차림표(수행사례·경력·다루는 사건·언론보도·상담 문의)가 한 줄에 — 글씨를 화면 폭에 맞춰(clamp) 줄이고 줄바꿈을 막음(전화번호는 이름 줄 오른쪽 그대로)
+   ② 접은 폴드7(휴대전화)에서 머리글 차림표(수행사례·경력·다루는 사건·언론보도·상담문의)가 한 줄에 — 글씨를 화면 폭에 맞춰(clamp) 줄이고 줄바꿈을 막음(전화번호는 이름 줄 오른쪽 그대로)
    ③ 접은 폴드7에서 첫 화면 분야 줄('국가연구개발사업 참여제한 · 연구비 환수 · 제재부가금 · 행정쟁송')이 한 줄에 — 글씨·자간을 화면 폭에 맞춰 줄이고 줄바꿈을 막음
    ④ 작은 제목 '국가로펌 출신' → '국가로펌 출신 행정법 전문변호사'(index.html)  ⑤ 접은 폴드7에서 수행사례 네 장(위 블록) */
 .hero-name-en { margin: -0.15rem 0 0; font-family: var(--sans); font-size: 0.8125rem; font-weight: 400; letter-spacing: 0.1em; color: var(--hero-soft); }
@@ -1766,13 +1766,13 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 
 /* ---------- 2026. 10. 26. 밤 본인 지시: 항목별(세부) 페이지의 여백에 사진 ----------
    "전체 페이지 말고, 세부 페이지 여백마다 위 사진들을 적절히 넣어줘. 한 장만 넣어도 되고 두 장 모두 넣어도 되고 … 증명사진의 경우 허리가 너무 길게
-   나와 보이므로 가슴 부분 상반신만 나오게끔." — 홈·전체 사례 페이지는 그대로 두고 경력·다루는 사건·언론보도·상담 문의 네 페이지만.
+   나와 보이므로 가슴 부분 상반신만 나오게끔." — 홈·전체 사례 페이지는 그대로 두고 경력·다루는 사건·언론보도·상담문의 네 페이지만.
    사진 세 장(work/photo_pages.py): photo-portrait.webp(증명사진, 팔짱 낀 가슴까지 4:5) · photo-office-wide.webp(사무실 사진 3:2) · photo-office-tall.webp(사무실 사진 인물 위주 4:5).
    ① 제목 머리(.page-head)의 오른쪽 빈자리에 한 장(.page-photo): 경력은 증명사진, 다루는 사건은 사무실 사진.
-      (처음에는 언론보도(증명사진)·상담 문의(사무실 사진)에도 넣었으나 같은 날 20:31 본인 지시 "'언론보도', '상담문의' 사진은 모두 삭제해줘"로 두 페이지의 사진은 모두 뺌 — 아래 ②도 그때 없어짐.)
+      (처음에는 언론보도(증명사진)·상담문의(사무실 사진)에도 넣었으나 같은 날 20:31 본인 지시 "'언론보도', '상담문의' 사진은 모두 삭제해줘"로 두 페이지의 사진은 모두 뺌 — 아래 ②도 그때 없어짐.)
       넓은 화면(761px 이상)은 글(현재 위치·작은 제목·제목·한 줄) 왼쪽 + 사진 오른쪽 두 단(사진이 글보다 길면 넷째 줄(한 줄 설명)이 늘어나 글은 위에 붙음);
       휴대전화(760px 이하)는 제목 아래 오른쪽에 작은 사진(4:5, 폭 34vw·최대 10.5rem)을 띄우고 한 줄 설명이 그 왼쪽을 감싼다(사무실 사진은 세로 조각으로).
-   ② 두 단 절의 왼쪽 칸(.section-head) 아래 빈자리의 다른 한 장(.side-photo, 칸 폭 12rem·4:5; 휴대전화에서는 숨김)은 언론보도·상담 문의 페이지에 있었으나 20:31 지시로 삭제 —
+   ② 두 단 절의 왼쪽 칸(.section-head) 아래 빈자리의 다른 한 장(.side-photo, 칸 폭 12rem·4:5; 휴대전화에서는 숨김)은 언론보도·상담문의 페이지에 있었으나 20:31 지시로 삭제 —
       지금은 어느 페이지도 쓰지 않는 규칙(되살리려면 커밋 85e6608 의 contact.html·work/build_press.py 의 <figure class="side-photo …"> 줄). */
 .page-photo, .side-photo { margin: 0; }
 .page-photo img, .side-photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 0; background: var(--wash); }
@@ -1816,7 +1816,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 /* ---------- 2026. 10. 26. 밤 본인 지시: "SNS 로고 사진들 크기가 네모 선과 안 맞는 듯" ----------
    원인: 2026. 10. 25. 밤 머리글 이름 묶음(변호사 부효준 / 줄 / BOO HYOEJUNE)을 위해 둔 `.brand { display: grid; grid-template-columns: auto auto; column-gap: 0.5rem; … }` 가
    SNS 타일의 상자(.ico.brand — site.js 가 브랜드 로고 타일에 붙이는 class)에도 걸려, 44px 타일 안의 로고 SVG 가 두 번째(빈) 열과 열 간격 0.5rem 만큼 밀려
-   36×44px 로 줄었다. 흰·검은 타일의 가는 테두리(.edge 의 box-shadow)는 44px 상자에 그려지므로 로고와 네모 선이 어긋나 보였음(상담 문의 '온라인' 줄·바닥글 모두).
+   36×44px 로 줄었다. 흰·검은 타일의 가는 테두리(.edge 의 box-shadow)는 44px 상자에 그려지므로 로고와 네모 선이 어긋나 보였음(상담문의 '온라인' 줄·바닥글 모두).
    수정: 머리글 이름 묶음 규칙의 선택자를 모두 `.top .brand` 로 좁힘(이 파일의 .brand 규칙 7곳; 머리글 link 는 모든 페이지에서 <header class="top"> 안에만 있음).
    SNS 타일 쪽 규칙(.sns.icons a .ico.brand svg { width: 100%; height: 100% })은 그대로. 같은 수정을 cases.css·case.css 에도 넣음(그쪽 페이지에는 SNS 타일이 없어 보이는 변화는 없음). */
 
@@ -1839,7 +1839,7 @@ a.org-chip:hover, a.org-chip:focus-visible { color: var(--seal); border-color: v
 /* ---------- 2026. 10. 27. 18:11 본인 지시 ----------
    ① "폴드7 접은 화면에서 '상담문의', '다루는 사건 보기', '주요수행사례 보기'가 한 줄에 나오게" — 첫 화면 단추 셋(.cta)을 760px 이하에서 줄바꿈 없이 한 줄로:
       글씨를 화면 폭에 맞춰(clamp) 줄이고 안쪽 여백을 em 으로 바꿔 412·390·360px 에서 모두 한 줄(세 단추 폭 합이 글 칸 폭 안에 들어감).
-   ② 넓은 화면 머리글의 '상담 문의'를 다른 차림표 항목과 같은 글자 링크로 — index.html 의 차림표에서 class="btn small" 과 휴대전화 번호(.tel-d)를 뺌(cases.html·build_cases.py 템플릿도 같게).
+   ② 넓은 화면 머리글의 '상담문의'를 다른 차림표 항목과 같은 글자 링크로 — index.html 의 차림표에서 class="btn small" 과 휴대전화 번호(.tel-d)를 뺌(cases.html·build_cases.py 템플릿도 같게).
       아래 .top nav .btn / .tel-d 규칙들은 더 쓰이지 않지만 남겨 둠. 휴대전화의 이름 줄 오른쪽 번호(.tel-m)는 그대로. */
 @media (max-width: 760px) {
   .cta { flex-wrap: nowrap; gap: 0.45rem; }
@@ -1997,7 +1997,7 @@ b, strong { font-weight: 600; }
   .field-list { gap: 0.4rem; }
 }
 
-/* ---------- 2026. 11. 11. 20:21 본인 지시(간소화): 상담 문의 절(홈 #contact · contact.html)의 글씨를 두 단계쯤 줄임 ----------
+/* ---------- 2026. 11. 11. 20:21 본인 지시(간소화): 상담문의 절(홈 #contact · contact.html)의 글씨를 두 단계쯤 줄임 ----------
    연락처 표: 항목 이름 14 → 12px, 내용 17 → 14px, 덧붙임·복사 단추 14 → 12px. 온라인 상담 신청: 제목 21 → 17px, 안내·칸 이름 14 → 12px, 동의 문구 16 → 13px, 보내기 단추 14 → 13px.
    입력 칸 글씨(16px)는 마우스 PC(761px 이상)에서만 14px로 — 휴대전화에서 16px보다 작으면 칸을 누를 때 화면이 저절로 확대되기 때문(iOS).
    '상담 분야' 고르는 칸(.cat)은 한 줄 폭으로 넓히고 글씨를 줄여 긴 분야 이름도 다 보이게(종전 PC 187px 칸에서 '국가연구개발 제재처'까지만 보였음).
