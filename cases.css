@@ -1185,3 +1185,10 @@ b, strong { font-weight: 600; }
     .top.stuck { background: color-mix(in srgb, var(--paper) 94%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
   }
 }
+
+/* ---------- 2026. 11. 18. 본인 지시: 아이폰에서 머리글 이름이 '변호/사 부효/준'으로 두 줄이 되는 문제 — home.css 끝의 같은 블록과 같은 규칙(경위·원인은 거기에) ----------
+   웹폰트(노토 명조)가 도착한 뒤에도 이름 칸 폭을 아이폰 기본 글씨체 기준으로 남겨 두는 브라우저에서 마지막 글자가 아랫줄로 꺾였다.
+   ① 줄바꿈 금지 ② 두 칸의 폭을 글씨체와 상관없는 값(노토 명조 세 글자 폭 + 반올림 여유 0.1px)으로 미리 잡아 둠. */
+.brand-role, .brand-name { white-space: nowrap; }
+.brand-role { min-width: calc(3 * (0.966em + 0.14em) + 0.1px); }
+.brand-name { min-width: calc(3 * (0.966em + 0.06em) + 0.1px); }
