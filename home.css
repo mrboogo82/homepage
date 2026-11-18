@@ -2072,3 +2072,7 @@ b, strong { font-weight: 600; }
 .brand-role, .brand-name { white-space: nowrap; }
 .brand-role { min-width: calc(3 * (0.966em + 0.14em) + 0.1px); }   /* '변호사' 세 글자 × (한글 한 자 0.966em + 자간 0.14em); + 0.1px 는 소수점 반올림으로 칸이 글자보다 좁아지지 않게 하는 여유 */
 .brand-name { min-width: calc(3 * (0.966em + 0.06em) + 0.1px); }   /* '부효준' 세 글자 × (0.966em + 자간 0.06em) */
+
+/* 2026. 11. 18. 19:23 본인 지시("모바일 버전에서 오른쪽 위 전화번호 표시를 삭제해줘. 너무 없어 보여."): 휴대전화 화면(≤760px) 머리글의 이름 줄 오른쪽 번호(<a class="tel tel-m">)를
+   index.html 머리글에서 삭제(→ build_pages.py 가 다섯 쪽에 반영). 이 파일의 .top .tel · .top .tel-m 규칙은 더 쓰이지 않지만 남겨 둠
+   (같은 묶음의 .top nav { flex-basis: 100% } 는 차림표를 둘째 줄에 두는 데 계속 쓰임). 상담문의 절의 연락처 표와 페이지 끝 띠(.quick)의 번호는 그대로 — 첫 화면 연락 줄(.hero-contact)은 이미 마크업에 없으므로 휴대전화 첫 화면에는 전화번호가 보이지 않게 된다. 되살리려면 커밋 e7a4227 의 머리글 그 한 줄. */
