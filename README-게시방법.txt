@@ -170,3 +170,9 @@ SEO·GEO 분석 보고서 반영(2026. 10. 29., commerce24.ai 보고서 — 홈 
 - privacy.html(개인정보처리방침) 신설: 바닥글 '© …' 줄 끝의 링크(.policy-link; cases.html·사례·주제 페이지 바닥글에도), 사이트맵(priority 0.3), build_pages.py 의 PAGES 에 포함(공용 부품 복사). 본문 규칙은 home.css 끝 '.policy' 블록(#policy 는 한 단).
 - 하지 않은 것(본인 판단 사항): H1 에 검색어 넣기(첫 화면 문구 변경), FAQ 되살리기(2026. 10. 23. 본인 지시로 삭제 — 되살리려면 커밋 df7e089^ 의 faq.html 일곱 문답), 사업자등록번호 표기(실제 번호 필요; 보고서의 예시 번호는 쓰지 않음),
   의뢰인 후기·평점(AggregateRating) 스키마(실제 후기 없이 넣으면 허위 표시이고 변호사 광고 규정과도 맞지 않음), RSS·hreflang(불필요).
+
+- 사건번호 비공개(2026. 11. 18. 22:25 본인 지시): 홈페이지 글(사례 카드·목록·사례·주제 페이지, 검색 노출 문구, llms 파일, 언론보도 설명)에는
+  수행사례의 사건번호를 적지 않습니다(법원 이름만; 예: '서울행정법원 · 서울고등법원'). 판결문 원문 인용(quotes)과 다른 대법원·헌법재판소 판례 인용은 그대로.
+  판결문 이미지에서는 사건번호의 연도·사건부호는 두고 뒤 일련번호를 진회색(#3d4045)으로 가립니다(예: 2026구합■■■). 페이지 주소·이미지 파일 이름은 그대로(본인 선택).
+  새 사례를 더한 뒤  python3 work/strip_casenos.py .  을 돌리면 cases-data.js·cases-detail.json·press.json·work/details·work/detail_inputs/cases.json 의 글에서 번호를 지웁니다(--dry 로 미리 보기).
+  새 판결문 이미지도 같은 기준으로 가려 올립니다. work/·이 안내문·cases-detail.json·press.json 은 _config.yml 로 게시에서 뺐습니다(저장소에는 남음).

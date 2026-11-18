@@ -1,0 +1,8 @@
+# GitHub Pages(Jekyll) 게시 설정 — 2026. 11. 18. 추가
+# 작업용 폴더·파일은 저장소에만 두고 홈페이지 주소(lawyermrboo82.com/…)로는 열리지 않게 합니다.
+# (판결문 사건번호를 홈페이지에서 지운 뒤에도 작업 자료에 사건번호·엘박스 주소가 남아 있어 공개 대상에서 뺌)
+exclude:
+  - work
+  - README-게시방법.txt
+  - cases-detail.json
+  - press.json
