@@ -83,7 +83,7 @@ PRIORITY = {"rnd": "0.8", "penalty": "0.8", "criminal": "0.7", "personnel": "0.6
 NEW_TITLE = "국가연구개발사업 참여제한·연구비 환수·제재부가금 취소소송 변호사 부효준"
 NEW_OG_TITLE = "변호사 부효준 — 국가연구개발사업 참여제한·연구비 환수·제재부가금"
 NEW_DESCRIPTION = "법무법인(유한) 금성 · 제재처분 심의위원회 위원 · 정부·공공기관 약 20곳 고문변호사. 집행정지부터 취소소송까지 수행사례를 판결문으로 공개"
-NEW_OG_DESCRIPTION = "제재처분 심의위원회 위원 · 정부·공공기관 약 20곳 고문변호사. 처분을 받은 연구자·기업·공무원을 대리하고 수행사례를 판결문과 함께 공개"
+NEW_OG_DESCRIPTION = "정부·공공기관 약 20곳 고문변호사. 행정소송·행정심판·집행정지와 국가연구개발 제재처분 수행사례를 판결문과 함께 공개"
 DESC_MAX = 160   # 사례·주제 페이지 검색 설명문(meta description) 최대 길이 — 빙은 160자를 넘으면 '너무 길다'고 표시한다
 HOME_TITLE_MAX, HOME_DESC_MAX = 40, 80   # 홈의 제목·설명 — 네이버 웹마스터 가이드 권장 길이(2026. 10. 29.)
 for _s, _m, _n in ((NEW_TITLE, HOME_TITLE_MAX, "NEW_TITLE"), (NEW_OG_TITLE, HOME_TITLE_MAX, "NEW_OG_TITLE"),
