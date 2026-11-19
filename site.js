@@ -536,10 +536,11 @@ document.addEventListener('click', function (e) {
 })();
 
 // ---------- 2026. 11. 19. 19:02 본인 지시: 첫 화면 사진은 평소 회색 — 휴대전화에서 첫 화면을 터치하면 원래 색(.touched), 다른 곳을 터치하면 다시 회색 ----------
+// 19:49: 세부 페이지(다루는 사건·경력) 머리의 사진(.page-photo)도 같은 방식.
 (function () {
-  var hero = document.querySelector('.hero');
-  if (!hero) return;
+  var photos = document.querySelectorAll('.hero, .page-photo');
+  if (!photos.length) return;
   document.addEventListener('touchstart', function (e) {
-    hero.classList.toggle('touched', hero.contains(e.target));
+    for (var i = 0; i < photos.length; i++) photos[i].classList.toggle('touched', photos[i].contains(e.target));
   }, { passive: true });
 })();

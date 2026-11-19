@@ -2126,3 +2126,6 @@ dt:hover > .lec-logo img, dd:hover > .lec-logo img, li:hover > .lec-logo img, dd
    터치: site.js 가 첫 화면을 누르면 .hero 에 .touched 를 붙이고 다른 곳을 누르면 뗀다(아이폰은 글·그림을 눌러도 hover 가 되지 않아서). blend-mode 는 서서히 바뀌지 않고 바로 바뀐다. 되돌리려면 이 블록 삭제. */
 .hero::before { background-color: #808080; background-blend-mode: normal, luminosity; }
 .hero:hover::before, .hero.touched::before { background-blend-mode: normal, normal; }
+/* 19:49 본인 지시: 다루는 사건(사무실 사진)·경력(증명사진) 페이지 머리의 사진(.page-photo)도 같은 방식 — 평소 회색, 사진에 커서를 대거나 터치하면(.touched, site.js) 원래 색. 그림 요소라 0.2초에 걸쳐 바뀐다. */
+.page-photo img { filter: grayscale(1); transition: filter 0.2s ease; }
+.page-photo:hover img, .page-photo.touched img { filter: none; }
