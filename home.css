@@ -2093,3 +2093,5 @@ b, strong { font-weight: 600; }
    넓은 화면(761px 이상)에서 먹갈색 바의 좌우 폭을 본문 폭(1440px 화면에서 1,056px)보다 좁은 56rem(896px)으로 줄여 가운데에 둔다. 휴대전화(≤760px)는 종전대로 화면 폭에 꽉 차게.
    더 좁히거나 넓히려면 max-width 값만 바꾸면 된다(되돌리려면 이 한 줄 삭제). */
 @media (min-width: 761px) { .hero { max-width: 56rem; margin-inline: auto; column-gap: 2.5rem; } }   /* 글 칸과 사진 칸 사이 간격도 2.5rem 으로 줄여, 좁아진 바에서 분야 줄·경력 줄이 두 줄로 꺾이지 않게 */
+/* 2026. 11. 19. 17:58 본인 지시: 제목 윗줄 '국가로펌 출신 행정법 전문변호사'(.kicker)도 두 단계 작게 — 넓은 화면 1.3125rem → 1.0625rem(0.125rem 씩 두 단계), 휴대전화 1.0625rem → 0.9375rem. */
+.hero h1 .kicker { font-size: clamp(0.9375rem, 1.3vw, 1.0625rem); }
