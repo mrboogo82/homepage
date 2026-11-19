@@ -2119,3 +2119,10 @@ dt:hover > .lec-logo img, dd:hover > .lec-logo img, li:hover > .lec-logo img, dd
 /* 18:40 본인 지시: 위촉장·표창장 그림(.adv-fig img)도 같은 방식 — 평소 회색, 타일에 커서를 대거나 터치하면 원래 색. 크게 보기 창(보기 창 안의 그림)은 원래 색 그대로. */
 .adv .adv-fig img { filter: grayscale(1); opacity: 0.75; transition: filter 0.2s ease, opacity 0.2s ease; }
 .adv:hover .adv-fig img, .adv:focus-within .adv-fig img, .adv .adv-fig:active img { filter: none; opacity: 1; }
+
+/* ---------- 2026. 11. 19. 19:02 본인 지시: 맨 위(첫 화면) 사진도 평소 회색, 커서를 대거나 휴대전화에서 터치하면 원래 색 ----------
+   사진은 .hero::before 의 배경(위 겹: 먹갈색으로 녹이는 그라데이션, 아래 겹: 사진)이라 filter 를 쓰면 그라데이션까지 회색이 되어 먹갈색 바탕과 이음새가 생긴다.
+   그래서 사진 겹만 회색 바탕(#808080)에 luminosity 로 섞어 색을 뺀다(그라데이션 겹은 normal 그대로). 먹갈색 바 어디에 대든(.hero:hover) 원래 색.
+   터치: site.js 가 첫 화면을 누르면 .hero 에 .touched 를 붙이고 다른 곳을 누르면 뗀다(아이폰은 글·그림을 눌러도 hover 가 되지 않아서). blend-mode 는 서서히 바뀌지 않고 바로 바뀐다. 되돌리려면 이 블록 삭제. */
+.hero::before { background-color: #808080; background-blend-mode: normal, luminosity; }
+.hero:hover::before, .hero.touched::before { background-blend-mode: normal, normal; }

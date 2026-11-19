@@ -534,3 +534,12 @@ document.addEventListener('click', function (e) {
   Array.prototype.forEach.call(document.querySelectorAll('.quick, footer.sign'), function (c) { out.push(c); });
   FX.add(out, true);
 })();
+
+// ---------- 2026. 11. 19. 19:02 본인 지시: 첫 화면 사진은 평소 회색 — 휴대전화에서 첫 화면을 터치하면 원래 색(.touched), 다른 곳을 터치하면 다시 회색 ----------
+(function () {
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+  document.addEventListener('touchstart', function (e) {
+    hero.classList.toggle('touched', hero.contains(e.target));
+  }, { passive: true });
+})();
