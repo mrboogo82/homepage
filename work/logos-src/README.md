@@ -103,3 +103,11 @@ SVG는 `tighten_svg.py`로 viewBox를 내용 범위(+1% 여백)로 좁히고 루
 - 금성 가로형 로고를 다시 만들 때: `render_keumseong.py` 머리 설명대로(npm 글꼴 패키지 + playwright). 글귀·크기를 바꾸려면 `keumseong_lockup_c.html` 의 스타일(.s 15px·.b 27px·.e 8.5px, 엠블럼 40px)을 고친다.
 - 주식회사 에스알: 공정위가 2026. 8. 3. 코레일의 SR 고속철도 영업양수를 승인했고 정부는 2026. 9. 통합 완료를 예정했다(srail.or.kr은 이미 korail.com으로 넘어감).
   법률고문 위촉이 그대로 이어지는지에 따라 위촉 타일을 '임기를 마친 위촉'으로 옮길지 변호사님 확인이 필요하다(로고 링크는 코레일로 해 둠).
+
+## 2026. 11. 19. 추가 (새 법률고문 위촉 세 곳 — 위촉장 전)
+| 파일 | 기관 | 출처 | 가공 |
+|---|---|---|---|
+| gyeongbuk.png | 경상북도 | 도 누리집 머리글 로고 `gb.go.kr/resources/templates/front/assets/images/logo.png`(330×47; 브라우저로 접속해야 받아짐) | 오른쪽 구호('경북의 힘으로 새로운 대한민국')를 잘라 심벌+이름만 164×39 |
+| khis.png | 한국보건의료정보원 | 누리집 `k-his.or.kr/kr/img/common/logo_ov.png`(877×138) | 그대로 |
+| gongyoung.png | 주식회사 공영홈쇼핑 | 쇼핑몰 머리글 로고 `img.publichs.com/ECMCFO/img/fo/common/logo-gnb.png`(77×43, '공영쇼핑' 붉은 상표) | 그대로(`.tall`) — 해상도가 낮아 더 큰 CI를 구하면 교체 |
+누리집: 경상북도 gb.go.kr · 한국보건의료정보원 k-his.or.kr · 공영홈쇼핑 gongyoungshop.kr
