@@ -2104,7 +2104,7 @@ b, strong { font-weight: 600; }
 /* ---------- 2026. 11. 19. 18:26 본인 지시: 상담문의 '온라인' SNS 타일을 금성 홈페이지(keumseong.com) '패밀리 사이트 & 채널'처럼 — 평소에는 회색, 커서를 대면 원래 색 ----------
    금성 쪽 규칙과 같은 값(filter: grayscale(1); opacity: .75 → hover 에서 filter: none; opacity: 1). 글쇠로 옮겨 갔을 때(focus-visible)도 원래 색.
    커서가 없는 휴대전화·태블릿(hover: none)에서는 대 볼 방법이 없으므로 종전대로 처음부터 원래 색. 되돌리려면 이 블록 삭제. */
-@media (hover: hover) {
-  .sns.icons a .ico { filter: grayscale(1); opacity: 0.75; transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease; }
-  .sns.icons a:hover .ico, .sns.icons a:focus-visible .ico { filter: none; opacity: 1; }
-}
+/* 18:29 본인 지시: 휴대전화에서도 회색으로, 터치하면 원래 색 → (hover: hover) 조건을 빼고 누르는 동안(:active)도 원래 색.
+   휴대전화 브라우저는 터치한 요소를 다른 곳을 누를 때까지 hover 상태로 두므로, 타일을 누르면 원래 색이 되고 새 창에서 돌아와도 그 타일은 원래 색으로 남는다. */
+.sns.icons a .ico { filter: grayscale(1); opacity: 0.75; transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease; -webkit-tap-highlight-color: transparent; }
+.sns.icons a:hover .ico, .sns.icons a:active .ico, .sns.icons a:focus-visible .ico { filter: none; opacity: 1; }
