@@ -2076,3 +2076,19 @@ b, strong { font-weight: 600; }
 /* 2026. 11. 18. 19:23 본인 지시("모바일 버전에서 오른쪽 위 전화번호 표시를 삭제해줘. 너무 없어 보여."): 휴대전화 화면(≤760px) 머리글의 이름 줄 오른쪽 번호(<a class="tel tel-m">)를
    index.html 머리글에서 삭제(→ build_pages.py 가 다섯 쪽에 반영). 이 파일의 .top .tel · .top .tel-m 규칙은 더 쓰이지 않지만 남겨 둠
    (같은 묶음의 .top nav { flex-basis: 100% } 는 차림표를 둘째 줄에 두는 데 계속 쓰임). 상담문의 절의 연락처 표와 페이지 끝 띠(.quick)의 번호는 그대로 — 첫 화면 연락 줄(.hero-contact)은 이미 마크업에 없으므로 휴대전화 첫 화면에는 전화번호가 보이지 않게 된다. 되살리려면 커밋 e7a4227 의 머리글 그 한 줄. */
+
+/* ---------- 2026. 11. 19. 17:51 본인 지시: 첫 화면(먹갈색 바) — ① 설명 문장(.lead) 삭제 ② "그런 다음 폭을 줄여줘" ③ 제목을 명조체로, 두 단계 작게 ----------
+   ① index.html 에서 <p class="lead"> 한 문장을 지움(위 .hero .lead 규칙들은 더 쓰이지 않지만 남겨 둠).
+   ② 문장이 빠진 만큼 낮아진 바의 위아래 여백·간격을 한 단계 더 줄여 띠를 얇게 한다(세로 폭). 좌우 폭은 머리글·본문과 같은 폭 그대로(2026. 11. 9. 16:04) —
+      좌우를 좁히려면 @media (min-width: 761px) { .hero { max-width: 56rem; margin-inline: auto; } } 처럼 더하면 된다.
+   ③ 제목(h1)을 2026. 11. 16. 의 나눔명조 400 에서 누리집 본문과 같은 명조(노토 명조, var(--serif)) 500 으로, 크기는 두 단계 작게:
+      넓은 화면 2.5rem → 2rem(0.25rem 씩 두 단계), 휴대전화 1.75rem → 1.4375rem. 윗줄(.kicker)은 크기 그대로, 글씨체만 같이 따라온다.
+      구글 폰트 링크에서 Nanum Myeongjo 는 뺌. 되돌리려면 이 블록을 지우고 링크에 &family=Nanum+Myeongjo:wght@400 을 다시 넣는다. */
+.hero h1 { font-family: var(--serif); font-weight: 500; letter-spacing: 0; font-size: min(var(--display), 2rem); line-height: 1.35; }
+.hero h1 em { text-decoration-thickness: 2px; }
+.hero-copy { gap: 0.9rem; padding-bottom: clamp(1.4rem, 2.4vw, 1.8rem); }
+@media (min-width: 761px) { .hero { padding-top: clamp(1.5rem, 2.6vw, 2.1rem); } }
+@media (max-width: 760px) {
+  .hero h1 { font-size: 1.4375rem; }
+  .hero-copy { gap: 0.8rem; padding-bottom: 1.3rem; }
+}
