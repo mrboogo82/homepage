@@ -2095,3 +2095,8 @@ b, strong { font-weight: 600; }
 @media (min-width: 761px) { .hero { max-width: 56rem; margin-inline: auto; column-gap: 2.5rem; } }   /* 글 칸과 사진 칸 사이 간격도 2.5rem 으로 줄여, 좁아진 바에서 분야 줄·경력 줄이 두 줄로 꺾이지 않게 */
 /* 2026. 11. 19. 17:58 본인 지시: 제목 윗줄 '국가로펌 출신 행정법 전문변호사'(.kicker)도 두 단계 작게 — 넓은 화면 1.3125rem → 1.0625rem(0.125rem 씩 두 단계), 휴대전화 1.0625rem → 0.9375rem. */
 .hero h1 .kicker { font-size: clamp(0.9375rem, 1.3vw, 1.0625rem); }
+
+/* ---------- 2026. 11. 19. 18:04 본인 지시: 법률고문 위촉 — 분류를 셋으로(중앙행정기관 / 공공기관 / 지방자치단체 · 지방공기업), 새 위촉 세 곳을 위촉장 없이 먼저 올림 ----------
+   로고 파일이 아직 없는 기관(경상북도·공영홈쇼핑)은 로고 띠에 기관 이름을 글자로 둔다(.adv-logo .txt) — 띠 높이·누리집 링크는 다른 타일과 같다. 로고 파일이 생기면 <img> 로 바꾼다. */
+.adv-logo .txt { font-family: var(--serif); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.04em; line-height: 1; color: #3b322e; white-space: nowrap; }
+.past-grid .adv-logo .txt { font-size: 0.6875rem; }
