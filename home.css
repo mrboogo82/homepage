@@ -2108,3 +2108,11 @@ b, strong { font-weight: 600; }
    휴대전화 브라우저는 터치한 요소를 다른 곳을 누를 때까지 hover 상태로 두므로, 타일을 누르면 원래 색이 되고 새 창에서 돌아와도 그 타일은 원래 색으로 남는다. */
 .sns.icons a .ico { filter: grayscale(1); opacity: 0.75; transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease; -webkit-tap-highlight-color: transparent; }
 .sns.icons a:hover .ico, .sns.icons a:active .ico, .sns.icons a:focus-visible .ico { filter: none; opacity: 1; }
+
+/* ---------- 2026. 11. 19. 18:36 본인 지시: 경력 전체(경력 · 법률고문 위촉 · 위원회 · 강의)의 기관 로고도 SNS 타일과 같은 방식 — 평소 회색, 커서를 대거나 터치하면 원래 색 ----------
+   위촉·위원회 타일(.adv)은 타일 어디에 대든(로고 띠·위촉장·기관 이름) 그 타일의 로고가 원래 색이 되고, 경력·학력·수상·강의 줄의 로고(.lec-logo)는 로고나 그 줄(dt·dd·li)에 대면 원래 색.
+   위촉장 그림은 그대로(색을 빼지 않음). 값은 SNS 타일과 같다(grayscale(1)·opacity 0.75). 되돌리려면 이 블록 삭제. */
+.adv-logo img, .lec-logo img { filter: grayscale(1); opacity: 0.75; transition: filter 0.2s ease, opacity 0.2s ease; }
+.adv:hover .adv-logo img, .adv:focus-within .adv-logo img, .adv-logo:active img,
+.lec-logo:hover img, .lec-logo:active img, a.lec-logo:focus-visible img,
+dt:hover > .lec-logo img, dd:hover > .lec-logo img, li:hover > .lec-logo img, dd:hover .t ~ .lec-logo img, dd:hover > * > .lec-logo img { filter: none; opacity: 1; }
