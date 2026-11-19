@@ -2124,8 +2124,46 @@ dt:hover > .lec-logo img, dd:hover > .lec-logo img, li:hover > .lec-logo img, dd
    사진은 .hero::before 의 배경(위 겹: 먹갈색으로 녹이는 그라데이션, 아래 겹: 사진)이라 filter 를 쓰면 그라데이션까지 회색이 되어 먹갈색 바탕과 이음새가 생긴다.
    그래서 사진 겹만 회색 바탕(#808080)에 luminosity 로 섞어 색을 뺀다(그라데이션 겹은 normal 그대로). 먹갈색 바 어디에 대든(.hero:hover) 원래 색.
    터치: site.js 가 첫 화면을 누르면 .hero 에 .touched 를 붙이고 다른 곳을 누르면 뗀다(아이폰은 글·그림을 눌러도 hover 가 되지 않아서). blend-mode 는 서서히 바뀌지 않고 바로 바뀐다. 되돌리려면 이 블록 삭제. */
-.hero::before { background-color: #808080; background-blend-mode: normal, luminosity; }
-.hero:hover::before, .hero.touched::before { background-blend-mode: normal, normal; }
+/* (19:02 의 회색 규칙 두 줄은 20:36 지시로 뺌 — 아래 20:36 블록) */
 /* 19:49 본인 지시: 다루는 사건(사무실 사진)·경력(증명사진) 페이지 머리의 사진(.page-photo)도 같은 방식 — 평소 회색, 사진에 커서를 대거나 터치하면(.touched, site.js) 원래 색. 그림 요소라 0.2초에 걸쳐 바뀐다. */
-.page-photo img { filter: grayscale(1); transition: filter 0.2s ease; }
+/* (19:49 의 회색 규칙 두 줄은 20:36 지시로 뺌 — 아래 20:36 블록) */
+
+/* ---------- 2026. 11. 19. 20:36 본인 지시: "사진들은 너무 회색으로 하니까 영정사진 같아 보여서 별로 — 다른 형태로 색에 변화를" ----------
+   사진 셋(첫 화면 · 다루는 사건의 사무실 사진 · 경력의 증명사진)은 회색 대신 '바랜 따뜻한 빛'으로: 채도를 절반쯤으로 낮추고 갈색 기운을 조금 얹는다(--photo-tone).
+   살빛·나무색이 옅게 남아 흑백 사진처럼 보이지 않고, 먹갈색 바탕과도 어울린다. 커서를 대거나 터치하면(.touched, site.js) 원래 색으로 0.3초에 걸쳐 돌아온다.
+   로고·위촉장·SNS 타일은 종전대로 회색(이번 지시는 사진만).
+   첫 화면: 사진 겹에 filter 를 쓸 수 있도록, 사진을 먹갈색으로 녹이던 그라데이션을 .hero::before 에서 떼어 새 요소 <div class="hero-fade">(index.html, 사진 바로 위 겹)로 옮김 —
+   ::before 에는 사진만 남는다(그라데이션 값은 종전과 같다). 값을 바꾸려면 --photo-tone 한 줄만. 되돌리려면 이 블록과 index.html 의 .hero-fade 를 지운다(그러면 사진은 늘 원래 색). */
+:root { --photo-tone: saturate(0.55) sepia(0.22) contrast(0.97); }
+.page-photo img { filter: var(--photo-tone); transition: filter 0.3s ease; }
 .page-photo:hover img, .page-photo.touched img { filter: none; }
+.hero::before { filter: var(--photo-tone); transition: filter 0.3s ease; }
+.hero:hover::before, .hero.touched::before { filter: none; }
+.hero > .hero-fade { position: absolute; z-index: 0; pointer-events: none; }
+@media (max-width: 760px) {
+  .hero::before { background-image: url("photo-desk-mobile.webp"); }
+  .hero > .hero-fade {
+    left: 0; right: 0; top: 0; height: var(--band);
+    background-image: linear-gradient(to bottom, rgba(59, 50, 46, 0) 0%, rgba(59, 50, 46, 0) 66%, rgba(59, 50, 46, 0.12) 80%, rgba(59, 50, 46, 0.45) 88%, rgba(59, 50, 46, 0.8) 93%, rgba(59, 50, 46, 0.96) 97%, #3b322e 100%);
+    background-image: linear-gradient(to bottom,
+        color-mix(in srgb, var(--hero-bg) 0%, transparent) 0%,
+        color-mix(in srgb, var(--hero-bg) 0%, transparent) 66%,
+        color-mix(in srgb, var(--hero-bg) 12%, transparent) 80%,
+        color-mix(in srgb, var(--hero-bg) 45%, transparent) 88%,
+        color-mix(in srgb, var(--hero-bg) 80%, transparent) 93%,
+        color-mix(in srgb, var(--hero-bg) 96%, transparent) 97%,
+        var(--hero-bg) 100%);
+  }
+}
+@media (min-width: 761px) {
+  .hero::before { background-image: url("photo-desk-tall.webp"); }
+  .hero > .hero-fade {
+    top: 0; right: 0; bottom: 0; width: 48%;
+    background-image: linear-gradient(to right, rgba(59, 50, 46, 1) 0%, rgba(59, 50, 46, 0.85) 14%, rgba(59, 50, 46, 0.35) 30%, rgba(59, 50, 46, 0) 46%);
+    background-image: linear-gradient(to right,
+        var(--hero-bg) 0%,
+        color-mix(in srgb, var(--hero-bg) 85%, transparent) 14%,
+        color-mix(in srgb, var(--hero-bg) 35%, transparent) 30%,
+        color-mix(in srgb, var(--hero-bg) 0%, transparent) 46%);
+  }
+}
