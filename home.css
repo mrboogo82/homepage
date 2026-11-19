@@ -2116,3 +2116,6 @@ b, strong { font-weight: 600; }
 .adv:hover .adv-logo img, .adv:focus-within .adv-logo img, .adv-logo:active img,
 .lec-logo:hover img, .lec-logo:active img, a.lec-logo:focus-visible img,
 dt:hover > .lec-logo img, dd:hover > .lec-logo img, li:hover > .lec-logo img, dd:hover .t ~ .lec-logo img, dd:hover > * > .lec-logo img { filter: none; opacity: 1; }
+/* 18:40 본인 지시: 위촉장·표창장 그림(.adv-fig img)도 같은 방식 — 평소 회색, 타일에 커서를 대거나 터치하면 원래 색. 크게 보기 창(보기 창 안의 그림)은 원래 색 그대로. */
+.adv .adv-fig img { filter: grayscale(1); opacity: 0.75; transition: filter 0.2s ease, opacity 0.2s ease; }
+.adv:hover .adv-fig img, .adv:focus-within .adv-fig img, .adv .adv-fig:active img { filter: none; opacity: 1; }
