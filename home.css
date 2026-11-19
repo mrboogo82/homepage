@@ -2100,3 +2100,11 @@ b, strong { font-weight: 600; }
    로고 파일이 아직 없는 기관(경상북도·공영홈쇼핑)은 로고 띠에 기관 이름을 글자로 둔다(.adv-logo .txt) — 띠 높이·누리집 링크는 다른 타일과 같다. 로고 파일이 생기면 <img> 로 바꾼다. */
 .adv-logo .txt { font-family: var(--serif); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.04em; line-height: 1; color: #3b322e; white-space: nowrap; }
 .past-grid .adv-logo .txt { font-size: 0.6875rem; }
+
+/* ---------- 2026. 11. 19. 18:26 본인 지시: 상담문의 '온라인' SNS 타일을 금성 홈페이지(keumseong.com) '패밀리 사이트 & 채널'처럼 — 평소에는 회색, 커서를 대면 원래 색 ----------
+   금성 쪽 규칙과 같은 값(filter: grayscale(1); opacity: .75 → hover 에서 filter: none; opacity: 1). 글쇠로 옮겨 갔을 때(focus-visible)도 원래 색.
+   커서가 없는 휴대전화·태블릿(hover: none)에서는 대 볼 방법이 없으므로 종전대로 처음부터 원래 색. 되돌리려면 이 블록 삭제. */
+@media (hover: hover) {
+  .sns.icons a .ico { filter: grayscale(1); opacity: 0.75; transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease; }
+  .sns.icons a:hover .ico, .sns.icons a:focus-visible .ico { filter: none; opacity: 1; }
+}
