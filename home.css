@@ -2086,9 +2086,10 @@ b, strong { font-weight: 600; }
       구글 폰트 링크에서 Nanum Myeongjo 는 뺌. 되돌리려면 이 블록을 지우고 링크에 &family=Nanum+Myeongjo:wght@400 을 다시 넣는다. */
 .hero h1 { font-family: var(--serif); font-weight: 500; letter-spacing: 0; font-size: min(var(--display), 2rem); line-height: 1.35; }
 .hero h1 em { text-decoration-thickness: 2px; }
-.hero-copy { gap: 0.9rem; padding-bottom: clamp(1.4rem, 2.4vw, 1.8rem); }
-@media (min-width: 761px) { .hero { padding-top: clamp(1.5rem, 2.6vw, 2.1rem); } }
 @media (max-width: 760px) {
   .hero h1 { font-size: 1.4375rem; }
-  .hero-copy { gap: 0.8rem; padding-bottom: 1.3rem; }
 }
+/* 2026. 11. 19. 17:56 본인 정정: ②의 '폭'은 좌우 폭이었다 → 17:51 에 넣었던 위아래 여백·간격 축소(.hero-copy gap 0.9rem 등)는 되돌리고(2026. 11. 9. 값 그대로),
+   넓은 화면(761px 이상)에서 먹갈색 바의 좌우 폭을 본문 폭(1440px 화면에서 1,056px)보다 좁은 56rem(896px)으로 줄여 가운데에 둔다. 휴대전화(≤760px)는 종전대로 화면 폭에 꽉 차게.
+   더 좁히거나 넓히려면 max-width 값만 바꾸면 된다(되돌리려면 이 한 줄 삭제). */
+@media (min-width: 761px) { .hero { max-width: 56rem; margin-inline: auto; column-gap: 2.5rem; } }   /* 글 칸과 사진 칸 사이 간격도 2.5rem 으로 줄여, 좁아진 바에서 분야 줄·경력 줄이 두 줄로 꺾이지 않게 */
