@@ -176,3 +176,11 @@ SEO·GEO 분석 보고서 반영(2026. 10. 29., commerce24.ai 보고서 — 홈 
   판결문 이미지에서는 사건번호의 연도·사건부호는 두고 뒤 일련번호를 진회색(#3d4045)으로 가립니다(예: 2026구합■■■). 페이지 주소·이미지 파일 이름은 그대로(본인 선택).
   새 사례를 더한 뒤  python3 work/strip_casenos.py .  을 돌리면 cases-data.js·cases-detail.json·press.json·work/details·work/detail_inputs/cases.json 의 글에서 번호를 지웁니다(--dry 로 미리 보기).
   새 판결문 이미지도 같은 기준으로 가려 올립니다. work/·이 안내문·cases-detail.json·press.json 은 _config.yml 로 게시에서 뺐습니다(저장소에는 남음).
+
+자주 묻는 질문 되살림(2026. 11. 24. 본인 지시: "언론보도 다음으로 해서 별도 페이지로 되살려줘. 홈 화면에서는 가장 첫 질문만 나오게")
+- faq.html: 2026. 10. 23. 지웠던 일곱 문답(글은 그때 그대로)을 별도 페이지로. 머리의 JSON-LD 는 WebPage + FAQPage(@graph) — AI·검색이 문답을 그대로 읽게 하려는 것(GEO).
+- 홈 index.html: 언론보도 절 다음·상담문의 절 앞에 #faq 절 — 첫 문답 하나만(펼친 채) + 절 머리의 '자세히'(faq.html).
+- 차림표: 머리글(다루는 사건 · 수행사례 · 경력 · 언론보도 · 자주 묻는 질문 · 상담문의)과 바닥글 차례 모두 언론보도 다음. index.html 공용 부품 → build_pages.py(PAGES·CURRENT 에 faq.html),
+  cases.html 은 직접, 사례·주제 페이지는 바닥글 차례만(build_cases.py 템플릿 두 곳 — 그 머리글은 종전대로 네 항목). 사이트맵 priority 0.7, site.js section_view 에 faq.
+- 휴대전화(≤760px) 차림표가 여섯 항목이 되어 한 줄에 들어가도록 글씨 clamp(0.6rem, 3.1vw, 0.9375rem)·간격 1.2vw 로 한 단계 줄임(home.css 끝; 412px 12.8px · 360px 11.2px).
+- 질문·답을 고칠 때는 ① faq.html 본문 ② faq.html 머리의 FAQPage JSON-LD ③ index.html #faq 의 첫 문답 ④ llms.txt '## 자주 묻는 질문' 네 곳을 함께 고칩니다(생성 스크립트 없음). 규칙은 home.css 끝의 '자주 묻는 질문' 블록.

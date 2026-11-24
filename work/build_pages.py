@@ -36,13 +36,13 @@ import os
 import re
 import sys
 
-PAGES = ["career.html", "fields.html", "press.html", "contact.html", "privacy.html"]   # index.html 이 기준(master); faq.html 은 2026. 10. 23. 오후 삭제; privacy.html(개인정보처리방침) 은 2026. 10. 29. 추가
+PAGES = ["career.html", "fields.html", "press.html", "faq.html", "contact.html", "privacy.html"]   # index.html 이 기준(master); faq.html 은 2026. 10. 23. 오후 삭제했다가 2026. 11. 24. 본인 지시로 되살림(언론보도 다음); privacy.html(개인정보처리방침) 은 2026. 10. 29. 추가
 ALL_PAGES = ["index.html"] + PAGES
 BLOCKS = ["symbols", "header", "quick", "footer", "tail"]
 NEEDS_DATA = {"index.html", "fields.html"}   # cases-data.js(사례 데이터, 약 300KB)를 읽는 페이지 — 사례 카드·분야별 건수가 있는 곳만; 다른 페이지의 꼬리에서는 그 태그를 뺀다
 DATA_TAG_RE = re.compile(r'<script src="cases-data\.js(?:\?v=[0-9a-f]+)?"></script>\n?')
 # 머리글 차림표에서 class="current" 를 받는 링크(href). 홈은 없음(허브).
-CURRENT = {"career.html": "career.html", "fields.html": "fields.html", "press.html": "press.html", "contact.html": "contact.html"}   # contact 는 2026. 10. 27. '상담문의'가 단추에서 글자 링크가 되면서 추가
+CURRENT = {"career.html": "career.html", "fields.html": "fields.html", "press.html": "press.html", "faq.html": "faq.html", "contact.html": "contact.html"}   # contact 는 2026. 10. 27. '상담문의'가 단추에서 글자 링크가 되면서 추가
 
 
 def read(p):
