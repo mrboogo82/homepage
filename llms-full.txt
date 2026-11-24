@@ -9,13 +9,13 @@
 - 제재부가금·환수: 11건
 - 공무원·교원 등: 30건
 - 인허가·면허·자격 처분: 16건
-- 손실보상: 17건
-- 환경: 11건
+- 손실보상: 19건
+- 환경: 12건
 - 그 밖의 행정처분: 29건
 - 형사: 22건
 - 국가계약법·지방계약법: 4건
 - 국가배상: 17건
-- 민사: 61건
+- 민사: 58건
 
 ## 분야별 전체 텍스트 파일
 사례마다 요지·사건 개요·쟁점·주장·법원의 판단·관련 법령·검색어까지 담은 전체 텍스트는 분야별 파일(각 300KB 이하)에 있습니다. 한 사례만 보려면 아래 한 줄 목록의 개별 페이지 주소를 여는 것이 가장 빠릅니다.
@@ -23,13 +23,13 @@
 - 제재부가금·환수 (11건): https://lawyermrboo82.com/llms-full-penalty-1.txt
 - 공무원·교원 등 (30건): https://lawyermrboo82.com/llms-full-personnel-1.txt
 - 인허가·면허·자격 처분 (16건): https://lawyermrboo82.com/llms-full-license-1.txt
-- 손실보상 (17건): https://lawyermrboo82.com/llms-full-comp-1.txt
-- 환경 (11건): https://lawyermrboo82.com/llms-full-env-1.txt
+- 손실보상 (19건): https://lawyermrboo82.com/llms-full-comp-1.txt
+- 환경 (12건): https://lawyermrboo82.com/llms-full-env-1.txt
 - 그 밖의 행정처분 (29건): https://lawyermrboo82.com/llms-full-admin-1.txt
 - 형사 (22건): https://lawyermrboo82.com/llms-full-criminal-1.txt
 - 국가계약법·지방계약법 (4건): https://lawyermrboo82.com/llms-full-contract-1.txt
 - 국가배상 (17건): https://lawyermrboo82.com/llms-full-state-1.txt
-- 민사 (61건): https://lawyermrboo82.com/llms-full-civil-1.txt
+- 민사 (58건): https://lawyermrboo82.com/llms-full-civil-1.txt
 
 ## 수행사례 한 줄 목록 (277건, 최근 순)
 형식: [제목](개별 페이지 주소) — 분야 · 법원·사건번호 · 결정 시기 · 결과. 모두 변호사 부효준이 담당변호사로 직접 수행한 사건입니다.
@@ -78,9 +78,9 @@
 - [강제추행 혐의 사건 변호 (경찰 불송치)](https://lawyermrboo82.com/cases/crim-seocho-indecent.html) — 형사 · 서울서초경찰서 · 불송치 (혐의없음)
 - [국가연구개발사업 참여제한·제재부가금 부과처분 집행정지](https://lawyermrboo82.com/cases/rnd-2025a12878.html) — 국가연구개발 제재처분 · 서울행정법원 · 2025. 9. · 집행정지 인용
 - [공원 내 분묘 관련 부당이득반환 청구소송](https://lawyermrboo82.com/cases/state-2023gadan261671.html) — 국가배상 · 서울서부지방법원 · 2025. 9. · 승소
-- [환매권 통지의무 위반을 이유로 한 손해배상 청구소송 (1·2심)](https://lawyermrboo82.com/cases/civ-2023gadan64535.html) — 민사 · 의정부지방법원 고양지원 · 의정부지방법원 · 2024. 6. ~ 2025. 8. · 승소
+- [환매권 통지의무 위반을 이유로 한 손해배상 청구소송 (1·2심)](https://lawyermrboo82.com/cases/civ-2023gadan64535.html) — 손실보상 · 의정부지방법원 고양지원 · 의정부지방법원 · 2024. 6. ~ 2025. 8. · 승소
 - [국가연구개발사업 참여제한·제재부가금 부과처분 취소소송](https://lawyermrboo82.com/cases/rnd-2024guhap79941.html) — 국가연구개발 제재처분 · 서울행정법원 · 2025. 8. · 승소
-- [생활화학제품 안전확인 시험·검사 관련 손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2024gadan5167066.html) — 민사 · 서울중앙지방법원 · 2025. 7. · 승소
+- [생활화학제품 안전확인 시험·검사 관련 손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2024gadan5167066.html) — 환경 · 서울중앙지방법원 · 2025. 7. · 승소
 - [국가연구개발사업 참여제한·출연금 환수처분 취소소송 (1·2심)](https://lawyermrboo82.com/cases/rnd-2022guhap100041.html) — 국가연구개발 제재처분 · 대전지방법원 · 대전고등법원 · 2023. 10. ~ 2025. 6. · 승소
 - [하천구역 점용물 철거명령·대집행 계고처분 무효확인·취소소송 (1·2심, 집행정지)](https://lawyermrboo82.com/cases/adm-2023guhap86935.html) — 그 밖의 행정처분 · 서울행정법원 · 서울고등법원 · 2024. 7. ~ 2025. 5. · 승소
 - [국가연구개발사업 참여제한·제재부가금·연구비 환수처분 취소소송](https://lawyermrboo82.com/cases/rnd-2024guhap58425.html) — 국가연구개발 제재처분 · 서울행정법원 · 2025. 5. · 승소
@@ -91,7 +91,7 @@
 - [공공기관 임대 점포 인도·차임 청구소송 및 점유이전금지가처분](https://lawyermrboo82.com/cases/civ-2024gadan160339.html) — 민사 · 서울동부지방법원 · 2024. 10. ~ 2024. 12. · 승소
 - [전세임대주택 보증금 반환 청구소송 (화해권고결정)](https://lawyermrboo82.com/cases/civ-2024gadan6406.html) — 민사 · 의정부지방법원 고양지원 · 2024. 11. · 화해권고결정 확정
 - [전세자금대출 보증 보험금 청구소송](https://lawyermrboo82.com/cases/civ-2024gadan5047674.html) — 민사 · 서울중앙지방법원 · 2024. 10. · 승소
-- [환매권 통지의무 위반을 이유로 한 손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2023gadan57551.html) — 민사 · 의정부지방법원 고양지원 · 2024. 10. · 승소
+- [환매권 통지의무 위반을 이유로 한 손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2023gadan57551.html) — 손실보상 · 의정부지방법원 고양지원 · 2024. 10. · 승소
 - [지분소유권이전등기·구상금 청구소송 (조정 성립)](https://lawyermrboo82.com/cases/civ-2023gadan1229.html) — 민사 · 수원지방법원 여주지원 · 2024. 10. · 조정 성립
 - [교원 파면처분 취소소송 (항소심에서 1심 취소)](https://lawyermrboo82.com/cases/pers-2023nu67738.html) — 공무원·교원 등 · 인천지방법원 · 서울고등법원 · 2023. 11. ~ 2024. 8. · 승소
 - [강제추행 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2024godan2382.html) — 형사 · 서울중앙지방법원 · 2024. 8. · 벌금형
