@@ -8,26 +8,28 @@
 - 국가연구개발 제재처분: 59건
 - 제재부가금·환수: 11건
 - 공무원·교원 등: 30건
-- 인허가·면허·자격 처분: 18건
+- 인허가·면허·자격 처분: 16건
 - 손실보상: 17건
-- 그 밖의 행정처분: 32건
-- 형사: 24건
+- 환경: 11건
+- 그 밖의 행정처분: 29건
+- 형사: 22건
 - 국가계약법·지방계약법: 4건
-- 국가배상: 20건
-- 민사: 62건
+- 국가배상: 17건
+- 민사: 61건
 
 ## 분야별 전체 텍스트 파일
 사례마다 요지·사건 개요·쟁점·주장·법원의 판단·관련 법령·검색어까지 담은 전체 텍스트는 분야별 파일(각 300KB 이하)에 있습니다. 한 사례만 보려면 아래 한 줄 목록의 개별 페이지 주소를 여는 것이 가장 빠릅니다.
 - 국가연구개발 제재처분 (59건): https://lawyermrboo82.com/llms-full-rnd-1.txt · https://lawyermrboo82.com/llms-full-rnd-2.txt · https://lawyermrboo82.com/llms-full-rnd-3.txt
 - 제재부가금·환수 (11건): https://lawyermrboo82.com/llms-full-penalty-1.txt
 - 공무원·교원 등 (30건): https://lawyermrboo82.com/llms-full-personnel-1.txt
-- 인허가·면허·자격 처분 (18건): https://lawyermrboo82.com/llms-full-license-1.txt
+- 인허가·면허·자격 처분 (16건): https://lawyermrboo82.com/llms-full-license-1.txt
 - 손실보상 (17건): https://lawyermrboo82.com/llms-full-comp-1.txt
-- 그 밖의 행정처분 (32건): https://lawyermrboo82.com/llms-full-admin-1.txt
-- 형사 (24건): https://lawyermrboo82.com/llms-full-criminal-1.txt
+- 환경 (11건): https://lawyermrboo82.com/llms-full-env-1.txt
+- 그 밖의 행정처분 (29건): https://lawyermrboo82.com/llms-full-admin-1.txt
+- 형사 (22건): https://lawyermrboo82.com/llms-full-criminal-1.txt
 - 국가계약법·지방계약법 (4건): https://lawyermrboo82.com/llms-full-contract-1.txt
-- 국가배상 (20건): https://lawyermrboo82.com/llms-full-state-1.txt
-- 민사 (62건): https://lawyermrboo82.com/llms-full-civil-1.txt
+- 국가배상 (17건): https://lawyermrboo82.com/llms-full-state-1.txt
+- 민사 (61건): https://lawyermrboo82.com/llms-full-civil-1.txt
 
 ## 수행사례 한 줄 목록 (277건, 최근 순)
 형식: [제목](개별 페이지 주소) — 분야 · 법원·사건번호 · 결정 시기 · 결과. 모두 변호사 부효준이 담당변호사로 직접 수행한 사건입니다.
@@ -35,7 +37,7 @@
 - [사회복지법인 정관변경인가신청 반려처분 · 외부추천이사 선임 결과보고 명령 취소소송 (1·2·3심, 집행정지)](https://lawyermrboo82.com/cases/adm-2024guhap91767.html) — 그 밖의 행정처분 · 서울행정법원 · 서울고등법원 · 대법원 · 2024. 12. ~ 2026. 11. · 승소
 - [국가연구개발사업 참여제한·제재부가금 부과처분 취소소송 (1·2심)](https://lawyermrboo82.com/cases/rnd-2024guhap93008.html) — 국가연구개발 제재처분 · 서울행정법원 · 서울고등법원 · 2026. 1. ~ 2026. 11. · 승소
 - [국가연구개발사업 공인시험성적서 미제출 과제의 '극히 불량' 평가에 따른 참여제한·제재부가금 부과처분 취소소송](https://lawyermrboo82.com/cases/rnd-2026guhap50291.html) — 국가연구개발 제재처분 · 서울행정법원 · 2026. 11. · 승소
-- [저온저장고용 합성수지 문틀 형재에 대한 재활용부과금 부과처분 취소소송](https://lawyermrboo82.com/cases/adm-2025guhap51107.html) — 그 밖의 행정처분 · 인천지방법원 · 2026. 11. · 승소
+- [저온저장고용 합성수지 문틀 형재에 대한 재활용부과금 부과처분 취소소송](https://lawyermrboo82.com/cases/adm-2025guhap51107.html) — 환경 · 인천지방법원 · 2026. 11. · 승소
 - [국가연구개발사업 중복 과제 신청을 이유로 한 참여제한·제재부가금 부과처분 취소소송](https://lawyermrboo82.com/cases/rnd-2024guhap201405.html) — 국가연구개발 제재처분 · 대전지방법원 · 2026. 11. · 승소
 - [지방자치단체 하천구역 편입 토지 부당이득반환 청구소송](https://lawyermrboo82.com/cases/comp-2025gaso335905.html) — 손실보상 · 서울중앙지방법원 · 2026. 10. · 승소
 - [승진임용제외처분 무효확인·취소소송 (1·2심)](https://lawyermrboo82.com/cases/pers-2023guhap79234.html) — 공무원·교원 등 · 서울행정법원 · 서울고등법원 · 2026. 10. · 승소
@@ -48,7 +50,7 @@
 - [국가연구개발사업 제재부가금·연구개발비 환수처분 취소소송](https://lawyermrboo82.com/cases/rnd-2024guhap206998.html) — 국가연구개발 제재처분 · 대전지방법원 · 2026. 8. · 일부승소
 - [승진임용제외처분 취소판결에 따른 간접강제결정에 대한 청구이의 소송 (1·2심)](https://lawyermrboo82.com/cases/pers-2025nu7844.html) — 공무원·교원 등 · 서울행정법원 · 서울고등법원 · 2025. 7. ~ 2026. 8. · 승소
 - [국가공무원 육아휴직 거부처분에 대한 임시처분 청구](https://lawyermrboo82.com/cases/pers-2026-598.html) — 공무원·교원 등 · 인사혁신처 소청심사위원회 · 2026. 7. · 임시처분 인용
-- [공공시설 건축공사의 진동·소음·분진으로 인한 인근 건물 피해 손해배상 청구소송](https://lawyermrboo82.com/cases/state-2025gadan106830.html) — 국가배상 · 서울동부지방법원 · 2026. 7. · 화해권고결정 (원고 청구 포기·소 취하)
+- [공공시설 건축공사의 진동·소음·분진으로 인한 인근 건물 피해 손해배상 청구소송](https://lawyermrboo82.com/cases/state-2025gadan106830.html) — 환경 · 서울동부지방법원 · 2026. 7. · 화해권고결정 (원고 청구 포기·소 취하)
 - [상가 임대차 제소전화해](https://lawyermrboo82.com/cases/civ-2025ja42161.html) — 민사 · 서울중앙지방법원 · 2026. 7. · 화해 성립
 - [지방공기업 임직원 해임처분 취소소송](https://lawyermrboo82.com/cases/pers-2025guhap55284.html) — 공무원·교원 등 · 서울행정법원 · 2026. 7. · 승소
 - [도로 공사구간 교통사고 구상금 청구소송 (1·2심)](https://lawyermrboo82.com/cases/civ-2025gaso298594.html) — 민사 · 서울중앙지방법원 · 2025. 11. ~ 2026. 7. · 승소
@@ -106,7 +108,7 @@
 - [국가연구개발사업 출연금 환수·참여제한처분 취소소송 및 집행정지](https://lawyermrboo82.com/cases/rnd-2023guhap60070.html) — 국가연구개발 제재처분 · 서울행정법원 · 2023. 4. ~ 2024. 4. · 승소
 - [부설주차장 개방 협약에 따른 바닥도색공사 관련 손해배상 청구소송 (항소심)](https://lawyermrboo82.com/cases/state-2023na28934.html) — 국가배상 · 서울동부지방법원 · 2024. 3. · 승소
 - [사회복지법인 기본재산 무허가 임대 관련 사회복지사업법 위반 혐의 사건 변호 (검찰 기소유예)](https://lawyermrboo82.com/cases/crim-east-welfare-property.html) — 형사 · 서울동부지방검찰청 · 기소유예 (불기소)
-- [대기배출시설 자가측정 관련 대기환경보전법 위반 혐의 사건 변호 (경찰 불송치)](https://lawyermrboo82.com/cases/crim-2024-dongdaemun-air.html) — 형사 · 서울동대문경찰서 · 2024. 1. · 불송치 (혐의없음)
+- [대기배출시설 자가측정 관련 대기환경보전법 위반 혐의 사건 변호 (경찰 불송치)](https://lawyermrboo82.com/cases/crim-2024-dongdaemun-air.html) — 환경 · 서울동대문경찰서 · 2024. 1. · 불송치 (혐의없음)
 - [ICT 규제샌드박스 실증특례 지정처분 취소소송 (일반의약품 화상 판매기)](https://lawyermrboo82.com/cases/lic-2022guhap80589.html) — 인허가·면허·자격 처분 · 서울행정법원 · 2023. 12. · 승소
 - [국가연구개발사업 과제 평가를 둘러싼 손해배상 청구소송](https://lawyermrboo82.com/cases/rnd-2022gadan271271.html) — 국가연구개발 제재처분 · 인천지방법원 · 2023. 12. · 승소
 - [중학교 중간고사 성적 결정 처분 취소소송](https://lawyermrboo82.com/cases/adm-2023guhap53113.html) — 그 밖의 행정처분 · 인천지방법원 · 2023. 9. · 승소
@@ -129,10 +131,10 @@
 - [공유오피스 서비스이용계약 사용료·위약벌 청구소송](https://lawyermrboo82.com/cases/civ-2021gaso1572256.html) — 민사 · 서울중앙지방법원 · 2021. 12. · 승소
 - [임야 토지인도 청구소송](https://lawyermrboo82.com/cases/civ-2021gadan34247.html) — 민사 · 대전지방법원 홍성지원 · 2021. 11. · 승소
 - [무면허 미용업 관련 공중위생관리법 위반 혐의 사건 변호 (검찰 기소유예)](https://lawyermrboo82.com/cases/crim-2021-seoul-hygiene.html) — 형사 · 서울중앙지방검찰청 · 2021. 11. · 기소유예 (불기소)
-- [하수도원인자부담금 부과처분 무효확인 소송](https://lawyermrboo82.com/cases/pen-2020guhap30741.html) — 그 밖의 행정처분 · 춘천지방법원 강릉지원 · 2021. 10. · 승소
+- [하수도원인자부담금 부과처분 무효확인 소송](https://lawyermrboo82.com/cases/pen-2020guhap30741.html) — 환경 · 춘천지방법원 강릉지원 · 2021. 10. · 승소
 - [경유 수입 주행세 포탈 범행으로 인한 손해배상 청구소송 (상고심에서 원심 파기)](https://lawyermrboo82.com/cases/civ-2019da293814.html) — 민사 · 대법원 · 2021. 10. · 승소
 - [국가연구개발사업 참여제한처분 취소소송 (항소심)](https://lawyermrboo82.com/cases/rnd-2020nu61661.html) — 국가연구개발 제재처분 · 서울고등법원 · 2021. 9. · 승소
-- [폐기물처리 사업계획서 부적합 통보처분 취소소송 (1·2심)](https://lawyermrboo82.com/cases/lic-2019guhap12895.html) — 인허가·면허·자격 처분 · 의정부지방법원 · 서울고등법원 · 2020. 8. ~ 2021. 9. · 승소
+- [폐기물처리 사업계획서 부적합 통보처분 취소소송 (1·2심)](https://lawyermrboo82.com/cases/lic-2019guhap12895.html) — 환경 · 의정부지방법원 · 서울고등법원 · 2020. 8. ~ 2021. 9. · 승소
 - [정부출연금 환수 및 국가연구개발사업 참여제한처분 취소소송](https://lawyermrboo82.com/cases/rnd-2020guhap101361.html) — 국가연구개발 제재처분 · 대전지방법원 · 2021. 8. · 승소
 - [대학 산학협력단에 대한 국가연구개발사업 출연금 환수·참여제한처분 취소소송 (1·2심)](https://lawyermrboo82.com/cases/rnd-2019guhap103873.html) — 국가연구개발 제재처분 · 대전지방법원 · 대전고등법원 · 2020. 9. ~ 2021. 8. · 승소
 - [공유오피스 서비스이용계약 사용료·위약벌 청구소송](https://lawyermrboo82.com/cases/civ-2021gaso1501919.html) — 민사 · 서울중앙지방법원 · 2021. 8. · 승소
@@ -202,10 +204,10 @@
 - [기념관 조성사업 기부채납 토지 소유권이전등기 말소·성명사용금지 등 청구소송](https://lawyermrboo82.com/cases/civ-2017gadan5150145.html) — 민사 · 서울중앙지방법원 · 2019. 2. · 승소
 - [지방자치단체 도로 부지 부당이득반환 청구소송 (1·2·3심)](https://lawyermrboo82.com/cases/civ-2015gadan124805.html) — 손실보상 · 서울동부지방법원 · 대법원 · 2017. 8. ~ 2019. 1. · 일부승소
 - [국가연구개발사업 불성실 수행 판정에 따른 참여제한·환수처분 취소소송](https://lawyermrboo82.com/cases/rnd-2018guhap101740.html) — 국가연구개발 제재처분 · 대전지방법원 · 2018. 12. · 승소
-- [양돈장 행정지도 관련 지방자치단체 손해배상 청구소송 (1·2·3심)](https://lawyermrboo82.com/cases/state-2017gahap5744.html) — 국가배상 · 수원지방법원 안산지원 · 서울고등법원 · 대법원 · 2017. 6. ~ 2018. 11. · 승소
+- [양돈장 행정지도 관련 지방자치단체 손해배상 청구소송 (1·2·3심)](https://lawyermrboo82.com/cases/state-2017gahap5744.html) — 환경 · 수원지방법원 안산지원 · 서울고등법원 · 대법원 · 2017. 6. ~ 2018. 11. · 승소
 - [형 확정에 따른 퇴직급여 감액 관련 퇴직급여 청구소송](https://lawyermrboo82.com/cases/civ-2017gadan60737.html) — 공무원·교원 등 · 수원지방법원 안산지원 · 2018. 11. · 승소
 - [고속도로 수용토지 손실보상금 증액 청구소송](https://lawyermrboo82.com/cases/state-2017guhap13832.html) — 손실보상 · 의정부지방법원 · 2018. 11. · 일부승소
-- [화학공장 불산 누출 사고 관련 인근 주민들의 국가배상 청구소송](https://lawyermrboo82.com/cases/state-2017gahap101052.html) — 국가배상 · 대전지방법원 · 2018. 11. · 승소
+- [화학공장 불산 누출 사고 관련 인근 주민들의 국가배상 청구소송](https://lawyermrboo82.com/cases/state-2017gahap101052.html) — 환경 · 대전지방법원 · 2018. 11. · 승소
 - [특별개간허가처분 무효확인 소송](https://lawyermrboo82.com/cases/adm-2017guhap938.html) — 그 밖의 행정처분 · 창원지방법원 · 2018. 11. · 승소
 - [국립대학교 총장 임용처분 취소소송 (1·2·3심)](https://lawyermrboo82.com/cases/pers-2017guhap51501.html) — 공무원·교원 등 · 서울행정법원 · 서울고등법원 · 대법원 · 2017. 12. ~ 2018. 10. · 승소
 - [탈북민 투자사기 피해 관련 국가배상 청구소송 (1·2심)](https://lawyermrboo82.com/cases/state-2016gaso200820.html) — 국가배상 · 서울중앙지방법원 · 2018. 4. ~ 2018. 10. · 승소
@@ -213,7 +215,7 @@
 - [공무원에 대한 구상금 청구소송 (1·2심)](https://lawyermrboo82.com/cases/civ-2017gahap528429.html) — 민사 · 서울중앙지방법원 · 서울고등법원 · 2018. 4. ~ 2018. 8. · 일부승소
 - [잔여지 손실보상금 증액 청구소송](https://lawyermrboo82.com/cases/state-2017guhap14675.html) — 손실보상 · 의정부지방법원 · 2018. 8. · 일부승소
 - [국가연구개발사업 연구개발비 미반납액에 관한 회생채권조사확정재판](https://lawyermrboo82.com/cases/rnd-2018hoehwak213.html) — 국가연구개발 제재처분 · 서울회생법원 · 2018. 7. · 화해권고결정 확정
-- [폐수종말처리시설 운영부담금 부과처분 무효확인 등 소송](https://lawyermrboo82.com/cases/pen-2017guhap11881.html) — 그 밖의 행정처분 · 의정부지방법원 · 2018. 7. · 승소
+- [폐수종말처리시설 운영부담금 부과처분 무효확인 등 소송](https://lawyermrboo82.com/cases/pen-2017guhap11881.html) — 환경 · 의정부지방법원 · 2018. 7. · 승소
 - [형집행지휘처분 무효확인 소송](https://lawyermrboo82.com/cases/adm-2017guhap84471.html) — 그 밖의 행정처분 · 서울행정법원 · 2018. 5. · 승소
 - [조상 땅 찾기 관련 소유권 확인 청구소송](https://lawyermrboo82.com/cases/civ-2017gadan112539.html) — 민사 · 의정부지방법원 · 2018. 5. · 승소
 - [국립대학교 총장 임용처분 취소소송 (1·2심)](https://lawyermrboo82.com/cases/pers-2017guhap51181.html) — 공무원·교원 등 · 서울행정법원 · 서울고등법원 · 2017. 12. ~ 2018. 5. · 승소
@@ -225,7 +227,7 @@
 - [위조 서류에 의한 등기 관련 손해배상 청구소송 (항소심)](https://lawyermrboo82.com/cases/state-2017na2032044.html) — 국가배상 · 서울고등법원 · 2018. 1. · 일부승소
 - [취득세 부과처분 취소소송 (상고심)](https://lawyermrboo82.com/cases/adm-2015du52296.html) — 그 밖의 행정처분 · 대법원 · 2017. 12. · 승소
 - [인근 주민의 건축허가 등 취소소송 (1·2심)](https://lawyermrboo82.com/cases/lic-2016guhap2343.html) — 인허가·면허·자격 처분 · 수원지방법원 · 서울고등법원 · 2017. 8. ~ 2017. 11. · 승소
-- [사용중지명령처분 취소소송](https://lawyermrboo82.com/cases/lic-2017guhap72.html) — 인허가·면허·자격 처분 · 의정부지방법원 · 2017. 9. · 승소
+- [사용중지명령처분 취소소송](https://lawyermrboo82.com/cases/lic-2017guhap72.html) — 환경 · 의정부지방법원 · 2017. 9. · 승소
 - [국립과학관 사용허가 종료에 따른 건물인도 청구소송](https://lawyermrboo82.com/cases/civ-2016gadan122872.html) — 민사 · 수원지방법원 안양지원 · 2017. 8. · 승소
 - [뉴타운 이주대책 관련 부당이득반환 청구소송](https://lawyermrboo82.com/cases/state-2016gahap507968.html) — 손실보상 · 서울중앙지방법원 · 2017. · 일부승소
 - [귀속재산 관련 진정명의회복 소유권이전등기 청구소송](https://lawyermrboo82.com/cases/civ-2016gadan80813.html) — 민사 · 광주지방법원 순천지원 · 2017. 6. · 승소
@@ -237,7 +239,7 @@
 - [도시개발사업 역사 설치비용 부당이득반환 청구소송 (상고심)](https://lawyermrboo82.com/cases/civ-2016da267043.html) — 민사 · 대법원 · 2017. · 승소
 - [운전면허시험 응시원서접수 거부처분 취소소송 (1·2·3심, 위헌법률심판제청)](https://lawyermrboo82.com/cases/lic-2016guhap53753.html) — 인허가·면허·자격 처분 · 서울행정법원 · 서울고등법원 · 대법원 · 2016. 6. ~ 2017. 2. · 승소
 - [전기공사 일괄하도급을 이유로 한 영업정지처분 취소소송](https://lawyermrboo82.com/cases/lic-2016guhap68335.html) — 인허가·면허·자격 처분 · 서울행정법원 · 2017. 2. · 승소
-- [폐기물 재활용 선별비 청구소송](https://lawyermrboo82.com/cases/civ-2016gahap441.html) — 민사 · 부산지방법원 · 2017. 1. · 승소
+- [폐기물 재활용 선별비 청구소송](https://lawyermrboo82.com/cases/civ-2016gahap441.html) — 환경 · 부산지방법원 · 2017. 1. · 승소
 - [긴급조치 관련 국가배상 청구소송](https://lawyermrboo82.com/cases/state-2016gadan5026849.html) — 국가배상 · 서울중앙지방법원 · 2017. 1. · 승소
 - [교원 파면처분 취소결정에 대한 취소소송](https://lawyermrboo82.com/cases/pers-2016guhap50495.html) — 공무원·교원 등 · 서울행정법원 · 2016. 12. · 승소
 - [운전직 공무원 해임처분 취소소송](https://lawyermrboo82.com/cases/pers-2016guhap58192.html) — 공무원·교원 등 · 서울행정법원 · 2016. 10. · 승소
@@ -272,7 +274,7 @@
 - [출국금지 기간연장처분 취소소송](https://lawyermrboo82.com/cases/adm-2013guhap17138.html) — 그 밖의 행정처분 · 서울행정법원 · 2013. 10. · 승소
 - [물품대금반환 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso13927.html) — 민사 · 창원지방법원 진주지원 · 2013. 3. · 승소
 - [절도 혐의 사건 변호 (선고유예)](https://lawyermrboo82.com/cases/crim-2013gojeong10.html) — 형사 · 창원지방법원 진주지원 · 2013. 3. · 선고유예
-- [건설 작업장 폐기물 매립 관련 폐기물관리법 위반 혐의 사건 변호 (선고유예)](https://lawyermrboo82.com/cases/crim-2012gojeong549.html) — 형사 · 창원지방법원 진주지원 · 2013. 2. · 선고유예
+- [건설 작업장 폐기물 매립 관련 폐기물관리법 위반 혐의 사건 변호 (선고유예)](https://lawyermrboo82.com/cases/crim-2012gojeong549.html) — 환경 · 창원지방법원 진주지원 · 2013. 2. · 선고유예
 - [상해 혐의 사건 변호 (공소기각)](https://lawyermrboo82.com/cases/crim-2012gojeong577.html) — 형사 · 창원지방법원 진주지원 · 2013. 2. · 공소기각
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso12047.html) — 민사 · 창원지방법원 진주지원 · 2013. 2. · 일부승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso13286.html) — 민사 · 창원지방법원 진주지원 · 2013. 2. · 일부승소

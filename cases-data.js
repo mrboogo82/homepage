@@ -321,7 +321,7 @@ window.CASES_DATA = [
  },
  {
   "id": "n-state-construct",
-  "cat": "state",
+  "cat": "env",
   "sort": "2026-07-16",
   "date": "2026. 7.",
   "title": "공공시설 건축공사의 진동·소음·분진으로 인한 인근 건물 피해 손해배상 청구소송",
@@ -2229,7 +2229,7 @@ window.CASES_DATA = [
  },
  {
   "id": "n-crim-airact",
-  "cat": "criminal",
+  "cat": "env",
   "sort": "2024-01-23",
   "date": "2024. 1.",
   "title": "대기배출시설 자가측정 관련 대기환경보전법 위반 혐의 사건 변호 (경찰 불송치)",
@@ -2887,7 +2887,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2020guhap30741",
-  "cat": "admin",
+  "cat": "env",
   "sort": "2021-10-28",
   "date": "2021. 10.",
   "title": "하수도원인자부담금 부과처분 무효확인 소송",
@@ -2955,7 +2955,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2019guhap12895",
-  "cat": "license",
+  "cat": "env",
   "sort": "2021-09-03",
   "date": "2020. 8. ~ 2021. 9.",
   "title": "폐기물처리 사업계획서 부적합 통보처분 취소소송 (1·2심)",
@@ -5018,7 +5018,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2017gahap5744",
-  "cat": "state",
+  "cat": "env",
   "sort": "2018-11-29",
   "date": "2017. 6. ~ 2018. 11.",
   "title": "양돈장 행정지도 관련 지방자치단체 손해배상 청구소송 (1·2·3심)",
@@ -5354,7 +5354,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2017guhap11881",
-  "cat": "admin",
+  "cat": "env",
   "sort": "2018-07-24",
   "date": "2018. 7.",
   "title": "폐수종말처리시설 운영부담금 부과처분 무효확인 등 소송",
@@ -5784,7 +5784,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2017guhap72",
-  "cat": "license",
+  "cat": "env",
   "sort": "2017-09-26",
   "date": "2017. 9.",
   "title": "사용중지명령처분 취소소송",
@@ -6157,7 +6157,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2016gahap441",
-  "cat": "civil",
+  "cat": "env",
   "sort": "2017-01-18",
   "date": "2017. 1.",
   "title": "폐기물 재활용 선별비 청구소송",
@@ -7324,7 +7324,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012gojeong549",
-  "cat": "criminal",
+  "cat": "env",
   "sort": "2013-02-19",
   "date": "2013. 2.",
   "title": "건설 작업장 폐기물 매립 관련 폐기물관리법 위반 혐의 사건 변호 (선고유예)",
@@ -9358,7 +9358,7 @@ window.CASES_DATA = [
  },
  {
   "id": "n-adm-recycle-levy",
-  "cat": "admin",
+  "cat": "env",
   "sort": "2026-11-19",
   "date": "2026. 11.",
   "title": "저온저장고용 합성수지 문틀 형재에 대한 재활용부과금 부과처분 취소소송",
@@ -9399,7 +9399,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2017gahap101052",
-  "cat": "state",
+  "cat": "env",
   "sort": "2018-11-07",
   "date": "2018. 11.",
   "title": "화학공장 불산 누출 사고 관련 인근 주민들의 국가배상 청구소송",
