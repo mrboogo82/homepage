@@ -10066,7 +10066,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2013neudan1167",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-05-09",
   "date": "2013. 5.",
   "title": "상속포기 신고 수리 심판",
@@ -10085,7 +10085,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2013neudan428",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-03-22",
   "date": "2013. 3.",
   "title": "상속한정승인 신고 수리 심판",
@@ -10104,7 +10104,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012neudan482",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-08-20",
   "date": "2012. 8.",
   "title": "상속한정승인 신고 수리 심판",
@@ -10123,7 +10123,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2013neudan380",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-08-29",
   "date": "2013. 8.",
   "title": "미성년 상속인의 상속한정승인 신고 수리 심판",
@@ -10142,7 +10142,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012neudan327",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-08-14",
   "date": "2012. 8.",
   "title": "공동상속인들의 상속한정승인 신고 수리 심판",
@@ -10161,7 +10161,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012neudan387",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-11-29",
   "date": "2012. 11.",
   "title": "미성년 상속인을 위한 상속 승인·포기 기간 연장 허가 및 친족회원 선임·친족회 소집 심판",
@@ -10185,7 +10185,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012neudan479",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-03-07",
   "date": "2013. 3.",
   "title": "부재자 재산관리인 선임 심판",
@@ -10204,7 +10204,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2013neudan1",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-03-12",
   "date": "2013. 3.",
   "title": "친양자 입양 심판",
@@ -10223,7 +10223,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012hopa2277",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-11-30",
   "date": "2012. 11.",
   "title": "국적취득자의 성·본 창설 허가 신청 사건",
@@ -10242,7 +10242,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2011deudan5049",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-05-29",
   "date": "2012. 5.",
   "title": "배우자의 폭행을 이유로 한 이혼·위자료·친권자 및 양육자 지정·양육비 청구소송",
@@ -10261,7 +10261,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012deudan2948",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-12-24",
   "date": "2012. 12.",
   "title": "가정폭력을 이유로 한 이혼·위자료·친권자 및 양육자 지정·양육비 청구소송",
@@ -10280,7 +10280,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012deudan157",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-04-16",
   "date": "2013. 4.",
   "title": "이혼·위자료·친권자 및 양육자 지정·양육비 청구소송",
@@ -10299,7 +10299,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012deudan2177",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-11-30",
   "date": "2012. 11.",
   "title": "이혼 본소·반소 사건 (화해권고결정)",
@@ -10318,7 +10318,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012deudan4050",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-11-27",
   "date": "2012. 11.",
   "title": "친생자관계부존재확인 청구소송",
@@ -10337,7 +10337,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012deudan4586",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-12-11",
   "date": "2012. 12.",
   "title": "친생자관계부존재확인 청구소송",
@@ -10356,7 +10356,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012neudan372",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-12-13",
   "date": "2012. 12.",
   "title": "협의이혼 후 양육비 청구 심판",
@@ -10375,7 +10375,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2013neudan119",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-04-22",
   "date": "2013. 4.",
   "title": "이혼 후 과거·장래 양육비 청구 심판",
@@ -10394,7 +10394,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2013neudan125",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-05-02",
   "date": "2013. 5.",
   "title": "양육자 변경·양육비 청구 심판",
@@ -10413,7 +10413,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2013neudan134",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-04-22",
   "date": "2013. 4.",
   "title": "친권자 및 양육자 변경 심판",
@@ -10432,7 +10432,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012jeugi25",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2012-10-10",
   "date": "2012. 10.",
   "title": "양육비 이행명령 신청 사건",
@@ -10451,7 +10451,7 @@ window.CASES_DATA = [
  },
  {
   "id": "d-2012jeugi47",
-  "cat": "civil",
+  "cat": "family",
   "sort": "2013-02-01",
   "date": "2013. 2.",
   "title": "양육비 이행명령 신청 사건",
