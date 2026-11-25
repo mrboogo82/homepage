@@ -1,8 +1,8 @@
 # 변호사 부효준 — 수행사례 전체 (lawyermrboo82.com)
 
-> 변호사 부효준(법무법인(유한) 금성)의 개인 홈페이지입니다. 행정쟁송 한 분야에 전문성을 쌓은 변호사로, 국가연구개발 제재처분(참여제한·제재부가금·연구개발비 환수)을 심의하는 위원회의 위원이자 정부·지방자치단체·공공기관 약 20곳의 고문변호사입니다. 행정소송·행정심판·집행정지를 수행하고, 정부출연금·보조금의 부정집행을 이유로 한 사기·보조금법 위반 등 형사사건도 제재처분과 함께 변호합니다. 판결·결정·재결을 받은 수행사례 278건을 판결문과 함께 공개하며, 모두 변호사 부효준이 담당변호사로 직접 수행한 사건입니다(판결문의 담당변호사란에 이름이 있는 사건만 싣습니다). 이 밖에 변호사 부효준이 담당변호사로 수행한 판결·결정 722건(2013. 11. ~ 2026. 8. 선고)이 변호사 검색 서비스 엘파인드(lfind.kr)에 사건별로 등록되어 있습니다(2026. 10. 기준): https://lfind.kr/lawyers/%EB%B6%80%ED%9A%A8%EC%A4%80-22452
+> 변호사 부효준(법무법인(유한) 금성)의 개인 홈페이지입니다. 행정쟁송 한 분야에 전문성을 쌓은 변호사로, 국가연구개발 제재처분(참여제한·제재부가금·연구개발비 환수)을 심의하는 위원회의 위원이자 정부·지방자치단체·공공기관 약 20곳의 고문변호사입니다. 행정소송·행정심판·집행정지를 수행하고, 정부출연금·보조금의 부정집행을 이유로 한 사기·보조금법 위반 등 형사사건도 제재처분과 함께 변호합니다. 판결·결정·재결을 받은 수행사례 333건을 판결문과 함께 공개하며, 모두 변호사 부효준이 담당변호사로 직접 수행한 사건입니다(판결문의 담당변호사란에 이름이 있는 사건만 싣습니다). 이 밖에 변호사 부효준이 담당변호사로 수행한 판결·결정 722건(2013. 11. ~ 2026. 8. 선고)이 변호사 검색 서비스 엘파인드(lfind.kr)에 사건별로 등록되어 있습니다(2026. 10. 기준): https://lfind.kr/lawyers/%EB%B6%80%ED%9A%A8%EC%A4%80-22452
 
-이 파일은 AI와 검색엔진이 읽기 쉽도록 홈페이지의 수행사례 278건을 글로 정리한 것입니다(최근 결정일 순). 판결문 이미지는 https://lawyermrboo82.com/cases.html 에서 볼 수 있습니다. 홈페이지 소개와 연락처는 https://lawyermrboo82.com/llms.txt 에 있습니다.
+이 파일은 AI와 검색엔진이 읽기 쉽도록 홈페이지의 수행사례 333건을 글로 정리한 것입니다(최근 결정일 순). 판결문 이미지는 https://lawyermrboo82.com/cases.html 에서 볼 수 있습니다. 홈페이지 소개와 연락처는 https://lawyermrboo82.com/llms.txt 에 있습니다.
 
 ## 분야별 건수
 - 국가연구개발 제재처분: 59건
@@ -10,12 +10,12 @@
 - 공무원·교원 등: 30건
 - 인허가·면허·자격 처분: 16건
 - 손실보상: 19건
-- 환경: 12건
+- 환경: 14건
 - 그 밖의 행정처분: 29건
-- 형사: 22건
+- 형사: 51건
 - 국가계약법·지방계약법: 4건
 - 국가배상: 17건
-- 민사: 59건
+- 민사: 83건
 
 ## 분야별 전체 텍스트 파일
 사례마다 요지·사건 개요·쟁점·주장·법원의 판단·관련 법령·검색어까지 담은 전체 텍스트는 분야별 파일(각 300KB 이하)에 있습니다. 한 사례만 보려면 아래 한 줄 목록의 개별 페이지 주소를 여는 것이 가장 빠릅니다.
@@ -24,14 +24,14 @@
 - 공무원·교원 등 (30건): https://lawyermrboo82.com/llms-full-personnel-1.txt
 - 인허가·면허·자격 처분 (16건): https://lawyermrboo82.com/llms-full-license-1.txt
 - 손실보상 (19건): https://lawyermrboo82.com/llms-full-comp-1.txt
-- 환경 (12건): https://lawyermrboo82.com/llms-full-env-1.txt
+- 환경 (14건): https://lawyermrboo82.com/llms-full-env-1.txt
 - 그 밖의 행정처분 (29건): https://lawyermrboo82.com/llms-full-admin-1.txt
-- 형사 (22건): https://lawyermrboo82.com/llms-full-criminal-1.txt
+- 형사 (51건): https://lawyermrboo82.com/llms-full-criminal-1.txt
 - 국가계약법·지방계약법 (4건): https://lawyermrboo82.com/llms-full-contract-1.txt
 - 국가배상 (17건): https://lawyermrboo82.com/llms-full-state-1.txt
-- 민사 (59건): https://lawyermrboo82.com/llms-full-civil-1.txt
+- 민사 (83건): https://lawyermrboo82.com/llms-full-civil-1.txt
 
-## 수행사례 한 줄 목록 (278건, 최근 순)
+## 수행사례 한 줄 목록 (333건, 최근 순)
 형식: [제목](개별 페이지 주소) — 분야 · 법원·사건번호 · 결정 시기 · 결과. 모두 변호사 부효준이 담당변호사로 직접 수행한 사건입니다.
 
 - [사회복지법인 정관변경인가신청 반려처분 · 외부추천이사 선임 결과보고 명령 취소소송 (1·2·3심, 집행정지)](https://lawyermrboo82.com/cases/adm-2024guhap91767.html) — 그 밖의 행정처분 · 서울행정법원 · 서울고등법원 · 대법원 · 2024. 12. ~ 2026. 11. · 승소
@@ -273,31 +273,81 @@
 - [외국 국적 동포에 대한 입국금지처분 취소소송](https://lawyermrboo82.com/cases/adm-2013guhap12775.html) — 그 밖의 행정처분 · 서울행정법원 · 2013. 12. · 승소
 - [출국금지 기간연장처분 취소소송](https://lawyermrboo82.com/cases/adm-2013guhap16517.html) — 그 밖의 행정처분 · 서울행정법원 · 2013. 11. · 승소
 - [출국금지 기간연장처분 취소소송](https://lawyermrboo82.com/cases/adm-2013guhap17138.html) — 그 밖의 행정처분 · 서울행정법원 · 2013. 10. · 승소
+- [미성년 상속인의 상속한정승인 신고 수리 심판](https://lawyermrboo82.com/cases/civ-2013neudan380.html) — 민사 · 창원지방법원 마산지원 · 2013. 8. · 신고 수리
+- [음주운전·무면허운전 관련 도로교통법 위반 혐의 사건 변호 (집행유예)](https://lawyermrboo82.com/cases/crim-2013godan364.html) — 형사 · 창원지방법원 진주지원 · 2013. 5. · 집행유예
+- [상속포기 신고 수리 심판](https://lawyermrboo82.com/cases/civ-2013neudan1167.html) — 민사 · 부산가정법원 · 2013. 5. · 신고 수리
+- [양육자 변경·양육비 청구 심판](https://lawyermrboo82.com/cases/civ-2013neudan125.html) — 민사 · 창원지방법원 진주지원 · 2013. 5. · 일부승소
+- [이혼 후 과거·장래 양육비 청구 심판](https://lawyermrboo82.com/cases/civ-2013neudan119.html) — 민사 · 창원지방법원 진주지원 · 2013. 4. · 승소
+- [친권자 및 양육자 변경 심판](https://lawyermrboo82.com/cases/civ-2013neudan134.html) — 민사 · 창원지방법원 진주지원 · 2013. 4. · 승소
+- [이혼·위자료·친권자 및 양육자 지정·양육비 청구소송](https://lawyermrboo82.com/cases/civ-2012deudan157.html) — 민사 · 창원지방법원 진주지원 · 2013. 4. · 일부승소
 - [물품대금반환 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso13927.html) — 민사 · 창원지방법원 진주지원 · 2013. 3. · 승소
+- [상속한정승인 신고 수리 심판](https://lawyermrboo82.com/cases/civ-2013neudan428.html) — 민사 · 서울가정법원 · 2013. 3. · 신고 수리
 - [절도 혐의 사건 변호 (선고유예)](https://lawyermrboo82.com/cases/crim-2013gojeong10.html) — 형사 · 창원지방법원 진주지원 · 2013. 3. · 선고유예
+- [음주소란 관련 경범죄처벌법 위반 혐의 사건 변호 (형 면제)](https://lawyermrboo82.com/cases/crim-2013gojeong2.html) — 형사 · 창원지방법원 진주지원 · 2013. 3. · 형 면제
+- [숙박업소 청소년 혼숙 관련 청소년보호법 위반 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong536.html) — 형사 · 창원지방법원 진주지원 · 2013. 3. · 벌금형
+- [미수금 독촉 관련 업무방해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2013gojeong12.html) — 형사 · 창원지방법원 진주지원 · 2013. 3. · 벌금형
+- [자전거도로 이륜차 사고 관련 교통사고처리특례법 위반 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2013gojeong79.html) — 형사 · 창원지방법원 진주지원 · 2013. 3. · 벌금형
+- [친양자 입양 심판](https://lawyermrboo82.com/cases/civ-2013neudan1.html) — 민사 · 창원지방법원 진주지원 · 2013. 3. · 청구 인용
+- [부재자 재산관리인 선임 심판](https://lawyermrboo82.com/cases/civ-2012neudan479.html) — 민사 · 창원지방법원 진주지원 · 2013. 3. · 청구 인용
 - [건설 작업장 폐기물 매립 관련 폐기물관리법 위반 혐의 사건 변호 (선고유예)](https://lawyermrboo82.com/cases/crim-2012gojeong549.html) — 환경 · 창원지방법원 진주지원 · 2013. 2. · 선고유예
 - [상해 혐의 사건 변호 (공소기각)](https://lawyermrboo82.com/cases/crim-2012gojeong577.html) — 형사 · 창원지방법원 진주지원 · 2013. 2. · 공소기각
+- [임도 개설·구거 점용 관련 산지관리법·공유수면법 위반 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong633.html) — 환경 · 창원지방법원 진주지원 · 2013. 2. · 벌금형
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso12047.html) — 민사 · 창원지방법원 진주지원 · 2013. 2. · 일부승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso13286.html) — 민사 · 창원지방법원 진주지원 · 2013. 2. · 일부승소
 - [약정금 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso16094.html) — 민사 · 창원지방법원 진주지원 · 2013. 2. · 승소
+- [허위 서류 대출 관련 사기 혐의 사건 변호 (집행유예)](https://lawyermrboo82.com/cases/crim-2012godan2054.html) — 형사 · 창원지방법원 진주지원 · 2013. 2. · 집행유예
+- [쌍방 다툼 관련 상해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong565.html) — 형사 · 창원지방법원 진주지원 · 2013. 2. · 벌금형
+- [양육비 이행명령 신청 사건](https://lawyermrboo82.com/cases/civ-2012jeugi47.html) — 민사 · 창원지방법원 진주지원 · 2013. 2. · 이행명령
+- [사정변경에 의한 부동산처분금지가처분 취소 신청 사건](https://lawyermrboo82.com/cases/civ-2012kadan2510.html) — 민사 · 창원지방법원 진주지원 · 2013. 1. · 승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gadan4202.html) — 민사 · 창원지방법원 진주지원 · 2013. 1. · 일부승소
+- [인쇄물 배포 관련 명예훼손 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong561.html) — 형사 · 창원지방법원 진주지원 · 2013. 1. · 벌금형
+- [식육 원산지 거짓 표시 관련 원산지표시법 위반 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong600.html) — 형사 · 창원지방법원 진주지원 · 2013. 1. · 벌금형
+- [공정증서에 기한 강제집행의 정지 신청 사건](https://lawyermrboo82.com/cases/civ-2013kagi11.html) — 민사 · 창원지방법원 진주지원 · 2013. 1. · 강제집행정지 인용
+- [사업장 폐기물 매립 관련 폐기물관리법 위반 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong192.html) — 환경 · 창원지방법원 진주지원 · 2013. 1. · 벌금형
+- [가정폭력을 이유로 한 이혼·위자료·친권자 및 양육자 지정·양육비 청구소송](https://lawyermrboo82.com/cases/civ-2012deudan2948.html) — 민사 · 창원지방법원 진주지원 · 2012. 12. · 일부승소
+- [협의이혼 후 양육비 청구 심판](https://lawyermrboo82.com/cases/civ-2012neudan372.html) — 민사 · 창원지방법원 진주지원 · 2012. 12. · 승소
+- [취업 알선 명목 금원 관련 사기 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong399.html) — 형사 · 창원지방법원 진주지원 · 2012. 12. · 벌금형
+- [친생자관계부존재확인 청구소송](https://lawyermrboo82.com/cases/civ-2012deudan4586.html) — 민사 · 창원지방법원 진주지원 · 2012. 12. · 승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso9805.html) — 민사 · 창원지방법원 진주지원 · 2012. 12. · 승소
+- [국적취득자의 성·본 창설 허가 신청 사건](https://lawyermrboo82.com/cases/civ-2012hopa2277.html) — 민사 · 창원지방법원 진주지원 · 2012. 11. · 허가
+- [이혼 본소·반소 사건 (화해권고결정)](https://lawyermrboo82.com/cases/civ-2012deudan2177.html) — 민사 · 창원지방법원 진주지원 · 2012. 11. · 화해권고결정
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso11754.html) — 민사 · 창원지방법원 진주지원 · 2012. 11. · 승소
+- [미성년 상속인을 위한 상속 승인·포기 기간 연장 허가 및 친족회원 선임·친족회 소집 심판](https://lawyermrboo82.com/cases/civ-2012neudan387.html) — 민사 · 창원지방법원 진주지원 · 2012. 11. · 청구 인용
+- [친생자관계부존재확인 청구소송](https://lawyermrboo82.com/cases/civ-2012deudan4050.html) — 민사 · 창원지방법원 진주지원 · 2012. 11. · 승소
+- [우편물 발송 관련 명예훼손 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong335.html) — 형사 · 창원지방법원 진주지원 · 2012. 11. · 벌금형
+- [식대 시비 관련 상해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong340.html) — 형사 · 창원지방법원 진주지원 · 2012. 11. · 벌금형
+- [도박 중 시비 관련 상해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong343.html) — 형사 · 창원지방법원 진주지원 · 2012. 11. · 벌금형
+- [신호위반 관련 도로교통법 위반 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong523.html) — 형사 · 창원지방법원 진주지원 · 2012. 11. · 벌금형
+- [사정변경에 의한 부동산가압류 취소 신청 사건](https://lawyermrboo82.com/cases/civ-2012kadan1450.html) — 민사 · 창원지방법원 진주지원 · 2012. 11. · 승소
+- [절도 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong467.html) — 형사 · 창원지방법원 진주지원 · 2012. 11. · 벌금형
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso1641.html) — 민사 · 창원지방법원 진주지원 · 2012. 11. · 일부승소
+- [인터넷 카페 댓글 관련 정보통신망법 위반(명예훼손)·모욕 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong274.html) — 형사 · 창원지방법원 진주지원 · 2012. 11. · 벌금형
+- [공무집행방해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong438.html) — 형사 · 창원지방법원 진주지원 · 2012. 11. · 벌금형
 - [상속재산 범위 내 대여금 청구소송](https://lawyermrboo82.com/cases/civ-2012gadan11903.html) — 민사 · 창원지방법원 진주지원 · 2012. 11. · 상속재산 범위 내 책임 제한
 - [명의신탁 해지에 따른 자동차 이전등록 인수 청구소송](https://lawyermrboo82.com/cases/civ-2012gadan9832.html) — 민사 · 창원지방법원 진주지원 · 2012. 10. · 승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso7243.html) — 민사 · 창원지방법원 진주지원 · 2012. 10. · 일부승소
 - [임대차보증금반환 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso7489.html) — 민사 · 창원지방법원 진주지원 · 2012. 10. · 승소
 - [대여금 청구에 대한 방어 소송](https://lawyermrboo82.com/cases/civ-2012gaso8932.html) — 민사 · 창원지방법원 진주지원 · 2012. 10. · 승소
+- [폭행 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong388.html) — 형사 · 창원지방법원 진주지원 · 2012. 10. · 벌금형
+- [양육비 이행명령 신청 사건](https://lawyermrboo82.com/cases/civ-2012jeugi25.html) — 민사 · 창원지방법원 진주지원 · 2012. 10. · 이행명령
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso6929.html) — 민사 · 창원지방법원 진주지원 · 2012. 9. · 일부승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2011gadan17775.html) — 민사 · 창원지방법원 진주지원 · 2012. 9. · 일부승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso5407.html) — 민사 · 창원지방법원 진주지원 · 2012. 9. · 승소
 - [부당이득금 반환 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso6264.html) — 민사 · 창원지방법원 진주지원 · 2012. 9. · 승소
+- [외상 식대 관련 사기 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong297.html) — 형사 · 창원지방법원 진주지원 · 2012. 9. · 벌금형
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso4367.html) — 민사 · 창원지방법원 진주지원 · 2012. 8. · 승소
 - [대여금 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso4664.html) — 민사 · 창원지방법원 진주지원 · 2012. 8. · 승소
 - [대여금 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso6233.html) — 민사 · 창원지방법원 진주지원 · 2012. 8. · 승소
 - [부당이득금반환 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso2989.html) — 민사 · 창원지방법원 진주지원 · 2012. 8. · 승소
 - [모욕 혐의 사건 변호 (선고유예)](https://lawyermrboo82.com/cases/crim-2012gojeong249.html) — 형사 · 창원지방법원 진주지원 · 2012. 8. · 선고유예
+- [음주 중 시비 관련 상해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong237.html) — 형사 · 창원지방법원 진주지원 · 2012. 8. · 벌금형
+- [사행성 게임기 설치 관련 사행행위규제법·게임산업법 위반 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong254.html) — 형사 · 창원지방법원 진주지원 · 2012. 8. · 벌금형
+- [상속한정승인 신고 수리 심판](https://lawyermrboo82.com/cases/civ-2012neudan482.html) — 민사 · 제주지방법원 · 2012. 8. · 신고 수리
+- [단체 기금 관련 업무상횡령·폭행 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong213.html) — 형사 · 창원지방법원 진주지원 · 2012. 8. · 벌금형
+- [폐지 수거 시비 관련 상해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong147.html) — 형사 · 창원지방법원 진주지원 · 2012. 8. · 벌금형
+- [공동상속인들의 상속한정승인 신고 수리 심판](https://lawyermrboo82.com/cases/civ-2012neudan327.html) — 민사 · 창원지방법원 진주지원 · 2012. 8. · 신고 수리
+- [쌍방 다툼 관련 상해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012godan1332.html) — 형사 · 창원지방법원 진주지원 · 2012. 8. · 벌금형
+- [도로 적치물 관련 일반교통방해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong325.html) — 형사 · 창원지방법원 진주지원 · 2012. 7. · 벌금형
 - [승계집행문 부여에 대한 이의 소송](https://lawyermrboo82.com/cases/civ-2012gadan31037.html) — 민사 · 부산지방법원 · 2012. 7. · 승소
 - [명의신탁 해지에 따른 자동차 이전등록 인수 청구소송](https://lawyermrboo82.com/cases/civ-2011gadan11777.html) — 민사 · 창원지방법원 진주지원 · 2012. 7. · 승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso3067.html) — 민사 · 창원지방법원 진주지원 · 2012. 7. · 일부승소
@@ -305,10 +355,15 @@
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso4039.html) — 민사 · 창원지방법원 진주지원 · 2012. 7. · 일부승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso4077.html) — 민사 · 창원지방법원 진주지원 · 2012. 7. · 일부승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso2774.html) — 민사 · 창원지방법원 진주지원 · 2012. 7. · 일부승소
+- [운전 중 휴대전화 사용 관련 도로교통법 위반 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong87.html) — 형사 · 창원지방법원 진주지원 · 2012. 7. · 벌금형
 - [인터넷 게시글 명예훼손 관련 정보통신망법 위반 혐의 사건 변호 (공소기각)](https://lawyermrboo82.com/cases/crim-2011gojeong732.html) — 형사 · 창원지방법원 진주지원 · 2012. 6. · 공소기각
 - [대여금 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso3586.html) — 민사 · 창원지방법원 진주지원 · 2012. 6. · 승소
 - [대여금 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso4046.html) — 민사 · 창원지방법원 진주지원 · 2012. 6. · 승소
 - [손해배상 청구소송](https://lawyermrboo82.com/cases/civ-2012gaso563.html) — 민사 · 창원지방법원 진주지원 · 2012. 5. · 일부승소
+- [배우자의 폭행을 이유로 한 이혼·위자료·친권자 및 양육자 지정·양육비 청구소송](https://lawyermrboo82.com/cases/civ-2011deudan5049.html) — 민사 · 창원지방법원 진주지원 · 2012. 5. · 일부승소
 - [대출금 관련 사기 혐의 사건 변호 (선고유예)](https://lawyermrboo82.com/cases/crim-2012gojeong22.html) — 형사 · 창원지방법원 진주지원 · 2012. 5. · 선고유예
+- [상해·주거침입 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2011gojeong994.html) — 형사 · 창원지방법원 진주지원 · 2012. 5. · 벌금형
+- [폭행에 대항한 상해 혐의 사건 변호 (벌금형)](https://lawyermrboo82.com/cases/crim-2012gojeong111.html) — 형사 · 창원지방법원 진주지원 · 2012. 5. · 벌금형
 - [업무방해 혐의 사건 변호 (공소기각)](https://lawyermrboo82.com/cases/crim-2011gojeong939.html) — 형사 · 창원지방법원 진주지원 · 2012. 4. · 공소기각
 - [해약환급금반환 청구소송](https://lawyermrboo82.com/cases/civ-2011gaso19409.html) — 민사 · 창원지방법원 진주지원 · 2012. 4. · 승소
+- [임금 체불 관련 근로기준법 위반 혐의 사건 변호 (집행유예·일부 공소기각)](https://lawyermrboo82.com/cases/crim-2010godan985.html) — 형사 · 수원지방법원 여주지원 · 2011. 5. · 집행유예·일부 공소기각
